@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :companies
   resources :companies
   get 'static_pages/home'
 
