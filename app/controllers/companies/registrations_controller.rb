@@ -40,7 +40,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
     def configure_sign_up_params
-      devise_parameter_sanitizer.for(:sign_up).push(*[:name, :phone, :country, :city, :street, :postal_code])
+      devise_parameter_sanitizer.for(:sign_up).push(*[:name, :phone, :website, :notice, :first_name, :last_name, :country, :city, :street, :postal_code])
     end
 
   # If you have extra params to permit, append them to the sanitizer.
