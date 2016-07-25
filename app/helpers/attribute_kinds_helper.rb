@@ -1,0 +1,2 @@
+module AttributeKindsHelper
+end

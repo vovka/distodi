@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Attribute Kinds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attribute_kinds.each do |attribute_kind| %>
+      <tr>
+        <td><%= attribute_kind.title %></td>
+        <td><%= link_to 'Show', attribute_kind %></td>
+        <td><%= link_to 'Edit', edit_attribute_kind_path(attribute_kind) %></td>
+        <td><%= link_to 'Destroy', attribute_kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attribute kind', new_attribute_kind_path %>
