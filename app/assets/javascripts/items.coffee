@@ -9,3 +9,6 @@ $(document).ready ->
       dataType: "script"
       data:
         category_id: $('#item_category_id option:selected').val()
+
+  $(".custom_attributes").on "change", ".attribute_select:last", ->
+    $( ".attribute_select:last" ).clone().appendTo( ".custom_attributes" );

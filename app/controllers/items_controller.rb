@@ -28,8 +28,6 @@ class ItemsController < ApplicationController
   def get_attributes
     category = Category.find(params[:category_id])
     @attributes = category.attribute_kinds
-    p "====================================="
-    p category.name
   end
 
   private
