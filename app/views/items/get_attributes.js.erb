@@ -1,0 +1,5 @@
+$('#category_attribute_kind_ids').empty();
+$('#category_attribute_kind_ids').append( $('<option>Select an attribute</option>'));
+<% @attributes.each do |attribute| %>
+$('#category_attribute_kind_ids').append($('<option value="<%= attribute.id %>"><%= attribute.title %></option>'));
+<% end %>

@@ -7,9 +7,14 @@ Rails.application.routes.draw do
 
   devise_for :companies, controllers: { registrations: 'companies/registrations' }
   devise_for :users, controllers: { registrations: 'users/registrations' }
+
   resources :users
   resources :companies
-  resources :items
+  resources :items do
+    collection do
+      get 'get_attributes', to: "items#get_attributes"
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

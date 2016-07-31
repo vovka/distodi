@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    @attributes = AttributeKind.all
   end
 
   def create
@@ -21,6 +23,13 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def get_attributes
+    category = Category.find(params[:category_id])
+    @attributes = category.attribute_kinds
+    p "====================================="
+    p category.name
   end
 
   private

@@ -1,3 +1,5 @@
+<h1>Profile page</h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -14,6 +16,8 @@
   <strong>Phone:</strong>
   <%= @user.phone %>
 </p>
+
+<p><%= link_to 'Create Item', new_item_path %></p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
