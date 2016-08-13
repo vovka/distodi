@@ -16,7 +16,7 @@
   <strong>Phone:</strong>
   <%= @user.phone %>
 </p>
-
+<p><%= link_to 'Show my Items', items_user_path(@user) %></p>
 <p><%= link_to 'Create Item', new_item_path %></p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

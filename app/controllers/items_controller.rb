@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
     characteristics = params[:item].delete(:characteristics)
 
     @item = Item.new(item_params)
-
+    # @item.user = current_user
     @item.characteristics = characteristics.map do |key, value|
       attribute_kind = AttributeKind.find(key)
       Characteristic.new(attribute_kind: attribute_kind, value: value)

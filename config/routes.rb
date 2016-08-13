@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   devise_for :companies, controllers: { registrations: 'companies/registrations' }
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  resources :users
+  resources :users do
+    member do
+      get :items
+    end
+  end
   resources :companies
   resources :items do
     collection do
