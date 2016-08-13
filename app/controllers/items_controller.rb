@@ -13,6 +13,20 @@ class ItemsController < ApplicationController
   end
 
   def create
+    characteristics = params[:item].delete(:characteristics)
+
+    @item = Item.new(item_params)
+
+    @item.characteristics = characteristics.map do |key, value|
+      attribute_kind = AttributeKind.find(key)
+      Characteristic.new(attribute_kind: attribute_kind, value: value)
+    end unless characteristics.empty?
+
+    if @item.save
+      redirect_to @item, notice: 'Item was successfully created.'
+    else
+      render :new
+    end
   end
 
   def edit

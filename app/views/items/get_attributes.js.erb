@@ -1,5 +1,5 @@
-$('#category_attribute_kind_ids').empty();
-$('#category_attribute_kind_ids').append( $('<option>Select an attribute</option>'));
 <% @attributes.each do |attribute| %>
-$('#category_attribute_kind_ids').append($('<option value="<%= attribute.id %>"><%= attribute.title %></option>'));
+$('.custom_attributes').empty();
+$('.custom_attributes').append($('<label for="characteristics<%= attribute.id %>"><%= attribute.title %></label>'));
+$('.custom_attributes').append($('<input type="text" name="item[characteristics[<%= attribute.id %>]]" id="characteristic<%= attribute.id %>">'));
 <% end %>

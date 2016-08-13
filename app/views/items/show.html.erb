@@ -1,2 +1,19 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<h1><%= @item.title %></h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Attribute</th>
+    <th>Value</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @item.characteristics.each do |characteristic| %>
+      <tr>
+        <td><%= characteristic.attribute_kind.title %></td>
+        <td><%= characteristic.value %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
