@@ -24,13 +24,18 @@
 
 						<!-- Logo -->
 							<div id="logo">
-								<%= image_tag('Logo.png', alt: 'distodi.logo', class: 'logomain') %>	
+								<%= link_to image_tag('Logo.png', alt: 'distodi.logo', class: 'logomain'), home_path %>
 							</div>
 
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li class="current"><a href="start_page.html">Welcome</a></li>
+                  <li><%= link_to('Login as user', new_user_session_path) if current_user.nil? %> </li>
+                  <li><%= link_to('Login as company', new_company_session_path) if current_user.nil? %></li>
+									<li class="current">
+                    <%= link_to "My panel", user_path(current_user) if user_signed_in? %>
+                    <%= link_to "My panel", company_path(current_user) if company_signed_in? %>
+                  </li>
 									<li>
 										<a href="#">Dropdown</a>
 										<ul>
@@ -48,8 +53,6 @@
 											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
-									<li><a href="left-sidebar.html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
 									<li><a href="no-sidebar.html">No Sidebar</a></li>
 								</ul>
 							</nav>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :attribute_kinds
-  get 'static_pages/home'
+  get 'static_pages/home', as: 'home'
 
   get 'static_pages/about'
 
