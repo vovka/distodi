@@ -23,7 +23,8 @@
 
     <div class="field">
       <%= f.label 'Picture' %><br>
-      <%= f.file_field :picture, multiple: true %>
+      <%= f.hidden_field :picture_cache %>
+      <%= f.file_field :picture%>
     </div>
 
     <div class="custom_attributes">

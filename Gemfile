@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'font-awesome-rails'
 
 gem 'carrierwave', '~> 0.11.2'
+gem 'cloudinary'
 
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 # Use ActiveModel has_secure_password

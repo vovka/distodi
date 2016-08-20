@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Title</th>
       <th>Action</th>
     </tr>
@@ -13,6 +14,7 @@
   <tbody>
     <% @user.items.each do |item| %>
       <tr>
+        <td><%= image_tag(item.picture_url, alt: item.title, width: 100) %></td>
         <td><%= item.title %></td>
         <td><%= link_to 'Show', item %></td>
       </tr>

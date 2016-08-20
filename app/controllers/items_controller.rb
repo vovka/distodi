@@ -14,7 +14,8 @@ class ItemsController < ApplicationController
 
   def create
     characteristics = params[:item].delete(:characteristics)
-
+   p "================="
+    p item_params
     @item = Item.new(item_params)
     @item.user = current_user
     @item.characteristics = characteristics.map do |key, value|
@@ -52,6 +53,6 @@ class ItemsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def item_params
-    params.require(:item).permit(:title, :category_id, :pictures)
+    params.require(:item).permit(:title, :category_id, :picture)
   end
 end
