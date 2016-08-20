@@ -4,10 +4,30 @@
 <p>Created at:<%= @service.created_at %></p>
 
 <% @service.service_fields.each do |service_field| %>
-  <%= service_field.service_kind.title %> </br>
+
 <% end %>
+
+<table>
+  <thead>
+  <tr>
+    <th>Action</th>
+    <th>Kind</th>
+    <th>Comment</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @service.service_fields.each do |service_field| %>
+      <tr>
+        <td></td>
+        <td><%= service_field.service_kind.title %></td>
+        <td><%= service_field.text %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <p>Next control: <%= @service.next_control %></p>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+<%= link_to 'Back', item_path(@service.item) %>
