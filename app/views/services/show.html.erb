@@ -1,4 +1,13 @@
+<h1>Service</h1>
 <p id="notice"><%= notice %></p>
+
+<p>Created at:<%= @service.created_at %></p>
+
+<% @service.service_fields.each do |service_field| %>
+  <%= service_field.service_kind.title %> </br>
+<% end %>
+
+<p>Next control: <%= @service.next_control %></p>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |
 <%= link_to 'Back', services_path %>

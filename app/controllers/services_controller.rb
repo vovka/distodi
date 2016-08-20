@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:new]
 
   # GET /services
   # GET /services.json
@@ -14,7 +15,8 @@ class ServicesController < ApplicationController
 
   # GET /services/new
   def new
-    @service = Service.new
+    @service = Service.new(item: @item)
+    @service_kinds = @item.category.service_kinds
   end
 
   # GET /services/1/edit
@@ -24,17 +26,36 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.json
   def create
+
+
     @service = Service.new(service_params)
 
-    respond_to do |format|
-      if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
-        format.json { render :show, status: :created, location: @service }
-      else
-        format.html { render :new }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
+    service_kinds = params[:service_kind]
+    service_fields = params[:service_fields]
+
+    @service.transaction do
+      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      @service.save
+        service_kinds.each do |key, value|
+          p key
+          service_kind = ServiceKind.find(key)
+          service_field = service_kind.service_fields.build(service: @service, text: service_fields[key])
+          service_field.save
+        end
+        redirect_to @service, notice: 'Service was successfully created.'
     end
+
+
+    #
+    # respond_to do |format|
+    #   if @service.save
+    #     format.html { redirect_to @service, notice: 'Service was successfully created.' }
+    #     format.json { render :show, status: :created, location: @service }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @service.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /services/1
@@ -62,13 +83,17 @@ class ServicesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_service
-      @service = Service.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_service
+    @service = Service.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def service_params
-      params.fetch(:service, {})
-    end
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def service_params
+    params.require(:service).permit(:item_id, :control_date)
+  end
 end

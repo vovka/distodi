@@ -24,6 +24,7 @@
   <tr>
     <th>Count of changes</th>
     <th>Date</th>
+    <th></th>
   </tr>
   </thead>
 
@@ -32,11 +33,12 @@
       <tr>
         <td><%= service.service_fields.count %></td>
         <td><%= service.created_at %></td>
+        <td><%= link_to 'Show', service_path(service)%></td>
       </tr>
   <% end %>
   </tbody>
 </table>
 
-<p><%= link_to 'Add Service', new_services_path %></p>
+<p><%= link_to 'Add Service', new_service_path(item_id: @item) %></p>
 
 <p><%= link_to 'Back to my panel', user_path(@item.user) %></p>

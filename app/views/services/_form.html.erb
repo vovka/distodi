@@ -1,10 +1,29 @@
 <%= simple_form_for(@service) do |f| %>
-  <%= f.error_notification %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-  </div>
+    <table>
+      <thead>
+      <tr>
+        <th>Action</th>
+        <th>Service title</th>
+      </tr>
+      </thead>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+      <tbody>
+      <% @service_kinds.each do |service_kind| %>
+          <tr>
+            <td><%= check_box("service_kind", service_kind.id, {}, 'true', nil) %></td>
+            <td>
+              <%= label_tag service_kind.title %><br>
+              <%= text_field("service_fields", service_kind.id) if service_kind.with_text %>
+            </td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+
+    <%= f.hidden_field :item_id %>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
 <% end %>
