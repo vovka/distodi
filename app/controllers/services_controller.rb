@@ -26,36 +26,19 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.json
   def create
-
-
     @service = Service.new(service_params)
-
     service_kinds = params[:service_kind]
     service_fields = params[:service_fields]
 
     @service.transaction do
-      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       @service.save
         service_kinds.each do |key, value|
-          p key
           service_kind = ServiceKind.find(key)
           service_field = service_kind.service_fields.build(service: @service, text: service_fields[key])
           service_field.save
         end
         redirect_to @service, notice: 'Service was successfully created.'
     end
-
-
-    #
-    # respond_to do |format|
-    #   if @service.save
-    #     format.html { redirect_to @service, notice: 'Service was successfully created.' }
-    #     format.json { render :show, status: :created, location: @service }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @service.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /services/1
