@@ -21,6 +21,11 @@
       <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Please select a category"}, {class: "category_select"} %>
     </div>
 
+    <div class="field">
+      <%= f.label 'Picture' %><br>
+      <%= f.file_field :picture, multiple: true %>
+    </div>
+
     <div class="custom_attributes">
 
     </div>
