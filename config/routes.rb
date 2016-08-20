@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :attribute_kinds
+
   get 'static_pages/home', as: 'home'
 
   get 'static_pages/about'
@@ -13,12 +14,17 @@ Rails.application.routes.draw do
       get :items
     end
   end
+
   resources :companies
+
   resources :items do
     collection do
       get 'get_attributes', to: "items#get_attributes"
     end
   end
+
+  resource :services
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -18,4 +18,25 @@
   </tbody>
 </table>
 
+<h2>Services:</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Count of changes</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @item.services.each do |service| %>
+      <tr>
+        <td><%= service.service_fields.count %></td>
+        <td><%= service.created_at %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'Add Service', new_services_path %></p>
+
 <p><%= link_to 'Back to my panel', user_path(@item.user) %></p>
