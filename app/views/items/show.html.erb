@@ -1,5 +1,6 @@
-<h1><%= @item.title %></h1>
-<%= image_tag(@item.picture_url, alt: @item.title, width: 200) %>
+<div class="iteminfo"><h2><%= @item.title %></h2>
+<%= image_tag(@item.picture_url, alt: @item.title, width: 450) %></div>
+<div>
 <table>
   <thead>
   <tr>
@@ -17,7 +18,9 @@
   <% end %>
   </tbody>
 </table>
+</div>
 
+<div >
 <h2>Services:</h2>
 <table>
   <thead>
@@ -38,6 +41,7 @@
   <% end %>
   </tbody>
 </table>
+</div>
 
 <p><%= link_to 'Add Service', new_service_path(item_id: @item) %></p>
 

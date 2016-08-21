@@ -9,7 +9,7 @@
 /* Reset */
 
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-		margin: 0;
+		margin-left: 00px;
 		padding: 0;
 		border: 0;
 		font-size: 100%;
@@ -1412,7 +1412,8 @@
 	}
 
 	p, ul, ol, dl, table {
-		margin-bottom: 2em;
+		margin-bottom: 0em;
+
 	}
 
 /* Section/Article */
@@ -1609,11 +1610,11 @@ tr:nth-child(odd):hover td {
 }
 
 tr:last-child td:first-child {
-  border-bottom-left-radius:3px;
+  border-bottom-left-radius:1px;
 }
 
 tr:last-child td:last-child {
-  border-bottom-right-radius:3px;
+  border-bottom-right-radius:1px;
 }
 
 td {
@@ -1666,10 +1667,11 @@ td.text-right {
 			display: block;
 			width: 100%;
 			border-radius: 8px;
+          float:left;
 		}
 
 		.image.fit {
-			display: block;
+
 			width: 100%;
 		}
 
@@ -1718,6 +1720,7 @@ td.text-right {
 		cursor: pointer;
 		font-size: 1.35em;
 		padding: 0.6em 1.5em;
+        margin-top:4px;
 	}
 
 		input[type="button"].icon:before,
@@ -2692,9 +2695,9 @@ td.text-right {
 	}
 
 	.logomain {
-		width:35%; 
-		height:15%;
-		min-width: 230px;
+		width:25%;
+		height:10%;
+		min-width: 200px;
 	}
 	.houseimg{
 		width:100%; 
@@ -2703,11 +2706,22 @@ td.text-right {
 
 	.jumbotron{
 		min-height: 400px;
-		background: #000000;
+        height: 60%;
+        background: #000000;
 		background-image: image-url("house.jpg");		
 		background-size:100%;
 	}
 
     .field_with_errors{
       background-color: #B00100;
+    }
+    .imageuser{
+      background-color: blue;
+      height:200px;
+      width:200px;
+      float: left;
+    }
+    .iteminfo {
+      float: left;
+
     }

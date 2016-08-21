@@ -1,23 +1,25 @@
-<h1>Profile page</h1>
+
 
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>First name:</strong>
+<img class="imageuser"/>
+<span>
+  <strong>
   <%= @user.first_name %>
-</p>
+  </strong>
+</span>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
+<span>
+  <strong>
+  <%= @user.last_name %></strong>
+</span>
+<br>
+<span>
   <strong>Phone:</strong>
   <%= @user.phone %>
-</p>
-<p><%= link_to 'Show my Items', items_user_path(@user) %></p>
-<p><%= link_to 'Create Item', new_item_path %></p>
-
+</span>
+<br>
+<spanp><%= link_to 'Show my Items', items_user_path(@user) %></spanp>
+<spanp><%= link_to 'Create Item', new_item_path %></spanp>
+<br>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
