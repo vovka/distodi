@@ -3,16 +3,10 @@
 
 <p><strong>Created at:</strong> <%= @service.created_at %></p>
 
-<p>
-  <strong>Actions:</strong>
-  <% @service.action_kinds.each do |action_kind| %>
-      <%= check_box("action_kind", action_kind.id, disabled: true, checked: true ) %><%= "#{action_kind.title}" %>
-  <% end %>
-</p>
-
 <table>
   <thead>
   <tr>
+    <th>Action</th>
     <th>Kind</th>
     <th>Comment</th>
   </tr>
@@ -21,6 +15,11 @@
   <tbody>
   <% @service.service_fields.each do |service_field| %>
       <tr>
+        <td>
+          <% @service.action_kinds.each do |action_kind| %>
+              <%= "#{action_kind.title}" %>
+          <% end %>
+        </td>
         <td><%= service_field.service_kind.title %></td>
         <td><%= service_field.text %></td>
       </tr>

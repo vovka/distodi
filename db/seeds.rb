@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+AttributeKind.destroy_all
+ServiceKind.destroy_all
+ActionKind.destroy_all
+Category.destroy_all
+Item.destroy_all
+
 common = AttributeKind.create([
                                   {title: 'Brand'},
                                   {title: 'Model'},
@@ -63,7 +69,6 @@ car_service_kinds = ServiceKind.create([
 car_action_kinds = ActionKind.create([
                                          {title: 'Control'},
                                          {title: 'Change'},
-
                                      ])
 
 car= Category.create(name: 'Car')
@@ -72,7 +77,29 @@ car.service_kinds = car_service_kinds
 car.action_kinds = car_action_kinds
 car.save
 
+bike_service_kinds = ServiceKind.create([
+                                            {title: 'Theads in the frame', with_text: false},
+                                            {title: 'Cleanin the frame + wheels', with_text: false},
+                                            {title: 'Cleanin the frame + wheels', with_text: false},
+                                            {title: 'Degrease the chain + cassette/freewheel', with_text: false},
+                                            {title: 'Weels', with_text: false},
+                                            {title: 'Chain', with_text: false},
+                                            {title: 'Realign brakes + adjust', with_text: false},
+                                            {title: 'Adjusting brakes', with_text: false},
+                                            {title: 'Adjusting shifting', with_text: false},
+                                            {title: 'Adjusting headset', with_text: false},
+                                            {title: 'Adjusting hubs', with_text: false},
+                                            {title: 'Truing front + rear wheels', with_text: false}
+                                        ])
+
+bike_action_kinds = ActionKind.create([
+                                          {title: 'Control and Clean'},
+                                          {title: 'Change'},
+                                      ])
+
 
 bike= Category.create(name: 'Bike')
 bike.attribute_kinds = common + bikes
+bike.service_kinds = bike_service_kinds
+bike.action_kinds = bike_action_kinds
 bike.save
