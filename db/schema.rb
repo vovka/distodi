@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827151428) do
+ActiveRecord::Schema.define(version: 20160827204531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_kinds", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "action_kinds_categories", force: :cascade do |t|
+    t.integer "action_kind_id"
+    t.integer "category_id"
+  end
+
+  add_index "action_kinds_categories", ["action_kind_id"], name: "index_action_kinds_categories_on_action_kind_id", using: :btree
+  add_index "action_kinds_categories", ["category_id"], name: "index_action_kinds_categories_on_category_id", using: :btree
 
   create_table "attribute_kinds", force: :cascade do |t|
     t.string   "title"
@@ -89,6 +103,16 @@ ActiveRecord::Schema.define(version: 20160827151428) do
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
 
+  create_table "service_action_kinds", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "action_kind_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "service_action_kinds", ["action_kind_id"], name: "index_service_action_kinds_on_action_kind_id", using: :btree
+  add_index "service_action_kinds", ["service_id"], name: "index_service_action_kinds_on_service_id", using: :btree
+
   create_table "service_fields", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "service_kind_id"
@@ -143,6 +167,8 @@ ActiveRecord::Schema.define(version: 20160827151428) do
 
   add_foreign_key "categories_service_kinds", "categories"
   add_foreign_key "categories_service_kinds", "service_kinds"
+  add_foreign_key "service_action_kinds", "action_kinds"
+  add_foreign_key "service_action_kinds", "services"
   add_foreign_key "service_fields", "service_kinds"
   add_foreign_key "service_fields", "services"
 end
