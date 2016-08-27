@@ -30,8 +30,8 @@
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-                  <li><%= link_to('Login as user', new_user_session_path) if current_user.nil? %> </li>
-                  <li><%= link_to('Login as company', new_company_session_path) if current_user.nil? %></li>
+                  <li><%= link_to('Login as user', new_user_session_path) if current_user.nil? && current_company.nil? %> </li>
+                  <li><%= link_to('Login as company', new_company_session_path) if current_user.nil? && current_company.nil? %></li>
 									<li><%= my_panel %></li>
                   <li>
                     <%= link_to "My items", items_user_path(current_user) if user_signed_in? %>
