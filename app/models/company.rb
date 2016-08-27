@@ -11,4 +11,6 @@ class Company < ActiveRecord::Base
   validates :phone, presence: true, length: {in: 6..20  }
   validates :postal_code, presence: true, length: {is: 5}
   validates :website, allow_blank: true, format: {with: self::URL_REGEXP}
+
+  mount_uploader :picture, PictureUploader
 end
