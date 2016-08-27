@@ -1,4 +1,5 @@
-<%= form_for(@user) do |f| %>
+<div class="form">
+  <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,19 +12,58 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
+    <div class="field">
+      <%= f.label :email %><br/>
+      <%= f.email_field :email, autofocus: true, readonly: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :first_name %><br/>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name %><br/>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :phone %><br/>
+      <%= f.text_field :phone %>
+    </div>
+
+    <div class="field">
+      <%= f.label :country %><br/>
+      <%= f.text_field :country %>
+    </div>
+
+    <div class="field">
+      <%= f.label :city %><br/>
+      <%= f.text_field :city %>
+    </div>
+
+    <div class="field">
+      <%= f.label :street %><br/>
+      <%= f.text_field :street %>
+    </div>
+
+    <div class="field">
+      <%= f.label :postal_code %><br/>
+      <%= f.text_field :postal_code %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Additional field' %><br/>
+      <%= f.text_field :notice %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Picture' %><br>
+      <%= f.hidden_field :picture_cache %>
+      <%= f.file_field :picture %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>

@@ -1,25 +1,32 @@
-
-
 <p id="notice"><%= notice %></p>
-<img class="imageuser"/>
+<div class="thumbnail">
+  <%= picture_show %>
+</div>
+
+<p>
 <span>
   <strong>
-  <%= @user.first_name %>
+    <%= @user.first_name %>
   </strong>
 </span>
-
 <span>
   <strong>
-  <%= @user.last_name %></strong>
+    <%= @user.last_name %>
+  </strong>
 </span>
-<br>
-<span>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<p>
   <strong>Phone:</strong>
   <%= @user.phone %>
-</span>
-<br>
-<spanp><%= link_to 'Show my Items', items_user_path(@user) %></spanp>
-<spanp><%= link_to 'Create Item', new_item_path %></spanp>
-<br>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</p>
+<p>
+  <spanp><%= link_to 'Show my Items', items_user_path(@user) %></spanp>
+  <spanp><%= link_to 'Create Item', new_item_path %></spanp>
+</p>
+
+<%= link_to 'Edit my profile', edit_user_path(@user) %>
+

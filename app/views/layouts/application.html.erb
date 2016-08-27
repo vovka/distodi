@@ -32,14 +32,11 @@
 								<ul>
                   <li><%= link_to('Login as user', new_user_session_path) if current_user.nil? %> </li>
                   <li><%= link_to('Login as company', new_company_session_path) if current_user.nil? %></li>
-									<li>
-                    <%= link_to "My panel", user_path(current_user) if user_signed_in? %>
-                    <%= link_to "My panel", company_path(current_user) if company_signed_in? %>
-                  </li>
+									<li><%= my_panel %></li>
                   <li>
                     <%= link_to "My items", items_user_path(current_user) if user_signed_in? %>
                   </li>
-									<li><a href="no-sidebar.html">No Sidebar</a></li>
+									<li><%= logout_link %></li>
 								</ul>
 							</nav>
 

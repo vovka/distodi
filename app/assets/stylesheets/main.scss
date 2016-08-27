@@ -1313,7 +1313,7 @@
 	}
 
 	body {
-		
+
 		background-color: #ffffff;
 		background-position: top left, top left;
 		background-repeat: repeat-x, repeat;
@@ -1341,7 +1341,6 @@
 		font-size: 13pt;
 		color: #696969;
 		font-weight: 300;
-		line-height: 2.25em;
 	}
 
 	a {
@@ -1447,13 +1446,17 @@
 
 /* Forms */
 
-	form label {
-		display: block;
-		font-weight: 800;
-		margin: 0 0 1em 0;
-		font-size: 0.8em;
-		color: #444;
-	}
+form {
+  input {
+    margin-bottom: 15px;
+  }
+
+  label {
+    font-weight: 800;
+    font-size: 0.8em;
+    color: #444;
+  }
+}
 
 	form input[type="text"],
 	form input[type="email"],
@@ -2700,28 +2703,50 @@ td.text-right {
 		min-width: 200px;
 	}
 	.houseimg{
-		width:100%; 
-		
+		width:100%;
+
 	}
 
 	.jumbotron{
 		min-height: 400px;
         height: 60%;
         background: #000000;
-		background-image: image-url("house.jpg");		
+		background-image: image-url("house.jpg");
 		background-size:100%;
 	}
 
     .field_with_errors{
       background-color: #B00100;
     }
-    .imageuser{
-      background-color: blue;
-      height:200px;
-      width:200px;
-      float: left;
-    }
+
     .iteminfo {
       float: left;
 
     }
+
+    .form{
+      width: 60%;
+      margin: 0 auto;
+      padding: 25px;
+      background-color: #e6e6e6;
+    }
+
+.thumbnail {
+  margin: 0 25px 25px 25px;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  float: left;
+  img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+}
+
