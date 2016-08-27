@@ -39,7 +39,7 @@ class ServicesController < ApplicationController
       @service.save
         service_kinds.each do |key, value|
           service_kind = ServiceKind.find(key)
-          service_field = service_kind.service_fields.build(service: @service, text: service_fields[key])
+          service_field = service_kind.service_fields.build(service: @service, text: service_fields ? service_fields[key] : '')
           service_field.save
         end
         redirect_to @service, notice: 'Service was successfully created.'

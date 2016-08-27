@@ -6,11 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Item.destroy_all
+ServiceField.destroy_all
+ServiceActionKind.destroy_all
 AttributeKind.destroy_all
 ServiceKind.destroy_all
 ActionKind.destroy_all
 Category.destroy_all
-Item.destroy_all
+
 
 common = AttributeKind.create([
                                   {title: 'Brand'},
