@@ -60,9 +60,16 @@ car_service_kinds = ServiceKind.create([
                                            {title: 'The next control in km', with_text: true}
                                        ])
 
+car_action_kinds = ActionKind.create([
+                                         {title: 'Control'},
+                                         {title: 'Change'},
+
+                                     ])
+
 car= Category.create(name: 'Car')
 car.attribute_kinds = common + cars
 car.service_kinds = car_service_kinds
+car.action_kinds = car_action_kinds
 car.save
 
 

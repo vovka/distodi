@@ -2,6 +2,12 @@
   <%= simple_form_for(@service) do |f| %>
       <%= f.error_notification %>
 
+      <p>
+        <% @action_kinds.each do |action_kind| %>
+            <span><%= label_tag action_kind.title %></span><span><%= check_box("action_kind", action_kind.id, {}, 'true', nil) %></span>
+        <% end %>
+      </p>
+
       <table>
         <thead>
         <tr>

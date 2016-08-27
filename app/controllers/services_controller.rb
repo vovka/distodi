@@ -17,6 +17,7 @@ class ServicesController < ApplicationController
   def new
     @service = Service.new(item: @item)
     @service_kinds = @item.category.service_kinds
+    @action_kinds = @item.category.action_kinds
   end
 
   # GET /services/1/edit
@@ -25,12 +26,16 @@ class ServicesController < ApplicationController
 
   # POST /services
   # POST /services.json
+
+  # TODO Refactor
   def create
     @service = Service.new(service_params)
     service_kinds = params[:service_kind]
     service_fields = params[:service_fields]
+    action_kinds = params[:action_kind].keys
 
     @service.transaction do
+      @service.action_kinds = ActionKind.find(action_kinds)
       @service.save
         service_kinds.each do |key, value|
           service_kind = ServiceKind.find(key)
