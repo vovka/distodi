@@ -1,26 +1,23 @@
-<div class="iteminfo"><h2><%= @item.title %></h2>
-<%= image_tag(@item.picture_url, alt: @item.title, width: 450) %></div>
+<div class="iteminfo">
+<%= image_tag(@item.picture_url, alt: @item.title, width: 400) %></div>
 <div>
-<table>
-  <thead>
-  <tr>
-    <th>Attribute</th>
-    <th>Value</th>
-  </tr>
-  </thead>
+
 
   <tbody>
+  <h2 id="iteminformation"><%= @item.title %></h2>
   <% @item.characteristics.each do |characteristic| %>
-      <tr>
-        <td><%= characteristic.attribute_kind.title %></td>
-        <td><%= characteristic.value %></td>
-      </tr>
+
+      <ul id="iteminformation">
+
+        <strong><%= characteristic.attribute_kind.title %>:</strong>
+        <%= characteristic.value %>
+      </ul>
   <% end %>
   </tbody>
-</table>
-</div>
 
-<div >
+</div>
+<br>
+
 <h2>Services:</h2>
 <table>
   <thead>
@@ -42,7 +39,8 @@
   </tbody>
 </table>
 </div>
+<p >
+<spanp id="iteminformation"><%= link_to 'Add Service', new_service_path(item_id: @item), class: "buttonsuser"%></spanp>
 
-<p><%= link_to 'Add Service', new_service_path(item_id: @item) %></p>
-
-<p><%= link_to 'Back to my panel', user_path(@item.user) %></p>
+<spanp id="iteminformation"><%= link_to 'Back to my panel', user_path(@item.user), class: "buttonsuser"%></spanp>
+</p>

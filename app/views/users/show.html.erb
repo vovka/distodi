@@ -2,7 +2,7 @@
 <div class="thumbnail">
   <%= picture_show(@user) %>
 </div>
-
+<div class="userinformation">
 <p>
 <span>
   <strong>
@@ -23,10 +23,12 @@
   <strong>Phone:</strong>
   <%= @user.phone %>
 </p>
-<p>
-  <spanp><%= link_to 'Show my Items', items_user_path(@user) %></spanp>
-  <spanp><%= link_to 'Create Item', new_item_path %></spanp>
-</p>
 
-<%= link_to 'Edit my profile', edit_user_path(@user) %>
+<p>
+  <spanp><%= link_to 'Show my Items', items_user_path(@user),class: "buttonsuser" %></spanp>
+  <spanp><%= link_to 'Create Item', new_item_path, class: "buttonsuser"%></spanp>
+  <spanp> <%= link_to 'Edit my profile', edit_user_path(@user), class: "buttonsuser"%></spanp>
+</p>
+</div>
+
 

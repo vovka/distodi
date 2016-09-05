@@ -2711,6 +2711,9 @@ td.text-right {
 
     .iteminfo {
       float: left;
+      margin-left: 15px;
+      height: 295px;
+
 
     }
 
@@ -2740,3 +2743,31 @@ td.text-right {
   }
 }
 
+#signup {
+  margin-left: 24%;
+  margin-right: 20%;
+  margin-bottom: 20px;
+}
+.buttonsuser{
+
+  margin-bottom: 7px;
+  display: inline-block;
+  background: #0090c5;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 800;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  font-size: 0.8em;
+  padding: 0.6em 1.5em;
+  margin-top:4px;
+}
+
+.userinformation {
+  margin-left: 25px;
+}
+#iteminformation { margin: 0 0 0 15px;
+
+}
