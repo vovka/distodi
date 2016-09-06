@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @last_services = Service.user_services(@user.id).last(3)
+    @last_companies = Company.user_companies(@user.id).last(3)
   end
 
   def edit

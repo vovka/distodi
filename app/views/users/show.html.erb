@@ -25,10 +25,26 @@
 </p>
 
 <p>
-  <spanp><%= link_to 'Show my Items', items_user_path(@user),class: "buttonsuser" %></spanp>
-  <spanp><%= link_to 'Create Item', new_item_path, class: "buttonsuser"%></spanp>
-  <spanp> <%= link_to 'Edit my profile', edit_user_path(@user), class: "buttonsuser"%></spanp>
+  <span><%= link_to 'Show my Items', items_user_path(@user),class: "buttonsuser" %></span>
+  <span><%= link_to 'Create Item', new_item_path, class: "buttonsuser"%></span>
+  <span><%= link_to 'Edit my profile', edit_user_path(@user), class: "buttonsuser"%></span>
 </p>
 </div>
 
+<div>
+  <% @last_services.each do |service| %>
+      <% service.action_kinds.each do |action_kind| %>
+          <%= "#{action_kind.title}" %>
+      <% end %>
+   <%= service.created_at.strftime("%F") %>
+   <%= service_picture_show(service) %>
+  <% end %>
+</div>
 
+<div>
+
+  <% @last_companies.each do |company| %>
+      <%= company.name %>
+      <%= picture_show(company) %>
+  <% end %>
+</div>

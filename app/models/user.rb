@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   validates :postal_code, presence: true, length: {is: 5}
 
   mount_uploader :picture, PictureUploader
+
+
+
+  # scope :user_services, ->(user_id) { joins(items: :services).where("users.id = ?", user_id) }
 end

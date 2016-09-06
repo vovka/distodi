@@ -22,4 +22,12 @@ module ApplicationHelper
       image_tag('empty_image.png', alt: 'No image', width: 450, class: 'image_user')
     end
   end
+
+  def service_picture_show(service)
+    if service.picture_url
+      image_tag(service.picture_url, alt: service.id, class: 'image_service')
+    else
+      image_tag('empty_image.png', alt: 'No image', width: 128, class: 'image_user')
+    end
+  end
 end

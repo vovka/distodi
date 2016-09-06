@@ -30,6 +30,20 @@
       </table>
 
       <%= f.hidden_field :item_id %>
+
+      <%= f.hidden_field :company_id, value: current_company.id %>
+
+      <div class="field">
+        <%= f.label 'Price' %><br>
+        <%= f.text_field :price %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Picture' %><br>
+        <%= f.hidden_field :picture_cache %>
+        <%= f.file_field :picture %>
+      </div>
+
       <div class="form-actions">
         <%= f.button :submit %>
       </div>

@@ -4,4 +4,9 @@ class Service < ActiveRecord::Base
   has_many :service_action_kinds
   has_many :action_kinds, through: :service_action_kinds
   belongs_to :item
+  belongs_to :company
+
+  mount_uploader :picture, PictureUploader
+
+  scope :user_services, ->(user_id) { joins(item: :user).where("users.id = ?", user_id) }
 end
