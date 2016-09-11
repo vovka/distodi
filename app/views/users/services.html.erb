@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services:</h1>
+
+<% @all_services.each do |service| %>
+
+    <div class="thumbnail_grid">
+      <%= service_picture_show(service) %>
+    </div>
+
+    <% service.action_kinds.each do |action_kind| %>
+          <%= "#{action_kind.title}" %>
+      <% end %>
+
+    <% service.service_fields.each do |service_field| %>
+          <%= service_field.service_kind.title %>
+          <%= service_field.text %>
+    <% end %>
+      <span><br><%= service.created_at.strftime("%F") %></span>
+    <span><br><%= number_to_currency(service.price , unit: "€") %></span>
+<% end %>
+

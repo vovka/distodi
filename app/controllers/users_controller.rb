@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :items]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :items, :services, :companies]
   before_action :authenticate_user!
 
   def show
@@ -11,6 +11,14 @@ class UsersController < ApplicationController
   end
 
   def items
+  end
+
+  def services
+    @all_services = Service.user_services(@user.id)
+  end
+
+  def companies
+    @all_companies = Company.user_companies(@user.id)
   end
 
   def update

@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Companies</h1>
+<% @all_companies.each do |company| %>
+    <%= company.name %>
+    <div class="thumbnail_grid" >
+      <%= picture_show(company) %>
+    </div>
+<% end %>

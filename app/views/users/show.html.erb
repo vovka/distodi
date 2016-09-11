@@ -23,6 +23,25 @@
     <strong>Phone:</strong>
     <%= @user.phone %>
   </p>
+  <p>
+    <strong>Country:</strong>
+    <%= @user.country %>
+  </p>
+
+  <p>
+    <strong>City:</strong>
+    <%= @user.city %>
+  </p>
+
+  <p>
+    <strong>Street:</strong>
+    <%= @user.street %>
+  </p>
+
+  <p>
+    <strong>Postal code:</strong>
+    <%= @user.postal_code %>
+  </p>
 
   <p>
     <span><%= link_to 'Show my Items', items_user_path(@user), class: "buttonsuser" %></span>
@@ -32,7 +51,7 @@
 </div>
 <div style="margin-left:8%; ">
 <h1><br>Last services</h1>
-<div >
+<div>
   <% @last_services.each do |service| %>
     <div style="width: 230px; height: 90px; float: left;min-width:100px;">
       <div class="thumbnail_grid" >
@@ -44,7 +63,11 @@
       <span><br><%= service.created_at.strftime("%F") %></span>
 </div>
   <% end %>
+  <p><%= link_to 'Show all services', services_user_path(@user), class: "buttonsuser" %></p>
 </div>
+
+
+
 <h1><br><br><br>Companies that did services for me</h1>
 <div >
 
@@ -54,5 +77,6 @@
         <%= picture_show(company) %>
       </div>
   <% end %>
+  <p><%= link_to 'Show all companies', companies_user_path(@user), class: "buttonsuser" %></p>
 </div>
 </div>
