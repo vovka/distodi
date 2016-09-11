@@ -1713,10 +1713,10 @@ td.text-right {
 		-webkit-appearance: none;
 		position: relative;
 		display: inline-block;
-		background: #0090c5;
+		background: #662879;
 		color: #fff;
 		text-decoration: none;
-		border-radius: 6px;
+		border-radius: 0;
 		font-weight: 800;
 		outline: 0;
 		border: 0;
@@ -1741,7 +1741,7 @@ td.text-right {
 		input[type="reset"]:hover,
 		button:hover,
 		.button:hover {
-			background: #10a0d5;
+			background: #6e5177;
 		}
 
 		input[type="button"]:active,
@@ -1980,6 +1980,7 @@ td.text-right {
 			letter-spacing: 0.05em;
 			display: inline-block;
 			vertical-align: middle;
+
 		}
 
 		#logo span {
@@ -2265,6 +2266,7 @@ td.text-right {
 
 			#header-wrapper {
 				text-align: center;
+                margin-bottom: 0;
 			}
 
 			#footer-wrapper {
@@ -2688,7 +2690,8 @@ td.text-right {
 	}
 
 	.logomain {
-		width:25%;
+        margin-top: 10px;
+		width:13%;
 		height:10%;
 		min-width: 200px;
 	}
@@ -2743,6 +2746,26 @@ td.text-right {
   }
 }
 
+.thumbnail_grid {
+  margin: 0 20px 25px 0px;
+  position: relative;
+  width: 85px;
+  height: 85px;
+  overflow: hidden;
+  float: left;
+  img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+}
+
+
 #signup {
   margin-left: 24%;
   margin-right: 20%;
@@ -2752,10 +2775,10 @@ td.text-right {
 
   margin-bottom: 7px;
   display: inline-block;
-  background: #0090c5;
+  background: #662879;
   color: #fff;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 0px;
   font-weight: 800;
   outline: 0;
   border: 0;
@@ -2770,4 +2793,9 @@ td.text-right {
 }
 #iteminformation { margin: 0 0 0 15px;
 
+}
+.mainvideo{
+  margin-left: 10%;
+
+  width: 80%;
 }

@@ -3,48 +3,56 @@
   <%= picture_show(@user) %>
 </div>
 <div class="userinformation">
-<p>
+  <p>
 <span>
   <strong>
     <%= @user.first_name %>
   </strong>
 </span>
-<span>
+    <span>
   <strong>
     <%= @user.last_name %>
   </strong>
 </span>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
+  </p>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+  <p>
+    <strong>Phone:</strong>
+    <%= @user.phone %>
+  </p>
 
-<p>
-  <span><%= link_to 'Show my Items', items_user_path(@user),class: "buttonsuser" %></span>
-  <span><%= link_to 'Create Item', new_item_path, class: "buttonsuser"%></span>
-  <span><%= link_to 'Edit my profile', edit_user_path(@user), class: "buttonsuser"%></span>
-</p>
+  <p>
+    <span><%= link_to 'Show my Items', items_user_path(@user), class: "buttonsuser" %></span>
+    <span><%= link_to 'Create Item', new_item_path, class: "buttonsuser" %></span>
+    <span><%= link_to 'Edit my profile', edit_user_path(@user), class: "buttonsuser" %></span>
+  </p>
 </div>
-
-<div>
+<div style="margin-left:8%; ">
+<h1><br>Last services</h1>
+<div >
   <% @last_services.each do |service| %>
-      <% service.action_kinds.each do |action_kind| %>
+    <div style="width: 230px; height: 90px; float: left;min-width:100px;">
+      <div class="thumbnail_grid" >
+        <%= service_picture_show(service) %>
+      </div>
+      <span><% service.action_kinds.each do |action_kind| %></span>
           <%= "#{action_kind.title}" %>
       <% end %>
-   <%= service.created_at.strftime("%F") %>
-   <%= service_picture_show(service) %>
+      <span><br><%= service.created_at.strftime("%F") %></span>
+</div>
   <% end %>
 </div>
-
-<div>
+<h1><br><br><br>Companies that did services for me</h1>
+<div >
 
   <% @last_companies.each do |company| %>
       <%= company.name %>
-      <%= picture_show(company) %>
+      <div class="thumbnail_grid" >
+        <%= picture_show(company) %>
+      </div>
   <% end %>
+</div>
 </div>
