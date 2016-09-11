@@ -19,25 +19,24 @@
 <br>
 
 <h2>Services:</h2>
-<table>
-  <thead>
-  <tr>
-    <th>Count of changes</th>
-    <th>Date</th>
-    <th></th>
-  </tr>
-  </thead>
+<% @item.services.each do |service| %>
 
-  <tbody>
-  <% @item.services.each do |service| %>
-      <tr>
-        <td><%= service.service_fields.count %></td>
-        <td><%= service.created_at %></td>
-        <td><%= link_to 'Show', service_path(service)%></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+    <div class="thumbnail_grid">
+      <%= service_picture_show(service) %>
+    </div>
+
+    <% service.action_kinds.each do |action_kind| %>
+        <%= "#{action_kind.title}" %>
+    <% end %>
+
+    <% service.service_fields.each do |service_field| %>
+        <%= service_field.service_kind.title %>
+        <%= service_field.text %>
+    <% end %>
+    <span><br><%= service.created_at %></span>
+    <span><br><%= number_to_currency(service.price , unit: "€") %></span>
+<% end %>
+
 </div>
 <p >
 <spanp id="iteminformation"><%= link_to 'Add Service', new_service_path(item_id: @item), class: "buttonsuser"%></spanp>
