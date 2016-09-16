@@ -2728,10 +2728,10 @@ td.text-right {
     }
 
 .thumbnail {
-  margin: 0 25px 25px 25px;
+  margin: 0 25px 10px 8%;
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 175px;
+  height: 346px;
   overflow: hidden;
   float: left;
   img {
@@ -2799,3 +2799,19 @@ td.text-right {
 
   width: 80%;
 }
+
+#information_margin{
+  margin: 0 0 0 0;
+}
+.first_name{
+  font-size: 16pt;
+  margin: 0 0 0 0;
+}
+.right_link{
+  float: right;
+  margin:0 50px 0 0;
+}
+.margin_left{
+  margin-left:8%;
+}
+.show_tile{width: 330px; height: 100px; float: left;min-width:100px;}

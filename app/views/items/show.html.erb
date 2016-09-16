@@ -1,45 +1,54 @@
-<div class="iteminfo">
+<div class="iteminfo margin_left">
 <%= image_tag(@item.picture_url, alt: @item.title, width: 400) %></div>
 <div>
 
 
-  <tbody>
-  <h2 id="iteminformation"><%= @item.title %></h2>
+
+  <p id="information_margin" class="first_name"  ><strong class="userinformation"><%= @item.title %></strong></p>
   <% @item.characteristics.each do |characteristic| %>
 
-      <ul id="iteminformation">
+      <ul id="information_margin" class="userinformation" >
 
-        <strong><%= characteristic.attribute_kind.title %>:</strong>
-        <%= characteristic.value %>
+        <span class="userinformation"><strong><%= characteristic.attribute_kind.title %>:</strong>
+        <%= characteristic.value %></span>
       </ul>
   <% end %>
-  </tbody>
+
 
 </div>
 <br>
-
-<h2>Services:</h2>
+<div class="margin_left">
+<h1>All services:</h1>
 <% @item.services.each do |service| %>
 
-    <div class="thumbnail_grid">
+      <div style="width: 210px;  " >
+        <p ><strong><%= service.created_at %></strong></p>
+    <div class="thumbnail_grid" id="information_margin">
       <%= service_picture_show(service) %>
     </div>
-
-    <% service.action_kinds.each do |action_kind| %>
+      </div>
+    <div style="margin-left: 230px; width: 300px">
+    <strong id="information_margin"><% service.action_kinds.each do |action_kind| %>
         <%= "#{action_kind.title}" %>
-    <% end %>
-
+    <% end %></strong>
+    <p style="margin: 0 0 0 0; ">
     <% service.service_fields.each do |service_field| %>
-        <%= service_field.service_kind.title %>
-        <%= service_field.text %>
+       <%= service_field.service_kind.title %>
+        <%= service_field.text %><br>
+
     <% end %>
-    <span><br><%= service.created_at %></span>
-    <span><br><%= number_to_currency(service.price , unit: "€") %></span>
+      </p>
+      <span style="float: right"><%= number_to_currency(service.price , unit: "€") %></span><br>
+    </div>
+
+
 <% end %>
 
-</div>
+
 <p >
+  <br>
 <spanp id="iteminformation"><%= link_to 'Add Service', new_service_path(item_id: @item), class: "buttonsuser"%></spanp>
 
 <spanp id="iteminformation"><%= link_to 'Back to my panel', user_path(@item.user), class: "buttonsuser"%></spanp>
 </p>
+</div>

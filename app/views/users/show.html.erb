@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
-<div class="thumbnail">
+<div class="thumbnail" >
   <%= picture_show(@user) %>
 </div>
-<div class="userinformation">
-  <p>
+<div class="userinformation" >
+  <p id="information_margin " class="first_name">
 <span>
   <strong>
     <%= @user.first_name %>
@@ -15,45 +15,45 @@
   </strong>
 </span>
   </p>
-  <p>
+  <p id="information_margin">
     <strong>Email:</strong>
     <%= @user.email %>
   </p>
-  <p>
+  <p id="information_margin">
     <strong>Phone:</strong>
     <%= @user.phone %>
   </p>
-  <p>
+  <p id="information_margin">
     <strong>Country:</strong>
     <%= @user.country %>
   </p>
 
-  <p>
+  <p id="information_margin">
     <strong>City:</strong>
     <%= @user.city %>
   </p>
 
-  <p>
+  <p id="information_margin">
     <strong>Street:</strong>
     <%= @user.street %>
   </p>
 
-  <p>
+  <p id="information_margin">
     <strong>Postal code:</strong>
     <%= @user.postal_code %>
   </p>
 
-  <p>
+  <p >
     <span><%= link_to 'Show my Items', items_user_path(@user), class: "buttonsuser" %></span>
     <span><%= link_to 'Create Item', new_item_path, class: "buttonsuser" %></span>
     <span><%= link_to 'Edit my profile', edit_user_path(@user), class: "buttonsuser" %></span>
   </p>
 </div>
-<div style="margin-left:8%; ">
+<div class="margin_left">
 <h1><br>Last services</h1>
 <div>
   <% @last_services.each do |service| %>
-    <div style="width: 230px; height: 90px; float: left;min-width:100px;">
+    <div class="show_tile">
       <div class="thumbnail_grid" >
         <%= service_picture_show(service) %>
       </div>
@@ -63,13 +63,14 @@
       <span><br><%= service.created_at.strftime("%F") %></span>
 </div>
   <% end %>
+  <br> <br> <br>
   <p><%= link_to 'Show all services', services_user_path(@user), class: "buttonsuser" %></p>
 </div>
 
 
 
-<h1><br><br><br>Companies that did services for me</h1>
-<div >
+<h1>Companies that did services for me</h1>
+<div class="show_tile">
 
   <% @last_companies.each do |company| %>
       <%= company.name %>
@@ -77,6 +78,8 @@
         <%= picture_show(company) %>
       </div>
   <% end %>
-  <p><%= link_to 'Show all companies', companies_user_path(@user), class: "buttonsuser" %></p>
 </div>
+  <br> <br><br>
+  <p ><%= link_to 'Show all companies', companies_user_path(@user), class: "buttonsuser" %></p>
+
 </div>
