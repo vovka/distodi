@@ -43,10 +43,10 @@
     <%= @user.postal_code %>
   </p>
 
-  <p >
-    <span><%= link_to 'Show my Items', items_user_path(@user), class: "buttonsuser" %></span>
-    <span><%= link_to 'Create Item', new_item_path, class: "buttonsuser" %></span>
-    <span><%= link_to 'Edit my profile', edit_user_path(@user), class: "buttonsuser" %></span>
+  <p>
+    <span><%= link_to 'Show my Items', items_user_path(@user), class: "buttonsuser",id: "buttonsuserwidth" %></span>
+  <span ><%= link_to 'Create Item', new_item_path, class: "buttonsuser" ,id: "buttonsuserwidth" %></span>
+    <span><%= link_to 'Edit my profile', edit_user_path(@user), class: "buttonsuser" ,id: "buttonsuserwidth"%></span>
   </p>
 </div>
 <div class="margin_left">
@@ -54,7 +54,7 @@
 <div>
   <% @last_services.each do |service| %>
     <div class="show_tile">
-      <div class="thumbnail_grid" >
+      <div class="thumbnail_grid" style="height: 90px; width: 90px;" >
         <%= service_picture_show(service) %>
       </div>
       <span><% service.action_kinds.each do |action_kind| %></span>
@@ -64,22 +64,22 @@
 </div>
   <% end %>
   <br> <br> <br>
-  <p><%= link_to 'Show all services', services_user_path(@user), class: "buttonsuser" %></p>
+  <span><%= link_to 'Show all services', services_user_path(@user), class: "buttonsuser",id: "buttonsuserwidth" %><br></span>
 </div>
 
 
 
-<h1>Companies that did services for me</h1>
+<h1>Companies that did services</h1>
 <div class="show_tile">
 
   <% @last_companies.each do |company| %>
       <%= company.name %>
-      <div class="thumbnail_grid" >
+      <div class="thumbnail_grid" style="height: 90px; width: 90px;">
         <%= picture_show(company) %>
       </div>
   <% end %>
 </div>
   <br> <br><br>
-  <p ><%= link_to 'Show all companies', companies_user_path(@user), class: "buttonsuser" %></p>
+  <span ><%= link_to 'Show all companies', companies_user_path(@user), class: "buttonsuser" ,id: "buttonsuserwidth"%></span>
 
 </div>

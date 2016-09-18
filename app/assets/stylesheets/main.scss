@@ -2160,7 +2160,7 @@ td.text-right {
 		/* Basic */
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 14pt;
 			}
 
 	}
@@ -2172,7 +2172,7 @@ td.text-right {
 		/* Basic */
 
 			body, input, select, textarea {
-				font-size: 9pt;
+				font-size: 13pt;
 			}
 
 	}
@@ -2192,7 +2192,7 @@ td.text-right {
 			}
 
 			body, input, select, textarea {
-				font-size: 10pt;
+				font-size: 12pt;
 			}
 
 		/* Section/Article */
@@ -2289,7 +2289,7 @@ td.text-right {
 		/* Nav */
 
 			#nav {
-				display: none;
+
 			}
 
 		/* Banner */
@@ -2498,7 +2498,7 @@ td.text-right {
 			}
 
 			h2, h3, h4, h5, h6 {
-				font-size: 13pt;
+				font-size: 11pt;
 				margin: 0 0 1em 0;
 			}
 
@@ -2686,7 +2686,33 @@ td.text-right {
 			#copyright {
 				text-align: left;
 			}
+            .marginmobile{
+              margin-bottom: 0px;
+              magrin-left: 0%;
+            }
+            .menumobile{
+              margin-top: 70px;
+              margin-left: 8%;
+            }
+            #header{
+              margin-left: 2%;
+              align:left;
+            }
 
+
+
+
+
+      #buttonsuserwidth {
+
+        width: 90%;
+        text-align: center;
+      }
+      #itemimage{
+        width:265px;
+        height: 170px;
+        margin-bottom: 15px;
+      }
 	}
 
 	.logomain {
@@ -2715,7 +2741,7 @@ td.text-right {
     .iteminfo {
       float: left;
       margin-left: 15px;
-      height: 295px;
+      height: 340px;
 
 
     }
@@ -2731,7 +2757,7 @@ td.text-right {
 .thumbnail {
   margin: 0 25px 10px 8%;
   position: relative;
-  width: 175px;
+  width: 250px;
   height: 346px;
   overflow: hidden;
   float: left;
@@ -2750,8 +2776,8 @@ td.text-right {
 .thumbnail_grid {
   margin: 0 20px 25px 0px;
   position: relative;
-  width: 85px;
-  height: 85px;
+  width: 200px;
+  height: 200px;
   overflow: hidden;
   float: left;
   img {
@@ -2816,3 +2842,71 @@ td.text-right {
   margin-left:8%;
 }
 .show_tile{width: 330px; height: 100px; float: left;min-width:100px;}
+
+.showmobile {
+  display: none;
+}
+
+body {margin:0;}
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+}
+
+ul.topnav li {float: right;}
+
+ul.topnav li a {
+  display: inline-block;
+  color: #662879;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+ul.topnav li a:hover {background-color: white;}
+
+ul.topnav li.icon {display: none;}
+
+@media screen and (max-width:680px) {
+  ul.topnav li:not(:first-child) {display: none;}
+  ul.topnav li.icon {
+    float: right;
+    display: inline-block;
+
+
+  }
+}
+
+@media screen and (max-width:680px) {
+  ul.topnav.responsive {position: relative;}
+  ul.topnav.responsive li.icon {
+    position: absolute;
+    right: 0px;
+    top: 0;
+
+
+  }
+  ul.topnav.responsive li {
+    float: none;
+    display: inline;
+
+
+  }
+  ul.topnav.responsive li a {
+    display: block;
+    text-align: left;
+
+  }
+  .menunew{
+
+  }
+
+
+
+}
+

@@ -20,25 +20,41 @@
 
 			<!-- Header -->
 				<div id="header-wrapper">
-					<header id="header" class="container" style="margin: 0px 42px 0 8%">
+					<header id="header" class="container" >
+
+
+
+
 
 						<!-- Logo -->
-							<div id="logo">
+							<div id="logo" class="marginmobile" style="width: 30%">
 								<%= link_to image_tag('Logo.png', alt: 'distodi.logo', class: 'logomain'), home_path %>
 							</div>
 
 						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-                  <li><%= link_to('Login as user', new_user_session_path) if current_user.nil? && current_company.nil? %> </li>
-                  <li><%= link_to('Login as company', new_company_session_path) if current_user.nil? && current_company.nil? %></li>
-									<li><%= my_panel %></li>
-                  <li>
-                    <%= link_to "My items", items_user_path(current_user) if user_signed_in? %>
-                  </li>
-									<li><%= logout_link %></li>
-								</ul>
-							</nav>
+
+
+
+            <div class="menunew" style="width: 70%; float:right;">
+              <ul class="topnav" id="myTopnav">
+                <li class="showmobile"><a class="active" >Menu</a></li>
+                <li><%= link_to('Login as user', new_user_session_path) if current_user.nil? && current_company.nil? %></li>
+                <li><%= link_to('Login as company', new_company_session_path) if current_user.nil? && current_company.nil? %></li>
+                <li><%= logout_link %></li>
+
+                <li><%= link_to "My items", items_user_path(current_user) if user_signed_in? %></li>
+                <li><%= my_panel %></a></li>
+
+
+                <li class="icon">
+                  <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+                </li>
+              </ul>
+            </div>
+
+
+
+
 
 					</header>
 				</div>
