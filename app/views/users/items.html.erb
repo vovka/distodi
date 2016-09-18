@@ -1,26 +1,29 @@
+<div class="margin_left">
+
 <p id="notice"><%= notice %></p>
 
 <h1>My Items</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Title</th>
-      <th>Action</th>
-    </tr>
-  </thead>
 
-  <tbody>
+
+
+
+
+
     <% @user.items.each do |item| %>
-      <tr>
-        <td><%= image_tag(item.picture_url, alt: item.title, width: 100) %></td>
-        <td><%= item.title %></td>
-        <td><%= link_to 'Show', item %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+        <div style="width: 200px; float: left; margin: 11px 0 0 0"><%= image_tag(item.picture_url, alt: item.title, width: 180) %>
+        </div>
+
+          <strong ><%= item.title %><br></strong>
+           <%= link_to 'Show details', item, class: "buttonsuser"%>
+            <br><br><br>
+
+             <% end %>
+
+
+
 
 <p><%= link_to 'Create Item', new_item_path %></p>
 <p><%= link_to 'Back to my panel', user_path(@user) %></p>
+</div>

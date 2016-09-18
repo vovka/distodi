@@ -2172,7 +2172,7 @@ td.text-right {
 		/* Basic */
 
 			body, input, select, textarea {
-				font-size: 11pt;
+				font-size: 9pt;
 			}
 
 	}
@@ -2192,7 +2192,7 @@ td.text-right {
 			}
 
 			body, input, select, textarea {
-				font-size: 11pt;
+				font-size: 10pt;
 			}
 
 		/* Section/Article */
@@ -2721,9 +2721,10 @@ td.text-right {
     }
 
     .form{
-      width: 60%;
+      width: 80%;
       margin: 0 auto;
-      padding: 25px;
+      padding: 15px;
+      margin-left: 20px;
       background-color: #e6e6e6;
     }
 
@@ -2767,7 +2768,7 @@ td.text-right {
 
 
 #signup {
-  margin-left: 24%;
+  margin-left: 29%;
   margin-right: 20%;
   margin-bottom: 20px;
 }

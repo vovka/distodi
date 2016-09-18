@@ -1,5 +1,6 @@
 <div class="iteminfo margin_left">
-<%= image_tag(@item.picture_url, alt: @item.title, width: 400) %></div>
+<div style="margin-top: 8px">
+  <%= image_tag(@item.picture_url, alt: @item.title, width: 400) %></div></div>
 <div>
 
 
@@ -21,13 +22,13 @@
 <h1>All services:</h1>
 <% @item.services.each do |service| %>
 
-      <div style="width: 210px;  " >
-        <p ><strong><%= service.created_at %></strong></p>
+      <div style="width: 230px; float: left; height: 200px;" >
+        <p style="margin: 0 0 0 0"><strong><%= service.created_at %></strong></p>
     <div class="thumbnail_grid" id="information_margin">
       <%= service_picture_show(service) %>
     </div>
       </div>
-    <div style="margin-left: 230px; width: 300px">
+
     <strong id="information_margin"><% service.action_kinds.each do |action_kind| %>
         <%= "#{action_kind.title}" %>
     <% end %></strong>
@@ -38,8 +39,8 @@
 
     <% end %>
       </p>
-      <span style="float: right"><%= number_to_currency(service.price , unit: "€") %></span><br>
-    </div>
+      <span style="float: right; margin-right: 50%" ><strong><%= number_to_currency(service.price , unit: "€") %></strong></span><br><br><br><br>
+
 
 
 <% end %>

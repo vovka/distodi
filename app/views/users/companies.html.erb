@@ -1,9 +1,10 @@
-<p id="notice"><%= notice %></p>
+<div class="margin_left"><p id="notice"><%= notice %></p>
 
 <h1>Companies</h1>
 <% @all_companies.each do |company| %>
-    <%= company.name %>
-    <div class="thumbnail_grid" >
+    <strong><%= company.name %></strong>
+    <div class="thumbnail_grid" style="margin-top: 14px;">
       <%= picture_show(company) %>
     </div>
 <% end %>
+</div>

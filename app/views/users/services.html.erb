@@ -1,22 +1,28 @@
+<div class="margin_left">
 <p id="notice"><%= notice %></p>
 
 <h1>Services:</h1>
 
 <% @all_services.each do |service| %>
-
+    <div style="width: 220px; height: 210px; float: left;">
+      <strong><br><%= service.created_at %></strong>
     <div class="thumbnail_grid">
       <%= service_picture_show(service) %>
     </div>
+    </div>
 
-    <% service.action_kinds.each do |action_kind| %>
+      <strong><br><% service.action_kinds.each do |action_kind| %>
           <%= "#{action_kind.title}" %>
       <% end %>
-
+      <br></strong>
     <% service.service_fields.each do |service_field| %>
-          <%= service_field.service_kind.title %>
-          <%= service_field.text %>
+            <%= service_field.service_kind.title %><br>
+         <%= service_field.text %>
     <% end %>
-      <span><br><%= service.created_at %></span>
-    <span><br><%= number_to_currency(service.price , unit: "€") %></span>
+     <br><br><br>
+
+    <strong style="margin-left: 40%"><%= number_to_currency(service.price , unit: "€") %></strong>
+
 <% end %>
 
+</div>
