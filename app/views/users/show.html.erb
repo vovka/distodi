@@ -71,16 +71,18 @@
 
 
 <h1>Companies that did services</h1>
-<div class="show_tile">
+<div>
 
   <% @last_companies.each do |company| %>
-      <%= company.name %>
+      <div class="show_tile">
       <div class="thumbnail_grid" style="height: 90px; width: 90px;">
         <%= picture_show(company) %>
       </div>
-  <% end %>
+      <%= company.name %>
+
 </div>
+  <% end %>
   <br> <br><br>
   <span ><%= link_to 'Show all companies', companies_user_path(@user), class: "buttonsuser" ,id: "buttonsuserwidth"%></span>
-
+</div>
 </div>
