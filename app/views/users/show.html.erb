@@ -1,8 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div class="margin_left">
+  <p id="notice"><%= notice %></p>
 <div class="thumbnail" >
   <%= picture_show(@user) %>
 </div>
-<div class="userinformation" >
+<div  >
   <p id="information_margin " class="first_name">
 <span>
   <strong>
@@ -49,7 +50,7 @@
     <span><%= link_to 'Edit my profile', edit_user_path(@user), class: "buttonsuser" ,id: "buttonsuserwidth"%></span>
   </p>
 </div>
-<div class="margin_left">
+
 <h1><br>Last services</h1>
 <div>
   <% @last_services.each do |service| %>

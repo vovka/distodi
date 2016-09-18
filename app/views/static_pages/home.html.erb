@@ -1,8 +1,11 @@
 <!-- Banner -->
-<div id="signup">
-<%= link_to "Sign up as user", new_user_registration_path, class: "button icon fa-arrow-circle-right" %>
-<%= link_to "Sign up as company", new_company_registration_path, class: "button icon fa-arrow-circle-right" %>
-</div>
+
+  <div id="mainbutton" class="magrincenter">
+<span ><%= link_to "Sign up as user", new_user_registration_path, class: "button ",id: "buttonsuserwidth"  %></span>
+  <span ><%= link_to "Sign up as company", new_company_registration_path, class: "button " ,id: "buttonsuserwidth"  %></span>
+
+  </div>
+
 
 <div>
   <%= link_to image_tag('mainvideo.jpg', alt: 'main video', class: 'mainvideo'), home_path %>
