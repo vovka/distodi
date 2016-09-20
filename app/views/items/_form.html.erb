@@ -17,7 +17,7 @@
       <%= f.text_field :title %>
     </div>
 
-    <div class="field">
+    <div id="categories">
       <%= f.label 'Category' %><br>
       <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Please select a category"}, {class: "category_select"} %>
     </div>
@@ -36,3 +36,20 @@
     </div>
 <% end %>
 </div>
+
+<script>
+  $("#item_category_id").on("change", function(){
+    $.ajax({
+      url: "/items/get_attributes",
+      type: "GET",
+      dataType: "script",
+      data: {
+        category_id: $('#item_category_id option:selected').val()
+      }
+    });
+
+    $(".custom_attributes").on("change", ".attribute_select:last", function(){
+      $(".attribute_select:last").clone().appendTo(".custom_attributes");
+    });
+  });
+</script>
