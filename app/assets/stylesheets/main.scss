@@ -2713,10 +2713,7 @@ td.text-right {
         height: 170px;
         margin-bottom: 15px;
       }
-      #formmobile{
-        width: 200px;
 
-      }
       #mainbutton{margin-left: 8%}
 	}
     .magrincenter{
@@ -2758,10 +2755,10 @@ td.text-right {
 
     .form{
       align:center;
-      width: 60%;
+      width: 30%;
       margin: 0 auto;
       padding: 15px;
-      margin-left: 20%;
+      margin-left: 10%;
       background-color: #e6e6e6;
     }
 
@@ -2846,7 +2843,7 @@ td.text-right {
   margin:0 50px 0 0;
 }
 .margin_left{
-  margin-left:8%;
+  margin-left:12%;
 }
 .show_tile{width: 330px; height: 100px; float: left;min-width:100px;}
 
@@ -2909,11 +2906,17 @@ ul.topnav li.icon {display: none;}
     text-align: left;
 
   }
+
   .menunew{
 
   }
 
-
-
+  .form{
+    width: 70%;
+    margin: 0 auto;
+    padding: 15px;
+    margin-left: 10%;
+    background-color: #e6e6e6;
+  }
 }
 
