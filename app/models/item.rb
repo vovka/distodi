@@ -7,4 +7,6 @@ class Item < ActiveRecord::Base
 
 
   mount_uploader :picture, PictureUploader
+
+  scope :unconfirmed_services, -> { joins(:services).where("services.company_id IS NOT NULL AND services.confirmed IS NULL") }
 end

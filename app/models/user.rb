@@ -12,7 +12,4 @@ class User < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
-
-
-  # scope :user_services, ->(user_id) { joins(items: :services).where("users.id = ?", user_id) }
 end
