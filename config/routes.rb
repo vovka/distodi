@@ -28,7 +28,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :services
+  resources :services do
+    member do
+      post 'confirm', to: "services#confirm", as: 'confirm'
+    end
+  end
   resources :service_kinds
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

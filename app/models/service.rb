@@ -10,4 +10,8 @@ class Service < ActiveRecord::Base
 
   scope :user_services, ->(user_id) { joins(item: :user).where("users.id = ?", user_id) }
   scope :unconfirmed, -> { where("company_id IS NOT NULL AND confirmed IS NULL") }
+
+  def is_confirmed?
+    !company_id || confirmed?
+  end
 end

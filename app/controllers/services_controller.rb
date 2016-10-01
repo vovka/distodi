@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :set_item, only: [:new]
   before_action :authenticate_user!, except: [:company_service, :create]
 
@@ -76,6 +76,11 @@ class ServicesController < ApplicationController
     @service = Service.new(item: item)
     @service_kinds = item.category.service_kinds
     @action_kinds = item.category.action_kinds
+  end
+
+  def confirm
+    @service.toggle!(:confirmed)
+    redirect_to @service.item
   end
 
   private
