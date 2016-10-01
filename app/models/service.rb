@@ -9,4 +9,5 @@ class Service < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
 
   scope :user_services, ->(user_id) { joins(item: :user).where("users.id = ?", user_id) }
+  scope :unconfirmed, -> { where("company_id IS NOT NULL AND confirmed IS NULL") }
 end

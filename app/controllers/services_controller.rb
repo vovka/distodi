@@ -1,6 +1,7 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
   before_action :set_item, only: [:new]
+  before_action :authenticate_user!, except: [:company_service, :create]
 
   # GET /services
   # GET /services.json
@@ -68,6 +69,13 @@ class ServicesController < ApplicationController
       format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def company_service
+    item = Item.find_by(token: params[:token])
+    @service = Service.new(item: item)
+    @service_kinds = item.category.service_kinds
+    @action_kinds = item.category.action_kinds
   end
 
   private

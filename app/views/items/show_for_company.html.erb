@@ -1,0 +1,55 @@
+<div class="iteminfo margin_left" , id="itemimage">
+  <div style="margin-top: 8px">
+    <%= image_tag(@item.picture_url, alt: @item.title, width: 540, id: 'itemimage') %></div>
+</div>
+<div>
+
+
+  <p id="information_margin" class="first_name"><strong class="userinformation"><%= @item.title %></strong></p>
+  <% @item.characteristics.each do |characteristic| %>
+
+      <ul id="information_margin" class="userinformation">
+
+        <span class="userinformation"><strong><%= characteristic.attribute_kind.title %>:</strong>
+          <%= characteristic.value %></span>
+
+      </ul>
+
+  <% end %>
+
+
+</div>
+<br>
+<div class="margin_left">
+  <h1>All services:</h1>
+  <% @item.services.each do |service| %>
+
+      <div style="width: 330px; float: left; height: 230px;">
+        <p style="margin: 0 0 0 0"><strong><%= service.created_at %></strong></p>
+        <div class="thumbnail_grid" id="information_margin">
+          <%= service_picture_show(service) %>
+        </div>
+      </div>
+
+      <strong id="information_margin">
+        <% service.action_kinds.each do |action_kind| %>
+            <%= "#{action_kind.title}" %>
+        <% end %></strong>
+      <p style="margin: 0 0 0 0; ">
+        <% service.service_fields.each do |service_field| %>
+            <%= service_field.service_kind.title %>
+            <%= service_field.text %><br>
+
+        <% end %>
+      </p>
+      <span style="float: right; margin-right: 50%"><strong><%= number_to_currency(service.price, unit: "€") %></strong></span><br><br><br><br>
+
+
+  <% end %>
+
+
+  <p>
+    <br>
+    <spanp><%= link_to 'Add Service', company_service_path(token: @item.token), class: "buttonsuser", id: "buttonsuserwidth" %></spanp>
+  </p>
+</div>

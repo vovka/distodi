@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   resources :companies
 
+  get 'item/:token', to: "items#show_for_company", as: 'show_for_company'
+  get 'item/service/:token', to: "services#company_service", as: 'company_service'
+
   resources :items do
     collection do
       get 'get_attributes', to: "items#get_attributes"

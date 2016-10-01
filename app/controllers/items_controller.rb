@@ -1,10 +1,15 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: :show_for_company
 
   def index
   end
 
   def show
+  end
+
+  def show_for_company
+    @item = Item.find_by(token: params[:token])
   end
 
   def new
@@ -51,6 +56,6 @@ class ItemsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def item_params
-    params.require(:item).permit(:title, :category_id, :picture)
+    params.require(:item).permit(:title, :category_id, :picture, :token)
   end
 end

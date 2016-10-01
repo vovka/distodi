@@ -16,7 +16,7 @@
         </div>
 
           <strong ><%= item.title %><br></strong>
-           <%= link_to 'Show details', item, class: "buttonsuser",id: "buttonsuserwidth"%>
+          <%= link_to "Show my Items #{item.services.unconfirmed.count > 0 ? "(#{item.services.unconfirmed.count})" : ""}", item, class: "buttonsuser",id: "buttonsuserwidth" %>
             <br><br><br><br>
 
              <% end %>
