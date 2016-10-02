@@ -2920,3 +2920,12 @@ ul.topnav li.icon {display: none;}
   }
 }
 
+::-webkit-input-placeholder {color: #005ec0;}
+::-moz-placeholder          {color:#c0392b;}/* Firefox 19+ */
+:-moz-placeholder           {color:#c0392b;}/* Firefox 18- */
+:-ms-input-placeholder      {color:#c0392b;}
+
+
+input[type="hidden"]::-moz-placeholder {
+  color: #3bff12; /* Цвет подсказывающего текста */
+}
