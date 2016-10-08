@@ -66,14 +66,14 @@ role :web, %w{deploy@81.91.92.51}
 role :db,  %w{deploy@81.91.92.51}
 
 # Define server(s)
-server '81.91.92.510', user: 'deploy', roles: %w{web}
+server '81.91.92.51', user: 'deploy', roles: %w{web}
 
 # SSH Options
 # See the example commented out section in the file
 # for more options.
 set :ssh_options, {
     forward_agent: false,
-    auth_methods: %w(publickey),
-    #password: 'ShecaSlid5',
+    auth_methods: %w(password publickey),
+    password: 'ShecaSlid5',
     user: 'deploy',
 }
