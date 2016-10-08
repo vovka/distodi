@@ -53,5 +53,5 @@ production:
   encoding: unicode
   database: distodi_production
   pool: 5
-  username: distodi
-  password:
+  username: <%= ENV['APPNAME_DATABASE_USER'] %>
+  password: <%= ENV['APPNAME_DATABASE_PASSWORD'] %>
