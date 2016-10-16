@@ -1,5 +1,7 @@
 <div class="form">
-  <h2>Sign up</h2>
+  <h3>Sign up as user</h3>
+  <p>Please sing up as <strong>user</strong> if you would like to track service history for your items as a person. It means that you do service for your items by yourself or you ask a service company do it for you. You can keep history of the service, print, safe or send service history.
+    <br><br><strong> Important: you should provide automatically generated link for access to your Service company and ask to confirm that they done service for your itms. They will have 24 hours for it.</strong> <br><br></p>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -11,27 +13,27 @@
 
       <div class="field">
         <%= f.label :first_name %><br/>
-        <%= f.text_field :first_name ,placeholder: "John"%>
+        <%= f.text_field :first_name ,placeholder: "Your name"%>
       </div>
 
       <div class="field">
         <%= f.label :last_name %><br/>
-        <%= f.text_field :last_name,placeholder: "Connor" %>
+        <%= f.text_field :last_name,placeholder: "Your last name" %>
       </div>
 
       <div class="field">
         <%= f.label :phone %><br/>
-        <%= f.text_field :phone ,placeholder: "420228228"%>
+        <%= f.text_field :phone ,placeholder: "(code) 123 456 789"%>
       </div>
 
       <div class="field">
         <%= f.label :country %><br/>
-        <%= f.text_field :country ,placeholder: "Czech republic"%>
+        <%= f.text_field :country ,placeholder: "Country"%>
       </div>
 
       <div class="field">
         <%= f.label :city %><br/>
-        <%= f.text_field :city ,placeholder: "Praha"%>
+        <%= f.text_field :city ,placeholder: "Your city"%>
       </div>
 
       <div class="field">
@@ -41,7 +43,7 @@
 
       <div class="field">
         <%= f.label :postal_code %><br/>
-        <%= f.text_field :postal_code ,placeholder: "8099323"%>
+        <%= f.text_field :postal_code ,placeholder: "123456"%>
       </div>
 
       <div class="field">

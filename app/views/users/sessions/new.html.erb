@@ -1,6 +1,6 @@
 <div class="form">
-  <h2>Log in as user</h2>
-
+  <h3>Log in as user</h3>
+  <p class="alert" style="color: red;"><%= alert %></p>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email %><br/>

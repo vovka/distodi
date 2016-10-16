@@ -1,5 +1,7 @@
 <div class="form">
-  <h2>Sign up</h2>
+  <h3>Sign up as company</h3>
+  <p> Please sing up as <strong>company</strong>  if you represent commensal organization that providing services for your customers. You can track the service history that your company done for your customers.<br> <strong>Important: one organization can have just one profile (so better if registration done by manager and shared the access). User will ask you to confirm a service by providing the access to your Company. You should confirm the service within 24 hours.
+    </strong> <br><br> </p>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -10,38 +12,38 @@
       </div>
 
       <div class="field">
-        <%= f.label :name %><br/>
-        <%= f.text_field :name ,placeholder: "Microsoft"%>
+        <%= f.label 'company name ' %><br/>
+        <%= f.text_field :name ,placeholder: "Your name"%>
       </div>
 
       <div class="field">
         <%= f.label :first_name %><br/>
-        <%= f.text_field :first_name,placeholder: "John" %>
+        <%= f.text_field :first_name,placeholder: "Your name" %>
       </div>
 
       <div class="field">
         <%= f.label :last_name %><br/>
-        <%= f.text_field :last_name ,placeholder: "Connor"%>
+        <%= f.text_field :last_name ,placeholder: "Your last name"%>
       </div>
 
       <div class="field">
         <%= f.label :phone %><br/>
-        <%= f.text_field :phone,placeholder: "420228228" %>
+        <%= f.text_field :phone,placeholder: "(code) 123 456 789" %>
       </div>
 
       <div class="field">
         <%= f.label :website %><br/>
-        <%= f.text_field :website,placeholder: "site.com" %>
+        <%= f.text_field :website,placeholder: "company.com" %>
       </div>
 
       <div class="field">
         <%= f.label :country %><br/>
-        <%= f.text_field :country ,placeholder: "Czech republic"%>
+        <%= f.text_field :country ,placeholder: "Country"%>
       </div>
 
       <div class="field">
         <%= f.label :city %><br/>
-        <%= f.text_field :city ,placeholder: "Praha"%>
+        <%= f.text_field :city ,placeholder: "Your city"%>
       </div>
 
       <div class="field">
@@ -51,7 +53,7 @@
 
       <div class="field">
         <%= f.label :postal_code %><br/>
-        <%= f.text_field :postal_code,placeholder: "8099323" %>
+        <%= f.text_field :postal_code,placeholder: "123456" %>
       </div>
 
       <div class="field">
