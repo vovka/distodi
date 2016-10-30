@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'static_pages/home', as: 'home'
 
   get 'static_pages/about'
+  get 'static_pages/tutorial', as: 'tutorial'
 
   devise_for :companies, controllers: { registrations: 'companies/registrations' }
   devise_for :users, controllers: { registrations: 'users/registrations' }
