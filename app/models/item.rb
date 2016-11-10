@@ -10,7 +10,7 @@ class Item < ActiveRecord::Base
 
   scope :unconfirmed_services, -> { joins(:services).where("services.company_id IS NOT NULL AND services.confirmed IS NULL") }
 
-  before_create :ensure_token
+  after_create :ensure_token
 
   def generate_token
     loop do
