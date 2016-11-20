@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :leads
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :attribute_kinds

@@ -69,14 +69,14 @@
 
 								<!-- Links -->
 									<section class="widget links">
-										<h3>Random Stuff</h3>
-										<ul class="style2">
-											<li><a href="#">Etiam feugiat condimentum</a></li>
-											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-											<li><a href="#">Sed porttitor cras in erat nec</a></li>
-											<li><a href="#">Felis varius pellentesque potenti</a></li>
-											<li><a href="#">Nullam scelerisque blandit leo</a></li>
-										</ul>
+										<h3>Way when you do for your car by yourself:</h3>
+                    <span class="style2">
+											1. Please register in distodi.com in a few seconds.<br>
+2. If you already registered so you can start use distodi.com<br>
+3. You done the service of your car by yourself.<br>
+4. Just mark the service that you done by yourself, add pictures how it changed and amount of money (you will 24 hours to make any changes).<br>
+5. Information of the service is added. Done.
+										</span>
 									</section>
 
 							</div>
@@ -84,14 +84,15 @@
 
 								<!-- Links -->
 									<section class="widget links">
-										<h3>Random Stuff</h3>
-										<ul class="style2">
-											<li><a href="#">Etiam feugiat condimentum</a></li>
-											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-											<li><a href="#">Sed porttitor cras in erat nec</a></li>
-											<li><a href="#">Felis varius pellentesque potenti</a></li>
-											<li><a href="#">Nullam scelerisque blandit leo</a></li>
-										</ul>
+										<h3>Way when you go to a Service company that will do service for your car:</h3>
+										<span class="style2">
+											1. Service company just done service for your car for some price of the service.<br>
+2. Please just ask a Service company register in distodi.com in a few second.<br>
+3. After that just give \ send to your Service company an automaticity generated web-link that connect to your service and asked them to confirm (by connecting this link) that they done service for our car and add the amount of the service (they will have always 24 hours to confirm).<br>
+4. Service company add photo to a service as a prove.<br>
+5. If you agree that all information is correct, please just press confirm button.<br>
+6. Information of the service is added. Done.<br>
+										</span>
 									</section>
 
 							</div>
@@ -99,14 +100,17 @@
 
 								<!-- Links -->
 									<section class="widget links">
-										<h3>Random Stuff</h3>
-										<ul class="style2">
-											<li><a href="#">Etiam feugiat condimentum</a></li>
-											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-											<li><a href="#">Sed porttitor cras in erat nec</a></li>
-											<li><a href="#">Felis varius pellentesque potenti</a></li>
-											<li><a href="#">Nullam scelerisque blandit leo</a></li>
-										</ul>
+                    <%= simple_form_for(@lead) do |f| %>
+                        <%= f.error_notification %>
+                    <div class="field">
+                      <%= f.label 'Email' %><br>
+                      <%= f.text_field :email %>
+                    </div>
+                    <div class="form-actions">
+                      <%= f.button :submit %>
+                    </div>
+                    <% end %>
+
 									</section>
 
 							</div>
