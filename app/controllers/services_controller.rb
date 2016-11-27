@@ -43,7 +43,7 @@ class ServicesController < ApplicationController
           service_field = service_kind.service_fields.build(service: @service, text: service_fields ? service_fields[key] : '')
           service_field.save
         end
-        redirect_to @service, notice: 'Service was successfully created.'
+        redirect_to @service.item, notice: 'Service was successfully created.'
     end
   end
 
@@ -66,7 +66,7 @@ class ServicesController < ApplicationController
   def destroy
     @service.destroy
     respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+      format.html { redirect_to @service.item, notice: 'Service was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

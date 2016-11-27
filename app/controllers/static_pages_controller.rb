@@ -5,6 +5,12 @@ class StaticPagesController < ApplicationController
   def tutorial
   end
 
+  def tutorialcar
+  end
+
+  def tutorialbike
+  end
+
   def about
   end
 end

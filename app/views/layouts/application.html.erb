@@ -70,13 +70,10 @@
 
 								<!-- Links -->
 									<section class="widget links">
-										<h3>Way when you do for your car by yourself:</h3>
-                    <span class="style2">
-											1. Please register in distodi.com in a few seconds.<br>
-2. If you already registered so you can start use distodi.com<br>
-3. You done the service of your car by yourself.<br>
-4. Just mark the service that you done by yourself, add pictures how it changed and amount of money (you will 24 hours to make any changes).<br>
-5. Information of the service is added. Done.
+										<h3>How to use:</h3>
+                    <span class="style2" style="color: #0090c5">
+											<%= link_to 'Manual for car', tutorialcar_path %><br>
+                      <%= link_to 'Manual for bicycle', tutorialbike_path %>
 										</span>
 									</section>
 
@@ -85,15 +82,11 @@
 
 								<!-- Links -->
 									<section class="widget links">
-										<h3>Way when you go to a Service company that will do service for your car:</h3>
-										<span class="style2">
-											1. Service company just done service for your car for some price of the service.<br>
-2. Please just ask a Service company register in distodi.com in a few second.<br>
-3. After that just give \ send to your Service company an automaticity generated web-link that connect to your service and asked them to confirm (by connecting this link) that they done service for our car and add the amount of the service (they will have always 24 hours to confirm).<br>
-4. Service company add photo to a service as a prove.<br>
-5. If you agree that all information is correct, please just press confirm button.<br>
-6. Information of the service is added. Done.<br>
-										</span>
+										<h3>Sing up options:</h3>
+                    
+											<span style="color: #0090c5;"><%= link_to "Sign up as user", new_user_registration_path,id: "buttonsuserwidth"  %><br>
+                    <%= link_to "Sign up as company", new_company_registration_path, id: "buttonsuserwidth"  %></span>
+
 									</section>
 
 							</div>
@@ -128,11 +121,10 @@
 										</ul>
 										<p>MAROPEN open doors s.r.o.<br>
 
-                      Rybná 716/24<br>
 
-                      Prague 110 00<br>
 
                       Czech Republic</p>
+                    <a style="color: #0090c5;;" href="maropen.com" >maropen.com</a >
 									</section>
 
 							</div>

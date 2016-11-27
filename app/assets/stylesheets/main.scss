@@ -1950,7 +1950,7 @@ td.text-right {
 	#main-wrapper {
 		background: #fff;
 		box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.05);
-		padding: 5em 0 5em 0;
+		padding: 5px 0 5em 0;
 	}
 
 	#footer-wrapper {
@@ -2154,6 +2154,16 @@ td.text-right {
 		}
 
 /* XLarge */
+.magrincenter{
+  width: 615px;
+  margin: 20px auto 0;
+}
+.margin_left{
+  margin-left:23%;
+}
+.servicelist {
+  padding: 0 500px 170px 0;
+}
 
 	@media screen and (max-width: 1680px) {
 
@@ -2162,8 +2172,18 @@ td.text-right {
 			body, input, select, textarea {
 				font-size: 14pt;
 			}
+      .magrincenter{
+        width: 613px;
+        margin: 20px auto 0;
+      }
+      .margin_left{
+        margin-left:19%;
+      }
+      .servicelist {
+        padding: 0 500px 200px 0;
+      }
+      }
 
-	}
 
 /* Large */
 
@@ -2174,9 +2194,22 @@ td.text-right {
 			body, input, select, textarea {
 				font-size: 13pt;
 			}
-
+      .magrincenter{
+        width: 570px;
+        margin: 20px auto 0;
+      }
+      .margin_left{
+        margin-left:15%;
+      }
+      .servicelist {
+        padding: 0 450px 50px 0;
+      }
 	}
+.mainvideo{
+  margin-left: 15%;
 
+  width: 70%;
+}
 /* Medium */
 
 	#navPanel, #navToggle {
@@ -2194,7 +2227,18 @@ td.text-right {
 			body, input, select, textarea {
 				font-size: 12pt;
 			}
+      .mainvideo{
+        margin-left:14%;
 
+        width: 75%;
+      }
+      .magrincenter{
+        width: 556px;
+        margin: 20px auto 0;
+      }
+      .margin_left{
+        margin-left:13%;
+      }
 		/* Section/Article */
 
 			section, article {
@@ -2501,7 +2545,21 @@ td.text-right {
 				font-size: 11pt;
 				margin: 0 0 1em 0;
 			}
+      .mainvideo{
+        margin-left: 2%;
 
+        width: 98%;
+      }
+      .magrincenter{
+        width: 93%;
+        margin: 20px auto 0;
+      }
+      .margin_left{
+        margin-left:11%;
+      }
+      .servicelist {
+        padding: 0 100px 50px 0;
+      }
 		/* Section/Article */
 
 			section, article {
@@ -2628,7 +2686,7 @@ td.text-right {
 			}
 
 			#main-wrapper, #footer-wrapper {
-				padding: 40px 30px 40px 30px;
+				padding: 5px 30px 40px 30px;
 			}
 
 		/* Logo */
@@ -2712,14 +2770,12 @@ td.text-right {
         width:265px;
         height: 170px;
         margin-bottom: 15px;
+
       }
 
-      #mainbutton{margin-left: 8%}
+      #mainbutton{margin: 0 8%}
 	}
-    .magrincenter{
-      margin-left: 25%;
-      margin-bottom: 20px;
-    }
+
 
 
 	.logomain {
@@ -2747,7 +2803,7 @@ td.text-right {
 
     .iteminfo {
       float: left;
-      margin-left: 15px;
+
       height: 340px;
 
 
@@ -2825,11 +2881,7 @@ td.text-right {
 #iteminformation { margin: 0 0 0 15px;
 
 }
-.mainvideo{
-  margin-left: 2%;
 
-  width: 95%;
-}
 
 #information_margin{
   margin: 0 0 0 0;
@@ -2842,9 +2894,7 @@ td.text-right {
   float: right;
   margin:0 50px 0 0;
 }
-.margin_left{
-  margin-left:12%;
-}
+
 .show_tile{width: 330px; height: 100px; float: left;min-width:100px;}
 
 .showmobile {
@@ -2930,3 +2980,4 @@ input[type="hidden"]::-moz-placeholder {
   color: #3bff12; /* Цвет подсказывающего текста */
 }
 .tutorial{ width: 260px;}
+.tutorial2{ width: 320px;}

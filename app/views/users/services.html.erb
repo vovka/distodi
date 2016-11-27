@@ -4,7 +4,8 @@
 <h1>Services:</h1>
 
 <% @all_services.each do |service| %>
-    <div style="width: 290px; height: 270px; float: left;">
+      <div class="servicelist">
+      <div style="width: 290px; height: 270px; float: left; margin-bottom: 20px">
       <strong><br><%= service.created_at %></strong>
     <div class="thumbnail_grid">
       <%= service_picture_show(service) %>
@@ -19,12 +20,13 @@
             <%= service_field.service_kind.title %><br>
          <%= service_field.text %>
     <% end %>
-     <br><br><br>
+
 
     <strong style="margin-left: 40%"><%= number_to_currency(service.price , unit: "€") %></strong>
-
+      </div>
 <% end %>
-  <br>
-  <%= link_to 'Back', @user,  class: "buttonsuser" %>
+
+  <div style="width: 100%">
+  <%= link_to 'Back', @user,  class: "buttonsuser" %></div>
 </div>
 

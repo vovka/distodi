@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'static_pages/about'
   get 'static_pages/tutorial', as: 'tutorial'
+  get 'static_pages/tutorialcar', as: 'tutorialcar'
+  get 'static_pages/tutorialbike', as: 'tutorialbike'
 
   devise_for :companies, controllers: { registrations: 'companies/registrations' }
   devise_for :users, controllers: { registrations: 'users/registrations' }
