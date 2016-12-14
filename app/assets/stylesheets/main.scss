@@ -169,6 +169,7 @@
 			max-width: 125%;
 			min-width: 100%;
 		}
+      .tutorial2{ width: 280px;}
 
 		.container.\37 5\25 {
 			width: 75%;
@@ -2182,8 +2183,9 @@ td.text-right {
       .servicelist {
         padding: 0 500px 200px 0;
       }
-      }
 
+.tutorial2{ width: 620px;}
+}
 
 /* Large */
 
@@ -2227,6 +2229,7 @@ td.text-right {
 			body, input, select, textarea {
 				font-size: 12pt;
 			}
+      .tutorial2{ width: 420px;}
       .mainvideo{
         margin-left:14%;
 
@@ -2550,6 +2553,7 @@ td.text-right {
 
         width: 98%;
       }
+      .tutorial2{ width: 420px;}
       .magrincenter{
         width: 93%;
         margin: 20px auto 0;
@@ -2979,5 +2983,10 @@ ul.topnav li.icon {display: none;}
 input[type="hidden"]::-moz-placeholder {
   color: #3bff12; /* Цвет подсказывающего текста */
 }
-.tutorial{ width: 260px;}
-.tutorial2{ width: 320px;}
+.form{
+ margin: 0 auto;
+}
+.margin_left1{
+  width: 150px;
+  margin: 0 auto;
+}
