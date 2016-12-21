@@ -1,6 +1,6 @@
 <div class="iteminfo margin_left", id="itemimage">
 <div style="margin-top: 8px; ">
-  <%= image_tag(@item.picture_url, alt: @item.title, width: 540, id: 'itemimage' ) %></div></div>
+  <%= image_tag(@item.picture_url, alt: @item.title, width: 540, height:360, id: 'itemimage' ) %></div></div>
 <div>
 
 
@@ -17,9 +17,11 @@
 
   <% end %>
 
-  <div class="margin_left" style="padding-top: 20px">
+  <div class="margin_left" style="padding-top: 20px; max-width: 350px;">
     <strong>Link for companies: </strong>
-    <%= link_to show_for_company_url(token: @item.token), show_for_company_url(token: @item.token) %>
+    <%= link_to show_for_company_url(token: @item.token), show_for_company_url(token: @item.token) %><br>
+
+    <span style="font-style:italic; ">Send to your Service company an automaticity generated web-link that connect to your service and asked them to confirm</span>
   </div>
 
 
@@ -55,8 +57,8 @@
 
 <p >
   <br>
-<spanp ><%= link_to 'Add Service', new_service_path(item_id: @item), class: "buttonsuser",id: "buttonsuserwidth"%></spanp>
+<span><%= link_to 'Add Service', new_service_path(item_id: @item), class: "buttonsuser",id: "buttonsuserwidth"%></span>
 
-<spanp ><%= link_to 'Back to my panel', user_path(@item.user), class: "buttonsuser",id: "buttonsuserwidth"%></spanp>
+<span ><%= link_to 'Back to my panel', user_path(@item.user), class: "buttonsuser",id: "buttonsuserwidth"%></span>
 </p>
 </div>
