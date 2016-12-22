@@ -56,16 +56,17 @@
       <h1><br>My last items</h1>
       <div>
         <% @last_items.each do |item| %>
-            <div class="show_tile">
-              <div class="thumbnail_grid" style="height: 90px; width: 90px;" >
+            <div class="show_tile" style="margin-bottom: 50px">
+              <div class="thumbnail_grid" style="height: 120px; width: 120px; " >
                 <%= service_picture_show(item) %>
               </div>
-              <span><%=item.title%></span>
+              <strong><%=item.title%></strong>
+              <span><br><%= item.created_at.strftime("%F") %></span>
             </div>
         <% end %>
-        <br> <br> <br>
+        <br> <br> <br></div>
         <span><%= link_to "All items #{@unconfirmed_count > 0 ? "(#{@unconfirmed_count})" : ""}", items_user_path(@user), class: "buttonsuser",id: "buttonsuserwidth" %><br></span>
-      </div>
+
 <% else %>
       <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">
         <p>Here you will see service for each of your item. Please add your first item and track your service!</p>
