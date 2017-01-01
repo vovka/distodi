@@ -18,6 +18,7 @@
   <% end %>
 
   <div class="margin_left" style="padding-top: 20px; max-width: 350px;">
+    <span><%= link_to 'Edit item', edit_item_path(@item), class: "buttonsuser",id: "buttonsuserwidth"%><br></span>
     <strong>Link for companies: </strong>
     <%= link_to show_for_company_url(token: @item.token), show_for_company_url(token: @item.token) %><br>
 
