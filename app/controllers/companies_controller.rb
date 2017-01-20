@@ -1,8 +1,20 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :items, :services]
   before_action :authenticate_company!
 
   def show
+    @last_items = @company.services.map(&:item).uniq.last(3)
+    @last_services = @company.services.last(3)
+
+  end
+
+  def items
+    @items = @company.services.map(&:item).uniq
+    
+  end
+
+  def services
+    @all_services = @company.services
   end
 
   def edit

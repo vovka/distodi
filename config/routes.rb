@@ -23,7 +23,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :companies
+  resources :companies do
+    member do
+      get :items
+      get :services
+    end
+  end
 
   get 'item/:token', to: "items#show_for_company", as: 'show_for_company'
   get 'item/service/:token', to: "services#company_service", as: 'company_service'
