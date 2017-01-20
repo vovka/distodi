@@ -1,0 +1,32 @@
+<div class="margin_left">
+
+<p id="notice"><%= notice %></p>
+
+<h1>My Items</h1>
+
+
+
+
+
+
+
+    <% @items.each do |item| %>
+
+        <div style="width: 300px; float: left; margin: 11px 0 0 0"><%= image_tag(item.picture_url, alt: item.title, width: 250) %>
+        </div>
+
+          <strong ><%= item.title %><br></strong>
+          
+      <span><%= link_to 'Add Service', new_service_path(item_id: item), class: "buttonsuser",id: "buttonsuserwidth"%></span>
+      
+
+      <br><br><br><br><br>
+
+             <% end %>
+
+
+
+
+
+<p><%= link_to 'Back to my panel', company_path(@company) %></p>
+</div>
