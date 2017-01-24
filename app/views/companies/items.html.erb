@@ -17,7 +17,7 @@
 
           <strong ><%= item.title %><br></strong>
           
-      <span><%= link_to 'Add Service', new_service_path(item_id: item), class: "buttonsuser",id: "buttonsuserwidth"%></span>
+      <span><%= link_to 'Add Service', company_service_path(token: item.token), class: "buttonsuser", id: "buttonsuserwidth" %></span>
       
 
       <br><br><br><br><br>

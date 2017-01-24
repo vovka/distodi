@@ -43,7 +43,12 @@ class ServicesController < ApplicationController
           service_field = service_kind.service_fields.build(service: @service, text: service_fields ? service_fields[key] : '')
           service_field.save
         end
-        redirect_to @service.item, notice: 'Service was successfully created.'
+        
+        if user_signed_in?
+          redirect_to  user_path(current_user), notice: 'Service was successfully created.'
+          elsif company_signed_in?
+          redirect_to  company_path(current_company), notice: 'Service was successfully created.'
+        end
     end
   end
 

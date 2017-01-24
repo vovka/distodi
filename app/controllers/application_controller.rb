@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
   def set_lead
     @lead = Lead.new
   end
+
+  def after_sign_in_path_for(resource)
+    if user_signed_in?
+          current_user
+          elsif company_signed_in?
+          current_company
+        end
+  end
 end

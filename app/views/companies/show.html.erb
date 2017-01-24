@@ -34,8 +34,8 @@
   <%= @company.postal_code %>
 </p>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<%= link_to 'Edit', edit_company_path(@company) %> 
+
 
 
 <% if @last_items.present?%>
@@ -57,8 +57,8 @@
 
 <% else %>
       <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">
-        <p>Here you will see service for each of your item. Please add your first item and track your service!</p>
-      <span ><%= link_to 'Create Item', new_item_path, class: "buttonsuser" ,id: "buttonsuserwidth" %></span>
+        <p>Here you will see items that you have made services. Please get link of your first item and track your service!</p>
+      
       </div>
 <% end %>
 
@@ -84,7 +84,7 @@
 </div>
   <% else %>
       <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">
-        <p>Here you will see last services for each of your item. Please add your first item and track your service!</p>
+        <p>Here you will see last services for each of your item. Please get link of your first item and track your service!</p>
 
       </div>
   <% end %>

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @last_items = @user.items.last(3)
     @last_services = Service.user_services(@user.id).last(3)
-    @last_companies = Company.user_companies(@user.id).last(3)
+    @last_companies = Company.user_companies(@user.id).distinct.last(3)
     @unconfirmed_count = @user.items.unconfirmed_services.count
   end
 
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def companies
-    @all_companies = Company.user_companies(@user.id)
+    @all_companies = Company.user_companies(@user.id).distinct
   end
 
   def update

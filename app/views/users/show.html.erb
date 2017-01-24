@@ -45,9 +45,9 @@
   </p>
 
   <p>
-    <span><%= link_to "All items & service history #{@unconfirmed_count > 0 ? "(#{@unconfirmed_count})" : ""}", items_user_path(@user), class: "buttonsuser",id: "buttonsuserwidth" %></span>
+    <span><%= link_to "All items & service history "   "#{@unconfirmed_count > 0 ?  " ! ""(#{@unconfirmed_count})"" new" : ""}", items_user_path(@user), class: "buttonsuser",id: "buttonsuserwidth" %></span>
   <span ><%= link_to 'Create Item', new_item_path, class: "buttonsuser" ,id: "buttonsuserwidth" %></span>
-    <span><%= link_to 'Edit my profile', edit_user_path(@user), class: "buttonsuser" ,id: "buttonsuserwidth"%></span>
+    <span><%= link_to 'Edit your User profile', edit_user_path(@user), class: "buttonsuser" ,id: "buttonsuserwidth"%></span>
   </p>
 </div>
 
