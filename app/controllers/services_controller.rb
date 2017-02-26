@@ -43,6 +43,8 @@ class ServicesController < ApplicationController
           service_field = service_kind.service_fields.build(service: @service, text: service_fields ? service_fields[key] : '')
           service_field.save
         end
+
+        UserMailer.add_service_email(@service.item.user).deliver! unless @service.company.nil?
         
         if user_signed_in?
           redirect_to  user_path(current_user), notice: 'Service was successfully created.'
@@ -85,6 +87,7 @@ class ServicesController < ApplicationController
 
   def confirm
     @service.toggle!(:confirmed)
+    CompanyMailer.service_confirmed_email(@service.company).deliver!
     redirect_to @service.item
   end
 

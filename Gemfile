@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # Flexible authentication solution for Rails with Warden
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'devise', '~> 3.5', '>= 3.5.1'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -31,6 +31,8 @@ gem 'carrierwave', '~> 0.11.2'
 gem 'cloudinary'
 
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
+
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

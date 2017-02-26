@@ -32,3 +32,5 @@ vendor/bundle
 *.TODO
 config/database.yml
 .idea/
+# Ignore application configuration
+/config/application.yml
