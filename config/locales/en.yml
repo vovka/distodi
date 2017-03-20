@@ -20,4 +20,30 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  users:
+    destroy:
+      notice: "User was successfully destroyed. "
+    update:
+      notice: "User was successfully updated. "
+    show:
+      delete_link: "Delete user"
+      update_link: "Update user"
+      confirm_delete: "Do you want delete your user profile? "
+      confirm_update: "Do you want update your user profile? "
+  items:
+    create:
+      notice: "Item was successfully created. "
+    destroy:
+      notice: "Item was successfully destroyed. "
+    show:
+      delete_link: "Delete Item "
+      confirm_delete: "Do you want delete your item? "
+  companies:
+    destroy:
+      notice: "Company was successfully destroyed. "
+    update:
+      notice: "Company profile was successfully updated. "
+    show:
+      delete_link: "Delete company"
+      confirm_delete: "Do you want delete your company profile? "
+      edit_link: "Update company "

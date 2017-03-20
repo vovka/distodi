@@ -24,10 +24,10 @@ class ItemsController < ApplicationController
     @item.characteristics = characteristics.map do |key, value|
       attribute_kind = @item.category.attribute_kinds.find(key)
       Characteristic.new(attribute_kind: attribute_kind, value: value)
-    end unless characteristics.empty?
+    end if characteristics.present?
 
     if @item.save
-      redirect_to @item, notice: 'Item was successfully created.'
+      redirect_to @item, notice: t(".notice")
     else
       render :new
     end
@@ -41,6 +41,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    @item.destroy
+    redirect_to @item.user, notice: t(".notice")
   end
 
   def get_attributes

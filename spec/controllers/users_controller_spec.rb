@@ -125,12 +125,21 @@ describe UsersController do
 
   describe "DELETE #destroy" do
     it "returns http success" do
-      user = create :user
+      user = FactoryGirl.create :user
       sign_in user
 
       delete :destroy, id: user.to_param
 
-      expect(response).to redirect_to(users_path)
+      expect(response).to redirect_to(root_path)
+    end
+
+    it "logs out user" do
+      user = FactoryGirl.create :user
+      sign_in user
+
+      delete :destroy, id: user.to_param
+
+      expect(controller.current_user).to be_nil
     end
 
     it "defines an instance variable" do
@@ -138,8 +147,17 @@ describe UsersController do
       sign_in user
 
       delete :destroy, id: user.to_param
-
+      
       expect(assigns(:user)).to be_present
+    end
+        
+    it "should increment the count" do
+      user = create :user
+      sign_in user
+
+      expect {
+        delete :destroy, id: user.to_param
+      }.to change { User.count }.from(1).to(0)
     end
   end
 end

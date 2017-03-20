@@ -18,13 +18,13 @@
   <% end %>
 
   <div class="margin_left" style="padding-top: 40px; max-width: 350px;">
-    <span><%= link_to 'Edit item', edit_item_path(@item), class: "buttonsuser",id: "buttonsuserwidth"%><br></span>
+    <span><%= link_to 'Edit item', edit_item_path(@item), class: "buttonsuser" %><br></span>
+    <span><%= link_to t(".delete_link"), item_path(@item), method: :delete,:data => {:confirm => t(".confirm_delete")}, class: "buttonsuser" %></span>
     <strong>Link for companies: </strong>
     <%= link_to show_for_company_url(token: @item.token), show_for_company_url(token: @item.token) %><br>
 
     <span style="font-style:italic; ">Send to your Service company an automaticity generated web-link that connect to your service and asked them to confirm</span>
   </div>
-
 
 </div>
 <br>
@@ -48,18 +48,16 @@
         <%= service_field.text %><br>
 
     <% end %>
-      <%= link_to 'Confirm', confirm_service_path(service), method: :post, class: "buttonsuser",id: "buttonsuserwidth" unless service.is_confirmed? %>
-      <%= link_to 'Delete', service_path(service), method: :delete, class: "buttonsuser",id: "buttonsuserwidth" unless service.is_confirmed? %>
+      <%= link_to 'Confirm', confirm_service_path(service), method: :post, class: "buttonsuser" unless service.is_confirmed? %>
+      <%= link_to 'Delete', service_path(service), method: :delete, class: "buttonsuser" unless service.is_confirmed? %>
     </p>
       <span style="float: right; margin-right: 50%" ><strong><%= number_to_currency(service.price , unit: "€") %></strong></span><br><br><br><br>
 
 <% end %>
 
-
 <p >
   <br>
-<span><%= link_to 'Add Service', new_service_path(item_id: @item), class: "buttonsuser",id: "buttonsuserwidth"%></span>
-
-<span ><%= link_to 'Back to my panel', user_path(@item.user), class: "buttonsuser",id: "buttonsuserwidth"%></span>
+<span><%= link_to 'Add Service', new_service_path(item_id: @item), class: "buttonsuser" %></span>
+<span ><%= link_to 'Back to my panel', user_path(@item.user), class: "buttonsuser" %></span>
 </p>
 </div>

@@ -25,15 +25,16 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to @user, notice: t(".notice")
     else
       render :edit
     end
   end
 
   def destroy
+    sign_out @user
     @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+    redirect_to root_path, notice: t(".notice")
   end
 
   private
