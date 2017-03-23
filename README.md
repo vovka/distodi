@@ -1,0 +1,1 @@
+[ ![Codeship Status for distodi/distodi](https://app.codeship.com/projects/e37d2f30-f219-0134-2e3f-1a3c0b7fe89d/status?branch=master)](https://app.codeship.com/projects/209631)
