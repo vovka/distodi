@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "2.3.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -50,6 +51,12 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'pronto', git: "https://github.com/vovka/pronto.git", branch: "master"
+  gem 'pronto-rubocop', require: false
+  gem 'pronto-flay', require: false
+  gem 'pronto-rails_best_practices', require: false
+  gem 'pronto-rails_schema', require: false
+  gem 'pronto-scss', require: false
 end
 
 group :development do
@@ -61,4 +68,3 @@ group :development do
   gem 'rails-erd'
   gem "capistrano", "~> 3.6"
 end
-
