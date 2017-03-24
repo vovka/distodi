@@ -31,7 +31,7 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
-      redirect_to @company, notice: 'Company was successfully updated.'
+      redirect_to @company, notice: t(".notice")
     else
       render :edit
     end
@@ -39,7 +39,8 @@ class CompaniesController < ApplicationController
 
   def destroy
     @company.destroy
-    redirect_to companies_url, notice: 'Company was successfully destroyed.'
+    sign_out @company
+    redirect_to root_path, notice: t(".notice")
   end
 
   private

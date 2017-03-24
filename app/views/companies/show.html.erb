@@ -34,9 +34,9 @@
   <%= @company.postal_code %>
 </p>
 
-<%= link_to 'Edit', edit_company_path(@company) %> 
+<%= link_to t(".edit_link"), edit_company_path(@company) %>
 
-
+ <span><%= link_to t(".delete_link"), company_path(@company), method: :delete,:data => {:confirm => t(".confirm_delete")}, class: "buttonsuser" %></span>
 
 <% if @last_items.present?%>
       <h1><br>Last items</h1>
@@ -53,7 +53,7 @@
                 
         <% end %>
         <br> <br> <br><br></div>
-        <span><%= link_to "All items", items_company_path(@company), class: "buttonsuser",id: "buttonsuserwidth" %><br></span>
+        <span><%= link_to "All items", items_company_path(@company), class: "buttonsuser" %><br></span>
 
 <% else %>
       <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">
@@ -61,9 +61,6 @@
       
       </div>
 <% end %>
-
-
-
 
   <% if @last_services.present?%>
 <h1><br>Last services</h1>
@@ -80,7 +77,7 @@
 </div>
   <% end %>
   <br> <br> <br>
-  <span><%= link_to 'Show all services', services_company_path(@company), class: "buttonsuser",id: "buttonsuserwidth" %><br></span>
+  <span><%= link_to 'Show all services', services_company_path(@company), class: "buttonsuser" %><br></span>
 </div>
   <% else %>
       <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">
@@ -88,6 +85,4 @@
 
       </div>
   <% end %>
-
-
 </div>

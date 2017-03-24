@@ -45,18 +45,17 @@
   </p>
 
   <p>
-    <span><%= link_to "All items & service history "   "#{@unconfirmed_count > 0 ?  " ! ""(#{@unconfirmed_count})"" new" : ""}", items_user_path(@user), class: "buttonsuser",id: "buttonsuserwidth" %></span>
-  <span ><%= link_to 'Create Item', new_item_path, class: "buttonsuser" ,id: "buttonsuserwidth" %></span>
-    <span><%= link_to 'Edit your User profile', edit_user_path(@user), class: "buttonsuser" ,id: "buttonsuserwidth"%></span>
+    <span><%= link_to "All items & service history "   "#{@unconfirmed_count > 0 ? " ! ""(#{@unconfirmed_count})"" new" : ""}", items_user_path(@user), class: "buttonsuser" %></span>
+  <span ><%= link_to 'Create Item', new_item_path, class: "buttonsuser" %></span>
+    <span><%= link_to t(".update_link"), edit_user_path(@user),:data => {:confirm => t(".confirm_update")}, class: "buttonsuser" %></span>
+     <span><%= link_to t(".delete_link"), user_path(@user), method: :delete,:data => {:confirm => t(".confirm_delete")}, class: "buttonsuser" %></span>
   </p>
 </div>
-
-
 <% if @last_items.present?%>
       <h1><br>My last items</h1>
       <div>
         <% @last_items.each do |item| %>
-            <%= link_to item, class: "buttonsu1ser",id: "butto1nsuserwidth" do %>
+            <%= link_to item do %>
             <div class="show_tile" style="margin-bottom: 50px">
               <div class="thumbnail_grid" style="height: 120px; width: 120px; " >
                 <%= service_picture_show(item) %>
@@ -72,13 +71,9 @@
 <% else %>
       <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">
         <p>Here you will see service for each of your item. Please add your first item and track your service!</p>
-      <span ><%= link_to 'Create Item', new_item_path, class: "buttonsuser" ,id: "buttonsuserwidth" %></span>
+      <span ><%= link_to 'Create Item', new_item_path, class: "buttonsuser" %></span>
       </div>
 <% end %>
-
-
-
-
   <% if @last_services.present?%>
 <h1><br>Last services</h1>
 <div>
@@ -94,7 +89,7 @@
 </div>
   <% end %>
   <br> <br> <br>
-  <span><%= link_to 'Show all services', services_user_path(@user), class: "buttonsuser",id: "buttonsuserwidth" %><br></span>
+  <span><%= link_to 'Show all services', services_user_path(@user), class: "buttonsuser" %><br></span>
 </div>
   <% else %>
       <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">
@@ -102,7 +97,6 @@
 
       </div>
   <% end %>
-
 
   <% if @last_companies.present?%>
 <h1>Companies that did services</h1>
@@ -118,7 +112,7 @@
 </div>
   <% end %>
   <br> <br><br>
-  <span ><%= link_to 'Show all companies', companies_user_path(@user), class: "buttonsuser" ,id: "buttonsuserwidth"%></span>
+  <span ><%= link_to 'Show all companies', companies_user_path(@user), class: "buttonsuser" %></span>
   <% else %>
       <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">
         <p>Here you will see companies that have made services for you.</p>
