@@ -5,7 +5,6 @@ class Item < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
 
-
   mount_uploader :picture, PictureUploader
 
   scope :unconfirmed_services, -> { joins(:services).where("services.company_id IS NOT NULL AND services.confirmed IS NULL") }
@@ -23,3 +22,21 @@ class Item < ActiveRecord::Base
     self.update_attribute(:token, generate_token) if self.token.blank?
   end
 end
+
+# == Schema Information
+#
+# Table name: items
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  category_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :integer
+#  picture     :string
+#  token       :string
+#
+# Indexes
+#
+#  index_items_on_category_id  (category_id)
+#
