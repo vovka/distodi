@@ -22,28 +22,41 @@
 en:
   users:
     destroy:
-      notice: "User was successfully destroyed. "
+      notice: "User was successfully destroyed."
     update:
-      notice: "User was successfully updated. "
+      notice: "User was successfully updated."
     show:
       delete_link: "Delete user"
       update_link: "Update user"
-      confirm_delete: "Do you want delete your user profile? "
-      confirm_update: "Do you want update your user profile? "
+      confirm_delete: "Do you want delete your user profile?"
+      confirm_update: "Do you want update your user profile?"
   items:
     create:
-      notice: "Item was successfully created. "
+      notice: "Item was successfully created."
     destroy:
-      notice: "Item was successfully destroyed. "
+      notice: "Item was successfully destroyed."
     show:
-      delete_link: "Delete Item "
-      confirm_delete: "Do you want delete your item? "
+      delete_link: "Delete Item"
+      confirm_delete: "Do you really want to delete this service?"
   companies:
     destroy:
-      notice: "Company was successfully destroyed. "
+      notice: "Company was successfully destroyed."
     update:
-      notice: "Company profile was successfully updated. "
+      notice: "Company profile was successfully updated."
     show:
       delete_link: "Delete company"
-      confirm_delete: "Do you want delete your company profile? "
-      edit_link: "Update company "
+      confirm_delete: "Do you want delete your company profile?"
+      edit_link: "Update company"
+  services:
+    list:
+      confirm_delete: "Do you really want to delete this service?"
+      self_approver: "Self"
+      status:
+        pending: "Pending approval"
+        approved: "Approved"
+        declined: "Declined"
+    create:
+      unauthorized_success_notice: "You've successfully created a service."
+    approve:
+      success: "You have successfully approved service."
+      fail: "Sorry, failed to approve service."

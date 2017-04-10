@@ -36,53 +36,10 @@
 
 <%= link_to t(".edit_link"), edit_company_path(@company) %>
 
- <span><%= link_to t(".delete_link"), company_path(@company), method: :delete,:data => {:confirm => t(".confirm_delete")}, class: "buttonsuser" %></span>
+<span><%= link_to t(".delete_link"), company_path(@company), method: :delete,:data => {:confirm => t(".confirm_delete")}, class: "buttonsuser" %></span>
 
-<% if @last_items.present?%>
-      <h1><br>Last items</h1>
-      <div>
-        <% @last_items.each do |item| %>
-            
-            <div class="show_tile" style="margin-bottom: 50px">
-              <div class="thumbnail_grid" style="height: 120px; width: 120px; " >
-                <%= service_picture_show(item) %>
-              </div>
-              <strong><%=item.title%></strong>
-              <span><br><%= item.created_at.strftime("%F") %></span>
-            </div>
-                
-        <% end %>
-        <br> <br> <br><br></div>
-        <span><%= link_to "All items", items_company_path(@company), class: "buttonsuser" %><br></span>
+<h2>Assigned Services:</h2>
+<%= render "services/list", list: @company.assigned_services, current_user: current_company %>
 
-<% else %>
-      <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">
-        <p>Here you will see items that you have made services. Please get link of your first item and track your service!</p>
-      
-      </div>
-<% end %>
-
-  <% if @last_services.present?%>
-<h1><br>Last services</h1>
-<div>
-  <% @last_services.each do |service| %>
-    <div class="show_tile">
-      <div class="thumbnail_grid" style="height: 90px; width: 90px;" >
-        <%= service_picture_show(service) %>
-      </div>
-      <span><% service.action_kinds.each do |action_kind| %></span>
-          <%= "#{action_kind.title}" %>
-      <% end %>
-      <span><br><%= service.created_at.strftime("%F") %></span>
-</div>
-  <% end %>
-  <br> <br> <br>
-  <span><%= link_to 'Show all services', services_company_path(@company), class: "buttonsuser" %><br></span>
-</div>
-  <% else %>
-      <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">
-        <p>Here you will see last services for each of your item. Please get link of your first item and track your service!</p>
-
-      </div>
-  <% end %>
-</div>
+<h2>Performed Services:</h2>
+<%= render "services/list", list: @company.services, current_user: current_company %>

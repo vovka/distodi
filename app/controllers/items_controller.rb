@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
 
   def show_for_company
     @item = Item.find_by(token: params[:token])
+    authenticate!(@item)
   end
 
   def new
@@ -59,5 +60,13 @@ class ItemsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def item_params
     params.require(:item).permit(:title, :category_id, :picture, :token)
+  end
+
+  def authenticate!(item)
+    if user_signed_in? && item.present?
+      throw :warden, scope: :company if item.user != current_user
+    else
+      authenticate_company!
+    end
   end
 end

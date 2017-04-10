@@ -1,0 +1,68 @@
+<table>
+  <thead>
+    <th>Created at</th>
+    <th>Image</th>
+    <th>Kind(s) of service</th>
+    <th>What</th>
+    <th>Performer</th>
+    <th>Price</th>
+    <th>Status</th>
+    <th>Approver</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% list.each do |service| %>
+      <tr>
+        <td><%= t service.created_at.localtime.to_s(:db) %>&nbsp;<%= Time.zone %></td>
+        <td><%= service_picture_show(service) %></td>
+        <td>
+          <% service.action_kinds.each do |action_kind| %>
+            <%= "#{action_kind.title}" %>
+          <% end %>
+        </td>
+        <td>
+          <% service.service_fields.each do |service_field| %>
+            <%= service_field.service_kind.title %>
+            <%= service_field.text %>
+            <br/>
+          <% end %>
+        </td>
+        <td><%= service.company.try :name %></td>
+        <td>
+          <%= number_to_currency(service.price , unit: "€") %>
+        </td>
+        <td>
+          <%= content_tag :span,
+                          t(".status.#{service.status}"),
+                          title: service.declined?.presence && service.reason %>
+        </td>
+        <td><%= service.approver.try(:name) || t(".self_approver") %></td>
+        <td>
+          <%= if can?(:approve, service)
+                link_to 'Confirm',
+                        approve_service_path(service),
+                        method: :patch,
+                        class: "buttonsuser"
+              end %>
+
+          <% if can?(:decline, service) %>
+            <%= simple_form_for(service, url: decline_service_path(service), method: :patch) do |f| %>
+              <div class="field_decline_btn">Decline</div>
+              <div class="field_decline">
+                <%= f.submit "Decline", id:"buttonsuser"%>
+                <%= f.text_field :reason %>
+              </div>
+            <% end %>
+          <% end %>
+          <% if can?(:delete, service) %>
+            <%= link_to 'Delete',
+                        service_path(service),
+                        method: :delete,
+                        data: { confirm: t(".confirm_delete") },
+                        class: "buttonsuser" %>
+          <% end %>
+        </td> 
+      </tr>
+    <% end %>
+  </tbody>
+</table>

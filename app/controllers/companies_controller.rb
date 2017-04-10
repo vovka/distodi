@@ -3,18 +3,16 @@ class CompaniesController < ApplicationController
   before_action :authenticate_company!
 
   def show
-    @last_items = @company.services.map(&:item).uniq.last(3)
-    @last_services = @company.services.last(3)
-
   end
 
   def items
     @items = @company.services.map(&:item).uniq
-    
   end
 
   def services
-    @all_services = @company.services
+    @pending_services = @company.assigned_services.pending
+    @approved_services = @company.assigned_services.approved
+    @declined_services = @company.assigned_services.declined
   end
 
   def edit
