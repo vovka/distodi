@@ -21,9 +21,17 @@
 </div>
 <br>
 <div class="margin_left">
-  <h1>All services:</h1>
-  <% @item.services.each do |service| %>
 
+  <h1>All services:</h1>
+  <%
+    services = if user_signed_in?
+      @item.services
+    elsif company_signed_in?
+      @item.services.where('("services"."approver_type" = \'Company\' and "services"."approver_id"=?) or "services"."company_id"=?', current_company.id, current_company.id)
+    end
+  %>
+  <% services.each do |service| %>
+    <div class="service">
       <div style="width: 330px; float: left; height: 230px;">
         <p style="margin: 0 0 0 0"><strong><%= service.created_at %></strong></p>
         <div class="thumbnail_grid" id="information_margin">
@@ -43,13 +51,9 @@
         <% end %>
       </p>
       <span style="float: right; margin-right: 50%"><strong><%= number_to_currency(service.price, unit: "€") %></strong></span><br><br><br><br>
-
-
+    </div>
   <% end %>
-
-
   <p>
-    <br>
     <spanp><%= link_to 'Add Service', company_service_path(token: @item.token), class: "buttonsuser" %></spanp>
   </p>
 </div>

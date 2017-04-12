@@ -1,29 +1,32 @@
-class Company < ActiveRecord::Base
-  include CanStubs::Model
+require 'rails_helper'
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+RSpec.describe Company, type: :model do
+  describe "services" do
+    describe "#services" do
+      it "contains services created by the company" do
+        company = create :company
+        service = company.services.create!(attributes_for(:service))
+        create :service
 
-  URL_REGEXP = /\A(https?:\/\/)?(www\.)?[-a-zA-Z0-9._]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.,~#?!&\/=]*)\z/
+        expect(company.services).to eq([service])
+      end
+    end
 
-  has_many :services
-  has_many :assigned_services, foreign_key: :approver_id,
-                               class_name: "Service",
-                               as: :approver
-  has_many :service_kinds
+    describe "#assigned_services" do
+      it "contains serices assigned to the company" do
+        user = create :user
+        company = create :company
+        service = user.items.create!(attributes_for(:item))
+                      .services.create!(
+                        attributes_for(:service).merge(approver: company)
+                      )
+        user.items.create!(attributes_for(:item))
+            .services.create!(attributes_for(:service))
 
-  validates_presence_of :first_name, :last_name, :country, :city, :street
-  validates :phone, presence: true, length: {in: 6..20  }
-  validates :postal_code, presence: true, length: {is: 5}
-  validates :website, allow_blank: true, format: {with: self::URL_REGEXP}
-
-  mount_uploader :picture, PictureUploader
-
-  scope :user_companies, lambda { |user_id|
-    joins(services: { item: :user }).where(users: { id: user_id })
-  }
+        expect(company.assigned_services).to eq([service])
+      end
+    end
+  end
 end
 
 # == Schema Information

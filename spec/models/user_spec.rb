@@ -1,15 +1,30 @@
-FactoryGirl.define do
-  factory :user do
-    email { Faker::Internet.email }
-    password "password"
-    password_confirmation "password"
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
-    country { Faker::Address.country }
-    city { Faker::Address.city }
-    street { Faker::Address.street_name }
-    phone { Faker::PhoneNumber.subscriber_number(10) }
-    postal_code { Faker::Number.number(5) }
+require 'rails_helper'
+
+RSpec.describe User, type: :model do
+  describe "services" do
+    describe "#services" do
+      it "contains services created by the user" do
+        user = create :user
+        service = user.items.create!(attributes_for(:item))
+                      .services.create!(attributes_for(:service))
+        create :service
+
+        expect(user.services).to eq([service])
+      end
+    end
+
+    describe "#assigned_services" do
+      it "contains serices assigned to the user" do
+        user = create :user
+        company = create :company
+        service = company.services.create!(
+          attributes_for(:service).merge(approver: user)
+        )
+        company.services.create!(attributes_for(:service))
+
+        expect(user.assigned_services).to eq([service])
+      end
+    end
   end
 end
 

@@ -26,7 +26,82 @@
       </div>
 <% end %>
 
+<h1>pending </h1>
+
+<% @pending_services.each do |service| %>
+      <div class="servicelist">
+      <div style="width: 290px; height: 270px; float: left; margin-bottom: 20px">
+      <strong><br><%= service.created_at %></strong>
+    <div class="thumbnail_grid">
+      <%= service_picture_show(service) %>
+    </div>
+    </div>
+
+      <strong><br><% service.action_kinds.each do |action_kind| %>
+          <%= "#{action_kind.title}" %>
+      <% end %>
+      <br></strong>
+    <% service.service_fields.each do |service_field| %>
+            <%= service_field.service_kind.title %><br>
+         <%= service_field.text %>
+    <% end %>
+    <p style="color: orange;">Service is not approved</p>
+      <%= link_to 'Confirm',  class: "buttonsuser" %>
+      <%= link_to 'Delete',  class: "buttonsuser" %>
+    <strong style="margin-left: 40%"><%= number_to_currency(service.price , unit: "€") %></strong>
+      </div>
+<% end %>
+
+<h1>approved </h1>
+
+<% @approved_services.each do |service| %>
+      <div class="servicelist">
+      <div style="width: 290px; height: 270px; float: left; margin-bottom: 20px">
+      <strong><br><%= service.created_at %></strong>
+    <div class="thumbnail_grid">
+      <%= service_picture_show(service) %>
+    </div>
+    </div>
+
+      <strong><br><% service.action_kinds.each do |action_kind| %>
+          <%= "#{action_kind.title}" %>
+      <% end %>
+      <br></strong>
+    <% service.service_fields.each do |service_field| %>
+            <%= service_field.service_kind.title %><br>
+         <%= service_field.text %>
+    <% end %>
+    <p style="color: green;">Service is approved</p>
+      
+    <strong style="margin-left: 40%"><%= number_to_currency(service.price , unit: "€") %></strong>
+      </div>
+<% end %>
+
+<h1>declined </h1>
+
+<% @declined_services.each do |service| %>
+      <div class="servicelist">
+      <div style="width: 290px; height: 270px; float: left; margin-bottom: 20px">
+      <strong><br><%= service.created_at %></strong>
+    <div class="thumbnail_grid">
+      <%= service_picture_show(service) %>
+    </div>
+    </div>
+
+      <strong><br><% service.action_kinds.each do |action_kind| %>
+          <%= "#{action_kind.title}" %>
+      <% end %>
+      <br></strong>
+    <% service.service_fields.each do |service_field| %>
+            <%= service_field.service_kind.title %><br>
+         <%= service_field.text %>
+    <% end %>
+    <p style="color: red;">Service is declined</p>
+      
+    <strong style="margin-left: 40%"><%= number_to_currency(service.price , unit: "€") %></strong>
+      </div>
+<% end %>
+
   <div style="width: 100%">
   <%= link_to 'Back', @company,  class: "buttonsuser" %></div>
 </div>
-

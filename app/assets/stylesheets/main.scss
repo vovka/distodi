@@ -2897,7 +2897,25 @@ td.text-right {
 
 
 
-.buttonsuser{
+
+#buttonsuser{
+  height: 55px;
+  margin-bottom: 7px;
+  display: inline-block;
+  background: #662879;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0px;
+  font-weight: 800;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  padding: 5px 7px;
+  margin-top:4px;
+  font-size: 14px;
+  display: inline-block;
+}
+.buttonsuser {
 
   margin-bottom: 7px;
   display: inline-block;
@@ -2909,10 +2927,12 @@ td.text-right {
   outline: 0;
   border: 0;
   cursor: pointer;
-  font-size: 0.8em;
-  padding: 0.6em 1.5em;
+  padding: 5px 7px;
   margin-top:4px;
+  font-size: 14px;
+  display: inline-block;
 }
+
 
 .userinformation {
   margin-left: 25px;
@@ -2920,7 +2940,30 @@ td.text-right {
 #iteminformation { margin: 0 0 0 15px;
 
 }
+.field_decline_btn{
+  height: 55px;
+  margin-bottom: 7px;
+  display: inline-block;
+  background: #662879;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0px;
+  font-weight: 800;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  padding: 5px 7px;
+  margin-top:4px;
+  font-size: 14px;
+  display: inline-block;
+}
 
+.field_decline{
+	display: none;
+}
+.field_decline.active{
+	display: block;
+}
 
 #information_margin{
   margin: 0 0 0 0;
@@ -2981,8 +3024,6 @@ ul.topnav li.icon {display: none;}
     position: absolute;
     right: 0px;
     top: 0;
-
-    
   }
   ul.topnav.responsive li {
     float: none;

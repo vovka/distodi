@@ -16,7 +16,9 @@ class UsersController < ApplicationController
   end
 
   def services
-    @all_services = Service.user_services(@user.id)
+    @pending_services = current_user.services.pending
+    @declined_services = current_user.assigned_services.declined
+    @services_for_approval = current_user.assigned_services.pending
   end
 
   def companies

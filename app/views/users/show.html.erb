@@ -66,7 +66,7 @@
                 <% end %>
         <% end %>
         <br> <br> <br><br></div>
-        <span><%= link_to "All items #{@unconfirmed_count > 0 ? "(#{@unconfirmed_count})" : ""}", items_user_path(@user), class: "buttonsuser",id: "buttonsuserwidth" %><br></span>
+        <span><%= link_to "All items #{@unconfirmed_count > 0 ? "(#{@unconfirmed_count})" : ""}", items_user_path(@user), class: "buttonsuser"%><br></span>
 
 <% else %>
       <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">

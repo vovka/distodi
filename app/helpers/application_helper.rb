@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include CanStubs::View
+
   def logout_link
     if user_signed_in?
       link_to "Log out", destroy_user_session_path, method: :delete

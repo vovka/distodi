@@ -2,6 +2,8 @@
   <%= simple_form_for(@service) do |f| %>
       <%= f.error_notification %>
 
+      <%= hidden_field_tag :token, params[:token] %>
+
       <strong style="font-size: 26px">
 
         <% @action_kinds.each do |action_kind| %>
@@ -33,12 +35,19 @@
 
       <%= f.hidden_field :item_id %>
 
-      <%= f.hidden_field :company_id, value: current_company.id if current_company%>
+      <%= f.hidden_field :company_id, value: current_company.id if current_company %>
 
       <div class="field">
         <%= f.label 'Price' %><br>
         <%= f.text_field :price %>
       </div>
+
+      <% if user_signed_in? %>
+        <div class="field">
+          <%= f.label 'Company' %><br>
+          <%= f.collection_select :company_id, Company.all, :id, :name, prompt: true%>
+        </div>
+      <% end %>
 
       <div class="field">
         <%= f.label 'Picture' %><br>

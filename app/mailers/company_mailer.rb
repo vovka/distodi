@@ -5,4 +5,9 @@ class CompanyMailer < ApplicationMailer
     mail to: company.email,
          subject: 'Service confirmed!'
   end
+
+  def reminder_service_email(email)
+    mail to: email,
+         subject: 'Service remind!'
+  end
 end

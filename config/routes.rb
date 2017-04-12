@@ -41,9 +41,11 @@ Rails.application.routes.draw do
 
   resources :services do
     member do
-      post 'confirm', to: "services#confirm", as: 'confirm'
+      patch 'approve', as: "approve"
+      patch 'decline', as: "decline"
     end
   end
+
   resources :service_kinds
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

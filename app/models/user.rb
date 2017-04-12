@@ -1,15 +1,53 @@
 class User < ActiveRecord::Base
+  include CanStubs::Model
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :items
+  has_many :services, through: :items
+  has_many :assigned_services, foreign_key: :approver_id,
+                               class_name: "Service",
+                               as: :approver
 
   validates_presence_of :first_name, :last_name, :country, :city, :street
   validates :phone, presence: true, length: {in: 6..20  }
   validates :postal_code, presence: true, length: {is: 5}
 
   mount_uploader :picture, PictureUploader
-
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  first_name             :string
+#  last_name              :string
+#  phone                  :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default("0"), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  country                :string
+#  city                   :string
+#  street                 :string
+#  postal_code            :string
+#  notice                 :string
+#  picture                :string
+#
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#

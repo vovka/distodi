@@ -1,7 +1,14 @@
+class ItemNotSpecifiedException < StandardError
+end
+
+class NotAuthenticatedError < StandardError
+end
+
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :set_item, only: [:new]
-  before_action :authenticate_user!, except: [:company_service, :create]
+  before_action :authenticate_user!, except: [:company_service, :create,
+                                              :approve, :decline]
 
   # GET /services
   # GET /services.json
@@ -30,7 +37,20 @@ class ServicesController < ApplicationController
 
   # TODO Refactor
   def create
-    @service = Service.new(service_params)
+    item = if user_signed_in?
+             current_user.items.find_by_id(params[:service][:item_id])
+           elsif params[:token].present?
+             Item.find_by_token(params[:token])
+           end
+    approver = if user_signed_in?
+                 Company.where(id: service_params[:company_id]).first
+               elsif item.present?
+                 item.user
+               else
+                 raise ItemNotSpecifiedException
+               end
+
+    @service = Service.new(service_params.merge(approver: approver, item: item))
     service_kinds = params[:service_kind]
     service_fields = params[:service_fields]
     action_kinds = params[:action_kind].keys
@@ -38,19 +58,29 @@ class ServicesController < ApplicationController
     @service.transaction do
       @service.action_kinds = ActionKind.find(action_kinds)
       @service.save
-        service_kinds.each do |key, value|
-          service_kind = ServiceKind.find(key)
-          service_field = service_kind.service_fields.build(service: @service, text: service_fields ? service_fields[key] : '')
-          service_field.save
-        end
+      service_kinds.keys.each do |service_kind_id|
+        service_kind = ServiceKind.find(service_kind_id)
+        service_field = service_kind.service_fields.build(
+          service: @service,
+          text: service_fields ? service_fields[service_kind_id] : ''
+        )
+        service_field.save
+      end
 
-        UserMailer.add_service_email(@service.item.user).deliver! unless @service.company.nil?
-        
-        if user_signed_in?
-          redirect_to  user_path(current_user), notice: 'Service was successfully created.'
-          elsif company_signed_in?
-          redirect_to  company_path(current_company), notice: 'Service was successfully created.'
-        end
+      if @service.company.present?
+        UserMailer.add_service_email(@service.item.user).deliver_now!
+      end
+
+      if user_signed_in?
+        redirect_to user_path(current_user),
+                    notice: 'Service was successfully created.'
+      elsif company_signed_in?
+        redirect_to company_path(current_company),
+                    notice: 'Service was successfully created.'
+      else
+        flash[:notice] = t(".unauthorized_success_notice")
+        redirect_back :root
+      end
     end
   end
 
@@ -91,18 +121,52 @@ class ServicesController < ApplicationController
     redirect_to @service.item
   end
 
+  def approve
+    approval :approve
+  end
+
+  def decline
+    approval :decline
+  end
+
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_service
-    @service = Service.find(params[:id])
-  end
 
-  def set_item
-    @item = Item.find(params[:item_id])
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_service
+      @service = Service.find(params[:id])
+    end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def service_params
-    params.require(:service).permit(:item_id, :control_date, :company_id, :picture, :price)
-  end
+    def set_item
+      @item = Item.find(params[:item_id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white
+    # list through.
+    def service_params
+      if company_signed_in?
+        params.require(:service)
+              .merge(company_id: current_company.id)
+              .permit(:control_date, :picture, :price, :company_id)
+      elsif user_signed_in?
+        params.require(:service)
+              .permit(:control_date, :picture, :price, :company_id)
+      else
+        params.require(:service).permit(:control_date, :picture, :price)
+      end
+    end
+
+    def approval(action)
+      throw NoMethodError unless %i(approve decline).include?(action)
+      throw NotAuthenticatedError if current_user_or_company.blank?
+      service = current_user_or_company.assigned_services
+                                       .where(id: params[:id])
+                                       .first
+      reason = params.fetch(:service, {}).fetch(:reason, Faker::Lorem.sentence)
+      if service.try(:"#{action}!", reason)
+        flash[:notice] = t(".success")
+      else
+        flash[:error] = t(".fail")
+      end
+      redirect_back :root
+    end
 end

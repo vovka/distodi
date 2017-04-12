@@ -17,8 +17,8 @@
 
           <strong ><%= item.title %><br></strong>
           <%= link_to "Show this item #{item.services.unconfirmed.count > 0 ? "(#{item.services.unconfirmed.count})" : ""}", item, class: "buttonsuser",id: "buttonsuserwidth" %>
-      <span><%= link_to 'Add Service', new_service_path(item_id: item), class: "buttonsuser",id: "buttonsuserwidth"%></span>
-      <span><%= link_to 'Edit', edit_item_path(item), class: "buttonsuser",id: "buttonsuserwidth"%></span>
+      <span><%= link_to 'Add Service', new_service_path(item_id: item), class: "buttonsuser"%></span>
+      <span><%= link_to 'Edit', edit_item_path(item), class: "buttonsuser"%></span>
 
       <br><br><br><br><br>
 
