@@ -42,6 +42,7 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,7 +51,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'pronto', git: "https://github.com/vovka/pronto.git", branch: "master"
+  gem 'pronto', git: 'https://github.com/vovka/pronto.git', branch: 'master'
   gem 'pronto-rubocop', require: false
   gem 'pronto-flay', require: false
   gem 'pronto-rails_best_practices', require: false
@@ -72,6 +73,6 @@ group :development do
   gem 'spring'
   gem 'rails-erd'
   gem 'annotate'
-  gem "capistrano", "~> 3.6"
+  gem 'capistrano', '~> 3.6'
   gem 'mailcatcher'
 end

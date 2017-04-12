@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: :show_for_company
+  before_action :authenticate_user_or_company!, only: :show_for_company
 
   def index
   end
@@ -9,8 +10,8 @@ class ItemsController < ApplicationController
   end
 
   def show_for_company
-    @item = Item.find_by(token: params[:token])
-    authenticate!(@item)
+    @item = Item.find_by(token: params[:token]) || Item.new
+    authorize @item
   end
 
   def new
@@ -35,13 +36,20 @@ class ItemsController < ApplicationController
   end
 
   def edit
-
+    authorize @item
   end
 
   def update
+    authorize @item
+    if @item.update(item_params)
+      redirect_to @item
+    else
+      render :edit
+    end
   end
 
   def destroy
+    authorize @item
     @item.destroy
     redirect_to @item.user, notice: t(".notice")
   end
@@ -52,6 +60,7 @@ class ItemsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_item
     @item = Item.find(params[:id])
@@ -60,13 +69,5 @@ class ItemsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def item_params
     params.require(:item).permit(:title, :category_id, :picture, :token)
-  end
-
-  def authenticate!(item)
-    if user_signed_in? && item.present?
-      throw :warden, scope: :company if item.user != current_user
-    else
-      authenticate_company!
-    end
   end
 end

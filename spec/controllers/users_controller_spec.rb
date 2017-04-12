@@ -41,26 +41,6 @@ describe UsersController do
     end
   end
 
-  describe "GET #items" do
-    it "returns http success" do
-      user = create :user
-      sign_in user
-
-      get :items, id: user.to_param
-
-      expect(response).to have_http_status(:success)
-    end
-
-    it "defines an instance variable" do
-      user = create :user
-      sign_in user
-
-      get :items, id: user.to_param
-
-      expect(assigns(:user)).to be_present
-    end
-  end
-
   describe "GET #services" do
     it "returns http success" do
       user = create :user

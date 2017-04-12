@@ -1,40 +1,25 @@
-class ItemNotSpecifiedException < StandardError
-end
-
-class NotAuthenticatedError < StandardError
-end
-
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :set_item, only: [:new]
   before_action :authenticate_user!, except: [:company_service, :create,
                                               :approve, :decline]
-
-  # GET /services
-  # GET /services.json
-  def index
-    @services = Service.all
-  end
-
-  # GET /services/1
-  # GET /services/1.json
-  def show
-  end
+  before_action :authenticate_user_or_company!,
+                only: [:create, :approve, :decline]
 
   # GET /services/new
   def new
-    @service = Service.new(item: @item)
+    if @service.present?
+      @item ||= @service.item
+    else
+      @service ||= Service.new(item: @item)
+    end
+    authorize @service
     @service_kinds = @item.category.service_kinds
     @action_kinds = @item.category.action_kinds
   end
 
-  # GET /services/1/edit
-  def edit
-  end
-
   # POST /services
   # POST /services.json
-
   # TODO Refactor
   def create
     item = if user_signed_in?
@@ -55,18 +40,22 @@ class ServicesController < ApplicationController
     service_fields = params[:service_fields]
     action_kinds = params[:action_kind].keys
 
+    result = nil
     @service.transaction do
       @service.action_kinds = ActionKind.find(action_kinds)
-      @service.save
-      service_kinds.keys.each do |service_kind_id|
-        service_kind = ServiceKind.find(service_kind_id)
-        service_field = service_kind.service_fields.build(
-          service: @service,
-          text: service_fields ? service_fields[service_kind_id] : ''
-        )
-        service_field.save
+      result = if @service.save
+        service_kinds.keys.map do |service_kind_id|
+          service_kind = ServiceKind.find(service_kind_id)
+          service_field = service_kind.service_fields.build(
+            service: @service,
+            text: service_fields ? service_fields[service_kind_id] : ''
+          )
+          service_field.save
+        end.inject(:&)
       end
+    end
 
+    if result.present?
       if @service.company.present?
         UserMailer.add_service_email(@service.item.user).deliver_now!
       end
@@ -81,19 +70,34 @@ class ServicesController < ApplicationController
         flash[:notice] = t(".unauthorized_success_notice")
         redirect_back :root
       end
+    else
+      flash[:error] = t(".error")
+      new
+      render :new
     end
+  end
+
+  # GET /services/1/edit
+  def edit
+    @service = Service.find(params[:id])
+    authorize @service
+    @service_kinds = @service.item.category.service_kinds
+    @action_kinds = @service.item.category.action_kinds
   end
 
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
+    authorize @service
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
+        format.html { redirect_to @service.item, notice: t(".notice") }
         format.json { render :show, status: :ok, location: @service }
       else
         format.html { render :edit }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @service.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -101,9 +105,10 @@ class ServicesController < ApplicationController
   # DELETE /services/1
   # DELETE /services/1.json
   def destroy
+    authorize @service
     @service.destroy
     respond_to do |format|
-      format.html { redirect_to @service.item, notice: 'Service was successfully destroyed.' }
+      format.html { redirect_to @service.item, notice: t(".notice") }
       format.json { head :no_content }
     end
   end
@@ -113,12 +118,6 @@ class ServicesController < ApplicationController
     @service = Service.new(item: item)
     @service_kinds = item.category.service_kinds
     @action_kinds = item.category.action_kinds
-  end
-
-  def confirm
-    @service.toggle!(:confirmed)
-    CompanyMailer.service_confirmed_email(@service.company).deliver!
-    redirect_to @service.item
   end
 
   def approve
@@ -161,7 +160,7 @@ class ServicesController < ApplicationController
       service = current_user_or_company.assigned_services
                                        .where(id: params[:id])
                                        .first
-      reason = params.fetch(:service, {}).fetch(:reason, Faker::Lorem.sentence)
+      reason = params.fetch(:service, {}).fetch(:reason, "")
       if service.try(:"#{action}!", reason)
         flash[:notice] = t(".success")
       else
