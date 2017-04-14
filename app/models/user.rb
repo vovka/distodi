@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
                                class_name: "Service",
                                as: :approver
 
-  validates_presence_of :first_name, :last_name, :country, :city, :street
-  validates :phone, presence: true, length: {in: 6..20  }
-  validates :postal_code, presence: true, length: {is: 5}
+  validates_presence_of :first_name
+  validates :phone, presence: true, length: { in: 6..20 }, allow_blank: true
+  validates :postal_code, presence: true, length: { is: 5 }, allow_blank: true
 
   mount_uploader :picture, PictureUploader
 end

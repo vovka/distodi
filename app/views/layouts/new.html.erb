@@ -1,62 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <%= stylesheet_link_tag    'new', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'new', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <%= favicon_link_tag 'favicon.ico' %>
-  <!-- <link rel="stylesheet" type="text/css" href="css/media.css">
-  <link rel="stylesheet" type="text/css" href="css/fonts.css">
-  <link rel="stylesheet" type="text/css" href="libs/owl_carusel/owl.carousel.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css"> -->
-</head>
-<body>
-<div class="header">
-  <div class="logo">
-    <%= image_tag "logo.png" %>
-  </div>
-  <div class="menu">
-    <ul>
-      <li>NEWS</li>
-      <li>QUESTIONS AND ANSWERS</li>
-      <li>ENGLISH</li>
-      <li>SIGN IN</li>
-    </ul>
-  </div>
-</div>
+	<head>
+		<title>distodi</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<%= stylesheet_link_tag    'new', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'new', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+		<%= favicon_link_tag 'favicon.ico' %>
+	</head>
+	<body class="main_page">
+	<div class="header main_page">
+		<div class="logo">
+			<%= link_to image_tag('logo.png', alt: 'distodi.logo'), home_path %>
+		</div>
+		<div class="logo_mobile">
+			<%= image_tag "logo_mobile.png" %>
+		</div>
+		<div class="menu">
+			<ul>
+				<li>NEWS</li>
+				<li>QUESTIONS AND ANSWERS</li>
+				<li>ENGLISH</li>
+				<li><%= link_to('SIGN IN', new_user_session_path) if current_user.nil? && current_company.nil? %></li>
+			</ul>
+		</div>
+		<div class="btn_menu">
+			<div class="btn_line"></div>
+			<div class="btn_line"></div>
+			<div class="btn_line"></div>
+		</div>
+		<div class="menu_mobile">
+			<%= image_tag "logo_menu.png" %>
+			<ul>
+				<li>NEWS</li>
+				<li>QUESTIONS AND ANSWERS</li>
+				<li>ENGLISH</li>
+				<li><%= link_to('SIGN IN', new_user_session_path) if current_user.nil? && current_company.nil? %></li>
+			</ul>
+			<div class="button">
+				Create Free Service Book
+			</div>
+			<div class="telephone_contact">
+				8 (800) 400-40-40
+			</div>
+		</div>
+	</div>
 
-<div class="content">
-  <div class="info">
-    Distodi. Your personal confidence
-  </div>
-  <div class="slider">
-    <div class="container">
-    <p>Select your vehicle</p>
-      <div id="owl-example" class="owl-carousel">
-        <div class="items"><%= image_tag "slide.png" %></div>
-        <div class="items"><%= image_tag "slide.png" %></div>
-        <div class="items"><%= image_tag "slide.png" %></div>
-        <div class="items"><%= image_tag "slide.png" %></div>
-        <div class="items"><%= image_tag "slide.png" %></div>
-        <div class="items"><%= image_tag "slide.png" %></div>
-        <div class="items"><%= image_tag "slide.png" %></div>
-        <div class="items"><%= image_tag "slide.png" %></div>
-      </div>
-      <div class="button">
-        Create Free Service Book
-      </div>
-    </div>
-  </div>
+	<%= yield %>
 
-  
-  
-<!-- </div>
-  <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="libs/owl_carusel/owl.carousel.js"></script>
-  <script type="text/javascript" src="mixitup/mixitup.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-</body> -->
+	<footer>
+		<div class="footer">
+			<ul>
+				<li>News</li>
+				<li>•</li>
+				<li>About Distodi</li>
+				<li>•</li>
+				<li>Questions and Answers</li>
+				<li>•</li>
+				<li>Careers</li>
+				<li>•</li>
+				<li>Contacts</li>
+			</ul>
+			<div class="contacts">
+				© 2017, Distodi
+			</div>
+			<div class="contacts">
+				8 (800) 400-40-40
+			</div>
+			<div class="contacts">
+				support@distodi.com
+			</div>
+			<div class="contacts">
+				Privacy and Terms
+			</div>
+
+			<div class="contacts_mobile">© 2017, Distodi, support@distodi.com</div>
+			<div class="telephone_mobile">8 (800) 400-40-40</div>
+			<!-- <hr> --><div class="social_net">
+			<%= image_tag "insta.png" %>
+			<%= image_tag "you.png" %>
+			<%= image_tag "twit.png" %>
+			<%= image_tag "facebook.png" %>
+			</div>
+		</div>
+
+	</footer>
+	</body>
 </html>

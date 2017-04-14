@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   get 'static_pages/tutorialcar', as: 'tutorialcar'
   get 'static_pages/tutorialbike', as: 'tutorialbike'
 
-  devise_for :companies, controllers: { registrations: 'companies/registrations' }
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :companies, controllers: { registrations: 'companies/registrations', sessions: 'companies/sessions' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 
   resources :users do
     member do

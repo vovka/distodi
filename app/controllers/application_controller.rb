@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_lead
+  before_action :set_layout, only: :home
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def set_lead
@@ -40,5 +41,14 @@ class ApplicationController < ActionController::Base
 
     def not_found
       raise ActionController::RoutingError, "Not Found"
+    end
+
+    def set_layout
+      layout = if params.include?(:new)
+        "new"
+      else
+        "application"
+      end
+      self.class.layout(layout)
     end
 end

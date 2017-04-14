@@ -1,6 +1,3 @@
-/**
- * Created by dchopey on 18.09.16.
- */
 function myFunction() {
     $('.field_decline_btn').click(
         function(event){
@@ -9,7 +6,3 @@ function myFunction() {
         }
     )
 }
-
-$( document ).ready(function() {
-    myFunction();
-});

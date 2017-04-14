@@ -14,9 +14,9 @@ class Company < ActiveRecord::Base
                                as: :approver
   has_many :service_kinds
 
-  validates_presence_of :first_name, :last_name, :country, :city, :street
-  validates :phone, presence: true, length: {in: 6..20  }
-  validates :postal_code, presence: true, length: {is: 5}
+  validates_presence_of :first_name
+  validates :phone, presence: true, length: { in: 6..20 }, allow_blank: true
+  validates :postal_code, presence: true, length: { is: 5 }, allow_blank: true
   validates :website, allow_blank: true, format: {with: self::URL_REGEXP}
 
   mount_uploader :picture, PictureUploader
