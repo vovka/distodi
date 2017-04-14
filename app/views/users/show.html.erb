@@ -45,10 +45,10 @@
   </p>
 
   <p>
-    <span><%= link_to "All items & service history "   "#{@unconfirmed_count > 0 ? " ! ""(#{@unconfirmed_count})"" new" : ""}", items_user_path(@user), class: "buttonsuser" %></span>
-  <span ><%= link_to 'Create Item', new_item_path, class: "buttonsuser" %></span>
+    <span><%= link_to "All items & service history "   "#{@unconfirmed_count > 0 ? " ! ""(#{@unconfirmed_count})"" new" : ""}", items_path, class: "buttonsuser" %></span>
+    <span><%= link_to 'Create Item', new_item_path, class: "buttonsuser" %></span>
     <span><%= link_to t(".update_link"), edit_user_path(@user),:data => {:confirm => t(".confirm_update")}, class: "buttonsuser" %></span>
-     <span><%= link_to t(".delete_link"), user_path(@user), method: :delete,:data => {:confirm => t(".confirm_delete")}, class: "buttonsuser" %></span>
+    <span><%= link_to t(".delete_link"), user_path(@user), method: :delete,:data => {:confirm => t(".confirm_delete")}, class: "buttonsuser" %></span>
   </p>
 </div>
 <% if @last_items.present?%>
@@ -66,7 +66,7 @@
                 <% end %>
         <% end %>
         <br> <br> <br><br></div>
-        <span><%= link_to "All items #{@unconfirmed_count > 0 ? "(#{@unconfirmed_count})" : ""}", items_user_path(@user), class: "buttonsuser"%><br></span>
+        <span><%= link_to "All items #{@unconfirmed_count > 0 ? "(#{@unconfirmed_count})" : ""}", items_path, class: "buttonsuser"%><br></span>
 
 <% else %>
       <div style="background-color: #D8D8D8; padding:0 20px 20px 20px; max-width: 300px">

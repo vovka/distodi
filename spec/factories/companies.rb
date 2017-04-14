@@ -3,10 +3,10 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password "password"
     password_confirmation "password"
-    name { Faker::Name.name }
+    name { Faker::Company.name }
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
-    website "spice.com"
+    website { Faker::Internet.domain_name }
     country { Faker::Address.country }
     city { Faker::Address.city }
     street { Faker::Address.street_name }

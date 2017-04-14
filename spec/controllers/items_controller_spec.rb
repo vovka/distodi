@@ -1,0 +1,320 @@
+describe ItemsController do
+  render_views
+
+  def valid_attributes(category = nil)
+    {
+      title: Faker::Lorem.word,
+      category_id: category.try(:id),
+      # picture: Faker::LoremPixel.image
+    }.reject { |_, v| v.nil? }
+  end
+
+  describe "GET #index" do
+    context "unauthenticated" do
+      specify "can not access the page" do
+        get :index
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context "user" do
+      specify "can access the page" do
+        user = create :user
+        sign_in user
+
+        get :index
+
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context "company" do
+      specify "" do
+        company = create :company
+        sign_in company
+
+        get :index
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  describe "GET show" do
+    it "returns http success" do
+      user = create :user
+      sign_in user
+
+      get :index
+
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #show_for_company" do
+    it "does not allow to view for not signed in users" do
+      item = create :item
+
+      get :show_for_company, token: item.token
+
+      expect(response).to redirect_to(new_company_session_path)
+    end
+
+    it "allows to view for item creator" do
+      user = create :user
+      item = create :item, user: user
+      sign_in user
+
+      get :show_for_company, token: item.token
+
+      expect(response).to have_http_status(:success)
+    end
+
+    it "does not allow to view for not item creator" do
+      user = create :user
+      item = create :item, user: create(:user)
+      sign_in user
+
+      expect do
+        get :show_for_company, token: item.token
+      end.to raise_error(ActionController::RoutingError)
+    end
+
+    it "asks for company sign in if token does not exist" do
+      user = create :user
+      sign_in user
+
+      get :show_for_company, token: "some_not_existent_token"
+
+      expect(response).to redirect_to(new_company_session_path)
+    end
+  end
+
+  describe "GET #new" do
+    context "unauthenticated" do
+      specify "can not access the page" do
+        get :new
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context "user" do
+      specify "can access the page" do
+        user = create :user
+        sign_in user
+
+        get :new
+
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context "company" do
+      specify "" do
+        company = create :company
+        sign_in company
+
+        get :new
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  describe "POST #create" do
+    context "unauthenticated" do
+      specify "can not access the page" do
+        post :create, item: valid_attributes(create(:category))
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+
+      specify "can not create an item" do
+        expect do
+          post :create, item: valid_attributes(create(:category))
+        end.to_not change { Item.count }
+      end
+    end
+
+    context "user" do
+      specify "can access the page" do
+        user = create :user
+        sign_in user
+
+        post :create, item: valid_attributes(create(:category))
+
+        expect(response).to redirect_to(Item.last)
+      end
+    end
+
+    context "company" do
+      specify "can not access the page" do
+        company = create :company
+        sign_in company
+
+        post :create, item: valid_attributes(create(:category))
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+
+      specify "can not create an item" do
+        company = create :company
+        sign_in company
+
+        expect do
+          post :create, item: valid_attributes(create(:category))
+        end.to_not change { Item.count }
+      end
+    end
+  end
+
+  describe "GET #edit" do
+    context "unauthenticated" do
+      specify "can not access the page" do
+        item = create :item
+
+        get :edit, id: item.to_param
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context "user" do
+      specify "can edit own item" do
+        user = create :user
+        item = user.items.create attributes_for(:item)
+        sign_in user
+
+        get :edit, id: item.to_param
+
+        expect(response).to be_success
+      end
+
+      specify "can not edit others item" do
+        user = create :user
+        item = create :item, user: create(:user)
+        sign_in user
+
+        expect do
+          get :edit, id: item.to_param
+        end.to raise_error(ActionController::RoutingError)
+      end
+    end
+
+    context "company" do
+      specify "can not access the page" do
+        company = create :company
+        item = create :item
+        sign_in company
+
+        get :edit, id: item.to_param
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  describe "PATCH #update" do
+    context "unauthenticated" do
+      specify "can not access the page" do
+        item = create :item
+
+        patch :update, id: item.to_param, item: valid_attributes
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context "user" do
+      specify "can edit own item" do
+        user = create :user
+        item = user.items.create attributes_for(:item)
+        sign_in user
+
+        patch :update, id: item.to_param, item: valid_attributes
+
+        expect(response).to redirect_to(item)
+      end
+
+      specify "can not edit others item" do
+        user = create :user
+        item = create :item, user: create(:user)
+        sign_in user
+
+        expect do
+          patch :update, id: item.to_param, item: valid_attributes
+        end.to raise_error(ActionController::RoutingError)
+      end
+    end
+
+    context "company" do
+      specify "can not access the page" do
+        company = create :company
+        item = create :item
+        sign_in company
+
+        patch :update, id: item.to_param, item: valid_attributes
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  describe "DELETE #destroy" do
+    context "unauthenticated" do
+      specify "can not access the page" do
+        item = create :item
+
+        delete :destroy, id: item.to_param
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context "user" do
+      specify "can delete own item" do
+        user = create :user
+        sign_in user
+        item = create :item, user: user
+
+        delete :destroy, id: item.to_param
+
+        expect(response).to redirect_to(item.user)
+      end
+
+      it "decrements items count" do
+        user = create :user
+        sign_in user
+        item = create :item, user: user
+
+        expect do
+          delete :destroy, id: item.to_param
+        end.to change { Item.count }.by(-1)
+      end
+
+      specify "can not edit others item" do
+        user = create :user
+        item = create :item, user: create(:user)
+        sign_in user
+
+        expect do
+          delete :destroy, id: item.to_param
+        end.to raise_error(ActionController::RoutingError)
+      end
+    end
+
+    context "company" do
+      specify "can not delete items" do
+        company = create :company
+        item = create :item
+        sign_in company
+
+        delete :destroy, id: item.to_param
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+end

@@ -44,6 +44,10 @@ class Service < ActiveRecord::Base
     STATUS_DECLINED == status
   end
 
+  def approved?
+    STATUS_APPROVED == status
+  end
+
   def approver?(user)
     approver == user
   end

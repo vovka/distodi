@@ -12,9 +12,6 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def items
-  end
-
   def services
     @pending_services = current_user.services.pending
     @declined_services = current_user.assigned_services.declined

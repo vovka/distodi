@@ -57,6 +57,11 @@ en:
         declined: "Declined"
     create:
       unauthorized_success_notice: "You've successfully created a service."
+      notice: "Sorry, failed to create a service."
     approve:
       success: "You have successfully approved service."
       fail: "Sorry, failed to approve service."
+    update:
+      notice: "Service was successfully updated."
+    destroy:
+      notice: "Service was successfully destroyed."

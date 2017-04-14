@@ -1,23 +1,27 @@
+class ItemNotSpecifiedException < StandardError
+end
+
+class NotAuthenticatedError < StandardError
+end
+
 class ApplicationController < ActionController::Base
+  include Pundit
+
+  devise_group :user_or_company, contains: [:company, :user]
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   before_action :set_lead
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def set_lead
     @lead = Lead.new
   end
 
-  def after_sign_in_path_for(_ = nil)
-    if user_signed_in?
-      current_user
-    elsif company_signed_in?
-      current_company
-    end
+  def after_sign_in_path_for(resource)
+    resource
   end
-
-  alias_method :current_user_or_company, :after_sign_in_path_for
 
   private
 
@@ -28,5 +32,13 @@ class ApplicationController < ActionController::Base
       else
         redirect_to default
       end
+    end
+
+    def user_not_authorized
+      not_found
+    end
+
+    def not_found
+      raise ActionController::RoutingError, "Not Found"
     end
 end
