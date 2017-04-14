@@ -27,9 +27,9 @@ module ApplicationHelper
 
   def service_picture_show(service)
     if service.picture_url
-      image_tag(service.picture_url, alt: service.id, class: 'image_service')
+      image_tag(service.picture.mini.url, class: 'image_service')
     else
-      image_tag('empty_image.png', alt: 'No image', width: 128, class: 'image_user')
+      image_tag('mini_empty_image.png', alt: 'No image', class: 'image_user')
     end
   end
 end

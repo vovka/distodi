@@ -28,6 +28,7 @@ gem 'font-awesome-rails'
 
 gem 'carrierwave', '~> 0.11.2'
 gem 'cloudinary'
+gem 'mini_magick'
 
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 
