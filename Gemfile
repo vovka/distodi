@@ -74,5 +74,7 @@ group :development do
   gem 'rails-erd'
   gem 'annotate'
   gem 'capistrano', '~> 3.6'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-rails', '~> 1.2'
   gem 'mailcatcher'
 end

@@ -2,7 +2,7 @@
 lock '3.6.1'
 
 set :application, 'distodi'
-set :repo_url, 'git@bitbucket.org:leodizi/distodi.git'
+set :repo_url, 'git@bitbucket.org:distodi/distodi.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
