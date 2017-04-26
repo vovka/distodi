@@ -14,6 +14,9 @@ class Service < ActiveRecord::Base
   belongs_to :company
   belongs_to :approver, polymorphic: true
 
+  delegate :category, to: :item, allow_nil: true
+  include IdCodeable
+
   scope :pending, -> { where(status: "pending") }
   scope :approved, -> { where(status: "approved") }
   scope :declined, -> { where(status: "declined") }
@@ -74,4 +77,5 @@ end
 #  approver_id   :integer
 #  approver_type :string
 #  reason        :string(1023)
+#  id_code       :string
 #

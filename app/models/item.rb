@@ -4,12 +4,17 @@ class Item < ActiveRecord::Base
   has_many :services
   belongs_to :category
   belongs_to :user
+  belongs_to :author, foreign_key: :user_id, class_name: "User"
+
+  include IdCodeable
 
   mount_uploader :picture, PictureUploader
 
   scope :unconfirmed_services, -> { joins(:services).where("services.company_id IS NOT NULL AND services.confirmed IS NULL") }
 
   after_create :ensure_token
+
+  private
 
   def generate_token
     loop do
@@ -35,6 +40,7 @@ end
 #  user_id     :integer
 #  picture     :string
 #  token       :string
+#  id_code     :string
 #
 # Indexes
 #
