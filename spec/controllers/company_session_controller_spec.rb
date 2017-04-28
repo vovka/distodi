@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe Devise::SessionsController do
-	describe "POST create" do
+describe Companies::SessionsController do
+  describe "POST create" do
     it "redirects company to company page" do
       @request.env["devise.mapping"] = Devise.mappings[:company]
       company = create :company, password: "11111111",

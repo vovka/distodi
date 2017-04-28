@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Devise::SessionsController do
+describe Users::SessionsController do
 	describe "POST create" do
     it "redirects user to user page" do
       @request.env["devise.mapping"] = Devise.mappings[:user]
