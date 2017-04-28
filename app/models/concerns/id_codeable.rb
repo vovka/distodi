@@ -36,7 +36,9 @@ class BaseIdCodeDecorator
   end
 
   def can_generate_id_code?
-    record.id_code.blank? && record.user.present? && record.category.present?
+    record.id_code.blank? && record.user.present? &&
+    # record.user.first_name.present? && record.user.last_name.present? &&
+    record.category.present?
   end
 
   def serial_number_id_code
@@ -47,7 +49,7 @@ class BaseIdCodeDecorator
 
   def country_id_code
     country = ISO3166::Country.find_country_by_name(record.user.country)
-    country.try(:number)
+    country.try(:number) || "???"
   end
 
   def category_id_code
@@ -70,7 +72,7 @@ class ItemIdCodeDecorator < BaseIdCodeDecorator
   end
 
   def user_id_code
-    record.user.first_name.first + record.user.last_name.first
+    "#{record.user.first_name.try(:first) || "?"}#{record.user.last_name.try(:first) || "?"}"
   end
 end
 
