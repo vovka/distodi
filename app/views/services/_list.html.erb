@@ -1,5 +1,6 @@
 <table>
   <thead>
+    <th>ID code</th>
     <th>Created at</th>
     <th>Image</th>
     <th>Kind(s) of service</th>
@@ -13,6 +14,7 @@
   <tbody>
     <% list.each do |service| %>
       <tr>
+        <td><%= service.id_code %></td>
         <td><%= t service.created_at.localtime.to_s(:db) %>&nbsp;<%= Time.zone %></td>
         <td><%= service_picture_show(service) %></td>
         <td>

@@ -18,6 +18,7 @@
   <% end %>
 
   <div class="margin_left" style="padding-top: 40px; max-width: 350px;">
+    <h3>ID code: <%= @item.id_code %></h3>
     <span><%= link_to 'Edit item', edit_item_path(@item), class: "buttonsuser" %><br/></span>
     <span><%= link_to t(".delete_link"), item_path(@item),
                       method: :delete,

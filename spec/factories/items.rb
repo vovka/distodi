@@ -20,6 +20,7 @@ end
 #  user_id     :integer
 #  picture     :string
 #  token       :string
+#  id_code     :string
 #
 # Indexes
 #
