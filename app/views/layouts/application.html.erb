@@ -1,151 +1,113 @@
 <!DOCTYPE HTML>
 <!--
-	Verti by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+Verti by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>distodi</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-        <%= csrf_meta_tags %>
-        <%= favicon_link_tag 'favicon.ico' %>
-
-	</head>
-	<body class="homepage">
-		<p class="notice"><%= notice %></p>
-
-		<div id="page-wrapper">
-
-			<!-- Header -->
-				<div id="header-wrapper">
-					<header id="header" class="container" >
-
-
-
-
-
-						<!-- Logo -->
-							<div id="logo" class="marginmobile" style="width: 30%">
-								<%= link_to image_tag('Logo.png', alt: 'distodi.logo', class: 'logomain'), home_path %>
-							</div>
-
-						<!-- Nav -->
-
-
-
-            <div class="menunew" style="width: 70%; float:right;">
-              <ul class="topnav" id="myTopnav">
-                <li class="showmobile"><a class="active" >Menu</a></li>
-                <li><%= link_to('Login as user', new_user_session_path) if current_user.nil? && current_company.nil? %></li>
-                <li><%= link_to('Login as company', new_company_session_path) if current_user.nil? && current_company.nil? %></li>
-                <li><%= logout_link %></li>
-
-                <li><%= link_to "My items", items_path if user_signed_in? %></li>
-                <li><%= my_panel %></a></li>
-
-
-                <li class="icon">
-                  <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
-                </li>
+  <head>
+    <title>distodi</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
+  </head>
+  <body class="homepage">
+    <p class="notice"><%= notice %></p>
+    <div id="page-wrapper">
+      <!-- Header -->
+      <div id="header-wrapper">
+        <header id="header" class="container" >
+          <!-- Logo -->
+          <div id="logo" class="marginmobile" style="width: 30%">
+            <%= link_to image_tag('Logo.png', alt: 'distodi.logo', class: 'logomain'), home_path %>
+          </div>
+          <!-- Nav -->
+          <div class="menunew" style="width: 70%; float:right;">
+            <ul class="topnav" id="myTopnav">
+              <li class="showmobile"><a class="active" >Menu</a></li>
+              <li><%= link_to('Login as user', new_user_session_path) if current_user.nil? && current_company.nil? %></li>
+              <li><%= link_to('Login as company', new_company_session_path) if current_user.nil? && current_company.nil? %></li>
+              <li><%= logout_link %></li>
+              <li><%= link_to "My items", items_path if user_signed_in? %></li>
+              <li><%= my_panel %></a></li>
+              <li class="icon">
+                <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+              </li>
+            </ul>
+          </div>
+        </header>
+      </div>
+      <%= yield %>
+      <!-- Footer -->
+      <div id="footer-wrapper">
+        <footer id="footer" class="container">
+          <div class="row">
+            <div class="3u 6u(medium) 12u$(small)">
+              <!-- Links -->
+              <section class="widget links">
+                <h3>How to use:</h3>
+                <span class="style2" style="color: #0090c5">
+                  <%= link_to 'Manual for car', tutorialcar_path %><br>
+                  <%= link_to 'Manual for bicycle', tutorialbike_path %>
+                </span>
+              </section>
+            </div>
+            <div class="3u 6u$(medium) 12u$(small)">
+              <!-- Links -->
+              <section class="widget links">
+                <h3>Sing up options:</h3>
+                <span style="color: #0090c5;"><%= link_to "Sign up as user", new_user_registration_path,id: "buttonsuserwidth"  %><br>
+                <%= link_to "Sign up as company", new_company_registration_path %></span>
+              </section>
+            </div>
+            <div class="3u 6u(medium) 12u$(small)">
+              <!-- Links -->
+              <section class="widget links">
+                <%= simple_form_for(@lead) do |f| %>
+                <%= f.error_notification %>
+                <div class="field">
+                  <h3> Email<br></h3>
+                  <%= f.text_field :email %>
+                </div>
+                <div class="form-actions">
+                  <%= f.submit "Subscribe" %>
+                </div>
+                <% end %>
+              </section>
+            </div>
+            <div class="3u 6u$(medium) 12u$(small)">
+              <!-- Contact -->
+              <section class="widget contact last">
+                <h3>Contact Us</h3>
+                <ul>
+                  <li><a href="https://www.facebook.com/maropen.technology/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                  <li><a href="https://www.instagram.com/maropen.open.doors/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                </ul>
+                <p>MAROPEN open doors s.r.o.<br>
+                Czech Republic</p>
+              <a style="color: #0090c5;;" href="http://maropen.com">maropen.com</a >
+            </section>
+          </div>
+        </div>
+        <div class="row">
+          <div class="12u">
+            <div id="copyright">
+              <ul class="menu">
+                <li>&copy; MAROPEN open doors s.r.o. | Czech Republic</a></li>
               </ul>
             </div>
-
-
-
-
-
-					</header>
-				</div>
-
-				<%= yield %>
-
-			<!-- Footer -->
-				<div id="footer-wrapper">
-					<footer id="footer" class="container">
-						<div class="row">
-							<div class="3u 6u(medium) 12u$(small)">
-
-								<!-- Links -->
-									<section class="widget links">
-										<h3>How to use:</h3>
-                    <span class="style2" style="color: #0090c5">
-											<%= link_to 'Manual for car', tutorialcar_path %><br>
-                      <%= link_to 'Manual for bicycle', tutorialbike_path %>
-										</span>
-									</section>
-
-							</div>
-							<div class="3u 6u$(medium) 12u$(small)">
-
-								<!-- Links -->
-									<section class="widget links">
-										<h3>Sing up options:</h3>
-
-											<span style="color: #0090c5;"><%= link_to "Sign up as user", new_user_registration_path,id: "buttonsuserwidth"  %><br>
-                    <%= link_to "Sign up as company", new_company_registration_path %></span>
-
-									</section>
-
-							</div>
-							<div class="3u 6u(medium) 12u$(small)">
-
-								<!-- Links -->
-									<section class="widget links">
-                    <%= simple_form_for(@lead) do |f| %>
-                        <%= f.error_notification %>
-                    <div class="field">
-                      <h3> Email<br></h3>
-                      <%= f.text_field :email %>
-                    </div>
-                    <div class="form-actions">
-                      <%= f.submit "Subscribe" %>
-                    </div>
-                    <% end %>
-
-									</section>
-
-							</div>
-							<div class="3u 6u$(medium) 12u$(small)">
-
-								<!-- Contact -->
-									<section class="widget contact last">
-										<h3>Contact Us</h3>
-										<ul>
-
-											<li><a href="https://www.facebook.com/maropen.technology/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-											<li><a href="https://www.instagram.com/maropen.open.doors/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-
-										</ul>
-										<p>MAROPEN open doors s.r.o.<br>
-
-
-
-                      Czech Republic</p>
-                    <a style="color: #0090c5;;" href="http://maropen.com">maropen.com</a >
-									</section>
-
-							</div>
-						</div>
-						<div class="row">
-							<div class="12u">
-								<div id="copyright">
-									<ul class="menu">
-										<li>&copy; MAROPEN open doors s.r.o. | Czech Republic</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</footer>
-				</div>
-      <!— BEGIN JIVOSITE CODE {literal} —>
-      <script type='text/javascript'>
-          (function(){ var widget_id = 'DhIsjz86vW';var d=document;var w=window;function l(){
-              var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
-      <!— {/literal} END JIVOSITE CODE —>
-			</div>
-	</body>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!— BEGIN JIVOSITE CODE {literal} —>
+    <script type='text/javascript'>
+    (function(){ var widget_id = 'DhIsjz86vW';var d=document;var w=window;function l(){
+    var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+    <!— {/literal} END JIVOSITE CODE —>
+  </div>
+</body>
 </html>

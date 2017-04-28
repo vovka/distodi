@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>distodi</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%= stylesheet_link_tag    'new', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'new', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
+  </head>
+  <body>
+    <div class="sign_in_content">
+      <div class="left_form">
+        <div class="logo_green">
+          <%= link_to image_tag('logo_green.png', alt: 'distodi.logo'), home_path %>
+          <div class="exit">
+            <%= link_to image_tag('cross.png', alt: 'distodi.logo'), home_path %>
+          </div>
+        </div>
+        <div class="welcome_text">
+          <%= t ".welcome.1.#{controller_name}" %>
+        </div>
+        <div class="welcome_text_small">
+          <%= t ".welcome.2.#{controller_name}" %>
+        </div>
+        <div class="signup_form">
+          <div class="wrapper">
+            <div class="tabs">
+              <div class="tab user<%= " active" if resource.is_a? User %>">
+                <%= link_to("Client", send(:"new_user_#{controller_name.singularize}_path")) %>
+              </div>
+              <div class="tab<%= " active" if resource.is_a? Company %>">
+                <%= link_to("Company", send(:"new_company_#{controller_name.singularize}_path")) %>
+              </div>
+            </div>
+            <div class="tabs_content">
+              <div class="tab_item">
+                <div class="user_form">
+                  <%= yield %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="signup_info">
+            <%= t(".agreement.#{controller_name}").html_safe %>
+          </div>
+          <div class="signup_info">
+            <%= t(".already_have_account.#{controller_name}").html_safe %>
+          </div>
+        </div>
+      </div>
+      <div class="right_image">
+        <%= image_tag t(".right_image.#{controller_name}") %>
+      </div>
+    </div>
+  </body>
+</html>
