@@ -1,9 +1,3 @@
-<div class="item_info">
-  <span>All services</span>
-</div>
-<div class="service_panel">
-   <a href="#"><%= image_tag "aye.png" %> View </a> <a href="#"> <%= image_tag "delete.png" %> Delete</a> <a href="#"><%= image_tag "send.png" %> Send</a>
-</div>
 <table class="list_items">
   <thead>
     <th><div class="select">
@@ -18,13 +12,11 @@
     <th></th>
   </thead>
   <tbody>
-    <% current_user.services.each do |service| %>
+    <% list.each do |service| %>
       <tr>
-        <td>
-          <div class="select">
+        <td><div class="select">
             <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>
-          </div>
-        </td>
+          </div></td>
         <td>
           <% service.service_fields.each do |service_field| %>
             <%= service_field.service_kind.title %>
@@ -35,8 +27,6 @@
          <% service.action_kinds.each do |action_kind| %>
           <div class="icon_service">
             <%= image_tag "prepare.png" %>
-            <%= image_tag "replace.png" %>
-            <%= image_tag "tun.png" %>
           </div>
            <%= "#{action_kind.title}" %>
          <% end %>
@@ -53,7 +43,7 @@
   </tbody>
 </table>
 <div class="list_items_mobile">
-  <% current_user.services.each do |service| %>
+  <% list.each do |service| %>
     <div class="service_mobile">
           <div class="select">
             <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>

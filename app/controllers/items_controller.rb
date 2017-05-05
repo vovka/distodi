@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
                                   :receive]
   before_action :authenticate_user!, except: :show_for_company
   before_action :authenticate_user_or_company!, only: :show_for_company
+  layout 'item'
 
   def index
   end

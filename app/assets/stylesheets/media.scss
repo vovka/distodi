@@ -1,8 +1,62 @@
 /*==========  Desktop First Method  ==========*/
 
 /* Large Devices, Wide Screens */
-@media only screen and (max-width : 1200px) {
+@media only screen and (max-width : 1610px) {
+	.slider_mobile_items .owl-item img{
+		width: 135px;
+		height: 101.25px;
+	}
+	.all_items{
+		width: 135px;
+		height: 101.25px;
+	}
+	.all_items span{
+		line-height: 101.25px;
+		font-size:18px;
+	}
+	.all_items p{
+		font-size:26px;
+		line-height: 101.25px;
+	}
+}
 
+@media only screen and (max-width : 1450px) {
+	.slider_mobile_items .owl-item img{
+		width: 121.5px;
+		height: 91.125px;
+	}
+	.all_items{
+		width: 121.5px;
+		height: 91.125px;
+	}
+	.all_items span{
+		line-height: 91.125px;
+		font-size:16px;
+	}
+	.all_items p{
+		font-size:24px;
+		line-height: 91.125px;
+	}
+}
+
+
+@media only screen and (max-width : 1300px) {
+	.slider_mobile_items .owl-item img{
+		width: 100px;
+		height: 75px;
+	}
+	.all_items{
+		width: 100px;
+		height: 75px;
+	}
+	.all_items span{
+		line-height: 75px;
+		font-size:16px;
+	}
+	.all_items p{
+		font-size:24px;
+		line-height: 75px;
+	}
 }
 
 /* Medium Devices, Desktops */
@@ -101,9 +155,59 @@
 	.menu_mobile{
 		display: inline-block
 	}
-	.owl-item .items img{
+	/*.owl-item .items img{
 	margin-left: -40%;
-}
+	}*/
+	.owl-item .items{
+		text-align: center;
+	}
+	.slider .owl-item .items img{
+		width: 275px;
+		margin-left: -33%;
+	}
+	tbody tr{
+		border:0px solid rgba(211,211,211,0.50);
+	}
+	tr th{
+		display: none;
+	}
+	.right_panel{
+		display: none;
+	}
+	.items_list{
+		margin-top: 0;
+	}
+	.btn_menu.black{
+		margin-left: 80%;
+	}
+	.item_logo img{
+		padding-top: 8px;
+	}
+	.item_info{
+		width: 100%;
+	}
+	.list_items{
+		display: none;
+	}
+	.list_items_mobile{
+	display: inline-block;
+	}
+	.items_list{
+		display: none;
+	}
+	.slider_mobile_items{
+		display: inline;
+	}
+	.slider_mobile_items .owl-item .items img {
+		margin-left: 0px;
+  }
+   .slider_mobile_items .owl-item .items{
+		width: 100px;
+		margin: 0;
+	}
+	.large-12.columns{
+		margin-top: 0px;
+	}
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {
@@ -111,7 +215,9 @@
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {
-
+	.btn_menu.black{
+		margin-left: 65%;
+	}
 
 }
 
@@ -124,13 +230,39 @@
 	.right_image{
 		display: none;
 	}
+	.btn_menu.black{
+		margin-left: 46%;
+	}
+	.add_service{
+		width: 85%;
+		margin: 0 7.5%;
+	}
+	.service_panel{
+		width: 85%;
+		margin: 0 7.5%;
+	}
+	.service_panel img{
+	height: 15px;
+	margin: 0 4px -3px 8px;
+}
+.service_panel img:nth-child(1){
+	margin-left: 0;
+}
+}
 
-
+@media only screen and (max-width : 340px) {
+	.slider .owl-item .items img{
+		width: 255px;
+		margin-left: -38%;
+	}
 }
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 320px) {
-
+	.slider .owl-item .items img{
+		width: 230px;
+		margin-left: -45%;
+	}
 }
 
 /*==========  Mobile First Method  ==========*/
