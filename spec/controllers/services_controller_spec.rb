@@ -231,7 +231,7 @@ RSpec.describe ServicesController, type: :controller do
 
     context "logged in company" do
       specify "can create service (from the permalink page)" do
-        item = create :item, :with_user
+        item = create :item
         company = create :company
         sign_in company
 
@@ -242,7 +242,7 @@ RSpec.describe ServicesController, type: :controller do
       end
 
       specify "can not set any company" do
-        item = create :item, :with_user
+        item = create :item
         company = create :company
         other_company = create :company
         sign_in company
@@ -256,7 +256,7 @@ RSpec.describe ServicesController, type: :controller do
       end
 
       specify "by default sets self as a company" do
-        item = create :item, :with_user
+        item = create :item
         company = create :company
         sign_in company
 
@@ -267,7 +267,7 @@ RSpec.describe ServicesController, type: :controller do
       end
 
       specify "sets item by default using token value" do
-        item = create :item, :with_user
+        item = create :item
         company = create :company
         sign_in company
 
@@ -313,13 +313,13 @@ RSpec.describe ServicesController, type: :controller do
         item = create :item
         sign_in user
 
-        post :create, valid_params.merge({
-          service: attributes_for(:service).merge({
-            item_id: item.id
+        expect do
+          post :create, valid_params.merge({
+            service: attributes_for(:service).merge({
+              item_id: item.id
+            })
           })
-        })
-
-        expect(Service.last.item).to_not eq(item)
+        end.to raise_error(ActionController::RoutingError)
       end
     end
   end

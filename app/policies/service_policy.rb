@@ -28,7 +28,7 @@ class ServicePolicy < ApplicationPolicy
   private
 
   def author?
-    record.item.user == user
+    record.item.present? && record.item.user == user
   end
 
   def self_approved?

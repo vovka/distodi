@@ -127,17 +127,17 @@ describe UsersController do
       sign_in user
 
       delete :destroy, id: user.to_param
-      
+
       expect(assigns(:user)).to be_present
     end
-        
+
     it "should increment the count" do
       user = create :user
       sign_in user
 
       expect {
         delete :destroy, id: user.to_param
-      }.to change { User.count }.from(1).to(0)
+      }.to change { User.count }.by(-1)
     end
   end
 end

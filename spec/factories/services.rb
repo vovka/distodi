@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :service do
     price { Faker::Commerce.price }
+    item { create :item }
+    action_kinds { build_list :action_kind, 1 }
   end
 end
 

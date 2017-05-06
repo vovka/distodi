@@ -1,10 +1,12 @@
 FactoryGirl.define do
   factory :item do
     title "car"
-
-    trait :with_user do
-      user
+    characteristics do
+      year_attribute = build :attribute_kind, title: "Year"
+      create_list :characteristic, 1, { attribute_kind: year_attribute, value: "1986" }
     end
+    user { build :user }
+    category { build :category }
   end
 end
 

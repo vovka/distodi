@@ -4,7 +4,6 @@ class Item < ActiveRecord::Base
   has_many :services
   belongs_to :category
   belongs_to :user
-  belongs_to :author, foreign_key: :user_id, class_name: "User"
 
   include IdCodeable
 

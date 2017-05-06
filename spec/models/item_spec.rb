@@ -18,16 +18,16 @@ describe Item do
       john_doe = create :user, first_name: "John",
                                last_name: "Doe",
                                country: country
-      category = create :category, id: 1
+      category = create :category, id: 111_111
       year_attribute = create :attribute_kind, title: "Year"
       release_year = create :characteristic, attribute_kind: year_attribute,
                                              value: "1986"
 
-      item = create :item, id: 401_712, author: john_doe,
+      item = create :item, id: 401_712, user: john_doe,
                                         category: category,
                                         characteristics: [release_year]
 
-      expect(item.id_code).to match(/D616-JD-0001-1986-WWGM/)
+      expect(item.id_code).to eq("D616-JD-111111-1986-WWGM")
     end
 
     it "generates unique ID with create year" do
@@ -35,13 +35,102 @@ describe Item do
       john_doe = create :user, first_name: "John",
                                last_name: "Doe",
                                country: country
-      category = create :category, id: 1
+      category = create :category, id: 111_111
 
       item = travel_to(Time.new(2015, 2)) do
-        create :item, id: 401_712, author: john_doe, category: category
+        create :item, id: 401_712, user: john_doe, category: category, characteristics: []
       end
 
-      expect(item.id_code).to match(/D616-JD-0001-2015-WWGM/)
+      expect(item.id_code).to eq("D616-JD-111111-2015-WWGM")
+    end
+
+    describe "validations" do
+      def build_item_without(*rejected_keys)
+        user_attributes = {}
+        user_attributes[:first_name] = if rejected_keys.include?(:first_name)
+          nil
+        else
+          "John"
+        end
+        user_attributes[:last_name] = if rejected_keys.include?(:last_name)
+          nil
+        else
+          "Doe"
+        end
+        user_attributes[:country] = if rejected_keys.include?(:country)
+          nil
+        else
+          Country["Pl"].name
+        end
+        john_doe = if rejected_keys.include?(:user)
+          nil
+        else
+          build :user, user_attributes
+        end
+        category = if rejected_keys.include?(:category)
+          nil
+        else
+          build :category, id: 1
+        end
+        release_year = if rejected_keys.include?(:year)
+          nil
+        else
+          year_attribute = build :attribute_kind, title: "Year"
+          build :characteristic, attribute_kind: year_attribute,
+                                                 value: "1986"
+        end
+
+        item = build :item, id: 401_712, user: john_doe,
+                                         category: category,
+                                         characteristics: [release_year].compact
+      end
+
+      def build_valid_item
+        build_item_without()
+      end
+
+      it "is invalid without first_name" do
+        item = build_item_without :first_name
+
+        expect(item).to be_invalid
+      end
+
+      it "is invalid without last_name" do
+        item = build_item_without :last_name
+
+        expect(item).to be_invalid
+      end
+
+      it "is invalid without country" do
+        item = build_item_without :country
+
+        expect(item).to be_invalid
+      end
+
+      it "is invalid without user" do
+        item = build_item_without :user
+
+        expect(item).to be_invalid
+      end
+
+      it "is invalid without category" do
+        item = build_item_without :category
+
+        expect(item).to be_invalid
+      end
+
+      it "is invalid with imagine country" do
+        item = build_valid_item
+        item.user.country = "Kingdom of Amber"
+
+        expect(item).to be_invalid
+      end
+
+      it "is valid without year" do
+        item = build_item_without :year
+
+        expect(item).to be_valid
+      end
     end
   end
 end
