@@ -27,6 +27,14 @@ class ItemPolicy
     author?
   end
 
+  def transfer?
+    author?
+  end
+
+  def receive?
+    user.transferring_items.include? item
+  end
+
   private
 
   def author?

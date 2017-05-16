@@ -38,6 +38,18 @@ en:
     show:
       delete_link: "Delete Item"
       confirm_delete: "Do you really want to delete this service?"
+    transfer_form:
+      user_identifier_to_transfer_item: "User email to transfer the item."
+      confirm_transfer: "Are you sure you want to transfer the item to another user?"
+      transfer_submit: "Transfer"
+    index:
+      transferred_items: "Items that are transferred to me."
+      my_items: "My Items"
+      show_this_item: "Show this item %s"
+      add_service: "Add Service"
+      edit: "Edit"
+      create_item: "Create Item"
+      back_to_my_panel: "Back to my panel"
   companies:
     destroy:
       notice: "Company was successfully destroyed."

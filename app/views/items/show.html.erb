@@ -24,6 +24,9 @@
                       method: :delete,
                       data: { confirm: t(".confirm_delete") },
                       class: "buttonsuser" %></span>
+    <span>
+      <%= render "transfer_form", item: @item %>
+    </span>
     <strong>Link for companies: </strong>
     <%= link_to show_for_company_url(token: @item.token), show_for_company_url(token: @item.token) %><br/>
 

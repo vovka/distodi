@@ -1,0 +1,5 @@
+<%= form_for item, url: transfer_item_path(item), method: "POST" do |f| %>
+  <%= text_field_tag "user_identifier" %>
+  <%= label_tag "user_identifier", t(".user_identifier_to_transfer_item") %>
+  <%= f.submit t(".transfer_submit"), data: { confirm: t(".confirm_transfer") } %>
+<% end %>

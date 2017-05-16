@@ -317,4 +317,85 @@ describe ItemsController do
       end
     end
   end
+
+  describe "POST transfer" do
+    specify "author can transfer item to another user" do
+      user = create :user
+      item = create :item, user: user
+      another_user = create :user
+      sign_in user
+
+      post :transfer, id: item.to_param, user_identifier: another_user.email
+
+      expect(item.reload.transferring_to).to eq(another_user)
+    end
+
+    specify "not author can not transfer item" do
+      user = create :user
+      item = create :item, user: user
+      another_user = create :user
+      sign_in create(:user)
+
+      expect do
+        post :transfer, id: item.to_param, user_identifier: another_user.email
+      end.to raise_error(ActionController::RoutingError)
+    end
+
+    it "sends email to recipient" do
+      user = create :user
+      item = create :item, user: user
+      another_user = create :user
+      sign_in user
+
+      post :transfer, id: item.to_param, user_identifier: another_user.email
+
+      expect(ActionMailer::Base.deliveries.last.to[0]).to eq(another_user.email)
+    end
+
+    it "redirects to item" do
+      user = create :user
+      item = create :item, user: user
+      another_user = create :user
+      sign_in user
+
+      post :transfer, id: item.to_param, user_identifier: another_user.email
+
+      expect(response).to redirect_to(item)
+    end
+  end
+
+  describe "POST receive" do
+    specify "recipient can receive transferred item" do
+      user = create :user
+      recipient = create :user
+      item = create :item, user: user, transferring_to: recipient
+      sign_in recipient
+
+      post :receive, id: item.to_param
+
+      expect(item.reload.user).to eq(recipient)
+    end
+
+    specify "not recipient can not receive item" do
+      user = create :user
+      recipient = create :user
+      item = create :item, user: user, transferring_to: recipient
+      sign_in create(:user)
+
+      expect do
+        post :receive, id: item.to_param
+      end.to raise_error(ActionController::RoutingError)
+    end
+
+    it "redirects to items" do
+      user = create :user
+      recipient = create :user
+      item = create :item, user: user, transferring_to: recipient
+      sign_in recipient
+
+      post :receive, id: item.to_param
+
+      expect(response).to redirect_to(items_path)
+    end
+  end
 end

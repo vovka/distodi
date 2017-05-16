@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :transfer,
+                                  :receive]
   before_action :authenticate_user!, except: :show_for_company
   before_action :authenticate_user_or_company!, only: :show_for_company
 
@@ -57,6 +58,18 @@ class ItemsController < ApplicationController
   def get_attributes
     category = Category.find(params[:category_id])
     @attributes = category.attribute_kinds
+  end
+
+  def transfer
+    authorize @item
+    TransferService.new(@item, params[:user_identifier], current_user).perform
+    redirect_to @item
+  end
+
+  def receive
+    authorize @item
+    @item.update user: current_user, transferring_to: nil
+    redirect_to action: :index
   end
 
   private

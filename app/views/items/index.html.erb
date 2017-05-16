@@ -1,32 +1,27 @@
 <div class="margin_left">
+  <p id="notice"><%= notice %></p>
 
-<p id="notice"><%= notice %></p>
+  <% if current_user.transferring_items.any? %>
+    <h2><%= t ".transferred_items" %></h2>
+    <% current_user.transferring_items.each do |item| %>
+      <div style="width: 300px; float: left; margin: 11px 0 0 0">
+        <%= image_tag(item.picture_url, alt: item.title, width: 250) %>
+      </div>
+      <strong ><%= item.title %><br></strong>
+      <%= link_to t(".receive_item"), receive_item_path(item), method: "POST" %>
+    <% end %>
+  <% end %>
 
-<h1>My Items</h1>
-
-
-
-
-
-
-
-    <% current_user.items.each do |item| %>
-
-        <div style="width: 300px; float: left; margin: 11px 0 0 0"><%= image_tag(item.picture_url, alt: item.title, width: 250) %>
-        </div>
-
-          <strong ><%= item.title %><br></strong>
-          <%= link_to "Show this item #{item.services.unconfirmed.count > 0 ? "(#{item.services.unconfirmed.count})" : ""}", item, class: "buttonsuser",id: "buttonsuserwidth" %>
-      <span><%= link_to 'Add Service', new_service_path(item_id: item), class: "buttonsuser"%></span>
-      <span><%= link_to 'Edit', edit_item_path(item), class: "buttonsuser"%></span>
-
-      <br><br><br><br><br>
-
-             <% end %>
-
-
-
-
-<p><%= link_to 'Create Item', new_item_path %></p>
-<p><%= link_to 'Back to my panel', user_path(current_user) %></p>
+  <h2><%= t ".my_items" %></h2>
+  <% current_user.items.each do |item| %>
+    <div style="width: 300px; float: left; margin: 11px 0 0 0">
+      <%= image_tag(item.picture_url, alt: item.title, width: 250) %>
+    </div>
+    <strong ><%= item.title %><br></strong>
+    <%= link_to t(".show_this_item") % (item.services.unconfirmed.count > 0 ? "(#{item.services.unconfirmed.count})" : ""), item, class: "buttonsuser",id: "buttonsuserwidth" %>
+    <span><%= link_to t(".add_service"), new_service_path(item_id: item), class: "buttonsuser"%></span>
+    <span><%= link_to t(".edit"), edit_item_path(item), class: "buttonsuser"%></span>
+  <% end %>
+  <p><%= link_to t(".create_item"), new_item_path %></p>
+  <p><%= link_to t(".back_to_my_panel"), user_path(current_user) %></p>
 </div>

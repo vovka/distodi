@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :items
+  has_many :transferring_items, class_name: "Item",
+                                foreign_key: :transferring_to_id
   has_many :services, through: :items
   has_many :assigned_services, foreign_key: :approver_id,
                                class_name: "Service",
@@ -17,6 +19,10 @@ class User < ActiveRecord::Base
   validates :postal_code, presence: true, length: { is: 5 }, allow_blank: true
 
   mount_uploader :picture, PictureUploader
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
 
 # == Schema Information
