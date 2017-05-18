@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     collection do
       get 'get_attributes', to: "items#get_attributes"
     end
+    member do
+      post "transfer"
+      post "receive"
+    end
   end
 
   resources :services do

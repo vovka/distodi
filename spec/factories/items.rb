@@ -14,15 +14,16 @@ end
 #
 # Table name: items
 #
-#  id          :integer          not null, primary key
-#  title       :string
-#  category_id :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :integer
-#  picture     :string
-#  token       :string
-#  id_code     :string
+#  id                 :integer          not null, primary key
+#  title              :string
+#  category_id        :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  user_id            :integer
+#  picture            :string
+#  token              :string
+#  id_code            :string
+#  transferring_to_id :integer
 #
 # Indexes
 #

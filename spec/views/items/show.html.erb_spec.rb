@@ -57,6 +57,10 @@ RSpec.describe "items/show", type: :view do
       specify "sees delete for services" do
         expect(rendered).to have_tag("td > a", text: "Delete")
       end
+
+      specify "transfer items field is present" do
+        expect(rendered).to have_tag("input[name='user_identifier']")
+      end
     end
   end
 end

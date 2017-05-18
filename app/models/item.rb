@@ -4,6 +4,8 @@ class Item < ActiveRecord::Base
   has_many :services
   belongs_to :category
   belongs_to :user
+  belongs_to :transferring_to, class_name: "User",
+                               foreign_key: :transferring_to_id
 
   include IdCodeable
 
@@ -31,15 +33,16 @@ end
 #
 # Table name: items
 #
-#  id          :integer          not null, primary key
-#  title       :string
-#  category_id :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :integer
-#  picture     :string
-#  token       :string
-#  id_code     :string
+#  id                 :integer          not null, primary key
+#  title              :string
+#  category_id        :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  user_id            :integer
+#  picture            :string
+#  token              :string
+#  id_code            :string
+#  transferring_to_id :integer
 #
 # Indexes
 #
