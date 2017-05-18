@@ -41,4 +41,8 @@ class ApplicationController < ActionController::Base
     def not_found
       raise ActionController::RoutingError, "Not Found"
     end
+
+    def pundit_user
+      current_user || current_company
+    end
 end

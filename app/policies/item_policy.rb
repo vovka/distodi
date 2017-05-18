@@ -9,7 +9,7 @@ class ItemPolicy
 
   def show_for_company?
     if item.token.present?
-      author?
+      user.is_a?(Company) || author?
     else
       throw :warden, scope: :company
     end
