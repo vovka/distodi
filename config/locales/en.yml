@@ -83,3 +83,13 @@ en:
       right_image:
         sessions: "dyadya.jpg"
         registrations: "sign_in_img.png"
+
+  errors:
+    messages:
+      user_must_be_present: "User must be present."
+      country_must_be_present: "Please, set your country at profile edit page."
+      country_must_be_real: "Please, set a real country at profile edit page."
+      category_must_be_present: "Please, select a category."
+      first_name_must_be_present: "Please, set you first name at profile edit page."
+      last_name_must_be_present: "Please, set you last name at profile edit page."
+      at_least_one_action_kind_must_be_present: "Please, select at least one action."

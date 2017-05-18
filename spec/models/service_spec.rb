@@ -54,10 +54,7 @@ RSpec.describe Service, type: :model do
     include ActiveSupport::Testing::TimeHelpers
 
     it "calls the method after create" do
-      service = build :service, item: build(:item, user: create(:user),
-                                                   category: build(:category)),
-                                action_kinds: create_list(:action_kind, 1,
-                                                          abbreviation: "XYZ")
+      service = build :service
       allow(service).to receive(:ensure_id_code)
 
       service.save
@@ -70,12 +67,12 @@ RSpec.describe Service, type: :model do
       john_doe = create :user, first_name: "John",
                                last_name: "Doe",
                                country: country
-      category = create :category, id: 1
+      category = create :category, id: 111_111
       year_attribute = create :attribute_kind, title: "Year"
       release_year = create :characteristic, attribute_kind: year_attribute,
                                              value: "1986"
 
-      item = create :item, author: john_doe,
+      item = create :item, user: john_doe,
                            category: category,
                            characteristics: [release_year]
 
@@ -85,7 +82,7 @@ RSpec.describe Service, type: :model do
                                                         abbreviation: "XYZ")
       end
 
-      expect(service.id_code).to match(/XYZ616-0001-250417-WWGM/)
+      expect(service.id_code).to match("XYZ616-111111-250417-WWGM")
     end
 
     it "generates unique ID with create year" do
@@ -93,8 +90,8 @@ RSpec.describe Service, type: :model do
       john_doe = create :user, first_name: "John",
                                last_name: "Doe",
                                country: country
-      category = create :category, id: 1
-      item = create :item, author: john_doe, category: category
+      category = create :category, id: 111_111
+      item = create :item, user: john_doe, category: category
 
       service = travel_to(Time.new(2017, 4, 25, 12, 0)) do
         item.services.create! id: 401_712,
@@ -102,7 +99,33 @@ RSpec.describe Service, type: :model do
                                                         abbreviation: "XYZ")
       end
 
-      expect(service.id_code).to match(/XYZ616-0001-250417-WWGM/)
+      expect(service.id_code).to match("XYZ616-111111-250417-WWGM")
+    end
+
+    describe "validations" do
+      def build_service_without(*rejected_keys)
+        user_attributes = {}
+        user_attributes[:first_name] = "John"
+        user_attributes[:last_name] = "Doe"
+        user_attributes[:country] = Country["Pl"].name
+        john_doe = build :user, user_attributes
+        category = build :category, id: 111_111
+        item = create :item, user: john_doe, category: category
+
+        action_kinds = if rejected_keys.include?(:action_kind)
+          []
+        else
+          build_list(:action_kind, 1, abbreviation: "XYZ")
+        end
+
+        item.services.build id: 401_712, action_kinds: action_kinds.compact
+      end
+
+      it "is invalid without action kinds" do
+        service = build_service_without :action_kind
+
+        expect(service).to be_invalid
+      end
     end
   end
 end
