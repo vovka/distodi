@@ -30,7 +30,11 @@ class ServicesController < ApplicationController
              Item.find_by_token(params[:token])
            end
     approver = if user_signed_in?
-                 Company.where(id: service_params[:company_id]).first
+                 if params[:new_company].present?
+                   Company.invite!(:email => params[:new_company])
+                 else
+                   Company.where(id: service_params[:company_id]).first
+                 end
                elsif item.present?
                  item.user
                else

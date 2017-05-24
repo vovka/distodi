@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     member do
       get :items
       get :services
+      get :activate
     end
   end
 

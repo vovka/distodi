@@ -28,7 +28,7 @@ describe CompaniesController do
 
       expect(assigns(:company)).to be_present
     end
-    
+
      it "should increment the count" do
       company = create :company
       sign_in company
