@@ -27,7 +27,6 @@ RSpec.describe Company, type: :model do
       end
 
       it "change active for true" do
-        user = create :user
         company = create :company
 
         company.accept_invitation!

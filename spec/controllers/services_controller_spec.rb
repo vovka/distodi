@@ -315,27 +315,26 @@ RSpec.describe ServicesController, type: :controller do
         sign_in user
 
         expect do
-          post :create, valid_params.merge({
-              new_company: email,
-            service: attributes_for(:service).merge({
+          post :create, valid_params.merge(
+            new_company: email,
+            service: attributes_for(:service).merge(
               item_id: item.id
-            })
-          })
+            )
+          )
         end.to change { Company.count }.by(1)
       end
 
       specify "dont create company without :new_company" do
         user = create :user
         item = user.items.create!(attributes_for(:item))
-        email = 'example@mail.ru'
         sign_in user
 
         expect do
-          post :create, valid_params.merge({
-            service: attributes_for(:service).merge({
-              item_id: item.id
-            })
-          })
+          post :create, valid_params.merge(
+            service: attributes_for(:service).merge(
+              tem_id: item.id
+            )
+          )
         end.to change { Company.count }.by(0)
       end
 
@@ -347,12 +346,12 @@ RSpec.describe ServicesController, type: :controller do
         sign_in user
 
         expect do
-          post :create, valid_params.merge({
-              new_company: email,
-            service: attributes_for(:service).merge({
+          post :create, valid_params.merge(
+            new_company: email,
+            service: attributes_for(:service).merge(
               item_id: item.id
-            })
-          })
+            )
+          )
         end.to change { Company.count }.by(0)
       end
 
