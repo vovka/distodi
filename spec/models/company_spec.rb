@@ -25,6 +25,14 @@ RSpec.describe Company, type: :model do
 
         expect(company.assigned_services).to eq([service])
       end
+
+      it "change active for true" do
+        user = create :user
+        company = create :company
+
+        company.accept_invitation!
+        expect(company.active).to eq(true)
+      end
     end
   end
 end
