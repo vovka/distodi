@@ -1,8 +1,11 @@
 <table class="list_items">
   <thead>
     <th><div class="select">
-            <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>
-          </div></th>
+      <label>
+        <input type="checkbox" ng-change="controller.clickedAllCheckbox()"
+                               ng-model="controller.checkboxes.all" />
+        <i><%= image_tag "select.png" %></i></label>
+    </div></th>
     <th>Service</th>
     <th>Service type</th>
     <th>Item</th>
@@ -12,50 +15,53 @@
     <th></th>
   </thead>
   <tbody>
-    <% list.each do |service| %>
-      <tr>
-        <td><div class="select">
-            <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>
-          </div></td>
-        <td>
-          <% service.service_fields.each do |service_field| %>
-            <%= service_field.service_kind.title %>
-            <%= service_field.text %>
-         <% end %>
-       </td>
-       <td>
-         <% service.action_kinds.each do |action_kind| %>
-          <div class="icon_service">
-            <%= image_tag "prepare.png" %>
-          </div>
-           <%= "#{action_kind.title}" %>
-         <% end %>
-       </td>
-         <td><%= service.item.try :title %></td>
-         <td><%= service.id_code %></td>
-         <td><%= service.created_at.strftime("%d %b %Y")%></td>
-         <td>
-          <%= number_to_currency(service.price , unit: "EUR ") %>
-        </td>
-        <td><%= link_to image_tag('aye.png'), home_path %></td>
-      </tr>
+    <% list.each.with_index do |service, i| %>
+    <tr>
+      <td><div class="select">
+        <label>
+          <input type="checkbox" ng-model="controller.checkboxes[<%= i %>]"
+                                 ng-change="controller.changedCheckbox(<%= i %>)" />
+          <i><%= image_tag "select.png" %></i></label>
+      </div></td>
+      <td>
+        <% service.service_fields.each do |service_field| %>
+        <%= service_field.service_kind.title %>
+        <%= service_field.text %>
+        <% end %>
+      </td>
+      <td>
+        <% service.action_kinds.decorate.each do |action_kind| %>
+        <div class="icon_service">
+          <%= image_tag action_kind.icon_path %>
+        </div>
+        <%= "#{action_kind.title}" %>
+        <% end %>
+      </td>
+      <td><%= service.item.try :title %></td>
+      <td><%= service.id_code %></td>
+      <td><%= service.created_at.strftime("%d %b %Y")%></td>
+      <td>
+        <%= number_to_currency(service.price , unit: "EUR ") %>
+      </td>
+      <td><%= link_to image_tag('aye.png'), "javascript:void 0", "ng-click" => "controller.clickedView(#{i})" %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
 <div class="list_items_mobile">
   <% list.each do |service| %>
-    <div class="service_mobile">
-          <div class="select">
-            <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>
-          </div>
-          <p><% service.service_fields.each do |service_field| %>
-              <%= service_field.service_kind.title %>
-              <%= service_field.text %>
-           <% end %>
-          </p>
-           <p><%= service.item.try :title %></p>
-           <p><span><%= service.created_at.strftime("%d %b %Y")%></span>
-          <span> <%= number_to_currency(service.price , unit: "EUR ") %></span></p>
-      </div>
-    <% end %>
+  <div class="service_mobile">
+    <div class="select">
+      <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>
+    </div>
+    <p><% service.service_fields.each do |service_field| %>
+      <%= service_field.service_kind.title %>
+      <%= service_field.text %>
+      <% end %>
+    </p>
+    <p><%= service.item.try :title %></p>
+    <p><span><%= service.created_at.strftime("%d %b %Y")%></span>
+    <span> <%= number_to_currency(service.price , unit: "EUR ") %></span></p>
+  </div>
+  <% end %>
 </div>

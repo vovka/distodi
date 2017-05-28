@@ -72,6 +72,8 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     airbrussh (1.1.1)
       sshkit (>= 1.6.1, != 1.7.0)
+    angular_rails_csrf (2.1.1)
+      railties (>= 3, < 5.2)
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -154,6 +156,11 @@ GEM
     docile (1.1.5)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
+    draper (2.1.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
     erubis (2.7.0)
     eventmachine (1.0.9.1)
     execjs (2.7.0)
@@ -338,6 +345,7 @@ GEM
       polyamorous (~> 1.3)
     rdoc (4.2.2)
       json (~> 1.4)
+    request_store (1.3.2)
     require_all (1.4.0)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
@@ -463,6 +471,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  angular_rails_csrf
   annotate
   byebug
   capistrano (~> 3.6)
@@ -476,6 +485,7 @@ DEPENDENCIES
   countries
   country_select
   devise (~> 3.5, >= 3.5.1)
+  draper
   factory_girl_rails
   faker
   figaro (~> 1.1, >= 1.1.1)

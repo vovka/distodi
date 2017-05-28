@@ -1,3 +1,4 @@
+
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
@@ -87,11 +88,11 @@ en:
           sessions: "Sign into your account here:"
           registrations: "Distodi is a best way to collect all your service certificates"
       agreement:
-        sessions: "Need the Distodi account account?&nbsp;<a href=\"/companies/sign_up\">Create free account.</a>"
+        sessions: "Need the Distodi account account?&nbsp;<a href=\"/%{namespace}/sign_up\">Create free account.</a>"
         registrations: "By creating an account, you agree to our <a href=\"\">Terms.</a>"
       already_have_account:
         sessions: ""
-        registrations: "Already have an account?&nbsp;<a href=\"/users/sign_in\">Sign in</a>"
+        registrations: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
       right_image:
         sessions: "dyadya.jpg"
         registrations: "sign_in_img.png"

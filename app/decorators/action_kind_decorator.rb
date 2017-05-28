@@ -1,0 +1,27 @@
+class ActionKindDecorator < Draper::Decorator
+  PREPARE_TITLE = "Control"
+  REPLACE_TITLE = "Change"
+  TUNE_TITLE = ""
+
+  delegate_all
+
+  # Define presentation-specific methods here. Helpers are accessed through
+  # `helpers` (aka `h`). You can override attributes, for example:
+  #
+  #   def created_at
+  #     helpers.content_tag :span, class: 'time' do
+  #       object.created_at.strftime("%a %m/%d/%y")
+  #     end
+  #   end
+
+  def icon_path
+    case title
+    when PREPARE_TITLE
+      "prepare"
+    when REPLACE_TITLE
+      "replace"
+    when TUNE_TITLE
+      "tun"
+    end
+  end
+end

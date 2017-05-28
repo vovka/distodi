@@ -31,7 +31,7 @@ class Service < ActiveRecord::Base
     service.status = STATUS_APPROVED if service.self_approvable?
   end
 
-  def self_approvable?
+  def self_approvable?(user = nil)
     approver.nil?
   end
 

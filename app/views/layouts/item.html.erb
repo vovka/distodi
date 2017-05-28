@@ -9,10 +9,10 @@
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
-  <body>
+  <body ng-app="DistodiApp" ng-controller="ItemsController as controller">
     <div class="item_header">
       <div class="item_logo">
-            <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), home_path %>
+        <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), home_path %>
       </div>
       <div class="right_panel">
         <div class="more_menu">
@@ -21,8 +21,12 @@
         <span>
           <%= my_panel %>
         </span>
+        <!-- 
+        TODO: убрать img тэг, картинку навесить стилями на a
         <a href="#"><%= image_tag "ring.png" %></a>
+        TODO: убрать img тэг, картинку навесить стилями на a
         <a href="#"><%= image_tag "search.png" %></a>
+         -->
       </div>
       <div class="btn_menu black">
         <div class="btn_line"></div>
@@ -46,29 +50,35 @@
       </div>
       <div class="slider_mobile_items">
         <div class="large-12 columns">
-          <div id="owl-example_mobile_items" class="owl-carousel">
+          <div id="owl-example_mobile_items" class="owl-carousel"
+               ng-show="controller.showDetails === undefined">
             <div class="items">
-                  <%= link_to items_path do%>
+              <%= link_to items_path do%>
               <div class="all_items">
                 <span>ALL</span>
               </div>
-            <% end %>
+              <% end %>
             </div>
-            <% current_user.items.each do |item| %>
+            <% (@items || [@item]).each do |item| %>
+              <div class="items">
+                <%= link_to item do %>
+                <%= image_tag(item.picture_url, alt: item.title, width: 250) %>
+                <% end %>
+              </div>
+            <% end %>
             <div class="items">
-            <%= link_to item do %>
-              <%= image_tag(item.picture_url, alt: item.title, width: 250) %>
-            <% end %>
+              <%= link_to new_item_path do %>
+                <div class="all_items">
+                  <p>+</p>
+                </div>
+              <% end %>
             </div>
+          </div>
+          <% (@services || @item.services).each.with_index do |service, i| %>
+            <%= render "service_details", service: service, i: i %>
           <% end %>
-            <div class="items"><%= link_to new_item_path do %>
-          <div class="all_items">
-            <p>+</p>
-          </div>
-        <% end %></div>
-          </div>
-    </div>
-  </div>
+        </div>
+      </div>
     </div>
     <%= yield %>
   </body>

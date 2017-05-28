@@ -1,71 +1,92 @@
-<div class="item_info">
-  <span>All services</span>
-</div>
-<div class="service_panel">
-   <a href="#"><%= image_tag "aye.png" %> View </a> <a href="#"> <%= image_tag "delete.png" %> Delete</a> <a href="#"><%= image_tag "send.png" %> Send</a>
-</div>
-<table class="list_items">
-  <thead>
-    <th><div class="select">
-            <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>
-          </div></th>
-    <th>Service</th>
-    <th>Service type</th>
-    <th>Item</th>
-    <th>Service ID</th>
-    <th>Service date</th>
-    <th>Service total cost</th>
-    <th></th>
-  </thead>
-  <tbody>
-    <% current_user.services.each do |service| %>
+<div ng-init='controller.checkboxes.length = <%= @services.size %>;
+              controller.permissions = <%= @services.map { |s| s.permissions(current_user) }.to_json.html_safe %>;
+              controller.ids = <%= @services.map(&:id) %>;
+              '>
+  <div class="item_info">
+    <span>All services</span>
+  </div>
+  <div class="service_panel" ng-show="controller.serviceActions.show">
+    <a href="#" ng-show="controller.serviceActions.view" ng-click="controller.clickedView()"><%= image_tag "aye.png" %> View</a>
+    <a href="#" ng-show="controller.serviceActions.delete" ng-click="controller.clickedDelete()"> <%= image_tag "delete.png" %> Delete</a>
+    <!-- <a href="#"><%= image_tag "send.png" %> Send</a> -->
+  </div>
+  <table class="list_items">
+    <thead>
+      <th>
+        <div class="select">
+          <label>
+            <input type="checkbox" ng-change="controller.clickedAllCheckbox()"
+                                   ng-model="controller.checkboxes.all" />
+            <i>
+              <%= image_tag "select.png" %>
+            </i>
+          </label>
+        </div>
+      </th>
+      <th>Service</th>
+      <th>Service type</th>
+      <th>Item</th>
+      <th>Service ID</th>
+      <th>Service date</th>
+      <th>Service total cost</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @services.each.with_index do |service, i| %>
       <tr>
         <td>
           <div class="select">
-            <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>
+            <label>
+              <input type="checkbox" ng-model="controller.checkboxes[<%= i %>]"
+                                     ng-change="controller.changedCheckbox(<%= i %>)" />
+              <i>
+                <%= image_tag "select.png" %>
+              </i>
+            </label>
           </div>
         </td>
         <td>
           <% service.service_fields.each do |service_field| %>
-            <%= service_field.service_kind.title %>
-            <%= service_field.text %>
-         <% end %>
-       </td>
-       <td>
-         <% service.action_kinds.each do |action_kind| %>
+          <%= service_field.service_kind.title %>
+          <%= service_field.text %>
+          <% end %>
+        </td>
+        <td>
+          <% service.action_kinds.decorate.each do |action_kind| %>
           <div class="icon_service">
-            <%= image_tag "prepare.png" %>
-            <%= image_tag "replace.png" %>
-            <%= image_tag "tun.png" %>
+            <%= image_tag action_kind.icon_path %>
           </div>
-           <%= "#{action_kind.title}" %>
-         <% end %>
-       </td>
-         <td><%= service.item.try :title %></td>
-         <td><%= service.id_code %></td>
-         <td><%= service.created_at.strftime("%d %b %Y")%></td>
-         <td>
+          <%= "#{action_kind.title}" %>
+          <% end %>
+        </td>
+        <td><%= service.item.try :title %></td>
+        <td><%= service.id_code %></td>
+        <td><%= service.created_at.strftime("%d %b %Y")%></td>
+        <td>
           <%= number_to_currency(service.price , unit: "EUR ") %>
         </td>
-        <td><%= link_to image_tag('aye.png'), home_path %></td>
+        <td>
+          <%= link_to image_tag('aye.png'), "javascript:void 0", "ng-click" => "controller.clickedView(#{i})" %>
+        </td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<div class="list_items_mobile">
-  <% current_user.services.each do |service| %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="list_items_mobile">
+    <% @services.each do |service| %>
     <div class="service_mobile">
-          <div class="select">
-            <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>
-          </div>
-          <p><% service.service_fields.each do |service_field| %>
-              <%= service_field.service_kind.title %>
-              <%= service_field.text %>
-           <% end %>
-          </p>
-           <p><%= service.item.try :title %></p>
-           <p><span><%= service.created_at.strftime("%d %b %Y")%></span>
-          <span> <%= number_to_currency(service.price , unit: "EUR ") %></span></p>
+      <div class="select">
+        <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>
       </div>
+      <p><% service.service_fields.each do |service_field| %>
+        <%= service_field.service_kind.title %>
+        <%= service_field.text %>
+        <% end %>
+      </p>
+      <p><%= service.item.try :title %></p>
+      <p><span><%= service.created_at.strftime("%d %b %Y")%></span>
+      <span> <%= number_to_currency(service.price , unit: "EUR ") %></span></p>
+    </div>
     <% end %>
+  </div>
 </div>
