@@ -23,13 +23,13 @@ class Company < ActiveRecord::Base
   }
 
   def accept_invitation!
-    if self.invited_to_sign_up?
+    if invited_to_sign_up?
       @accepting_invitation = true
       run_callbacks :invitation_accepted do
-        self.accept_invitation
-        self.confirmed_at = self.invitation_accepted_at if self.respond_to?(:confirmed_at)
+        accept_invitation
+        confirmed_at = invitation_accepted_at if respond_to?(:confirmed_at)
         self.active = true
-        self.save validate: false
+        save validate: false
       end.tap { @accepting_invitation = false }
     end
   end

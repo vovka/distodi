@@ -324,24 +324,10 @@ RSpec.describe ServicesController, type: :controller do
         end.to change { Company.count }.by(1)
       end
 
-      specify "dont create company without :new_company" do
-        user = create :user
-        item = user.items.create!(attributes_for(:item))
-        sign_in user
-
-        expect do
-          post :create, valid_params.merge(
-            service: attributes_for(:service).merge(
-              tem_id: item.id
-            )
-          )
-        end.to change { Company.count }.by(0)
-      end
-
       specify "dont invite company ready registered" do
         user = create :user
         email = 'example@mail.ru'
-        company = create :company, email: email
+        create :company, email: email
         item = user.items.create!(attributes_for(:item))
         sign_in user
 
@@ -352,7 +338,7 @@ RSpec.describe ServicesController, type: :controller do
               item_id: item.id
             )
           )
-        end.to change { Company.count }.by(0)
+        end.to_not change { Company.count }
       end
 
       specify "can not set any other's item" do

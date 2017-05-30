@@ -27,9 +27,11 @@ RSpec.describe Company, type: :model do
       end
 
       it "change active for true" do
-        company = create :company
+        company = create :company, active: false
+        allow(company).to receive(:invited_to_sign_up?).and_return(:true)
 
         company.accept_invitation!
+
         expect(company.active).to eq(true)
       end
     end
