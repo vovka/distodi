@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>distodi</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%= stylesheet_link_tag    'new', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'new', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
+  </head>
+  <body ng-app="DistodiApp" ng-controller="ItemsController as controller">
+    <div class="item_header">
+      <div class="item_logo">
+        <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), home_path %>
+      </div>
+      <div class="right_panel">
+        <div class="more_menu">
+          <a href="#"><%= image_tag "more_menu.png" %></a>
+        </div>
+        <span>
+          <%= my_panel %>
+        </span>
+        <!-- 
+        TODO: убрать img тэг, картинку навесить стилями на a
+        <a href="#"><%= image_tag "ring.png" %></a>
+        TODO: убрать img тэг, картинку навесить стилями на a
+        <a href="#"><%= image_tag "search.png" %></a>
+         -->
+      </div>
+      <div class="btn_menu black">
+        <div class="btn_line"></div>
+        <div class="btn_line"></div>
+        <div class="btn_line"></div>
+      </div>
+      <div class="menu_mobile">
+        <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), home_path %>
+        <ul>
+          <li>NEWS</li>
+          <li>QUESTIONS AND ANSWERS</li>
+          <li>ENGLISH</li>
+          <li><%= link_to('SIGN IN', new_user_session_path) if current_user.nil? && current_company.nil? %></li>
+        </ul>
+        <div class="button">
+          Create Free Service Book
+        </div>
+        <div class="telephone_contact">
+          8 (800) 400-40-40
+        </div>
+      </div>
+      <div class="slider_mobile_items">
+        <div class="large-12 columns">
+          <div id="owl-example_mobile_items" class="owl-carousel"
+               ng-show="controller.showDetails === undefined">
+            <div class="items">
+              <%= link_to items_path do%>
+              <div class="all_items">
+                <span>ALL</span>
+              </div>
+              <% end %>
+            </div>
+            <% (@items || [@item]).each do |item| %>
+              <div class="items">
+                <%= link_to item do %>
+                <%= image_tag(item.picture_url, alt: item.title, width: 250) %>
+                <% end %>
+              </div>
+            <% end %>
+            <div class="items">
+              <%= link_to new_item_path do %>
+                <div class="all_items">
+                  <p>+</p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <% (@services || @item.services).each.with_index do |service, i| %>
+            <%= render "service_details", service: service, i: i %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%= yield %>
+  </body>
+</html>

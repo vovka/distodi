@@ -1,10 +1,14 @@
 class ItemsController < ApplicationController
+  layout 'item'
+
   before_action :set_item, only: [:show, :edit, :update, :destroy, :transfer,
                                   :receive]
   before_action :authenticate_user!, except: :show_for_company
   before_action :authenticate_user_or_company!, only: :show_for_company
 
   def index
+    @items = current_user.items
+    @services = current_user.services.includes(:service_fields, :action_kinds).decorate
   end
 
   def show

@@ -45,6 +45,8 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'pundit'
 gem 'countries', require: 'countries/global'
 gem 'country_select'
+gem 'draper'
+gem 'angular_rails_csrf'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

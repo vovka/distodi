@@ -10,7 +10,7 @@ module CanStubs
           case action.to_sym
           when :delete
             resource.user == self && (
-              resource.self_approvable? || resource.requires_action?
+              resource.self_approvable?() || resource.requires_action?
             )
           when :approve, :decline
             resource.approver?(self) && resource.requires_action?

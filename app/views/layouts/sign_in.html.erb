@@ -43,10 +43,10 @@
             </div>
           </div>
           <div class="signup_info">
-            <%= t(".agreement.#{controller_name}").html_safe %>
+            <%= (t(".agreement.#{controller_name}") % {namespace: controller.class.name.split("::").first.downcase}).html_safe %>
           </div>
           <div class="signup_info">
-            <%= t(".already_have_account.#{controller_name}").html_safe %>
+            <%= (t(".already_have_account.#{controller_name}") % {namespace: controller.class.name.split("::").first.downcase}).html_safe %>
           </div>
         </div>
       </div>

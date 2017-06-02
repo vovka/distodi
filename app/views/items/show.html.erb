@@ -1,52 +1,56 @@
-<div class="iteminfo margin_left", id="itemimage">
-<div style="margin-top: 8px; ">
-  <%= image_tag(@item.picture_url, alt: @item.title, width: 540, height:360, id: 'itemimage' ) %></div></div>
-<div>
-
-
-
-  <p id="information_margin" class="first_name"  ><strong class="userinformation"><%= @item.title %></strong></p>
-  <% @item.characteristics.each do |characteristic| %>
-
-      <ul id="information_margin" class="userinformation" >
-
-        <span class="userinformation"><strong><%= characteristic.attribute_kind.title %>:</strong>
-        <%= characteristic.value %></span>
-
-      </ul>
-
-  <% end %>
-
-  <div class="margin_left" style="padding-top: 40px; max-width: 350px;">
-    <h3>ID code: <%= @item.id_code %></h3>
-    <span><%= link_to 'Edit item', edit_item_path(@item), class: "buttonsuser" %><br/></span>
-    <span><%= link_to t(".delete_link"), item_path(@item),
-                      method: :delete,
-                      data: { confirm: t(".confirm_delete") },
-                      class: "buttonsuser" %></span>
-    <span>
-      <%= render "transfer_form", item: @item %>
-    </span>
-    <strong>Link for companies: </strong>
-    <%= link_to show_for_company_url(token: @item.token), show_for_company_url(token: @item.token) %><br/>
-
-    <span style="font-style:italic; ">Send to your Service company an automaticity generated web-link that connect to your service and asked them to confirm</span>
+<div ng-init='controller.checkboxes.length = <%= (@services || @item.services).size %>;
+              controller.permissions = <%= (@services || @item.services).decorate.map { |s| s.permissions(current_user) }.to_json.html_safe %>;
+              controller.ids = <%= (@services || @item.services).map(&:id) %>;
+              '>
+  <div class="item_info">
+    <span><%= @item.title %>, </span>
+      <% @item.characteristics.each do |characteristic| %>
+        <span> <%= characteristic.value %></span>
+      <% end %>
   </div>
+  <%= link_to new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" do %>
+    <div class="add_service">
+      + ADD NEW SERVICE
+    </div>
+  <% end %>
+  <div class="service_panel" ng-show="controller.serviceActions.show">
+    <a href="#" ng-show="controller.serviceActions.view" ng-click="controller.clickedView()"><%= image_tag "aye.png" %> View</a>
+    <a href="#" ng-show="controller.serviceActions.delete" ng-click="controller.clickedDelete()"> <%= image_tag "delete.png" %> Delete</a>
+    <!-- <a href="#"><%= image_tag "send.png" %> Send</a> -->
+  </div>
+  <%= render partial: "services/list_items", locals: { list: @item.services } %>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <div>
 
-</div>
-<br/>
 
-<div class="margin_left">
-  <h2>Services:</h2>
-  <%= render partial: "services/list", locals: { list: @item.services } %>
+    <div class="margin_left" style="padding-top: 40px; max-width: 350px;">
+      <h3>ID code: <%= @item.id_code %></h3>
+      <span><%= link_to 'Edit item', edit_item_path(@item), class: "buttonsuser" %><br/></span>
+      <span><%= link_to t(".delete_link"), item_path(@item),
+                        method: :delete,
+                        data: { confirm: t(".confirm_delete") },
+                        class: "buttonsuser" %></span>
+      <span>
+        <%= render "transfer_form", item: @item %>
+      </span>
+      <strong>Link for companies: </strong>
+      <%= link_to show_for_company_url(token: @item.token), show_for_company_url(token: @item.token) %><br/>
 
-  <p>
-    <br/>
-    <span>
-      <%= link_to 'Add Service', new_service_path(item_id: @item), class: "buttonsuser" %>
-    </span>
-    <span>
-      <%= link_to 'Back to my panel', user_path(@item.user), class: "buttonsuser" %>
-    </span>
-  </p>
+      <span style="font-style:italic; ">Send to your Service company an automaticity generated web-link that connect to your service and asked them to confirm</span>
+    </div>
+
+  </div>
+  <br/>
+
+  <div class="margin_left">
+    <h2>Services:</h2>
+    <%= render partial: "services/list", locals: { list: @item.services } %>
+
+    <p>
+      <br/>
+      <span>
+        <%= link_to 'Back to my panel', user_path(@item.user), class: "buttonsuser" %>
+      </span>
+    </p>
+  </div>
 </div>

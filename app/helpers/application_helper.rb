@@ -1,6 +1,4 @@
 module ApplicationHelper
-  include CanStubs::View
-
   def logout_link
     if user_signed_in?
       link_to "Log out", destroy_user_session_path, method: :delete
@@ -11,7 +9,7 @@ module ApplicationHelper
 
   def my_panel
     if user_signed_in?
-      link_to "My panel (#{current_user.email})", user_path(current_user)
+      link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user)
     elsif company_signed_in?
       link_to "My panel (#{current_company.email})", company_path(current_company)
     end

@@ -47,7 +47,7 @@
   <p>
     <span><%= link_to "All items & service history "   "#{@unconfirmed_count > 0 ? " ! ""(#{@unconfirmed_count})"" new" : ""}", items_path, class: "buttonsuser" %></span>
     <span><%= link_to 'Create Item', new_item_path, class: "buttonsuser" %></span>
-    <span><%= link_to t(".update_link"), edit_user_path(@user),:data => {:confirm => t(".confirm_update")}, class: "buttonsuser" %></span>
+    <span><%= link_to t(".update_link"), edit_user_path(@user), class: "buttonsuser" %></span>
     <span><%= link_to t(".delete_link"), user_path(@user), method: :delete,:data => {:confirm => t(".confirm_delete")}, class: "buttonsuser" %></span>
   </p>
 </div>

@@ -1,4 +1,6 @@
 class ServicesController < ApplicationController
+  respond_to :html, :json, :js
+
   before_action :set_service, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :set_item, only: [:new]
   before_action :authenticate_user!, except: [:company_service, :create,
@@ -108,7 +110,8 @@ class ServicesController < ApplicationController
     authorize @service
     @service.destroy
     respond_to do |format|
-      format.html { redirect_to @service.item, notice: t(".notice") }
+      format.html {redirect_to @service.item, notice: t(".notice") }
+      format.js { head :ok }
       format.json { head :no_content }
     end
   end

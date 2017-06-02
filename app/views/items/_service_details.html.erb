@@ -1,0 +1,18 @@
+<ul ng-show="controller.showDetails === <%= i %>">
+  <li>id: <%= service.id %></li>
+  <li>created_at: <%= service.created_at %></li>
+  <li>updated_at: <%= service.updated_at %></li>
+  <li>item_id: <%= service.item_id %></li>
+  <li>next_control: <%= service.next_control %></li>
+  <li>picture: <%= image_tag service.picture.path %></li>
+  <li>price: <%= service.price %></li>
+  <li>company_id: <%= service.company_id %></li>
+  <li>company: <%= service.company.try(:name) %></li>
+  <li>confirmed: <%= service.confirmed %></li>
+  <li>status: <%= service.status %></li>
+  <li>approver_id: <%= service.approver_id %></li>
+  <li>approver_type: <%= service.approver_type %></li>
+  <li>approver: <%= service.approver.try(:name) %></li>
+  <li>reason: <%= service.reason %></li>
+  <li>id_code: <%= service.id_code %></li>
+</ul>

@@ -25,6 +25,12 @@ class ServicePolicy < ApplicationPolicy
     edit?
   end
 
+  def approve?
+    record.approver?(user) && record.requires_action?
+  end
+
+  alias_method :decline?, :approve?
+
   private
 
   def author?
@@ -32,6 +38,6 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def self_approved?
-    record.approved? && record.self_approvable?
+    record.approved? && (record.approver.nil? || record.approver == user)
   end
 end

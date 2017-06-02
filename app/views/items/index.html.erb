@@ -1,27 +1,92 @@
-<div class="margin_left">
-  <p id="notice"><%= notice %></p>
-
-  <% if current_user.transferring_items.any? %>
-    <h2><%= t ".transferred_items" %></h2>
-    <% current_user.transferring_items.each do |item| %>
-      <div style="width: 300px; float: left; margin: 11px 0 0 0">
-        <%= image_tag(item.picture_url, alt: item.title, width: 250) %>
+<div ng-init='controller.checkboxes.length = <%= @services.size %>;
+              controller.permissions = <%= @services.map { |s| s.permissions(current_user) }.to_json.html_safe %>;
+              controller.ids = <%= @services.map(&:id) %>;
+              '>
+  <div class="item_info">
+    <span>All services</span>
+  </div>
+  <div class="service_panel" ng-show="controller.serviceActions.show">
+    <a href="#" ng-show="controller.serviceActions.view" ng-click="controller.clickedView()"><%= image_tag "aye.png" %> View</a>
+    <a href="#" ng-show="controller.serviceActions.delete" ng-click="controller.clickedDelete()"> <%= image_tag "delete.png" %> Delete</a>
+    <!-- <a href="#"><%= image_tag "send.png" %> Send</a> -->
+  </div>
+  <table class="list_items">
+    <thead>
+      <th>
+        <div class="select">
+          <label>
+            <input type="checkbox" ng-change="controller.clickedAllCheckbox()"
+                                   ng-model="controller.checkboxes.all" />
+            <i>
+              <%= image_tag "select.png" %>
+            </i>
+          </label>
+        </div>
+      </th>
+      <th>Service</th>
+      <th>Service type</th>
+      <th>Item</th>
+      <th>Service ID</th>
+      <th>Service date</th>
+      <th>Service total cost</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @services.each.with_index do |service, i| %>
+      <tr>
+        <td>
+          <div class="select">
+            <label>
+              <input type="checkbox" ng-model="controller.checkboxes[<%= i %>]"
+                                     ng-change="controller.changedCheckbox(<%= i %>)" />
+              <i>
+                <%= image_tag "select.png" %>
+              </i>
+            </label>
+          </div>
+        </td>
+        <td>
+          <% service.service_fields.each do |service_field| %>
+          <%= service_field.service_kind.title %>
+          <%= service_field.text %>
+          <% end %>
+        </td>
+        <td>
+          <% service.action_kinds.decorate.each do |action_kind| %>
+          <div class="icon_service">
+            <%= image_tag action_kind.icon_path %>
+          </div>
+          <%= "#{action_kind.title}" %>
+          <% end %>
+        </td>
+        <td><%= service.item.try :title %></td>
+        <td><%= service.id_code %></td>
+        <td><%= service.created_at.strftime("%d %b %Y")%></td>
+        <td>
+          <%= number_to_currency(service.price , unit: "EUR ") %>
+        </td>
+        <td>
+          <%= link_to image_tag('aye.png'), "javascript:void 0", "ng-click" => "controller.clickedView(#{i})" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="list_items_mobile">
+    <% @services.each do |service| %>
+    <div class="service_mobile">
+      <div class="select">
+        <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>
       </div>
-      <strong ><%= item.title %><br></strong>
-      <%= link_to t(".receive_item"), receive_item_path(item), method: "POST" %>
-    <% end %>
-  <% end %>
-
-  <h2><%= t ".my_items" %></h2>
-  <% current_user.items.each do |item| %>
-    <div style="width: 300px; float: left; margin: 11px 0 0 0">
-      <%= image_tag(item.picture_url, alt: item.title, width: 250) %>
+      <p><% service.service_fields.each do |service_field| %>
+        <%= service_field.service_kind.title %>
+        <%= service_field.text %>
+        <% end %>
+      </p>
+      <p><%= service.item.try :title %></p>
+      <p><span><%= service.created_at.strftime("%d %b %Y")%></span>
+      <span> <%= number_to_currency(service.price , unit: "EUR ") %></span></p>
     </div>
-    <strong ><%= item.title %><br></strong>
-    <%= link_to t(".show_this_item") % (item.services.unconfirmed.count > 0 ? "(#{item.services.unconfirmed.count})" : ""), item, class: "buttonsuser",id: "buttonsuserwidth" %>
-    <span><%= link_to t(".add_service"), new_service_path(item_id: item), class: "buttonsuser"%></span>
-    <span><%= link_to t(".edit"), edit_item_path(item), class: "buttonsuser"%></span>
-  <% end %>
-  <p><%= link_to t(".create_item"), new_item_path %></p>
-  <p><%= link_to t(".back_to_my_panel"), user_path(current_user) %></p>
+    <% end %>
+  </div>
 </div>

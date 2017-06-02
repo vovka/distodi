@@ -40,14 +40,14 @@
         </td>
         <td><%= service.approver.try(:name) || t(".self_approver") %></td>
         <td>
-          <%= if can?(:approve, service)
+          <%= if policy(service).approve?
                 link_to 'Confirm',
                         approve_service_path(service),
                         method: :patch,
                         class: "buttonsuser"
               end %>
 
-          <% if can?(:decline, service) %>
+          <% if policy(service).decline? %>
             <%= simple_form_for(service, url: decline_service_path(service), method: :patch) do |f| %>
               <div class="field_decline_btn">Decline</div>
               <div class="field_decline">
@@ -56,7 +56,7 @@
               </div>
             <% end %>
           <% end %>
-          <% if can?(:delete, service) %>
+          <% if policy(service).destroy? %>
             <%= link_to 'Delete',
                         service_path(service),
                         method: :delete,
