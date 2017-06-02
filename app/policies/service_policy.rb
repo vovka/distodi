@@ -38,6 +38,6 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def self_approved?
-    record.approved? && record.approver == user
+    record.approved? && (record.approver.nil? || record.approver == user)
   end
 end

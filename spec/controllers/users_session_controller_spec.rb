@@ -9,7 +9,7 @@ describe Users::SessionsController do
 
       post :create, user: { email: user.email, password: "11111111" }
 
-      expect(response).to redirect_to(user_path(user))
+      expect(response).to redirect_to(dashboard_path)
     end
   end
 end
