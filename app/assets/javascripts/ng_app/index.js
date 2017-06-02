@@ -4,6 +4,6 @@
 
 angular
 .module("DistodiApp", [])
-.config(Config)
-.controller("ItemsController", ItemsController)
+.config(["$httpProvider", Config])
+.controller("ItemsController", ["$scope", "$http", "$q", ItemsController])
 ;

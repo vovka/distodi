@@ -9,7 +9,7 @@
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
-  <body ng-app="DistodiApp" ng-controller="ItemsController as controller">
+  <body ng-app="DistodiApp" ng-controller="ItemsController as controller" ng-strict-di>
     <div class="item_header">
       <div class="item_logo">
         <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), home_path %>
@@ -21,7 +21,7 @@
         <span>
           <%= my_panel %>
         </span>
-        <!-- 
+        <!--
         TODO: убрать img тэг, картинку навесить стилями на a
         <a href="#"><%= image_tag "ring.png" %></a>
         TODO: убрать img тэг, картинку навесить стилями на a

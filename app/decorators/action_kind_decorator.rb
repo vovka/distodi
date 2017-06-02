@@ -17,11 +17,11 @@ class ActionKindDecorator < Draper::Decorator
   def icon_path
     case title
     when PREPARE_TITLE
-      "prepare"
+      "prepare.png"
     when REPLACE_TITLE
-      "replace"
+      "replace.png"
     when TUNE_TITLE
-      "tun"
+      "tun.png"
     end
   end
 end
