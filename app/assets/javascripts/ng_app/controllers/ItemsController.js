@@ -16,23 +16,27 @@ ItemsController.prototype.changedCheckbox = function(i) {
 };
 
 ItemsController.prototype.clickedView = function(i) {
-  if (i === undefined)
-    i = this.checkboxes.selectedIndexes()[0];
-  if (this.showDetails === undefined || this.showDetails !== i)
-    this.showDetails = i;
-  else
-    if (this.showDetails === i)
-      this.showDetails = undefined;
+  if (undefined !== i || this.serviceActions.view) {
+    if (i === undefined)
+      i = this.checkboxes.selectedIndexes()[0];
+    if (this.showDetails === undefined || this.showDetails !== i)
+      this.showDetails = i;
+    else
+      if (this.showDetails === i)
+        this.showDetails = undefined;
+  }
 };
 
 ItemsController.prototype.clickedDelete = function(i) {
-  var selectedIndexes = this.checkboxes.selectedIndexes(),
-      ids = this._getIdsByIndexes(selectedIndexes);
-  if (confirm("Do you really want to delete the services?")) {
-    var promises = [];
-    for (var i in ids)
-      promises.push( this.$http.delete("/services/" + ids[i]) );
-    this.$q.all(promises).then(function(response) { document.location.reload() });
+  if (this.serviceActions.delete) {
+    var selectedIndexes = this.checkboxes.selectedIndexes(),
+        ids = this._getIdsByIndexes(selectedIndexes);
+    if (confirm("Do you really want to delete the services?")) {
+      var promises = [];
+      for (var i in ids)
+        promises.push( this.$http.delete("/services/" + ids[i]) );
+      this.$q.all(promises).then(function(response) { document.location.reload() });
+    }
   }
 };
 
@@ -81,7 +85,7 @@ ItemsController.prototype.checkboxes.isAnyChecked = function() {
 //   return !this.isAnyChecked();
 // };
 ItemsController.prototype.checkboxes.changed = function(i) {
-  this.all = this.areAllChecked();
+  this.all = this.isAnyChecked();
 };
 ItemsController.prototype.checkboxes.changedAll = function() {
   for (var i = 0; i < this.length; i++)

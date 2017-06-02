@@ -5,9 +5,22 @@
   <div class="item_info">
     <span>All services</span>
   </div>
+  <%= link_to new_service_path(item_id: @item), "ng-show" => "#{@items.size} === 1 && !controller.serviceActions.show" do %>
+    <div class="add_service">
+      + ADD NEW SERVICE
+    </div>
+  <% end %>
   <div class="service_panel" ng-show="controller.serviceActions.show">
-    <a href="#" ng-show="controller.serviceActions.view" ng-click="controller.clickedView()"><%= image_tag "aye.png" %> View</a>
-    <a href="#" ng-show="controller.serviceActions.delete" ng-click="controller.clickedDelete()"> <%= image_tag "delete.png" %> Delete</a>
+    <a href="" class="view"
+       ng-class="controller.serviceActions.view ? '' : 'disabled'"
+       ng-click="controller.clickedView()">
+      View
+    </a>
+    <a href="" class="delete"
+       ng-class="controller.serviceActions.delete ? '' : 'disabled'"
+       ng-click="controller.clickedDelete()">
+      Delete
+    </a>
     <!-- <a href="#"><%= image_tag "send.png" %> Send</a> -->
   </div>
   <table class="list_items">
@@ -17,7 +30,7 @@
           <label>
             <input type="checkbox" ng-change="controller.clickedAllCheckbox()"
                                    ng-model="controller.checkboxes.all" />
-            <i>
+            <i ng-class="!controller.checkboxes.areAllChecked() && controller.checkboxes.isAnyChecked() ? 'partial' : ''">
               <%= image_tag "select.png" %>
             </i>
           </label>
@@ -25,6 +38,7 @@
       </th>
       <th>Service</th>
       <th>Service type</th>
+      <th>Status</th>
       <th>Item</th>
       <th>Service ID</th>
       <th>Service date</th>
@@ -33,7 +47,10 @@
     </thead>
     <tbody>
       <% @services.each.with_index do |service, i| %>
-      <tr>
+      <tr ng-class="[
+                      (controller.showDetails === <%= i %> ? 'viewing' : ''),
+                      (controller.checkboxes[<%= i %>] ? 'selected' : '')
+                    ].join(' ')">
         <td>
           <div class="select">
             <label>
@@ -47,16 +64,19 @@
         </td>
         <td>
           <% service.service_fields.each do |service_field| %>
-          <%= service_field.service_kind.title %>
-          <%= service_field.text %>
+            <%= service_field.service_kind.title %>
+            <%= service_field.text %>
           <% end %>
         </td>
         <td>
           <% service.action_kinds.decorate.each do |action_kind| %>
-          <div class="icon_service">
-            <%= image_tag action_kind.icon_path %>
-          <%= "#{action_kind.title}" %>
+            <div class="icon_service <%= action_kind.icon_class %>">
+              <%= "#{action_kind.title}" %>
+            </div>
           <% end %>
+        </td>
+        <td>
+          <div class="<%= service.status %>">&nbsp;</div>
         </td>
         <td><%= service.item.try :title %></td>
         <td><%= service.id_code %></td>
@@ -64,8 +84,8 @@
         <td>
           <%= number_to_currency(service.price , unit: "EUR ") %>
         </td>
-        <td>
-          <%= link_to image_tag('aye.png'), "javascript:void 0", "ng-click" => "controller.clickedView(#{i})" %>
+        <td class="actions">
+          <%= link_to "&nbsp;".html_safe, "", "ng-click" => "controller.clickedView(#{i})" %>
         </td>
       </tr>
       <% end %>

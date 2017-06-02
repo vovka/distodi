@@ -31,8 +31,8 @@
       </td>
       <td>
         <% service.action_kinds.decorate.each do |action_kind| %>
-        <div class="icon_service">
-          <%= image_tag action_kind.icon_path %>
+        <div class="icon_service <%= action_kind.icon_class %>">
+          <%= "#{action_kind.title}" %>
         </div>
         <%= "#{action_kind.title}" %>
         <% end %>
@@ -43,7 +43,7 @@
       <td>
         <%= number_to_currency(service.price , unit: "EUR ") %>
       </td>
-      <td><%= link_to image_tag('aye.png'), "javascript:void 0", "ng-click" => "controller.clickedView(#{i})" %></td>
+      <td><%= link_to image_tag('eye.png'), "javascript:void 0", "ng-click" => "controller.clickedView(#{i})" %></td>
     </tr>
     <% end %>
   </tbody>
