@@ -30,7 +30,15 @@ class ServicesController < ApplicationController
              Item.find_by_token(params[:token])
            end
     approver = if user_signed_in?
-                 Company.where(id: service_params[:company_id]).first
+                 if params[:new_company].present?
+                   if email_present?(params[:new_company])
+                     find_company_by_email(params[:new_company])
+                   else
+                     send_invite(params[:new_company])
+                   end
+                 else
+                   Company.where(id: service_params[:company_id]).first
+                 end
                elsif item.present?
                  item.user
                else
@@ -138,8 +146,20 @@ class ServicesController < ApplicationController
       @service = Service.find(params[:id])
     end
 
+    def email_present?(email)
+      Company.where(email: email).first.present?
+    end
+
     def set_item
       @item = Item.find(params[:item_id])
+    end
+
+    def find_company_by_email(email)
+      Company.where(email: email).first
+    end
+
+    def send_invite(email)
+      Company.invite!(email: email, active: false)
     end
 
     # Never trust parameters from the scary internet, only allow the white

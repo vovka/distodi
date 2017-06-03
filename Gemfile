@@ -15,7 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 # Flexible authentication solution for Rails with Warden
-gem 'devise', '~> 3.5', '>= 3.5.1'
+gem 'devise',           '~> 4.2'
+gem 'devise_invitable', '~> 1.7.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

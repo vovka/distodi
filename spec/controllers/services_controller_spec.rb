@@ -308,6 +308,39 @@ RSpec.describe ServicesController, type: :controller do
         expect(Service.last.item).to eq(item)
       end
 
+      specify "invite company" do
+        user = create :user
+        item = user.items.create!(attributes_for(:item))
+        email = 'example@mail.ru'
+        sign_in user
+
+        expect do
+          post :create, valid_params.merge(
+            new_company: email,
+            service: attributes_for(:service).merge(
+              item_id: item.id
+            )
+          )
+        end.to change { Company.count }.by(1)
+      end
+
+      specify "dont invite company ready registered" do
+        user = create :user
+        email = 'example@mail.ru'
+        create :company, email: email
+        item = user.items.create!(attributes_for(:item))
+        sign_in user
+
+        expect do
+          post :create, valid_params.merge(
+            new_company: email,
+            service: attributes_for(:service).merge(
+              item_id: item.id
+            )
+          )
+        end.to_not change { Company.count }
+      end
+
       specify "can not set any other's item" do
         user = create :user
         item = create :item

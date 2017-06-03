@@ -1,7 +1,6 @@
 class Company < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   URL_REGEXP = /\A(https?:\/\/)?(www\.)?[-a-zA-Z0-9._]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.,~#?!&\/=]*)\z/
@@ -22,6 +21,18 @@ class Company < ActiveRecord::Base
   scope :user_companies, lambda { |user_id|
     joins(services: { item: :user }).where(users: { id: user_id })
   }
+
+  def accept_invitation!
+    if invited_to_sign_up?
+      @accepting_invitation = true
+      run_callbacks :invitation_accepted do
+        accept_invitation
+        confirmed_at = invitation_accepted_at if respond_to?(:confirmed_at)
+        self.active = true
+        save validate: false
+      end.tap { @accepting_invitation = false }
+    end
+  end
 end
 
 # == Schema Information
@@ -52,9 +63,21 @@ end
 #  first_name             :string
 #  last_name              :string
 #  picture                :string
+#  active                 :boolean          default("true")
+#  invitation_token       :string
+#  invitation_created_at  :datetime
+#  invitation_sent_at     :datetime
+#  invitation_accepted_at :datetime
+#  invitation_limit       :integer
+#  invited_by_id          :integer
+#  invited_by_type        :string
+#  invitations_count      :integer          default("0")
 #
 # Indexes
 #
 #  index_companies_on_email                 (email) UNIQUE
+#  index_companies_on_invitation_token      (invitation_token) UNIQUE
+#  index_companies_on_invitations_count     (invitations_count)
+#  index_companies_on_invited_by_id         (invited_by_id)
 #  index_companies_on_reset_password_token  (reset_password_token) UNIQUE
 #
