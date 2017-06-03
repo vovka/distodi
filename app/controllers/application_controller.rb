@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    dashboard_path
+    user_signed_in? ? dashboard_path : current_company
   end
 
   private

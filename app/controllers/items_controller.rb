@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  layout 'item'
+  layout 'item', except: [:show_for_company]
 
   before_action :set_item, only: [:show, :edit, :update, :destroy, :transfer,
                                   :receive]
@@ -12,6 +12,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @items = [@item]
+    @services = @item.services.includes(:service_fields, :action_kinds).decorate
+    render "index"
   end
 
   def show_for_company
@@ -21,6 +24,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @items = [@item]
     @attributes = AttributeKind.all
   end
 
@@ -41,6 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @items = [@item]
     authorize @item
   end
 

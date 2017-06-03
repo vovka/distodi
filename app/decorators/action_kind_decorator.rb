@@ -1,7 +1,7 @@
 class ActionKindDecorator < Draper::Decorator
-  PREPARE_TITLE = "Control"
-  REPLACE_TITLE = "Change"
-  TUNE_TITLE = ""
+  CONTROL_TITLE = "Control".freeze
+  CHANGE_TITLE = "Change".freeze
+  TUNING_TITLE = "Tuning".freeze
 
   delegate_all
 
@@ -14,14 +14,14 @@ class ActionKindDecorator < Draper::Decorator
   #     end
   #   end
 
-  def icon_path
+  def icon_class
     case title
-    when PREPARE_TITLE
-      "prepare.png"
-    when REPLACE_TITLE
-      "replace.png"
-    when TUNE_TITLE
-      "tun.png"
+    when CONTROL_TITLE
+      "control-action"
+    when CHANGE_TITLE
+      "change-action"
+    when TUNING_TITLE
+      "tuning-action"
     end
   end
 end
