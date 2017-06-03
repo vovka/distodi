@@ -5,7 +5,7 @@
   <div class="item_info">
     <span>All services</span>
   </div>
-  <%= link_to new_service_path(item_id: @item), "ng-show" => "#{@items.size} === 1 && !controller.serviceActions.show" do %>
+  <%= link_to new_service_path(item_id: @items.first), "ng-show" => "#{@items.size} === 1 && !controller.serviceActions.show" do %>
     <div class="add_service">
       + ADD NEW SERVICE
     </div>
