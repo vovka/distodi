@@ -3,7 +3,7 @@
     <div class="ico">
       <%= image_tag "user_ico.png" %>
     </div>
-    <%= f.text_field :first_name ,placeholder: "Your Full Name (as in passport)"%>
+    <%= f.text_field :first_name ,placeholder: "Company Name (official)"%>
   </div>
   <div class="errors_reg name">
     <%= resource.errors.full_messages_for(:first_name).join(',') %>

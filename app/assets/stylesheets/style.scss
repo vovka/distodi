@@ -306,7 +306,7 @@ footer hr{
 	letter-spacing:0;
 	line-height:22px;
 	text-align:center;
-	width: 240px;
+	width: 340px;
 	margin: 20px auto 50px;
 }
 .tab{
@@ -370,6 +370,10 @@ footer hr{
 	padding-left: 17px;
 	width: 347px;
 	font-family: 'MuseoSansCyrl_1';
+	background-repeat: no-repeat;
+	background-size: 18px ;
+	background-position: 10px 15px;
+	background: linear-gradient(left, green 0, green 75%, transparent 75%);
 }
 .ico{
 	display: inline-block;
@@ -686,7 +690,7 @@ footer hr{
 	letter-spacing:0;
 	line-height:22px;
 	text-align:center;
-	width: 240px;
+	width: 340px;
 	margin: 20px auto 50px;
 }
 .tabs a{
@@ -840,10 +844,6 @@ font-feature-settings: 'liga';
 }
 #error_explanation li{
 	font-family: 'MuseoSansCyrl_1';
-	font-size:14px;
-	color:#1f1f1f;
-	letter-spacing:0;
-	line-height:12px;
 	text-align:left;
 	margin-bottom: 4px;
 	text-decoration: none;
@@ -1028,6 +1028,30 @@ text-align:left;
 .errors_reg{
 	width: 420px;
 	margin: 0 auto;
+	font-family: 'MuseoSansCyrl_1';
+	font-size:14px;
+	color:#ff3c00;
+	letter-spacing:0;
+	line-height:14px;
+	text-align:center;
+	margin-bottom: 20px;
+}
+.errors_reg h2{
+	display: none;
+}
+
+.errors_reg #error_explanation ul li{
+	display: inline-block;
+}
+
+.alert{
+	color:#ff3c00;
+	font-family: 'MuseoSansCyrl_2';
+	margin-bottom: 15px;
+	font-size:14px;
+}
+.field_with_errors input{
+		border: 1.3px solid red;
 }
 .item_header{
 	background:#f2f2f2;
@@ -1107,6 +1131,7 @@ text-align:left;
 	font-size:16px;
 	color:#1f1f1f;
 	text-align: left;
+	float: left;
 }
 .item_info span{
 	float: left;
@@ -1316,6 +1341,9 @@ text-align:left;
 	float: left;
 	width: 25px;
 }
+.tabs .tab:nth-child(2){
+		margin-left: 1px;
+}
 .service_mobile p span{
 	margin: 0 15px 0 0;
 }
@@ -1418,4 +1446,157 @@ text-align:left;
 			margin-left: 0;
 		}
 	}
+}
+
+.service_panel a{
+	margin: 0 7px;
+}
+.service_panel img{
+	height: 15px;
+	margin: 0 7px -3px 18px;
+}
+.service_panel img:nth-child(1){
+	margin-left: 0;
+}
+.menu_mobile a{
+	color: black;
+}
+.grey{
+	width: 300px;
+	color: #8f8f8f;
+	margin: 30px 5px 0 10px;
+	float: left;
+}
+.function{
+	width: calc(100% - 44px);
+	margin: 50px 11px 50px 22px;
+}
+.function .transfer{
+	width: calc(66.6% - 11px);
+	background:#f9f9f9;
+	border-radius:5px;
+	height:133px;
+	float: left;
+	margin-bottom: 60px;
+
+}
+.function .transfer p{
+	padding: 30px;
+	width: 45%;
+	font-family: 'MuseoSansCyrl_1';
+	font-size:14px;
+	color:#8f8f8f;
+	letter-spacing:0;
+	line-height:24px;
+	text-align:left;
+	float:left;
+}
+.function .transfer span{
+	font-family:'MuseoSansCyrl_1';
+	font-size:13px;
+	color:#8f8f8f;
+	letter-spacing:0;
+	line-height:13px;
+	text-align:left;
+	float: left;
+	padding-top:30px;
+	width: 45%;
+	margin-left: 2.5%;
+}
+.function .transfer input{
+	float: left;
+	background:#ffffff;
+	border:1px solid #d3d3d3;
+	border-radius:4px;
+	width:43%;
+	height:49px;
+	margin-top: 10px;
+	font-size: 14px;
+	padding-left:15px;
+	margin-left: 2.5%;
+}
+.function .delete{
+	width: calc(33.3% - 11px);
+	float: right;
+	background:#f9f9f9;
+	border-radius:5px;
+	height:133px;
+}
+.function .delete span{
+	font-family:'MuseoSansCyrl_1';
+	font-size:13px;
+	color:#8f8f8f;
+	letter-spacing:0;
+	line-height:13px;
+	text-align:left;
+	float: left;
+	padding:30px 0 10px 7.5%;
+	width: 75%;
+}
+.function .delete input{
+	float: left;
+	background:#ffffff;
+	border:1px solid #d3d3d3;
+	border-radius:4px;
+	width:83%;
+	height:49px;
+	font-size: 14px;
+	padding-left:15px;
+	margin-left: 7.5%;
+}
+.form{
+	text-align: left;
+	margin-left: 22px;
+}
+.form .field_title{
+	margin-top: 68px;
+}
+.form .field_title p{
+	font-family:'MuseoSansCyrl_1';
+	font-size:16px;
+	color:#8f8f8f;
+	letter-spacing:0;
+	line-height:17px;
+	margin-bottom: 10px;
+}
+.form span{
+	color: red;
+}
+.form .field_title input{
+	width: 32%;
+	border:1px solid #d3d3d3;
+	border-radius:4px;
+	font-size: 16px;
+	height:49px;
+	padding-left: 15px;
+}
+.form .categories {
+	text-align:left;
+}
+
+.form .categories p{
+
+	font-family:'MuseoSansCyrl_1';
+	font-size:16px;
+	color:#8f8f8f;
+	letter-spacing:0;
+	line-height:17px;
+	margin-bottom: 10px;
+}
+.form .categories select{
+	width: 33%;
+	border:1px solid #d3d3d3;
+	border-radius:4px;
+	font-size: 16px;
+	height:51px;
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #fff;
+}
+
+.form .categories select, option:checked{
+  color: #149b4c;
+}
+option{
+  color: black;
 }

@@ -208,6 +208,117 @@
 	.large-12.columns{
 		margin-top: 0px;
 	}
+	.right_image{
+		display: none;
+	}
+
+	.right_image{
+		display: none;
+	}
+	.left_form{
+	width: 100%;
+	float: center;
+
+}
+	.signup_but{
+		width: 80%;
+	}
+	.signup_but input{
+		width: 100%;
+	}
+	.password{
+		width: 80%;
+		margin: 0 auto 20px;
+		text-align: left;
+	}
+	.ico {
+		display: none;
+	}
+	.password input{
+		width: calc(100% - 18px);
+		border-radius:4px;
+	}
+	.mail{
+		width: 80%;
+		margin: 0 auto 20px;
+		text-align: left;
+	}
+	.mail input{
+		width: calc(100% - 18px);
+		border-radius:4px;
+	}
+	.signup_info_right{
+		text-align: center;
+		width: 100%;
+		margin-top: 20px;
+	}
+	.tabs{
+		width: 81%;
+		margin: 0 auto;
+	}
+	.tabs a{
+		height: 100%;
+		width: 100%;
+	}
+	.tabs .tab{
+		width: 49.4%;
+	}
+	.name{
+		width: 80%;
+		margin: 0 auto 20px;
+		text-align: left;
+	}
+	.name input{
+		width: calc(100% - 18px);
+		border-radius:4px;
+	}
+	.welcome_text_small{
+		margin: 10px auto 32px;
+	}
+
+	.welcome_text{
+		margin-top: 30px;
+	}
+	.signup_info{
+		width: 80%;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.signup_but{
+		margin-bottom: 30px;
+	}
+	.logo_green img{
+		width: 23px;
+		height: 50px;
+		margin-right: 80px;
+	}
+	.exit{
+	background: transparent;
+	width:20px;
+	height:20px;
+	margin-top: -20px;
+	}
+
+	.exit img{
+		width: 17px;
+		height: 17px;
+		margin-right: 0;
+	}
+	.welcome_text{
+		width: 80%;
+		margin: 30px auto 0;
+		line-height: 24px;
+	}
+	.errors_reg{
+		display: none;
+	}
+	.field_with_errors{
+		width: 100%;
+		
+	}
+	.field_with_errors input{
+		border: 1.3px solid red;
+	}
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {
@@ -223,13 +334,6 @@
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
-	.right_image{
-		display: none;
-	}
-
-	.right_image{
-		display: none;
-	}
 	.btn_menu.black{
 		margin-left: 46%;
 	}
