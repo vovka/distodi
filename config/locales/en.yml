@@ -84,18 +84,23 @@ en:
         "1":
           sessions: "Hello! Welcome back."
           registrations: "Sign up to create your free Service Book!"
+          passwords: "Forgot your password?"
         "2":
           sessions: "Sign into your account here:"
           registrations: "Distodi is a best way to collect all your service certificates"
+          passwords: "We'll email you instructions on how to reset it."
       agreement:
         sessions: "Need the Distodi account account?&nbsp;<a href=\"/%{namespace}/sign_up\">Create free account.</a>"
         registrations: "By creating an account, you agree to our <a href=\"\">Terms.</a>"
+        passwords: ""
       already_have_account:
         sessions: ""
         registrations: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+        passwords: "Already have an account?&nbsp;<a href=\"/users/sign_in\">Sign in</a>"
       right_image:
         sessions: "dyadya.jpg"
         registrations: "sign_in_img.png"
+        passwords: "dyadya.jpg"
 
   errors:
     messages:

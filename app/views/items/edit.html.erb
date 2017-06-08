@@ -1,7 +1,37 @@
-<div class="margin_left1">
-  <h1>New Item</h1>
+<div class="item_info">
+  <span>Item details - <%= @item.title %>, </span>
+    <% @item.characteristics.each do |characteristic| %>
+      <span> <%= characteristic.value %></span>
+    <% end %>
+    <p class="grey"> <%= @item.id_code %></p>
 </div>
+
 <%= render 'form' %>
-<div class="margin_left">
-  <%= link_to 'Back', user_path(current_user) %>
+
+<div class="item_info">
+  <span><%= @item.title %>, </span>
+    <% @item.characteristics.each do |characteristic| %>
+      <span> <%= characteristic.value %></span>
+    <% end %>
+</div>
+<%= link_to new_service_path(item_id: @item) do %>
+  <div class="add_service">
+    + ADD NEW SERVICE
+  </div>
+<% end %>
+<%= render partial: "services/list_items", locals: { list: @item.services } %>
+
+<div class="function">
+	<div class="transfer">
+		<p><strong>Got sold your Item?</strong> You could simply send your Item to another registered Distodi user just with an e-mail address. Confirm sending after your recepient’s confirmation.</p>
+		<span>Recipient’s E-mail address</span>
+		<input>
+	</div>
+
+	<div class="delete">
+		<span>
+			Enter your password to delete this Item
+		</span>
+		<input>
+	</div>
 </div>

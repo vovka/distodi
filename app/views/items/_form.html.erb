@@ -1,4 +1,4 @@
-<div class="form ">
+<div class="form">
 <%= form_for(@item) do |f| %>
     <% if @item.errors.any? %>
         <div id="error_explanation">
@@ -12,13 +12,13 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :title %><br>
+    <div class="field_title">
+      <p><%= f.label :title %> <span>*</span></p>
       <%= f.text_field :title %>
     </div>
 
-    <div id="categories">
-      <%= f.label 'Category' %><br>
+    <div class="categories">
+      <p><%= f.label 'Category' %> <span>*</span></p>
       <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Please select a category"}, {class: "category_select"} %>
     </div>
 
@@ -39,17 +39,20 @@
 
 <script>
   $("#item_category_id").on("change", function(){
-    $.ajax({
-      url: "/items/get_attributes",
-      type: "GET",
-      dataType: "script",
-      data: {
-        category_id: $('#item_category_id option:selected').val()
-      }
-    });
-
+    if ($('#item_category_id option:selected').val()) {
+      $.ajax({
+        url: "/items/get_attributes",
+        type: "GET",
+        dataType: "script",
+        data: {
+          category_id: $('#item_category_id option:selected').val(),
+          item_id: <%= @item.to_param || "undefined" %>
+        }
+      });
+    }
     $(".custom_attributes").on("change", ".attribute_select:last", function(){
       $(".attribute_select:last").clone().appendTo(".custom_attributes");
     });
   });
+  $("#item_category_id").change();
 </script>

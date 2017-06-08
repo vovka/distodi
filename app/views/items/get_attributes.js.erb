@@ -1,5 +1,6 @@
 $('.custom_attributes').empty();
 <% @attributes.each do |attribute| %>
+<% characteristic = @item.characteristics.find { |c| c.attribute_kind == attribute } if @item.present? %>
 $('.custom_attributes').append($('<label for="characteristics<%= attribute.id %>"><%= attribute.title %></label>'));
-$('.custom_attributes').append($('<input type="text" name="item[characteristics[<%= attribute.id %>]]" id="characteristic<%= attribute.id %>">'));
+$('.custom_attributes').append($('<input type="text" name="item[characteristics[<%= attribute.id %>]]" id="characteristic<%= attribute.id %>" value="<%= characteristic.try(:value) %>">'));
 <% end %>

@@ -65,6 +65,10 @@ class ItemsController < ApplicationController
   end
 
   def get_attributes
+    if params[:item_id].present?
+      @item = Item.where(id: params[:item_id]).first
+      authorize @item
+    end
     category = Category.find(params[:category_id])
     @attributes = category.attribute_kinds
   end
