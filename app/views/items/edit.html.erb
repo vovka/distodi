@@ -14,6 +14,7 @@
       <span> <%= characteristic.value %></span>
     <% end %>
 </div>
+
 <%= link_to new_service_path(item_id: @item) do %>
   <div class="add_service">
     + ADD NEW SERVICE
@@ -25,13 +26,18 @@
 	<div class="transfer">
 		<p><strong>Got sold your Item?</strong> You could simply send your Item to another registered Distodi user just with an e-mail address. Confirm sending after your recepient’s confirmation.</p>
 		<span>Recipient’s E-mail address</span>
-		<input>
+
+    <%= render "transfer_form", item: @item %>
 	</div>
 
 	<div class="delete">
 		<span>
 			Enter your password to delete this Item
 		</span>
-		<input>
+		<input type="password">
+    <div class="delete_but">
+      <%= image_tag "delete_red.png" %>
+      <%= link_to t(".delete_link"), item_path(@item), method: :delete %>
+    </div>
 	</div>
 </div>

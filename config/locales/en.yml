@@ -42,7 +42,7 @@ en:
     transfer_form:
       user_identifier_to_transfer_item: "User email to transfer the item."
       confirm_transfer: "Are you sure you want to transfer the item to another user?"
-      transfer_submit: "Transfer"
+      transfer_submit: "Send item"
     index:
       transferred_items: "Items that are transferred to me."
       my_items: "My Items"

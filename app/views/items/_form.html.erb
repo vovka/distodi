@@ -6,7 +6,7 @@
 
           <ul>
             <% @item.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
+              <li><%= message %></li>
             <% end %>
           </ul>
         </div>
@@ -22,18 +22,23 @@
       <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Please select a category"}, {class: "category_select"} %>
     </div>
 
-    <div class="field">
-      <%= f.label 'Picture' %><br>
-      <%= f.hidden_field :picture_cache %>
-      <%= f.file_field :picture%>
-    </div>
-
     <div class="custom_attributes">
 
     </div>
-    <div class="actions">
-      <%= f.submit %>
+
+    <div class="field">
+      <p>Cover photo (min 800x600 pixels)</p>
+      <%= image_tag(@item.picture_url, alt: @item.title, width: 250) %>
+      <%= f.file_field :picture%>
     </div>
+
+    <div class="actions">
+      <%= f.submit 'Save changes'%>
+      <div class="back">
+      <%= link_to 'Discard changes', user_path(current_user) %>
+      </div>
+    </div>
+
 <% end %>
 </div>
 
