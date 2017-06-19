@@ -57,6 +57,7 @@
 		font-size:24px;
 		line-height: 75px;
 	}
+
 }
 
 /* Medium Devices, Desktops */
@@ -314,10 +315,104 @@
 	}
 	.field_with_errors{
 		width: 100%;
-		
 	}
 	.field_with_errors input{
 		border: 1.3px solid red;
+	}
+	.field{
+		width: 100%;
+	}
+	.atribut{
+		width: 100%;
+	}
+	.custom_attributes{
+		width: 93%;
+	}
+	.field img{
+		width: 91%
+	}
+	.form .field_title{
+		width: 93%;
+		    margin-top: 15px;
+	}
+	.form .categories{
+		width: 93%;
+		margin-top: 15px;
+		z-index: 300;
+	}
+	.actions_but{
+		width: 100%;
+	}
+	.actions_but input{
+		width: 91%;
+	}
+	.actions_but .back{
+		margin-top: 15px;
+		margin-left: 0px;
+		width: 91%;
+	}
+	.field{
+		margin-top:10px;
+	}
+	.function .transfer{
+		width: 100%;
+		height: 339px;
+		margin-bottom: 0px;
+	}
+	.function .transfer p{
+		width: 84%;
+	}
+	.function .transfer span{
+		width: 80%;
+		padding: 0 20px;
+	}
+	.function .transfer input{
+		width: 84%;
+		margin-left:29px;
+	}
+	.function .transfer img{
+		display: none;
+	}
+	.function{
+		width: 100%;
+		margin-left: 0;
+	}
+	.function .delete{
+		width: 100%;
+		float: left;
+		    height: 210px;
+	}
+	.function .transfer input:nth-child(4){
+		position: relative;
+		padding-right: 0px;
+		width: 87.5%;
+		height: 50px;
+		text-align: center;
+		margin-top: -26px;
+		margin-left: 69px;
+	}
+	.function .delete .delete_but {
+	position: relative;
+    top: 0;
+    right: 0;
+    text-align: center;
+    width: 87%;
+    height: 50px;
+    margin-top: 128px;
+    margin-left: 30px;
+	}
+	.function .delete img{
+		display: none;
+	}
+	.function .delete input{
+		    margin-left: 30px;
+	}
+	.function .delete span{
+
+    padding: 30px 0 10px 39px;
+	}
+	.function .delete .delete_but span{
+    right: 10%;
 	}
 }
 /* Small Devices, Tablets */
@@ -328,6 +423,10 @@
 @media only screen and (max-width : 640px) {
 	.btn_menu.black{
 		margin-left: 65%;
+	}
+	.form .categories{
+		width: 94%;
+		margin-top: 15px;
 	}
 
 }
@@ -351,13 +450,23 @@
 }
 .service_panel img:nth-child(1){
 	margin-left: 0;
+
 }
+.form .categories{
+		width: 95%;
+		margin-top: 15px;
+	}
+
 }
 
 @media only screen and (max-width : 340px) {
 	.slider .owl-item .items img{
 		width: 255px;
 		margin-left: -38%;
+	}
+	.form .categories{
+		width: 96%;
+		margin-top: 15px;
 	}
 }
 
@@ -366,6 +475,10 @@
 	.slider .owl-item .items img{
 		width: 230px;
 		margin-left: -45%;
+	}
+	.form .categories{
+		width: 97%;
+		margin-top: 15px;
 	}
 }
 
@@ -393,5 +506,6 @@
 
  /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
-
+	.field img{
+}
 }

@@ -35,6 +35,10 @@ class ItemPolicy
     user.transferring_items.include? item
   end
 
+  def get_attributes?
+    edit?
+  end
+
   private
 
   def author?

@@ -1,7 +1,149 @@
-<div class="margin_left1">
-  <h1>New Item</h1>
+<div class="item_info">
+  <span>Item details - <%= @item.title %>, </span>
+    <% @item.characteristics.each do |characteristic| %>
+      <span> <%= characteristic.value %></span>
+    <% end %>
+    <p class="grey"> <%= @item.id_code %></p>
 </div>
+
 <%= render 'form' %>
-<div class="margin_left">
-  <%= link_to 'Back', user_path(current_user) %>
+
+<div class="item_info">
+  <span><%= @item.title %>, </span>
+    <% @item.characteristics.each do |characteristic| %>
+      <span> <%= characteristic.value %></span>
+    <% end %>
+</div>
+
+<div ng-init='controller.checkboxes.length = <%= @services.size %>;
+              controller.permissions = <%= @services.map { |s| s.permissions(current_user) }.to_json.html_safe %>;
+              controller.ids = <%= @services.map(&:id) %>;
+              '>
+  <div class="item_info">
+    <span>All services</span>
+  </div>
+  <%= link_to new_service_path(item_id: @items.first), "ng-show" => "#{@items.size} === 1 && !controller.serviceActions.show" do %>
+    <div class="add_service">
+      + ADD NEW SERVICE
+    </div>
+  <% end %>
+  <div class="service_panel" ng-show="controller.serviceActions.show">
+    <a href="" class="view"
+       ng-class="controller.serviceActions.view ? '' : 'disabled'"
+       ng-click="controller.clickedView()">
+      View
+    </a>
+    <a href="" class="delete"
+       ng-class="controller.serviceActions.delete ? '' : 'disabled'"
+       ng-click="controller.clickedDelete()">
+      Delete
+    </a>
+    <!-- <a href="#"><%= image_tag "send.png" %> Send</a> -->
+  </div>
+  <table class="list_items">
+    <thead>
+      <th>
+        <div class="select">
+          <label>
+            <input type="checkbox" ng-change="controller.clickedAllCheckbox()"
+                                   ng-model="controller.checkboxes.all" />
+            <i ng-class="!controller.checkboxes.areAllChecked() && controller.checkboxes.isAnyChecked() ? 'partial' : ''">
+              <%= image_tag "select.png" %>
+            </i>
+          </label>
+        </div>
+      </th>
+      <th>Service</th>
+      <th>Service type</th>
+      <th>Status</th>
+      <th>Item</th>
+      <th>Service ID</th>
+      <th>Service date</th>
+      <th>Service total cost</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @services.each.with_index do |service, i| %>
+      <tr ng-class="[
+                      (controller.showDetails === <%= i %> ? 'viewing' : ''),
+                      (controller.checkboxes[<%= i %>] ? 'selected' : '')
+                    ].join(' ')">
+        <td>
+          <div class="select">
+            <label>
+              <input type="checkbox" ng-model="controller.checkboxes[<%= i %>]"
+                                     ng-change="controller.changedCheckbox(<%= i %>)" />
+              <i>
+                <%= image_tag "select.png" %>
+              </i>
+            </label>
+          </div>
+        </td>
+        <td>
+          <% service.service_fields.each do |service_field| %>
+            <%= service_field.service_kind.title %>
+            <%= service_field.text %>
+          <% end %>
+        </td>
+        <td>
+          <% service.action_kinds.decorate.each do |action_kind| %>
+            <div class="icon_service <%= action_kind.icon_class %>">
+              <%= "#{action_kind.title}" %>
+            </div>
+          <% end %>
+        </td>
+        <td>
+          <div class="<%= service.status %>">&nbsp;</div>
+        </td>
+        <td><%= service.item.try :title %></td>
+        <td><%= service.id_code %></td>
+        <td><%= service.created_at.strftime("%d %b %Y")%></td>
+        <td>
+          <%= number_to_currency(service.price , unit: "EUR ") %>
+        </td>
+        <td class="actions">
+          <%= link_to "&nbsp;".html_safe, "", "ng-click" => "controller.clickedView(#{i})" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="list_items_mobile">
+    <% @services.each do |service| %>
+    <div class="service_mobile">
+      <div class="select">
+        <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>
+      </div>
+      <p><% service.service_fields.each do |service_field| %>
+        <%= service_field.service_kind.title %>
+        <%= service_field.text %>
+        <% end %>
+      </p>
+      <p><%= service.item.try :title %></p>
+      <p><span><%= service.created_at.strftime("%d %b %Y")%></span>
+      <span> <%= number_to_currency(service.price , unit: "EUR ") %></span></p>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="function">
+	<div class="transfer">
+		<p><strong>Got sold your Item?</strong> You could simply send your Item to another registered Distodi user just with an e-mail address. Confirm sending after your recepient’s confirmation.</p>
+		<span>Recipient’s E-mail address</span>
+
+    <%= render "transfer_form", item: @item %>
+	</div>
+
+	<div class="delete">
+		<span>
+			Enter your password to delete this Item
+		</span>
+		<input type="password">
+    <div class="delete_but">
+      <%= image_tag "delete_red.png" %>
+      <%= link_to t(".delete_link"), item_path(@item), method: :delete %>
+    </div>
+	</div>
 </div>
