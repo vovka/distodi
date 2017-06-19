@@ -47,6 +47,7 @@ class ItemsController < ApplicationController
   def edit
     @items = [@item]
     authorize @item
+    @services = current_user.services.includes(:service_fields, :action_kinds).decorate
   end
 
   def update
