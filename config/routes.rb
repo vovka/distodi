@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :companies, controllers: {
     registrations: "companies/registrations",
-    sessions: "companies/sessions"
+    sessions: "companies/sessions",
+    passwords: "companies/passwords"
   }
   devise_for :users, controllers: {
     registrations: "users/registrations",
-    sessions: "users/sessions"
+    sessions: "users/sessions",
+    passwords: "users/passwords"
   }
 
   resources :leads

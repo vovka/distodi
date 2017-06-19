@@ -1,4 +1,5 @@
 class Companies::PasswordsController < Devise::PasswordsController
+  layout 'sign_in'
   # GET /resource/password/new
   # def new
   #   super
