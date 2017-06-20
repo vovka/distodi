@@ -15,11 +15,6 @@
     <% end %>
 </div>
 
-<%= link_to new_service_path(item_id: @item) do %>
-  <div class="add_service">
-    + ADD NEW SERVICE
-  </div>
-<% end %>
 <div ng-init='controller.checkboxes.length = <%= @services.size %>;
               controller.permissions = <%= @services.map { |s| s.permissions(current_user) }.to_json.html_safe %>;
               controller.ids = <%= @services.map(&:id) %>;
