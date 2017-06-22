@@ -59,7 +59,7 @@
               </div>
               <% end %>
             </div>
-            <% @items.each do |item| %>
+            <% @items&.each do |item| %>
               <div class="items">
                 <%= link_to item do %>
                 <%= image_tag(item.picture_url, alt: item.title, width: 250) %>
