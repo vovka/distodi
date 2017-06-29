@@ -143,7 +143,7 @@
 		<input type="password">
     <div class="delete_but">
       <%= image_tag "delete_red.png" %>
-      <%= link_to t(".delete_link"), item_path(@item), method: :delete %>
+      <%= link_to t(".delete_link"), @item, method: :delete %>
     </div>
 	</div>
 </div>
