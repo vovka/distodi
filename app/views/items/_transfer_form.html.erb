@@ -1,5 +1,7 @@
 <%= form_for item, url: transfer_item_path(item), method: "POST" do |f| %>
-  <%= text_field_tag "user_identifier" %>
-  <%= f.submit t(".transfer_submit"), data: { confirm: t(".confirm_transfer") } %>
-  <%= image_tag "transfer.png" %>
+  <div class="inputs_trans">
+    <%= text_field_tag "user_identifier" %>
+    <%= f.submit t(".transfer_submit"), data: { confirm: t(".confirm_transfer") } %>
+    <%= image_tag "transfer.png" %>
+  </div>
 <% end %>

@@ -10,6 +10,13 @@
 		width: 135px;
 		height: 101.25px;
 	}
+	.red_col{
+		width: 135px;
+		height: 101.25px;
+	}
+	.transfer_panel .receive p{
+		margin-top:33%;
+	}
 	.all_items span{
 		line-height: 101.25px;
 		font-size:18px;
@@ -26,6 +33,10 @@
 		height: 91.125px;
 	}
 	.all_items{
+		width: 121.5px;
+		height: 91.125px;
+	}
+	.red_col{
 		width: 121.5px;
 		height: 91.125px;
 	}
@@ -49,6 +60,10 @@
 		width: 100px;
 		height: 75px;
 	}
+	.red_col{
+		width: 100px;
+		height: 75px;
+	}
 	.all_items span{
 		line-height: 75px;
 		font-size:16px;
@@ -57,12 +72,41 @@
 		font-size:24px;
 		line-height: 75px;
 	}
+	.function .inputs_trans input:nth-child(2){
+		width: 37%;
+	}
+	.function .transfer img{
+		right: 35%;
+	}
+	.function .transfer p{
+		width: 42%;
+	}
+	.function .delete img{
+		right: 90px;
+	}
 
 }
 
 /* Medium Devices, Desktops */
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width : 1140px) {
+	.function .inputs_trans input:nth-child(2){
+		width: 41%;
+	}
+	.function .transfer img{
+		right: 41%;
+	}
+	.function .transfer p{
+		width: 38%;
+	}
+	.delete_but{
+		width: 37%;
+	}
+}
 
+@media only screen and (max-width : 1024px) {
+	.delete_but{
+		top:71px;
+	}
 }
 
 @media only screen and (max-width : 768px) {
@@ -369,6 +413,7 @@
 	.function .transfer input{
 		width: 84%;
 		margin-left:29px;
+		position: inherit;
 	}
 	.function .transfer img{
 		display: none;
@@ -382,14 +427,17 @@
 		float: left;
 		    height: 210px;
 	}
-	.function .transfer input:nth-child(4){
+	.inputs_trans{
+		width: 100%
+	}
+	.function .inputs_trans input:nth-child(2){
 		position: relative;
-		padding-right: 0px;
-		width: 87.5%;
-		height: 50px;
-		text-align: center;
-		margin-top: -26px;
-		margin-left: 69px;
+    	padding-right: 0px;
+    	width: 87.5%;
+    	height: 50px;
+    	text-align: center;
+   	 	margin-top: 6px;
+    	margin-left: 37px;
 	}
 	.function .delete .delete_but {
 	position: relative;
@@ -406,6 +454,7 @@
 	}
 	.function .delete input{
 		    margin-left: 30px;
+		    float: left;
 	}
 	.function .delete span{
 

@@ -1,0 +1,37 @@
+<table  style="background-color:#F0FFF0;">
+  <thead>
+    <th style="background-color: #98FB98; height: 30px; font-size: 23px; border-bottom: 2px solid black; text-align: center; margin: 5px 15px; width: 260px;">Service</th>
+    <th style="background-color: #98FB98; height: 30px; font-size: 23px; border-bottom: 2px solid black; text-align: center; margin: 5px 15px; width: 260px;">Service type</th>
+    <th style="background-color: #98FB98; height: 30px; font-size: 23px; border-bottom: 2px solid black; text-align: center; margin: 5px 15px; width: 260px;">Item</th>
+    <th style="background-color: #98FB98; height: 30px; font-size: 23px; border-bottom: 2px solid black; text-align: center; margin: 5px 15px; width: 260px;">Service ID</th>
+    <th style="background-color: #98FB98; height: 30px; font-size: 23px; border-bottom: 2px solid black; text-align: center; margin: 5px 15px; width: 260px;">Service date</th>
+    <th style="background-color: #98FB98; height: 30px; font-size: 23px; border-bottom: 2px solid black; text-align: center; margin: 5px 15px; width: 260px;">Service total cost</th>
+    <th style="background-color: #98FB98; height: 30px; font-size: 23px; border-bottom: 2px solid black; text-align: center; margin: 5px 15px; width: 260px;"></th>
+  </thead>
+  <tbody>
+    <% @services.each.with_index do |service, i| %>
+    <tr>
+      <td style="color:green; height: 30px; font-size: 17px; border-bottom: 1px solid black; text-align: center; margin: 5px 15px; width: 260px;">
+        <% service.service_fields.each do |service_field| %>
+        <%= service_field.service_kind.title %>
+        <%= service_field.text %>
+        <% end %>
+      </td>
+      <td style="color:green; height: 30px; font-size: 17px; border-bottom: 1px solid black; text-align: center; margin: 5px 15px; width: 260px;">
+        <% service.action_kinds.decorate.each do |action_kind| %>
+        <div class="icon_service <%= action_kind.icon_class %>">
+          <%= "#{action_kind.title}" %>
+        </div>
+        <%= "#{action_kind.title}" %>
+        <% end %>
+      </td>
+      <td style="color:green; height: 30px; font-size: 17px; border-bottom: 1px solid black; text-align: center; margin: 5px 15px; width: 260px;"><%= service.item.try :title %></td>
+      <td style="color:green; height: 30px; font-size: 17px; border-bottom: 1px solid black; text-align: center; margin: 5px 15px; width: 260px;"><%= service.id_code %></td>
+      <td style="color:green; height: 30px; font-size: 17px; border-bottom: 1px solid black; text-align: center; margin: 5px 15px; width: 260px;"><%= service.created_at.strftime("%d %b %Y")%></td>
+      <td style="color:green; height: 30px; font-size: 17px; border-bottom: 1px solid black; text-align: center; margin: 5px 15px; width: 260px;">
+        <%= number_to_currency(service.price , unit: "EUR ") %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

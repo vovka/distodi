@@ -15,16 +15,7 @@ class Item < ActiveRecord::Base
 
   after_create :ensure_token
 
-  validate :valid_user_params
-
   private
-
-  def valid_user_params
-    unless self.user.phone
-      errors.add(self.user.first_name, "please, set all fields at profile edit page.")
-
-    end
-  end
 
   def generate_token
     loop do

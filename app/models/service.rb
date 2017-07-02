@@ -13,6 +13,7 @@ class Service < ActiveRecord::Base
   has_one :user, through: :item
   belongs_to :company
   belongs_to :approver, polymorphic: true
+  COLS_TO_EXPORT = [:id_code, :approver_id, :created_at, :updated_at, :item_id, :next_control, :price, :company_id, :status, :reason]
 
   delegate :category, to: :item, allow_nil: true
   include IdCodeable
@@ -29,6 +30,73 @@ class Service < ActiveRecord::Base
 
   before_create do |service|
     service.status = STATUS_APPROVED if service.self_approvable?
+  end
+
+  def self.to_csv(services, selected_columns = COLS_TO_EXPORT)
+    CSV.generate do |csv|
+      csv << selected_columns
+      services.each do |service|
+        csv << selected_columns.map do |column|
+          send :"#{column}_to_csv", service
+        end
+      end
+    end
+  end
+
+  def self.id_code_to_csv(service)
+    service.id_code
+  end
+
+  def self.approver_id_to_csv(service)
+    service.approver.full_name
+  end
+
+  #def created_at_to_csv
+  #def price_to_csv
+  #...
+
+  def self.id_code_to_csv(service)
+    service.id_code
+  end
+
+  def self.approver_id_to_csv(service)
+    service.approver.try(:first_name) || "None"
+  end
+
+  def self.created_at_to_csv(service)
+    I18n.l service.created_at
+  end
+
+  def self.updated_at_to_csv(service)
+    I18n.l service.updated_at
+  end
+
+  def self.item_id_to_csv(service)
+    service.item.title
+  end
+
+  def self.next_control_to_csv(service)
+    if service.next_control.present?
+      I18n.l service.next_control
+    else
+      "None"
+    end
+  end
+
+  def self.price_to_csv(service)
+    service.price
+  end
+
+  def self.company_id_to_csv(service)
+    service.company.try(:name) || "None"
+  end
+
+  def self.status_to_csv(service)
+    service.status.humanize
+  end
+
+  def self.reason_to_csv(service)
+    service.reason
   end
 
   def self_approvable?(user = nil)
