@@ -48,6 +48,7 @@ gem 'countries', require: 'countries/global'
 gem 'country_select'
 gem 'draper'
 gem 'angular_rails_csrf'
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

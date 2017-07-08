@@ -14,7 +14,6 @@ class ServicesController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data Service.to_csv(@services) }
-      format.xls
     end
   end
 

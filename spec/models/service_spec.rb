@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Service, type: :model do
+  include ActiveSupport::Testing::TimeHelpers
+
   describe "#create" do
     it "sets pending status by default" do
       user = create :user
@@ -51,8 +53,6 @@ RSpec.describe Service, type: :model do
   end
 
   describe "ID code" do
-    include ActiveSupport::Testing::TimeHelpers
-
     it "calls the method after create" do
       service = build :service
       allow(service).to receive(:ensure_id_code)
@@ -76,7 +76,7 @@ RSpec.describe Service, type: :model do
                            category: category,
                            characteristics: [release_year]
 
-      service = travel_to(Time.new(2017, 4, 25, 12, 0)) do
+      service = travel_to(Time.zone.parse("2017-4-25 12:00")) do
         item.services.create! id: 401_712,
                               action_kinds: create_list(:action_kind, 1,
                                                         abbreviation: "XYZ")
@@ -93,7 +93,7 @@ RSpec.describe Service, type: :model do
       category = create :category, id: 111_111
       item = create :item, user: john_doe, category: category
 
-      service = travel_to(Time.new(2017, 4, 25, 12, 0)) do
+      service = travel_to(Time.zone.parse("2017-4-25 12:00")) do
         item.services.create! id: 401_712,
                               action_kinds: create_list(:action_kind, 1,
                                                         abbreviation: "XYZ")
@@ -126,6 +126,26 @@ RSpec.describe Service, type: :model do
 
         expect(service).to be_invalid
       end
+    end
+  end
+
+  describe ".to_csv" do
+    before { allow(I18n).to receive(:locale).and_return(:cs) }
+
+    it "generates CSV" do
+      collection = travel_to(Time.zone.parse("2017-12-31 12:00")) do
+        create_list :service, 2, price: 123.45
+      end
+
+      expect(Service.to_csv(collection)).to include(<<-EOS)
+Id code,Approver,Created at,Updated at,Item,Next control,Price,Company,Status,Reason
+EOS
+      expect(Service.to_csv(collection)).to include(<<-EOS)
+"",Ne 31. Prosinec 2017 12:00 +0100,Ne 31. Prosinec 2017 12:00 +0100,car,"","123,45 Kč","",Approved,
+EOS
+      expect(Service.to_csv(collection)).to include(<<-EOS)
+"",Ne 31. Prosinec 2017 12:00 +0100,Ne 31. Prosinec 2017 12:00 +0100,car,"","123,45 Kč","",Approved,
+EOS
     end
   end
 end

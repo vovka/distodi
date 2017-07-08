@@ -37,7 +37,7 @@ describe Item do
                                country: country
       category = create :category, id: 111_111
 
-      item = travel_to(Time.new(2015, 2)) do
+      item = travel_to(Time.zone.parse("2015-12-31")) do
         create :item, id: 401_712, user: john_doe, category: category, characteristics: []
       end
 
