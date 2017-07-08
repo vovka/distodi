@@ -51,6 +51,7 @@ en:
       edit: "Edit"
       create_item: "Create Item"
       back_to_my_panel: "Back to my panel"
+      csv_link: "Download scv file"
   companies:
     destroy:
       notice: "Company was successfully destroyed."
@@ -79,6 +80,9 @@ en:
     destroy:
       notice: "Service was successfully destroyed."
   layouts:
+    item:
+      transferred_items: "New"
+      receive_item: "Receive"
     sign_in:
       welcome:
         "1":

@@ -63,7 +63,7 @@
       <th></th>
     </thead>
     <tbody>
-      <% @services.each.with_index do |service, i| %>
+      <% @item.services.each.with_index do |service, i| %>
       <tr ng-class="[
                       (controller.showDetails === <%= i %> ? 'viewing' : ''),
                       (controller.checkboxes[<%= i %>] ? 'selected' : '')
@@ -109,7 +109,7 @@
     </tbody>
   </table>
   <div class="list_items_mobile">
-    <% @services.each do |service| %>
+    <% @item.services.each do |service| %>
     <div class="service_mobile">
       <div class="select">
         <label><input type="checkbox"/><i><%= image_tag "select.png" %></i></label>

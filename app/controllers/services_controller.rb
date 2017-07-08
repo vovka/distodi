@@ -9,6 +9,14 @@ class ServicesController < ApplicationController
                 only: [:create, :approve, :decline]
 
   # GET /services/new
+  def index
+    @services = current_user.services.includes(:service_fields, :action_kinds)
+    respond_to do |format|
+      format.html
+      format.csv { send_data Service.to_csv(@services) }
+    end
+  end
+
   def new
     if @service.present?
       @item ||= @service.item

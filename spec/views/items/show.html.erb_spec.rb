@@ -14,8 +14,8 @@ RSpec.describe "items/show", type: :view do
         sign_in company
         assign :item, user.items.first
         # allow(view).to receive(:policy) { |service| ServicePolicy.new(user, service) }
-        def view.policy(record, company = company)
-          Pundit.policy(company, record)
+        def view.policy(record)
+          Pundit.policy(nil, record)
         end
 
         render
@@ -47,8 +47,8 @@ RSpec.describe "items/show", type: :view do
         sign_in user
         assign :item, user.items.first
         # allow(view).to receive(:policy) { |service| ServicePolicy.new(user, service) }
-        def view.policy(record, user = user)
-          Pundit.policy(user, record)
+        def view.policy(record)
+          Pundit.policy(nil, record)
         end
 
         render

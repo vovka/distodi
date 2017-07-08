@@ -15,11 +15,12 @@ class Service < ActiveRecord::Base
   belongs_to :approver, polymorphic: true
 
   delegate :category, to: :item, allow_nil: true
+
   include IdCodeable
 
-  scope :pending, -> { where(status: "pending") }
-  scope :approved, -> { where(status: "approved") }
-  scope :declined, -> { where(status: "declined") }
+  scope :pending, -> { where(status: STATUS_PENDING) }
+  scope :approved, -> { where(status: STATUS_APPROVED) }
+  scope :declined, -> { where(status: STATUS_DECLINED) }
   scope :user_services, ->(user_id) { joins(item: :user).where("users.id = ?", user_id) }
   scope :unconfirmed, -> { where("company_id IS NOT NULL AND confirmed IS NULL") }
 
@@ -29,6 +30,12 @@ class Service < ActiveRecord::Base
 
   before_create do |service|
     service.status = STATUS_APPROVED if service.self_approvable?
+  end
+
+  def self.to_csv(services)
+    data = [ServiceCSVDecorator.humanized_columns] +
+           services.map { |service| ServiceCSVDecorator.new service }
+    CSV.generate { |csv| data.each { |line| csv << line } }
   end
 
   def self_approvable?(user = nil)

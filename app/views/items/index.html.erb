@@ -112,3 +112,6 @@
 <div class="pdf_button">
   <input type="button" value="Save report as PDF" onclick="print()"></input>
 </div>
+<div class="xls_button">
+  <%= link_to t(".csv_link"), services_path(format: :csv) %>
+</div>
