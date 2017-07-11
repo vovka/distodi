@@ -1825,7 +1825,22 @@ option{
 .new_item.ng-pristine.ng-valid{
 	color: red;
 }
-.transfer_panel{
+
+.custom_attributes .atribut select{
+	width: 95%;
+	border: 1px solid #d3d3d3;
+	border-radius: 4px;
+	font-size: 16px;
+	height: 52px;
+	padding-left: 15px;
+	background-color: #fff;
+	float: left;
+	margin-bottom: 15px;
+}
+
+.custom_attributes .atribut select, option:checked{
+	color: #149b4c;
+}.transfer_panel{
 	text-align: left;
 	position: relative;
 }

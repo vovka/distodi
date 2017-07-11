@@ -43,7 +43,7 @@
 </div>
 
 <script>
-  $("#item_category_id").on("change", function(){
+  $("form.edit_item, form.new_item").on("change", "#item_category_id, select.brand_options", function(){
     if ($('#item_category_id option:selected').val()) {
       $.ajax({
         url: "/items/get_attributes",
@@ -51,6 +51,7 @@
         dataType: "script",
         data: {
           category_id: $('#item_category_id option:selected').val(),
+          brand_option_id: $("select.brand_options").val(),
           item_id: <%= @item.to_param || "undefined" %>
         }
       });

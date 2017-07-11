@@ -1,0 +1,42 @@
+{
+  "Car": [
+    {
+      "name": "Dodge",
+      "model_options_attributes": [ {"name": "Polara"}, {"name": "RAM"}, {"name": "Viper"} ]
+    },
+    {
+      "name": "Toyota",
+      "model_options_attributes": [ {"name": "Trueno"}, {"name": "Land Cruiser"}, {"name": "Supra"} ]
+    },
+    {
+      "name": "Acura",
+      "model_options_attributes": [ {"name": "CL"}, {"name": "CSX"}, {"name": "EL"} ]
+    },
+    {
+      "name": "Audi",
+      "model_options_attributes": [ {"name": "S3"}, {"name": "S4"}, {"name": "S5"}, {"name": "S6"}, {"name": "S7"} ]
+    },
+    {
+      "name": "Pegout",
+      "model_options_attributes": [ {"name": "302"}, {"name": "402"} ]
+    }
+  ],
+  "Bike": [
+    {
+      "name": "Winner",
+      "model_options_attributes": [ {"name": "Varan"}, {"name": "Gladiator"} ]
+    },
+    {
+      "name": "Scott Scale",
+      "model_options_attributes": [ {"name": "JR 24 Plus"}, {"name": "JR 27"}, {"name": "JR 30"} ]
+    },
+    {
+      "name": "Dodge",
+      "model_options_attributes": [ {"name": "Varan"}, {"name": "JR 27"} ]
+    },
+    {
+      "name": "Pegout",
+      "model_options_attributes": [ {"name": "300"}, {"name": "400"}, {"name": "500"} ]
+    }
+  ]
+}

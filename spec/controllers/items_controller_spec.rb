@@ -421,4 +421,33 @@ describe ItemsController do
       expect(response).to redirect_to(items_path)
     end
   end
+
+  describe "GET get_attributes" do
+    let(:valid_attributes) do
+      {
+        item_id: @item.to_param,
+        category_id: @category.to_param,
+        format: :js
+      }
+    end
+
+    it "disallows view other's item" do
+      @item = create :item
+      @category = create :category
+      sign_in create(:user)
+
+      expect { xhr :get, :get_attributes, valid_attributes }.to raise_error(ActionController::RoutingError)
+    end
+
+    it "allows to view own item" do
+      user = create :user
+      @category = create(:category)
+      @item = user.items.create! category: @category
+      sign_in user
+
+      xhr :get, :get_attributes, valid_attributes
+
+      expect(response).to be_success
+    end
+  end
 end
