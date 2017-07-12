@@ -12,7 +12,7 @@ class UserMailer < ApplicationMailer
          subject: 'Service added Email'
   end
 
-    def add_service_email_to_company(user)
+  def add_service_email_to_company(user)
     @user = user
     mail to: user.email,
          subject: 'Service added Email'
