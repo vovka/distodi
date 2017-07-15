@@ -11,6 +11,8 @@ class Item < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
+  default_scope { where demo: false }
+  scope :demo, -> { unscoped.where demo: true }
   scope :unconfirmed_services, -> { joins(:services).where("services.company_id IS NOT NULL AND services.confirmed IS NULL") }
 
   after_create :ensure_token
@@ -43,6 +45,7 @@ end
 #  token              :string
 #  id_code            :string
 #  transferring_to_id :integer
+#  demo               :boolean
 #
 # Indexes
 #

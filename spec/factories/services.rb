@@ -24,4 +24,5 @@ end
 #  approver_type :string
 #  reason        :string(1023)
 #  id_code       :string
+#  demo          :boolean
 #

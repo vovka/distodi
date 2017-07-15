@@ -18,6 +18,8 @@ class Company < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
+  default_scope { where demo: false }
+  scope :demo, -> { unscoped.where demo: true }
   scope :user_companies, lambda { |user_id|
     joins(services: { item: :user }).where(users: { id: user_id })
   }
@@ -76,6 +78,7 @@ end
 #  invited_by_id          :integer
 #  invited_by_type        :string
 #  invitations_count      :integer          default("0")
+#  demo                   :boolean
 #
 # Indexes
 #

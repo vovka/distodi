@@ -159,7 +159,7 @@ class ServicesController < ApplicationController
     end
 
     def set_item
-      @item = Item.find(params[:item_id])
+      @item = Item.unscoped.find(params[:item_id])
     end
 
     def find_company_by_email(email)

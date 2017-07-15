@@ -24,6 +24,7 @@ end
 #  token              :string
 #  id_code            :string
 #  transferring_to_id :integer
+#  demo               :boolean
 #
 # Indexes
 #

@@ -1,7 +1,9 @@
 class Service < ActiveRecord::Base
-  STATUS_PENDING = "pending".freeze
-  STATUS_APPROVED = "approved".freeze
-  STATUS_DECLINED = "declined".freeze
+  STATUSES = [
+    STATUS_PENDING = "pending".freeze,
+    STATUS_APPROVED = "approved".freeze,
+    STATUS_DECLINED = "declined".freeze
+  ]
 
   mount_uploader :picture, PictureUploader
 
@@ -10,15 +12,16 @@ class Service < ActiveRecord::Base
   has_many :service_action_kinds, dependent: :destroy
   has_many :action_kinds, through: :service_action_kinds
   belongs_to :item
-  has_one :user, through: :item
   belongs_to :company
   belongs_to :approver, polymorphic: true
 
-  delegate :category, to: :item, allow_nil: true
   delegate :map_address, to: :company, allow_nil: true
+  delegate :category, :user, to: :item, allow_nil: true
 
   include IdCodeable
 
+  default_scope { where demo: false }
+  scope :demo, -> { unscoped.where demo: true }
   scope :pending, -> { where(status: STATUS_PENDING) }
   scope :approved, -> { where(status: STATUS_APPROVED) }
   scope :declined, -> { where(status: STATUS_DECLINED) }
@@ -86,4 +89,5 @@ end
 #  approver_type :string
 #  reason        :string(1023)
 #  id_code       :string
+#  demo          :boolean
 #

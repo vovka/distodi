@@ -15,7 +15,7 @@ ActionKind.destroy_all
 Category.destroy_all
 
 
-common = AttributeKind.create([
+common = AttributeKind.create!([
                                   {title: 'Brand'},
                                   {title: 'Model'},
                                   {title: 'Year'},
@@ -23,19 +23,19 @@ common = AttributeKind.create([
                                   {title: 'Country'}
                               ])
 
-bikes = AttributeKind.create([
+bikes = AttributeKind.create!([
                                  {title: 'Weight'},
                                  {title: 'Gender'},
                                  {title: 'Wheel diameter'}
                              ])
 
-cars = AttributeKind.create([
+cars = AttributeKind.create!([
                                 {title: 'Motor'},
                                 {title: 'Fuel type'},
                                 {title: 'Transmission'}
                             ])
 
-car_service_kinds = ServiceKind.create([
+car_service_kinds = ServiceKind.create!([
                                            {title: 'oil + filter', with_text: false},
                                            {title: 'gearbox oil', with_text: false},
                                            {title: 'brake fluid', with_text: false},
@@ -69,18 +69,18 @@ car_service_kinds = ServiceKind.create([
                                            {title: 'The next control in km', with_text: true}
                                        ])
 
-car_action_kinds = ActionKind.create([
+car_action_kinds = ActionKind.create!([
                                          {title: 'Control'},
                                          {title: 'Change'},
                                      ])
 
-car= Category.create(name: 'Car')
+car= Category.create!(name: 'Car')
 car.attribute_kinds = common + cars
 car.service_kinds = car_service_kinds
 car.action_kinds = car_action_kinds
 car.save
 
-bike_service_kinds = ServiceKind.create([
+bike_service_kinds = ServiceKind.create!([
                                             {title: 'Theads in the frame', with_text: false},
                                             {title: 'Cleanin the frame + wheels', with_text: false},
                                             {title: 'Cleanin the frame + wheels', with_text: false},
@@ -95,15 +95,32 @@ bike_service_kinds = ServiceKind.create([
                                             {title: 'Truing front + rear wheels', with_text: false}
                                         ])
 
-bike_action_kinds = ActionKind.create([
+bike_action_kinds = ActionKind.create!([
                                           {title: 'Control and Clean'},
                                           {title: 'Change'},
                                       ])
 
 
-bike= Category.create(name: 'Bike')
+bike= Category.create!(name: 'Bike')
 bike.attribute_kinds = common + bikes
 bike.service_kinds = bike_service_kinds
 bike.action_kinds = bike_action_kinds
 bike.save
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
+Company.create!(
+  demo: true,
+  password: "11111111",
+  password_confirmation: "11111111",
+  name: DemoDataService::DEMO_TITLE_PLACEHOLDER + Faker::Company.name,
+  phone: Faker::PhoneNumber.phone_number,
+  country: Faker::Address.country,
+  city: Faker::Address.city,
+  street: Faker::Address.street_name,
+  postal_code: Faker::Address.postcode.split("-").first,
+  email: Faker::Internet.safe_email,
+  website: "example.com",
+  notice: Faker::Lorem.paragraphs(1),
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+)
