@@ -17,6 +17,11 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
+every 1.day, at: '3:00 am' do
+  emails = %w( scherbina.v@gmail.com irinakrejcarova@gmail.com anna.sobol.92@gmail.com )
+  rake "db:dump db:dump:send EMAILS=\"#{emails.join(", ")}\""
+end
+
 every 1.day, at: '4:30 am' do
   rake "remind_services:not_approved"
 end
