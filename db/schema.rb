@@ -75,6 +75,13 @@ ActiveRecord::Schema.define(version: 20170730165658) do
     t.integer "category_id"
   end
 
+  create_table "brand_options", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -160,6 +167,13 @@ ActiveRecord::Schema.define(version: 20170730165658) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "model_options", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "brand_option_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "service_action_kinds", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "action_kind_id"
@@ -228,6 +242,8 @@ ActiveRecord::Schema.define(version: 20170730165658) do
     t.string   "postal_code"
     t.string   "notice"
     t.string   "picture"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
