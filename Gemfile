@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
-# Omniauth-facebook
+# Omniauth
+gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-linkedin'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 gem 'unicorn'
