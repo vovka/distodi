@@ -36,9 +36,9 @@
       <div class="menu_mobile">
         <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), home_path %>
         <ul>
-          <li>NEWS</li>
-          <li>QUESTIONS AND ANSWERS</li>
-          <li>ENGLISH</li>
+          <li><%= link_to('UPDATES', '#', class: 'menu__nav-link_hidden') %></li>
+          <li><%= link_to('QUESTIONS AND ANSWERS', '#', class: 'menu__nav-link_hidden') %></li>
+          <li><%= link_to('ENGLISH', '#', class: 'menu__nav-link_hidden') %></li>
           <li><%= link_to('SIGN IN', new_user_session_path) if current_user.nil? && current_company.nil? %></li>
         </ul>
         <div class="button">

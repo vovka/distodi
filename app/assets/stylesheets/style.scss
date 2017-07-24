@@ -184,8 +184,17 @@ footer{
 	float: left;
 	height:150px;
 }
+
 footer .footer{
 	padding: 0 145px;
+	
+	&__nav-link {
+		color: #ffffff;
+		
+		&_hidden {
+			display: none;
+		}
+	}
 }
 footer ul{
 	opacity:0.8;
@@ -196,12 +205,14 @@ footer ul{
 	line-height:16px;
 	text-align:left;
 	margin: 50px 0 0 0;
-
 }
 footer ul li{
 	text-decoration:none;
 	display: inline-block;
 	margin-right: 6px;
+}
+footer li a {
+	color: #ffffff;
 }
 .contacts{
 	opacity:0.4;
@@ -223,6 +234,10 @@ footer ul li{
 	line-height:12px;
 	text-align:center;
 	display: none;
+}
+.contacts a,
+.contacts_mobile a {
+	color:#ffffff;
 }
 .telephone_mobile{
 	display: none;
@@ -930,6 +945,13 @@ font-feature-settings: 'liga';
 		  transition: all 1.5s;
 		  z-index: 50;
 }
+
+.menu {
+	&__nav-link_hidden {
+		display: none;
+	}
+}
+
 .menu_mobile{
 	display: none;
 	background-color: white;
@@ -939,8 +961,6 @@ font-feature-settings: 'liga';
 	position: absolute;
 	left: 0px;
 	top: -1000px;
-
-
 }
 .menu_mobile.active{
 	left: 0px;
