@@ -1,0 +1,4 @@
+<p id="notice"><%= notice %></p>
+<p>You were charged <%= number_to_currency(@checkout.charge_amount / Checkout::CENTS_DIVIDER) %></p>
+
+<%= link_to 'New', new_checkout_path %>
