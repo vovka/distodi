@@ -15,7 +15,15 @@
   <li>approver: <%= service.approver.try(:name) %></li>
   <li>reason: <%= service.reason %></li>
   <li>id_code: <%= service.id_code %></li>
+  <% if service.map_address.present? %>
+    <li>
+      <iframe
+        width="600"
+        height="450"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCRPDPmM0Rwqy-yMxwKUFkw9pSRyKucfug
+          &q=<%= service.map_address %>" allowfullscreen>
+      </iframe>
+    </li>
+  <% end %>
 </ul>
-<div class="service-map">
-  	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54494.37599981573!2d14.40277657650398!3d50.07184962138932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd75fac7c8e131569!2sWenceslas+Square!5e0!3m2!1sru!2sua!4v1501191652700" width="900" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
-</div>

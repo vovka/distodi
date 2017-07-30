@@ -33,6 +33,10 @@ class Company < ActiveRecord::Base
       end.tap { @accepting_invitation = false }
     end
   end
+
+  def map_address
+    [city, address].compact.join(", ")
+  end
 end
 
 # == Schema Information
@@ -44,7 +48,7 @@ end
 #  phone                  :string
 #  country                :string
 #  city                   :string
-#  street                 :string
+#  address                :string
 #  postal_code            :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

@@ -15,6 +15,7 @@ class Service < ActiveRecord::Base
   belongs_to :approver, polymorphic: true
 
   delegate :category, to: :item, allow_nil: true
+  delegate :map_address, to: :company, allow_nil: true
 
   include IdCodeable
 
