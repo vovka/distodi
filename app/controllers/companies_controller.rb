@@ -48,6 +48,6 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name, :phone, :country, :city, :street, :postal_code, :picture)
+    params.require(:company).permit(:name, :phone, :country, :city, :address, :postal_code, :picture)
   end
 end

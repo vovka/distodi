@@ -13,7 +13,7 @@ FactoryGirl.define do
       std_country
     end
     city { Faker::Address.city }
-    street { Faker::Address.street_name }
+    address { Faker::Address.street_address }
     phone { Faker::PhoneNumber.subscriber_number(10) }
     postal_code { Faker::Number.number(5) }
   end

@@ -9,7 +9,7 @@ FactoryGirl.define do
     website { Faker::Internet.domain_name }
     country { Faker::Address.country }
     city { Faker::Address.city }
-    street { Faker::Address.street_name }
+    address { Faker::Address.street_address }
     phone { Faker::PhoneNumber.subscriber_number(10) }
     postal_code { Faker::Number.number(5) }
   end
@@ -24,7 +24,7 @@ end
 #  phone                  :string
 #  country                :string
 #  city                   :string
-#  street                 :string
+#  address                :string
 #  postal_code            :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

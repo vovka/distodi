@@ -10,7 +10,7 @@ ActiveAdmin.register Company do
 :phone,
 :country,
 :city,
-:street,
+:address,
 :postal_code,
 # :created_at,
 # :updated_at,

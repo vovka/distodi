@@ -15,4 +15,15 @@
   <li>approver: <%= service.approver.try(:name) %></li>
   <li>reason: <%= service.reason %></li>
   <li>id_code: <%= service.id_code %></li>
+  <% if service.map_address.present? %>
+    <li>
+      <iframe
+        width="600"
+        height="450"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCRPDPmM0Rwqy-yMxwKUFkw9pSRyKucfug
+          &q=<%= service.map_address %>" allowfullscreen>
+      </iframe>
+    </li>
+  <% end %>
 </ul>
