@@ -3,6 +3,12 @@ FactoryGirl.define do
     price { Faker::Commerce.price }
     item { create :item }
     action_kinds { build_list :action_kind, 1 }
+
+    trait :with_action_kinds do
+      after(:create) do |service|
+        service.action_kinds.create! attributes_for(:action_kind)
+      end
+    end
   end
 end
 

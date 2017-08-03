@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     ActiveRecord::Base.transaction do
       super
-      unless resource.invalid?
+      if resource.valid?
         UserMailer.confirmation_email(resource).deliver
         DemoDataService.new(resource).perform
       end

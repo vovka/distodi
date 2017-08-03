@@ -7,8 +7,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user_or_company!, only: :show_for_company
 
   def index
-    @items = current_user.items.unscoped
-    @services = current_user.services.unscoped.includes(:service_fields, :action_kinds).decorate
+    @items = Item.unscoped.where(user: current_user)
+    @services = Service.unscoped.includes(:service_fields, :action_kinds).where(item: @items).decorate
   end
 
   def show
