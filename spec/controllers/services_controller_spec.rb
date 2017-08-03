@@ -349,10 +349,10 @@ RSpec.describe ServicesController, type: :controller do
         expect do
           post :create, valid_params.merge({
             service: attributes_for(:service).merge({
-              item_id: item.id
+              item_id: item.to_param
             })
           })
-        end.to raise_error(ActionController::RoutingError)
+        end.to raise_error(ItemNotSpecifiedException)
       end
     end
   end

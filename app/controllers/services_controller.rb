@@ -30,13 +30,14 @@ class ServicesController < ApplicationController
 
   # POST /services
   # POST /services.json
-  # TODO Refactor
+  # TODO: Refactor
   def create
     item = if user_signed_in?
              current_user.items.find_by_id(params[:service][:item_id])
            elsif params[:token].present?
              Item.find_by_token(params[:token])
            end
+    raise ItemNotSpecifiedException if item.blank?
     approver = if user_signed_in?
                  if params[:new_company].present?
                    if email_present?(params[:new_company])
@@ -47,13 +48,11 @@ class ServicesController < ApplicationController
                  else
                    Company.where(id: service_params[:company_id]).first
                  end
-               elsif item.present?
-                 item.user
                else
-                 raise ItemNotSpecifiedException
+                 item.user
                end
 
-    @service = Service.new(service_params.merge(approver: approver, item: item))
+    @service = item.services.build(service_params.merge(approver: approver))
     service_kinds = params[:service_kind]
     service_fields = params[:service_fields]
     action_kinds = params[:action_kind].keys
