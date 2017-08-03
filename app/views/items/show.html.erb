@@ -18,8 +18,7 @@
     <a href="#" ng-show="controller.serviceActions.delete" ng-click="controller.clickedDelete()"> <%= image_tag "delete.png" %> Delete</a>
     <!-- <a href="#"><%= image_tag "send.png" %> Send</a> -->
   </div>
-  <%= render partial: "services/list_items", locals: { list: @item.services } %>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <%= render partial: "services/list_items", locals: { list: (@services || @item.services) } %>
   <div>
 
 
@@ -44,7 +43,7 @@
 
   <div class="margin_left">
     <h2>Services:</h2>
-    <%= render partial: "services/list", locals: { list: @item.services } %>
+    <%= render partial: "services/list", locals: { list: (@services || @item.services) } %>
 
     <p>
       <br/>

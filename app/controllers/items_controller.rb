@@ -7,8 +7,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user_or_company!, only: :show_for_company
 
   def index
-    @items = current_user.items
-    @services = current_user.services.includes(:service_fields, :action_kinds).decorate
+    @items = current_user.items.unscoped
+    @services = current_user.services.unscoped.includes(:service_fields, :action_kinds).decorate
   end
 
   def show
@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
 
   def get_attributes
     if params[:item_id].present?
-      @item = Item.where(id: params[:item_id]).first
+      @item = Item.unscoped.where(id: params[:item_id]).first
       authorize @item
     end
     category = Category.find(params[:category_id])
@@ -91,7 +91,7 @@ class ItemsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.unscoped.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

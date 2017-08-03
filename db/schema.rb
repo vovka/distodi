@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20170730165658) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.boolean  "demo"
   end
 
   add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
@@ -148,6 +149,7 @@ ActiveRecord::Schema.define(version: 20170730165658) do
     t.string   "token"
     t.string   "id_code"
     t.integer  "transferring_to_id"
+    t.boolean  "demo"
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
@@ -201,6 +203,7 @@ ActiveRecord::Schema.define(version: 20170730165658) do
     t.string   "approver_type"
     t.string   "reason",        limit: 1023
     t.string   "id_code"
+    t.boolean  "demo"
   end
 
   create_table "users", force: :cascade do |t|

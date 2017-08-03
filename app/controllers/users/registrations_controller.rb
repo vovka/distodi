@@ -12,8 +12,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
-    UserMailer.confirmation_email(resource).deliver unless resource.invalid?
+    ActiveRecord::Base.transaction do
+      super
+      unless resource.invalid?
+        UserMailer.confirmation_email(resource).deliver
+        DemoDataService.new(resource).perform
+      end
+    end
   end
 
   # GET /resource/edit
