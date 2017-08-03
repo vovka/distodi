@@ -49,6 +49,7 @@ gem 'country_select'
 gem 'draper'
 gem 'angular_rails_csrf'
 gem 'rails-i18n'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -56,7 +57,6 @@ group :development, :test do
   gem 'colorize', '~> 0.8.1'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'pronto', git: 'https://github.com/vovka/pronto.git', branch: 'master'
   gem 'pronto-rubocop', require: false
   gem 'pronto-flay', require: false
