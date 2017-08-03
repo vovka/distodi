@@ -27,6 +27,29 @@ describe ItemsController do
 
         expect(response).to have_http_status(:success)
       end
+
+      specify "sees only own items" do
+        user = create :user
+        my_item = user.items.create! category: create(:category)
+        create :item
+        sign_in user
+
+        get :index
+
+        expect(assigns(:items)).to eq([my_item])
+      end
+
+      specify "sees only own services" do
+        user = create :user
+        my_item = user.items.create! category: create(:category)
+        my_service = my_item.services.create! attributes_for(:service, :with_action_kinds)
+        create :item, services: create_list(:service, 1, :with_action_kinds)
+        sign_in user
+
+        get :index
+
+        expect(assigns(:services)).to eq([my_service])
+      end
     end
 
     context "company" do
