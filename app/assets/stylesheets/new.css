@@ -4,4 +4,5 @@
  *= require fonts
  *= require style
  *= require media
+ *= require angular-tour/dist/angular-tour
  */

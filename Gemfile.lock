@@ -94,6 +94,7 @@ GEM
     bourbon (4.3.3)
       sass (~> 3.4)
       thor (~> 0.19)
+    bower-rails (0.11.0)
     builder (3.2.3)
     bullet (5.5.1)
       activesupport (>= 3.0.0)
@@ -526,6 +527,7 @@ DEPENDENCIES
   activemerchant
   angular_rails_csrf
   annotate
+  bower-rails (~> 0.11.0)
   bullet
   byebug
   capistrano (~> 3.6)
@@ -581,4 +583,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.14.6
+   1.15.1
