@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.unscoped.where(user: current_user)
-    @services = Service.unscoped.includes(:service_fields, :action_kinds).where(item: @items).decorate
+    @services = Service.unscoped.includes(:item, :company, :approver, :action_kinds, :service_fields => :service_kind).where(item: @items).decorate
   end
 
   def show
