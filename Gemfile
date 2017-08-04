@@ -50,6 +50,7 @@ gem 'draper'
 gem 'angular_rails_csrf'
 gem 'rails-i18n'
 gem 'faker'
+gem 'whenever'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -63,6 +64,8 @@ group :development, :test do
   gem 'pronto-rails_best_practices', require: false
   gem 'pronto-rails_schema', require: false
   # gem 'pronto-scss', require: false
+  gem 'bullet'
+  gem 'active_record_query_trace'
 end
 
 group :test do
