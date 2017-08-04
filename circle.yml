@@ -7,4 +7,4 @@ deployment:
   production:
     branch: master
     commands:
-      - cap production deploy
+      - bundle exec cap production deploy
