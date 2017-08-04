@@ -38,9 +38,6 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'pundit'
@@ -85,5 +82,6 @@ group :development do
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano3-unicorn'
   gem 'mailcatcher'
 end

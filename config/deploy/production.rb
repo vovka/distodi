@@ -77,3 +77,11 @@ set :ssh_options, {
     password: 'ShecaSlid5',
     user: 'deploy',
 }
+
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+end
+
+after 'deploy:publishing', 'deploy:restart'
