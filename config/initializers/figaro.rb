@@ -1,0 +1,15 @@
+Figaro.require_keys(%w(
+                        SECRET_KEY_BASE
+                        gmail_username
+                        gmail_password
+                        DATABASE_USER
+                        DATABASE_PASSWORD
+                        GOOGLE_CLIENT_ID
+                        GOOGLE_CLIENT_SECRET
+                        FACEBOOK_KEY
+                        FACEBOOK_SECRET
+                        TWITTER_KEY
+                        TWITTER_SECRET
+                        LINKEDIN_KEY
+                        LINKEDIN_SECRET
+                      ))

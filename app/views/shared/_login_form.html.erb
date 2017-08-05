@@ -20,5 +20,7 @@
                       <%= f.submit "Sign in" %>
                       <%= link_to "&nbsp;".html_safe, send(:"#{resource_name}_google_oauth2_omniauth_authorize_path"), class: "login-button google" %>
                       <%= link_to "&nbsp;".html_safe, send(:"#{resource_name}_facebook_omniauth_authorize_path"), class: "login-button facebook" %>
+                      <%= link_to "&nbsp;".html_safe, send(:"#{resource_name}_twitter_omniauth_authorize_path"), class: "login-button twitter" %>
+                      <%= link_to "&nbsp;".html_safe, send(:"#{resource_name}_linkedin_omniauth_authorize_path"), class: "login-button linkedin" %>
                     </div>
                   <% end %>
