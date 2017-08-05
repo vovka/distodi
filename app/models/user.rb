@@ -2,8 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
-         :trackable, :validatable#,
-        #  :omniauthable, omniauth_providers: [:google_oauth2, :facebook]
+         :trackable, :validatable
 
   include OauthableModel
 
@@ -18,7 +17,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
-  validates_presence_of :first_name
+  validates :first_name, presence: true
   validates :phone, presence: true, length: { in: 6..20 }, allow_blank: true
   validates :postal_code, presence: true, length: { is: 5 }, allow_blank: true
 
@@ -54,6 +53,5 @@ end
 #
 # Indexes
 #
-#  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
