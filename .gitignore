@@ -10,7 +10,6 @@
 /nbproject/private/
 /public/assets/
 chromedriver.log
-config/database.yml
 config/settings/local.yml
 data
 db/*.sqlite3
