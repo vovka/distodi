@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   has_many :assigned_services, foreign_key: :approver_id,
                                class_name: "Service",
                                as: :approver
+  has_one :profile
+
+  accepts_nested_attributes_for :profile
 
   validates_presence_of :first_name
   validates :phone, presence: true, length: { in: 6..20 }, allow_blank: true
@@ -48,8 +51,6 @@ end
 #  postal_code            :string
 #  notice                 :string
 #  picture                :string
-#  provider               :string
-#  uid                    :string
 #
 # Indexes
 #

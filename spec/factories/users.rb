@@ -45,8 +45,6 @@ end
 #  postal_code            :string
 #  notice                 :string
 #  picture                :string
-#  provider               :string
-#  uid                    :string
 #
 # Indexes
 #

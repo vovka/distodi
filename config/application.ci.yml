@@ -1,0 +1,26 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+# stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
+# stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
+#
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
+test:
+  SECRET_KEY_BASE: "9c36016b0637870a2ca090fb71b100dff76a5539c973e51eb2850a00fc6ce30ee21d32a640b06eb6167f1a0b9566a63a5c45f6abd099f94585a3b345deccb706"
+  gmail_username: ""
+  gmail_password: ""
+  DATABASE_USER: ""
+  DATABASE_PASSWORD: ""
+  GOOGLE_CLIENT_ID: "592752537062-6alg3aukqscam8neplfqf4j7snq7s2ha.apps.googleusercontent.com"
+  GOOGLE_CLIENT_SECRET: "aWJ1QnNjfmmDyOlG6JTZxq0G"
+  FACEBOOK_KEY: "461309494061420"
+  FACEBOOK_SECRET: "7c8d9b5547b8c0ac7f65d830a4a88932"
+  TWITTER_KEY: "tyiSMCLNPKmHD8eqOYvGxwPeg"
+  TWITTER_SECRET: "cMUDXmILn6NzYTOTRf4JsoAzvfcWyMnidVcZ8AKt7g8hFBO8Os"
+  LINKEDIN_KEY: "77oz2cye0h9fnl"
+  LINKEDIN_SECRET: "bEVWQ6pnbClfsMM7"
