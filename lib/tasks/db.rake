@@ -2,8 +2,8 @@ namespace :db do
   desc "Dumps the database to db/APP_NAME.dump"
   task dump: :environment do
     cmd = nil
-    with_config do |app, host, db, user, password|
-      cmd = "pg_dump --host #{host} -u#{user} -p#{password} --verbose --clean --no-owner --no-acl --format=c #{db} > #{Rails.root}/db/#{app}.sql"
+    with_config do |app, host, db, user|
+      cmd = "pg_dump --host #{host} --username #{user} --verbose --clean --no-owner --no-acl --format=c #{db} > #{Rails.root}/db/#{app}.sql"
     end
     puts cmd
     system cmd
@@ -12,8 +12,8 @@ namespace :db do
   desc "Restores the database dump at db/APP_NAME.dump."
   task restore: :environment do
     cmd = nil
-    with_config do |app, host, db, user, password|
-      cmd = "pg_restore --verbose --host #{host} -u#{user} -p#{password} --clean --no-owner --no-acl --dbname #{db} #{Rails.root}/db/#{app}.dump"
+    with_config do |app, host, db, user|
+      cmd = "pg_restore --verbose --host #{host} --username #{user} --clean --no-owner --no-acl --dbname #{db} #{Rails.root}/db/#{app}.dump"
     end
     Rake::Task["db:drop"].invoke
     Rake::Task["db:create"].invoke
@@ -44,7 +44,6 @@ namespace :db do
     yield Rails.application.class.parent_name.underscore,
           ActiveRecord::Base.connection_config[:host],
           ActiveRecord::Base.connection_config[:database],
-          ActiveRecord::Base.connection_config[:username],
-          ActiveRecord::Base.connection_config[:password]
+          ActiveRecord::Base.connection_config[:username]
   end
 end

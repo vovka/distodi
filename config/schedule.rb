@@ -23,7 +23,7 @@ every 1.day, at: '3:00 am' do
 end
 
 every 1.day, at: '4:30 am' do
-  rake "remind_services:not_approved"
+  rake "remind:not_approved_services"
 end
 
 # Learn more: http://github.com/javan/whenever
