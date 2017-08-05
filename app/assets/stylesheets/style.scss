@@ -799,7 +799,7 @@ footer hr{
 	line-height:51px;
 	text-align:center;
 	height:51px;
-	margin: 0 auto 50px;
+	margin: 0 auto 100px;
 	cursor: pointer;
 }
 .signup_but input{
@@ -1925,19 +1925,28 @@ option{
 	$vertical-margin: 10px;
 	display: block;
 	float: left;
-	margin: $vertical-margin 0;
+	margin: $vertical-margin 0 0 0;
+	width: 200px;
 
 	&.google {
-		background: no-repeat image-url("btn_google_signin_dark_pressed_web");
+		background: no-repeat image-url("btn_google_signin_dark_pressed_web") center;
 		background-size: 170px;
-		width: 170px;
 		height: 40px;
 	}
 	&.facebook {
-		background: no-repeat image-url("login_fb_button");
+		background: no-repeat image-url("login_fb_button") center;
 		background-size: 200px;
-		width: 200px;
 		height: 32px;
 		margin: ($vertical-margin + 4) 0 0 0;
+	}
+	&.twitter {
+		background: no-repeat image-url("sign-in-with-twitter-gray") center;
+		height: 30px;
+		clear: both;
+	}
+	&.linkedin {
+		background: no-repeat image-url("Sign-In-linkedin-Small---Default") center;
+		background-size: 200px;
+		height: 30px;
 	}
 }

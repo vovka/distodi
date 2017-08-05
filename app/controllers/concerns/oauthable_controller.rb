@@ -9,6 +9,14 @@ module OauthableController
     common "Google"
   end
 
+  def twitter
+    common "Twitter"
+  end
+
+  def linkedin
+    common "Linkedin"
+  end
+
   def failure
     redirect_to root_path
   end
