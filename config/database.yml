@@ -41,4 +41,5 @@ test:
   database: distodi_test
 
 production:
+  <<: *default
   database: distodi_production
