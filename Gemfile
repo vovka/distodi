@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+# Omniauth
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-linkedin'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 gem 'unicorn'
@@ -83,5 +88,6 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano3-unicorn'
+  gem 'capistrano-figaro-yml'
   gem 'mailcatcher'
 end

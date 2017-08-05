@@ -3,6 +3,8 @@ class Company < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # include OauthableModel
+
   URL_REGEXP = /\A(https?:\/\/)?(www\.)?[-a-zA-Z0-9._]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.,~#?!&\/=]*)\z/
 
   has_many :services

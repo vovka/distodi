@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable,
+         :trackable, :validatable#,
+        #  :omniauthable, omniauth_providers: [:google_oauth2, :facebook]
+
+  include OauthableModel
 
   has_many :items
   has_many :transferring_items, class_name: "Item",
@@ -17,10 +20,6 @@ class User < ActiveRecord::Base
   validates :postal_code, presence: true, length: { is: 5 }, allow_blank: true
 
   mount_uploader :picture, PictureUploader
-
-  def full_name
-    "#{first_name} #{last_name}"
-  end
 end
 
 # == Schema Information
@@ -49,6 +48,8 @@ end
 #  postal_code            :string
 #  notice                 :string
 #  picture                :string
+#  provider               :string
+#  uid                    :string
 #
 # Indexes
 #

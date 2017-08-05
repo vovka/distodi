@@ -47,7 +47,7 @@ end
 #  phone                  :string
 #  country                :string
 #  city                   :string
-#  street                 :string
+#  address                :string
 #  postal_code            :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

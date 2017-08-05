@@ -116,7 +116,7 @@ Company.create!(
   phone: Faker::PhoneNumber.phone_number,
   country: Faker::Address.country,
   city: Faker::Address.city,
-  street: Faker::Address.street_name,
+  address: Faker::Address.street_address,
   postal_code: Faker::Address.postcode.split("-").first,
   email: Faker::Internet.safe_email,
   website: "example.com",
