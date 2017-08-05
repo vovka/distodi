@@ -187,10 +187,10 @@ footer{
 
 footer .footer{
 	padding: 0 145px;
-	
+
 	&__nav-link {
 		color: #ffffff;
-		
+
 		&_hidden {
 			display: none;
 		}
@@ -1840,15 +1840,15 @@ option{
 	width: 100%;
 	padding-top: 31%;
 	-webkit-transition: all 2900ms cubic-bezier(1.000, 0.000, 1.000, 0); /* older webkit */
--webkit-transition: all 2900ms cubic-bezier(1.000, 0.000, 1.000, -0.325); 
-   -moz-transition: all 2900ms cubic-bezier(1.000, 0.000, 1.000, -0.325); 
-	 -o-transition: all 2900ms cubic-bezier(1.000, 0.000, 1.000, -0.325); 
+-webkit-transition: all 2900ms cubic-bezier(1.000, 0.000, 1.000, -0.325);
+   -moz-transition: all 2900ms cubic-bezier(1.000, 0.000, 1.000, -0.325);
+	 -o-transition: all 2900ms cubic-bezier(1.000, 0.000, 1.000, -0.325);
 		transition: all 2900ms cubic-bezier(1.000, 0.000, 1.000, -0.325); /* custom */
 
 -webkit-transition-timing-function: cubic-bezier(1.000, 0.000, 1.000, 0); /* older webkit */
--webkit-transition-timing-function: cubic-bezier(1.000, 0.000, 1.000, -0.325); 
-   -moz-transition-timing-function: cubic-bezier(1.000, 0.000, 1.000, -0.325); 
-	 -o-transition-timing-function: cubic-bezier(1.000, 0.000, 1.000, -0.325); 
+-webkit-transition-timing-function: cubic-bezier(1.000, 0.000, 1.000, -0.325);
+   -moz-transition-timing-function: cubic-bezier(1.000, 0.000, 1.000, -0.325);
+	 -o-transition-timing-function: cubic-bezier(1.000, 0.000, 1.000, -0.325);
 		transition-timing-function: cubic-bezier(1.000, 0.000, 1.000, -0.325); /* custom */
 }
 .transfer_panel .view:hover{
@@ -1868,15 +1868,15 @@ option{
 .transfer_panel .view:hover + .receive{
 	opacity: 100;
 	webkit-transition: all 600ms cubic-bezier(0.030, 0, 0.000, 1); /* older webkit */
--webkit-transition: all 600ms cubic-bezier(0.030, -0.010, 0.000, 1.205); 
-   -moz-transition: all 600ms cubic-bezier(0.030, -0.010, 0.000, 1.205); 
-	 -o-transition: all 600ms cubic-bezier(0.030, -0.010, 0.000, 1.205); 
+-webkit-transition: all 600ms cubic-bezier(0.030, -0.010, 0.000, 1.205);
+   -moz-transition: all 600ms cubic-bezier(0.030, -0.010, 0.000, 1.205);
+	 -o-transition: all 600ms cubic-bezier(0.030, -0.010, 0.000, 1.205);
 		transition: all 600ms cubic-bezier(0.030, -0.010, 0.000, 1.205); /* custom */
 
 -webkit-transition-timing-function: cubic-bezier(0.030, 0, 0.000, 1); /* older webkit */
--webkit-transition-timing-function: cubic-bezier(0.030, -0.010, 0.000, 1.205); 
-   -moz-transition-timing-function: cubic-bezier(0.030, -0.010, 0.000, 1.205); 
-	 -o-transition-timing-function: cubic-bezier(0.030, -0.010, 0.000, 1.205); 
+-webkit-transition-timing-function: cubic-bezier(0.030, -0.010, 0.000, 1.205);
+   -moz-transition-timing-function: cubic-bezier(0.030, -0.010, 0.000, 1.205);
+	 -o-transition-timing-function: cubic-bezier(0.030, -0.010, 0.000, 1.205);
 		transition-timing-function: cubic-bezier(0.030, -0.010, 0.000, 1.205); /* custom */
 
 }
@@ -1902,15 +1902,15 @@ option{
 	padding-top: 31%;
 	opacity: 0;
 	-webkit-transition: all 2900ms cubic-bezier(1.000, 0, 1.000, 0); /* older webkit */
--webkit-transition: all 2900ms cubic-bezier(1.000, -0.005, 1.000, -0.410); 
-   -moz-transition: all 2900ms cubic-bezier(1.000, -0.005, 1.000, -0.410); 
-	 -o-transition: all 2900ms cubic-bezier(1.000, -0.005, 1.000, -0.410); 
+-webkit-transition: all 2900ms cubic-bezier(1.000, -0.005, 1.000, -0.410);
+   -moz-transition: all 2900ms cubic-bezier(1.000, -0.005, 1.000, -0.410);
+	 -o-transition: all 2900ms cubic-bezier(1.000, -0.005, 1.000, -0.410);
 		transition: all 2900ms cubic-bezier(1.000, -0.005, 1.000, -0.410); /* custom */
 
 -webkit-transition-timing-function: cubic-bezier(1.000, 0, 1.000, 0); /* older webkit */
--webkit-transition-timing-function: cubic-bezier(1.000, -0.005, 1.000, -0.410); 
-   -moz-transition-timing-function: cubic-bezier(1.000, -0.005, 1.000, -0.410); 
-	 -o-transition-timing-function: cubic-bezier(1.000, -0.005, 1.000, -0.410); 
+-webkit-transition-timing-function: cubic-bezier(1.000, -0.005, 1.000, -0.410);
+   -moz-transition-timing-function: cubic-bezier(1.000, -0.005, 1.000, -0.410);
+	 -o-transition-timing-function: cubic-bezier(1.000, -0.005, 1.000, -0.410);
 		transition-timing-function: cubic-bezier(1.000, -0.005, 1.000, -0.410); /* custom */
 }
 .transfer_panel .receive a{
@@ -1920,4 +1920,24 @@ option{
 }
 .transfer_panel .receive p{
 	margin-top: 35%;
+}
+.login-button {
+	$vertical-margin: 10px;
+	display: block;
+	float: left;
+	margin: $vertical-margin 0;
+
+	&.google {
+		background: no-repeat image-url("btn_google_signin_dark_pressed_web");
+		background-size: 170px;
+		width: 170px;
+		height: 40px;
+	}
+	&.facebook {
+		background: no-repeat image-url("login_fb_button");
+		background-size: 200px;
+		width: 200px;
+		height: 32px;
+		margin: ($vertical-margin + 4) 0 0 0;
+	}
 }

@@ -104,6 +104,9 @@ GEM
     capistrano-bundler (1.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-figaro-yml (1.0.5)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2, >= 1.2.0)
     capistrano-harrow (0.5.3)
     capistrano-rails (1.2.3)
       capistrano (~> 3.1)
@@ -517,6 +520,7 @@ DEPENDENCIES
   bullet
   byebug
   capistrano (~> 3.6)
+  capistrano-figaro-yml
   capistrano-rails (~> 1.2)
   capistrano-rbenv (~> 2.0)
   capistrano3-unicorn

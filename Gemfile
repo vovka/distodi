@@ -88,5 +88,6 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano3-unicorn'
+  gem 'capistrano-figaro-yml'
   gem 'mailcatcher'
 end

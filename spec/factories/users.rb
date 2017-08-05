@@ -41,7 +41,7 @@ end
 #  last_sign_in_ip        :inet
 #  country                :string
 #  city                   :string
-#  street                 :string
+#  address                :string
 #  postal_code            :string
 #  notice                 :string
 #  picture                :string
