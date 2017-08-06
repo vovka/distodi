@@ -104,6 +104,13 @@ ActiveRecord::Schema.define(version: 20170805202829) do
     t.datetime "updated_at",        null: false
   end
 
+  create_table "checkouts", force: :cascade do |t|
+    t.integer  "charge_amount"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.string   "phone"
@@ -176,14 +183,16 @@ ActiveRecord::Schema.define(version: 20170805202829) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "company_id"
     t.string   "facebook_uid"
-    t.string   "google_oauth2_uid"
+    t.string   "google_uid"
     t.string   "twitter_uid"
     t.string   "linkedin_uid"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
+  add_index "profiles", ["company_id"], name: "index_profiles_on_company_id", using: :btree
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "service_action_kinds", force: :cascade do |t|
@@ -260,6 +269,7 @@ ActiveRecord::Schema.define(version: 20170805202829) do
 
   add_foreign_key "categories_service_kinds", "categories"
   add_foreign_key "categories_service_kinds", "service_kinds"
+  add_foreign_key "profiles", "companies"
   add_foreign_key "profiles", "users"
   add_foreign_key "service_action_kinds", "action_kinds"
   add_foreign_key "service_action_kinds", "services"

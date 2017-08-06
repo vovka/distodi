@@ -13,9 +13,6 @@ class User < ActiveRecord::Base
   has_many :assigned_services, foreign_key: :approver_id,
                                class_name: "Service",
                                as: :approver
-  has_one :profile
-
-  accepts_nested_attributes_for :profile
 
   validates :first_name, presence: true
   validates :phone, presence: true, length: { in: 6..20 }, allow_blank: true
