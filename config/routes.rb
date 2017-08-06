@@ -6,14 +6,24 @@ Rails.application.routes.draw do
     registrations: "companies/registrations",
     sessions: "companies/sessions",
     passwords: "companies/passwords",
-    # omniauth_callbacks: "companies/omniauth_callbacks"
   }
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions",
     passwords: "users/passwords",
-    omniauth_callbacks: "users/omniauth_callbacks"
   }
+
+  %w(facebook twitter google linkedin).each do |provider|
+    devise_scope :user do
+      get "/users/auth/:provider" => "omniauth_callbacks#passthru", defaults: { provider: provider, resource: "users" }, as: :"user_#{provider}_omniauth_authorize"
+      get "/auth/#{provider}/callback" => "omniauth_callbacks#default_callback", defaults: { provider: provider }
+    end
+
+    devise_scope :company do
+      get "/companies/auth/:provider", to: "omniauth_callbacks#passthru", defaults: { provider: provider, resource: "companies" }, as: :"company_#{provider}_omniauth_authorize"
+      get "/auth/#{provider}/callback" => "omniauth_callbacks#default_callback", defaults: { provider: provider }
+    end
+  end
 
   resources :leads
   resources :attribute_kinds

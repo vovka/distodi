@@ -1,9 +1,11 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   include Accessible
+
+  layout 'sign_in'
+
   before_action :check_user
   before_filter :configure_sign_up_params, only: [:create]
-  layout 'sign_in'
-# before_filter :configure_account_update_params, only: [:update]
+  before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -45,12 +47,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-    def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone, :country, :city, :address, :postal_code, :notice, :picture])
-    end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone, :country, :city, :address, :postal_code, :notice, :picture])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
