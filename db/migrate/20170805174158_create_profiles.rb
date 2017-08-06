@@ -2,7 +2,6 @@ class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
       t.references :user, index: true, foreign_key: true
-      t.references :company, index: true, foreign_key: true
       t.string :facebook_uid
       t.string :google_uid
       t.string :twitter_uid

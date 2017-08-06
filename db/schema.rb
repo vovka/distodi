@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805202829) do
+ActiveRecord::Schema.define(version: 20170806135435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,13 +183,13 @@ ActiveRecord::Schema.define(version: 20170805202829) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "company_id"
     t.string   "facebook_uid"
     t.string   "google_uid"
     t.string   "twitter_uid"
     t.string   "linkedin_uid"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "company_id"
   end
 
   add_index "profiles", ["company_id"], name: "index_profiles_on_company_id", using: :btree
