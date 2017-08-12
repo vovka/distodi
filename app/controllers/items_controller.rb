@@ -67,12 +67,13 @@ class ItemsController < ApplicationController
   end
 
   def get_attributes
-    if params[:item_id].present?
-      @item = Item.unscoped.where(id: params[:item_id]).first
-      authorize @item
+    @item = if params[:item_id].present?
+      Item.unscoped.where(id: params[:item_id]).first.tap { |item| authorize item }
+    else
+      current_user.items.build
     end
-    category = Category.find(params[:category_id])
-    @attributes = category.attribute_kinds
+    @item = @item.decorate context: { category_id: params[:category_id],
+                                      brand_option_id: params[:brand_option_id] }
   end
 
   def transfer

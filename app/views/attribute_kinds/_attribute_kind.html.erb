@@ -1,0 +1,6 @@
+<div class="atribut">
+  <p>
+    <label for="characteristic<%= attribute_kind.id %>"><%= attribute_kind.title %></label>
+  </p>
+  <%= send attribute_kind.input_helper, :item, "characteristics[#{attribute_kind.id}]", *attribute_kind.input_arguments %>
+</div>

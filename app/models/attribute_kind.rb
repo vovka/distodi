@@ -1,7 +1,18 @@
 class AttributeKind < ActiveRecord::Base
+  BRAND = "Brand"
+  MODEL = "Model"
+
   has_and_belongs_to_many :categories
   has_many :characteristics
   has_many :items, through: :characteristics
+
+  def brand?
+    title == BRAND
+  end
+
+  def model?
+    title == MODEL
+  end
 end
 
 # == Schema Information
