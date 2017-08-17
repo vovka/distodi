@@ -1277,6 +1277,9 @@ text-align:left;
 				.pending {
 					background: asset-url("status-pending") no-repeat 0 0;
 				}
+				.declined {
+					background: asset-url("status-declined") no-repeat 0 0;
+				}
 				.control-action {
 					background: asset-url("control-action") no-repeat 0 0;
 				}
@@ -1648,10 +1651,6 @@ option{
 	line-height:17px;
 
 }
-.custom_attributes label::after{
-	content: " *";
-	color: red;
-}
 .custom_attributes input{
 	width: 93%;
 	border: 1px solid #d3d3d3;
@@ -1689,7 +1688,6 @@ option{
 	border-radius:4px;
 	width: 96%;
 	z-index: 200;
-
 }
 .field p{
 	font-family:'MuseoSansCyrl_1';
@@ -1705,7 +1703,7 @@ option{
 	position: absolute;
 	left: 0;
 	width: 96%;
-	height:95%;
+	height:100%;
 	background-color: transparent;
 	z-index: 100;
 	opacity: 0;
@@ -2008,7 +2006,14 @@ option{
 .first_service p {
 	color: #8f8f8f;
 	line-height: 22px;
-}.login-button {
+}
+.icon_service.change-action:nth-child(2){
+	margin-left: 8px;
+}
+.icon_service.change-action:nth-child(3){
+	margin-left: 8px;
+}
+.login-button {
 	$vertical-margin: 10px;
 	display: block;
 	float: left;
@@ -2036,4 +2041,26 @@ option{
 		background-size: 200px;
 		height: 30px;
 	}
+}
+.field .without_photo_input{
+	height: 235px;
+	border: 1px solid #d3d3d3;
+	border-radius: 4px;
+	width: 95%;
+	text-align: center;
+	padding-top: 206px;
+}
+.field .without_photo_input input{
+	height: 440px;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 20px;
+}
+.field .without_photo_input span{
+	font-family:'MuseoSansCyrl_2';
+	font-size:14px;
+	color:#149b4c;
+	letter-spacing:0;
+	line-height:14px;
 }

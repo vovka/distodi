@@ -499,6 +499,10 @@
 	.function .delete .delete_but span{
     right: 10%;
 	}
+	.field .without_photo_input{
+		width: 90%;
+		height: 200px;
+	}
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {

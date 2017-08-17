@@ -28,8 +28,15 @@
 
     <div class="field">
       <p>Cover photo (min 800x600 pixels)</p>
-      <%= image_tag(@item.picture_url, alt: @item.title, width: 250) %>
-      <%= f.file_field :picture%>
+      <% if @item.picture.present? %>
+        <%= image_tag(@item.picture_url, alt: @item.title, width: 250) %>
+        <%= f.file_field :picture%>
+      <% else %>
+        <div class="without_photo_input">
+          <%= f.file_field :picture, class: 'inputfile'%>
+          <label for="upload"><span>+ ADD COVER PHOTO</span></label>
+        </div>
+      <% end %>
     </div>
 
     <div class="actions_but">
