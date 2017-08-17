@@ -10,6 +10,10 @@
 		width: 135px;
 		height: 101.25px;
 	}
+	.all_items_first{
+		width: 273px;
+		height: 101.25px;
+	}
 	.red_col{
 		width: 135px;
 		height: 101.25px;
@@ -22,7 +26,15 @@
 		font-size:18px;
 	}
 	.all_items p{
-		font-size:26px;
+		font-size: 14px;
+		line-height: 101.25px;
+	}
+	.all_items_first span{
+		line-height: 101.25px;
+		font-size:14px;
+	}
+	.all_items_first p{
+		font-size: 14px;
 		line-height: 101.25px;
 	}
 }
@@ -36,6 +48,10 @@
 		width: 121.5px;
 		height: 91.125px;
 	}
+	.all_items_first{
+		width: 250.5px;
+		height: 91.125px;
+	}
 	.red_col{
 		width: 121.5px;
 		height: 91.125px;
@@ -46,6 +62,14 @@
 	}
 	.all_items p{
 		font-size:24px;
+		line-height: 91.125px;
+	}
+	.all_items_first span{
+		line-height: 91.125px;
+		font-size:16px;
+	}
+	.all_items_first p{
+		font-size:13px;
 		line-height: 91.125px;
 	}
 }
@@ -60,6 +84,10 @@
 		width: 100px;
 		height: 75px;
 	}
+	.all_items_first{
+		width: 200px;
+		height: 75px;
+	}
 	.red_col{
 		width: 100px;
 		height: 75px;
@@ -70,6 +98,14 @@
 	}
 	.all_items p{
 		font-size:24px;
+		line-height: 75px;
+	}
+	.all_items_first span{
+		line-height: 75px;
+		font-size:16px;
+	}
+	.all_items_first p{
+		font-size: 13px;
 		line-height: 75px;
 	}
 	.function .inputs_trans input:nth-child(2){
@@ -504,6 +540,10 @@
 .form .categories{
 		width: 95%;
 		margin-top: 15px;
+	}
+	.first_service{
+		width: calc(100% - 32px);
+		margin: 0;
 	}
 
 }

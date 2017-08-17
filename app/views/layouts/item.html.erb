@@ -48,55 +48,7 @@
           8 (800) 400-40-40
         </div>
       </div>
-      <div class="slider_mobile_items">
-        <div class="large-12 columns">
-          <div id="owl-example_mobile_items" class="owl-carousel"
-               ng-show="controller.showDetails === undefined">
-            <div class="items">
-              <%= link_to items_path do%>
-              <div class="all_items">
-                <span>ALL</span>
-              </div>
-              <% end %>
-            </div>
-            <% @items.each do |item| %>
-              <div class="items">
-                <%= link_to item do %>
-                <%= image_tag(item.picture_url, alt: item.title, width: 250) %>
-                <% end %>
-              </div>
-            <% end %>
-
-            <div class="transfer_panel">
-              <% if current_user.transferring_items.any? %>
-                <% current_user.transferring_items.each do |item| %>
-                  <%= image_tag(item.picture_url, alt: item.title) %>
-                  <div class="red_col">
-                    <div class="view">
-                      <%= t ".transferred_items" %>
-                    </div>
-                    <div class="receive">
-                      <strong><%= item.title %></strong>
-                      <p><%= link_to t(".receive_item"), receive_item_path(item), method: "POST" %></p>
-                    </div>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-
-            <div class="items">
-              <%= link_to new_item_path do %>
-                <div class="all_items">
-                  <p>+</p>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <% (@services || @item.services).each.with_index do |service, i| %>
-            <%= render "service_details", service: service, i: i %>
-          <% end %>
-        </div>
-      </div>
+      <%= render @items.present? ? "items" : "empty_items" %>
     </div>
     <%= yield %>
   </body>
