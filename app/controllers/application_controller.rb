@@ -7,13 +7,14 @@ end
 class ApplicationController < ActionController::Base
   include Pundit
 
-  devise_group :user_or_company, contains: [:company, :user]
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  devise_group :user_or_company, contains: [:company, :user]
 
   before_action :set_lead
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def set_lead
     @lead = Lead.new

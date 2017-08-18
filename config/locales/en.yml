@@ -115,3 +115,9 @@ en:
       first_name_must_be_present: "Please, set you first name at profile edit page."
       last_name_must_be_present: "Please, set you last name at profile edit page."
       at_least_one_action_kind_must_be_present: "Please, select at least one action."
+
+  activerecord:
+    errors:
+      models:
+        checkout:
+          invalid: "The card is invalid."

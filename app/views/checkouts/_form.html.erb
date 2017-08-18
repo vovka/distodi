@@ -1,0 +1,79 @@
+<div class="form margin_left" >
+  <%= simple_form_for(@checkout) do |f| %>
+    <%= f.error_notification %>
+    <%= f.simple_fields_for :base do |base| %>
+      <%= t @checkout.errors.messages[:base] %>
+    <% end if @checkout.errors[:base].any? %>
+
+    <div class="form-inputs">
+      <h3>Billing address</h3>
+      <div class="field">
+        <%= f.input :name %>
+      </div>
+      <div class="field">
+        <%= f.input :address1 %>
+      </div>
+      <div class="field">
+        <%= f.input :city %>
+      </div>
+      <div class="field">
+        <%= f.input :state %>
+      </div>
+      <div class="field">
+        <%= f.input :country %>
+      </div>
+      <div class="field">
+        <%= f.input :zip %>
+      </div>
+      <div class="field">
+        <%= f.input :phone %>
+      </div>
+    </div>
+
+    <div class="form-inputs">
+      <h3>Credit card</h3>
+      <div class="field">
+        <%= f.input :number %>
+      </div>
+      <div class="field">
+        <%= f.input :month %>
+      </div>
+      <div class="field">
+        <%= f.input :year %>
+      </div>
+      <div class="field">
+        <%= f.input :first_name %>
+      </div>
+      <div class="field">
+        <%= f.input :last_name %>
+      </div>
+      <div class="field">
+        <%= f.input :verification_value, input_html: { type: :password } %>
+      </div>
+
+      <div class="field">
+        <p>
+          <%= f.radio_button :charge_amount, @checkout.charge(5) %>
+          <%= f.label :"charge_amount_#{@checkout.charge(5)}", @checkout.charge_label(5) %>
+        </p>
+        <p>
+          <%= f.radio_button :charge_amount, @checkout.charge(10) %>
+          <%= f.label :"charge_amount_#{@checkout.charge(10)}", @checkout.charge_label(10) %>
+        </p>
+        <p>
+          <%= f.radio_button :charge_amount, @checkout.charge(25), checked: true %>
+          <%= f.label :"charge_amount_#{@checkout.charge(25)}", @checkout.charge_label(25) %>
+        </p>
+        <p>
+          <%= f.radio_button :charge_amount, @checkout.charge(50) %>
+          <%= f.label :"charge_amount_#{@checkout.charge(50)}", @checkout.charge_label(50) %>
+        </p>
+        <%= f.input :charge_custom_amount, label: t(".your_value"), input_html: { value: @checkout.charge_amount } %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>

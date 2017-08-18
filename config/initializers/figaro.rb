@@ -12,4 +12,7 @@ Figaro.require_keys(%w(
                         TWITTER_SECRET
                         LINKEDIN_KEY
                         LINKEDIN_SECRET
+                        PAYMENT_LOGIN_ID
+                        PAYMENT_TRANSACTION_KEY
+                        PAYMENT_SECRET_KEY
                       ))

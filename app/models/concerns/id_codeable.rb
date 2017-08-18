@@ -62,7 +62,8 @@ class BaseIdCodeDecorator
   end
 
   def country_object
-    @country_object ||= ISO3166::Country.find_country_by_name record.user.country
+    # @country_object ||= ISO3166::Country.find_country_by_name record.user.country
+    @country_object ||= record.user.decorate.country_object
   end
 
   def category_id_code

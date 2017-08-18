@@ -87,7 +87,7 @@
       .margin_left2{
 			width:510px;
 			margin: 0 auto;
-			
+
 		}
 
 
@@ -113,12 +113,12 @@
 		.margin_left2{
 			width:510px;
 			margin: 0 auto;
-			
+
 		}
 		.thumbnail {
 			height: 377px;
 		}
-     
+
 		.container.\31 25\25 {
 			width: 100%;
 			max-width: 1500px;
@@ -144,7 +144,7 @@
 	}
 
 	@media screen and (max-width: 1280px) {
-      
+
 		.container.\31 25\25 {
 			width: 100%;
 			max-width: 1200px;
@@ -228,8 +228,8 @@
 		.margin_left2{
 			width:90%;
 			margin: 0 auto;
-			
-			
+
+
 		}
 
 	}
@@ -493,7 +493,7 @@
 	}
 
 	@media screen and (max-width: 1680px) {
-      
+
 		.row > * {
 			padding: 40px 0 0 40px;
 		}
@@ -708,7 +708,7 @@
 	}
 
 	@media screen and (max-width: 1280px) {
-     
+
 		.row > * {
 			padding: 25px 0 0 25px;
 		}
@@ -1502,73 +1502,68 @@ form {
     font-size: 0.8em;
     color: #444;
   }
-}
 
-	form input[type="text"],
-	form input[type="email"],
-	form input[type="password"],
-	form select,
-	form textarea {
+	input[type="text"],
+	input[type="tel"],
+	input[type="email"],
+	input[type="password"],
+	select,
+	textarea {
 		-webkit-appearance: none;
 		display: block;
 		width: 100%;
 		border-radius: 8px;
 		border: solid 1px #eee;
-	}
 
-		form input[type="text"]:focus,
-		form input[type="email"]:focus,
-		form input[type="password"]:focus,
-		form select:focus,
-		form textarea:focus {
+		&:focus {
 			border-color: #0090c5;
 		}
+	}
 
-	form input[type="text"],
-	form input[type="email"],
-	form input[type="password"] {
+	input[type="text"],
+	input[type="tel"],
+	input[type="email"],
+	input[type="password"] {
 		line-height: 3em;
 		padding: 0 1em;
 	}
 
-	form select {
+	select {
 		line-height: 3em;
 		padding: 0 1em;
 	}
 
-	form textarea {
+	textarea {
 		min-height: 9em;
 		padding: 1em;
 	}
 
-	form .formerize-placeholder {
+	.formerize-placeholder {
 		color: #555 !important;
 	}
 
-	form ::-webkit-input-placeholder {
+	::-webkit-input-placeholder {
 		color: #555 !important;
 	}
 
-	form :-moz-placeholder {
+	:-moz-placeholder {
 		color: #555 !important;
 	}
 
-	form ::-moz-placeholder {
+	::-moz-placeholder {
 		color: #555 !important;
 	}
 
-	form :-ms-input-placeholder {
+	:-ms-input-placeholder {
 		color: #555 !important;
 	}
 
-	form ::-moz-focus-inner {
+	::-moz-focus-inner {
 		border: 0;
 	}
+}
 
 /* Tables */
-
-
-
 
 div.table-title {
   display: block;
@@ -2212,7 +2207,7 @@ td.text-right {
 }
 
 	@media screen and (max-width: 1680px) {
-      
+
 		/* Basic */
 
 			body, input, select, textarea {
@@ -2251,7 +2246,7 @@ td.text-right {
       .servicelist {
         padding: 0 450px 50px 0;
       }
-      
+
 	}
 .mainvideo{
   margin-left: 15%;
@@ -2281,7 +2276,7 @@ td.text-right {
 
         width: 75%;
       }
-      
+
       .magrincenter{
         width: 556px;
         margin: 20px auto 0;
@@ -2596,7 +2591,7 @@ td.text-right {
 				font-size: 11pt;
 				margin: 0 0 1em 0;
 			}
-      
+
       .tutorial2{
         width: 110%;
       }
@@ -2858,7 +2853,7 @@ td.text-right {
       margin: 0;
       padding: 0;
       display: inline-block;
-      width: 20px;
+      // width: 20px;
     }
 
     .iteminfo {
@@ -3077,7 +3072,7 @@ input[type="hidden"]::-moz-placeholder {
 
 
 /*font-family: 'Lato', sans-serif; #f06c64 #d6564f #f0d8d9*/
-/* 
+/*
  * 	Core Owl Carousel CSS File
  *	v1.3.3
  */
@@ -3115,7 +3110,7 @@ input[type="hidden"]::-moz-placeholder {
 	-o-transition: height 500ms ease-in-out;
 	transition: height 500ms ease-in-out;
 }
-	
+
 .owl-carousel .owl-item{
 	float: left;
 	width: 480px;
@@ -3135,7 +3130,7 @@ input[type="hidden"]::-moz-placeholder {
 }
 
 /* mouse grab icon */
-.grabbing { 
+.grabbing {
     cursor:url(grabbing.png) 8 8, move;
 }
 
@@ -3149,4 +3144,3 @@ input[type="hidden"]::-moz-placeholder {
   -moz-transform: translate3d(0,0,0);
   -ms-transform: translate3d(0,0,0);
 }
-
