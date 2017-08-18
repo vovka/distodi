@@ -106,6 +106,11 @@ en:
         registrations: "sign_in_img.png"
         passwords: "dyadya.jpg"
 
+  mailers:
+    reminder:
+      remind_about_service:
+        subject: "Reminder about your service"
+
   errors:
     messages:
       user_must_be_present: "User must be present."
@@ -117,6 +122,21 @@ en:
       at_least_one_action_kind_must_be_present: "Please, select at least one action."
 
   activerecord:
+    models:
+      service:
+        one: "Service"
+        other: "Services"
+        attributes:
+          predefined_reminders:
+            week: "a week"
+            month: "a month"
+            months_3: "three weeks"
+            months_6: "half a year"
+            year: "a year"
+            years_2: "two years"
+          created_at: "Created at"
+          action_kinds: "Actions"
+          service_kinds: "Service kinds"
     errors:
       models:
         checkout:

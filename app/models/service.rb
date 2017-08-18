@@ -4,6 +4,16 @@ class Service < ActiveRecord::Base
     STATUS_APPROVED = "approved".freeze,
     STATUS_DECLINED = "declined".freeze
   ]
+  PREDEFINED_REMINDERS = {
+    week: -> { 1.week },
+    month: -> { 1.month },
+    months_3: -> { 3.months },
+    months_6: -> { 6.months },
+    year: -> { 1.year },
+    years_2: -> { 2.years }
+  }.freeze
+
+  attr_accessor :reminders_predefined, :reminder_custom
 
   mount_uploader :picture, PictureUploader
 
@@ -35,6 +45,8 @@ class Service < ActiveRecord::Base
   before_create do |service|
     service.status = STATUS_APPROVED if service.self_approvable?
   end
+
+  after_create :set_reminders
 
   def self.to_csv(services)
     data = [ServiceCSVDecorator.humanized_columns] +
@@ -68,6 +80,39 @@ class Service < ActiveRecord::Base
 
   def requires_action?
     STATUS_PENDING == status
+  end
+
+  def describe
+    {
+      created_at: created_at,
+      action_kinds: action_kinds.map(&:title).join(", "),
+      service_kinds: service_kinds.map(&:title).join(", ")
+    }
+  end
+
+  private
+
+  def set_reminders
+    logger.info $/ * 3
+    reminder_dates.each do |duration|
+      logger.info "setting reminder for #{duration.from_now}"
+      ReminderWorker.perform_in(duration, id)
+    end
+    logger.info $/ * 3
+  end
+
+  def reminder_dates
+    (predefined_durations + [custom_duration]).compact
+  end
+
+  def predefined_durations
+    PREDEFINED_REMINDERS.values.values_at(*reminders_predefined).map do |object|
+      object.call
+    end
+  end
+
+  def custom_duration
+    (reminder_custom.to_time - Time.zone.now).seconds if reminder_custom.present?
   end
 end
 

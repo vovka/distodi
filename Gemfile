@@ -32,23 +32,12 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'font-awesome-rails'
-
 gem 'carrierwave', '~> 0.11.2'
 gem 'cloudinary'
 gem 'mini_magick'
-
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
-
 gem 'figaro', '~> 1.1', '>= 1.1.1'
-
-# Use bower for angular-tour
 gem "bower-rails", "~> 0.11.0"
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 gem 'pundit'
 gem 'countries', require: 'countries/global'
 gem 'country_select'
@@ -58,9 +47,9 @@ gem 'rails-i18n'
 gem 'faker'
 gem 'whenever'
 gem 'activemerchant'
+gem 'sidekiq'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'colorize', '~> 0.8.1'
   gem 'rspec-rails'
@@ -73,6 +62,12 @@ group :development, :test do
   # gem 'pronto-scss', require: false
   gem 'bullet'
   gem 'active_record_query_trace'
+  gem 'capistrano', '~> 3.6'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-figaro-yml'
+  gem 'capistrano-sidekiq'
 end
 
 group :test do
@@ -89,10 +84,5 @@ group :development do
   gem 'spring'
   gem 'rails-erd'
   gem 'annotate'
-  gem 'capistrano', '~> 3.6'
-  gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-rails', '~> 1.2'
-  gem 'capistrano3-unicorn'
-  gem 'capistrano-figaro-yml'
   gem 'mailcatcher'
 end

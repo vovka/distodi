@@ -8,6 +8,8 @@ class ServicesController < ApplicationController
   before_action :authenticate_user_or_company!,
                 only: [:create, :approve, :decline]
 
+  before_action :convert_reminder_values, only: :create
+
   # GET /services/new
   def index
     @services = current_user.services.includes(:service_fields, :action_kinds)
@@ -21,7 +23,7 @@ class ServicesController < ApplicationController
     if @service.present?
       @item ||= @service.item
     else
-      @service ||= Service.new(item: @item)
+      @service ||= Service.new(item: @item).decorate
     end
     authorize @service
     @service_kinds = @item.category.service_kinds
@@ -96,7 +98,7 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
-    @service = Service.find(params[:id])
+    @service = Service.find(params[:id]).decorate
     authorize @service
     @service_kinds = @service.item.category.service_kinds
     @action_kinds = @service.item.category.action_kinds
@@ -150,7 +152,7 @@ class ServicesController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_service
-      @service = Service.find(params[:id])
+      @service = Service.find(params[:id]).decorate
     end
 
     def email_present?(email)
@@ -175,10 +177,12 @@ class ServicesController < ApplicationController
       if company_signed_in?
         params.require(:service)
               .merge(company_id: current_company.id)
-              .permit(:control_date, :picture, :price, :company_id)
+              .permit(:control_date, :picture, :price, :company_id,
+                      :reminder_custom, reminders_predefined: [])
       elsif user_signed_in?
         params.require(:service)
-              .permit(:control_date, :picture, :price, :company_id)
+              .permit(:control_date, :picture, :price, :company_id,
+                      :reminder_custom, reminders_predefined: [])
       else
         params.require(:service).permit(:control_date, :picture, :price)
       end
@@ -197,5 +201,17 @@ class ServicesController < ApplicationController
         flash[:error] = t(".fail")
       end
       redirect_back :root
+    end
+
+    def convert_reminder_values
+      params[:service][:reminder_custom] = if params[:service][:reminder_custom].present?
+        Time.zone.parse(params[:service][:reminder_custom]).to_date
+      end
+      if params[:service][:reminders_predefined].present?
+        params[:service][:reminders_predefined].reject!(&:blank?)
+        params[:service][:reminders_predefined] = if params[:service][:reminders_predefined].present?
+          params[:service][:reminders_predefined].map &:to_i
+        end
+      end
     end
 end
