@@ -3,6 +3,8 @@ dependencies:
     - cp config/application.ci.yml config/application.yml
 
 test:
+  pre:
+    - bundle exec rake bower:install
   override:
     - if [ $CIRCLE_BRANCH != 'master' ]; then bundle exec pronto run -f bitbucket_pr -c origin/master; fi
     - bundle exec rake

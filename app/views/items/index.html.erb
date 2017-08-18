@@ -120,3 +120,34 @@
       <%= link_to t(".csv_link"), services_path(format: :csv) %>
     </div>
   </div>
+
+  <!-- Angular-tour -->
+  <tour step="currentStep" post-step="postStepCallback()">
+    <virtual-step
+      tourtip="Welcome to Distodi Tour"
+      tourtip-step="0"
+      tourtip-next-label="Next"
+      tourtip-placement="bottom"
+      tourtip-container-element="body"
+      use-source-scope="false"
+      tourtip-element=".all_items">
+    </virtual-step>
+    <virtual-step
+      tourtip="Click to add New Service"
+      tourtip-step="1"
+      tourtip-next-label="Next"
+      tourtip-placement="bottom"
+      tourtip-container-element="body"
+      use-source-scope="false"
+      tourtip-element=".add_service">
+    </virtual-step>
+    <virtual-step
+      tourtip="Check pending status"
+      tourtip-step="2"
+      tourtip-next-label="Close"
+      tourtip-placement="bottom"
+      tourtip-container-element="body"
+      use-source-scope="false"
+      tourtip-element=".pending">
+    </virtual-step>
+  </tour>
