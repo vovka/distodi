@@ -43,7 +43,7 @@ en:
       user_identifier_to_transfer_item: "User email to transfer the item."
       confirm_transfer: "Are you sure you want to transfer the item to another user?"
       transfer_submit: "Send item"
-    index:
+    dashboard:
       transferred_items: "Items that are transferred to me."
       my_items: "My Items"
       show_this_item: "Show this item %s"
@@ -52,6 +52,11 @@ en:
       create_item: "Create Item"
       back_to_my_panel: "Back to my panel"
       csv_link: "Download scv file"
+    index:
+      my_items: "My Items"
+      view_edit: "View, Edit"
+      send_item: "Send item"
+      add_new_item: "+ ADD NEW ITEM"
   companies:
     destroy:
       notice: "Company was successfully destroyed."

@@ -46,6 +46,10 @@ ItemsController.prototype.clickedDelete = function(i) {
   }
 };
 
+ItemsController.prototype.clickedToggleTransfer = function(index) {
+  this.showTransfer[index] = !this.showTransfer[index];
+};
+
 ItemsController.prototype._getIdsByIndexes = function(indexes) {
   var result = [];
   for (var i in indexes)
@@ -104,5 +108,5 @@ ItemsController.prototype.checkboxes.selectedIndexes = function() {
       result.push(i);
   return result;
 };
-
 ItemsController.prototype.serviceActions = { show: false };
+ItemsController.prototype.showTransfer = [];
