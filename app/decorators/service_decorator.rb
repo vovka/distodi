@@ -15,4 +15,10 @@ class ServiceDecorator < Draper::Decorator
       delete: ServicePolicy.new(user, self).destroy?
     }
   end
+
+  def predefined_reminders
+    object.class::PREDEFINED_REMINDERS.keys.map.with_index do |name, i|
+      [i, I18n.t("activerecord.models.service.attributes.predefined_reminders.#{name}")]
+    end
+  end
 end

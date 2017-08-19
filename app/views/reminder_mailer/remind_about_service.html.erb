@@ -1,0 +1,15 @@
+<p>Hello <%= @user.full_name %>,</p>
+<p>You asked us to remind you that some actions are required regarding one of your item's service.</p>
+<ul>
+  <li>
+    Item: <%= @service.item.title %>
+  </li>
+  <li>
+    Service:
+    <%= @service.describe.map do |field, value|
+      "#{I18n.t("activerecord.models.service.attributes.#{field}")}: #{value}"
+    end.join("\n") %>
+  </li>
+</ul>
+<p>Just begin!</p>
+<p>  - distodi Customer Service Team</p>
