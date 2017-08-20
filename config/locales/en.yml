@@ -88,6 +88,9 @@ en:
     item:
       transferred_items: "New"
       receive_item: "Receive"
+      show_list: "Show list of items"
+      show_my_profile: "Show my profile"
+      edit_button: "Edit profile"
     sign_in:
       welcome:
         "1":
