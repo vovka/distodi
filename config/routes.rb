@@ -66,8 +66,8 @@ Rails.application.routes.draw do
 
   resources :checkouts, only: %i( show new create )
 
-  get :dashboard, to: "items#index", as: :dashboard
-  get :dashboard, to: "items#index", as: :home
+  get :dashboard, to: "items#dashboard", as: :dashboard
+  get :dashboard, to: "items#dashboard", as: :home
   get "item/:token", to: "items#show_for_company", as: :show_for_company
   get "item/service/:token", to: "services#company_service", as: :company_service
   get "static_pages/home"

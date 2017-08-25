@@ -14,7 +14,7 @@
       <div class="item_logo">
         <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), home_path %>
       </div>
-      <div class="right_panel">
+      <div class="right_panel list">
         <div class="more_menu">
           <a href="#"><%= image_tag "more_menu.png" %></a>
         </div>
@@ -48,7 +48,6 @@
           8 (800) 400-40-40
         </div>
       </div>
-      <%= render @items.present? ? "items" : "empty_items" %>
     </div>
     <%= yield %>
   </body>

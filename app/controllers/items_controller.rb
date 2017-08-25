@@ -6,16 +6,20 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: :show_for_company
   before_action :authenticate_user_or_company!, only: :show_for_company
 
-  def index
+  def dashboard
     @items = Item.unscoped.where(user: current_user)
     @services = Service.unscoped.includes(:item, :company, :approver, :action_kinds, :service_fields => :service_kind).where(item: @items).decorate
-    render @items.any? ? "index" : "empty_items_services"
+    render "empty_items_services" if @items.blank?
   end
 
   def show
     @items = [@item]
     @services = @item.services.includes(:service_fields, :action_kinds).decorate
-    render "index"
+    render "dashboard"
+  end
+
+  def index
+    @items = Item.unscoped.where(user: current_user)
   end
 
   def show_for_company

@@ -46,7 +46,7 @@ describe ItemsController do
         create :item, services: create_list(:service, 1, :with_action_kinds)
         sign_in user
 
-        get :index
+        get :dashboard
 
         expect(assigns(:services)).to eq([my_service])
       end
