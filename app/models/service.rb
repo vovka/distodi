@@ -3,7 +3,7 @@ class Service < ActiveRecord::Base
     STATUS_PENDING = "pending".freeze,
     STATUS_APPROVED = "approved".freeze,
     STATUS_DECLINED = "declined".freeze
-  ]
+  ].freeze
   PREDEFINED_REMINDERS = {
     week: -> { 1.week },
     month: -> { 1.month },
@@ -47,6 +47,8 @@ class Service < ActiveRecord::Base
   end
 
   after_create :set_reminders
+  # after_create { ServiceCalendarMailerWorker.perform_async(id) }
+  after_create :send_calendar_events
 
   def self.to_csv(services)
     data = [ServiceCSVDecorator.humanized_columns] +
@@ -90,6 +92,19 @@ class Service < ActiveRecord::Base
     }
   end
 
+  def reminder_dates
+    (predefined_durations + [custom_duration]).compact
+  end
+
+  def send_calendar_events
+    [
+      calendar_events_view_object.performed_service,
+      *calendar_events_view_object.future_reminders
+    ].each do |icalendar_event|
+      UserMailer.service_reminder(self, icalendar_event).deliver_now
+    end
+  end
+
   private
 
   def set_reminders
@@ -101,10 +116,6 @@ class Service < ActiveRecord::Base
     logger.info $/ * 3
   end
 
-  def reminder_dates
-    (predefined_durations + [custom_duration]).compact
-  end
-
   def predefined_durations
     PREDEFINED_REMINDERS.values.values_at(*reminders_predefined).map do |object|
       object.call
@@ -113,6 +124,10 @@ class Service < ActiveRecord::Base
 
   def custom_duration
     (reminder_custom.to_time - Time.zone.now).seconds if reminder_custom.present?
+  end
+
+  def calendar_events_view_object
+    @calendar_events_view_object ||= ServiceCalendarEventsViewObject.new(self)
   end
 end
 

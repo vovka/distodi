@@ -113,11 +113,23 @@ en:
         sessions: "dyadya.jpg"
         registrations: "sign_in_img.png"
         passwords: "dyadya.jpg"
+  user_mailer:
+    transfer_notification_email:
+      item_was_transferred_to_you:
+        subject: "Item was transferred to you"
+    service_reminder:
+      service_reminder:
+        subject: "Service reminder"
 
   mailers:
     reminder:
       remind_about_service:
         subject: "Reminder about your service"
+
+  view_objects:
+    service_calendar_events:
+      future_reminders:
+        summary_prefix: "REMINDER"
 
   errors:
     messages:
