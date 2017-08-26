@@ -48,6 +48,7 @@ gem 'faker'
 gem 'whenever'
 gem 'activemerchant'
 gem 'sidekiq'
+gem 'icalendar'
 
 group :development, :test do
   gem 'byebug'
