@@ -4,12 +4,12 @@
 		<div class="ico">
 			<%= image_tag "mail_ico.png" %>
 		</div>
-	<%= f.email_field :email, autofocus: true,placeholder: "E-mail Address" %>
+	<%= f.email_field :email, autofocus: true,placeholder: t(".email") %>
 	</div>
 	<div class="errors_reg mail">
 		<%= resource.errors.full_messages_for(:email).join(',') %>
 	</div>
 	<div class="signup_but">
-		<%= f.submit "Send e-mail" %>
+		<%= f.submit t(".send") %>
 	</div>
 <% end %>

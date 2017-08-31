@@ -31,14 +31,43 @@ en:
       update_link: "Update user"
       confirm_delete: "Do you want delete your user profile?"
       confirm_update: "Do you want update your user profile?"
+    passwords:
+      new:
+        email: "E-mail Address"
+        send: "Send e-mail"
   items:
     create:
       notice: "Item was successfully created."
     destroy:
       notice: "Item was successfully destroyed."
-    show:
+    items:
+      all: "ALL"
+    empty_items:
+      add_first_item: "+ ADD YOUR FIRST ITEM"
+    empty_items_services:
+      hey: "Hey, "
+      add: "Add your first item"
+      track: "to track all it’s Service log entries"
+    new:
+      new_item: "New item"
+    edit:
       delete_link: "Delete Item"
       confirm_delete: "Do you really want to delete this service?"
+      got_sold: "Got sold your Item?"
+      send: "You could simply send your Item to another registered Distodi user just with an e-mail address. Confirm sending after your recepient’s confirmation."
+      recipient: "Recipient’s E-mail address"
+      pass: "Enter your password to delete this Item"
+      all_services: "All services"
+      add_new_service: "+ ADD NEW SERVICE"
+      view: "View"
+      del: "Delete"
+      service: "Service"
+      type: "Service type"
+      status: "Status"
+      item: "Item"
+      id: "Service ID"
+      date: "Service date"
+      cost: "Service total cost"
     transfer_form:
       user_identifier_to_transfer_item: "User email to transfer the item."
       confirm_transfer: "Are you sure you want to transfer the item to another user?"
@@ -52,6 +81,22 @@ en:
       create_item: "Create Item"
       back_to_my_panel: "Back to my panel"
       csv_link: "Download scv file"
+      all_services: "All services"
+      add_new_service: "+ ADD NEW SERVICE"
+      view: "View"
+      del: "Delete"
+      service: "Service"
+      type: "Service type"
+      status: "Status"
+      item: "Item"
+      id: "Service ID"
+      date: "Service date"
+      cost: "Service total cost"
+      service_log: "Yor Service log entries list is empty."
+      add_first_srvice: "Add first Service"
+      fill_book: "to fill in your Service book"
+      pdf: "Save reports as pdf"
+
     index:
       my_items: "My Items"
       view_edit: "View, Edit"
@@ -66,6 +111,10 @@ en:
       delete_link: "Delete company"
       confirm_delete: "Do you want delete your company profile?"
       edit_link: "Update company"
+    passwords:
+      new:
+        email: "E-mail Address"
+        send: "Send e-mail"
   services:
     list:
       confirm_delete: "Do you really want to delete this service?"
@@ -84,6 +133,22 @@ en:
       notice: "Service was successfully updated."
     destroy:
       notice: "Service was successfully destroyed."
+  shared:
+    login_form:
+      email: "E-mail Address"
+      pass: "Password"
+      forgot: "Forgot password?"
+      sign_in: "Sign in"
+    registration_form:
+      name: "Your Full Name (as in passport)"
+      email: "E-mail Address"
+      pass: "Password (min 8 characters)"
+      create: "Create Free Service Book"
+    registration_form_company:
+      name: "Company Name (official)"
+      email: "E-mail Address"
+      pass: "Password (min 8 characters)"
+      create: "Create Free Service Book"
   layouts:
     item:
       transferred_items: "New"
@@ -91,6 +156,7 @@ en:
       show_list: "Show list of items"
       show_my_profile: "Show my profile"
       edit_button: "Edit profile"
+      log_out: "Log out"
     sign_in:
       welcome:
         "1":
@@ -113,6 +179,25 @@ en:
         sessions: "dyadya.jpg"
         registrations: "sign_in_img.png"
         passwords: "dyadya.jpg"
+      client: "client"
+      company: "company"
+    new:
+      updates: "UPDATES"
+      questions: "QUESTIONS AND ANSVERS"
+      lang: "ENGLISH"
+      sign_in: "SIGN IN"
+      create_free: "Create Free Service Book"
+      about: "About Distodi"
+      careers: "Careers"
+      contacts: "Contacts"
+      terms: "Privacy and Terms"
+  static_pages:
+    home:
+      distodi_welcome: "Distodi. Your personal confidence"
+      create_service_book: "Create your Service Book and sleep peacefully"
+      select_vehicle: "Select your vehicle"
+      create_free: "Create Free Service Book"
+      more: "More about Distodi"
   user_mailer:
     transfer_notification_email:
       item_was_transferred_to_you:

@@ -1,6 +1,6 @@
 <%= render @items.present? ? "items" : "empty_items" %>
 <div class="item_info">
-	<span>New item</span>
+	<span><%= t(".new_item") %></span>
 </div>
 
 <%= render 'form' %>

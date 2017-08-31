@@ -4,23 +4,23 @@
                 controller.ids = <%= @services.map(&:id) %>;
                 '>
     <div class="item_info">
-      <span>All services</span>
+      <span><%= t(".all_services") %></span>
     </div>
     <%= link_to new_service_path(item_id: @items.first), "ng-show" => "#{@items.size} === 1 && !controller.serviceActions.show" do %>
       <div class="add_service">
-        + ADD NEW SERVICE
+        <%= t(".add_new_service") %>
       </div>
     <% end %>
     <div class="service_panel" ng-show="controller.serviceActions.show">
       <a href="" class="view"
          ng-class="controller.serviceActions.view ? '' : 'disabled'"
          ng-click="controller.clickedView()">
-        View
+        <%= t(".view") %>
       </a>
       <a href="" class="delete"
          ng-class="controller.serviceActions.delete ? '' : 'disabled'"
          ng-click="controller.clickedDelete()">
-        Delete
+        <%= t(".del") %>
       </a>
       <!-- <a href="#"><%= image_tag "send.png" %> Send</a> -->
     </div>
@@ -37,13 +37,13 @@
             </label>
           </div>
         </th>
-        <th>Service</th>
-        <th>Service type</th>
-        <th>Status</th>
-        <th>Item</th>
-        <th>Service ID</th>
-        <th>Service date</th>
-        <th>Service total cost</th>
+        <th><%= t(".service") %></th>
+        <th><%= t(".type") %></th>
+        <th><%= t(".status") %></th>
+        <th><%= t(".item") %></th>
+        <th><%= t(".id") %></th>
+        <th><%= t(".date") %></th>
+        <th><%= t(".cost") %></th>
         <th></th>
       </thead>
       <tbody>
@@ -111,7 +111,7 @@
     </div>
     <% if @services.blank? %>
       <div class="first_service">
-        <p>Yor Service log entries list is empty. <%= link_to "Add first Service",new_service_path(item_id: @items.first), "ng-show" => "#{@items.size} === 1 && !controller.serviceActions.show" %> to fill in your Service book</p>
+        <p><%= t(".service_log") %> <%= link_to t(".add_first_service"),new_service_path(item_id: @items.first), "ng-show" => "#{@items.size} === 1 && !controller.serviceActions.show" %> <%= t(".fill_book") %></p>
       </div>
     <% end %>
     <div class="pdf_button">

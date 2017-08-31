@@ -3,16 +3,15 @@
 <div class="content">
 <div class="text">
 	<div class="info">
-		Distodi. Your personal confidence
+		<%= t(".distodi_welcome") %>
 	</div>
 	<div class="info_small">
-		Create your Service Book
-and sleep peacefully
+		<%= t(".create_service_book") %>
 	</div>
 	</div>
 	<div class="slider">
 		<div class="container_slider">
-		<p>Select your vehicle</p>
+		<p><%= t(".select_vehicle") %></p>
 			<div id="owl-example" class="owl-carousel">
 				<div class="items"><%= image_tag "slide.png" %></div>
 				<div class="items"><%= image_tag "slide2.png" %></div>
@@ -25,7 +24,7 @@ and sleep peacefully
 				<div class="items"><%= image_tag "slide.png" %></div>
 			</div>
 			<div class="button">
-				<%= link_to "Create Free Service Book", new_user_registration_path%>
+				<%= link_to t(".create_free"), new_user_registration_path %>
 
 			</div>
 
@@ -35,7 +34,7 @@ and sleep peacefully
 
 <div class="more_info">
 	<div class="more">
-		More about Distodi
+		<%= t(".more") %>
 	</div>
 	<div class="arrow">
 		<%= image_tag "arrow.png" %>

@@ -499,8 +499,9 @@
 
     padding: 30px 0 10px 39px;
 	}
-	.function .delete .delete_but span{
-    right: 10%;
+	.function .delete .delete_but a{
+    top: 16px;
+    position: relative;
 	}
 	.field .without_photo_input{
 		width: 90%;

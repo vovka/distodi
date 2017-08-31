@@ -1,4 +1,6 @@
 class UserMailer < ApplicationMailer
+  add_template_helper(ApplicationHelper)
+
   def confirmation_email(user)
     @user = user
     mail to: user.email,

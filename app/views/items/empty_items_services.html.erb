@@ -5,7 +5,7 @@
         <p class="plus">+</p>
       <% end %>
     </div>
-    <p>Hey, <%= current_user.first_name %>,</p>
-    <%= link_to "Add your first item", new_item_path %>
-    <p>to track all it’s Service log entries</p>
+    <p><%= t(".hey") %><%= current_user.first_name %>,</p>
+    <%= link_to t(".add"), new_item_path %>
+    <p><%= t(".track") %></p>
   </div>
