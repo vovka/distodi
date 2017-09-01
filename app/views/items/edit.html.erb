@@ -21,11 +21,11 @@
               controller.ids = <%= @services.map(&:id) %>;
               '>
   <div class="item_info">
-    <span>All services</span>
+    <span><%= t(".all_services") %></span>
   </div>
   <%= link_to new_service_path(item_id: @items.first), "ng-show" => "#{@items.size} === 1 && !controller.serviceActions.show" do %>
     <div class="add_service">
-      + ADD NEW SERVICE
+      <%= t(".add_new_service") %>
     </div>
   <% end %>
   <div class="service_panel" ng-show="controller.serviceActions.show">
@@ -54,13 +54,13 @@
           </label>
         </div>
       </th>
-      <th>Service</th>
-      <th>Service type</th>
-      <th>Status</th>
-      <th>Item</th>
-      <th>Service ID</th>
-      <th>Service date</th>
-      <th>Service total cost</th>
+      <th><%= t(".service") %></th>
+      <th><%= t(".type") %></th>
+      <th><%= t(".status") %></th>
+      <th><%= t(".item") %></th>
+      <th><%= t(".id") %></th>
+      <th><%= t(".date") %></th>
+      <th><%= t(".cost") %></th>
       <th></th>
     </thead>
     <tbody>
@@ -131,15 +131,15 @@
 
 <div class="function">
 	<div class="transfer">
-		<p><strong>Got sold your Item?</strong> You could simply send your Item to another registered Distodi user just with an e-mail address. Confirm sending after your recepient’s confirmation.</p>
-		<span>Recipient’s E-mail address</span>
+		<p><strong><%= t(".got_sold") %></strong> <%= t(".send") %></p>
+		<span><%= t(".recipient") %></span>
 
     <%= render "transfer_form", item: @item %>
 	</div>
 
 	<div class="delete">
 		<span>
-			Enter your password to delete this Item
+			<%= t(".pass") %>
 		</span>
 		<input type="password">
     <div class="delete_but">

@@ -19,10 +19,10 @@
       </div>
       <div class="menu">
         <ul>
-          <li><%= link_to('UPDATES', '#', class: 'menu__nav-link_hidden') %></li>
-          <li><%= link_to('QUESTIONS AND ANSWERS', '#', class: 'menu__nav-link_hidden') %></li>
-          <li><%= link_to('ENGLISH', '#', class: 'menu__nav-link_hidden') %></li>
-          <li><%= link_to('SIGN IN', new_user_session_path) %></li>
+          <li><%= link_to(t(".updates"), '#', class: 'menu__nav-link_hidden') %></li>
+          <li><%= link_to(t(".questions"), '#', class: 'menu__nav-link_hidden') %></li>
+          <li><%= link_to(t(".lang"), '#', class: 'menu__nav-link_hidden') %></li>
+          <li><%= link_to(t(".sign_in"), new_user_session_path) %></li>
         </ul>
       </div>
       <div class="btn_menu">
@@ -33,13 +33,13 @@
       <div class="menu_mobile">
         <%= image_tag "logo_menu.png" %>
         <ul>
-          <li><%= link_to('UPDATES', '#', class: 'menu__nav-link_hidden') %></li>
-          <li><%= link_to('QUESTIONS AND ANSWERS', '#', class: 'menu__nav-link_hidden') %></li>
-          <li><%= link_to('ENGLISH', '#', class: 'menu__nav-link_hidden') %></li>
-          <li><%= link_to('SIGN IN', new_user_session_path) %></li>
+          <li><%= link_to(t(".updates"), '#', class: 'menu__nav-link_hidden') %></li>
+          <li><%= link_to(t(".questions"), '#', class: 'menu__nav-link_hidden') %></li>
+          <li><%= link_to(t(".lang"), '#', class: 'menu__nav-link_hidden') %></li>
+          <li><%= link_to(t(".sign_in"), new_user_session_path) %></li>
         </ul>
         <div class="button">
-          Create Free Service Book
+          <%= t(".create_free") %>
         </div>
         <div class="telephone_contact">
           8 (800) 400-40-40
@@ -50,15 +50,15 @@
     <footer>
       <div class="footer">
         <ul>
-          <li><%= link_to('Updates', '#', class: 'footer__nav-link_hidden footer__nav-link_hidden') %></li>
+          <li><%= link_to(t(".updates"), '#', class: 'footer__nav-link_hidden footer__nav-link_hidden') %></li>
           <li class="footer__nav-link_hidden">•</li>
-          <li><%= link_to 'About Distodi', static_pages_about_path %></li>
+          <li><%= link_to t(".about"), static_pages_about_path %></li>
           <li class="footer__nav-link_hidden">•</li>
-          <li><%= link_to('Questions and Answers', '#', class: 'footer__nav-link footer__nav-link_hidden') %></li>
+          <li><%= link_to(t(".questions"), '#', class: 'footer__nav-link footer__nav-link_hidden') %></li>
           <li class="footer__nav-link_hidden">•</li>
-          <li><%= link_to('Careers', '#', class: 'footer__nav-link footer__nav-link_hidden') %></li>
+          <li><%= link_to(t(".careers"), '#', class: 'footer__nav-link footer__nav-link_hidden') %></li>
           <li class="footer__nav-link_hidden">•</li>
-          <li><%= link_to('Contacts', '#', class: 'footer__nav-link footer__nav-link_hidden') %></li>
+          <li><%= link_to(t(".contacts"), '#', class: 'footer__nav-link footer__nav-link_hidden') %></li>
         </ul>
         <div class="contacts">
           © 2017, <%= link_to 'Distodi', root_path %>
@@ -70,7 +70,7 @@
           <%= mail_to 'support@distodi.com'%>
         </div>
         <div class="contacts">
-          <%= link_to('Privacy and Terms', '#', class: 'footer__nav-link footer__nav-link_hidden') %>
+          <%= link_to(t(".terms"), '#', class: 'footer__nav-link footer__nav-link_hidden') %>
         </div>
         <div class="contacts_mobile">© 2017, <%= link_to 'Distodi', root_path %>, <%= mail_to 'support@distodi.com'%></div>
         <div class="telephone_mobile">8 (800) 400-40-40</div>

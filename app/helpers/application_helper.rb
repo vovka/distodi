@@ -1,9 +1,9 @@
 module ApplicationHelper
   def logout_link
     if user_signed_in?
-      link_to "Log out", destroy_user_session_path, method: :delete
+      link_to t(".log_out"), destroy_user_session_path, method: :delete
     elsif company_signed_in?
-      link_to "Log out", destroy_company_session_path, method: :delete
+      link_to t(".log_out"), destroy_company_session_path, method: :delete
     end
   end
 
@@ -29,5 +29,9 @@ module ApplicationHelper
     else
       image_tag('mini_empty_image.png', alt: 'No image', class: 'image_user')
     end
+  end
+
+  def translate_email(key)
+    ERB.new(t(key)).result(binding).html_safe
   end
 end

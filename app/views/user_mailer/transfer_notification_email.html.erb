@@ -1,1 +1,9 @@
-User <%= @sender.full_name %> has transferred you an item. Please check it at <%= user_url(@receiver) %>.
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <%= translate_email(".transfer") %>
+</body>
+</html>

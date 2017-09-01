@@ -454,7 +454,7 @@ width:420px;
   -webkit-transition: all 1.5s;
 		  transition: all 1.5s;
   background-color: transparent;
-  z-index: 150;
+  z-index: 650;
 }
 .btn_menu.active .btn_line:first-child {
   -webkit-transform: rotate(-135deg);
@@ -891,7 +891,7 @@ font-feature-settings: 'liga';
   -webkit-transition: all 1.5s;
 		  transition: all 1.5s;
   background-color: transparent;
-  z-index: 150;
+  z-index: 550;
 }
 .btn_menu.active .btn_line:first-child {
   -webkit-transform: rotate(-135deg);
@@ -1800,17 +1800,17 @@ option{
 	top: 58px;
 	right: 29px;
 }
-.function .delete .delete_but span{
+.function .delete .delete_but a{
 	position: absolute;
 	font-family:'MuseoSansCyrl_2';
 	font-size:14px;
 	color:#ff3c00;
 	letter-spacing:0;
 	line-height:14px;
-	text-align:center;
+	text-align: center;
 	padding: 10px;
 	top: 6px;
-	right: -7px;
+	right: 4px;
 }
 
 .viewing .actions{

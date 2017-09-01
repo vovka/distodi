@@ -1,0 +1,162 @@
+
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  user_mailer:
+    add_service_email:
+      add_service: |
+        <h1>The service was added!</h1></p>
+        <p>Hello,<%= @user.first_name %></p>
+           
+        <p>One of the Company did service for you Item.</p>
+        <p>Please log in your personal account in distodi.com and confirm that you have agreed the Service with 48 hours.</p>
+           
+        <p>Just begin!</p>
+        <p> distodi Customer Service Team</p>
+
+    add_service_email_to_company:
+      add_service_company: |
+        <h1>The service was added!</h1>
+        <p>Hello,</p>
+          
+        <p>One of the User selected you for his service.</p>
+        <p>Please log in your personal account in distodi.com and confirm that you have agreed the Service with 48 hours.</p>
+         
+        <p>Just begin!</p>
+        <p> distodi Customer Service Team</p>
+
+    confirmation_email:
+      confirmation: |
+        <h1>Confirmation Your distodi.com account!</h1>
+        <p>Hello,</p>
+           
+        <p>Congratulations you start to use distodi.com a service for everything! Now you will be able to keep value of what you have! </p>  
+                  
+        <p>Your user name is: <%= @user.first_name %></p>
+        <p>Distodi establishing trust between customers and service companies, and as the result between future buyers and sellers</p>
+        <p> ✔ Clear prove of the services that were done </p>
+        <p>  ✔ Track your service activity </p>
+        <p>  ✔ Access to your service book from everywhere </p>
+        <p>  ✔ Adding additional value </p>
+        <p>  ✔ Download, print, or send history of service </p>
+         
+        <p>You can keep history of the service, print, safe or send service history.</p>
+        <p>Feel free to contact us if you have any questions.</p>
+         
+        <p>Just begin!</p>
+        <p>  distodi Customer Service Team</p>
+
+    invite_company:
+      invite: |
+        <h1>Please use distodi.com</h1>
+        <p>Hello,</p>
+           
+        <p>You have invite from user distodi.com.</p>
+        <p>Please go to the link and finish registration!</p>
+        <p><%= edit_company_registration_path(@company) %></p>
+           
+        <p>Your email is: <%= @company.email %></p>
+           
+        <p>Distodi establishing trust between customers and service companies, and as the result between future buyers and sellers</p>
+        <p> ✔ Clear prove of the services that were done </p>
+        <p>  ✔ Track your service activity </p>
+        <p>  ✔ Access to your service book from everywhere </p>
+        <p>  ✔ Adding additional value </p>
+        <p>  ✔ Download, print, or send history of service </p>
+           
+        <p>You can keep history of the service, print, safe or send service history.</p>
+        <p>Feel free to contact us if you have any questions.</p>
+           
+        <p>Just begin!</p>
+        <p>distodi Customer Service Team</p>
+
+    reminder_service_email:
+      reminder: |
+        <h1>Please confirm your service!</h1>
+        <p>Hello, <%= @user.full_name %>,</p>
+           
+        <p>One of the Company did service for you Item.</p>
+        <p>Please log in your personal account in distodi.com and confirm that you have agreed the Service.</p>
+           
+        <p>Just begin!</p>
+        <p>  distodi Customer Service Team</p>
+
+    service_reminder:
+      reminder_service: |
+        <h1>Keep your calendar updated</h1>
+        <p>Hello, <%= @user.full_name %>,</p>
+           
+        <p>Please, add attached events to your calendar to keep your calendar up to date.</p>
+           
+        <p>Just begin!</p>
+        <p>  distodi Customer Service Team</p>
+
+    transfer_notification_email:
+      transfer: |
+        <h1>The item was transfered to you</h1></p>
+        <p>Hello <%= @user.full_name %>,</p>
+           
+        <p>User <%= @sender.full_name %> has transferred you an item. Please check it at <%= user_url(@receiver) %>.</p>
+           
+        <p>Just begin!</p>
+        <p>  distodi Customer Service Team</p>
+
+  company_mailer:
+    reminder_service_email:
+      reminder: |
+        <h1>Please confirm your service!</h1>
+        <p>Hello,</p>
+           
+        <p>One of the Company did service for you Item.</p>
+        <p>Please log in your personal account in distodi.com and confirm that you have agreed the Service.</p>
+           
+        <p>Just begin!</p>
+        <p>  distodi Customer Service Team</p>
+
+    service_confirmed_email:
+      confirm: |
+        <h1>The service is confirmed!</h1>
+        <p>Hello,</p>
+        <p>We would like to inform you that one of your Customer confirmed Service that you did.</p>
+        <p>Please log in your personal account in distodi.com  </p>
+        <p>Just begin!</p>
+        <p>  distodi Customer Service Team</p>
+
+  reminder_mailer:
+    remind_about_service:
+      remind: |
+        <p>Hello <%= @user.full_name %>,</p>
+        <p>You asked us to remind you that some actions are required regarding one of your items service.</p>
+        <ul>
+          <li>
+            Item: <%= @service.item.title %>
+          </li>
+          <li>
+            Service:
+            <%= @service.describe.map do |field, value|
+              "#{I18n.t("activerecord.models.service.attributes.#{field}")}: #{value}"
+            end.join("\n") %>
+          </li>
+        </ul>
+        <p>Just begin!</p>
+        <p>   distodi Customer Service Team</p>
+

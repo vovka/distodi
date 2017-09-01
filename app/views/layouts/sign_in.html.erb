@@ -28,10 +28,10 @@
           <div class="wrapper">
             <div class="tabs">
               <div class="tab user<%= " active" if resource.is_a? User %>">
-                <%= link_to("Client", send(:"new_user_#{controller_name.singularize}_path")) %>
+                <%= link_to(t(".client"), send(:"new_user_#{controller_name.singularize}_path")) %>
               </div>
               <div class="tab<%= " active" if resource.is_a? Company %>">
-                <%= link_to("Company", send(:"new_company_#{controller_name.singularize}_path")) %>
+                <%= link_to(t(".company"), send(:"new_company_#{controller_name.singularize}_path")) %>
               </div>
             </div>
             <div class="tabs_content">
