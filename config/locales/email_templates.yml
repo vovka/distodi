@@ -113,7 +113,7 @@ en:
     transfer_notification_email:
       transfer: |
         <h1>The item was transfered to you</h1></p>
-        <p>Hello <%= @user.full_name %>,</p>
+        <p>Hello <%= @receiver.full_name %>,</p>
            
         <p>User <%= @sender.full_name %> has transferred you an item. Please check it at <%= user_url(@receiver) %>.</p>
            
@@ -159,4 +159,3 @@ en:
         </ul>
         <p>Just begin!</p>
         <p>   distodi Customer Service Team</p>
-
