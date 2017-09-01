@@ -1,6 +1,7 @@
 class AttributeKind < ActiveRecord::Base
-  BRAND = "Brand"
-  MODEL = "Model"
+  BRAND = "Brand".freeze
+  MODEL = "Model".freeze
+  YEAR = "Year".freeze
 
   has_and_belongs_to_many :categories
   has_many :characteristics
@@ -12,6 +13,10 @@ class AttributeKind < ActiveRecord::Base
 
   def model?
     title == MODEL
+  end
+
+  def year?
+    title == YEAR
   end
 end
 

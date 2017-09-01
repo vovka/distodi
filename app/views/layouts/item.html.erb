@@ -15,6 +15,11 @@
         <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), home_path %>
       </div>
       <div class="right_panel list">
+        <% %i( notice error ).each do |msg| %>
+          <div class="<%= msg %>">
+            <%= flash[msg] %>
+          </div>
+        <% end %>
         <div class="more_menu" ng-click="controller.clickedToggleMoremenu()" ng-class="controller.showMoremenu ? 'active' : '' ">
           <div class="menu_line"></div>
           <div class="menu_line"></div>

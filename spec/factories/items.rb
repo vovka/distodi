@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :item do
-    title "car"
+    sequence(:title) { |n| "car ##{n}" }
     characteristics do
       year_attribute = build :attribute_kind, title: "Year"
       create_list :characteristic, 1, { attribute_kind: year_attribute, value: "1986" }

@@ -130,21 +130,20 @@
 
 
 <div class="function">
-	<div class="transfer">
-		<p><strong><%= t(".got_sold") %></strong> <%= t(".send") %></p>
-		<span><%= t(".recipient") %></span>
-
+  <div class="transfer">
+    <p><strong><%= t(".got_sold") %></strong> <%= t(".send") %></p>
+    <span><%= t(".recipient") %></span>
     <%= render "transfer_form", item: @item %>
-	</div>
+  </div>
 
-	<div class="delete">
-		<span>
-			<%= t(".pass") %>
-		</span>
-		<input type="password">
-    <div class="delete_but">
-      <%= image_tag "delete_red.png" %>
-      <%= link_to t(".delete_link"), @item, method: :delete %>
-    </div>
-	</div>
+  <div class="delete">
+    <span><%= t(".pass") %></span>
+    <%= form_for @item, method: :delete do |f| %>
+      <%= f.password_field :password %>
+      <div class="delete_but">
+        <!-- <%= image_tag "delete_red.png" %> -->
+        <%= f.submit t(".delete_link"), data: { confirm: t(".confirm_delete") } %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -11,7 +11,7 @@ class AttributeKindDecorator < Draper::Decorator
   #   end
 
   def input_helper
-    if brand? || model?
+    if brand? || model? || year?
       :select
     else
       :text_field
@@ -22,7 +22,7 @@ class AttributeKindDecorator < Draper::Decorator
     if brand?
       [
         context[:item].selected_category.brand_options.map { |brand| [brand.name, brand.name] },
-        { selected: context[:item].selected_brand.name },
+        { selected: context[:item].selected_brand.try(:name) },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value),
@@ -35,6 +35,15 @@ class AttributeKindDecorator < Draper::Decorator
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value) }
+      ]
+    elsif year?
+      default_year = "2000"
+      [
+        1900..Time.current.to_date.year,
+        { selected: characteristic.try(:value).presence || default_year },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence || default_year }
       ]
     else
       [

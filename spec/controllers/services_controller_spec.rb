@@ -72,9 +72,7 @@ RSpec.describe ServicesController, type: :controller do
     specify "unauthenticated user can not approve a service" do
       user = create :user
       company = create :company
-      service = company.services.create!(
-        attributes_for(:service).merge(approver: user)
-      )
+      service = create :service, approver: user, company: company
 
       expect do
         patch :approve, id: service.to_param
@@ -84,9 +82,7 @@ RSpec.describe ServicesController, type: :controller do
     specify "user can approve service assigned to him" do
       user = create :user
       company = create :company
-      service = company.services.create!(
-        attributes_for(:service).merge(approver: user)
-      )
+      service = create :service, approver: user, company: company
       sign_in user
 
       expect do
@@ -99,9 +95,7 @@ RSpec.describe ServicesController, type: :controller do
       user = create :user
       other_user = create :user
       company = create :company
-      service = company.services.create!(
-        attributes_for(:service).merge(approver: other_user)
-      )
+      service = create :service, approver: other_user, company: company
       sign_in user
 
       expect do
@@ -145,9 +139,7 @@ RSpec.describe ServicesController, type: :controller do
     specify "unauthenticated user can not decline a service" do
       user = create :user
       company = create :company
-      service = company.services.create!(
-        attributes_for(:service).merge(approver: user)
-      )
+      service = create :service, approver: user, company: company
 
       expect do
         patch :decline, id: service.to_param,
@@ -158,9 +150,7 @@ RSpec.describe ServicesController, type: :controller do
     specify "user can decline service assigned to him" do
       user = create :user
       company = create :company
-      service = company.services.create!(
-        attributes_for(:service).merge(approver: user)
-      )
+      service = create :service, approver: user, company: company
       sign_in user
 
       expect do
@@ -174,9 +164,7 @@ RSpec.describe ServicesController, type: :controller do
       user = create :user
       other_user = create :user
       company = create :company
-      service = company.services.create!(
-        attributes_for(:service).merge(approver: other_user)
-      )
+      service = create :service, approver: other_user, company: company
       sign_in user
 
       expect do

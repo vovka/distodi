@@ -5,7 +5,7 @@ RSpec.describe Company, type: :model do
     describe "#services" do
       it "contains services created by the company" do
         company = create :company
-        service = company.services.create!(attributes_for(:service))
+        service = create :service, company: company
         create :service
 
         expect(company.services).to eq([service])

@@ -67,8 +67,12 @@ class ItemsController < ApplicationController
 
   def destroy
     authorize @item
-    @item.destroy
-    redirect_to @item.user, notice: t(".notice")
+    if current_user.valid_password?(params[:item][:password])
+      @item.destroy
+      redirect_to @item.user, notice: t(".success")
+    else
+      redirect_to :back, notice: t(".password_invalid")
+    end
   end
 
   def get_attributes

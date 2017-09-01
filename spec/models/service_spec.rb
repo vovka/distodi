@@ -54,7 +54,8 @@ RSpec.describe Service, type: :model do
 
   describe "ID code" do
     it "calls the method after create" do
-      service = build :service
+      item = create :item
+      service = build :service, item: item
       allow(service).to receive(:ensure_id_code)
 
       service.save
@@ -134,17 +135,18 @@ RSpec.describe Service, type: :model do
 
     it "generates CSV" do
       collection = travel_to(Time.zone.parse("2017-12-31 12:00")) do
-        create_list :service, 2, price: 123.45
+        [ create(:service, price: 123.45, item_title: "Car 1"),
+          create(:service, price: 543.21, item_title: "Car 2") ]
       end
 
       expect(Service.to_csv(collection)).to include(<<-EOS)
 Id code,Approver,Created at,Updated at,Item,Next control,Price,Company,Status,Reason
 EOS
       expect(Service.to_csv(collection)).to include(<<-EOS)
-"",Ne 31. Prosinec 2017 12:00 +0100,Ne 31. Prosinec 2017 12:00 +0100,car,"","123,45 Kč","",Approved,
+"",Ne 31. Prosinec 2017 12:00 +0100,Ne 31. Prosinec 2017 12:00 +0100,Car 1,"","123,45 Kč","",Approved,
 EOS
       expect(Service.to_csv(collection)).to include(<<-EOS)
-"",Ne 31. Prosinec 2017 12:00 +0100,Ne 31. Prosinec 2017 12:00 +0100,car,"","123,45 Kč","",Approved,
+"",Ne 31. Prosinec 2017 12:00 +0100,Ne 31. Prosinec 2017 12:00 +0100,Car 2,"","543,21 Kč","",Approved,
 EOS
     end
   end

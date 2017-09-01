@@ -14,13 +14,12 @@ RSpec.describe User, type: :model do
     end
 
     describe "#assigned_services" do
-      it "contains serices assigned to the user" do
+      it "contains services assigned to the user" do
         user = create :user
         company = create :company
-        service = company.services.create!(
-          attributes_for(:service).merge(approver: user)
-        )
-        company.services.create!(attributes_for(:service))
+        item = create :item
+        service = create :service, approver: user, company: company, item: item
+        create :service
 
         expect(user.assigned_services).to eq([service])
       end

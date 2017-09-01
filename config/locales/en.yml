@@ -96,12 +96,14 @@ en:
       add_first_srvice: "Add first Service"
       fill_book: "to fill in your Service book"
       pdf: "Save reports as pdf"
-
     index:
       my_items: "My Items"
       view_edit: "View, Edit"
       send_item: "Send item"
       add_new_item: "+ ADD NEW ITEM"
+    destroy:
+      password_invalid: "Sorry, your password does not match"
+      success: "You have successfully destroyed the item"
   companies:
     destroy:
       notice: "Company was successfully destroyed."

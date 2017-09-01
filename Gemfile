@@ -86,4 +86,5 @@ group :development do
   gem 'rails-erd'
   gem 'annotate'
   gem 'mailcatcher'
+  gem 'xray-rails'
 end
