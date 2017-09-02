@@ -1,8 +1,17 @@
 FactoryGirl.define do
   factory :service do
     price { Faker::Commerce.price }
-    item { create :item }
     action_kinds { build_list :action_kind, 1 }
+
+    transient do
+      item_title "A Car"
+    end
+
+    after(:build) do |service, evaluator|
+      if service.item.blank?
+        build :item, title: evaluator.item_title, services: [service]
+      end
+    end
 
     trait :with_action_kinds do
       after(:create) do |service|

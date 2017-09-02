@@ -298,43 +298,43 @@ describe ItemsController do
 
     context "user" do
       specify "can delete own item" do
-        user = create :user
+        user = create :user, password: "11111111", password_confirmation: "11111111"
         sign_in user
         item = create :item, user: user
 
-        delete :destroy, id: item.to_param
+        delete :destroy, id: item.to_param, item: { password: "11111111" }
 
         expect(response).to redirect_to(item.user)
       end
 
       it "decrements items count" do
-        user = create :user
+        user = create :user, password: "11111111", password_confirmation: "11111111"
         sign_in user
         item = create :item, user: user
 
         expect do
-          delete :destroy, id: item.to_param
+          delete :destroy, id: item.to_param, item: { password: "11111111" }
         end.to change { Item.count }.by(-1)
       end
 
       specify "can not edit others item" do
-        user = create :user
+        user = create :user, password: "11111111", password_confirmation: "11111111"
         item = create :item, user: create(:user)
         sign_in user
 
         expect do
-          delete :destroy, id: item.to_param
+          delete :destroy, id: item.to_param, item: { password: "11111111" }
         end.to raise_error(ActionController::RoutingError)
       end
     end
 
     context "company" do
       specify "can not delete items" do
-        company = create :company
+        company = create :company, password: "11111111", password_confirmation: "11111111"
         item = create :item
         sign_in company
 
-        delete :destroy, id: item.to_param
+        delete :destroy, id: item.to_param, item: { password: "11111111" }
 
         expect(response).to redirect_to(new_user_session_path)
       end

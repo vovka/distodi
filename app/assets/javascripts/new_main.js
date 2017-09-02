@@ -18,10 +18,12 @@ $(document).ready(function() {
     itemsTablet: [600, 2.7], //2 items between 600 and 0;
     itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
   });
+
   $('.btn_menu').click(function() {
     $(this).toggleClass('active');
     $('.menu_mobile').toggleClass('active');
   });
+
   var inputs = document.querySelectorAll('.inputfile');
   Array.prototype.forEach.call(inputs, function(input) {
     var label = input.nextElementSibling,

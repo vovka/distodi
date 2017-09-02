@@ -1883,11 +1883,11 @@ option {
   margin-bottom: 17px;
 }
 
-.atribut p {
+.attribute p {
   margin-bottom: 10px;
 }
 
-.atribut {
+.attribute {
   width: 49.5%;
   display: inline-block;
 }
@@ -1977,7 +1977,7 @@ option {
 
 .function .inputs_trans input:nth-child(2) {
   position: absolute;
-  background: #d5ebdb;
+  background: #d5ebdb no-repeat image-url("transfer") 10%/20%;
   border-radius: 4px;
   width: 34%;
   height: 32%;
@@ -1990,7 +1990,7 @@ option {
   letter-spacing: 0;
   line-height: 14px;
   text-align: right;
-  padding-right: 26px;
+  padding: 0 15px 0 0;
 }
 
 .inputs_trans {
@@ -2025,17 +2025,39 @@ option {
   right: 29px;
 }
 
-.function .delete .delete_but a {
-  position: absolute;
-  font-family: 'MuseoSansCyrl_2';
-  font-size: 14px;
-  color: #ff3c00;
-  letter-spacing: 0;
-  line-height: 14px;
-  text-align: center;
-  padding: 10px;
-  top: 6px;
-  right: 4px;
+.function {
+  .delete {
+    input[type=password] {
+      float: right;
+      background: #ffffff;
+      border: 1px solid #d3d3d3;
+      border-radius: 4px;
+      width: 83%;
+      height: 49px;
+      font-size: 14px;
+      padding-left: 15px;
+      margin-left: 7.5%;
+      letter-spacing: 5px;
+      margin-right: 24px;
+    }
+
+    .delete_but {
+      input[type=submit] {
+        background: no-repeat image-url("delete_red") 10%/15%;
+        position: absolute;
+        font-family: 'MuseoSansCyrl_2';
+        font-size: 14px;
+        color: #ff3c00;
+        letter-spacing: 0;
+        line-height: 14px;
+        text-align: center;
+        padding: 0 0 0 25px;
+        margin: -5px 0 0 -65px;
+        border: none;
+        width: 100%;
+      }
+    }
+  }
 }
 
 .viewing .actions {
@@ -2054,7 +2076,7 @@ option {
   color: red;
 }
 
-.custom_attributes .atribut select {
+.custom_attributes .attribute select {
   width: 95%;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
@@ -2062,11 +2084,10 @@ option {
   height: 52px;
   padding-left: 15px;
   background-color: #fff;
-  float: left;
   margin-bottom: 15px;
 }
 
-.custom_attributes .atribut select,
+.custom_attributes .attribute select,
 option:checked {
   color: #149b4c;
 }
