@@ -2,7 +2,7 @@
 <%= form_for(@item) do |f| %>
     <% if @item.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+          <h2><%= pluralize(@item.errors.count, t(".error")) %> <%= t(".prohabited") %> </h2>
 
           <ul>
             <% @item.errors.full_messages.each do |message| %>
@@ -13,13 +13,13 @@
     <% end %>
 
     <div class="field_title">
-      <p><%= f.label :title %> <span>*</span></p>
+      <%= f.label :title %> <span>*</span>
       <%= f.text_field :title %>
     </div>
 
     <div class="categories">
-      <p><%= f.label 'Category' %> <span>*</span></p>
-      <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Please select a category"}, {class: "category_select"} %>
+      <p><%= f.label t(".category") %> <span>*</span></p>
+      <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: t(".select") }, {class: "category_select"} %>
     </div>
 
     <div class="custom_attributes">
@@ -27,22 +27,22 @@
     </div>
 
     <div class="field">
-      <p>Cover photo (min 800x600 pixels)</p>
+      <p><%= t(".cover_photo") %></p>
       <% if @item.picture.present? %>
         <%= image_tag(@item.picture_url, alt: @item.title, width: 250) %>
         <%= f.file_field :picture%>
       <% else %>
         <div class="without_photo_input">
           <%= f.file_field :picture, class: 'inputfile'%>
-          <label for="upload"><span>+ ADD COVER PHOTO</span></label>
+          <label for="upload"><span><%= t(".add_photo") %></span></label>
         </div>
       <% end %>
     </div>
 
     <div class="actions_but">
-      <%= f.submit 'Save changes'%>
+      <%= f.submit t(".save") %>
       <div class="back">
-      <%= link_to 'Discard changes', user_path(current_user) %>
+      <%= link_to t(".discard"), user_path(current_user) %>
       </div>
     </div>
 
