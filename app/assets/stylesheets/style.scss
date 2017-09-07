@@ -1571,7 +1571,6 @@ footer hr {
 
   .owl-wrapper {
     margin: 0 0 20px 20px;
-    z-index: 300;
   }
 }
 
@@ -2713,4 +2712,57 @@ option:checked {
 
 .btn_menu.black {
   z-index: 600;
+}
+
+// Angular tour
+.tour-tip {
+  background: rgba(78, 68, 68, 0.9);
+  box-shadow: 0 0 3px #b2a6a6;
+  border-radius: 4px;
+}
+
+.tour-content-wrapper {
+  padding: 1.4em 1.2em 1.2em !important;
+}
+
+.tour-tip .tour-arrow.tt-top {
+  border-color: rgba(78, 68, 68, 0.95) transparent transparent !important;
+}
+
+.tour-tip .tour-arrow.tt-bottom {
+  border-color: transparent transparent rgba(78, 68, 68, 0.9) !important;
+}
+
+.tour-tip .tour-arrow.tt-right {
+  border-color: transparent rgba(78, 68, 68, 0.9) transparent transparent !important;
+}
+
+.tour-tip .tour-arrow.tt-left {
+  border-color: transparent transparent transparent rgba(78, 68, 68, 0.9) !important;
+}
+
+.ng-binding {
+  color: #fff !important;
+}
+
+.tour-tip:hover {
+  box-shadow: 0 0 5px #b2a6a6 !important;
+}
+
+.tour-tip .button {
+  font-weight: normal !important;
+  color: #FDFDFD;
+  text-transform: uppercase;
+  background: #009C48 !important;
+  border-radius: 2px !important;
+  box-shadow: 0 0 1px #331910 !important;
+  border-style: none;
+}
+
+.tour-tip .button:hover {
+  box-shadow: 0 0 2px #9B8282 !important;
+}
+
+.tour-close-tip {
+  font-size: 20px !important;
 }
