@@ -836,7 +836,7 @@ footer hr {
   border: 1px solid #d3d3d3;
   line-height: 20px;
   margin-top: -8.7px;
-  /*	border-left: 2.0px;*/
+  /*  border-left: 2.0px;*/
   padding-left: 17px;
   width: 347px;
   font-family: 'MuseoSansCyrl_1';
@@ -920,10 +920,6 @@ footer hr {
   font-family: 'MuseoSansCyrl_1';
   font-size: 14px;
   color: #8f8f8f;
-}
-
-.field_with_errors {
-  display: inline-block;
 }
 
 #error_explanation h2 {
@@ -1179,10 +1175,6 @@ footer hr {
   font-family: 'MuseoSansCyrl_2';
   margin-bottom: 15px;
   font-size: 14px;
-}
-
-.field_with_errors input {
-  border: 1.3px solid red;
 }
 
 .item_header {
@@ -1782,7 +1774,7 @@ footer hr {
 }
 
 .form .field_title {
-  width: 32%;
+  width: 32.5%;
   float: left;
 }
 
@@ -1801,7 +1793,7 @@ footer hr {
 }
 
 .form .field_title input {
-  width: 93%;
+  width: 92%;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
   font-size: 16px;
@@ -1827,7 +1819,7 @@ footer hr {
 }
 
 .form .categories select {
-  width: 95%;
+  width: 96.5%;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
   font-size: 16px;
@@ -2000,6 +1992,10 @@ option {
   width: 47%;
 }
 
+.form .field_with_errors input {
+  border: 1.3px solid red;
+}
+
 .function .transfer img {
   position: absolute;
   width: 20px;
@@ -2077,7 +2073,7 @@ option {
 }
 
 .custom_attributes .attribute select {
-  width: 95%;
+  width: 96.5%;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
   font-size: 16px;
@@ -2713,6 +2709,21 @@ option:checked {
 
 .btn_menu.black {
   z-index: 600;
+}
+.form .field_title input{
+  margin-top: 11px;
+}
+.form .field_title .field_with_errors:first-child{
+  margin-right: 4px;
+  float: left;
+  margin-top: 0;
+}
+.form .field_title label{
+  color: #8f8f8f;
+}
+
+.form .field_title .field_with_errors label{
+  color: red;
 }
 
 // Angular tour
