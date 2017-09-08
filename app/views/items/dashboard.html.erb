@@ -125,16 +125,16 @@
   <!-- Angular-tour -->
   <tour step="currentStep" post-step="postStepCallback()">
     <virtual-step
-      tourtip="Welcome to Distodi Tour"
+      tourtip="Welcome to Distodi! We created simple user tour for you :-)"
       tourtip-step="0"
       tourtip-next-label="Next"
       tourtip-placement="bottom"
       tourtip-container-element="body"
       use-source-scope="false"
-      tourtip-element=".all_items">
+      tourtip-element=".item_logo img">
     </virtual-step>
     <virtual-step
-      tourtip="Click to add New Service"
+      tourtip="Start! Add new service here"
       tourtip-step="1"
       tourtip-next-label="Next"
       tourtip-placement="bottom"
@@ -143,12 +143,57 @@
       tourtip-element=".add_service">
     </virtual-step>
     <virtual-step
-      tourtip="Check pending status"
+      tourtip="Add here your item (your property information)"
       tourtip-step="2"
+      tourtip-next-label="Next"
+      tourtip-placement="bottom"
+      tourtip-container-element="body"
+      use-source-scope="false"
+      tourtip-element=".owl-item:last-child">
+    </virtual-step>
+    <virtual-step
+      tourtip="Find here all your items"
+      tourtip-step="3"
+      tourtip-next-label="Next"
+      tourtip-placement="bottom"
+      tourtip-container-element="body"
+      use-source-scope="false"
+      tourtip-element=".all_items">
+    </virtual-step>
+    <virtual-step
+      tourtip="After you make service you can see changes up here"
+      tourtip-step="4"
+      tourtip-next-label="Next"
+      tourtip-placement="bottom"
+      tourtip-container-element="body"
+      use-source-scope="false"
+      tourtip-element=".first_service">
+    </virtual-step>
+    <virtual-step
+      tourtip="Note: each your item has unique ID"
+      tourtip-step="5"
+      tourtip-next-label="Next"
+      tourtip-placement="bottom"
+      tourtip-container-element="body"
+      use-source-scope="false"
+      tourtip-element=".list_items th:nth-child(6)">
+    </virtual-step>
+    <virtual-step
+      tourtip="Money: totally amount your spent on each service"
+      tourtip-step="6"
+      tourtip-next-label="Next"
+      tourtip-placement="bottom"
+      tourtip-container-element="body"
+      use-source-scope="false"
+      tourtip-element=".list_items th:nth-child(8)">
+    </virtual-step>
+    <virtual-step
+      tourtip="Reporting: you can save & print information"
+      tourtip-step="7"
       tourtip-next-label="Close"
       tourtip-placement="bottom"
       tourtip-container-element="body"
       use-source-scope="false"
-      tourtip-element=".pending">
+      tourtip-element=".xls_button a">
     </virtual-step>
   </tour>
