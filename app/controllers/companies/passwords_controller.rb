@@ -1,5 +1,9 @@
 class Companies::PasswordsController < Devise::PasswordsController
-  layout 'sign_in'
+
+  layout 'new'
+
+  prepend_before_action :require_no_authentication, except: :new_pass_success
+
   # GET /resource/password/new
   # def new
   #   super
@@ -20,14 +24,14 @@ class Companies::PasswordsController < Devise::PasswordsController
   #   super
   # end
 
-  # protected
+  protected
 
-  # def after_resetting_password_path_for(resource)
-  #   super(resource)
-  # end
+  def after_resetting_password_path_for(_)
+    companies_passwords_new_pass_success_path
+  end
 
   # The path used after sending reset password instructions
-  # def after_sending_reset_password_instructions_path_for(resource_name)
-  #   super(resource_name)
-  # end
+  def after_sending_reset_password_instructions_path_for(_)
+    companies_passwords_reset_success_path
+  end
 end

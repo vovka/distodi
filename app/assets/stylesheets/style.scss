@@ -327,7 +327,7 @@ footer hr {
   margin: 13px auto;
 }
 
-.welcome_text {
+.main_text {
   margin-top: 82px;
   font-family: 'MuseoSansCyrl_1';
   font-size: 20px;
@@ -337,7 +337,7 @@ footer hr {
   text-align: center;
 }
 
-.welcome_text_small {
+.second_text {
   opacity: 0.5;
   font-family: 'MuseoSansCyrl_1';
   font-size: 16px;
@@ -762,7 +762,7 @@ footer hr {
   margin: 13px auto;
 }
 
-.welcome_text {
+.main_text {
   margin-top: 82px;
   font-family: 'MuseoSansCyrl_1';
   font-size: 20px;
@@ -772,7 +772,7 @@ footer hr {
   text-align: center;
 }
 
-.welcome_text_small {
+.second_text {
   opacity: 0.5;
   font-family: 'MuseoSansCyrl_1';
   font-size: 16px;
@@ -2722,7 +2722,63 @@ option:checked {
 .form .field_title .field_with_errors label{
   color: red;
 }
-
+.sign_in_content{
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.white_box{
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: white;
+  z-index: -1;
+}
+.sign_in_content{
+  z-index: 300;
+}
+.sent_image{
+  background:#e5f8ed;
+  width:100px;
+  height:100px;
+  border-radius:100%;
+  margin-left: calc(50% - 43px);
+  margin-top: 150px;
+}
+.sent_image img{
+  height: 80px;
+  z-index: 400;
+  margin-top: 10px;
+}
+.tab_item .user_form .field_with_errors input {
+  border: 1.3px solid red;
+}
+.tab_item .user_form .field_with_errors{
+  display: inline-block;
+}
+.main_text.big{
+  font-size: 30px;
+}
+.signup_form .done_button a{
+  background:#222222;
+  border-radius:4px;
+  width:240px;
+  height:50px;
+  color: white;
+  padding: 18px 100px;
+}
+.left_form .signup_form .done_button .signup_info.pass a{
+  background: white;
+  width:240px;
+  height:50px;
+  color: #149b4c;
+  padding: 0;
+}
+.signup_form .done_button{
+  margin-top: 165px;
+}
 // Angular tour
 .tour-tip {
   background: rgba(78, 68, 68, 0.9);
