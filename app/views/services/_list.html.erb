@@ -49,10 +49,9 @@
 
           <% if policy(service).decline? %>
             <%= simple_form_for(service, url: decline_service_path(service), method: :patch) do |f| %>
-              <div class="field_decline_btn">Decline</div>
-              <div class="field_decline">
+              <div class="field_decline active">
                 <%= f.submit "Decline", id:"buttonsuser"%>
-                <%= f.text_field :reason %>
+                <%= f.text_field :reason, placeholder: "Reason" %>
               </div>
             <% end %>
           <% end %>

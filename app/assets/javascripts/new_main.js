@@ -13,11 +13,12 @@ $(document).ready(function() {
   });
   $("#owl-example_mobile_items").owlCarousel({
     navigationText: false,
-    items: 20, //10 items above 1000px browser width
-    itemsDesktop: [1000, 6], //5 items between 1000px and 901px
-    itemsDesktopSmall: [900, 4], // betweem 900px and 601px
-    itemsTablet: [600, 2.7], //2 items between 600 and 0;
-    itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+    items: 10, //10 items above 1000px browser width
+    itemsDesktop: [1000, 8], //5 items between 1000px and 901px
+    itemsDesktopSmall: [900, 7], // betweem 900px and 601px
+    itemsTablet: [800, 4.7],
+    itemsTabletSmall: [550, 3.8],
+    itemsMobile: [390, 2.8], //2 items between 600 and 0;
   });
 
   $('.btn_menu').click(function() {
