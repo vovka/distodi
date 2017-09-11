@@ -5,8 +5,9 @@
 //= require ./config
 //= require_tree ./controllers
 
-angular
-.module("DistodiApp", ['angular-tour', 'ipCookie'])
-.config(["$httpProvider", Config])
-.controller("ItemsController", ["$scope", "$http", "$q", 'ipCookie', ItemsController])
-;
+var distodiApp = angular.module("DistodiApp", ['angular-tour', 'ipCookie']);
+
+distodiApp.config(["$httpProvider", Config])
+.controller("ItemsController", ["$scope", "$http", "$q", 'ipCookie', ItemsController]);
+
+distodiApp.controller("NotificationsController", ["$scope", "$http", NotificationsController]);
