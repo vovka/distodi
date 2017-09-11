@@ -76,6 +76,8 @@ Rails.application.routes.draw do
   get "static_pages/tutorialcar"
   get "static_pages/tutorialbike"
 
+  post 'notifications/:id/read', to: "notifications#read", constraints: ->(request) { request.xhr? }
+
   root "static_pages#home"
 
   # The priority is based upon order of creation: first created -> highest priority.

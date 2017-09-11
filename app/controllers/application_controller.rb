@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   devise_group :user_or_company, contains: [:company, :user]
 
+  before_filter :set_notifications
   before_action :set_lead
 
   def set_lead
@@ -45,5 +46,9 @@ class ApplicationController < ActionController::Base
 
     def pundit_user
       current_user || current_company
+    end
+
+    def set_notifications
+      @notifications = Notification.user(current_user_or_company).active.all
     end
 end

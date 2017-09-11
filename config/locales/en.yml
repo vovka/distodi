@@ -150,6 +150,9 @@ en:
       pass: "Password"
       forgot: "Forgot password?"
       sign_in: "Sign in"
+    notifications:
+      header_title: "Notifications"
+      no_notifications: "Notifications list empty"
     registration_form:
       name: "Your Full Name (as in passport)"
       email: "E-mail Address"
