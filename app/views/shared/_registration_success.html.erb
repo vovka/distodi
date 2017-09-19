@@ -1,0 +1,29 @@
+<div class="sign_in_content">
+  <div class="left_form">
+    <div class="logo_green">
+      <%= link_to image_tag('logo_green', alt: t(".green_logo")), home_path %>
+      <div class="exit">
+        <%= link_to image_tag('cross', alt: t(".cross")), home_path %>
+      </div>
+    </div>
+    <div class="sent_image">
+      <%= image_tag "sent.png" %>
+    </div>
+    <div class="main_text big">
+      <%= t ".#{controller_name}.#{action_name}.#{resource_name}.success_big" %>
+    </div>
+    <div class="second_text">
+      <%= t ".#{controller_name}.#{action_name}.#{resource_name}.success_small" %>
+    </div>
+    <div class="signup_form">
+      <div class="done_button">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  <div class="right_image">
+    <%= image_tag "master.jpg" %>
+  </div>
+  <div class="white_box">
+  </div>
+</div>

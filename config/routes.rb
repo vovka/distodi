@@ -28,6 +28,18 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_scope :user do
+    get "/users/passwords/reset_success" => "users/passwords#reset_success"
+    get "/users/passwords/new_pass_success" => "users/passwords#new_pass_success"
+    get "/users/registrations/success" => "users/registrations#success"
+  end
+
+  devise_scope :company do
+    get "/companies/passwords/reset_success" => "companies/passwords#reset_success"
+    get "/companies/passwords/new_pass_success" => "companies/passwords#new_pass_success"
+    get "/companies/registrations/success" => "companies/registrations#success"
+  end
+
   resources :leads
   resources :attribute_kinds
   resources :service_kinds

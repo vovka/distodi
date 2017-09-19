@@ -1,0 +1,5 @@
+<%= render(layout: "shared/registration_success") do %>
+  <div class="signup_info pass">
+    <%= (t(".#{controller_name}.#{resource_name}.already_have_account") % {namespace: controller.class.name.split("::").first.downcase}).html_safe %>
+  </div>
+<% end %>

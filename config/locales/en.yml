@@ -31,10 +31,7 @@ en:
       update_link: "Update user"
       confirm_delete: "Do you want delete your user profile?"
       confirm_update: "Do you want update your user profile?"
-    passwords:
-      new:
-        email: "E-mail Address"
-        send: "Send e-mail"
+
   items:
     create:
       notice: "Item was successfully created."
@@ -122,10 +119,6 @@ en:
       delete_link: "Delete company"
       confirm_delete: "Do you want delete your company profile?"
       edit_link: "Update company"
-    passwords:
-      new:
-        email: "E-mail Address"
-        send: "Send e-mail"
   services:
     list:
       confirm_delete: "Do you really want to delete this service?"
@@ -144,7 +137,108 @@ en:
       notice: "Service was successfully updated."
     destroy:
       notice: "Service was successfully destroyed."
+
   shared:
+    registration_layout:
+      green_logo: Distodi logo green
+      cross: Cross
+      sessions:
+        new:
+          user:
+            main_text: "Hello! Welcome back."
+            second_text: "Sign into your account here:"
+            agreementt: ""
+            already_have_account: "Need the Distodi account?&nbsp;<a href=\"/%{namespace}/sign_up\">Create free account.</a>"
+          company:
+            main_text: "Hello! Welcome back."
+            second_text: "Sign into your account here:"
+            agreementt: ""
+            already_have_account: "Need the Distodi account?&nbsp;<a href=\"/%{namespace}/sign_up\">Create free account.</a>"
+      registrations:
+        new:
+          user:
+            main_text: "Sign up to create your free Service Book!"
+            second_text: "Distodi is a best way to collect & manage all your service certificates"
+            agreementt: "By creating an account, you agree to our <a href=\"\">Terms.</a>"
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+          company:
+            main_text: "Sign up to create your corporate account!"
+            second_text: "Distodi is a best way to collect & manage all your service certificates"
+            agreementt: "By creating an account, you agree to our <a href=\"\">Terms.</a>"
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+      passwords:
+        edit:
+          user:
+            main_text: "Please, set your new password."
+            second_text: "You must enter a new password in both fields."
+            agreementt: ""
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+          company:
+            main_text: "Please, set your new password."
+            second_text: "You must enter a new password in both fields."
+            agreementt: ""
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+        new:
+          user:
+            main_text: "Forgot your password?"
+            second_text: "We'll email you instructions on how to reset it."
+            agreementt: ""
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+          company:
+            main_text: "Forgot your password?"
+            second_text: "We'll email you instructions on how to reset it."
+            agreementt: ""
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+        create:
+          user:
+            main_text: "Forgot your password?"
+            second_text: "We'll email you instructions on how to reset it."
+            agreementt: ""
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+          company:
+            main_text: "Forgot your password?"
+            second_text: "We'll email you instructions on how to reset it."
+            agreementt: ""
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+    passwords_edit:
+        new_pass: "New password"
+        confirm: "Confirm new password"
+        change: "Change my password"
+    passwords_send:
+      email: "E-mail Address"
+      send: "Reset password"
+    registration_success:
+      green_logo: Distodi logo grenn
+      cross: Cross
+      registrations:
+        success:
+          user:
+            success_big: "Success!"
+            success_small: "You’re all set. Please check your e-mail to get started with your free Distodi Service Book."
+          company:
+            success_big: "Success!"
+            success_small: "You’re all set. Please check your e-mail to get started with your free Distodi corporate account!"
+      passwords:
+        new_pass_success:
+          user:
+            success_big: "Success!"
+            success_small: "You have successfully changed your old password."
+          company:
+            success_big: "Success!"
+            success_small: "You have successfully changed your old password."
+        user:
+           already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+        company:
+          already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+        reset_success:
+          user:
+            success_big: "Password reset sent!"
+            success_small: "We've just emailed you instructions on how to reset your password."
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+          company:
+            success_big: "Password reset sent!"
+            success_small: "We've just emailed you instructions on how to reset your password."
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
     login_form:
       email: "E-mail Address"
       pass: "Password"
@@ -154,15 +248,15 @@ en:
       header_title: "Notifications"
       no_notifications: "Notifications list empty"
     registration_form:
-      name: "Your Full Name (as in passport)"
+      name:
+        user: "Your Full Name (as in passport)"
+        company: "Company Name (official)"
       email: "E-mail Address"
       pass: "Password (min 8 characters)"
-      create: "Create Free Service Book"
-    registration_form_company:
-      name: "Company Name (official)"
-      email: "E-mail Address"
-      pass: "Password (min 8 characters)"
-      create: "Create Free Service Book"
+      create:
+        user: "Create Free Service Book"
+        company: "Create Free Corporate Account"
+
   layouts:
     item:
       transferred_items: "New"
@@ -171,30 +265,6 @@ en:
       show_my_profile: "Show my profile"
       edit_button: "Edit profile"
       log_out: "Log out"
-    sign_in:
-      welcome:
-        "1":
-          sessions: "Hello! Welcome back."
-          registrations: "Sign up to create your free Service Book!"
-          passwords: "Forgot your password?"
-        "2":
-          sessions: "Sign into your account here:"
-          registrations: "Distodi is a best way to collect all your service certificates"
-          passwords: "We'll email you instructions on how to reset it."
-      agreement:
-        sessions: "Need the Distodi account account?&nbsp;<a href=\"/%{namespace}/sign_up\">Create free account.</a>"
-        registrations: "By creating an account, you agree to our <a href=\"\">Terms.</a>"
-        passwords: ""
-      already_have_account:
-        sessions: ""
-        registrations: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
-        passwords: "Already have an account?&nbsp;<a href=\"/users/sign_in\">Sign in</a>"
-      right_image:
-        sessions: "dyadya.jpg"
-        registrations: "sign_in_img.png"
-        passwords: "dyadya.jpg"
-      client: "client"
-      company: "company"
     new:
       updates: "UPDATES"
       questions: "QUESTIONS AND ANSVERS"

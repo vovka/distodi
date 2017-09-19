@@ -186,6 +186,9 @@
   .delete_but {
     top: 71px;
   }
+  .second_text{
+    width: 80%;
+  }
   .bacground_green .content .text{
     width: 100%;
     margin-bottom: 25px;
@@ -208,6 +211,12 @@
   }
 }
 @media only screen and (max-width : 768px) {
+  .sent_image{
+    margin-top: 30px;
+  }
+  .signup_form .done_button{
+    margin-top: 50px;
+  }
   .bacground_green {
     height: 625px;
   }
@@ -485,11 +494,11 @@
     border-radius: 4px;
   }
 
-  .welcome_text_small {
+  .second_text {
     margin: 10px auto 32px;
   }
 
-  .welcome_text {
+  .main_text {
     margin-top: 30px;
   }
 
@@ -522,7 +531,7 @@
     margin-right: 0;
   }
 
-  .welcome_text {
+  .main_text {
     width: 80%;
     margin: 30px auto 0;
     line-height: 24px;

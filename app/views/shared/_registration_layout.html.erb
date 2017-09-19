@@ -1,0 +1,46 @@
+<div class="sign_in_content">
+  <div class="left_form">
+    <div class="logo_green">
+      <%= link_to image_tag('logo_green', alt: t(".green_logo")), home_path %>
+      <div class="exit">
+        <%= link_to image_tag('cross', alt: t(".cross")), home_path %>
+      </div>
+    </div>
+    <div class="main_text">
+      <%= t(".#{controller_name}.#{action_name}.#{resource_name}.main_text") %>
+    </div>
+    <div class="second_text">
+      <%= t(".#{controller_name}.#{action_name}.#{resource_name}.second_text") %>
+    </div>
+    <div class="signup_form">
+      <div class="wrapper">
+        <div class="tabs">
+          <div class="tab user<%= " active" if resource.is_a? User %>">
+            <%= link_to(t(".client"), send(:"new_user_#{controller_name.singularize}_path")) %>
+          </div>
+          <div class="tab<%= " active" if resource.is_a? Company %>">
+            <%= link_to(t(".company"), send(:"new_company_#{controller_name.singularize}_path")) %>
+          </div>
+        </div>
+        <div class="tabs_content">
+          <div class="tab_item">
+            <div class="user_form">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="signup_info">
+        <%= (t(".#{controller_name}.#{action_name}.#{resource_name}.agreementt") % {namespace: controller.class.name.split("::").first.downcase}).html_safe %>
+      </div>
+      <div class="signup_info">
+        <%= (t(".#{controller_name}.#{action_name}.#{resource_name}.already_have_account") % {namespace: controller.class.name.split("::").first.downcase}).html_safe %>
+      </div>
+    </div>
+  </div>
+  <div class="right_image">
+    <%= image_tag "master.jpg" %>
+  </div>
+  <div class="white_box">
+  </div>
+</div>
