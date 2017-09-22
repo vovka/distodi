@@ -37,5 +37,5 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/sockets'
 
 set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn.rb") }
 set :unicorn_rack_env, -> { fetch(:rails_env) }
-set :unicorn_pid, -> { File.join(shared_path, "tmp/pids/unicorn.pid") }
+# set :unicorn_pid, -> { File.join(current_path, "tmp/pids/unicorn.pid") }
 set :sidekiq_config, -> { File.join(current_path, 'config', 'sidekiq.yml') }
