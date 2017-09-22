@@ -140,8 +140,8 @@ en:
 
   shared:
     registration_layout:
-      green_logo: Distodi logo green
-      cross: Cross
+      distodi: Distodi
+      close: Go to homepage
       sessions:
         new:
           user:
@@ -208,8 +208,8 @@ en:
       email: "E-mail Address"
       send: "Reset password"
     registration_success:
-      green_logo: Distodi logo grenn
-      cross: Cross
+      distodi: Distodi
+      close: Go to homepage
       registrations:
         success:
           user:
