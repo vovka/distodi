@@ -1,5 +1,5 @@
 class DemoDataService
-  SERVICES_AMOUNT_RANGE = 5..10
+  SERVICES_AMOUNT_RANGE = 1..1
   DEFAULT_COUNTRY = "Ukraine"
   DEFAULT_LAST_NAME = "-"
   DEMO_TITLE_PLACEHOLDER = "[DEMO] "
@@ -12,17 +12,34 @@ class DemoDataService
   end
 
   def perform
-    user.country ||= DEFAULT_COUNTRY
-    user.last_name ||= DEFAULT_LAST_NAME
-    Category.all.each do |category|
-      item = Item.demo.create item_attributes_for(category).merge(category: category, user: user)
-      services_amount.times do
-        item.services.create service_attributes_for(category)
+    with_user_default_fields do
+      Category.all.each do |category|
+        item = Item.demo.create item_attributes_for(category).merge(category: category, user: user)
+        services_amount.times do
+          item.services.create service_attributes_for(category)
+        end
       end
     end
   end
 
   private
+
+  def with_user_default_fields(&block)
+    reset_coutry = user.country.blank?
+    reset_last_name = user.last_name.blank?
+
+    attributes = {}
+    attributes[:country] = DEFAULT_COUNTRY if reset_coutry
+    attributes[:last_name] = DEFAULT_LAST_NAME if reset_last_name
+    user.update attributes
+
+    yield
+
+    attributes = {}
+    attributes[:country] = nil if reset_coutry
+    attributes[:last_name] = nil if reset_last_name
+    user.update attributes
+  end
 
   def item_attributes_for(category)
     category_name = category.name.underscore

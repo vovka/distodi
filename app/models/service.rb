@@ -21,7 +21,7 @@ class Service < ActiveRecord::Base
   has_many :service_kinds, through: :service_fields
   has_many :service_action_kinds, dependent: :destroy
   has_many :action_kinds, through: :service_action_kinds
-  belongs_to :item
+  belongs_to :item, -> { unscope(where: :demo) }
   belongs_to :company
   belongs_to :approver, polymorphic: true
 
@@ -97,12 +97,7 @@ class Service < ActiveRecord::Base
   end
 
   def send_calendar_events
-    [
-      calendar_events_view_object.performed_service,
-      *calendar_events_view_object.future_reminders
-    ].each do |icalendar_event|
-      UserMailer.service_reminder(self, icalendar_event).deliver_now
-    end
+    SendServiceCalendarEventsWorker.perform_async(id)
   end
 
   private
@@ -124,10 +119,6 @@ class Service < ActiveRecord::Base
 
   def custom_duration
     (reminder_custom.to_time - Time.zone.now).seconds if reminder_custom.present?
-  end
-
-  def calendar_events_view_object
-    @calendar_events_view_object ||= ServiceCalendarEventsViewObject.new(self)
   end
 end
 
