@@ -27,7 +27,7 @@ set :pty, false
 append :linked_files, '.rbenv-vars'
 
 # Default value for linked_dirs is []
-append :linked_dirs, 'shared/log', 'shared/pids', 'shared/sockets'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/sockets'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -37,5 +37,5 @@ append :linked_dirs, 'shared/log', 'shared/pids', 'shared/sockets'
 
 set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn.rb") }
 set :unicorn_rack_env, -> { fetch(:rails_env) }
-set :unicorn_pid, -> { File.join(current_path, "shared/pids/unicorn.pid") }
-set :sidekiq_config, -> { File.join(shared_path, 'config', 'sidekiq.yml') }
+set :unicorn_pid, -> { File.join(shared_path, "tmp/pids/unicorn.pid") }
+set :sidekiq_config, -> { File.join(current_path, 'config', 'sidekiq.yml') }
