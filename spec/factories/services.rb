@@ -9,7 +9,8 @@ FactoryGirl.define do
 
     after(:build) do |service, evaluator|
       if service.item.blank?
-        build :item, title: evaluator.item_title, services: [service]
+        item = create :item, title: evaluator.item_title#, services: [service]
+        service.item = item
       end
     end
 

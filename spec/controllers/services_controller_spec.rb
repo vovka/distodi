@@ -299,7 +299,7 @@ RSpec.describe ServicesController, type: :controller do
       specify "invite company" do
         user = create :user
         item = user.items.create!(attributes_for(:item))
-        email = 'example@mail.ru'
+        email = 'johndoe@example.com'
         sign_in user
 
         expect do
@@ -314,7 +314,7 @@ RSpec.describe ServicesController, type: :controller do
 
       specify "dont invite company ready registered" do
         user = create :user
-        email = 'example@mail.ru'
+        email = 'johndoe@example.com'
         create :company, email: email
         item = user.items.create!(attributes_for(:item))
         sign_in user

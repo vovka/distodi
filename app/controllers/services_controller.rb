@@ -76,7 +76,7 @@ class ServicesController < ApplicationController
 
     if result.present?
       if @service.company.present?
-        UserMailer.add_service_email_to_company(@service.company).deliver_now!
+        UserMailer.add_service_email_to_company(@service.company).deliver_later
       end
 
       if user_signed_in?

@@ -27,6 +27,6 @@ class TransferService
   end
 
   def send_notification_to(receiver, sender)
-    UserMailer.transfer_notification_email(sender, receiver).deliver_now!
+    UserMailer.transfer_notification_email(sender, receiver).deliver_later
   end
 end
