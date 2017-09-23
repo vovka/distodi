@@ -5,7 +5,7 @@ describe ItemsController do
     {
       title: Faker::Lorem.word,
       category_id: category.try(:id),
-      # picture: Faker::LoremPixel.image
+      picture: fixture_file_upload(Rails.root.join('spec', 'fixtures', 'an_image.jpg'), 'image/jpeg')
     }.reject { |_, v| v.nil? }
   end
 
@@ -30,7 +30,7 @@ describe ItemsController do
 
       specify "sees only own items" do
         user = create :user
-        my_item = user.items.create! category: create(:category)
+        my_item = user.items.create! attributes_for(:item).merge(category: create(:category))
         create :item
         sign_in user
 
@@ -41,7 +41,7 @@ describe ItemsController do
 
       specify "sees only own services" do
         user = create :user
-        my_item = user.items.create! category: create(:category)
+        my_item = user.items.create! attributes_for(:item).merge(category: create(:category))
         my_service = my_item.services.create! attributes_for(:service, :with_action_kinds)
         create :item, services: create_list(:service, 1, :with_action_kinds)
         sign_in user
@@ -383,7 +383,7 @@ describe ItemsController do
 
       post :transfer, id: item.to_param, user_identifier: another_user.email
 
-      expect(response).to redirect_to(item)
+      expect(response).to redirect_to(edit_item_path(item))
     end
   end
 
@@ -442,7 +442,7 @@ describe ItemsController do
     it "allows to view own item" do
       user = create :user
       @category = create(:category)
-      @item = user.items.create! category: @category
+      @item = user.items.create! attributes_for(:item).merge(category: @category)
       sign_in user
 
       xhr :get, :get_attributes, valid_attributes
