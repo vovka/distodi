@@ -39,7 +39,6 @@
        ng-click="controller.clickedDelete()">
       Delete
     </a>
-    <!-- <a href="#"><%= image_tag "send.png" %> Send</a> -->
   </div>
   <table class="list_items">
     <thead>
@@ -132,8 +131,12 @@
 <div class="function">
   <div class="transfer">
     <p><strong><%= t(".got_sold") %></strong> <%= t(".send") %></p>
-    <span><%= t(".recipient") %></span>
-    <%= render "transfer_form", item: @item %>
+    <%- if @item.transferring_to.blank? -%>
+      <span><%= t(".recipient") %></span>
+      <%= render "transfer_form", item: @item %>
+    <%- else -%>
+      <span><%= t(".already_transferred") %></span>
+    <%- end -%>
   </div>
 
   <div class="delete">

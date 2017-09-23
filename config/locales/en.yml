@@ -65,6 +65,7 @@ en:
       id: "Service ID"
       date: "Service date"
       cost: "Service total cost"
+      already_transferred: "This item has already been transferred."
     form:
       cover_photo: "Cover photo (min 800x600 pixels)"
       add_photo: "+ ADD COVER PHOTO"
@@ -110,6 +111,8 @@ en:
     destroy:
       password_invalid: "Sorry, your password does not match"
       success: "You have successfully destroyed the item"
+    transfer:
+      success: "Item was successfully transferred."
   companies:
     destroy:
       notice: "Company was successfully destroyed."
@@ -330,3 +333,7 @@ en:
       models:
         checkout:
           invalid: "The card is invalid."
+
+  validators:
+    transfer_validator:
+      user_identifier_is_not_email: "Please, enter valid email to transfer item."
