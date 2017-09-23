@@ -7,6 +7,7 @@ FactoryGirl.define do
     end
     user { build :user }
     category { build :category }
+    picture { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'an_image.jpg'), 'image/jpeg') }
   end
 end
 

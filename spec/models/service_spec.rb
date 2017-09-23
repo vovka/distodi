@@ -131,7 +131,12 @@ RSpec.describe Service, type: :model do
   end
 
   describe ".to_csv" do
-    before { allow(I18n).to receive(:locale).and_return(:cs) }
+    before do
+      @previous_locale = I18n.locale
+      I18n.locale = :cs
+    end
+
+    after { I18n.locale = @previous_locale }
 
     it "generates CSV" do
       collection = travel_to(Time.zone.parse("2017-12-31 12:00")) do

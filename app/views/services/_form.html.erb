@@ -1,58 +1,60 @@
 <div class="form">
   <%= simple_form_for(@service) do |f| %>
-  <%= f.error_notification %>
-  <%= hidden_field_tag :token, params[:token] %>
-  <strong style="font-size: 26px">
-  <% @action_kinds.each do |action_kind| %>
-  <span><%= label_tag action_kind.title %></span><span><%= check_box("action_kind", action_kind.id, {}, 'true', nil) %></span>
-  <% end %>
-  <br><br>
-  </strong>
-  <table>
-    <thead>
-      <tr>
-        <th>Action</th>
-        <th>Service title</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @service_kinds.each do |service_kind| %>
-      <tr>
-        <td><%= check_box("service_kind", service_kind.id, {}, 'true', nil) %></td>
-        <td>
-          <%= label_tag service_kind.title %><br>
-          <%= text_field("service_fields", service_kind.id) if service_kind.with_text %>
-        </td>
-      </tr>
+    <%= f.error_notification %>
+    <%= render "shared/form_errors", object: @service -%>
+    <%= hidden_field_tag :token, params[:token] %>
+    <strong style="font-size: 26px">
+      <% @action_kinds.each do |action_kind| %>
+      <span><%= label_tag action_kind.title %></span>
+      <span><%= check_box("action_kind", action_kind.id, {}, 'true', nil) %></span>
       <% end %>
-    </tbody>
-  </table>
-  <%= f.hidden_field :item_id %>
-  <%= f.hidden_field :company_id, value: current_company.id if current_company %>
-  <div class="field">
-    <%= f.label 'Price' %><br>
-    <%= f.text_field :price %>
-  </div>
-  <% if user_signed_in? %>
-  <div class="field">
-    <%= f.label 'Company' %><br>
-    <%= f.collection_select :company_id, Company.all, :id, :name, prompt: true%>
-  </div>
-  <div class="field">
-    <%= label_tag :new_company %><br/>
-    <%= text_field_tag :new_company  %>
-  </div>
-  <% end %>
-  <div class="field">
-    <%= f.input :picture %>
-  </div>
-  <div class="field">
-    <%= f.label :reminder, "Remind me in"  %>
-    <%= f.collection_check_boxes :reminders_predefined, @service.predefined_reminders, :first, :last %>
-    <%= f.input :reminder_custom, as: :string, label: "Custom date", input_html: { type: "date", min: Date.current } %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+      <br><br>
+    </strong>
+    <table>
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>Service title</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @service_kinds.each do |service_kind| %>
+        <tr>
+          <td><%= check_box("service_kind", service_kind.id, {}, 'true', nil) %></td>
+          <td>
+            <%= label_tag service_kind.title %><br>
+            <%= text_field("service_fields", service_kind.id) if service_kind.with_text %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= f.hidden_field :item_id %>
+    <%= f.hidden_field :company_id, value: current_company.id if current_company %>
+    <div class="field">
+      <%= f.label 'Price' %><br>
+      <%= f.text_field :price %>
+    </div>
+    <% if user_signed_in? %>
+    <div class="field">
+      <%= f.label 'Company' %><br>
+      <%= f.collection_select :company_id, Company.all, :id, :name, prompt: true%>
+    </div>
+    <div class="field">
+      <%= label_tag :new_company %><br/>
+      <%= text_field_tag :new_company  %>
+    </div>
+    <% end %>
+    <div class="field">
+      <%= f.input :picture %>
+    </div>
+    <div class="field">
+      <%= f.label :reminder, "Remind me in"  %>
+      <%= f.collection_check_boxes :reminders_predefined, @service.predefined_reminders, :first, :last %>
+      <%= f.input :reminder_custom, as: :string, label: "Custom date", input_html: { type: "date", min: Date.current } %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
   <% end %>
 </div>

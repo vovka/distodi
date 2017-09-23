@@ -7,7 +7,8 @@ class Item < ActiveRecord::Base
   belongs_to :transferring_to, class_name: "User",
                                foreign_key: :transferring_to_id
 
-  validates :title, uniqueness: { scope: [:user_id] }
+  validates :title, uniqueness: { scope: [:user_id] }, presence: true
+  validates :picture, presence: true
 
   include IdCodeable
 

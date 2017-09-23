@@ -10,7 +10,7 @@ class CheckoutsController < InheritedResources::Base
         name: current_user_or_company.full_name,
         address1: current_user_or_company.address,
         city: current_user_or_company.city,
-        country: current_user_or_company.decorate.country_object.alpha2,
+        country: current_user_or_company.decorate.country_object.try(:alpha2),
         zip: current_user_or_company.postal_code,
         phone: current_user_or_company.phone
       }.each { |attribute, value| @checkout.send :"#{attribute}=", value }

@@ -35,7 +35,7 @@ class ServicesController < ApplicationController
   # TODO: Refactor
   def create
     item = if user_signed_in?
-             current_user.items.find_by_id(params[:service][:item_id])
+             current_user.items.unscope(where: :demo).find_by_id(params[:service][:item_id])
            elsif params[:token].present?
              Item.find_by_token(params[:token])
            end
@@ -54,7 +54,7 @@ class ServicesController < ApplicationController
                  item.user
                end
 
-    @service = item.services.build(service_params.merge(approver: approver))
+    @service = item.services.build(service_params.merge(approver: approver)).decorate
     service_kinds = params[:service_kind]
     service_fields = params[:service_fields]
     action_kinds = params[:action_kind].keys

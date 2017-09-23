@@ -87,8 +87,14 @@ class ItemsController < ApplicationController
 
   def transfer
     authorize @item
-    TransferService.new(@item, params[:user_identifier], current_user).perform
-    redirect_to @item
+    validator = ItemTransferValidator.new(params)
+    if validator.valid?
+      TransferService.new(@item, params[:user_identifier], current_user).perform
+      flash[:notice] = t(".success")
+    else
+      flash[:error] = validator.errors.join(". ")
+    end
+    redirect_to edit_item_path(@item)
   end
 
   def receive
