@@ -3,7 +3,7 @@
             <div id="owl-example_mobile_items" class="owl-carousel"
                  ng-show="controller.showDetails === undefined">
               <div class="items">
-                <%= link_to dashboard_path, class: (@item.blank? ? "active" : "") do %>
+                <%= link_to root_path, class: (@item.blank? ? "active" : "") do %>
                 <div class="all_items">
                   <span><%= t(".all") %></span>
                 </div>

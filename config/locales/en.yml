@@ -39,6 +39,7 @@ en:
       notice: "Item was successfully destroyed."
     items:
       all: "ALL"
+      transferred_items: New!
     empty_items:
       add_first_item: "+ ADD YOUR FIRST ITEM"
     empty_items_services:
@@ -301,6 +302,7 @@ en:
       careers: "Careers"
       contacts: "Contacts"
       terms: "Privacy and Terms"
+      telephobe_number: 8 (800) 400-40-40
   static_pages:
     home:
       distodi_welcome: "Distodi. Your personal confidence"
