@@ -439,7 +439,7 @@
 
   .password {
     width: 80%;
-    margin: 0 auto 20px;
+    margin: 0 auto -5px;
     text-align: left;
   }
 
@@ -452,15 +452,44 @@
     border-radius: 4px;
   }
 
+  .left_form .signup_form .user_form .mail input{
+    width: calc(100% - 30px);
+    padding: 0 15px;
+  }
+
+  .left_form .signup_form .user_form .password input{
+    width: calc(100% - 30px);
+    padding: 0 15px;
+  }
+  .left_form .signup_form .user_form .name input{
+    width: calc(100% - 30px);
+    padding: 0 15px;
+    margin-bottom: 0px;
+  }
+  .tab_item .user_form .field_with_errors{
+    display: block;
+  }
+  .user_form svg{
+    display: none;
+  }
+
   .mail {
     width: 80%;
     margin: 0 auto 20px;
-    text-align: left;
+    text-align: center;
   }
-
+  .left_form .signup_form .user_form .mail .field_with_errors input{
+    margin-bottom: -14px;
+  }
+  .left_form .signup_form .user_form .password .field_with_errors input{
+    margin-bottom: 8px;
+  }
   .mail input {
     width: calc(100% - 18px);
     border-radius: 4px;
+  }
+  .button_box{
+    display: none;
   }
 
   .signup_info_right {
@@ -486,7 +515,7 @@
   .name {
     width: 80%;
     margin: 0 auto 20px;
-    text-align: left;
+    text-align: center;
   }
 
   .name input {
@@ -537,9 +566,6 @@
     line-height: 24px;
   }
 
-  .errors_reg {
-    display: none;
-  }
 
   .field_with_errors input {
     border: 1.3px solid red;
@@ -699,6 +725,9 @@
   .page_items .item .add_new_item p {
     margin-left: 0;
   }
+  .tabs{
+    height: 57px;
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}
@@ -717,6 +746,9 @@
   .page_items .item {
     width: 94%;
     text-align: center;
+  }
+  .tabs a{
+    padding: 20px 27%;
   }
 }
 /* Extra Small Devices, Phones */

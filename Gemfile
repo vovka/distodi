@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Svg helper
+gem 'inline_svg'
 # Omniauth
 gem 'omniauth'
 gem 'omniauth-facebook'

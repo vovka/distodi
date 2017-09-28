@@ -274,7 +274,9 @@ footer img {
   float: right;
   margin: 20px 0 15px 25px;
 }
-
+footer img:nth-child(2){
+  width: 25px;
+}
 footer hr {
   display: none;
   width: 150%;
@@ -400,24 +402,25 @@ footer hr {
 
 .name {
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .mail {
-  margin-bottom: 20px;
+  margin-bottom: 29px;
+  width: 100%;
 }
 
 .password {
-  margin-bottom: 20px;
+  margin-bottom: 14px;
+  width: 100%;
 }
 
 .user_form input {
-  border-radius: 0 4px 4px 0;
-  width: 210px;
+  border-radius: 4px;
   height: 48.5px;
   border: 1px solid #d3d3d3;
   line-height: 20px;
   margin-top: -8.5px;
-  border-left: 0.0px;
   padding-left: 17px;
   width: 347px;
   font-family: 'MuseoSansCyrl_1';
@@ -464,17 +467,6 @@ footer hr {
   line-height: 14px;
   text-align: center;
   padding-top: 10px;
-}
-
-.signup_info_right {
-  font-family: 'MuseoSansCyrl_1';
-  font-size: 14px;
-  color: #8f8f8f;
-  line-height: 14px;
-  text-align: center;
-  text-align: right;
-  width: 420px;
-  margin: -10px auto 30px;
 }
 
 .btn_menu {
@@ -692,16 +684,20 @@ footer ul li {
   display: none;
   font-family: 'MuseoSansCyrl_1';
   font-size: 16px;
-  color: #c9c9c9;
+
   letter-spacing: 0;
   line-height: 16px;
   text-align: center;
-  border: 1px solid #737373;
+  border: 1px solid #5e5e5e;
   border-radius: 75px;
   width: 192px;
   height: 48px;
   line-height: 48px;
   margin: 30px auto 40px;
+}
+.telephone_mobile a{
+  color: #c9c9c9;
+  padding: 16px 20px;
 }
 
 footer img {
@@ -783,10 +779,12 @@ footer hr {
   width: 340px;
   margin: 20px auto 50px;
 }
-
+.tabs{
+  height: 66px;
+}
 .tabs a {
   margin: 0;
-  padding: 0;
+  padding: 18px 71px;
 }
 
 .tab {
@@ -812,34 +810,6 @@ footer hr {
 
 .tab_item:first-child {
   display: block;
-}
-
-.name {
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-.mail {
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-.password {
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-.user_form input {
-  border-radius: 0 4px 4px 0;
-  width: 210px;
-  height: 48.0px;
-  border: 1px solid #d3d3d3;
-  line-height: 20px;
-  margin-top: -8.7px;
-  /*  border-left: 2.0px;*/
-  padding-left: 17px;
-  width: 347px;
-  font-family: 'MuseoSansCyrl_1';
 }
 
 .tab.user {
@@ -895,6 +865,8 @@ footer hr {
   border: 0 solid #fff;
   margin-left: -11px;
   margin-bottom: -5px;
+  cursor: pointer;
+  width: 410px;
 }
 
 .signup_info {
@@ -914,6 +886,7 @@ footer hr {
   text-align: right;
   width: 420px;
   margin: -10px auto 30px;
+  display: inline-block;
 }
 
 .signup_info_right a {
@@ -1153,7 +1126,7 @@ footer hr {
 .errors_reg {
   width: 420px;
   margin: 0 auto;
-  font-family: 'MuseoSansCyrl_1';
+  font-family: 'MuseoSansCyrl_2';
   font-size: 14px;
   color: #ff3c00;
   letter-spacing: 0;
@@ -1427,19 +1400,22 @@ footer hr {
 
         .control-action {
           background: asset-url("control-action") no-repeat 0 0;
+          margin: 3px 8px 0 0;
         }
 
         .change-action {
           background: asset-url("change-action") no-repeat 0 0;
+          margin: 3px 8px 0 0;
         }
 
         .tuning-action {
           background: asset-url("tuning-action") no-repeat 0 0;
+          margin: 3px 8px 0 0;
         }
 
         .icon_service {
           padding-left: 20px;
-          background-size: 17%;
+          background-size: 13px;
         }
 
         &.actions {
@@ -1522,7 +1498,7 @@ footer hr {
 }
 
 .service_mobile p {
-  margin: 0 0 15px 40px;
+  margin: 15px 0 15px 40px;
   width: 230px;
 }
 
@@ -1571,6 +1547,7 @@ footer hr {
   width: 150px;
   height: 112.5px;
   z-index: 300;
+  margin: 2.5px;
 }
 
 .all_items {
@@ -1589,7 +1566,7 @@ footer hr {
 }
 
 .icon_service {
-  float: left;
+/*  float: left;*/
   margin: 0;
 }
 
@@ -1863,6 +1840,7 @@ option {
   height: 49px;
   padding-left: 15px;
   margin-bottom: 17px;
+  outline: none;
 }
 
 .second .custom_attributes input {
@@ -1944,6 +1922,7 @@ option {
   line-height: 14px;
   text-align: center;
   display: inline-block;
+  cursor: pointer;
 }
 
 .actions_but a {
@@ -2287,11 +2266,6 @@ option:checked {
   line-height: 22px;
 }
 
-.icon_service.change-action:nth-child(2) {
-  margin-left: 8px;
-  margin-right: 8px;
-}
-
 .login-button {
   $vertical-margin: 10px;
   display: block;
@@ -2335,7 +2309,7 @@ option:checked {
 }
 
 .field .without_photo_input input {
-  height: 440px;
+  height: 406px;
   width: 100%;
   position: absolute;
   left: 0;
@@ -2748,6 +2722,17 @@ option:checked {
 .tab_item .user_form .field_with_errors{
   display: inline-block;
 }
+
+.left_form .signup_form .user_form .name .field_with_errors input{
+  margin-bottom: -14px;
+}
+.left_form .signup_form .user_form .mail .field_with_errors input{
+  margin-bottom: -23px;
+}
+.left_form .signup_form .user_form .password .field_with_errors input{
+  margin-bottom: -8px;
+}
+
 .main_text.big{
   font-size: 30px;
 }
@@ -2945,4 +2930,197 @@ option:checked {
   -moz-transition: all .5s cubic-bezier(0.575, 0.11, 0.92, 0.315);
   -o-transition: all .5s cubic-bezier(0.575, 0.11, 0.92, 0.315);
   transition: all .5s cubic-bezier(0.575, 0.11, 0.92, 0.315);
+}
+
+
+.list_items_mobile .service_mobile .control-action {
+  background: asset-url("control-action") no-repeat 0 0;
+  background-size: 20px 20px;
+  font-size:0;
+  width: 20px;
+  height: 20px;
+  float: right;
+  margin-left: 5px;
+}
+
+.list_items_mobile .service_mobile .change-action {
+  background: asset-url("change-action") no-repeat 0 0;
+  background-size: 20px 22px;
+  font-size:0;
+  width: 20px;
+  height: 22px;
+  float: right;
+  margin-left: 5px;
+}
+
+.list_items_mobile .service_mobile .tuning-action {
+  background: asset-url("tuning-action") no-repeat 0 0;
+  background-size: 20px 20px;
+  font-size:0;
+  width: 20px;
+  height: 20px;
+  float: right;
+  margin-left: 5px;
+}
+.items .active img{
+  margin: 0;
+  border: 2.5px #149b4c solid;
+}
+.slider_mobile_items .all_items{
+  margin: 2.5px;
+}
+.items .active .all_items{
+  margin: 0;
+  border: 2.5px #149b4c solid;
+}
+.service_mobile .type{
+  margin: 0 0 0 16px;
+  width: 53%;
+  display: inline-block;
+}
+.list_items tbody td{
+  max-width: 600px;
+}
+.button_box .show_pass{
+  color: #8f8f8f;
+  font-size: 14px;
+  cursor: pointer;
+  position: inherit;
+  width: 50px;
+  float: right;
+}
+.button_box{
+  width: 404px;
+  margin: 0 auto;
+  position: relative;
+  bottom: 31px;
+}
+
+
+.left_form .signup_form .user_form .name input{
+  padding-left: 47px;
+  width: 373px;
+  outline: none;
+  margin-top: 7px;
+  margin-bottom: 9px;
+  background-color: transparent;
+  -webkit-autofill{background:red !important}
+}
+.left_form .signup_form .user_form .name input:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+
+}
+.left_form .signup_form .user_form .name input:-webkit-autofill{
+  -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
+}
+
+
+.left_form .signup_form .user_form .mail input{
+  padding-left: 47px;
+  width: 373px;
+  outline: none;
+  background-color: transparent;
+  -webkit-autofill{background:red !important}
+}
+.left_form .signup_form .user_form .mail input:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+
+}
+.left_form .signup_form .user_form .mail input:-webkit-autofill{
+  -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
+}
+
+
+.left_form .signup_form .user_form .password input{
+  padding-left: 47px;
+  padding-right: 68px;
+  width: 304px;
+  outline: none;
+  background-color: transparent;
+  -webkit-autofill{background:red !important}
+}
+.left_form .signup_form .user_form .password input:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+
+}
+.left_form .signup_form .user_form .password input:-webkit-autofill{
+  -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
+}
+
+
+.user_form svg{
+  width: 20px;
+  position: absolute;
+  margin-left: -409px;
+  margin-top: 10px;
+}
+.left_form .signup_form .user_form input:focus  + svg .cls-1{
+  fill: #149b4c;
+}
+.user_form .password svg{
+  margin-top: 4px;
+}
+.user_form .name svg{
+  margin-top: 22px;
+}
+.field_with_errors + svg .cls-1{
+  fill: red;
+}
+.mail.reset_pass{
+  margin-top: 22px;
+}
+.user_form .edit_pass_ico{
+  margin-top: 3px;
+}
+
+.custom_attributes select{
+  outline: none;
+}
+
+.custom_attributes input:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+}
+.custom_attributes input:-webkit-autofill{
+  -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
+}
+
+.custom_attributes select:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+}
+.custom_attributes select:-webkit-autofill{
+  -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
+}
+
+.form .field_title input{
+  outline: none;
+}
+
+.form .field_title input:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+}
+.form .field_title input:-webkit-autofill{
+  -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
+}
+
+.form .categories select{
+  outline: none;
+}
+.form .categories select:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+}
+.form .categories select:-webkit-autofill{
+  -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
+}
+.left_form .signup_form .user_form .mail.edit_pass .field_with_errors input{
+  margin-bottom: -5px;
+}
+.left_form .signup_form .user_form .mail.edit_pass.second .field_with_errors input{
+  margin-bottom: -10px;
 }

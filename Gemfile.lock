@@ -230,6 +230,9 @@ GEM
       has_scope (~> 0.6)
       railties (>= 3.2, < 5.1)
       responders
+    inline_svg (1.2.3)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     jbuilder (2.5.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -564,6 +567,7 @@ DEPENDENCIES
   figaro (~> 1.1, >= 1.1.1)
   font-awesome-rails
   icalendar
+  inline_svg
   jbuilder (~> 2.0)
   jquery-rails
   mailcatcher

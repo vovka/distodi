@@ -10,4 +10,6 @@ var distodiApp = angular.module("DistodiApp", ['angular-tour', 'ipCookie']);
 distodiApp.config(["$httpProvider", Config])
 .controller("ItemsController", ["$scope", "$http", "$q", 'ipCookie', ItemsController]);
 
+distodiApp.controller("SignInController", ["$scope", SignInController]);
+
 distodiApp.controller("NotificationsController", ["$scope", "$http", NotificationsController]);

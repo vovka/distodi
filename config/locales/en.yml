@@ -140,7 +140,6 @@ en:
       notice: "Service was successfully updated."
     destroy:
       notice: "Service was successfully destroyed."
-
   shared:
     registration_layout:
       distodi: Distodi
@@ -159,6 +158,17 @@ en:
             already_have_account: "Need the Distodi account?&nbsp;<a href=\"/%{namespace}/sign_up\">Create free account.</a>"
       registrations:
         new:
+          user:
+            main_text: "Sign up to create your free Service Book!"
+            second_text: "Distodi is a best way to collect & manage all your service certificates"
+            agreementt: "By creating an account, you agree to our <a href=\"\">Terms.</a>"
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+          company:
+            main_text: "Sign up to create your corporate account!"
+            second_text: "Distodi is a best way to collect & manage all your service certificates"
+            agreementt: "By creating an account, you agree to our <a href=\"\">Terms.</a>"
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+        create:
           user:
             main_text: "Sign up to create your free Service Book!"
             second_text: "Distodi is a best way to collect & manage all your service certificates"
@@ -201,6 +211,17 @@ en:
           company:
             main_text: "Forgot your password?"
             second_text: "We'll email you instructions on how to reset it."
+            agreementt: ""
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+        update:
+          user:
+            main_text: "Please, set your new password."
+            second_text: "You must enter a new password in both fields."
+            agreementt: ""
+            already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
+          company:
+            main_text: "Please, set your new password."
+            second_text: "You must enter a new password in both fields."
             agreementt: ""
             already_have_account: "Already have an account?&nbsp;<a href=\"/%{namespace}/sign_in\">Sign in</a>"
     passwords_edit:
@@ -247,6 +268,7 @@ en:
       pass: "Password"
       forgot: "Forgot password?"
       sign_in: "Sign in"
+      show: SHOW
     notifications:
       header_title: "Notifications"
       no_notifications: "Notifications list empty"
@@ -259,6 +281,7 @@ en:
       create:
         user: "Create Free Service Book"
         company: "Create Free Corporate Account"
+      show: SHOW
 
   layouts:
     item:

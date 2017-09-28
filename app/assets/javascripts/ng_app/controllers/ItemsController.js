@@ -1,7 +1,9 @@
 var ItemsController = function($scope, $http, $q, ipCookie) {
   this.$http = $http;
   this.$q = $q;
-  
+  this.$scope = $scope;
+  $scope.type = "password";
+
   $scope.currentStep = ipCookie('DistodiApp') || 0;
   $scope.postStepCallback = function() {
 

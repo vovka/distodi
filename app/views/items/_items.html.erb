@@ -3,15 +3,16 @@
             <div id="owl-example_mobile_items" class="owl-carousel"
                  ng-show="controller.showDetails === undefined">
               <div class="items">
-                <%= link_to root_path do%>
+                <%= link_to dashboard_path, class: (@item.blank? ? "active" : "") do %>
                 <div class="all_items">
                   <span><%= t(".all") %></span>
                 </div>
                 <% end %>
               </div>
+
               <% @items.each do |item| %>
                 <div class="items">
-                  <%= link_to item do %>
+                  <%= link_to item, class: (@item.present? && item == @item ? "active" : "") do %>
                   <%= image_tag(item.picture_url, alt: item.title, width: 250) %>
                   <% end %>
                 </div>
