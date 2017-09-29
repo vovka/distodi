@@ -1,17 +1,16 @@
                   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                     <p class="alert"><%= alert %></p>
                     <div class="mail">
-                      <div class="ico">
-                        <%= image_tag "mail_ico.png" %>
-                      </div>
                       <%= f.email_field :email, autofocus: true, placeholder: t(".email") %>
+                      <%= inline_svg "mail_ico.svg" %>
                     </div>
 
                     <div class="password">
-                      <div class="ico">
-                        <%= image_tag "pass_ico.png" %>
+                      <input autocomplete="off" placeholder="<%= t(".pass") %>" type="{{type}}" name="<%= resource_name %>[password]" id="<%= resource_name %>_password">
+                      <%= inline_svg "pass_ico.svg" %>
+                      <div class="button_box">
+                       <div class="show_pass" ng-mousedown="controller.showPassword()" ng-mouseup="controller.hidePassword()" ><%= t(".show") %></div>
                       </div>
-                      <%= f.password_field :password, autocomplete: "off", placeholder: t(".pass") %>
                     </div>
                     <div class="signup_info_right">
                       <%= link_to t(".forgot"), new_password_path(resource_name) %>

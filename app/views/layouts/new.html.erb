@@ -9,7 +9,7 @@
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
-  <body class="main_page">
+  <body class="main_page" ng-app="DistodiApp" ng-controller="SignInController as controller" ng-strict-di>
     <div class="header main_page">
       <div class="logo">
         <%= link_to image_tag('logo.png', alt: 'distodi.logo'), root_path %>
@@ -50,9 +50,9 @@
     <footer>
       <div class="footer">
         <ul>
+          <li><%= link_to t(".about"), static_pages_about_path %></li>
           <li><%= link_to(t(".updates"), '#', class: 'footer__nav-link_hidden footer__nav-link_hidden') %></li>
           <li class="footer__nav-link_hidden">•</li>
-          <li><%= link_to t(".about"), static_pages_about_path %></li>
           <li class="footer__nav-link_hidden">•</li>
           <li><%= link_to(t(".questions"), '#', class: 'footer__nav-link footer__nav-link_hidden') %></li>
           <li class="footer__nav-link_hidden">•</li>
@@ -64,7 +64,7 @@
           © 2017, <%= link_to 'Distodi', root_path %>
         </div>
         <div class="contacts">
-          8 (800) 400-40-40
+          <%= t(".telephobe_number") %>
         </div>
         <div class="contacts">
           <%= mail_to 'support@distodi.com'%>
@@ -73,7 +73,7 @@
           <%= link_to(t(".terms"), '#', class: 'footer__nav-link footer__nav-link_hidden') %>
         </div>
         <div class="contacts_mobile">© 2017, <%= link_to 'Distodi', root_path %>, <%= mail_to 'support@distodi.com'%></div>
-        <div class="telephone_mobile">8 (800) 400-40-40</div>
+        <div class="telephone_mobile"><a href="tel:<%= t(".telephobe_number") %>"><%= t(".telephobe_number") %></a></div>
         <!-- <hr> --><div class="social_net">
         <%= image_tag "insta.png" %>
         <%= image_tag "you.png" %>

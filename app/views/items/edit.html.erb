@@ -9,25 +9,28 @@
 
 <%= render 'form' %>
 
-<div class="item_info">
-  <span><%= @item.title %>, </span>
-    <% @item.characteristics.each do |characteristic| %>
-      <span> <%= characteristic.value %></span>
-    <% end %>
-</div>
-
 <div ng-init='controller.checkboxes.length = <%= @services.size %>;
               controller.permissions = <%= @services.map { |s| s.permissions(current_user) }.to_json.html_safe %>;
               controller.ids = <%= @services.map(&:id) %>;
               '>
-  <div class="item_info">
-    <span><%= t(".all_services") %></span>
-  </div>
-  <%= link_to new_service_path(item_id: @items.first), "ng-show" => "#{@items.size} === 1 && !controller.serviceActions.show" do %>
+
+  <% if @item.present? %>
+    <div class="item_info">
+      <span><%= @item.title %>, </span>
+      <% @item.characteristics.each do |characteristic| %>
+        <span> <%= characteristic.value %></span>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="item_info">
+      <span><%= t(".all_services") %></span>
+    </div>
+  <% end %>
+  <%= link_to new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" do %>
     <div class="add_service">
       <%= t(".add_new_service") %>
     </div>
-  <% end %>
+  <% end if @item.present? %>
   <div class="service_panel" ng-show="controller.serviceActions.show">
     <a href="" class="view"
        ng-class="controller.serviceActions.view ? '' : 'disabled'"

@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = [@item]
+    @items = Item.unscoped.where(user: current_user)
     @services = @item.services.includes(:service_fields, :action_kinds).decorate
     render "dashboard"
   end
