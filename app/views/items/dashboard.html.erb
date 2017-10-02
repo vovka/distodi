@@ -136,7 +136,7 @@
       </div>
     <% end %>
     <div class="pdf_button">
-      <input type="button" value="Save report as PDF" onclick="print()"></input>
+      <%= link_to t(".pdf_link"), "javascript:void(0)", onclick: "print()" %>
     </div>
     <div class="xls_button">
       <%= link_to t(".csv_link"), services_path(format: :csv) %>
