@@ -12,6 +12,7 @@ ActiveAdmin.register ActionKind do
   # end
 
   index do
+    selectable_column
     id_column
     resource_class.content_columns.each { |col| column col.name.to_sym }
     column :categories do |action_kind|
