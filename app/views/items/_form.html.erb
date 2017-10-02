@@ -35,15 +35,17 @@
 
     <div class="field">
       <p><%= t(".cover_photo") %></p>
-      <% if @item.picture.present? %>
-        <%= image_tag(@item.picture_url, alt: @item.title, width: 250) %>
-        <%= f.file_field :picture%>
-      <% else %>
-        <div class="without_photo_input">
-          <%= f.file_field :picture, class: 'inputfile'%>
-          <label for="upload"><span><%= t(".add_photo") %></span></label>
-        </div>
-      <% end %>
+      <div class="image {{ newPhoto ? '' : 'without_photo_input' }}">
+        <%= image_tag(@item.picture_url,
+                      alt: @item.title,
+                      width: 250,
+                      class: "current_photo",
+                      "ng-src" => "{{imagePreview}}") %>
+        <label for="upload" ng-show="!newPhoto"><%= t(".add_photo") %></label>
+        <%= f.file_field :picture,
+                         class: 'inputfile',
+                         "data-file" => "true" %>
+      </div>
     </div>
 
     <div class="actions_but">
@@ -77,4 +79,5 @@
       $categorySelect.val(<%= @item.category_id %>);
     $categorySelect.trigger("change");
   });
+  $("#item_category_id").change();
 </script>

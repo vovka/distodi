@@ -135,9 +135,15 @@
       </div>
       <% end %>
     </div>
-    <% if @item.present? && @services.blank? %>
+    <% if @items.present? && @services.blank? %>
       <div class="first_service">
-        <p><%= t(".service_log") %> <%= link_to t(".add_first_service"),new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" %> <%= t(".fill_book") %></p>
+        <p><%= t(".service_log") %>
+        <% if @item.present? && @services.blank? %>
+          <%= link_to t(".add_first_service"),new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" %>
+        <% else %>
+          <%= t(".add_first_service") %>
+        <% end %>
+        <%= t(".fill_book") %></p>
       </div>
     <% end %>
     <div class="pdf_button">

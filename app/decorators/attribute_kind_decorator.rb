@@ -1,6 +1,16 @@
 class AttributeKindDecorator < Draper::Decorator
   delegate_all
 
+  VALUES = {
+    AttributeKindPolicy::FUEL_TYPE => ["Petrol", "Diesel", "Biodiesel",
+                                        "Propane", "Metan", "Solid fuels"],
+    AttributeKindPolicy::MOTOR => ["Gasoline", "Diesel", "Biodiesel",
+                                    "Electric", "Hybrid", "Steam"],
+    AttributeKindPolicy::TRANSMISSION => ["Manual", "Automatic",
+                                          "Robotic", "Variator"],
+    AttributeKindPolicy::GENDER => ["Male", "Female", "Male - Female"]
+  }.freeze
+
   # Define presentation-specific methods here. Helpers are accessed through
   # `helpers` (aka `h`). You can override attributes, for example:
   #
@@ -11,8 +21,11 @@ class AttributeKindDecorator < Draper::Decorator
   #   end
 
   def input_helper
-    if brand? || model? || year?
+    if brand? || model? || year? || fuel_type? || motor? || weight? ||
+        transmission? || gender? || wheel_diameter?
       :select
+    elsif country? || manufacturer?
+      :country_select
     else
       :text_field
     end
@@ -51,6 +64,37 @@ class AttributeKindDecorator < Draper::Decorator
           disabled: characteristic.try(:value).present?
         }
       ]
+    elsif weight?
+      [
+        (2..50).step(0.5).map { |i| "#{i} kg" },
+        { selected: characteristic.try(:value).presence },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence }
+      ]
+    elsif wheel_diameter?
+      [
+        (8..30).map { |i| "#{i} inch" },
+        { selected: characteristic.try(:value).presence },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence }
+      ]
+    elsif country? || manufacturer?
+      [
+        { selected: characteristic.try(:value).presence },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence }
+      ]
+    elsif fuel_type? || motor? || transmission? || gender?
+      [
+        values,
+        { selected: characteristic.try(:value).presence },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence }
+      ]
     else
       [
         { id: "characteristic#{id}",
@@ -61,7 +105,13 @@ class AttributeKindDecorator < Draper::Decorator
     end
   end
 
+  private
+
   def characteristic
     @characteristic ||= context[:item].characteristics.find { |c| c.attribute_kind == object }
+  end
+
+  def values
+    VALUES[title].map { |v| [v, v] }
   end
 end
