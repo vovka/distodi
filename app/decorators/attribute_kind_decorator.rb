@@ -26,7 +26,9 @@ class AttributeKindDecorator < Draper::Decorator
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value),
-          class: "brand_options" }
+          class: "brand_options",
+          disabled: characteristic.try(:value).present?
+        }
       ]
     elsif model?
       [
@@ -34,7 +36,9 @@ class AttributeKindDecorator < Draper::Decorator
         { selected: characteristic.try(:value) },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
-          value: characteristic.try(:value) }
+          value: characteristic.try(:value),
+          disabled: characteristic.try(:value).present?
+        }
       ]
     elsif year?
       default_year = "2000"
@@ -43,12 +47,16 @@ class AttributeKindDecorator < Draper::Decorator
         { selected: characteristic.try(:value).presence || default_year },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
-          value: characteristic.try(:value).presence || default_year }
+          value: characteristic.try(:value).presence || default_year,
+          disabled: characteristic.try(:value).present?
+        }
       ]
     else
       [
         { id: "characteristic#{id}",
-          value: characteristic.try(:value) }
+          value: characteristic.try(:value),
+          disabled: characteristic.try(:value).present?
+        }
       ]
     end
   end

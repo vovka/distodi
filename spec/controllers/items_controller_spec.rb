@@ -5,7 +5,8 @@ describe ItemsController do
     {
       title: Faker::Lorem.word,
       category_id: category.try(:id),
-      picture: fixture_file_upload(Rails.root.join('spec', 'fixtures', 'an_image.jpg'), 'image/jpeg')
+      picture: fixture_file_upload(Rails.root.join('spec', 'fixtures', 'an_image.jpg'), 'image/jpeg'),
+      characteristics: {"1" => "test"}
     }.reject { |_, v| v.nil? }
   end
 
