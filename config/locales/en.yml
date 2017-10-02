@@ -284,6 +284,9 @@ en:
         user: "Create Free Service Book"
         company: "Create Free Corporate Account"
       show: SHOW
+  checkouts:
+    new:
+      support_with_paypal: "Support us with <a href=\"https://www.paypal.me/Krejcarova\" target=\"new\">PayPal.me https://www.paypal.me/Krejcarova</a>, or with online checkout below"
 
   layouts:
     item:
