@@ -19,11 +19,18 @@
 
     <div class="categories">
       <p><%= f.label t(".category") %> <span>*</span></p>
-      <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: t(".select") }, {class: "category_select"} %>
+      <%= f.collection_select :category_id,
+                              Category.all,
+                              :id, :name,
+                              { prompt: t(".select") },
+                              { class: "category_select",
+                                "ng-model" => "_category",
+                                "ng-change" => "controller.categorySelectChanged()",
+                                disabled: controller.action_name.in?(%w( edit update ))
+                              } %>
     </div>
 
     <div class="custom_attributes">
-
     </div>
 
     <div class="field">
@@ -40,7 +47,7 @@
     </div>
 
     <div class="actions_but">
-      <%= f.submit t(".save") %>
+      <%= f.submit t(".save"), "ng-disabled" => "controller.saveSubmitDisabled" %>
       <div class="back">
       <%= link_to t(".discard"), user_path(current_user) %>
       </div>
@@ -50,22 +57,24 @@
 </div>
 
 <script>
-  $("form.edit_item, form.new_item").on("change", "#item_category_id, select.brand_options", function(){
-    if ($('#item_category_id option:selected').val()) {
-      $.ajax({
-        url: "/items/get_attributes",
-        type: "GET",
-        dataType: "script",
-        data: {
-          category_id: $('#item_category_id option:selected').val(),
-          brand_option_id: $("select.brand_options").val(),
-          item_id: <%= @item.to_param || "undefined" %>
-        }
-      });
-    }
-    $(".custom_attributes").on("change", ".attribute_select:last", function(){
-      $(".attribute_select:last").clone().appendTo(".custom_attributes");
+  $(function () {
+    $("form.edit_item, form.new_item").on("change", "#item_category_id, select.brand_options", function(){
+      if ($('#item_category_id option:selected').val()) {
+        $.ajax({
+          url: "/items/get_attributes",
+          type: "GET",
+          dataType: "script",
+          data: {
+            category_id: $('#item_category_id option:selected').val(),
+            brand_option_id: $("select.brand_options").val(),
+            item_id: <%= @item.to_param || "undefined" %>
+          }
+        });
+      }
+      // $(".custom_attributes").on("change", ".attribute_select:last", function(){
+      //   $(".attribute_select:last").clone().appendTo(".custom_attributes");
+      // });
     });
+    $("#item_category_id").val(<%= @item.category_id %>).trigger("change");
   });
-  $("#item_category_id").change();
 </script>

@@ -89,6 +89,7 @@ en:
       create_item: "Create Item"
       back_to_my_panel: "Back to my panel"
       csv_link: "Download scv file"
+      pdf_link: "Save report as PDF"
       all_services: "All services"
       add_new_service: "+ ADD NEW SERVICE"
       view: "View"

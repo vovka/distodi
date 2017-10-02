@@ -106,9 +106,9 @@ bike.attribute_kinds = common + bikes
 bike.service_kinds = bike_service_kinds
 bike.action_kinds = bike_action_kinds
 bike.save
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+AdminUser.first_or_create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
-Company.create!(
+Company.first_or_create!(
   demo: true,
   password: "11111111",
   password_confirmation: "11111111",
