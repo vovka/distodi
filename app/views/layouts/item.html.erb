@@ -11,40 +11,38 @@
   </head>
   <body ng-app="DistodiApp" ng-controller="ItemsController as controller" ng-strict-di>
     <div class="item_header">
+      <% %i( notice error ).each do |msg| %>
+        <div class="<%= msg %>">
+          <%= flash[msg] %>
+        </div>
+      <% end %>
       <div class="item_logo">
         <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), root_path %>
       </div>
       <div class="right_panel list">
-        <% %i( notice error ).each do |msg| %>
-          <div class="<%= msg %>">
-            <%= flash[msg] %>
-          </div>
-        <% end %>
         <div class="more_menu" ng-click="controller.clickedToggleMoremenu()" ng-class="controller.showMoremenu ? 'active' : '' ">
-          <div class="menu_line"></div>
-          <div class="menu_line"></div>
+          <%= picture_show(current_user) %>
         </div>
         <div class="more_menu_popup popup-animation" ng-class="controller.showMoremenu ? 'active' : '' ">
-          <div class="menu_user_photo">
-            <%= picture_show(current_user) %>
+          <span>
+            <%= my_panel %>
+          </span>
+          <div class="user_information">
+            <p><%= current_user.email %></p>
+            <span><%= current_user.items.count %> <%=t(".items")%></span>
+            <%= current_user.services.count %> <%=t(".services")%>
           </div>
-          <div class="right_part">
-            <%= current_user.email %>
-            <p><%= current_user.phone %></p>
-            <p><%= current_user.country %>, <%= current_user.city %></p>
-            <p><%= link_to t(".show_my_profile"), user_path(current_user) %></p>
-            <p><%= link_to t(".show_list"), items_path %></p>
-          </div>
-          <div class="bottom_part">
-            <%= link_to t(".edit_button"), edit_user_path(current_user), class: "edit_button" %>
+          <div class="line"></div>
+          <div class="work_panel">
+            <%= link_to t(".show_my_profile"), user_path(current_user) %>
+            <%= link_to t(".edit_button"), edit_user_path(current_user)%>
+            <%= link_to t(".help"), static_pages_about_path%>
             <%= logout_link %>
+
           </div>
         </div>
-        <span>
-          <%= my_panel %>
-        </span>
-        <%= render "shared/notifications" %>
       </div>
+      <%= render "shared/notifications" %>
       <div class="btn_menu black">
         <div class="btn_line"></div>
         <div class="btn_line"></div>
@@ -52,17 +50,20 @@
       </div>
       <div class="menu_mobile">
         <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), root_path %>
-        <ul>
-          <li><%= link_to('UPDATES', '#', class: 'menu__nav-link_hidden') %></li>
-          <li><%= link_to('QUESTIONS AND ANSWERS', '#', class: 'menu__nav-link_hidden') %></li>
-          <li><%= link_to('ENGLISH', '#', class: 'menu__nav-link_hidden') %></li>
-          <li><%= link_to('SIGN IN', new_user_session_path) if current_user.nil? && current_company.nil? %></li>
-        </ul>
-        <div class="button">
-          Create Free Service Book
+        <span class="name">
+            <%= my_panel %>
+        </span>
+        <div class="user_information">
+          <p><%= current_user.email %></p>
+          <span><%= current_user.items.count %> <%=t(".items")%></span>
+          <%= current_user.services.count %> <%=t(".services")%>
         </div>
-        <div class="telephone_contact">
-          8 (800) 400-40-40
+        <div class="line"></div>
+        <div class="work_panel">
+          <%= link_to t(".show_my_profile"), user_path(current_user) %>
+          <%= link_to t(".edit_button"), edit_user_path(current_user)%>
+          <%= link_to t(".help"), static_pages_about_path%>
+          <%= logout_link %>
         </div>
       </div>
     </div>

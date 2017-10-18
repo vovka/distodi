@@ -1,16 +1,6 @@
 /*==========  Desktop First Method  ==========*/
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1610px) {
-  .slider_mobile_items .owl-item img {
-    width: 135px;
-    height: 101.25px;
-  }
-
-  .all_items {
-    width: 135px;
-    height: 101.25px;
-  }
-
   .all_items_first {
     width: 273px;
     height: 101.25px;
@@ -25,16 +15,6 @@
     margin-top: 33%;
   }
 
-  .all_items span {
-    line-height: 101.25px;
-    font-size: 18px;
-  }
-
-  .all_items p {
-    font-size: 14px;
-    line-height: 101.25px;
-  }
-
   .all_items_first span {
     line-height: 101.25px;
     font-size: 14px;
@@ -46,16 +26,6 @@
   }
 }
 @media only screen and (max-width : 1450px) {
-  .slider_mobile_items .owl-item img {
-    width: 121.5px;
-    height: 91.125px;
-  }
-
-  .all_items {
-    width: 121.5px;
-    height: 91.125px;
-  }
-
   .all_items_first {
     width: 250.5px;
     height: 91.125px;
@@ -64,16 +34,6 @@
   .red_col {
     width: 121.5px;
     height: 91.125px;
-  }
-
-  .all_items span {
-    line-height: 91.125px;
-    font-size: 16px;
-  }
-
-  .all_items p {
-    font-size: 24px;
-    line-height: 91.125px;
   }
 
   .all_items_first span {
@@ -93,18 +53,14 @@
   .bacground_green .content .slider{
     margin-right: 9%;
   }
+  .function .transfer{
+    height: 160px;
+  }
+  .function .delete{
+    height: 160px;
+  }
 }
 @media only screen and (max-width : 1300px) {
-  .slider_mobile_items .owl-item img {
-    width: 100px;
-    height: 75px;
-  }
-
-  .all_items {
-    width: 100px;
-    height: 75px;
-  }
-
   .all_items_first {
     width: 200px;
     height: 75px;
@@ -115,16 +71,6 @@
     height: 75px;
   }
 
-  .all_items span {
-    line-height: 75px;
-    font-size: 16px;
-  }
-
-  .all_items p {
-    font-size: 24px;
-    line-height: 75px;
-  }
-
   .all_items_first span {
     line-height: 75px;
     font-size: 16px;
@@ -133,10 +79,6 @@
   .all_items_first p {
     font-size: 13px;
     line-height: 75px;
-  }
-
-  .function .inputs_trans input:nth-child(2) {
-    width: 37%;
   }
 
   .function .transfer img {
@@ -161,10 +103,6 @@
 }
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 1140px) {
-  .function .inputs_trans input:nth-child(2) {
-    width: 41%;
-  }
-
   .function .transfer img {
     right: 41%;
   }
@@ -173,9 +111,6 @@
     width: 38%;
   }
 
-  .delete_but {
-    width: 37%;
-  }
 }
 @media only screen and (max-width : 1120px) {
   .bacground_green .content .text{
@@ -183,9 +118,6 @@
   }
 }
 @media only screen and (max-width : 1024px) {
-  .delete_but {
-    top: 71px;
-  }
   .second_text{
     width: 80%;
   }
@@ -209,10 +141,40 @@
   .bacground_green .content .slider{
     margin-right: calc(50% - 270px);
   }
+  .function .transfer{
+    height: 200px;
+  }
+  .function .delete{
+    height: 200px;
+  }
 }
+
+@media only screen and (max-width : 917px) {
+  .delete_but{
+    top: 71px;
+  }
+  .function .transfer input{
+    margin-top: 24px;
+  }
+}
+
 @media only screen and (max-width : 768px) {
   .sent_image{
     margin-top: 30px;
+  }
+  .actions_but a{
+    padding: 11px calc(43% - 39px)
+  }
+  .function .transfer{
+    padding-bottom: 70px;
+  }
+  .function .delete .delete_but input[type=submit]{
+    left: 64px;
+    top: 5px;
+    padding-left: 30px;
+    background-position: calc(54% - 61px);
+    padding-top: 3px;
+    width: 95%
   }
   .signup_form .done_button{
     margin-top: 50px;
@@ -342,10 +304,13 @@
 
   .btn_menu {
     display: inline-block;
+    position: relative;
+    right: -110px;
   }
 
   .menu_mobile {
     display: inline-block;
+    height: 100%;
   }
   /*.owl-item .items img{
   margin-left: -40%;
@@ -373,10 +338,6 @@
 
   .items_list {
     margin-top: 0;
-  }
-
-  .btn_menu.black {
-    margin-left: 80%;
   }
 
   .item_logo img {
@@ -472,7 +433,9 @@
   .user_form svg{
     display: none;
   }
-
+  .transfer_panel{
+    width: 100%;
+  }
   .mail {
     width: 80%;
     margin: 0 auto 20px;
@@ -623,18 +586,22 @@
   }
 
   .function .transfer p {
-    width: 84%;
+    width: 78%;
   }
 
   .function .transfer span {
     width: 80%;
     padding: 0 20px;
+    margin-left: 8px;
   }
 
   .function .transfer input {
-    width: 84%;
-    margin-left: 29px;
+    width: calc(91% - 40px);
+    margin-left: 25px;
     position: inherit;
+    margin-right: 0;
+    padding-left: 15px;
+    padding-right: 0;
   }
 
   .function .transfer img {
@@ -655,30 +622,38 @@
   .inputs_trans {
     width: 100%;
   }
-
+  .grey{
+    width: 100%;
+    margin: 20px 0 0;
+  }
   .page_items .item .item_list_panel .inputs_trans {
     width: 47%;
   }
 
   .function .inputs_trans input:nth-child(2) {
     position: relative;
-    padding-right: 0;
-    width: 87.5%;
     height: 50px;
     text-align: center;
-    margin-top: 6px;
-    margin-left: 37px;
+    background-position: calc(52% - 51px);
+    width: calc(91% - 24px);
+    left: 0;
+    padding-left: 36px;
+  }
+  .add_service {
+    width: calc(91% - 25px);
+    margin: 0;
+    margin-left: 25px;
+    float: left;
   }
 
   .function .delete .delete_but {
-    position: relative;
-    top: 0;
-    right: 0;
+    top: -40px;
+    left: 0;
     text-align: center;
-    width: 87%;
+    width: calc(91% - 24px);
+    margin-top: 142px;
+    margin-left: 25px;
     height: 50px;
-    margin-top: 128px;
-    margin-left: 30px;
   }
 
   .function .delete img {
@@ -691,7 +666,7 @@
   }
 
   .function .delete span {
-    padding: 30px 0 10px 39px;
+    padding: 0px 0 10px 30px;
   }
 
   .function .delete .delete_but a {
@@ -728,15 +703,145 @@
   .tabs{
     height: 57px;
   }
+  .function .delete input[type=password]{
+    width: calc(91% - 40px);
+    margin-left: 25px;
+    float: left;
+    padding-right: 0;
+  }
+  .service_panel {
+    width: calc(91% - 25px);
+    margin: 0;
+    margin-left: 25px;
+    float: left;
+    text-align: center;
+  }
+  .service_count.edit{
+    border-top: 2px #d3d3d3 solid;
+    width: 100%;
+    margin-left: 0;
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+  .service_count.edit span{
+    font-family: 'MuseoSansCyrl_2';
+    font-size:16px;
+    color:#1f1f1f;
+    letter-spacing:0;
+    line-height:16px;
+    text-align:left;
+    margin-left: 25px;
+    margin-right: 20px;
+  }
+  .item_info span{
+    margin: 0;
+  }
+  .item_info{
+    padding-left: 25px;
+    width: calc(100% - 25px);
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+  .service_count{
+    margin: 10px 0 15px 25px;
+    width: calc(100% - 25px);
+  }
+  .mobile_notifications_button{
+    display: inline-block;
+  }
+  .notify-link{
+    top: 14px;
+    width: 40px;
+    height: 50px;
+    display: block;
+    float: right;
+    margin-right: 55px;
+    position: relative;
+    left: 0;
+  }
+    .alarm-notifications.mobile{
+    width: calc(100% - 4px);
+    height: calc(101% + 290px);
+    position: absolute;
+    top: -102%;
+    right: 0;
+    z-index: 999;
+    -webkit-transition: all 500ms cubic-bezier(0.070, 0, 0.285, 1);
+    /* older webkit */
+    -webkit-transition: all 500ms cubic-bezier(0.070, -0.020, 0.285, 1.650);
+    -moz-transition: all 500ms cubic-bezier(0.070, -0.020, 0.285, 1.650);
+    -o-transition: all 500ms cubic-bezier(0.070, -0.020, 0.285, 1.650);
+    transition: all 500ms cubic-bezier(0.070, -0.020, 0.285, 1.650);
+    /* custom */
+    -webkit-transition-timing-function: cubic-bezier(0.070, 0, 0.285, 1);
+    /* older webkit */
+    -webkit-transition-timing-function: cubic-bezier(0.070, -0.020, 0.285, 1.650);
+    -moz-transition-timing-function: cubic-bezier(0.070, -0.020, 0.285, 1.650);
+    -o-transition-timing-function: cubic-bezier(0.070, -0.020, 0.285, 1.650);
+    transition-timing-function: cubic-bezier(0.070, -0.020, 0.285, 1.650);
+
+  }
+  .notifications-header .mobile_logo{
+    display: inline-block;
+  }
+  .notifications-header{
+    padding-top: 25px;
+  }
+  .header-title{
+    margin-top: 77px;
+  }
+  .notifications-header .exit_mobile{
+    display: inline-block;
+  }
+  .alarm-notifications.mobile{
+    z-index: 602;
+  }
+  .alarm-notifications.mobile.active{
+    border: 0;
+    border-radius: 0;
+    width: 100%;
+    top: 0;
+  }
+  .alarm-notifications.mobile.active .notifications-header{
+    position: fixed;
+    background: #ffffff;
+    z-index: 600;
+    width: calc(100% - 40px)
+  }
+  .alarm-notifications.mobile.active .alarm-notifications.mobile{
+    top: 0px;
+    position: absolute;
+    height: 100%;
+  }
+  .user_information p{
+    padding-left: 25px;
+  }
+  .notify-count{
+    top: 15px;
+    left: 9px;
+  }
+  .status_notification{
+    margin-right: 0px;
+    float: left;
+    margin-top: 15px;
+  }
+  .list-item a{
+    width: 85%;
+  }
+  .list-item{
+    padding-left: 20px;
+  }
+  .list-item.read-notification a{
+    padding-left: 22px;
+  }
+  .notifications-list{
+    padding-top: 165px;
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {
-  .btn_menu.black {
-    margin-left: 65%;
-  }
-
   .form .categories {
     width: 94%;
     margin-top: 15px;
@@ -751,21 +856,13 @@
     padding: 20px 27%;
   }
 }
+@media only screen and (max-width : 510px) {
+  .function .delete .delete_but input[type=submit]{
+    background-position: calc(56% - 61px);
+  }
+}
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
-  .btn_menu.black {
-    margin-left: 46%;
-  }
-
-  .add_service {
-    width: 85%;
-    margin: 0 7.5%;
-  }
-
-  .service_panel {
-    width: 85%;
-    margin: 0 7.5%;
-  }
 
   .service_panel img {
     height: 15px;
@@ -786,6 +883,7 @@
     margin: 0;
   }
 }
+
 @media only screen and (max-width : 340px) {
   .slider .owl-item .items img {
     width: 255px;
