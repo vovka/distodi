@@ -67,6 +67,7 @@ en:
       date: "Service date"
       cost: "Service total cost"
       already_transferred: "This item has already been transferred."
+      item_services: "Item services"
     form:
       cover_photo: "Cover photo (min 800x600 pixels)"
       add_photo: "+ ADD COVER PHOTO"
@@ -105,6 +106,7 @@ en:
       add_first_srvice: "Add first Service"
       fill_book: "to fill in your Service book"
       pdf: "Save reports as pdf"
+      services: services
     index:
       my_items: "My Items"
       view_edit: "View, Edit"
@@ -274,6 +276,8 @@ en:
     notifications:
       header_title: "Notifications"
       no_notifications: "Notifications list empty"
+      unread: "Unread"
+      mark_as_read: "Mark all as read"
     registration_form:
       name:
         user: "Your Full Name (as in passport)"
@@ -293,9 +297,12 @@ en:
       transferred_items: "New"
       receive_item: "Receive"
       show_list: "Show list of items"
-      show_my_profile: "Show my profile"
+      show_my_profile: "My account"
       edit_button: "Edit profile"
       log_out: "Log out"
+      items: "items"
+      services: "services"
+      help: "Help"
     new:
       updates: "UPDATES"
       questions: "QUESTIONS AND ANSVERS"

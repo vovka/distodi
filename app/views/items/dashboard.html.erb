@@ -16,6 +16,11 @@
         <span><%= t(".all_services") %></span>
       </div>
     <% end %>
+    <% if @services.present? %>
+      <div class="service_count">
+        <%= @services.count %> <span><%= t(".services") %></span>
+      </div>
+    <% end %>
     <%= link_to new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" do %>
       <div class="add_service">
         <%= t(".add_new_service") %>
