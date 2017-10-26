@@ -40,6 +40,7 @@ en:
     items:
       all: "ALL"
       transferred_items: New!
+      receive_item: "Receive"
     empty_items:
       add_first_item: "+ ADD YOUR FIRST ITEM"
     empty_items_services:
@@ -49,6 +50,9 @@ en:
     new:
       new_item: "New item"
     edit:
+      fill_book: "to fill in your Service book"
+      add_first_srvice: "Add first Service"
+      service_log: "Yor Service log entries list is empty."
       delete_link: "Delete Item"
       confirm_delete: "Do you really want to delete this service?"
       got_sold: "Got sold your Item?"

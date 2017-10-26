@@ -6,11 +6,6 @@
     height: 101.25px;
   }
 
-  .red_col {
-    width: 135px;
-    height: 101.25px;
-  }
-
   .transfer_panel .receive p {
     margin-top: 33%;
   }
@@ -28,11 +23,6 @@
 @media only screen and (max-width : 1450px) {
   .all_items_first {
     width: 250.5px;
-    height: 91.125px;
-  }
-
-  .red_col {
-    width: 121.5px;
     height: 91.125px;
   }
 
@@ -63,11 +53,6 @@
 @media only screen and (max-width : 1300px) {
   .all_items_first {
     width: 200px;
-    height: 75px;
-  }
-
-  .red_col {
-    width: 100px;
     height: 75px;
   }
 
@@ -321,6 +306,9 @@
     position: relative;
     right: -110px;
   }
+  .header.main_page .btn_menu{
+    right: 0;
+  }
 
   .menu_mobile {
     display: inline-block;
@@ -535,6 +523,7 @@
     width: 17px;
     height: 17px;
     margin-right: 0;
+    margin-top: 20px;
   }
 
   .main_text {
@@ -748,12 +737,15 @@
   }
   .item_info span{
     margin: 0;
+    margin-right: 5px;
+    margin-bottom: 5px;
   }
   .item_info{
     padding-left: 25px;
-    width: calc(100% - 25px);
+    padding-right: 25px;
+    width: calc(100% - 50px);
     margin-top: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   .service_count{
     margin: 10px 0 15px 25px;
