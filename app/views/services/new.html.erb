@@ -1,7 +1,11 @@
-<div class="margin_left1">
-  <h1>New Service</h1>
+<div class="service_create_identity">
+  <h1><%= t(".new_service") %></h1>
+  <p class="item_info_service">
+      <%= t(".for_your") %> <span><%= @item.title %>, </span>
+          <% @item.characteristics.each do |characteristic| %>
+            <span> <%= characteristic.value %></span>
+          <% end %>
+   </p>
 </div>
+
 <%= render 'form' %>
-<div class="margin_left">
-<%= link_to 'Back', services_path %>
-</div>

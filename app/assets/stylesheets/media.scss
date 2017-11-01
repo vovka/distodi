@@ -149,6 +149,20 @@
   }
 }
 
+@media only screen and (max-width : 955px) {
+  .service_create_identity p{
+    display: none;
+  }
+  .service_create_identity{
+    text-align: center;
+    width: 100%;
+  }
+  .right_form_service_create{
+    width: 620px;
+    margin-left: 0;
+  }
+}
+
 @media only screen and (max-width : 917px) {
   .delete_but{
     top: 71px;
@@ -837,6 +851,69 @@
   .notifications-list{
     padding-top: 165px;
   }
+    .service_create_identity p{
+    display: block;
+    float: left;
+    width: 85%;
+  }
+  .service_create_identity h1{
+    display: block;
+    margin-bottom: 20px;
+  }
+  .service_create_identity{
+    text-align: left;
+    width: calc(100% - 50px);
+  }
+  .left_form_service_create{
+    width: calc(100% - 50px);
+    margin-bottom: 70px;
+  }
+  .left_form_service_create .form_service_create strong label{
+    width: 33.1%;
+  }
+  .left_form_service_create .form_service_create .service_kind_select #service_kind{
+    width: 100%;
+  }
+  .left_form_service_create .form_service_create .service_kind_select input{
+    width: calc(100% - 17px);
+  }
+  .left_form_service_create .form_service_create .company_select select{
+    width: 100%;
+  }
+  .left_form_service_create .form_service_create .textarea textarea{
+    width: calc(100% - 18px);
+    max-width: calc(100% - 18px);
+    min-width: calc(100% - 18px);
+  }
+  .left_form_service_create .form_service_create .select .company_email input{
+    width: calc(100% - 17px);
+  }
+  .left_form_service_create .form_service_create .price input{
+    width: calc(100% - 17px);
+  }
+  .left_form_service_create .form_service_create .line{
+    width: 100%;
+  }
+  .select.reminder{
+    width: 32%;
+  }
+  .reminders .input.optional.service_reminder_custom input{
+    width: calc(100% - 17px);
+  }
+  .form-actions input{
+    display: block;
+    width: 100%;
+    margin-bottom: 35px;
+  }
+  .form-actions a{
+    margin-left: 0;
+    width: 100%;
+    display: block;
+    padding: 14px 0;
+  }
+  .right_form_service_create{
+    display: none;
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}
@@ -881,6 +958,17 @@
   .first_service {
     width: calc(100% - 32px);
     margin: 0;
+  }
+  .left_form_service_create .form_service_create .service_photos .photo_input{
+    width: 100px;
+    height: 100px;
+  }
+  .left_form_service_create .form_service_create .service_photos .photo_input svg{
+    top: -95px;
+    left: 40px;
+  }
+  .select.reminder{
+    width: 46%;
   }
 }
 

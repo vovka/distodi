@@ -1,60 +1,122 @@
-<div class="form">
-  <%= simple_form_for(@service) do |f| %>
-    <%= f.error_notification %>
-    <%= render "shared/form_errors", object: @service -%>
-    <%= hidden_field_tag :token, params[:token] %>
-    <strong style="font-size: 26px">
-      <% @action_kinds.each do |action_kind| %>
-      <span><%= label_tag action_kind.title %></span>
-      <span><%= check_box("action_kind", action_kind.id, {}, 'true', nil) %></span>
-      <% end %>
-      <br><br>
-    </strong>
-    <table>
-      <thead>
-        <tr>
-          <th>Action</th>
-          <th>Service title</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @service_kinds.each do |service_kind| %>
-        <tr>
-          <td><%= check_box("service_kind", service_kind.id, {}, 'true', nil) %></td>
-          <td>
-            <%= label_tag service_kind.title %><br>
-            <%= text_field("service_fields", service_kind.id) if service_kind.with_text %>
-          </td>
-        </tr>
+<div class="service_create_main_form">
+  <div class="left_form_service_create">
+    <div class="form_service_create">
+      <%= simple_form_for(@service) do |f| %>
+        <%= f.error_notification %>
+        <%= render "shared/form_errors", object: @service -%>
+        <%= hidden_field_tag :token, params[:token] %>
+        <strong>
+          <% @action_kinds.each do |action_kind| %>
+          <%= radio_button_tag("action_kind", action_kind.id) %>
+          <%= label_tag "action_kind_#{action_kind.id}", action_kind.title %>
+          <% end %>
+        </strong>
+        <div class="service_kind_select">
+          <p class="field_name">
+            <%= t(".service_kind") %>
+          </p>
+          <%= select_tag "service_kind", options_from_collection_for_select(@service_kinds, "id", "title") %>
+          <%= text_field_tag("text") %>
+        </div>
+        <% if user_signed_in? %>
+          <p class="field_name">
+            <%= t(".service_company") %>
+          </p>
+          <div class="company_select">
+            <%= f.collection_select :company_id, Company.all, :id, :name, prompt: true%>
+          </div>
+          <p class="field_name">
+            <%= t(".new_company") %>
+          </p>
+          <div class="textarea">
+            <%= text_area_tag("text") %>
+          </div>
+          <div class="select">
+            <label>
+              <input type="checkbox"/>
+              <i>
+                <%= image_tag "select.png" %>
+              </i>
+              <span>
+                <%= t(".send_log") %>
+              </span>
+              <div class="company_email">
+                <%= text_field_tag :new_company  %>
+              </div>
+            </label>
+          </div>
         <% end %>
-      </tbody>
-    </table>
-    <%= f.hidden_field :item_id %>
-    <%= f.hidden_field :company_id, value: current_company.id if current_company %>
-    <div class="field">
-      <%= f.label 'Price' %><br>
-      <%= f.text_field :price %>
+        <div class="price">
+          <p class="field_name">
+            <%= f.label 'Price' %> <%= t(".amount") %>
+          </p>
+          <%= f.text_field :price %>
+        </div>
+        <div class="line"></div>
+        <div class="service_photos">
+          <p class="field_name">
+            <%= t(".service_photo") %>
+          </p>
+          <div class="photo_input">
+            <%= f.input :picture %>
+            <%= inline_svg "plus.svg" %>
+          </div>
+        </div>
+        <div class="line"></div>
+        <p class="field_name">
+          <%= t(".comment") %>
+        </p>
+        <div class="textarea margin">
+          <%= text_area_tag("text") %>
+        </div>
+        <div class="line"></div>
+        <p class="field_name">
+          <%= f.label :reminder, t(".remind_me")  %>
+        </p>
+        <div class="reminders">
+          <%= f.collection_check_boxes :reminders_predefined, @service.predefined_reminders, :first, :last do |b| %>
+            <div class="select reminder">
+              <%= b.check_box  %>
+              <i>
+                <%= image_tag "select.png" %>
+              </i>
+                <%= b.label  %>
+            </div>
+          <% end %>
+          <p class="field_name">
+            <%= t(".custom_date") %>
+            <%= f.input :reminder_custom, as: :string,  input_html: { type: "date", min: Date.current } %>
+          </p>
+        </div>
+        <div class="line"></div>
+        <div class="form-actions">
+          <%= f.button :submit %>
+          <%= link_to t(".discard"), dashboard_path %>
+        </div>
+      <% end %>
     </div>
-    <% if user_signed_in? %>
-    <div class="field">
-      <%= f.label 'Company' %><br>
-      <%= f.collection_select :company_id, Company.all, :id, :name, prompt: true%>
+  </div>
+  <div class="right_form_service_create">
+    <%= image_tag(@item.picture_url, alt: @item.title) %>
+    <div class="service_form_info">
+      <p>
+        <%= t(".title") %>
+      </p>
+      <span>
+        <%= t(".text") %>
+      </span>
+      <p>
+        <%= t(".title") %>
+      </p>
+      <span>
+        <%= t(".text") %>
+      </span>
+      <p>
+        <%= t(".title") %>
+      </p>
+      <span>
+        <%= t(".text") %>
+      </span>
     </div>
-    <div class="field">
-      <%= label_tag :new_company %><br/>
-      <%= text_field_tag :new_company  %>
-    </div>
-    <% end %>
-    <div class="field">
-      <%= f.input :picture %>
-    </div>
-    <div class="field">
-      <%= f.label :reminder, "Remind me in"  %>
-      <%= f.collection_check_boxes :reminders_predefined, @service.predefined_reminders, :first, :last %>
-      <%= f.input :reminder_custom, as: :string, label: "Custom date", input_html: { type: "date", min: Date.current } %>
-    </div>
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
-  <% end %>
+  </div>
 </div>

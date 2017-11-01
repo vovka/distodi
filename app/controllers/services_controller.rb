@@ -1,6 +1,8 @@
 class ServicesController < ApplicationController
   respond_to :html, :json, :js
 
+  layout "item"
+
   before_action :set_service, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :set_item, only: [:new]
   before_action :authenticate_user!, except: [:company_service, :create,
