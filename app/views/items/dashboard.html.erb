@@ -137,13 +137,15 @@
     </div>
     <% if @items.present? && @services.blank? %>
       <div class="first_service">
-        <p><%= t(".service_log") %>
-        <% if @item.present? && @services.blank? %>
-          <%= link_to t(".add_first_service"),new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" %>
-        <% else %>
-          <%= t(".add_first_service") %>
-        <% end %>
-        <%= t(".fill_book") %></p>
+        <p>
+          <%= t(".service_log") %>
+          <% if @item.present? %>
+            <%= link_to t(".add_first_service"),new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" %>
+          <% else %>
+            <%= t(".add_first_service") %>
+          <% end %>
+          <%= t(".fill_book") %>
+        </p>
       </div>
     <% end %>
     <div class="pdf_button">
@@ -157,7 +159,7 @@
   <!-- Angular-tour -->
   <tour step="currentStep" post-step="postStepCallback()">
     <virtual-step
-      tourtip="Welcome to Distodi! We created simple user tour for you :-)"
+      tourtip=<%= t(".welcome_distodi") %>
       tourtip-step="0"
       tourtip-next-label="Next"
       tourtip-placement="bottom"
@@ -166,7 +168,7 @@
       tourtip-element=".item_logo img">
     </virtual-step>
     <virtual-step
-      tourtip="Start! Add new service here"
+      tourtip=<%= t(".start") %>
       tourtip-step="1"
       tourtip-next-label="Next"
       tourtip-placement="bottom"
@@ -175,7 +177,7 @@
       tourtip-element=".add_service">
     </virtual-step>
     <virtual-step
-      tourtip="Add here your item (your property information)"
+      tourtip=<%= t(".property") %>
       tourtip-step="2"
       tourtip-next-label="Next"
       tourtip-placement="bottom"
@@ -184,7 +186,7 @@
       tourtip-element=".owl-item:last-child">
     </virtual-step>
     <virtual-step
-      tourtip="Find here all your items"
+      tourtip=<%= t(".find_here") %>
       tourtip-step="3"
       tourtip-next-label="Next"
       tourtip-placement="bottom"
@@ -193,7 +195,7 @@
       tourtip-element=".all_items">
     </virtual-step>
     <virtual-step
-      tourtip="After you make service you can see changes up here"
+      tourtip=<%= t(".after_make") %>
       tourtip-step="4"
       tourtip-next-label="Next"
       tourtip-placement="bottom"
@@ -202,7 +204,7 @@
       tourtip-element=".first_service">
     </virtual-step>
     <virtual-step
-      tourtip="Note: each your item has unique ID"
+      tourtip=<%= t(".note") %>
       tourtip-step="5"
       tourtip-next-label="Next"
       tourtip-placement="bottom"
@@ -211,7 +213,7 @@
       tourtip-element=".list_items th:nth-child(6)">
     </virtual-step>
     <virtual-step
-      tourtip="Money: totally amount your spent on each service"
+      tourtip=<%= t(".money_total") %>
       tourtip-step="6"
       tourtip-next-label="Next"
       tourtip-placement="bottom"
@@ -220,7 +222,7 @@
       tourtip-element=".list_items th:nth-child(8)">
     </virtual-step>
     <virtual-step
-      tourtip="Reporting: you can save & print information"
+      tourtip=<%= t(".reporting_save") %>
       tourtip-step="7"
       tourtip-next-label="Close"
       tourtip-placement="bottom"

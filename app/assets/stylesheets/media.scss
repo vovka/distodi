@@ -3,6 +3,9 @@
 @media only screen and (max-width : 1610px) {
   .all_items_first {
     width: 273px;
+  }
+  .red_col {
+    width: 135px;
     height: 101.25px;
   }
 
@@ -14,26 +17,19 @@
     line-height: 101.25px;
     font-size: 14px;
   }
-
-  .all_items_first p {
-    font-size: 14px;
-    line-height: 101.25px;
-  }
 }
 @media only screen and (max-width : 1450px) {
   .all_items_first {
     width: 250.5px;
+  }
+  .red_col {
+    width: 121.5px;
     height: 91.125px;
   }
 
   .all_items_first span {
     line-height: 91.125px;
     font-size: 16px;
-  }
-
-  .all_items_first p {
-    font-size: 13px;
-    line-height: 91.125px;
   }
 }
 @media only screen and (max-width : 1360px) {
@@ -53,17 +49,15 @@
 @media only screen and (max-width : 1300px) {
   .all_items_first {
     width: 200px;
+  }
+  .red_col {
+    width: 100px;
     height: 75px;
   }
 
   .all_items_first span {
     line-height: 75px;
     font-size: 16px;
-  }
-
-  .all_items_first p {
-    font-size: 13px;
-    line-height: 75px;
   }
 
   .function .transfer img {
