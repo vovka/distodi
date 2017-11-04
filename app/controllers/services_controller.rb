@@ -1,6 +1,8 @@
 class ServicesController < ApplicationController
   respond_to :html, :json, :js
 
+  layout "item"
+
   before_action :set_service, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :set_item, only: [:new]
   before_action :authenticate_user!, except: [:company_service, :create,
@@ -57,20 +59,19 @@ class ServicesController < ApplicationController
     @service = item.services.build(service_params.merge(approver: approver)).decorate
     service_kinds = params[:service_kind]
     service_fields = params[:service_fields]
-    action_kinds = params[:action_kind].keys
+    action_kinds = params[:action_kind]
 
     result = nil
     @service.transaction do
-      @service.action_kinds = ActionKind.find(action_kinds)
+      @service.action_kinds = ActionKind.where(id: action_kinds)
       result = if @service.save
-        service_kinds.keys.map do |service_kind_id|
-          service_kind = ServiceKind.find(service_kind_id)
-          service_field = service_kind.service_fields.build(
-            service: @service,
-            text: service_fields ? service_fields[service_kind_id] : ''
-          )
-          service_field.save
-        end.inject(:&)
+        service_kind_id = service_kinds
+        service_kind = ServiceKind.find(service_kind_id)
+        service_field = service_kind.service_fields.build(
+          service: @service,
+          text: service_fields ? service_fields[service_kind_id] : ''
+        )
+        service_field.save
       end
     end
 
@@ -80,10 +81,10 @@ class ServicesController < ApplicationController
       end
 
       if user_signed_in?
-        redirect_to user_path(current_user),
+        redirect_to item_path(item),
                     notice: 'Service was successfully created.'
       elsif company_signed_in?
-        redirect_to company_path(current_company),
+        redirect_to item_path(item),
                     notice: 'Service was successfully created.'
       else
         flash[:notice] = t(".unauthorized_success_notice")

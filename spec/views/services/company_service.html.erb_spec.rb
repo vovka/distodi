@@ -4,6 +4,7 @@ RSpec.describe "services/company_service", type: :view do
   before do
     service = create :service
     assign :service, service.decorate
+    assign :item, service.item
     assign :action_kinds, create_list(:action_kind, 2)
     assign :service_kinds, create_list(:service_kind, 5)
     controller.params[:token] = "some_value"

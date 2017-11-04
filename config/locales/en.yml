@@ -144,6 +144,25 @@ en:
       notice: "Service was successfully updated."
     destroy:
       notice: "Service was successfully destroyed."
+    new:
+      new_service: "New service log entry"
+      for_your: "For your:"
+    form:
+      service_kind: "Service kind"
+      service_company: "Service company name"
+      new_company: "New service company name"
+      send_log: "Send this service log entry to the Service company for approval"
+      amount: "- only amount number"
+      service_photo: "Service photos (optional, min 800x600 pixels)"
+      comment: "Comments (optional, 2000 symbols max)"
+      remind_me: "Remind me to update this service in"
+      custom_date: "Custom date"
+      discard: "Discard"
+      title: "What is adding the New service log entry for your item?"
+      text: "It means that you have a possibility to write down all details of
+            your service control (like breaks check, oil level check, etc.),
+            change of the spare parts (like steering wheel change, breaks change,
+            etc.) or tuning (adding a spoiler, ultra-new lights, sound system, etc.)."
   shared:
     registration_layout:
       distodi: Distodi

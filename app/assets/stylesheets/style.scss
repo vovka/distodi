@@ -1301,6 +1301,7 @@ footer hr {
     border: 2px solid #8f8f8f;
     border-radius: 3px;
     margin: auto 0;
+    cursor: pointer;
 
     img {
       width: 14px;
@@ -1810,12 +1811,14 @@ footer hr {
   float: left;
   margin-bottom: 1px;
   font-family: 'MuseoSansCyrl_1';
+    background: asset-url("chevron-down") no-repeat 0 0;
+  background-position: calc(100% - 15px) 50%;
+  background-size: 23px;
+  -webkit-appearance: none;
+   -moz-appearance:    none;
+   appearance:         none;
 }
 
-.form .categories select,
-option:checked {
-  color: #149b4c;
-}
 input {
   font-family: 'MuseoSansCyrl_1';
 }
@@ -2084,11 +2087,12 @@ option {
   background-color: #fff;
   margin-bottom: 15px;
   font-family: 'MuseoSansCyrl_1';
-}
-
-.custom_attributes .attribute select,
-option:checked {
-  color: #149b4c;
+   background: asset-url("chevron-down") no-repeat 0 0;
+  background-position: calc(100% - 15px) 50%;
+  background-size: 23px;
+  -webkit-appearance: none;
+   -moz-appearance:    none;
+   appearance:         none;
 }
 
 .transfer_panel {
@@ -3259,11 +3263,423 @@ option:checked {
   padding-left: 25px;
 }
 
-/*.menu_mobile .line{
+.left_form_service_create{
+  width: 620px;
+  display: inline-block;
+}
+.service_create_main_form{
   width: 100%;
-  height: 2px;
-  background-color: #e9e9e9;
+  text-align: center;
+
+}
+.right_form_service_create{
+  width: 300px;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+  margin-left: 14px;
+}
+.service_create_identity{
+  width: 928px;
+  text-align: left;
+  margin: 30px auto;
+  display: inline-block;
+}
+.service_create_identity h1{
+  display: inline;
+  font-size:16px;
+  color:#1f1f1f;
+  letter-spacing:0;
+  line-height:16px;
+}
+.service_create_identity p{
+  display: inline;
+  float: right;
+  width: 293px;
+}
+.simple_form.new_service{
+  text-align: left;
+}
+.left_form_service_create .form_service_create strong input{
+  display: none;
+}
+.left_form_service_create .form_service_create strong input:checked + label{
+  color: white;
+  background: black;
+}
+.left_form_service_create .form_service_create strong label{
+  width: 204px;
+  display: inline-block;
+  text-align: center;
+  padding: 18px 0;
+  border: 1px solid #d3d3d3;
+  cursor: pointer;
+  font-family: 'MuseoSansCyrl_2';
+  font-size:14px;
+  color: #1f1f1f;
+  letter-spacing:0;
+  text-transform: uppercase;
+  -webkit-transition: all 250ms cubic-bezier(0.000, 0.000, 0.580, 1.000); 
+   -moz-transition: all 250ms cubic-bezier(0.000, 0.000, 0.580, 1.000); 
+     -o-transition: all 250ms cubic-bezier(0.000, 0.000, 0.580, 1.000); 
+        transition: all 250ms cubic-bezier(0.000, 0.000, 0.580, 1.000); /* ease-out */
+
+-webkit-transition-timing-function: cubic-bezier(0.000, 0.000, 0.580, 1.000); 
+   -moz-transition-timing-function: cubic-bezier(0.000, 0.000, 0.580, 1.000); 
+     -o-transition-timing-function: cubic-bezier(0.000, 0.000, 0.580, 1.000); 
+        transition-timing-function: cubic-bezier(0.000, 0.000, 0.580, 1.000); /* ease-out */
+}
+.left_form_service_create .form_service_create strong label:nth-child(2){
+  border-radius:  4px 0 0 4px;
+}
+.left_form_service_create .form_service_create strong label:nth-child(4){
+  margin-left: -5px;
+  border-left: 0;
+}
+.left_form_service_create .form_service_create strong label:nth-child(6){
+  margin-left: -5px;
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
+}
+.left_form_service_create .form_service_create strong label:hover{
+  color:#149b4c;
+}
+.left_form_service_create .form_service_create .service_kind_select{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.service_create_main_form .field_name{
+  font-family: 'MuseoSansCyrl_1';
+  font-size:13px;
+  color:#8f8f8f;
+  letter-spacing:0;
+  line-height:13px;
+  text-align:left;
+  margin-bottom: 10px;
+}
+
+.left_form_service_create .form_service_create .service_kind_select #service_kind{
+  width: 300px;
+  display: block;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  padding-left: 15px;
+  background-color: #fff;
+  margin-bottom: 15px;
+  font-family: 'MuseoSansCyrl_1';
+  outline: none;
+  background: asset-url("chevron-down") no-repeat 0 0;
+  background-position: calc(100% - 15px) 50%;
+  background-size: 23px;
+  -webkit-appearance: none;
+   -moz-appearance:    none;
+   appearance:         none;
+}
+
+.left_form_service_create .form_service_create .service_kind_select input:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+  outline: none;
+}
+.left_form_service_create .form_service_create .service_kind_select #service_kind:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+  outline: none;
+}
+
+ input:-webkit-autofill{
+  -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
+}
+
+.left_form_service_create .form_service_create .service_kind_select input{
+  width: 283px;
+  display: block;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 46px;
+  padding-left: 15px;
+  background-color: #fff;
+  margin-bottom: 15px;
+  font-family: 'MuseoSansCyrl_1';
+  outline: none;
+}
+.left_form_service_create .form_service_create .company_select select{
+  width: 300px;
+  display: block;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  padding-left: 15px;
+  background-color: #fff;
+  margin-bottom: 15px;
+  font-family: 'MuseoSansCyrl_1';
+  outline: none;
+  background: asset-url("chevron-down") no-repeat 0 0;
+  background-position: calc(100% - 15px) 50%;
+  background-size: 23px;
+  -webkit-appearance: none;
+   -moz-appearance:    none;
+   appearance:         none;
+}
+.left_form_service_create .form_service_create .company_select select:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+  outline: none;
+}
+.company_select{
+  margin-bottom: 20px;
+}
+.left_form_service_create .form_service_create .textarea textarea{
+  width: 595px;
+  display: block;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 46px;
+  padding-left: 15px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  font-family: 'MuseoSansCyrl_1';
+  outline: none;
+  max-width: 595px;
+  min-width: 595px;
+  min-height: 50px;
+  padding-top: 10px;
+  height: 50px;
+}
+
+.left_form_service_create .form_service_create .textarea textarea:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+  outline: none;
+}
+.left_form_service_create .form_service_create label{
   position: relative;
-  left: -20px;
+}
+.left_form_service_create .form_service_create .select input:checked ~ .company_email{
+  display: block;
+}
+.left_form_service_create .form_service_create .select input:checked ~ .company_email input{
+  display: block;
+}
+.left_form_service_create .form_service_create .select .company_email{
+  display: none;
   margin-top: 20px;
-}*/
+}
+.left_form_service_create .form_service_create .select .company_email input{
+  width: 600px;
+  display: block;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 46px;
+  padding-left: 15px;
+  background-color: #fff;
+  font-family: 'MuseoSansCyrl_1';
+  outline: none;
+}
+.left_form_service_create .form_service_create .select .company_email input:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+  outline: none;
+}
+.left_form_service_create .form_service_create .select span{
+  font-family: 'MuseoSansCyrl_1';
+  font-size:13px;
+  color:#8f8f8f;
+  letter-spacing:0;
+  line-height:13px;
+  text-align:left;
+  margin-left: 10px;
+}
+.left_form_service_create .form_service_create .price{
+  margin-top: 20px;
+}
+.left_form_service_create .form_service_create .price input{
+  width: 597px;
+  display: block;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 46px;
+  padding-left: 15px;
+  background-color: #fff;
+  font-family: 'MuseoSansCyrl_1';
+  outline: none;
+}
+.left_form_service_create .form_service_create .price input:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+  outline: none;
+}
+.left_form_service_create .form_service_create .line{
+  width: 615px;
+  height: 1px;
+  display: block;
+  background:#d3d3d3;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+}
+.left_form_service_create .form_service_create .service_photos{
+  margin-bottom: -26px;
+}
+.left_form_service_create .form_service_create .service_photos .photo_input{
+  width: 132px;
+  height: 132px;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.left_form_service_create .form_service_create .service_photos .photo_input label{
+  display: none;
+}
+.left_form_service_create .form_service_create .service_photos .photo_input svg{
+  fill: #149b4c;
+  position: relative;
+  top: -77px;
+  left: 55px
+}
+.left_form_service_create .form_service_create .service_photos .photo_input input{
+  height: 132px;
+  width: 132px;
+  opacity: 0;
+}
+.left_form_service_create .form_service_create .textarea.margin textarea{
+  margin-bottom: 0;
+}
+.item_info_service{
+  text-align: left;
+}
+.item_info_service {
+  font-family: 'MuseoSansCyrl_1';
+  font-size:13px;
+  color:#1f1f1f;
+  letter-spacing:0;
+  line-height:13px;
+  text-align:left;
+}
+.item_info_service span{
+  font-family: 'MuseoSansCyrl_2';
+}
+.item_info_service span:nth-child(1){
+  display: none;
+}
+.item_info_service span:nth-child(5){
+  display: none;
+}
+.item_info_service span:nth-child(6){
+  display: none;
+}
+.item_info_service span:nth-child(7){
+  display: none;
+}
+.item_info_service span:nth-child(8){
+  display: none;
+}
+.item_info_service span:nth-child(9){
+  display: none;
+}
+.right_form_service_create img{
+  width: 100%;
+  border-radius: 4px;
+  border:1px solid #d3d3d3;
+}
+.service_form_info{
+  margin-top: 18px;
+  background:#f8f8f8;
+  border-radius:4px;
+  padding: 30px;
+  text-align: left;
+  padding-top: 10px;
+}
+.service_form_info p{
+  font-family: 'MuseoSansCyrl_2';
+  font-size:14px;
+  color:#8f8f8f;
+  letter-spacing:0;
+  line-height:24px;
+  text-align:left;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+.service_form_info span{
+  font-family: 'MuseoSansCyrl_1';
+  font-size:14px;
+  color:#8f8f8f;
+  letter-spacing:0;
+  line-height:24px;
+  text-align:left;
+  margin-bottom: 20px;
+}
+.reminders{
+  margin-top: 20px;
+}
+.reminders .input.optional.service_reminder_custom label{
+  display: none;
+}
+.reminders .input.optional.service_reminder_custom input{
+  width: 300px;
+  display: block;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-size: 14px;
+  padding-top: 13px;
+  padding-bottom: 14px;
+  padding-left: 15px;
+  background-color: #fff;
+  font-family: 'MuseoSansCyrl_1';
+  outline: none;
+}
+
+.reminders .input.optional.service_reminder_custom input:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+  outline: none;
+}
+.form-actions input{
+  background:#149b4c;
+  border-radius:4px;
+  width:170px;
+  height:42px;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0px;
+  border: 0;
+}
+.form-actions a{
+  font-family: 'MuseoSansCyrl_2';
+  font-size:14px;
+  color:#8f8f8f;
+  letter-spacing:0;
+  line-height:14px;
+  text-align:center;
+  padding: 14px 60px;
+  background:#f8f8f8;
+  border-radius:4px;
+  margin-left: 20px;
+}
+.select.reminder{
+  display: inline-block;
+  width: 190px;
+  height: 50px;
+  vertical-align: center;
+}
+.select.reminder label{
+  font-family: 'MuseoSansCyrl_1';
+  font-size:13px;
+  color:#8f8f8f;
+  letter-spacing:0;
+  line-height:13px;
+  text-align:left;
+}
+.form-actions{
+  height: 80px;
+}
