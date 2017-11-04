@@ -22,6 +22,7 @@
       <%= f.collection_select :category_id,
                               Category.all,
                               :id, :name,
+                              {},
                               { class: "category_select",
                                 "ng-model" => "_category",
                                 "ng-change" => "controller.categorySelectChanged()",

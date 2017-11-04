@@ -4,6 +4,7 @@
       <%= simple_form_for(@service) do |f| %>
         <%= f.error_notification %>
         <%= render "shared/form_errors", object: @service -%>
+        <%= f.hidden_field :item_id %>
         <%= hidden_field_tag :token, params[:token] %>
         <strong>
           <% @action_kinds.each do |action_kind| %>
