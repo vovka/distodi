@@ -3582,6 +3582,12 @@ input:-webkit-autofill{
   top: -77px;
   left: 55px
 }
+.service_photos img{
+  height: 133px;
+  border-radius: 4px;
+  float: left;
+  margin-right: 5px;
+}
 .left_form_service_create .form_service_create .service_photos .photo_input input{
   height: 132px;
   width: 132px;
@@ -3716,7 +3722,6 @@ input:-webkit-autofill{
 .select.reminder label{
   font-family: 'MuseoSansCyrl_1';
   font-size:13px;
-  color:#8f8f8f;
   letter-spacing:0;
   line-height:13px;
   text-align:left;
