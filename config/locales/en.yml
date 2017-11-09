@@ -149,13 +149,13 @@ en:
       for_your: "For your:"
     form:
       service_kind: "Service kind"
-      service_company: "Service company name"
+      service_company: "(Optional) Service company name"
       new_company: "New service company name"
       send_log: "Send this service log entry to the Service company for approval"
       amount: "- only amount number"
       service_photo: "Service photos (optional, min 800x600 pixels)"
       comment: "Comments (optional, 2000 symbols max)"
-      remind_me: "Remind me to update this service in"
+      remind_me: "(Optional) Remind me to update this service in"
       custom_date: "Custom date"
       discard: "Discard"
       title: "What is adding the New service log entry for your item?"
@@ -163,6 +163,12 @@ en:
             your service control (like breaks check, oil level check, etc.),
             change of the spare parts (like steering wheel change, breaks change,
             etc.) or tuning (adding a spoiler, ultra-new lights, sound system, etc.)."
+      service_kind_comment: "Service kind comments"
+      select_company: "Select company"
+      new_company_name: "New company name"
+      new_company_email: "New company email"
+      price: "For example, 120.00"
+      comments: "Put your comments here"
   shared:
     registration_layout:
       distodi: Distodi

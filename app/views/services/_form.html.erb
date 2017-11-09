@@ -17,20 +17,20 @@
             <%= t(".service_kind") %>
           </p>
           <%= select_tag "service_kind", options_from_collection_for_select(@service_kinds, "id", "title") %>
-          <%= text_field_tag("text") %>
+          <%= text_field "text", "service_kind_coment", placeholder: t(".service_kind_comment") %>
         </div>
         <% if user_signed_in? %>
           <p class="field_name">
             <%= t(".service_company") %>
           </p>
           <div class="company_select">
-            <%= f.collection_select :company_id, Company.all, :id, :name, prompt: true%>
+            <%= f.collection_select :company_id, Company.all, :id, :name, prompt: t(".select_company") %>
           </div>
           <p class="field_name">
             <%= t(".new_company") %>
           </p>
           <div class="textarea">
-            <%= text_area_tag("text") %>
+            <%= text_area "text", "company_name", placeholder: t(".new_company_name") %>
           </div>
           <div class="select">
             <label>
@@ -42,7 +42,7 @@
                 <%= t(".send_log") %>
               </span>
               <div class="company_email">
-                <%= text_field_tag :new_company  %>
+                <%= text_field_tag :new_company, "new_company", value: "", placeholder: t(".new_company_email") %>
               </div>
             </label>
           </div>
@@ -51,7 +51,7 @@
           <p class="field_name">
             <%= f.label 'Price' %> <%= t(".amount") %>
           </p>
-          <%= f.text_field :price %>
+          <%= f.text_field :price, placeholder: t(".price") %>
         </div>
         <div class="line"></div>
         <div class="service_photos">
@@ -68,7 +68,7 @@
           <%= t(".comment") %>
         </p>
         <div class="textarea margin">
-          <%= text_area_tag("text") %>
+          <%= text_area "text", "comet", placeholder: t(".comments") %>
         </div>
         <div class="line"></div>
         <p class="field_name">

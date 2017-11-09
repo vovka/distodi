@@ -1353,7 +1353,7 @@ footer hr {
 .select label{
   height: 7px;
   cursor: pointer;
-  position: absolute;
+  position: relative;
 }
 
 .add_service {
@@ -1793,7 +1793,6 @@ footer hr {
 .form .categories p {
   font-family: 'MuseoSansCyrl_1';
   font-size: 16px;
-  color: #8f8f8f;
   letter-spacing: 0;
   line-height: 17px;
   margin-bottom: 10px;
@@ -1845,7 +1844,6 @@ option {
 .custom_attributes label {
   font-family: 'MuseoSansCyrl_1';
   font-size: 16px;
-  color: #8f8f8f;
   letter-spacing: 0;
   line-height: 17px;
 }
@@ -1897,7 +1895,6 @@ option {
 .field p {
   font-family: 'MuseoSansCyrl_1';
   font-size: 16px;
-  color: #8f8f8f;
   letter-spacing: 0;
   line-height: 17px;
   margin-top: -6px;
@@ -2672,10 +2669,6 @@ option {
   float: left;
   margin-top: 0;
 }
-.form .field_title label{
-  color: #8f8f8f;
-}
-
 .form .field_title .field_with_errors label{
   color: red;
 }
@@ -3351,7 +3344,6 @@ option {
 .service_create_main_form .field_name{
   font-family: 'MuseoSansCyrl_1';
   font-size:13px;
-  color:#8f8f8f;
   letter-spacing:0;
   line-height:13px;
   text-align:left;
@@ -3490,7 +3482,6 @@ option {
 .left_form_service_create .form_service_create .select span{
   font-family: 'MuseoSansCyrl_1';
   font-size:13px;
-  color:#8f8f8f;
   letter-spacing:0;
   line-height:13px;
   text-align:left;
@@ -3620,6 +3611,11 @@ option {
 }
 .reminders{
   margin-top: 20px;
+}
+.reminders span{
+  display: inline-block;
+  width: 200px;
+  height: 50px;
 }
 .reminders .input.optional.service_reminder_custom label{
   display: none;
