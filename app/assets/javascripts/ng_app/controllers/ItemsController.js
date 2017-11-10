@@ -4,10 +4,11 @@ var ItemsController = function($scope, $http, $q, ipCookie) {
 
   $scope.currentStep = ipCookie('DistodiApp') || 0;
   $scope.postStepCallback = function() {
-
     ipCookie('DistodiApp', $scope.currentStep, { expires: 3000 });
   };
 };
+
+
 
 ItemsController.prototype.clickedAllCheckbox = function() {
   this.checkboxes.changedAll();

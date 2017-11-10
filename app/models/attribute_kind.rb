@@ -1,23 +1,19 @@
 class AttributeKind < ActiveRecord::Base
-  BRAND = "Brand".freeze
-  MODEL = "Model".freeze
-  YEAR = "Year".freeze
+  delegate :brand?, :model?, :year?, :fuel_type?,
+           :motor?, :weight?, :transmission?, :gender?,
+           :wheel_diameter?, :country?, :manufacturer?,
+           to: :policy
 
   has_and_belongs_to_many :categories
   has_many :characteristics
   has_many :items, through: :characteristics
 
-  def brand?
-    title == BRAND
+  private
+
+  def policy
+    @policy ||= AttributeKindPolicy.new(self)
   end
 
-  def model?
-    title == MODEL
-  end
-
-  def year?
-    title == YEAR
-  end
 end
 
 # == Schema Information
