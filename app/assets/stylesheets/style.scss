@@ -1502,10 +1502,15 @@ footer hr {
   position: inherit;
   font-family: 'MuseoSansCyrl_1';
   text-align: left;
-  border: 1px solid rgba(211,211,211,0.50);
+  border-bottom: 1px solid rgba(211,211,211,0.50);
   width: calc(100% - 56px);
   border-right: none;
   padding: 20px 40px 5px 15px;
+  border-left: 0px;
+  border-right: 0px;
+}
+.service_mobile:first-child{
+  border-top: 1px solid rgba(211,211,211,0.50);
 }
 
 .service_mobile p {
@@ -1519,6 +1524,20 @@ footer hr {
 .service_mobile .select {
   float: left;
   width: 25px;
+}
+
+.item_list_panel .inputs_trans #user_identifier{
+  width: 150px;
+  position: relative;
+  left: 1px;
+  top: 6px;
+  float: left;
+}
+.item_list_panel .inputs_trans input:nth-child(2){
+  width: 81px;
+  float: right;
+  left: 172px;
+
 }
 
 .tabs .tab:nth-child(2) {
@@ -1692,6 +1711,19 @@ footer hr {
   float: left;
 }
 
+.function .transfer .transfer_panel span {
+  font-family: 'MuseoSansCyrl_1';
+  font-size: 13px;
+  color: #8f8f8f;
+  letter-spacing: 0;
+  line-height: 13px;
+  text-align: left;
+  float: left;
+  width: 73%;
+  margin-left: 0;
+  margin-top: 30px;
+}
+
 .function .transfer span {
   font-family: 'MuseoSansCyrl_1';
   font-size: 13px;
@@ -1700,11 +1732,10 @@ footer hr {
   line-height: 13px;
   text-align: left;
   float: left;
-  width: 100%;
+  width: 30%;
   margin-left: 0;
-  margin-top: 30px;
+  margin-top: 33px;
 }
-
 .function .transfer input {
   float: left;
   background: #ffffff;
@@ -2096,7 +2127,6 @@ option {
 .transfer_panel {
   text-align: left;
   position: relative;
-  float: right;
 }
 
 .transfer_panel .view {
@@ -2167,8 +2197,9 @@ option {
   position: absolute;
   top: 2px;
   left: 3px;
-  width: 150px;
-  height: 112.5px;
+  width: 101px;
+  height: 76.5px;
+  border-radius: 4px;
 }
 
 .transfer_panel .receive {

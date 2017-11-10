@@ -1,4 +1,3 @@
-<%= render @items.present? ? "items" : "empty_items" %>
 <div class="item_info">
   <span>Item details - <%= @item.title %>, </span>
     <% @item.characteristics.each do |characteristic| %>
