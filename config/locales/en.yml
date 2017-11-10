@@ -111,6 +111,14 @@ en:
       fill_book: "to fill in your Service book"
       pdf: "Save reports as pdf"
       services: services
+      welcome_distodi: "Welcome to Distodi! We created simple user tour for you :-)"
+      start: "Start! Add new service here"
+      property: "Add here your item (your property information)"
+      find_here: "Find here all your items"
+      after_make: "After you make service you can see changes up here"
+      note: "Note: each your item has unique ID"
+      money_total: "Money: totally amount your spent on each service"
+      reporting_save: "Reporting: you can save & print information"
     index:
       my_items: "My Items"
       view_edit: "View, Edit"
