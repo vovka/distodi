@@ -159,73 +159,69 @@
   <!-- Angular-tour -->
   <tour step="currentStep" post-step="postStepCallback()">
     <virtual-step
-      tourtip=<%= t(".welcome_distodi") %>
-      tourtip-step="0"
-      tourtip-next-label="Next"
+      tourtip="<%= t(".tour.welcome") %>"
+      tourtip-next-label="<%= t(".tour.control.next") %>"
       tourtip-placement="bottom"
       tourtip-container-element="body"
       use-source-scope="false"
       tourtip-element=".item_logo img">
     </virtual-step>
+    <%- if controller.action_name == "show" -%>
+      <virtual-step
+        tourtip="<%= t(".tour.start_here") %>"
+        tourtip-next-label="<%= t(".tour.control.next") %>"
+        tourtip-placement="bottom"
+        tourtip-container-element="body"
+        use-source-scope="false"
+        tourtip-element=".add_service">
+      </virtual-step>
+    <%- end -%>
     <virtual-step
-      tourtip=<%= t(".start") %>
-      tourtip-step="1"
-      tourtip-next-label="Next"
-      tourtip-placement="bottom"
-      tourtip-container-element="body"
-      use-source-scope="false"
-      tourtip-element=".add_service">
-    </virtual-step>
-    <virtual-step
-      tourtip=<%= t(".property") %>
-      tourtip-step="2"
-      tourtip-next-label="Next"
+      tourtip="<%= t(".tour.add_item") %>"
+      tourtip-next-label="<%= t(".tour.control.next") %>"
       tourtip-placement="bottom"
       tourtip-container-element="body"
       use-source-scope="false"
       tourtip-element=".owl-item:last-child">
     </virtual-step>
     <virtual-step
-      tourtip=<%= t(".find_here") %>
-      tourtip-step="3"
-      tourtip-next-label="Next"
+      tourtip="<%= t(".tour.find_item") %>"
+      tourtip-next-label="<%= t(".tour.control.next") %>"
       tourtip-placement="bottom"
       tourtip-container-element="body"
       use-source-scope="false"
       tourtip-element=".all_items">
     </virtual-step>
+    <%- if @items.present? && @services.blank? -%>
+      <virtual-step
+        tourtip="<%= t(".tour.services") %>"
+        tourtip-next-label="<%= t(".tour.control.next") %>"
+        tourtip-placement="bottom"
+        tourtip-container-element="body"
+        use-source-scope="false"
+        tourtip-element=".first_service">
+      </virtual-step>
+    <%- end -%>
     <virtual-step
-      tourtip=<%= t(".after_make") %>
-      tourtip-step="4"
-      tourtip-next-label="Next"
-      tourtip-placement="bottom"
-      tourtip-container-element="body"
-      use-source-scope="false"
-      tourtip-element=".first_service">
-    </virtual-step>
-    <virtual-step
-      tourtip=<%= t(".note") %>
-      tourtip-step="5"
-      tourtip-next-label="Next"
-      tourtip-placement="bottom"
+      tourtip="<%= t(".tour.unique_id") %>"
+      tourtip-next-label="<%= t(".tour.control.next") %>"
+      tourtip-placement="top"
       tourtip-container-element="body"
       use-source-scope="false"
       tourtip-element=".list_items th:nth-child(6)">
     </virtual-step>
     <virtual-step
-      tourtip=<%= t(".money_total") %>
-      tourtip-step="6"
-      tourtip-next-label="Next"
-      tourtip-placement="bottom"
+      tourtip="<%= t(".tour.money_total") %>"
+      tourtip-next-label="<%= t(".tour.control.next") %>"
+      tourtip-placement="top"
       tourtip-container-element="body"
       use-source-scope="false"
       tourtip-element=".list_items th:nth-child(8)">
     </virtual-step>
     <virtual-step
-      tourtip=<%= t(".reporting_save") %>
-      tourtip-step="7"
-      tourtip-next-label="Close"
-      tourtip-placement="bottom"
+      tourtip="<%= t(".tour.reporting_save") %>"
+      tourtip-next-label="<%= t(".tour.control.close") %>"
+      tourtip-placement="top"
       tourtip-container-element="body"
       use-source-scope="false"
       tourtip-element=".xls_button a">
