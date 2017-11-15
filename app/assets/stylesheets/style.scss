@@ -1840,7 +1840,7 @@ footer hr {
   float: left;
   margin-bottom: 1px;
   font-family: 'MuseoSansCyrl_1';
-    background: asset-url("chevron-down") no-repeat 0 0;
+  background: asset-url("chevron-down") no-repeat 0 0;
   background-position: calc(100% - 15px) 50%;
   background-size: 23px;
   -webkit-appearance: none;
@@ -3308,7 +3308,9 @@ width: 205px;
 .service_create_main_form{
   width: 100%;
   text-align: center;
-
+}
+.left_form_service_create.margin{
+  margin-top: -20px;
 }
 .right_form_service_create{
   width: 300px;
@@ -3318,7 +3320,7 @@ width: 205px;
   margin-left: 14px;
 }
 .service_create_identity{
-  width: 928px;
+  width: 937px;
   text-align: left;
   margin: 30px auto;
   display: inline-block;
@@ -3382,8 +3384,8 @@ width: 205px;
 .left_form_service_create .form_service_create strong label:hover{
   color:#149b4c;
 }
-.left_form_service_create .form_service_create .service_kind_select{
-  margin-top: 30px;
+.left_form_service_create .form_service_create .half_form_field{
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 .service_create_main_form .field_name{
@@ -3395,7 +3397,7 @@ width: 205px;
   margin-bottom: 10px;
 }
 
-.left_form_service_create .form_service_create .service_kind_select #service_kind{
+.left_form_service_create .form_service_create .half_form_field #service_kind{
   width: 300px;
   display: block;
   border: 1px solid #d3d3d3;
@@ -3415,12 +3417,12 @@ width: 205px;
   appearance:         none;
 }
 
-.left_form_service_create .form_service_create .service_kind_select input:focus{
+.left_form_service_create .form_service_create .half_form_field input:focus{
   border-color: #149b4c;
   box-shadow: 0 0 4px 0 #149b4c;
   outline: none;
 }
-.left_form_service_create .form_service_create .service_kind_select #service_kind:focus{
+.left_form_service_create .form_service_create .half_form_field #service_kind:focus{
   border-color: #149b4c;
   box-shadow: 0 0 4px 0 #149b4c;
   outline: none;
@@ -3430,7 +3432,7 @@ input:-webkit-autofill{
   -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
 }
 
-.left_form_service_create .form_service_create .service_kind_select input{
+.left_form_service_create .form_service_create .half_form_field input{
   width: 283px;
   display: block;
   border: 1px solid #d3d3d3;
@@ -3631,7 +3633,6 @@ input:-webkit-autofill{
 .right_form_service_create img{
   width: 100%;
   border-radius: 4px;
-  border:1px solid #d3d3d3;
 }
 .service_form_info{
   margin-top: 18px;
@@ -3665,7 +3666,6 @@ input:-webkit-autofill{
 }
 .reminders span{
   display: inline-block;
-  width: 200px;
   height: 50px;
 }
 .reminders .input.optional.service_reminder_custom label{
@@ -3694,12 +3694,16 @@ input:-webkit-autofill{
   background:#149b4c;
   border-radius:4px;
   width:170px;
-  height:42px;
+  height:45px;
   outline: none;
   color: white;
   cursor: pointer;
   box-shadow: 0px;
   border: 0;
+  z-index: 300;
+}
+.form-actions{
+  margin-bottom: 20px;
 }
 .form-actions a{
   font-family: 'MuseoSansCyrl_2';
@@ -3726,6 +3730,183 @@ input:-webkit-autofill{
   line-height:13px;
   text-align:left;
 }
-.form-actions{
-  height: 80px;
+.form-actions.user{
+  text-align: left;
+  position: absolute;
+}
+.left_form_service_create .form_service_create .half_form_field.half{
+  display: inline-block;
+  width: calc(50% - 10px);
+  float: left;
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.left_form_service_create .form_service_create .half_form_field.half.first input{
+  width: 268px;
+}
+.left_form_service_create .form_service_create .half_form_field.first input{
+  width: 268px;
+  margin-bottom: 0;
+}
+.left_form_service_create .form_service_create .half_form_field.half input{
+  width: 285px;
+}
+.left_form_service_create .form_service_create .half_form_field select{
+  width: 285px;
+  display: block;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  padding-left: 15px;
+  background-color: #fff;
+  margin-bottom: 15px;
+  font-family: 'MuseoSansCyrl_1';
+  outline: none;
+  background: asset-url("chevron-down") no-repeat 0 0;
+  background-position: calc(100% - 15px) 50%;
+  background-size: 23px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.left_form_service_create .form_service_create .half_form_field.margin{
+  margin-bottom: 0;
+}
+.destroy_user{
+  text-align: left;
+  position: relative;
+  top: 1046px;
+}
+.destroy_user h1{
+  font-family: 'MuseoSansCyrl_2';
+  font-size:16px;
+  color:#1f1f1f;
+  letter-spacing:0;
+  line-height:16px;
+  text-align:left;
+  margin-bottom: 30px;
+}
+.destroy_user p{
+  font-family: 'MuseoSansCyrl_1';
+  font-size:13px;
+  color:#1f1f1f;
+  letter-spacing:0;
+  line-height:13px;
+  text-align:left;
+  margin-bottom: 10px;
+}
+.destroy_user input{
+  width: 103px;
+  display: block;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 46px;
+  padding-left: 15px;
+  background-color: #fff;
+  font-family: 'MuseoSansCyrl_1';
+  outline: none;
+  display: inline-block;
+  padding-right: 165px;
+}
+.destroy_user .delete_button{
+  display: inline-block;
+}
+.destroy_user .delete_button input{
+  background: #f8f8f8;
+  border-radius: 4px;
+  width: 141px;
+  height: 42px;
+  border: 0;
+  position: relative;
+  right: 149px;
+  cursor: pointer;
+  font-family: 'MuseoSansCyrl_1';
+  font-size: 14px;
+  color: #8f8f8f;
+  letter-spacing: 0;
+  line-height: 14px;
+  padding-right: 0;
+  top: -1px;
+}
+.notification_confirmation{
+  text-align: left;
+}
+.notification_confirmation h1{
+  font-family: 'MuseoSansCyrl_2';
+  font-size:16px;
+  color:#1f1f1f;
+  letter-spacing:0;
+  line-height:16px;
+  text-align:left;
+  margin-bottom: 30px;
+}
+.left_form_service_create .form_service_create .notification_confirmation .select span {
+  margin-left: 5px;
+}
+.change_password{
+  height: 125px;
+  text-align: left;
+}
+.change_password h1{
+  font-family: 'MuseoSansCyrl_2';
+  font-size:16px;
+  color:#1f1f1f;
+  letter-spacing:0;
+  line-height:16px;
+  text-align:left;
+  margin-bottom: 10px;
+}
+.service_create_identity .grey_text{
+  font-family: 'MuseoSansCyrl_2';
+  font-size:13px;
+  color:#8f8f8f;
+  letter-spacing:0;
+  line-height:13px;
+  text-align:left;
+  margin-left: 20px;
+}
+.service_create_identity .green{
+  font-family: 'MuseoSansCyrl_2';
+  font-size:13px;
+  letter-spacing:0;
+  line-height:13px;
+  text-align:left;
+  margin-left: 20px;
+  color:#149b4c;
+}
+.photo_field{
+  float: right;
+  position: relative;
+  right: -319px;
+  top: 24px;
+  margin-bottom: -300px;
+}
+.photo_field input{
+  opacity: 0;
+  width: 300px;
+  height: 300px;
+}
+.blank_image{
+  width: 298px;
+  height: 150px;
+  border: 1px solid #d3d3d3;
+  line-height: 150px;
+  color:#149b4c;
+  font-size: 30px;
+  text-align: center;
+  position: absolute;
+  z-index: -1;
+  border-radius: 4px;
+}
+.image.without_photo_input{
+  min-height: 156px;
+}
+.user_destroy_place{
+height: 120px;
+}
+.destroy_user + .edit_user.ng-pristine.ng-valid{
+  margin-top: -118px;
 }

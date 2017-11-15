@@ -8,7 +8,7 @@ describe UsersController do
 
       get :show, id: user.to_param
 
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(302)
     end
 
     it "defines an instance variable" do
@@ -105,38 +105,38 @@ describe UsersController do
 
   describe "DELETE #destroy" do
     it "returns http success" do
-      user = FactoryGirl.create :user
+      user = FactoryGirl.create :user, password: "11111111", password_confirmation: "11111111"
       sign_in user
 
-      delete :destroy, id: user.to_param
+      delete :destroy, id: user.to_param, user: { password: "11111111" }
 
       expect(response).to redirect_to(root_path)
     end
 
     it "logs out user" do
-      user = FactoryGirl.create :user
+      user = FactoryGirl.create :user, password: "11111111", password_confirmation: "11111111"
       sign_in user
 
-      delete :destroy, id: user.to_param
+      delete :destroy, id: user.to_param, user: { password: "11111111" }
 
       expect(controller.current_user).to be_nil
     end
 
     it "defines an instance variable" do
-      user = create :user
+      user = create :user, password: "11111111", password_confirmation: "11111111"
       sign_in user
 
-      delete :destroy, id: user.to_param
+      delete :destroy, id: user.to_param, user: { password: "11111111" }
 
       expect(assigns(:user)).to be_present
     end
 
     it "should increment the count" do
-      user = create :user
+      user = create :user, password: "11111111", password_confirmation: "11111111"
       sign_in user
 
       expect {
-        delete :destroy, id: user.to_param
+        delete :destroy, id: user.to_param, user: { password: "11111111" }
       }.to change { User.count }.by(-1)
     end
   end

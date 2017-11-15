@@ -1,6 +1,22 @@
-<div class="form margin_left" >
-  <%= form_for(@user) do |f| %>
-      <% if @user.errors.any? %>
+<div class="service_create_main_form">
+  <div class="left_form_service_create margin">
+    <div class="form_service_create">
+      <div class="destroy_user">
+        <h1>
+          <%= t(".delete_my_account") %>
+        </h1>
+        <%= form_for @user, method: :delete do |f| %>
+          <p>
+            <%= t(".password") %>
+          </p>
+          <%= f.password_field :password, autocomplete: :off  %>
+          <div class="delete_button">
+            <%= f.submit t(".delete_link"), data: { confirm: t(".confirm_delete") } %>
+          </div>
+        <% end %>
+      </div>
+      <%= form_for(@user) do |f| %>
+        <% if @user.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -10,60 +26,151 @@
               <% end %>
             </ul>
           </div>
-      <% end %>
+        <% end %>
+        <div class="photo_field">
+          <%= f.hidden_field :picture_cache %>
+          <%= f.file_field :picture,
+                         class: 'inputfile',
+                         "data-file" => "true" %>
+        </div>
+        <div class="price">
+          <p class="field_name">
+            <%= f.label :email %>
+          </p>
+          <%= f.email_field :email, autofocus: true, readonly: true  %>
+        </div>
 
-      <div class="field">
-        <%= f.label :email %><br/>
-        <%= f.email_field :email, autofocus: true, readonly: true  %>
-      </div>
+        <div class="half_form_field half first">
+          <p class="field_name">
+            <%= f.label :first_name %>
+          </p>
+          <%= f.text_field :first_name  %>
+        </div>
 
-      <div class="field">
-        <%= f.label :first_name %><br/>
-        <%= f.text_field :first_name  %>
-      </div>
+        <div class="half_form_field half">
+          <p class="field_name">
+            <%= f.label :last_name %>
+          </p>
+          <%= f.text_field :last_name  %>
+        </div>
 
-      <div class="field">
-        <%= f.label :last_name %><br/>
-        <%= f.text_field :last_name  %>
-      </div>
+        <div class="half_form_field margin first">
+          <p class="field_name">
+            <%= f.label :phone %>
+          </p>
+          <%= f.text_field :phone  %>
+        </div>
 
-      <div class="field">
-        <%= f.label :phone %><br/>
-        <%= f.text_field :phone  %>
-      </div>
+        <div class="half_form_field half first">
+          <p class="field_name">
+            <%= f.label :country %>
+          </p>
+          <%= f.country_select :country %>
+        </div>
 
-      <div class="field">
-        <%= f.label :country %><br/>
-        <%= f.country_select :country %><br/>
-      </div>
+        <div class="half_form_field half city">
+          <p class="field_name">
+            <%= f.label :city %>
+          </p>
+          <%= f.text_field :city %>
+        </div>
 
-      <div class="field">
-        <%= f.label :city %><br/>
-        <%= f.text_field :city %>
-      </div>
+        <div class="price">
+          <p class="field_name">
+            <%= f.label :address %>
+          </p>
+          <%= f.text_field :address  %>
+        </div>
 
-      <div class="field">
-        <%= f.label :address %><br/>
-        <%= f.text_field :address  %>
-      </div>
+        <div class="half_form_field first">
+          <p class="field_name">
+            <%= f.label :postal_code %>
+          </p>
+          <%= f.text_field :postal_code %>
+        </div>
 
-      <div class="field">
-        <%= f.label :postal_code %><br/>
-        <%= f.text_field :postal_code %>
-      </div>
+        <p class="field_name">
+          <%= f.label 'Additional field' %>
+        </p>
+        <div class="textarea">
+          <%= f.text_area :notice %>
+        </div>
 
-      <div class="field">
-        <%= f.label 'Additional field' %><br/>
-        <%= f.text_field :notice %>
-      </div>
+        <div class="line"></div>
 
-      <div class="field">
-        <%= f.label 'Picture' %><br>
-        <%= f.hidden_field :picture_cache %>
-        <%= f.file_field :picture %>
+        <div class="change_password">
+          <h1><%= t(".change_password") %></h1>
+          <div class="half_form_field half first">
+            <p class="field_name">
+              <%= t(".original_password") %>
+            </p>
+            <%= f.password_field :password, autocomplete: :off  %>
+          </div>
+
+          <div class="half_form_field half">
+            <p class="field_name">
+              <%= t(".new_password") %>
+            </p>
+            <%= f.password_field :password_confirmation, autocomplete: :off  %>
+          </div>
+        </div>
+        <div class="line"></div>
+
+        <div class="notification_confirmation">
+          <h1><%= t(".notifications") %></h1>
+          <div class="select">
+            <label>
+              <input type="checkbox"/>
+              <i>
+                <%= image_tag "select.png" %>
+              </i>
+              <span>
+                <%= t(".receive_notifications") %>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="line"></div>
+        <div class="user_destroy_place"></div>
+        <div class="line"></div>
+         <div class="form-actions user">
+          <%= f.submit t(".confirm") %>
+          <%= link_to t(".discard"), dashboard_path %>
+        </div>
       </div>
-      <div class="actions">
-        <%= f.submit "Confirm changes" %>
+    </div>
+
+    <div class="right_form_service_create">
+      <p class="field_name">
+        <%= t(".picture") %>
+      </p>
+       <div class="image {{ newPhoto ? '' : 'without_photo_input' }}">
+        <div class="blank_image">+</div>
+        <%= image_tag(@user.picture_url,
+                      class: "current_photo",
+                      "ng-src" => "{{imagePreview}}") %>
       </div>
-  <% end %>
+    <% end %>
+    <div class="service_form_info">
+      <p>
+        <%= t(".title") %>
+      </p>
+      <span>
+        <%= t(".text") %>
+      </span>
+      <p>
+        <%= t(".title") %>
+      </p>
+      <span>
+        <%= t(".text") %>
+      </span>
+      <p>
+        <%= t(".title") %>
+      </p>
+      <span>
+        <%= t(".text") %>
+      </span>
+    </div>
+  </div>
 </div>
