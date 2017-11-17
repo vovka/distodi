@@ -12,7 +12,8 @@ module IdCodeable
                         .constantize.new(self)
   end
 
-  delegate :can_generate_id_code?, :model_id_code, :country_id_code,
+  delegate :can_generate_id_code?, :can_generate_item_id_code?,
+           :model_id_code, :country_id_code,
            :user_id_code, :category_id_code, :date_id_code,
            :serial_number_id_code,
            to: :decorated_self
@@ -69,6 +70,10 @@ class BaseIdCodeDecorator
   def category_id_code
     Kernel.format "%04d", record.category.try(:id).to_i
   end
+
+  def can_generate_item_id_code?
+    raise NoMethodError.new("Should be implemented in derived classes.")
+  end
 end
 
 #####
@@ -76,6 +81,10 @@ end
 class ItemIdCodeDecorator < BaseIdCodeDecorator
   def can_generate_id_code?
     super
+    can_generate_item_id_code?
+  end
+
+  def can_generate_item_id_code?
     if record.user.present?
       record.errors.add(:user, I18n.t(".errors.messages.first_name_must_be_present")) if record.user.first_name.blank?
       record.errors.add(:user, I18n.t(".errors.messages.last_name_must_be_present")) if record.user.last_name.blank?
