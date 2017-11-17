@@ -24,7 +24,7 @@
             <%= t(".service_company") %>
           </p>
           <div class="company_select">
-            <%= f.collection_select :company_id, Company.all, :id, :name, prompt: t(".select_company") %>
+            <%= f.collection_select :company_id, [Company.new(name: t(".myself"))] + Company.all + [Company.new(name: t(".other"))], :id, :name, prompt: t(".select_company") %>
           </div>
           <p class="field_name">
             <%= t(".new_company") %>
@@ -58,8 +58,9 @@
           <p class="field_name">
             <%= t(".service_photo") %>
           </p>
+          <%= image_tag(@service.picture_url, "ng-src" => "{{imagePreview}}") %>
           <div class="photo_input">
-            <%= f.input :picture %>
+            <%= f.file_field :picture, "data-file" => "true" %>
             <%= inline_svg "plus.svg" %>
           </div>
         </div>
