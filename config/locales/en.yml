@@ -24,6 +24,7 @@ en:
   users:
     destroy:
       notice: "User was successfully destroyed."
+      password_invalid: "Sorry, but your password is invalid"
     update:
       notice: "User was successfully updated."
     show:
@@ -31,7 +32,29 @@ en:
       update_link: "Update user"
       confirm_delete: "Do you want delete your user profile?"
       confirm_update: "Do you want update your user profile?"
-
+    edit:
+      items: "items"
+      services: "services"
+      my_account: "My account"
+    form:
+      picture: "Profile picture"
+      confirm: "Confirm Changes"
+      discard: "Discard"
+      delete_link: "Delete account"
+      password: "Enter your password to delete your account"
+      delete_my_account: "Delete my account"
+      receive_notifications: "Receive all system notifications"
+      notifications: "Notifications"
+      original_password: "New password"
+      new_password: "Password confirmation"
+      change_password: "Change my password"
+      title: "What is adding the New service log entry for your item?"
+      text: "It means that you have a possibility to write down all details of
+            your service control (like breaks check, oil level check, etc.),
+            change of the spare parts (like steering wheel change, breaks change,
+            etc.) or tuning (adding a spoiler, ultra-new lights, sound system, etc.)."
+      delete_link: "delete"
+      confirm_delete: "Do you realy want delete your user account?"
   items:
     create:
       notice: "Item was successfully created."
@@ -341,7 +364,7 @@ en:
       receive_item: "Receive"
       show_list: "Show list of items"
       show_my_profile: "My account"
-      edit_button: "Edit profile"
+      my_items: "My Items"
       log_out: "Log out"
       items: "items"
       services: "services"

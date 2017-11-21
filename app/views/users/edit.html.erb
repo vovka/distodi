@@ -1,8 +1,11 @@
-<div class="margin_left1">
-<h1>Editing User</h1>
+<div class="service_create_identity">
+  <h1><%= t(".my_account") %></h1>
+  <span class="green">
+    <%= @user.items.count %> <%= t(".items") %>
+  </span>
+  <span class="grey_text">
+    <%= @user.services.count %> <%= t(".services") %>
+  </span>
 </div>
-<%= render 'form' %>
-<div class="margin_left">
-<%= link_to 'Back', @user, class: "buttonsuser" %>
 
-</div>
+<%= render 'form' %>

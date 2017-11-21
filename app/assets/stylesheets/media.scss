@@ -139,6 +139,13 @@
   .right_form_service_create{
     width: 620px;
     margin-left: 0;
+    margin-top: 50px;
+  }
+  .photo_field{
+    display: none;
+  }
+  .blank_image{
+    display: none;
   }
 }
 
@@ -308,9 +315,6 @@
     display: inline-block;
     height: 100%;
   }
-  /*.owl-item .items img{
-  margin-left: -40%;
-  }*/
   .owl-item .items {
     text-align: center;
   }
@@ -856,10 +860,10 @@
   .left_form_service_create .form_service_create strong label{
     width: 33.1%;
   }
-  .left_form_service_create .form_service_create .service_kind_select #service_kind{
+  .left_form_service_create .form_service_create .half_form_field #service_kind{
     width: 100%;
   }
-  .left_form_service_create .form_service_create .service_kind_select input{
+  .left_form_service_create .form_service_create .half_form_field input{
     width: calc(100% - 17px);
   }
   .left_form_service_create .form_service_create .company_select select{
@@ -879,9 +883,6 @@
   .left_form_service_create .form_service_create .line{
     width: 100%;
   }
-  .select.reminder{
-    width: 32%;
-  }
   .reminders .input.optional.service_reminder_custom input{
     width: calc(100% - 17px);
   }
@@ -895,9 +896,63 @@
     width: 100%;
     display: block;
     padding: 14px 0;
+    margin-top: 15px;
   }
   .right_form_service_create{
     display: none;
+  }
+  .left_form_service_create .form_service_create .half_form_field.half{
+    width: 100%;
+
+  }
+  .left_form_service_create .form_service_create .half_form_field.half input{
+    width: calc(100% - 15px);
+  }
+  .left_form_service_create .form_service_create .half_form_field.half.first input{
+    width: calc(100% - 15px);
+  }
+  .left_form_service_create .form_service_create .half_form_field.first input{
+    width: calc(100% - 15px);
+  }
+  .left_form_service_create .form_service_create .half_form_field select{
+    width: 100%;
+  }
+  .change_password{
+    height: 221px;
+  }
+  .form-actions.user{
+    display: block;
+    width:  calc(100% - 50px);
+  }
+  .left_form_service_create .form_service_create .half_form_field.half.city{
+    margin-top: 0;
+  }
+  .destroy_user input{
+    width: calc(100% - 20px);
+    padding-right: 0;
+  }
+  .destroy_user .delete_button{
+    display: block;
+    text-align: right;
+  }
+  .destroy_user .delete_button input{
+    top: -46px;
+    right: 7px;
+  }
+  .service_create_identity .green{
+    margin-left: 0;
+  }
+  .select.reminder{
+  width: 120px;
+  }
+  .form-actions.user a{
+  margin-left: 0px;
+  }
+  .destroy_user + .edit_user.ng-pristine.ng-valid{
+    margin-top: -165px;
+  }
+  .destroy_user{
+    top: 1340px;
   }
 }
 /* Small Devices, Tablets */
@@ -951,9 +1006,6 @@
   .left_form_service_create .form_service_create .service_photos .photo_input svg{
     top: -95px;
     left: 40px;
-  }
-  .select.reminder{
-    width: 46%;
   }
 }
 

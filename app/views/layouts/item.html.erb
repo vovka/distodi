@@ -35,7 +35,7 @@
           <div class="line"></div>
           <div class="work_panel">
             <%= link_to t(".show_my_profile"), user_path(current_user) %>
-            <%= link_to t(".edit_button"), edit_user_path(current_user)%>
+            <%= link_to t(".my_items"), items_path(current_user)%>
             <%= link_to t(".help"), static_pages_about_path%>
             <%= logout_link %>
 

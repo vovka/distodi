@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
+  layout 'item'
   before_action :set_user, only: [:show, :edit, :update, :destroy, :items, :services, :companies]
   before_action :authenticate_user!
 
   def show
-    @last_items = @user.items.last(3)
-    @last_services = Service.user_services(@user.id).last(3)
-    @last_companies = Company.user_companies(@user.id).distinct.last(3)
-    @unconfirmed_count = @user.items.unconfirmed_services.count
+    redirect_to edit_user_path(@user)
   end
 
   def edit
@@ -31,9 +29,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    sign_out @user
-    @user.destroy
-    redirect_to root_path, notice: t(".notice")
+    if @user.valid_password?(params[:user][:password])
+      sign_out @user
+      @user.destroy
+      redirect_to root_path, notice: t(".success")
+    else
+      redirect_to edit_user_url, notice: t(".password_invalid")
+    end
   end
 
   private
