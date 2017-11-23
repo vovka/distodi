@@ -38,7 +38,7 @@ en:
       my_account: "My account"
     form:
       picture: "Profile picture"
-      confirm: "Confirm Changes"
+      confirm: "Save"
       discard: "Discard"
       delete_link: "Delete account"
       password: "Enter your password to delete your account"
@@ -55,6 +55,16 @@ en:
             etc.) or tuning (adding a spoiler, ultra-new lights, sound system, etc.)."
       delete_link: "delete"
       confirm_delete: "Do you realy want delete your user account?"
+      name_placeholder: "First name"
+      last_name_placeholder: "Last name"
+      phone_placeholder: "For example, 380637719075"
+      select_country: "Select country"
+      city_placeholder: "Your city"
+      address_placeholder: "Your address"
+      postal_placeholder: "Your postal code"
+      notice_placeholder: "Put your comments here"
+      password_placeholder: "Your password"
+      confirmation_placeholder: "Password confirmation (min 8 characters)"
   items:
     create:
       notice: "Item was successfully created."
@@ -158,6 +168,7 @@ en:
       success: "Item was successfully transferred."
   companies:
     destroy:
+      password_invalid: "Sorry, but your password is invalid"
       notice: "Company was successfully destroyed."
     update:
       notice: "Company profile was successfully updated."
@@ -165,6 +176,37 @@ en:
       delete_link: "Delete company"
       confirm_delete: "Do you want delete your company profile?"
       edit_link: "Update company"
+    form:
+      title: "What is adding the New service log entry for your item?"
+      text: "It means that you have a possibility to write down all details of
+            your service control (like breaks check, oil level check, etc.),
+            change of the spare parts (like steering wheel change, breaks change,
+            etc.) or tuning (adding a spoiler, ultra-new lights, sound system, etc.)."
+      email_company: "Your personal corporate email"
+      name: "Company official name"
+      website: "Company website (optional)"
+      name_placeholder: "company name"
+      website_placeholder: "https://example.com/"
+      phone: "Phone"
+      phone_example: "For example, 380637719075"
+      country: "Country"
+      select_country: "Select country"
+      city_example: "Your city"
+      city: "City"
+      address: "Address"
+      address_example: "Your address"
+      postal_code: "Postal code"
+      postal_example: "Your postal code"
+      additional_field: "Additional field"
+      additional_example: "Put your comments here"
+      password_input: "Your password"
+      password_confirmation_input: "Password confirmation (min 8 characters)"
+      confirm_delete: "Do you want delete account?"
+      delete_link: "Delete account"
+      confirm: "Save"
+      approver: "My company is a services provider"
+      your_office: "Your office / department details"
+      set_office: "Please set your office/department information"
   services:
     list:
       confirm_delete: "Do you really want to delete this service?"
