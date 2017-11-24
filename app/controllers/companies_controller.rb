@@ -1,8 +1,10 @@
 class CompaniesController < ApplicationController
+  layout 'item'
   before_action :set_company, only: [:show, :edit, :update, :destroy, :items, :services]
   before_action :authenticate_company!
 
   def show
+    redirect_to edit_company_path(@company)
   end
 
   def items
@@ -36,9 +38,13 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    @company.destroy
-    sign_out @company
-    redirect_to root_path, notice: t(".notice")
+    if @company.valid_password?(params[:company][:password])
+      sign_out @company
+      @company.destroy
+      redirect_to root_path, notice: t(".success")
+    else
+      redirect_to edit_company_url, notice: t(".password_invalid")
+    end
   end
 
   private

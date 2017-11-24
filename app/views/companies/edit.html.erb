@@ -1,12 +1,11 @@
-<div class="margin_left2">
-  <h3>Editing Company</h3>
+<div class="service_create_identity">
+  <h1><%= t(".my_account") %></h1>
+  <span class="green">
+    32 <%= t(".items") %>
+  </span>
+  <span class="grey_text">
+    <%= @company.services.count %> <%= t(".services") %>
+  </span>
+</div>
 
 <%= render 'form' %>
-
-</div>
-
-
-<div class="margin_left2">
-<%= link_to 'Show', @company %>
-
-</div>

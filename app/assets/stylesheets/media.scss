@@ -954,6 +954,12 @@
   .destroy_user{
     top: 1340px;
   }
+  .destroy_user.company {
+    top: 1500px;
+  }
+  .destroy_user + .edit_company.ng-pristine.ng-valid {
+    margin-top: -165px;
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}

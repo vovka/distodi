@@ -3910,3 +3910,24 @@ height: 120px;
 .destroy_user + .edit_user.ng-pristine.ng-valid{
   margin-top: -118px;
 }
+.destroy_user + .edit_company.ng-pristine.ng-valid{
+  margin-top: -118px;
+}
+.notification_confirmation.approver{
+  margin-top: 125px;
+}
+.notification_confirmation.office h1{
+  margin-bottom: 20px;
+}
+.notification_confirmation.office p{
+  font-family: 'MuseoSansCyrl_1';
+  font-size:13px;
+  color:#1f1f1f;
+  letter-spacing:0;
+  line-height:13px;
+  text-align:left;
+  margin-bottom: 30px;
+}
+.destroy_user.company{
+  top: 1213px;
+}

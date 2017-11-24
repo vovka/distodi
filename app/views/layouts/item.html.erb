@@ -19,13 +19,40 @@
       <div class="item_logo">
         <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), root_path %>
       </div>
-      <div class="right_panel list">
-        <div class="more_menu" ng-click="controller.clickedToggleMoremenu()" ng-class="controller.showMoremenu ? 'active' : '' ">
-          <%= picture_show(current_user) %>
+      <% if user_signed_in? %>
+        <div class="right_panel list">
+          <div class="more_menu" ng-click="controller.clickedToggleMoremenu()" ng-class="controller.showMoremenu ? 'active' : '' ">
+            <%= picture_show(current_user) %>
+          </div>
+          <div class="more_menu_popup popup-animation" ng-class="controller.showMoremenu ? 'active' : '' ">
+            <span>
+              <%= my_panel %>
+            </span>
+            <div class="user_information">
+              <p><%= current_user.email %></p>
+              <span><%= current_user.items.count %> <%=t(".items")%></span>
+              <%= current_user.services.count %> <%=t(".services")%>
+            </div>
+            <div class="line"></div>
+            <div class="work_panel">
+              <%= link_to t(".show_my_profile"), user_path(current_user) %>
+              <%= link_to t(".my_items"), items_path(current_user)%>
+              <%= link_to t(".help"), static_pages_about_path%>
+              <%= logout_link %>
+
+            </div>
+          </div>
         </div>
-        <div class="more_menu_popup popup-animation" ng-class="controller.showMoremenu ? 'active' : '' ">
-          <span>
-            <%= my_panel %>
+        <%= render "shared/notifications" %>
+        <div class="btn_menu black">
+          <div class="btn_line"></div>
+          <div class="btn_line"></div>
+          <div class="btn_line"></div>
+        </div>
+        <div class="menu_mobile">
+          <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), root_path %>
+          <span class="name">
+              <%= my_panel %>
           </span>
           <div class="user_information">
             <p><%= current_user.email %></p>
@@ -35,37 +62,58 @@
           <div class="line"></div>
           <div class="work_panel">
             <%= link_to t(".show_my_profile"), user_path(current_user) %>
-            <%= link_to t(".my_items"), items_path(current_user)%>
+            <%= link_to t(".edit_button"), edit_user_path(current_user)%>
             <%= link_to t(".help"), static_pages_about_path%>
             <%= logout_link %>
-
           </div>
         </div>
-      </div>
-      <%= render "shared/notifications" %>
-      <div class="btn_menu black">
-        <div class="btn_line"></div>
-        <div class="btn_line"></div>
-        <div class="btn_line"></div>
-      </div>
-      <div class="menu_mobile">
-        <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), root_path %>
-        <span class="name">
-            <%= my_panel %>
-        </span>
-        <div class="user_information">
-          <p><%= current_user.email %></p>
-          <span><%= current_user.items.count %> <%=t(".items")%></span>
-          <%= current_user.services.count %> <%=t(".services")%>
+      <% else company_signed_in? %>
+        <div class="right_panel list">
+          <div class="more_menu" ng-click="controller.clickedToggleMoremenu()" ng-class="controller.showMoremenu ? 'active' : '' ">
+            <%= picture_show(current_company) %>
+          </div>
+          <div class="more_menu_popup popup-animation" ng-class="controller.showMoremenu ? 'active' : '' ">
+            <span>
+              <%= my_panel %>
+            </span>
+            <div class="user_information">
+              <p><%= current_company.email %></p>
+              <%= current_company.services.count %> <%=t(".services")%>
+            </div>
+            <div class="line"></div>
+            <div class="work_panel">
+              <%= link_to t(".show_my_profile"), company_path(current_company) %>
+              <%= link_to t(".my_items"), items_path(current_company)%>
+              <%= link_to t(".help"), static_pages_about_path%>
+              <%= logout_link %>
+
+            </div>
+          </div>
         </div>
-        <div class="line"></div>
-        <div class="work_panel">
-          <%= link_to t(".show_my_profile"), user_path(current_user) %>
-          <%= link_to t(".edit_button"), edit_user_path(current_user)%>
-          <%= link_to t(".help"), static_pages_about_path%>
-          <%= logout_link %>
+        <%= render "shared/notifications" %>
+        <div class="btn_menu black">
+          <div class="btn_line"></div>
+          <div class="btn_line"></div>
+          <div class="btn_line"></div>
         </div>
-      </div>
+        <div class="menu_mobile">
+          <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), root_path %>
+          <span class="name">
+              <%= my_panel %>
+          </span>
+          <div class="user_information">
+            <p><%= current_company.email %></p>
+            <%= current_company.services.count %> <%=t(".services")%>
+          </div>
+          <div class="line"></div>
+          <div class="work_panel">
+            <%= link_to t(".show_my_profile"), company_path(current_company) %>
+            <%= link_to t(".edit_button"), edit_company_path(current_company)%>
+            <%= link_to t(".help"), static_pages_about_path%>
+            <%= logout_link %>
+          </div>
+        </div>
+      <% end %>
     </div>
     <%= yield %>
   </body>

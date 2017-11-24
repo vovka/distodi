@@ -9,9 +9,9 @@
           <p>
             <%= t(".password") %>
           </p>
-          <%= f.password_field :password, autocomplete: :off  %>
+          <%= f.password_field :password, autocomplete: :off, placeholder: t(".password_placeholder")  %>
           <div class="delete_button">
-            <%= f.submit t(".delete_link"), data: { confirm: t(".confirm_delete") } %>
+            <%= f.submit value: t(".delete_link"), data: { confirm: t(".confirm_delete") } %>
           </div>
         <% end %>
       </div>
@@ -44,56 +44,56 @@
           <p class="field_name">
             <%= f.label :first_name %>
           </p>
-          <%= f.text_field :first_name  %>
+          <%= f.text_field :first_name, placeholder: t(".name_placeholder")  %>
         </div>
 
         <div class="half_form_field half">
           <p class="field_name">
             <%= f.label :last_name %>
           </p>
-          <%= f.text_field :last_name  %>
+          <%= f.text_field :last_name, placeholder: t(".last_name_placeholder")  %>
         </div>
 
         <div class="half_form_field margin first">
           <p class="field_name">
             <%= f.label :phone %>
           </p>
-          <%= f.text_field :phone  %>
+          <%= f.text_field :phone, placeholder: t(".phone_placeholder")  %>
         </div>
 
         <div class="half_form_field half first">
           <p class="field_name">
             <%= f.label :country %>
           </p>
-          <%= f.country_select :country %>
+          <%= f.country_select :country, prompt: t(".select_country") %>
         </div>
 
         <div class="half_form_field half city">
           <p class="field_name">
             <%= f.label :city %>
           </p>
-          <%= f.text_field :city %>
+          <%= f.text_field :city, placeholder: t(".city_placeholder") %>
         </div>
 
         <div class="price">
           <p class="field_name">
             <%= f.label :address %>
           </p>
-          <%= f.text_field :address  %>
+          <%= f.text_field :address, placeholder: t(".address_placeholder")  %>
         </div>
 
         <div class="half_form_field first">
           <p class="field_name">
             <%= f.label :postal_code %>
           </p>
-          <%= f.text_field :postal_code %>
+          <%= f.text_field :postal_code, placeholder: t(".postal_placeholder") %>
         </div>
 
         <p class="field_name">
           <%= f.label 'Additional field' %>
         </p>
         <div class="textarea">
-          <%= f.text_area :notice %>
+          <%= f.text_area :notice, placeholder: t(".notice_placeholder") %>
         </div>
 
         <div class="line"></div>
@@ -104,14 +104,14 @@
             <p class="field_name">
               <%= t(".original_password") %>
             </p>
-            <%= f.password_field :password, autocomplete: :off  %>
+            <%= f.password_field :password, autocomplete: :off, placeholder: t(".password_placeholder")  %>
           </div>
 
           <div class="half_form_field half">
             <p class="field_name">
               <%= t(".new_password") %>
             </p>
-            <%= f.password_field :password_confirmation, autocomplete: :off  %>
+            <%= f.password_field :password_confirmation, autocomplete: :off, placeholder: t(".confirmation_placeholder")  %>
           </div>
         </div>
         <div class="line"></div>
@@ -120,7 +120,7 @@
           <h1><%= t(".notifications") %></h1>
           <div class="select">
             <label>
-              <input type="checkbox"/>
+              <input type="checkbox" checked/>
               <i>
                 <%= image_tag "select.png" %>
               </i>
