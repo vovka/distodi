@@ -271,7 +271,6 @@ footer li a {
 
 footer img {
   width: 20px;
-  float: right;
   margin: 20px 0 15px 25px;
 }
 footer img:nth-child(2){
@@ -458,6 +457,7 @@ footer hr {
   height: 51px;
   margin: 0 auto 50px;
   cursor: pointer;
+  text-align: center;
 }
 
 .signup_info {
@@ -2318,34 +2318,39 @@ width: 205px;
 
 .login-button {
   $vertical-margin: 10px;
-  display: block;
-  float: left;
   margin: $vertical-margin 0 0;
-  width: 200px;
+  width: 11%;
+  display: inline-block;
 
   &.google {
-    background: no-repeat image-url("btn_google_signin_dark_pressed_web") center;
-    background-size: 170px;
-    height: 40px;
+    background: no-repeat image-url("google") center;
+    background-size: 28px;
+    height: 33px;
+    opacity: 0.65;
   }
 
   &.facebook {
-    background: no-repeat image-url("login_fb_button") center;
-    background-size: 200px;
+    background: no-repeat image-url("facebook_sign_in") center;
+    background-size: 30px;
     height: 32px;
     margin: ($vertical-margin + 4) 0 0 0;
+    fill: red;
+    opacity: 0.65;
   }
 
   &.twitter {
-    background: no-repeat image-url("sign-in-with-twitter-gray") center;
+    margin-top: 15px;
+    background: no-repeat image-url("twitter") center;
+    background-size: 30px;
     height: 30px;
-    clear: both;
+    opacity: 0.65;
   }
 
   &.linkedin {
-    background: no-repeat image-url("Sign-In-linkedin-Small---Default") center;
-    background-size: 200px;
+    background: no-repeat image-url("linkedin") center;
+    background-size: 32px;
     height: 30px;
+    opacity: 0.65;
   }
 }
 .field {
@@ -3930,4 +3935,207 @@ height: 120px;
 }
 .destroy_user.company{
   top: 1213px;
+}
+.lead_background{
+  width: 100%;
+  height: 120%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #149b4c;
+  z-index: 165;
+}
+.lead_background .form_lead .form-inputs label{
+  display: none;
+}
+.lead_background .form_lead{
+  max-width: 650px;
+  text-align: left;
+  height: 330px;
+  margin: auto;
+  position: relative;
+  top: calc(40% - 165px);
+}
+.lead_background .form_lead h1{
+  font-family: 'MuseoSansCyrl_2';
+  font-size:48px;
+  color:#ffffff;
+  letter-spacing:0;
+  line-height:74px;
+  text-shadow:0 2px 5px rgba(0,0,0,0.05);
+}
+.lead_background .form_lead p{
+  opacity:0.7;
+  font-family: 'MuseoSansCyrl_1';
+  font-size:16px;
+  color:#ffffff;
+  letter-spacing:0;
+  line-height:16px;
+  text-align:left;
+  margin-top: 60px;
+}
+.lead_background .form_lead .form-inputs input{
+  padding-left: 47px;
+  width: 286px;
+  outline: none;
+  border-radius: 4px;
+  height: 48.5px;
+  border: 1px solid #d3d3d3;
+  line-height: 20px;
+  margin-top: 30px;
+  font-family: 'MuseoSansCyrl_1';
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: 10px 15px;
+}
+.lead_background .form_lead .form-inputs svg{
+  width: 20px;
+  position: absolute;
+  margin-top: -34px;
+  margin-left: 15px;
+}
+.lead_background .form_lead .form-inputs input:focus{
+  border:1px solid #006b2c;
+  box-shadow: 0 0 4px 0 #006b2c;
+}
+.lead_background .form_lead .form-inputs input:-webkit-autofill{
+  -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
+}
+.lead_background .form_lead .form-inputs input:focus ~ svg .cls-1{
+  fill: #149b4c;
+}
+.lead_background .form_lead .form-inputs label:after{
+  content: "-"
+}
+.lead_background .form_lead .error_notification{
+  display: none;
+}
+.lead_background .form_lead .form-inputs{
+  width: 345px;
+  float: left;
+}
+.lead_background .form_lead .form-inputs .lead_email.field_with_errors input{
+  border:1px solid #ff3c00;
+}
+.lead_background .form_lead .form-actions{
+  width: 180px;
+  float: left;
+  padding-top: 31px;
+}
+.lead_background .form_lead .form-inputs span{
+  position: absolute;
+  color: #ff3c00;
+  background: white;
+  padding: 4px;
+  border-radius: 4px;
+  top: 320px;
+  left: 0;
+}
+.lead_background .form_lead .form-actions input{
+  background:#1f1f1f;
+  border-radius:4px;
+  width:180px;
+  height:51px;
+  font-family: 'MuseoSansCyrl_1';
+  font-size:16px;
+  color:#ffffff;
+}
+.lead_background .form_lead p.second_line{
+  margin-top: 10px;
+}
+.lead_background .logo_lead{
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+.lead_background .logo_lead img{
+  width: 55px;
+  float: left;
+  margin-right: 5px;
+}
+.lead_background .logo_lead span{
+  font-family: 'MuseoSansCyrl_2';
+  font-size:20px;
+  color:#ffffff;
+  letter-spacing:0;
+  line-height:20px;
+  text-align:center;
+  line-height: 26.5px;
+}
+.lead_background .logo_lead p{
+  font-family: 'MuseoSansCyrl_2';
+  display: inline;
+  font-size:16px;
+  color:#004e20;
+  letter-spacing:0;
+  line-height:16px;
+  text-align:left;
+  position: relative;
+  top: -6px;
+  right: -4px;
+}
+.bacground_green_static_pages .content_static_pagees{
+  width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+  color: white;
+}
+.bacground_green_static_pages .content_static_pagees .title{
+  font-family: 'MuseoSansCyrl_1';
+  font-size:20px;
+  color:#1f1f1f;
+  letter-spacing:0;
+  line-height:20px;
+  text-align:left;
+  margin-bottom: 50px;
+}
+.bacground_green_static_pages .content_static_pagees h1{
+  font-family: 'MuseoSansCyrl_2';
+  font-size:16px;
+  color:#1f1f1f;
+  letter-spacing:0;
+  line-height:16px;
+  text-align:left;
+  margin-bottom: 20px;
+}
+.bacground_green_static_pages .content_static_pagees p{
+  margin-bottom:  20px;
+  line-height: 21px;
+  color: black;
+}
+.bacground_green_static_pages .content_static_pagees strong{
+  color: #006b2c;
+}
+.bacground_green_static_pages .content_static_pagees ul{
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+.bacground_green_static_pages .content_static_pagees li{
+  line-height: 21px;
+  color: black;
+}
+.bacground_green_static_pages.security{
+  height: 701px;
+}
+.bacground_green_static_pages.terms{
+  height: 1701px;
+}
+.bacground_green_static_pages{
+  background: white;
+  padding-bottom: 50px;
+  min-height: 590px;
+  color: black;
+  padding-top: 50px;
+  margin-top: -50px;
+  display: grid;
+  width: 100%;
+}
+.bacground_green_static_pages .content_static_pagees .half_of_static{
+  width: 460px;
+  display: inline-block;
+  float: left;
+  margin: 0 30px 0 0;
+}
+.bacground_green_static_pages .content_static_pagees .half_of_static:last-child{
+  margin-right: 30px;
 }

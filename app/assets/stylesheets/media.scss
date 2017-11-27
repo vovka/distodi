@@ -126,6 +126,26 @@
   .function .delete{
     height: 200px;
   }
+  .bacground_green_static_pages .content_static_pagees{
+    width: calc(100% - 50px);
+  }
+  .bacground_green_static_pages .title{
+    text-align: left;
+    display: inline;
+    left: -72px;
+    position: relative;
+  }
+  .bacground_green_static_pages{
+    position: relative;
+    top: -12px;
+  }
+  .bacground_green_static_pages .content_static_pagees .half_of_static{
+    width: 100%;
+  }
+  .bacground_green_static_pages .content_static_pagees .title{
+    display: block;
+    margin-left: 69px;
+  }
 }
 
 @media only screen and (max-width : 955px) {
@@ -290,7 +310,7 @@
   }
 
   .telephone_mobile {
-    display: inline-block;
+    display: block;
   }
 
   footer hr {
@@ -298,8 +318,7 @@
   }
 
   footer img {
-    float: left;
-    margin: 20px;
+    margin: 18px;
   }
 
   .btn_menu {
@@ -959,6 +978,38 @@
   }
   .destroy_user + .edit_company.ng-pristine.ng-valid {
     margin-top: -165px;
+  }
+  .lead_background .form_lead{
+    position: inherit;
+    top: 100px;
+    width: calc(100% - 60px);
+    padding: 0 30px;
+  }
+  .lead_background .form_lead .form-inputs{
+    width: calc(100% - 50px);
+  }
+  .lead_background .form_lead .form-inputs input{
+    width: 100%;
+  }
+  .lead_background .form_lead .form-actions{
+    width: 100%;
+  }
+  .lead_background .form_lead .form-actions input{
+    width: 100%;
+  }
+  .lead_background .form_lead h1{
+    font-size: 36px;
+    line-height: 50px;
+  }
+  .lead_background .form_lead .form-inputs span{
+    display: none;
+  }
+  .social_net{
+    width: 100%;
+    text-align: center;
+  }
+  footer img {
+    float: none;
   }
 }
 /* Small Devices, Tablets */

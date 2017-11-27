@@ -86,9 +86,11 @@ Rails.application.routes.draw do
   get "item/service/:token", to: "services#company_service", as: :company_service
   get "static_pages/home"
   get "static_pages/about"
-  get "static_pages/tutorial"
+  get "static_pages/security"
   get "static_pages/tutorialcar"
-  get "static_pages/tutorialbike"
+  get "static_pages/careers"
+  get "static_pages/lead"
+  get "static_pages/terms"
 
   post 'notifications/:id/read', to: "notifications#read", constraints: ->(request) { request.xhr? }
 
