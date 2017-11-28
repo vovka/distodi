@@ -1784,7 +1784,7 @@ footer hr {
 }
 
 .form .field_title {
-  width: 32.5%;
+  width: calc(33.5% + -14px);
   float: left;
 }
 
@@ -1815,7 +1815,7 @@ footer hr {
 
 .form .categories {
   text-align: left;
-  width: 32.5%;
+  width: calc(30.5% + 22px);
   float: left;
   height: 84px;
 }
@@ -1918,8 +1918,9 @@ option {
 .field img {
   border: 1px solid #d3d3d3;
   border-radius: 4px;
-  width: 96%;
+  width: 100%;
   z-index: 200;
+  margin-bottom: -3px;
 }
 .field p {
   font-family: 'MuseoSansCyrl_1';
@@ -2359,9 +2360,6 @@ width: 205px;
     border-radius: 4px;
     width: 95%;
     text-align: center;
-    min-height: 330px;
-    min-width: 440px;
-
     img {
       border: none;
 
@@ -2375,13 +2373,20 @@ width: 205px;
         }
       }
     }
+    img:hover ~ .photo_delete{
+      display: block;
+    }
 
     input {
-      height: 406px;
+      max-height: 435px;
       width: 100%;
       position: absolute;
       left: 0;
       top: 20px;
+      cursor: pointer;
+    }
+    input:hover ~ .photo_delete{
+      display: block;
     }
 
     label {
@@ -2389,7 +2394,7 @@ width: 205px;
       font-size: 14px;
       color: #149b4c;
       letter-spacing: 0;
-      line-height: 2500%;
+      line-height: 421px;
     }
   }
   .without_photo_input {
@@ -2712,6 +2717,9 @@ width: 205px;
 }
 .form .field_title input{
   margin-top: 11px;
+}
+.field_title label{
+  display: block;
 }
 .form .field_title .field_with_errors:first-child{
   margin-right: 4px;
@@ -3907,7 +3915,7 @@ input:-webkit-autofill{
   border-radius: 4px;
 }
 .image.without_photo_input{
-  min-height: 156px;
+  min-height: 432px;
 }
 .user_destroy_place{
 height: 120px;
@@ -4149,4 +4157,70 @@ height: 120px;
       }
     }
   }
+}
+
+.photo_delete{
+  width: 20px;
+  border-radius: 50%;
+  height: 20px;
+  background: red;
+  float: right;
+  border: 2px solid white;
+  position: absolute;
+  top: 27px;
+  right: 7%;
+  display: none;
+  cursor: pointer;
+}
+.photo_delete svg{
+  fill: white;
+  width: 20px;
+  height: 20px;
+}
+.photo_delete:hover{
+  display: block;
+}
+.field .additional_photo{
+  background:#ffffff;
+  border:1px solid #d3d3d3;
+  border-radius:4px;
+  width: calc(24% - 18px);
+  height:75px;
+  color:#149b4c;
+  text-align: center;
+  line-height: 75px;
+  display: inline-block;
+  margin: 8px;
+}
+.field .additional_photo.first{
+  margin-left: 0;
+}
+.field .additional_photo:last-child{
+  margin-right: 0;
+}
+.field .additional_photo_text{
+  margin-top: 20px;
+}
+.field textarea{
+  font-family: 'MuseoSansCyrl_1';
+  font-size:14px;
+  color:#1f1f1f;
+  letter-spacing:0;
+  line-height:24px;
+  text-align:left;
+  border:1px solid #d3d3d3;
+  border-radius:4px;
+  min-width: calc(93% - 10px);
+  max-width: calc(93% - 10px);
+  min-height:414px;
+  padding: 10px;
+  outline: none;
+}
+.field textarea:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+
+}
+.field textarea:-webkit-autofill{
+  -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
 }
