@@ -4074,53 +4074,7 @@ height: 120px;
   top: -6px;
   right: -4px;
 }
-.bacground_green_static_pages .content_static_pagees{
-  width: 1000px;
-  margin: 0 auto;
-  text-align: left;
-  color: white;
-}
-.bacground_green_static_pages .content_static_pagees .title{
-  font-family: 'MuseoSansCyrl_1';
-  font-size:20px;
-  color:#1f1f1f;
-  letter-spacing:0;
-  line-height:20px;
-  text-align:left;
-  margin-bottom: 50px;
-}
-.bacground_green_static_pages .content_static_pagees h1{
-  font-family: 'MuseoSansCyrl_2';
-  font-size:16px;
-  color:#1f1f1f;
-  letter-spacing:0;
-  line-height:16px;
-  text-align:left;
-  margin-bottom: 20px;
-}
-.bacground_green_static_pages .content_static_pagees p{
-  margin-bottom:  20px;
-  line-height: 21px;
-  color: black;
-}
-.bacground_green_static_pages .content_static_pagees strong{
-  color: #006b2c;
-}
-.bacground_green_static_pages .content_static_pagees ul{
-  margin-left: 40px;
-  margin-bottom: 20px;
-}
-.bacground_green_static_pages .content_static_pagees li{
-  line-height: 21px;
-  color: black;
-}
-.bacground_green_static_pages.security{
-  height: 701px;
-}
-.bacground_green_static_pages.terms{
-  height: 1701px;
-}
-.bacground_green_static_pages{
+.background_green_static_pages{
   background: white;
   padding-bottom: 50px;
   min-height: 590px;
@@ -4129,13 +4083,70 @@ height: 120px;
   margin-top: -50px;
   display: grid;
   width: 100%;
-}
-.bacground_green_static_pages .content_static_pagees .half_of_static{
-  width: 460px;
-  display: inline-block;
-  float: left;
-  margin: 0 30px 0 0;
-}
-.bacground_green_static_pages .content_static_pagees .half_of_static:last-child{
-  margin-right: 30px;
+
+  &.security{
+    height: 701px;
+  }
+
+  &.terms{
+    height: 1701px;
+  }
+
+  .content_static_pages{
+    width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+    color: white;
+
+    h1{
+      font-family: 'MuseoSansCyrl_1';
+      font-size:20px;
+      color:#1f1f1f;
+      letter-spacing:0;
+      line-height:20px;
+      text-align:left;
+      margin-bottom: 50px;
+    }
+
+    h2{
+      font-family: 'MuseoSansCyrl_2';
+      font-size:16px;
+      color:#1f1f1f;
+      letter-spacing:0;
+      line-height:16px;
+      text-align:left;
+      margin-bottom: 20px;
+    }
+
+    p{
+      margin-bottom:  20px;
+      line-height: 21px;
+      color: black;
+    }
+
+    strong{
+      color: #006b2c;
+    }
+
+    ul{
+      margin-left: 40px;
+      margin-bottom: 20px;
+    }
+
+    li{
+      line-height: 21px;
+      color: black;
+    }
+
+    .half_of_static, div{
+      width: 460px;
+      display: inline-block;
+      float: left;
+      margin: 0 30px 0 0;
+
+      &:last-child{
+        margin-right: 30px;
+      }
+    }
+  }
 }

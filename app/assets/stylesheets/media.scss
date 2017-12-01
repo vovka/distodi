@@ -126,25 +126,29 @@
   .function .delete{
     height: 200px;
   }
-  .bacground_green_static_pages .content_static_pagees{
-    width: calc(100% - 50px);
-  }
-  .bacground_green_static_pages .title{
-    text-align: left;
-    display: inline;
-    left: -72px;
-    position: relative;
-  }
-  .bacground_green_static_pages{
+  .background_green_static_pages {
     position: relative;
     top: -12px;
-  }
-  .bacground_green_static_pages .content_static_pagees .half_of_static{
-    width: 100%;
-  }
-  .bacground_green_static_pages .content_static_pagees .title{
-    display: block;
-    margin-left: 69px;
+
+    h1{
+      text-align: left;
+      display: inline;
+      left: -72px;
+      position: relative;
+    }
+
+    .content_static_pages{
+      width: calc(100% - 50px);
+
+      .half_of_static, div{
+        width: 100%;
+      }
+
+      h1{
+        display: block;
+        margin-left: 69px;
+      }
+    }
   }
 }
 

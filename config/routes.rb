@@ -84,13 +84,13 @@ Rails.application.routes.draw do
   get :dashboard, to: "items#dashboard", as: :home
   get "item/:token", to: "items#show_for_company", as: :show_for_company
   get "item/service/:token", to: "services#company_service", as: :company_service
-  get "static_pages/home"
-  get "static_pages/about"
-  get "static_pages/security"
-  get "static_pages/tutorialcar"
-  get "static_pages/careers"
-  get "static_pages/lead"
-  get "static_pages/terms"
+
+  get       "about" => "static_pages#about",       as: :static_pages_about
+  get    "security" => "static_pages#security",    as: :static_pages_security
+  get "tutorialcar" => "static_pages#tutorialcar", as: :static_pages_tutorialcar
+  get     "careers" => "static_pages#careers",     as: :static_pages_careers
+  get        "lead" => "static_pages#lead",        as: :static_pages_lead
+  get       "terms" => "static_pages#terms",       as: :static_pages_terms
 
   post 'notifications/:id/read', to: "notifications#read", constraints: ->(request) { request.xhr? }
 
