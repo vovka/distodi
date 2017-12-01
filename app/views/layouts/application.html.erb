@@ -51,7 +51,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <h3>How to use:</h3>
                 <span class="style2" style="color: #0090c5">
                   <%= link_to 'Manual for car', static_pages_about_url %><br>
-                  <%= link_to 'Manual for bicycle', static_pages_tutorialbike_path %>
                 </span>
               </section>
             </div>
@@ -66,8 +65,23 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <div class="3u 6u(medium) 12u$(small)">
               <!-- Links -->
               <section class="widget links">
+
+
+
+
                 <%= simple_form_for(@lead) do |f| %>
-                <%= f.error_notification %>
+                <%= @lead.errors.any? %>
+                <% if @lead.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@lead.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                    <ul>
+                      <% @lead.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                <% end %>
                 <div class="field">
                   <h3> Email<br></h3>
                   <%= f.text_field :email %>
@@ -76,6 +90,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                   <%= f.submit "Subscribe" %>
                 </div>
                 <% end %>
+
+
+
+
+
+
               </section>
             </div>
             <div class="3u 6u$(medium) 12u$(small)">

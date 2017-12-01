@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  layout "new", only: [:home]
+  layout "new"
 
   def home
     if user_signed_in?
@@ -9,15 +9,23 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def tutorial
+  def security
+
   end
 
   def tutorialcar
-  end
 
-  def tutorialbike
   end
 
   def about
+
+  end
+
+  def terms
+
+  end
+
+  def careers
+
   end
 end

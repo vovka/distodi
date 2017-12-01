@@ -16,7 +16,7 @@
           <p class="field_name">
             <%= t(".service_kind") %>
           </p>
-          <%= select_tag "service_kind", options_from_collection_for_select(@service_kinds, "id", "title") %>
+          <%= select_tag "service_kind", options_from_collection_for_select(@service_kinds, "id", "title"), autofocus: true %>
           <%= text_field "text", "service_kind_coment", placeholder: t(".service_kind_comment") %>
         </div>
         <% if user_signed_in? %>

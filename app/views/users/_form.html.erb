@@ -37,14 +37,14 @@
           <p class="field_name">
             <%= f.label :email %>
           </p>
-          <%= f.email_field :email, autofocus: true, readonly: true  %>
+          <%= f.email_field :email, readonly: true  %>
         </div>
 
         <div class="half_form_field half first">
           <p class="field_name">
             <%= f.label :first_name %>
           </p>
-          <%= f.text_field :first_name, placeholder: t(".name_placeholder")  %>
+          <%= f.text_field :first_name, autofocus: true, placeholder: t(".name_placeholder")  %>
         </div>
 
         <div class="half_form_field half">
