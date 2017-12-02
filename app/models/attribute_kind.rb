@@ -1,4 +1,6 @@
 class AttributeKind < ActiveRecord::Base
+  acts_as_list
+
   delegate :brand?, :model?, :year?, :fuel_type?,
            :motor?, :weight?, :transmission?, :gender?,
            :wheel_diameter?, :country?, :manufacturer?,
@@ -24,4 +26,5 @@ end
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  position   :integer
 #

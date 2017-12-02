@@ -9,10 +9,15 @@ class Item < ActiveRecord::Base
 
   validates :title, uniqueness: { scope: [:user_id] }, presence: true
   validates :picture, presence: true
+  validates :comment, length: { maximum: 2000 }
 
   include IdCodeable
 
   mount_uploader :picture, PictureUploader
+  mount_uploader :picture2, PictureUploader
+  mount_uploader :picture3, PictureUploader
+  mount_uploader :picture4, PictureUploader
+  mount_uploader :picture5, PictureUploader
 
   default_scope { where demo: false }
   scope :demo, -> { unscoped.where demo: true }
@@ -49,6 +54,11 @@ end
 #  id_code            :string
 #  transferring_to_id :integer
 #  demo               :boolean
+#  picture2           :string
+#  picture3           :string
+#  picture4           :string
+#  picture5           :string
+#  comment            :string(2000)
 #
 # Indexes
 #

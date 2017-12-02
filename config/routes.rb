@@ -84,6 +84,7 @@ Rails.application.routes.draw do
   get :dashboard, to: "items#dashboard", as: :home
   get "item/:token", to: "items#show_for_company", as: :show_for_company
   get "item/service/:token", to: "services#company_service", as: :company_service
+  get "profile", to: "users#profile"
 
   get       "about" => "static_pages#about",       as: :static_pages_about
   get    "security" => "static_pages#security",    as: :static_pages_security
