@@ -2,11 +2,10 @@
 <%= form_for(@item) do |f| %>
     <% if @item.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@item.errors.count, t(".error")) %> <%= t(".prohabited") %> </h2>
-
+          <h2><%= pluralize(@item.errors.count, t(".error")) %> <%= t(".prohibited") %> </h2>
           <ul>
             <% @item.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+              <li><%= message.html_safe %></li>
             <% end %>
           </ul>
         </div>
@@ -35,141 +34,80 @@
 
     <div class="field">
       <p><%= t(".cover_photo") %></p>
-      <% if @item.picture_url.present? %>
-        <div class="image ">
-          <%= image_tag(@item.picture_url,
+      <% if @item.picture.cover.url.present? %>
+        <div class="image">
+          <%= image_tag(@item.picture.cover.url,
                         alt: @item.title,
                         class: "current_photo",
                         "ng-src" => "{{imagePreview}}") %>
-
           <label for="upload" ng-show="!newPhoto"><%= t(".add_photo") %></label>
           <%= f.file_field :picture,
                            class: 'inputfile',
                            "data-file" => "true" %>
-          <%= link_to t(".d"), dashboard_path %>
+          <%= link_to "&nbsp;".html_safe, dashboard_path %>
         </div>
       <% else %>
         <div class="image {{ newPhoto ? '' : 'without_photo_input' }}">
-          <%= image_tag(@item.picture_url,
+          <%= image_tag(@item.picture.cover.url,
                         alt: @item.title,
                         class: "current_photo",
                         "ng-src" => "{{imagePreview}}") %>
-
           <label for="upload" ng-show="!newPhoto"><%= t(".add_photo") %></label>
           <%= f.file_field :picture,
                            class: 'inputfile',
                            "data-file" => "true" %>
-          <%= link_to t(".d"), dashboard_path %>
+          <%= link_to "&nbsp;".html_safe, dashboard_path %>
         </div>
       <% end %>
 
       <p class="additional_photo_text"><%= t(".other_photo") %></p>
+
       <div class="additional_photo first">
-        <% if @item.picture_url.present? %>
         <div class="image">
-          <%= image_tag(@item.picture_url,
+          <%= image_tag(@item.picture2.mini.url,
                         alt: @item.title,
-                        class: "current_photo",
-                        "ng-src" => "{{imagePreview}}") %>
-
-          <label for="upload" ng-show="!newPhoto">+</label>
-          <!-- <input type="image"> -->
-          <%= link_to t(".d"), dashboard_path %>
+                        class: "current_photo") %>
+          <label for="upload">+</label>
+          <%= f.file_field :picture2 %>
+          <%= link_to "&nbsp;".html_safe, dashboard_path %>
         </div>
-      <% else %>
-        <div class="image {{ newPhoto ? '' : 'without_photo_input' }}">
-          <%= image_tag(@item.picture_url,
-                        alt: @item.title,
-                        class: "current_photo",
-                        "ng-src" => "{{imagePreview}}") %>
-
-          <label for="upload" ng-show="!newPhoto">+</label>
-          <!-- <input type="image"> -->
-          <%= link_to t(".d"), dashboard_path %>
-        </div>
-      <% end %>
       </div>
 
       <div class="additional_photo">
-        <% if @item.picture_url.present? %>
         <div class="image">
-          <%= image_tag(@item.picture_url,
+          <%= image_tag(@item.picture3.additional_photo.url,
                         alt: @item.title,
-                        class: "current_photo",
-                        "ng-src" => "{{imagePreview}}") %>
-
-          <label for="upload" ng-show="!newPhoto">+</label>
-          <!-- <input type="image"> -->
-          <%= link_to t(".d"), dashboard_path %>
+                        class: "current_photo") %>
+          <label for="upload">+</label>
+          <%= f.file_field :picture3 %>
+          <%= link_to "&nbsp;".html_safe, dashboard_path %>
         </div>
-      <% else %>
-        <div class="image {{ newPhoto ? '' : 'without_photo_input' }}">
-          <%= image_tag(@item.picture_url,
-                        alt: @item.title,
-                        class: "current_photo",
-                        "ng-src" => "{{imagePreview}}") %>
-
-          <label for="upload" ng-show="!newPhoto">+</label>
-          <!-- <input type="image"> -->
-          <%= link_to t(".d"), dashboard_path %>
-        </div>
-      <% end %>
       </div>
 
       <div class="additional_photo">
-        <% if @item.picture_url.present? %>
         <div class="image">
-          <%= image_tag(@item.picture_url,
+          <%= image_tag(@item.picture4.additional_photo.url,
                         alt: @item.title,
-                        class: "current_photo",
-                        "ng-src" => "{{imagePreview}}") %>
-
-          <label for="upload" ng-show="!newPhoto">+</label>
-          <!-- <input type="image"> -->
-          <%= link_to t(".d"), dashboard_path %>
+                        class: "current_photo") %>
+          <label for="upload">+</label>
+          <%= f.file_field :picture4 %>
+          <%= link_to "&nbsp;".html_safe, dashboard_path %>
         </div>
-      <% else %>
-        <div class="image {{ newPhoto ? '' : 'without_photo_input' }}">
-          <%= image_tag(@item.picture_url,
-                        alt: @item.title,
-                        class: "current_photo",
-                        "ng-src" => "{{imagePreview}}") %>
-
-          <label for="upload" ng-show="!newPhoto">+</label>
-          <!-- <input type="image"> -->
-          <%= link_to t(".d"), dashboard_path %>
-        </div>
-      <% end %>
       </div>
 
       <div class="additional_photo">
-        <% if @item.picture_url.present? %>
         <div class="image">
-          <%= image_tag(@item.picture_url,
+          <%= image_tag(@item.picture5.additional_photo.url,
                         alt: @item.title,
-                        class: "current_photo",
-                        "ng-src" => "{{imagePreview}}") %>
-
-          <label for="upload" ng-show="!newPhoto">+</label>
-          <!-- <input type="image"> -->
-          <%= link_to t(".d"), dashboard_path %>
+                        class: "current_photo") %>
+          <label for="upload">+</label>
+          <%= f.file_field :picture5 %>
+          <%= link_to "&nbsp;".html_safe, dashboard_path %>
         </div>
-      <% else %>
-        <div class="image {{ newPhoto ? '' : 'without_photo_input' }}">
-          <%= image_tag(@item.picture_url,
-                        alt: @item.title,
-                        class: "current_photo",
-                        "ng-src" => "{{imagePreview}}") %>
-
-          <label for="upload" ng-show="!newPhoto">+</label>
-          <!-- <input type="image"> -->
-          <%= link_to t(".d"), dashboard_path %>
-        </div>
-      <% end %>
       </div>
 
       <p class="additional_photo_text"><%= t(".comments") %></p>
-       <textarea placeholder="Put your comments here"></textarea>
+      <%= f.text_area :comment, placeholder: "Put your comments here" %>
     </div>
 
     <div class="actions_but">

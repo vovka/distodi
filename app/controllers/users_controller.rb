@@ -38,6 +38,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+    redirect_to edit_user_path(current_user)
+  end
+
   private
 
   def set_user

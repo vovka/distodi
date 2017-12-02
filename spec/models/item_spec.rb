@@ -150,6 +150,11 @@ end
 #  id_code            :string
 #  transferring_to_id :integer
 #  demo               :boolean
+#  picture2           :string
+#  picture3           :string
+#  picture4           :string
+#  picture5           :string
+#  comment            :string(2000)
 #
 # Indexes
 #

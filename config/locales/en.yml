@@ -112,7 +112,7 @@ en:
       select: "Please select a category"
       category: "Category"
       error: "error"
-      prohabited: "prohibited this item from being saved:"
+      prohibited: "prohibited this item from being saved:"
       other_photo: Other photos (min 800x600 pixels each)
       title_placeholder: "Title of tour item"
       comments: Comments (2000 symbols max)
@@ -487,8 +487,8 @@ en:
       country_must_be_present: "Please, set your country at profile edit page."
       country_must_be_real: "Please, set a real country at profile edit page."
       category_must_be_present: "Please, select a category."
-      first_name_must_be_present: "Please, set you first name at profile edit page."
-      last_name_must_be_present: "Please, set you last name at profile edit page."
+      first_name_must_be_present: "should have first name set. Please, set you first name at profile edit page."
+      last_name_must_be_present: "should have last name set. Please, set you last name at <a href=\"/profile\" target=\"_blank\">profile edit page</a>."
       at_least_one_action_kind_must_be_present: "Please, select at least one action."
 
   activerecord:

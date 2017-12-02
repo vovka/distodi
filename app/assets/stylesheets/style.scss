@@ -1577,8 +1577,6 @@ footer hr {
 }
 
 .slider_mobile_items .owl-item img {
-  width: 100px;
-  height: 75px;
   z-index: 100;
   margin: 2.5px;
 }
@@ -1933,10 +1931,6 @@ option {
 
 .field input {
   color: transparent;
-  position: absolute;
-  left: 0;
-  width: 96%;
-  height: 100%;
   background-color: transparent;
   z-index: 100;
   opacity: 0;
@@ -2360,8 +2354,13 @@ width: 205px;
     border-radius: 4px;
     width: 95%;
     text-align: center;
+
     img {
       border: none;
+      width: auto;
+      height: auto;
+      max-width: 448px;
+      max-height: 435px;
 
       &:not([src]) {
         display: none;
@@ -2378,11 +2377,6 @@ width: 205px;
     }
 
     input {
-      max-height: 435px;
-      width: 100%;
-      position: absolute;
-      left: 0;
-      top: 20px;
       cursor: pointer;
     }
 
@@ -3039,6 +3033,9 @@ width: 205px;
 .items .active img{
   margin: 0;
   border: 2.5px #149b4c solid;
+  width: auto;
+  height: auto;
+  padding: 0 1px 0 0;
 }
 .slider_mobile_items .all_items{
   margin: 2.5px;
@@ -4221,8 +4218,6 @@ height: 120px;
 .field textarea:-webkit-autofill{
   -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
 }
-<<<<<<< 67300c29525cf877909fd8a12a9133e9e80de1c5
-=======
 
 .field{
   .image{
@@ -4246,6 +4241,12 @@ height: 120px;
   .additional_photo{
     float: left;
     .image{
+      min-height: 75px;
+      float: left;
+      max-height: 75px;
+      height: 75px;
+      width: 100%;
+
       a{
         position: absolute;
         top: auto;
@@ -4272,17 +4273,6 @@ height: 120px;
       label{
         line-height: 75px;
         font-size: 16px;
-      }
-    }
-    .image{
-      min-height: 75px;
-      float: left;
-      max-height: 75px;
-      height: 75px;
-      width: 100%;
-      img{
-        width: auto;
-        height: 75px;
       }
     }
   }
