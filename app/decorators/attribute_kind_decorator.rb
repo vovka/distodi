@@ -3,12 +3,40 @@ class AttributeKindDecorator < Draper::Decorator
 
   VALUES = {
     AttributeKindPolicy::FUEL_TYPE => ["Petrol", "Diesel", "Biodiesel",
-                                        "Propane", "Metan", "Solid fuels"],
-    AttributeKindPolicy::MOTOR => ["Gasoline", "Diesel", "Biodiesel",
+                                        "Propane", "Metan", "Electricity",
+                                        "Solid fuels"],
+    AttributeKindPolicy::TYPE_OF_ENGINE => ["Gasoline", "Diesel", "Biodiesel",
                                     "Electric", "Hybrid", "Steam"],
     AttributeKindPolicy::TRANSMISSION => ["Manual", "Automatic",
                                           "Robotic", "Variator"],
-    AttributeKindPolicy::GENDER => ["Male", "Female", "Male - Female"]
+    AttributeKindPolicy::GENDER => ["Male", "Female", "Male - Female"],
+    AttributeKindPolicy::CAR_SUBCATEGORY => ["Passenger car", "Truck", "SUV",
+                                          "Campervan", "Mini truck", "Van",
+                                          "Minivan"],
+    AttributeKindPolicy::TYPE_OF_BODY => ["Microcar", "Subcompact car",
+                                          "Compact car", "Midi-size car",
+                                          "Full-size car", "Entry-level luxury car",
+                                           "Midi-size luxury car",
+                                           "Full-size luxury car",
+                                           "Convertible", "Grand tourer",
+                                           "Sport car", "Supercar", "Roadster",
+                                           "Station wagon", "Compact minivan",
+                                           "Minivan", "SUV-Mini", "SUV-Compact",
+                                           "SUV-Mid size", "SUV-Full size",
+                                           "Pickup truck-mini", "Pickup truck-mid size",
+                                           "Pickup truck-full size"],
+    AttributeKindPolicy::TYPE_OF_COMPLETE_SET => ["Basic", "Standart", "Classic",
+                                                  "Maximum", "Luxury"],
+    AttributeKindPolicy::BICYCLE_SUBCATEGORY => ["Cross country", "Downhill",
+                                                 "Road racing", "Triathlon",
+                                                  "Track", "Cruiser", "Touring",
+                                                  "Cyclocross", "Dutch", "Fatbike",
+                                                  "BMX", "Trial", "Folding",
+                                                  "Enduro", "Dirt jump",
+                                                  "Freeride"],
+    AttributeKindPolicy::FRAME_MATERIAL => ["Steel", "Hi Tensile", "Cromomolibden",
+                                            "Aluminium", "Magnesium", "Carbon",
+                                            "Titanium"]
   }.freeze
 
   # Define presentation-specific methods here. Helpers are accessed through
@@ -21,10 +49,12 @@ class AttributeKindDecorator < Draper::Decorator
   #   end
 
   def input_helper
-    if brand? || model? || year? || fuel_type? || motor? || weight? ||
-        transmission? || gender? || wheel_diameter?
+    if brand? || model? || year? || fuel_type? || type_of_engine? || weight? ||
+        transmission? || gender? || wheel_diameter? || car_subcategory? || type_of_body? ||
+        type_of_complete_set? || engine_displacement? || number_of_gears? ||
+        bicycle_subcategory? || frame_material?
       :select
-    elsif country? || manufacturer?
+    elsif country_of_using? || country_of_manufacture?
       :country_select
     else
       :text_field
@@ -72,6 +102,14 @@ class AttributeKindDecorator < Draper::Decorator
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence }
       ]
+    elsif engine_displacement?
+      [
+        (0.5..20).step(0.5).map { |i| "#{i} L" },
+        { selected: characteristic.try(:value).presence },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence }
+      ]
     elsif wheel_diameter?
       [
         (8..30).map { |i| "#{i} inch" },
@@ -80,14 +118,24 @@ class AttributeKindDecorator < Draper::Decorator
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence }
       ]
-    elsif country? || manufacturer?
+    elsif number_of_gears?
+      [
+        (1..40).map { |i| "#{i}" },
+        { selected: characteristic.try(:value).presence },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence }
+      ]
+    elsif country_of_using? || country_of_manufacture?
       [
         { selected: characteristic.try(:value).presence },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence }
       ]
-    elsif fuel_type? || motor? || transmission? || gender?
+    elsif fuel_type? || type_of_engine? || transmission? || gender? || car_subcategory? ||
+          type_of_body? || type_of_complete_set? || bicycle_subcategory? ||
+          frame_material?
       [
         values,
         { selected: characteristic.try(:value).presence },

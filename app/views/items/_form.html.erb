@@ -1,5 +1,18 @@
-<div class="form">
-<%= form_for(@item) do |f| %>
+<div  class="form"
+      ng-controller="NewItemController as newItemController"
+      ng-init='
+        newItemController.images = <%=
+          [
+            @item.picture.cover.url,
+            @item.picture2.additional_photo.url,
+            @item.picture3.additional_photo.url,
+            @item.picture4.additional_photo.url,
+            @item.picture5.additional_photo.url,
+          ].compact.to_s.html_safe
+        %>;
+      '
+     >
+  <%= form_for(@item) do |f| %>
     <% if @item.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@item.errors.count, t(".error")) %> <%= t(".prohibited") %> </h2>
@@ -11,13 +24,8 @@
         </div>
     <% end %>
 
-    <div class="field_title">
-      <%= f.label :title %>
-      <%= f.text_field :title, placeholder: t(".title_placeholder") %>
-    </div>
-
     <div class="categories">
-      <p><%= f.label t(".category") %></p>
+      <p>1. <%= f.label t(".category") %></p>
       <%= f.collection_select :category_id,
                               Category.all,
                               :id, :name,
@@ -29,82 +37,46 @@
                               } %>
     </div>
 
+    <div class="field_title">
+      2. <%= f.label :title %>
+      <%= f.text_field :title, placeholder: t(".title_placeholder") %>
+    </div>
+
     <div class="custom_attributes">
     </div>
 
     <div class="field">
       <p><%= t(".cover_photo") %></p>
-      <% if @item.picture.cover.url.present? %>
-        <div class="image">
-          <%= image_tag(@item.picture.cover.url,
-                        alt: @item.title,
-                        class: "current_photo",
-                        "ng-src" => "{{imagePreview}}") %>
-          <label for="upload" ng-show="!newPhoto"><%= t(".add_photo") %></label>
-          <%= f.file_field :picture,
-                           class: 'inputfile',
-                           "data-file" => "true" %>
-          <%= link_to "&nbsp;".html_safe, dashboard_path %>
-        </div>
-      <% else %>
-        <div class="image {{ newPhoto ? '' : 'without_photo_input' }}">
-          <%= image_tag(@item.picture.cover.url,
-                        alt: @item.title,
-                        class: "current_photo",
-                        "ng-src" => "{{imagePreview}}") %>
-          <label for="upload" ng-show="!newPhoto"><%= t(".add_photo") %></label>
-          <%= f.file_field :picture,
-                           class: 'inputfile',
-                           "data-file" => "true" %>
-          <%= link_to "&nbsp;".html_safe, dashboard_path %>
-        </div>
-      <% end %>
+        <div class="image {{ newPhotoAttached[0] ? '' : 'without_photo_input' }}">
+        <%= image_tag(nil,
+                      alt: @item.title,
+                      class: "current_photo",
+                      "ng-src" => "{{imagePreview[0] || newItemController.images[0]}}") %>
+        <label for="upload" ng-show="!newPhotoAttached[0]"><%= t(".add_photo") %></label>
+        <%= f.file_field :picture,
+                         class: 'inputfile',
+                         :"data-file" => "true",
+                         :"data-index" => 0 %>
+        <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
+      </div>
 
       <p class="additional_photo_text"><%= t(".other_photo") %></p>
 
-      <div class="additional_photo first">
-        <div class="image">
-          <%= image_tag(@item.picture2.mini.url,
-                        alt: @item.title,
-                        class: "current_photo") %>
-          <label for="upload">+</label>
-          <%= f.file_field :picture2 %>
-          <%= link_to "&nbsp;".html_safe, dashboard_path %>
+      <%- (1..4).each do |i| -%>
+        <div class="additional_photo">
+          <div class="image">
+            <%= image_tag(nil,
+                          alt: @item.title,
+                          class: "current_photo",
+                          :"ng-src" => "{{imagePreview[#{i}] || newItemController.images[#{i}]}}") %>
+            <label for="upload">+</label>
+            <%= f.file_field :"picture#{i + 1}",
+                             :"data-file" => "true",
+                             :"data-index" => i %>
+            <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, #{i})" %>
+          </div>
         </div>
-      </div>
-
-      <div class="additional_photo">
-        <div class="image">
-          <%= image_tag(@item.picture3.additional_photo.url,
-                        alt: @item.title,
-                        class: "current_photo") %>
-          <label for="upload">+</label>
-          <%= f.file_field :picture3 %>
-          <%= link_to "&nbsp;".html_safe, dashboard_path %>
-        </div>
-      </div>
-
-      <div class="additional_photo">
-        <div class="image">
-          <%= image_tag(@item.picture4.additional_photo.url,
-                        alt: @item.title,
-                        class: "current_photo") %>
-          <label for="upload">+</label>
-          <%= f.file_field :picture4 %>
-          <%= link_to "&nbsp;".html_safe, dashboard_path %>
-        </div>
-      </div>
-
-      <div class="additional_photo">
-        <div class="image">
-          <%= image_tag(@item.picture5.additional_photo.url,
-                        alt: @item.title,
-                        class: "current_photo") %>
-          <label for="upload">+</label>
-          <%= f.file_field :picture5 %>
-          <%= link_to "&nbsp;".html_safe, dashboard_path %>
-        </div>
-      </div>
+      <%- end -%>
 
       <p class="additional_photo_text"><%= t(".comments") %></p>
       <%= f.text_area :comment, placeholder: "Put your comments here" %>

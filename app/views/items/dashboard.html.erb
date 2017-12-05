@@ -7,9 +7,9 @@
     <% if @item.present? %>
       <div class="item_info">
         <span><%= @item.title %>, </span>
-          <% @item.characteristics.each do |characteristic| %>
-            <span> <%= characteristic.value %></span>
-          <% end %>
+        <% @item.characteristics.each do |characteristic| %>
+          <span> <%= characteristic.value %></span>
+        <% end %>
       </div>
     <% else %>
       <div class="item_info">
@@ -21,6 +21,10 @@
         <%= @services.count %> <span><%= t(".services") %></span>
       </div>
     <% end %>
+    <div class="reports_buttons">
+      <%= link_to image_tag('pdf-icon.png'), "javascript:void(0)", onclick: "print()" %>
+      <%= link_to image_tag('csv-icon.png'), services_path(format: :csv) %>
+    </div>
     <%= link_to new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" do %>
       <div class="add_service">
         <%= t(".add_new_service") %>
@@ -148,12 +152,6 @@
         </p>
       </div>
     <% end %>
-    <div class="pdf_button">
-      <%= link_to t(".pdf_link"), "javascript:void(0)", onclick: "print()" %>
-    </div>
-    <div class="xls_button">
-      <%= link_to t(".csv_link"), services_path(format: :csv) %>
-    </div>
   </div>
 
   <!-- Angular-tour -->

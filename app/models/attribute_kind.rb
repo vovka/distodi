@@ -2,8 +2,10 @@ class AttributeKind < ActiveRecord::Base
   acts_as_list
 
   delegate :brand?, :model?, :year?, :fuel_type?,
-           :motor?, :weight?, :transmission?, :gender?,
-           :wheel_diameter?, :country?, :manufacturer?,
+           :type_of_engine?, :weight?, :transmission?, :gender?,
+           :wheel_diameter?, :country_of_using?, :country_of_manufacture?,
+           :car_subcategory?, :type_of_body?, :type_of_complete_set?, :engine_displacement?,
+           :number_of_gears?, :bicycle_subcategory?, :frame_material?,
            to: :policy
 
   has_and_belongs_to_many :categories

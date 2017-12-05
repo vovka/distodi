@@ -1,6 +1,7 @@
+<% index = attribute_kind_counter + 3 %>
 <div class="attribute">
   <p>
-    <label for="characteristic<%= attribute_kind.id %>"><%= attribute_kind.title %></label>
+    <label for="characteristic<%= attribute_kind.id %>"><%= "#{index}. #{attribute_kind.title}" %></label>
   </p>
   <%= send attribute_kind.input_helper, :item, "characteristics[#{attribute_kind.id}]", *attribute_kind.input_arguments %>
 </div>

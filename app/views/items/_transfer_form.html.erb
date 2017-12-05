@@ -1,6 +1,6 @@
 <%= form_for item, url: transfer_item_path(item), method: "POST" do |f| %>
   <div class="inputs_trans">
-    <%= text_field_tag "user_identifier" %>
+    <%= text_field_tag "user_identifier", nil, placeholder: t(".input_placeholder") %>
     <%= f.submit t(".transfer_submit"), data: { confirm: t(".confirm_transfer") } %>
   </div>
 <% end %>
