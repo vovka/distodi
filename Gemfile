@@ -54,6 +54,7 @@ gem 'icalendar'
 gem 'acts_as_list'
 gem 'activeadmin_reorderable'
 gem 'geocoder'
+gem 'validates_zipcode'
 
 group :development, :test do
   gem 'byebug'
@@ -92,4 +93,8 @@ group :development do
   gem 'annotate'
   gem 'mailcatcher'
   gem 'xray-rails'
+end
+
+group :production do
+  gem 'htmlcompressor'
 end

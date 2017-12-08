@@ -15,7 +15,6 @@ FactoryGirl.define do
     city { Faker::Address.city }
     address { Faker::Address.street_address }
     phone { Faker::PhoneNumber.subscriber_number(10) }
-    postal_code { Faker::Number.number(5) }
   end
 end
 

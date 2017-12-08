@@ -1,6 +1,10 @@
 <div class="service_create_main_form">
   <div class="left_form_service_create margin">
-    <div class="form_service_create" ng-controller="AccountEditController as accountEditController" ng-click="clickedBlank()">
+    <div class="form_service_create"
+         ng-controller="AccountEditController as accountEditController"
+         ng-click="clickedBlank()"
+         ng-init='accountEditController.setProfile(<%= @user.to_json(only: %i( country_short city address postal_code ), methods: %i( country_short  )).html_safe %>)'
+         >
       <div class="destroy_user">
         <h1>
           <%= t(".delete_my_account") %>
@@ -72,7 +76,7 @@
           <p class="field_name">
             <%= f.label :city %>
           </p>
-          <%= f.text_field :city, placeholder: t(".city_placeholder") %>
+          <%= f.text_field :city, placeholder: t(".city_placeholder"), :"ng-value" => "city" %>
         </div>
 
         <div class="price">
