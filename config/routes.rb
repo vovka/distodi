@@ -42,7 +42,8 @@ Rails.application.routes.draw do
     get "/companies/registrations/success" => "companies/registrations#success"
   end
 
-  resources :leads
+  resources :leads, only: %i( new create )
+  get "/waiting_list", to: "leads#new"
   resources :attribute_kinds
   resources :service_kinds
 
@@ -95,7 +96,12 @@ Rails.application.routes.draw do
 
   post 'notifications/:id/read', to: "notifications#read", constraints: ->(request) { request.xhr? }
 
-  root "static_pages#home"
+  authenticated :user do
+    root 'items#dashboard', as: :authenticated_root
+  end
+  # Temporary changed root route
+  # root "static_pages#home"
+  root "leads#new"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
