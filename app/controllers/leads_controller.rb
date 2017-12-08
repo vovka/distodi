@@ -1,5 +1,6 @@
 class LeadsController < InheritedResources::Base
   layout 'new'
+
   def new
     @lead = Lead.new
   end
@@ -14,14 +15,9 @@ class LeadsController < InheritedResources::Base
     end
   end
 
-  def success
-
-  end
-
   private
 
     def lead_params
       params.require(:lead).permit(:email)
     end
 end
-
