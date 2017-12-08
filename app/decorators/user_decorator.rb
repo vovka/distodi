@@ -9,8 +9,4 @@ class UserDecorator < Draper::Decorator
   #       object.created_at.strftime("%a %m/%d/%y")
   #     end
   #   end
-
-  def country_object
-    ISO3166::Country.find_country_by_name country
-  end
 end

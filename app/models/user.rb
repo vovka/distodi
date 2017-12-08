@@ -17,9 +17,17 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :phone, presence: true, length: { in: 6..20 }, allow_blank: true
-  validates :postal_code, presence: true, length: { is: 5 }, allow_blank: true
+  validates :postal_code, zipcode: { country_code_attribute: :country_short }, allow_blank: true
 
   mount_uploader :picture, PictureUploader
+
+  def country_object
+    ISO3166::Country.find_country_by_name country
+  end
+
+  def country_short
+    country_object.try :alpha2
+  end
 end
 
 # == Schema Information

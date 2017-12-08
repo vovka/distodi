@@ -3,6 +3,13 @@ var AccountEditController = function($scope, $timeout, $http, $q) {
   this.$q = $q;
   var controller = this;
 
+  this.setProfile = function (data) {
+    $scope.country = data.country_short;
+    $scope.city = data.city;
+    $scope.formattedAddress = data.address;
+    $scope.postalCode = data.postal_code;
+  };
+
   $scope.changedPostalCode = function() {
     if (this.addressesHintsPromise) {
       $timeout.cancel(this.addressesHintsPromise)
@@ -48,5 +55,13 @@ AddressMap.prototype.setValues = function() {
   var country = this.address.address_components.find(function (i) {
     return JSON.stringify(i["types"]) === JSON.stringify(["country", "political"]);
   });
+  var postalCode = this.address.address_components.find(function (i) {
+    return JSON.stringify(i["types"]) === JSON.stringify(["postal_code"]);
+  });
+  var city = this.address.address_components.find(function (i) {
+    return JSON.stringify(i["types"]) === JSON.stringify(["locality", "political"]);
+  });
   this.$scope.country = country.short_name;
+  this.$scope.city = city.long_name;
+  this.$scope.postalCode = postalCode.long_name;
 };
