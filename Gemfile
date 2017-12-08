@@ -53,6 +53,7 @@ gem 'sidekiq'
 gem 'icalendar'
 gem 'acts_as_list'
 gem 'activeadmin_reorderable'
+gem 'geocoder'
 
 group :development, :test do
   gem 'byebug'
