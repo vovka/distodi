@@ -43,7 +43,6 @@ Rails.application.routes.draw do
   end
 
   resources :leads, only: %i( new create )
-  get "/waiting_list", to: "leads#new"
   resources :attribute_kinds
   resources :service_kinds
 
@@ -81,20 +80,20 @@ Rails.application.routes.draw do
 
   resources :checkouts, only: %i( show new create )
 
-  get :dashboard, to: "items#dashboard", as: :dashboard
-  get :dashboard, to: "items#dashboard", as: :home
-  get "item/:token", to: "items#show_for_company", as: :show_for_company
-  get "item/service/:token", to: "services#company_service", as: :company_service
-  get "profile", to: "users#profile"
+  get           "/dashboard" => "items#dashboard",          as: :dashboard
+  get           "/dashboard" => "items#dashboard",          as: :home
+  get         "/item/:token" => "items#show_for_company",   as: :show_for_company
+  get "/item/service/:token" => "services#company_service", as: :company_service
+  get             "/profile" => "users#profile"
+  get           "/addresses" => "addresses#search"
+  get               "/about" => "static_pages#about",       as: :static_pages_about
+  get            "/security" => "static_pages#security",    as: :static_pages_security
+  get         "/tutorialcar" => "static_pages#tutorialcar", as: :static_pages_tutorialcar
+  get             "/careers" => "static_pages#careers",     as: :static_pages_careers
+  get                "/lead" => "static_pages#lead",        as: :static_pages_lead
+  get               "/terms" => "static_pages#terms",       as: :static_pages_terms
 
-  get       "about" => "static_pages#about",       as: :static_pages_about
-  get    "security" => "static_pages#security",    as: :static_pages_security
-  get "tutorialcar" => "static_pages#tutorialcar", as: :static_pages_tutorialcar
-  get     "careers" => "static_pages#careers",     as: :static_pages_careers
-  get        "lead" => "static_pages#lead",        as: :static_pages_lead
-  get       "terms" => "static_pages#terms",       as: :static_pages_terms
-
-  post 'notifications/:id/read', to: "notifications#read", constraints: ->(request) { request.xhr? }
+  post '/notifications/:id/read' => "notifications#read", constraints: ->(request) { request.xhr? }
 
   authenticated :user do
     root 'items#dashboard', as: :authenticated_root

@@ -12,5 +12,6 @@ distodiApp.config(["$httpProvider", Config])
           .controller("ItemsController", ["$scope", "$http", "$q", 'ipCookie', ItemsController]);
 distodiApp.controller("SignInController", ["$scope", SignInController]);
 distodiApp.controller("NotificationsController", ["$scope", "$http", NotificationsController]);
+distodiApp.controller("AccountEditController", ["$scope", "$timeout", "$http", "$q", AccountEditController]);
 
 distodiApp.directive('file', FileDirective);

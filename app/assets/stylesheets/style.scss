@@ -1,3 +1,5 @@
+@import "_variables";
+
 /*font-family: 'Lato', sans-serif; #f06c64 #d6564f #f0d8d9*/
 body {
   text-align: center;
@@ -2816,7 +2818,7 @@ width: 205px;
   border-color: transparent transparent transparent rgba(78, 68, 68, 0.9) !important;
 }
 
-.ng-binding {
+.ng-binding { //??? it breaks angular elements
   color: #fff !important;
 }
 
@@ -4274,6 +4276,36 @@ height: 120px;
         line-height: 75px;
         font-size: 16px;
       }
+    }
+  }
+}
+
+.hint-list {
+  $border: solid 1px $form-borders-color;
+
+  display: block;
+  border: $border;
+  display: block;
+  position: absolute;
+  z-index: 1;
+  background: white;
+  max-height: 200px;
+  overflow-y: scroll;
+
+  li {
+    list-style: none;
+    text-align: left;
+    padding: 10px;
+    cursor: default;
+    font-style: italic;
+    color: inherit !important;
+
+    &:not(:first-child) {
+      border-top: $border;
+    }
+
+    &:hover {
+      color: $active-text-color;
     }
   }
 }
