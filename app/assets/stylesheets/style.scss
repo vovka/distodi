@@ -1581,6 +1581,8 @@ footer hr {
 .slider_mobile_items .owl-item img {
   z-index: 100;
   margin: 2.5px;
+  width: 100px;
+  height: 75px;
 }
 
 .all_items {
@@ -1786,6 +1788,7 @@ footer hr {
 .form .field_title {
   width: calc(33.5% + -14px);
   float: left;
+  margin-bottom: 6px;
 }
 
 .form .field_title p {
@@ -1815,7 +1818,7 @@ footer hr {
 
 .form .categories {
   text-align: left;
-  width: calc(30.5% + 22px);
+  width: calc(32% + 4px);
   float: left;
   height: 84px;
 }
@@ -1879,14 +1882,15 @@ option {
 }
 
 .custom_attributes input {
-  width: 93%;
+  width: calc(96% - 15px);
   border: 1px solid #d3d3d3;
   border-radius: 4px;
   font-size: 16px;
-  height: 49px;
+  height: 47px;
   padding-left: 15px;
   margin-bottom: 17px;
   outline: none;
+  margin-top: 3px;
 }
 
 .second .custom_attributes input {
@@ -2359,16 +2363,12 @@ width: 205px;
 
     img {
       border: none;
-      width: auto;
-      height: auto;
-      max-width: 448px;
-      max-height: 435px;
 
-      &:not([src]) {
+      &:not([src]), &[src=" "] {
         display: none;
       }
 
-      &[src] {
+      &[src]:not([src=" "]) {
         &+label {
           display: none;
         }
@@ -2377,9 +2377,25 @@ width: 205px;
     img:hover ~ a{
       display: inline-block;
     }
+    img:not([src]){
+      &~input{
+        display: inline-block;
+      }
+    }
+    img[src=" "]{
+      &~input{
+        display: inline-block;
+      }
+    }
 
     input {
       cursor: pointer;
+      position: absolute;
+      border: 1px solid red;
+      right: 19px;
+      width: calc(100% - 20px);
+      height: 42%;
+      display: none;
     }
 
     label {
@@ -2387,7 +2403,7 @@ width: 205px;
       font-size: 14px;
       color: #149b4c;
       letter-spacing: 0;
-      line-height: 421px;
+      line-height: 300px;
     }
   }
   .without_photo_input {
@@ -2712,7 +2728,7 @@ width: 205px;
   margin-top: 11px;
 }
 .field_title label{
-  display: block;
+  display: inline-block;
 }
 .form .field_title .field_with_errors:first-child{
   margin-right: 4px;
@@ -3035,8 +3051,6 @@ width: 205px;
 .items .active img{
   margin: 0;
   border: 2.5px #149b4c solid;
-  width: auto;
-  height: auto;
   padding: 0 1px 0 0;
 }
 .slider_mobile_items .all_items{
@@ -3221,7 +3235,6 @@ width: 205px;
 }
 
 .service_count{
-  width: 100px;
   text-align: left;
   float: left;
   margin-top: 31px;
@@ -3229,6 +3242,7 @@ width: 205px;
   font-family: 'MuseoSansCyrl_2';
   color:#1f1f1f;
   font-size:13px;
+  display: inline-block;
 }
 .service_count span{
   font-family: 'MuseoSansCyrl_1';
@@ -3911,7 +3925,7 @@ input:-webkit-autofill{
   border-radius: 4px;
 }
 .image.without_photo_input{
-  min-height: 432px;
+  min-height: 300px;
 }
 .user_destroy_place{
 height: 120px;
@@ -4186,10 +4200,7 @@ height: 120px;
   text-align: center;
   line-height: 75px;
   display: inline-block;
-  margin: 8px;
-}
-.field .additional_photo.first{
-  margin-left: 0;
+  margin: 8px 17px 20px 0;
 }
 .field .additional_photo:last-child{
   margin-right: 0;
@@ -4208,7 +4219,7 @@ height: 120px;
   border-radius:4px;
   min-width: calc(93% - 10px);
   max-width: calc(93% - 10px);
-  min-height:414px;
+  min-height: 318px;
   padding: 10px;
   outline: none;
 }
@@ -4248,13 +4259,43 @@ height: 120px;
       max-height: 75px;
       height: 75px;
       width: 100%;
-
+      &:hover{
+        border: 1px solid #149b4c;
+      }
+      input{
+        height: 75px;
+        max-height: 75px;
+        min-height: 75px;
+        position: relative;
+        top: -75px;
+        left: 0;
+        width: 100%;
+        display: none;
+        }
+      label{
+        line-height: 75px;
+        font-size: 16px;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+      }
+      img:not([src]){
+        &~input{
+          display: inline-block;
+        }
+      }
+      img[src=" "]{
+        &~input{
+          display: inline-block;
+        }
+      }
       a{
         position: absolute;
         top: auto;
         right: auto;
-        margin-top: 5px;
-        margin-left: calc(10% - 88px);
+        margin-top: -100px;
+        margin-left: calc(10% - 22px);
         display: none;
         &:hover{
           display: inline-block;
@@ -4264,22 +4305,9 @@ height: 120px;
     .without_photo_input{
       min-height: 75px;
       height: 75px;
-      input{
-        height: 75px;
-        max-height: 75px;
-        min-height: 75px;
-        width: 100%;
-        position: absolute;
-        top: auto;
-      }
-      label{
-        line-height: 75px;
-        font-size: 16px;
-      }
     }
   }
 }
-
 .hint-list {
   $border: solid 1px $form-borders-color;
 
@@ -4308,4 +4336,69 @@ height: 120px;
       color: $active-text-color;
     }
   }
+}
+.reports_buttons{
+  width: 100px;
+  float: left;
+  text-align: left;
+  margin-top: 21px;
+  margin-left: 17px;
+  a{
+    width: 30px;
+    margin-right: 10px;
+    img{
+      width: 30px;
+    }
+  }
+}
+.new_item{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hint-list {
+  $border: solid 1px $form-borders-color;
+
+  display: block;
+  border: $border;
+  display: block;
+  position: absolute;
+  z-index: 1;
+  background: white;
+  max-height: 200px;
+  overflow-y: scroll;
+
+  li {
+    list-style: none;
+    text-align: left;
+    padding: 10px;
+    cursor: default;
+    font-style: italic;
+    color: inherit !important;
+
+    &:not(:first-child) {
+      border-top: $border;
+    }
+
+    &:hover {
+      color: $active-text-color;
+    }
+  }
+}
+.reports_buttons{
+  width: 100px;
+  float: left;
+  text-align: left;
+  margin-top: 21px;
+  margin-left: 17px;
+  a{
+    width: 30px;
+    margin-right: 10px;
+    img{
+      width: 30px;
+    }
+  }
+}
+.new_item{
+  max-width: 1200px;
+  margin: 0 auto;
 }

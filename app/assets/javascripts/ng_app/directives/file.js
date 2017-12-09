@@ -1,3 +1,5 @@
+var file = new FileReader();
+
 var FileDirective = function() {
   return {
     scope: {
@@ -8,13 +10,13 @@ var FileDirective = function() {
       el.bind('change', function(event) {
         var files = event.target.files;
         if (files && files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            scope.$parent.newPhoto = true;
-            scope.$parent.imagePreview = e.target.result;
+          file.onload = function (e) {
+            var i = event.currentTarget.dataset.index;
+            scope.$parent.newPhotoAttached[i] = true;
+            scope.$parent.imagePreview[i] = e.target.result;
             scope.$apply();
           };
-          reader.readAsDataURL(files[0]);
+          file.readAsDataURL(files[0]);
         }
       });
     }

@@ -2,14 +2,21 @@ class AttributeKindPolicy
   BRAND = "Brand".freeze
   MODEL = "Model".freeze
   YEAR = "Year".freeze
-  COUNTRY = "Country".freeze
-  MANUFACTURER = "Manufacturer".freeze
+  COUNTRY_OF_USING = "Country of using".freeze
+  COUNTRY_OF_MANUFACTURE = "Country of manufacture".freeze
   FUEL_TYPE = "Fuel type".freeze
-  MOTOR = "Motor".freeze
+  TYPE_OF_ENGINE = "Type of engine".freeze
   WEIGHT = "Weight".freeze
   TRANSMISSION = "Transmission".freeze
   GENDER = "Gender".freeze
   WHEEL_DIAMETER = "Wheel diameter".freeze
+  CAR_SUBCATEGORY = "Car subcategory".freeze
+  TYPE_OF_BODY = "Type of body".freeze
+  TYPE_OF_COMPLETE_SET = "Type of complete set".freeze
+  ENGINE_DISPLACEMENT = "Engine displacement".freeze
+  NUMBER_OF_GEARS = "Number of gears".freeze
+  BICYCLE_SUBCATEGORY = "Bicycle subcategory".freeze
+  FRAME_MATERIAL = "Frame material".freeze
 
   def initialize(attribute_kind)
     @attribute_kind = attribute_kind
@@ -27,20 +34,20 @@ class AttributeKindPolicy
     @attribute_kind.title == YEAR
   end
 
-  def country?
-    @attribute_kind.title == COUNTRY
+  def country_of_using?
+    @attribute_kind.title == COUNTRY_OF_USING
   end
 
-  def manufacturer?
-    @attribute_kind.title == MANUFACTURER
+  def country_of_manufacture?
+    @attribute_kind.title == COUNTRY_OF_MANUFACTURE
   end
 
   def fuel_type?
     @attribute_kind.title == FUEL_TYPE
   end
 
-  def motor?
-    @attribute_kind.title == MOTOR
+  def type_of_engine?
+    @attribute_kind.title == TYPE_OF_ENGINE
   end
 
   def weight?
@@ -57,5 +64,33 @@ class AttributeKindPolicy
 
   def wheel_diameter?
     @attribute_kind.title == WHEEL_DIAMETER
+  end
+
+  def car_subcategory?
+    @attribute_kind.title == CAR_SUBCATEGORY
+  end
+
+  def type_of_body?
+    @attribute_kind.title == TYPE_OF_BODY
+  end
+
+  def type_of_complete_set?
+    @attribute_kind.title == TYPE_OF_COMPLETE_SET
+  end
+
+  def engine_displacement?
+    @attribute_kind.title == ENGINE_DISPLACEMENT
+  end
+
+  def number_of_gears?
+    @attribute_kind.title == NUMBER_OF_GEARS
+  end
+
+  def bicycle_subcategory?
+    @attribute_kind.title == BICYCLE_SUBCATEGORY
+  end
+
+  def frame_material?
+    @attribute_kind.title == FRAME_MATERIAL
   end
 end
