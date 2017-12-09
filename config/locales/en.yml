@@ -436,8 +436,7 @@ en:
       more: "More about Distodi"
     about:
       text: |
-        <h1>About Distodi</h1>
-        <div>
+          <h1>About Distodi</h1>
           <h2>What problem does Distodi solve?</h2>
           <p>
             <strong>Replaces paper service books</strong> for all types of property rights and has a simple and convenient access for all, everything and always.
@@ -455,15 +454,82 @@ en:
             <li>Adding additional value</li>
             <li>Download, print, or send history of service</li>
           </ul>
-        </div>
-        <div>
           <p>
             Track all services for all your - cars, bicycles, tractors, yachts etc., Distodi is single platform for any brands. Not having a full-service history can wipe almost a quarter off the value of a used car, bicycle, computer, house or any other your property. For the honest owner, will be very easy to add value by legitimately tracking down a service history.
           </p>
           <h2>Start to use Distodi today and keep value of your property!</h2>
           <h2></h2>
           <h2>Kind regards, Distodi Team</h2>
-        </div>
+    careers:
+      text: |
+        <h1>Careers Page</h1>
+        <p><strong>Distodi</strong> affirmative action employer. We do not discriminate based upon race, religion, color, national origin, gender (including pregnancy, childbirth, or related medical conditions), sexual orientation, gender identity, gender expression, age, status as a protected veteran, status as an individual with a disability, or other applicable legally protected characteristics.</p>
+        <p><strong>Distodi</strong> is looking for the best and brightest talent, and we invite candidates of all abilities to come as they are and do what they love. If the roles posted are not a match for your skill set, please submit your resume, cover letter and let us know your strengths.</p>
+        <h2>Kind regards, Distodi Team</h2>
+    security:
+      text: |
+        <h1>Security Guarantee</h1>
+        <p>At Distodi, we're committed to keeping your accounts and financial information safe and secure, from the moment you sign on Distodi to the time you sign out. As part of this commitment, we have instituted a number of security measures to help ensure the integrity of any your cooperation with other users, transactions and your account information.</p>
+        <p>The safeguards we’ve put in place to protect the security, privacy and integrity of your information during you using and saving data in Distodi or and you do any transactions including:</p>
+        <ul>
+          <li>Secure firewalls help prevent unauthorized access to our internal systems.</li>
+          <li>Data encryption to help ensure that your information can only be decoded and read by our secure online and mobile environment.</li>
+          <li>Around-the-clock monitoring to maintain the quality of our systems and proactively help identify unusual customer account activity.</li>
+        </ul>
+        <h2>This is important</h2>
+        <p>We are not responsible for losses resulting from your failure to meet your security responsibilities. For example, where you:</p>
+        <ul>
+          <li>voluntarily disclose your user name or password.</li>
+          <li>carelessly or improperly handle, store or disclose your user name or password.</li>
+          <li>voluntarily allow another person to use your computer, mobile device or tablet.</li>
+        </ul>
+        <p>Do not respond to pop-ups, emails, or other Internet requests that ask you to reveal personal information about yourself or your Distodi accounts. Distodi will <strong>never</strong> send you unsolicited emails asking for your password, Personal Identification.</p>
+        <p>Number (PIN), credit card, account numbers, etc. We will <strong>never</strong> ask you to validate or restore your account access through unsolicited email.</p>
+        <p>Review your statements and report any errors in a timely manner. Different transactions have different reporting deadlines.  Assist us in any investigation into improper access to your accounts.</p>
+        <p>By working together, you can help us protect your financial and personal account information.</p>
+        <h2>Kind regards, Distodi Team</h2>
+    terms:
+      text: |
+        <h1>Website privacy policy</h1>
+        <p>This privacy policy sets out how Distodi uses and protects any information that you give Distodi when you use this website.</p>
+        <p>Distodi is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with this privacy statement.</p>
+        <p>Distodi may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes. This policy is effective from 1st of March 2015.</p>
+        <h2>What we collect</h2>
+        <p>We may collect the following information:</p>
+        <ul>
+          <li>name, location, address (for companies)</li>
+          <li>contact information including email address</li>
+          <li>demographic information such as postcode, preferences and interests</li>
+          <li>other information relevant to customer surveys and/or offers</li>
+        </ul>
+        <h2>What we do with the information we gather</h2>
+        <p>We require this information to understand your needs and provide you with a better service, and in particular for the following reasons:</p>
+        <ul>
+          <li>Internal record keeping.</li>
+          <li>We may use the information to improve our products and services.</li>
+          <li>We may periodically send promotional emails about new products, special offers or other information which we think you may find interesting using the email address which you have provided.</li>
+          <li>From time to time, we may also use your information to contact you for market research purposes. We may contact you by email, phone, fax or mail. We may use the information to customise the website according to your interests.</li>
+        </ul>
+        <h2>Security</h2>
+        <p>We are committed to ensuring that your information is secure. In order to prevent unauthorised access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.</p>
+        <h2>How we use cookies</h2>
+        <p>A cookie is a small file which asks permission to be placed on your computer's hard drive. Once you agree, the file is added and the cookie helps analyse web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences.</p>
+        <p>We use traffic log cookies to identify which pages are being used. This helps us analyse data about webpage traffic and improve our website in order to tailor it to customer needs. We only use this information for statistical analysis purposes and then the data is removed from the system.
+        Overall, cookies help us provide you with a better website by enabling us to monitor which pages you find useful and which you do not. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us.
+        You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website.</p>
+        <h2>Links to other websites</h2>
+        <p>Our website may contain links to other websites of interest. However, once you have used these links to leave our site, you should note that we do not have any control over that other website. Therefore, we cannot be responsible for the protection and privacy of any information which you provide whilst visiting such sites and such sites are not governed by this privacy statement. You should exercise caution and look at the privacy statement applicable to the website in question.</p>
+        <h2>Controlling your personal information</h2>
+        <p>You may choose to restrict the collection or use of your personal information in the following ways:</p>
+        <ul>
+          <li>whenever you are asked to fill in a form on the website, look for the box that you can click to indicate that you do not want the information to be used by anybody for direct marketing purposes</li>
+          <li>if you have previously agreed to us using your personal information for direct marketing purposes, you may change your mind at any time by writing to or emailing us at [email address]</li>
+        </ul>
+        <p>We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law to do so. We may use your personal information to send you promotional information about third parties which we think you may find interesting if you tell us that you wish this to happen.</p>
+        <p>If you believe that any information we are holding on you is incorrect or incomplete, please write to or email us as soon as possible at the above address. We will promptly correct any information found to be incorrect.</p>
+        <h1>Contact Us</h1>
+        <h2>MAROPEN open doors s.r.o.</h2>
+        <h2>Prague, Czech Republic</h2>
   user_mailer:
     transfer_notification_email:
       item_was_transferred_to_you:
@@ -535,54 +601,3 @@ en:
       service_book: "Service book for everything."
       send_email: "Send us your e-mail address to get an early access"
 
-  Guarantee: "Security Guarantee"
-  At_Distodi_were: At Distodi, we're committed to keeping your accounts and financial information safe and secure, from the moment you sign on Distodi to the time you sign out. As part of this commitment, we have instituted a number of security measures to help ensure the integrity of any your cooperation with other users, transactions and your account information.
-  The_safeguards: "The safeguards we’ve put in place to protect the security, privacy and integrity of your information during you using and saving data in Distodi or and you do any transactions including:"
-  Secure_firewalls: Secure firewalls help prevent unauthorized access to our internal systems.
-  Data_encryption: Data encryption to help ensure that your information can only be decoded and read by our secure online and mobile environment.
-  Around_the_clock: Around-the-clock monitoring to maintain the quality of our systems and proactively help identify unusual customer account activity.
-  This_is_important: This is important
-  We_are_not_responsible_for: "We are not responsible for losses resulting from your failure to meet your security responsibilities. For example, where you:"
-  voluntarily_disclose: voluntarily disclose your user name or password.
-  carelessly_or_improperly: carelessly or improperly handle, store or disclose your user name or password.
-  voluntarily allow another: voluntarily allow another person to use your computer, mobile device or tablet.
-  Do_not_respond_to_pop: Do not respond to pop-ups, emails, or other Internet requests that ask you to reveal personal information about yourself or your Distodi accounts. Distodi will
-  never: never
-  send_you_unsolicited: send you unsolicited emails asking for your password, Personal Identification
-  Review_your_statements: Review your statements and report any errors in a timely manner. Different transactions have different reporting deadlines.  Assist us in any investigation into improper access to your accounts.
-  By_working_together: By working together, you can help us protect your financial and personal account information.
-  Careers: "Careers Page"
-  affirmative_action_employer: affirmative action employer. We do not discriminate based upon race, religion, color, national origin, gender (including pregnancy, childbirth, or related medical conditions), sexual orientation, gender identity, gender expression, age, status as a protected veteran, status as an individual with a disability, or other applicable legally protected characteristics.
-  is_looking_for_the: is looking for the best and brightest talent, and we invite candidates of all abilities to come as they are and do what they love. If the roles posted are not a match for your skill set, please submit your resume, cover letter and let us know your strengths.
-  Terms_Privacy: Terms & Privacy
-  Website_privacy: Website privacy policy
-  This_privacy_policy: This privacy policy sets out how Distodi uses and protects any information that you give Distodi when you use this website.
-  Distodi_is_committed: Distodi is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with this privacy statement.
-  Distodi_may_change: Distodi may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes. This policy is effective from 1st of March 2015.
-  What_we_collect: What we collect
-  We_may_collect: "We may collect the following information:"
-  Name_location: Name, location, address (for companies)
-  contact_information: contact information including email address
-  demographic_information: demographic information such as postcode, preferences and interests
-  other_information_relevant: other information relevant to customer surveys and/or offers
-  What_we_do_with: What we do with the information we gather
-  We_require_this_information: "We require this information to understand your needs and provide you with a better service, and in particular for the following reasons:"
-  Internal_record_keeping: Internal record keeping.
-  We_may_use_the: We may use the information to improve our products and services.
-  We_may_periodically: We may periodically send promotional emails about new products, special offers or other information which we think you may find interesting using the email address which you have provided.
-  From_time_to_time: From time to time, we may also use your information to contact you for market research purposes. We may contact you by email, phone, fax or mail. We may use the information to customise the website according to your interests.
-  Security: Security
-  We_are_committed_to: We are committed to ensuring that your information is secure. In order to prevent unauthorised access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.
-  How_we_use: How we use cookies
-  cookie_is_a_small: A cookie is a small file which asks permission to be placed on your computer's hard drive. Once you agree, the file is added and the cookie helps analyse web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences.
-  We_use_traffic_log: We use traffic log cookies to identify which pages are being used. This helps us analyse data about webpage traffic and improve our website in order to tailor it to customer needs. We only use this information for statistical analysis purposes and then the data is removed from the system. Overall, cookies help us provide you with a better website by enabling us to monitor which pages you find useful and which you do not. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us. You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website.
-  Links_to_other_websites: Links to other websites
-  Our_website_may_contain: Our website may contain links to other websites of interest. However, once you have used these links to leave our site, you should note that we do not have any control over that other website. Therefore, we cannot be responsible for the protection and privacy of any information which you provide whilst visiting such sites and such sites are not governed by this privacy statement. You should exercise caution and look at the privacy statement applicable to the website in question.
-  Controlling_your_personal: Controlling your personal information
-  You_may_choose_to: "You may choose to restrict the collection or use of your personal information in the following ways:"
-  whenever_you_are: whenever you are asked to fill in a form on the website, look for the box that you can click to indicate that you do not want the information to be used by anybody for direct marketing purposes
-  if_you_have_previously: if you have previously agreed to us using your personal information for direct marketing purposes, you may change your mind at any time by writing to or emailing us at [email address]
-  We_will_not_sell: We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law to do so. We may use your personal information to send you promotional information about third parties which we think you may find interesting if you tell us that you wish this to happen.
-  If_you_believe_that: If you believe that any information we are holding on you is incorrect or incomplete, please write to or email us as soon as possible at the above address. We will promptly correct any information found to be incorrect.
-  Contact_Us: Contact Us
-  MAROPEN_open: MAROPEN open doors s.r.o. Prague, Czech Republic
