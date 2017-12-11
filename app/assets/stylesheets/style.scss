@@ -3061,7 +3061,7 @@ width: 205px;
   border: 2.5px #149b4c solid;
 }
 .service_mobile .type{
-  margin: 0 0 0 39px;
+  margin: 0 0 0 15px;
   width: 53%;
   display: inline-block;
 }
@@ -3249,7 +3249,7 @@ width: 205px;
 }
 .service_count.edit{
   margin-left: 25px;
-  width: 200px;
+  width: 500px;
 }
 .service_count.edit span{
   font-family: 'MuseoSansCyrl_2';
@@ -3409,6 +3409,9 @@ width: 205px;
 }
 .left_form_service_create .form_service_create .half_form_field{
   margin-top: 20px;
+  margin-bottom: 20px;
+}
+.left_form_service_create .form_service_create .half_form_field.margin.first{
   margin-bottom: 20px;
 }
 .service_create_main_form .field_name{
@@ -3924,11 +3927,8 @@ input:-webkit-autofill{
   z-index: -1;
   border-radius: 4px;
 }
-.image.without_photo_input{
-  min-height: 300px;
-}
 .user_destroy_place{
-height: 120px;
+  height: 120px;
 }
 .destroy_user + .edit_user.ng-pristine.ng-valid{
   margin-top: -118px;
@@ -4202,7 +4202,7 @@ height: 120px;
   display: inline-block;
   margin: 8px 17px 20px 0;
 }
-.field .additional_photo:last-child{
+.field .additional_photo:nth-child(7) {
   margin-right: 0;
 }
 .field .additional_photo_text{
@@ -4399,6 +4399,10 @@ height: 120px;
   }
 }
 .new_item{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.edit_item{
   max-width: 1200px;
   margin: 0 auto;
 }

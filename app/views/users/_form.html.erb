@@ -58,11 +58,14 @@
           <%= f.text_field :last_name, placeholder: t(".last_name_placeholder")  %>
         </div>
 
-        <div class="half_form_field margin first">
+        <div class="half_form_field first">
           <p class="field_name">
-            <%= f.label :phone %>
+            <%= f.label :postal_code %>
           </p>
-          <%= f.text_field :phone, placeholder: t(".phone_placeholder")  %>
+          <%= f.text_field :postal_code, placeholder: t(".postal_placeholder"), :"ng-model" => "postalCode", :"ng-change" => "changedPostalCode()" %>
+          <ul class="hint-list" ng-show="addresses.length > 0">
+            <li ng-click="addressSelected()" ng-repeat="address in addresses">{{address.formatted_address}}</li>
+          </ul>
         </div>
 
         <div class="half_form_field half first">
@@ -86,14 +89,11 @@
           <%= f.text_field :address, placeholder: t(".address_placeholder"), :"ng-model" => "formattedAddress"  %>
         </div>
 
-        <div class="half_form_field first">
+        <div class="half_form_field margin first">
           <p class="field_name">
-            <%= f.label :postal_code %>
+            <%= f.label :phone %>
           </p>
-          <%= f.text_field :postal_code, placeholder: t(".postal_placeholder"), :"ng-model" => "postalCode", :"ng-change" => "changedPostalCode()" %>
-          <ul class="hint-list" ng-show="addresses.length > 0">
-            <li ng-click="addressSelected()" ng-repeat="address in addresses">{{address.formatted_address}}</li>
-          </ul>
+          <%= f.text_field :phone, placeholder: t(".phone_placeholder")  %>
         </div>
 
         <p class="field_name">
