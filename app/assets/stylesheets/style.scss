@@ -3968,12 +3968,44 @@ height: 120px;
   display: none;
 }
 .lead_background .form_lead{
-  max-width: 650px;
   text-align: left;
   height: 330px;
   margin: auto;
   position: relative;
-  top: calc(40% - 165px);
+  top: calc(40% - 110px);
+  float: left;
+  width: 400px;
+  padding-left: 20%;
+}
+.lead_background .form_lead.right{
+  float: right;
+  background: white;
+  height: 100%;
+  position: relative;
+  top: 0;
+  width: 33%;
+  padding: 0;
+  .form{
+    width: calc(100% - 80px);
+    margin-left: 40px;
+    margin-top: 0;
+    position: relative;
+    top: calc(40% - 140px);
+    .form-inputs{
+      input{
+        width: calc(100% - 47px);
+      }
+    }
+  }
+}
+.lead_background .form_lead.right h2{
+  font-family: 'MuseoSansCyrl_2';
+  font-size:26px;
+  color:#222222;
+  letter-spacing:0;
+  line-height:26px;
+  text-align:left;
+  top: 40%;
 }
 .lead_background .form_lead h1{
   font-family: 'MuseoSansCyrl_2';
@@ -3987,11 +4019,12 @@ height: 120px;
   opacity:0.7;
   font-family: 'MuseoSansCyrl_1';
   font-size:16px;
-  color:#ffffff;
   letter-spacing:0;
   line-height:16px;
   text-align:left;
   margin-top: 60px;
+  width: 265px;
+  line-height: 20px;
 }
 .lead_background .form_lead .form-inputs input{
   padding-left: 47px;
@@ -4029,15 +4062,11 @@ height: 120px;
 .lead_background .form_lead .error_notification{
   display: none;
 }
-.lead_background .form_lead .form-inputs{
-  width: 345px;
-  float: left;
-}
 .lead_background .form_lead .form-inputs .lead_email.field_with_errors input{
   border:1px solid #ff3c00;
 }
 .lead_background .form_lead .form-actions{
-  width: 180px;
+  width: 100%;
   float: left;
   padding-top: 31px;
 }
@@ -4047,17 +4076,19 @@ height: 120px;
   background: white;
   padding: 4px;
   border-radius: 4px;
-  top: 320px;
+  top: 218px;
   left: 0;
+  width: 100%;
 }
 .lead_background .form_lead .form-actions input{
   background:#1f1f1f;
   border-radius:4px;
-  width:180px;
+  width: 100%;
   height:51px;
   font-family: 'MuseoSansCyrl_1';
   font-size:16px;
   color:#ffffff;
+  margin-top: 10px;
 }
 .lead_background .form_lead p.second_line{
   margin-top: 10px;
