@@ -4,10 +4,12 @@ class CompaniesController < ApplicationController
   before_action :authenticate_company!
 
   def show
+    authorize @company
     redirect_to edit_company_path(@company)
   end
 
   def items
+    authorize @company
     @items = @company.services.map(&:item).uniq
   end
 
@@ -18,6 +20,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
+    authorize @company
   end
 
   def create
@@ -30,6 +33,7 @@ class CompaniesController < ApplicationController
   end
 
   def update
+    authorize @company
     if @company.update(company_params)
       redirect_to @company, notice: t(".notice")
     else
@@ -38,6 +42,7 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
+    authorize @company
     if @company.valid_password?(params[:company][:password])
       sign_out @company
       @company.destroy
