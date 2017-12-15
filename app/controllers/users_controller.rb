@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    authorize @user
   end
 
   def services
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize @user
     if @user.update(user_params)
       redirect_to @user, notice: t(".notice")
     else
@@ -29,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    authorize @user
     if @user.valid_password?(params[:user][:password])
       sign_out @user
       @user.destroy

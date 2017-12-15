@@ -27,7 +27,7 @@ class AttributeKindDecorator < Draper::Decorator
                                            "Pickup truck-full size"],
     AttributeKindPolicy::TYPE_OF_COMPLETE_SET => ["Basic", "Standart", "Classic",
                                                   "Maximum", "Luxury"],
-    AttributeKindPolicy::BICYCLE_SUBCATEGORY => ["Cross country", "Downhill",
+    AttributeKindPolicy::BICYCLE_SUBCATEGORY => ["Electric bicycle", "Cross country", "Downhill",
                                                  "Road racing", "Triathlon",
                                                   "Track", "Cruiser", "Touring",
                                                   "Cyclocross", "Dutch", "Fatbike",
