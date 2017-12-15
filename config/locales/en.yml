@@ -599,6 +599,8 @@ en:
       email: "Your e-mail address"
       access: "Get early access"
     new:
+      get_access: "Get early access"
       service_book: "Service book for everything."
+      send_us: "Send us your e-mail address to get an early access"
       send_email: "Send us your e-mail address to get an early access"
 
