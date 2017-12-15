@@ -14,5 +14,6 @@ angular.module("DistodiApp", ['angular-tour', 'ipCookie'])
 .controller("SignInController", ["$scope", SignInController])
 .controller("NotificationsController", ["$scope", "$http", NotificationsController])
 .controller("NewItemController", ["$scope", NewItemController])
+.controller("AccountEditController", ["$scope", "$timeout", "$http", "$q", AccountEditController])
 
 .directive('file', FileDirective);

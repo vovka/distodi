@@ -1398,14 +1398,53 @@ footer hr {
       td {
         .approved {
           background: asset-url("status-approved") no-repeat 0 0;
+          width: 20px;
+          &:hover::after {
+            content: "Approved status of service";
+            position: absolute;
+            z-index: 600;
+            background: rgba(255, 255, 255 ,0.8); /* Полупрозрачный цвет фона */
+            font-family: 'MuseoSansCyrl_1';
+            font-size: 14px;
+            padding: 10px 15px; /* Поля */
+            border: 1px solid #149b4c;
+            border-radius: 4px;
+            margin-left: 20px;
+          }
         }
 
         .pending {
           background: asset-url("status-pending") no-repeat 0 0;
+          width: 20px;
+          &:hover::after {
+            content: "Pending status of service";
+            position: absolute;
+            z-index: 600;
+            background: rgba(255, 255, 255 ,0.8); /* Полупрозрачный цвет фона */
+            font-family: 'MuseoSansCyrl_1';
+            font-size: 14px;
+            padding: 10px 15px; /* Поля */
+            border: 1px solid #149b4c;
+            border-radius: 4px;
+            margin-left: 20px;
+          }
         }
 
         .declined {
           background: asset-url("status-declined") no-repeat 0 0;
+          width: 20px;
+          &:hover::after {
+            content: "Declined status of service";
+            position: absolute;
+            z-index: 600;
+            background: rgba(255, 255, 255 ,0.8); /* Полупрозрачный цвет фона */
+            font-family: 'MuseoSansCyrl_1';
+            font-size: 14px;
+            padding: 10px 15px; /* Поля */
+            border: 1px solid #149b4c;
+            border-radius: 4px;
+            margin-left: 20px;
+          }
         }
 
         .control-action {
@@ -3930,7 +3969,7 @@ input:-webkit-autofill{
 .user_destroy_place{
   height: 120px;
 }
-.destroy_user + .edit_user.ng-pristine.ng-valid{
+.destroy_user + .edit_user.ng-valid{
   margin-top: -118px;
 }
 .destroy_user + .edit_company.ng-pristine.ng-valid{
