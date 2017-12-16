@@ -1,4 +1,13 @@
-<div class="service_create_main_form">
+<div  class="service_create_main_form"
+      ng-init='
+        controller.images = <%=
+          [
+            @service.picture.additional_photo.url,
+            @service.picture2.additional_photo.url,
+          ].compact.to_s.html_safe
+        %>;
+      '
+>
   <div class="left_form_service_create">
     <div class="form_service_create">
       <%= simple_form_for(@service) do |f| %>
@@ -8,43 +17,58 @@
         <%= hidden_field_tag :token, params[:token] %>
         <strong>
           <% @action_kinds.each do |action_kind| %>
-          <%= radio_button_tag("action_kind", action_kind.id) %>
-          <%= label_tag "action_kind_#{action_kind.id}", action_kind.title %>
+            <%= radio_button_tag("action_kind", action_kind.id) %>
+            <%= label_tag "action_kind_#{action_kind.id}", action_kind.title %>
           <% end %>
         </strong>
         <div class="half_form_field">
           <p class="field_name">
             <%= t(".service_kind") %>
           </p>
-          <%= select_tag "service_kind", options_from_collection_for_select(@service_kinds, "id", "title"), autofocus: true %>
-          <%= text_field "text", "service_kind_coment", placeholder: t(".service_kind_comment") %>
+          <%= select_tag "service_kind",
+                         options_from_collection_for_select(@service_kinds, "id", "title"),
+                         autofocus: true,
+                         :"ng-change" => "changedServiceKind({ withText: #{@service_kinds.select { |k| k.with_text }.map(&:id)} })",
+                         :"ng-model" => "serviceKind" %>
+          <%= text_field "text", "service_kind_coment", placeholder: t(".service_kind_comment"), :"ng-show" => "showServiceKindText" %>
         </div>
         <% if user_signed_in? %>
           <p class="field_name">
             <%= t(".service_company") %>
           </p>
           <div class="company_select">
-            <%= f.collection_select :company_id, [Company.new(name: t(".myself"))] + Company.all + [Company.new(name: t(".other"))], :id, :name, prompt: t(".select_company") %>
+            <%= f.collection_select :company_id,
+              @service.companies_options,
+              :id, :name,
+              {
+                prompt: t(".select_company")
+              },
+              {
+                :"ng-change" => "changedCompany({ myself: '#{@service.myself_option.id}', other: '#{@service.other_company_option.id}' })",
+                :"ng-model" => "company"
+              } %>
           </div>
-          <p class="field_name">
-            <%= t(".new_company") %>
-          </p>
-          <div class="textarea">
-            <%= text_area "text", "company_name", placeholder: t(".new_company_name") %>
-          </div>
-          <div class="select">
-            <label>
-              <input type="checkbox"/>
-              <i>
-                <%= image_tag "select.png" %>
-              </i>
-              <span>
-                <%= t(".send_log") %>
-              </span>
-              <div class="company_email">
-                <%= text_field_tag :new_company, "new_company", value: "", placeholder: t(".new_company_email") %>
-              </div>
-            </label>
+          <div ng-show="showInviteCompany">
+            <p class="field_name">
+              <%= t(".new_company") %>
+            </p>
+            <div class="textarea">
+              <%= text_area "text", "company_name", placeholder: t(".new_company_name") %>
+            </div>
+            <div class="select">
+              <label>
+                <input type="checkbox"/>
+                <i>
+                  <%= image_tag "select.png" %>
+                </i>
+                <span>
+                  <%= t(".send_log") %>
+                </span>
+                <div class="company_email">
+                  <%= text_field_tag :new_company, "new_company", value: "", placeholder: t(".new_company_email") %>
+                </div>
+              </label>
+            </div>
           </div>
         <% end %>
         <div class="price">
@@ -58,10 +82,25 @@
           <p class="field_name">
             <%= t(".service_photo") %>
           </p>
-          <%= image_tag(@service.picture_url, "ng-src" => "{{imagePreview}}") %>
-          <div class="photo_input">
-            <%= f.file_field :picture, "data-file" => "true" %>
-            <%= inline_svg "plus.svg" %>
+          <div class="image-upload-box">
+            <div ng-hide="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')">
+              <%= image_tag(nil, "ng-src" => "{{imagePreview[0] || controller.images[0]}}") %>
+              <%= link_to "&nbsp;&nbsp;x".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
+            </div>
+            <div class="photo_input" ng-show="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')">
+              <%= f.file_field :picture, :"data-file" => "true", :"data-index" => 0 %>
+              <%= inline_svg "plus.svg" %>
+            </div>
+          </div>
+          <div class="image-upload-box">
+            <div ng-hide="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')">
+              <%= image_tag(nil, "ng-src" => "{{imagePreview[1] || controller.images[1]}}") %>
+              <%= link_to "&nbsp;&nbsp;x".html_safe, "", :"ng-click" => "deleteImage($event, 1)" %>
+            </div>
+            <div class="photo_input" ng-show="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')">
+              <%= f.file_field :picture2, :"data-file" => "true", :"data-index" => 1 %>
+              <%= inline_svg "plus.svg" %>
+            </div>
           </div>
         </div>
         <div class="line"></div>

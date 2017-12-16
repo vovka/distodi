@@ -175,17 +175,18 @@ class ServicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white
     # list through.
     def service_params
+      default_params = [:control_date, :picture, :picture2, :price]
       if company_signed_in?
         params.require(:service)
               .merge(company_id: current_company.id)
-              .permit(:control_date, :picture, :price, :company_id,
-                      :reminder_custom, reminders_predefined: [])
+              .permit(default_params + [:company_id,
+                      :reminder_custom, reminders_predefined: []])
       elsif user_signed_in?
         params.require(:service)
-              .permit(:control_date, :picture, :price, :company_id,
-                      :reminder_custom, reminders_predefined: [])
+              .permit(default_params + [:company_id,
+                      :reminder_custom, reminders_predefined: []])
       else
-        params.require(:service).permit(:control_date, :picture, :price)
+        params.require(:service).permit(default_params)
       end
     end
 

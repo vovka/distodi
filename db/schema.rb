@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202010925) do
+ActiveRecord::Schema.define(version: 20171216002950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -253,6 +253,7 @@ ActiveRecord::Schema.define(version: 20171202010925) do
     t.string   "reason",        limit: 1023
     t.string   "id_code"
     t.boolean  "demo"
+    t.string   "picture2"
   end
 
   create_table "users", force: :cascade do |t|

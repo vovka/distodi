@@ -9,8 +9,8 @@
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
-  <body ng-app="DistodiApp" ng-controller="ItemsController as controller" ng-strict-di>
-    <div class="item_header">
+  <body ng-app="DistodiApp" ng-strict-di>
+    <div class="item_header" ng-controller="TopPanelController as controller">
       <% %i( notice error ).each do |msg| %>
         <div class="<%= msg %>">
           <%= flash[msg] %>
@@ -39,7 +39,6 @@
               <%= link_to t(".my_items"), items_path(current_user)%>
               <%= link_to t(".help"), static_pages_about_path%>
               <%= logout_link %>
-
             </div>
           </div>
         </div>

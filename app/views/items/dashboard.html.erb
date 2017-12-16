@@ -1,9 +1,11 @@
+<div ng-controller="ItemsController as controller"
+     ng-init='controller.checkboxes.length = <%= @services.size %>;
+              controller.permissions = <%= @services.map { |s| s.permissions(current_user) }.to_json.html_safe %>;
+              controller.ids = <%= @services.map(&:id) %>;
+              '>
   <%= render @items.present? ? "items" : "empty_items" %>
 
-  <div ng-init='controller.checkboxes.length = <%= @services.size %>;
-                controller.permissions = <%= @services.map { |s| s.permissions(current_user) }.to_json.html_safe %>;
-                controller.ids = <%= @services.map(&:id) %>;
-                '>
+  <div>
     <% if @item.present? %>
       <div class="item_info">
         <span><%= @item.title %>, </span>
@@ -225,3 +227,4 @@
       tourtip-element=".xls_button a">
     </virtual-step>
   </tour>
+</div>
