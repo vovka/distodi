@@ -11,7 +11,7 @@ var FileDirective = function() {
         var files = event.target.files;
         if (files && files[0]) {
           file.onload = function (e) {
-            var i = event.currentTarget.dataset.index;
+            var i = event.currentTarget.dataset.index || 0;
             scope.$parent.newPhotoAttached[i] = true;
             scope.$parent.imagePreview[i] = e.target.result;
             scope.$apply();

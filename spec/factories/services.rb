@@ -41,4 +41,5 @@ end
 #  reason        :string(1023)
 #  id_code       :string
 #  demo          :boolean
+#  picture2      :string
 #

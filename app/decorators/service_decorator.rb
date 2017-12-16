@@ -21,4 +21,16 @@ class ServiceDecorator < Draper::Decorator
       [i, I18n.t("activerecord.models.service.attributes.predefined_reminders.#{name}")]
     end
   end
+
+  def companies_options
+    [myself_option] + Company.all + [other_company_option]
+  end
+
+  def myself_option
+    Struct.new(:id, :name).new(-1, I18n.t("services.form.myself"))
+  end
+
+  def other_company_option
+    Struct.new(:id, :name).new(-2, I18n.t("services.form.other"))
+  end
 end

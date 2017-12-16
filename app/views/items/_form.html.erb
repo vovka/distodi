@@ -47,7 +47,7 @@
 
     <div class="field">
       <p><%= t(".cover_photo") %></p>
-        <div class="image {{ newPhotoAttached[0] ? '' : 'without_photo_input' }}">
+      <div class="image {{ newPhotoAttached[0] ? '' : 'without_photo_input' }}">
         <%= image_tag(nil,
                       alt: @item.title,
                       class: "current_photo",

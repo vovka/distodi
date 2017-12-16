@@ -4476,3 +4476,25 @@ input:-webkit-autofill{
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.image-upload-box {
+  float: left;
+
+  a {
+    display: none;
+  }
+
+  &:hover {
+    a {
+      display: inline-block;
+      position: relative;
+      right: 30px;
+      top: 10px;
+      width: 20px;
+      height: 20px;
+      background: red;
+      color: white;
+      border-radius: 10px;
+    }
+  }
+}

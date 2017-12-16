@@ -16,6 +16,7 @@ class Service < ActiveRecord::Base
   attr_accessor :reminders_predefined, :reminder_custom
 
   mount_uploader :picture, PictureUploader
+  mount_uploader :picture2, PictureUploader
 
   has_many :service_fields, dependent: :destroy
   has_many :service_kinds, through: :service_fields
@@ -141,4 +142,5 @@ end
 #  reason        :string(1023)
 #  id_code       :string
 #  demo          :boolean
+#  picture2      :string
 #
