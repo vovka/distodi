@@ -74,7 +74,7 @@ class ItemsController < ApplicationController
     authorize @item
     if current_user.valid_password?(params[:item][:password])
       @item.destroy
-      redirect_to @item.user, notice: t(".success")
+      redirect_to dashboard_path, notice: t(".success")
     else
       redirect_to :back, notice: t(".password_invalid")
     end
