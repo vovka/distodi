@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = current_user.items.build
-    @item.can_generate_item_id_code?
+    @item.check_user_attributes
     @items = [@item]
     @attributes = AttributeKind.all
   end
