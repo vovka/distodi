@@ -13,7 +13,7 @@
               <% @items.each do |item| %>
                 <div class="items">
                   <%= link_to item, class: (@item.present? && item == @item ? "active" : "") do %>
-                  <%= image_tag(item.picture.mini.url, alt: item.title) %>
+                    <%= image_tag(item.picture.mini.url, alt: item.title) %>
                   <% end %>
                 </div>
               <% end %>
