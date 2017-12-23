@@ -1791,6 +1791,15 @@ footer hr {
   left: 0;
   font-family: 'MuseoSansCyrl_1';
   padding-right: 130px;
+  outline: none;
+}
+.function .transfer input:focus{
+  border-color: #149b4c;
+  box-shadow: 0 0 4px 0 #149b4c;
+
+}
+.function .transfer input:-webkit-autofill{
+  -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
 }
 
 .function .delete {
@@ -1954,7 +1963,7 @@ option {
 .field {
   width: 35%;
   float: right;
-  margin-top: -78px;
+  margin-top: -80px;
   position: relative;
 }
 
@@ -2426,6 +2435,13 @@ width: 205px;
         display: inline-block;
       }
     }
+    .field_with_errors{
+      input{
+        display: inline-block;
+        top: 20px;
+        height: 300px;
+      }
+    }
 
     input {
       cursor: pointer;
@@ -2771,7 +2787,7 @@ width: 205px;
 }
 .form .field_title .field_with_errors:first-child{
   margin-right: 4px;
-  float: left;
+  display: inline;
   margin-top: 0;
 }
 .form .field_title .field_with_errors label{

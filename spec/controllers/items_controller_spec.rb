@@ -305,7 +305,7 @@ describe ItemsController do
 
         delete :destroy, id: item.to_param, item: { password: "11111111" }
 
-        expect(response).to redirect_to(item.user)
+        expect(response).to redirect_to(dashboard_path)
       end
 
       it "decrements items count" do
