@@ -40,6 +40,7 @@ module OauthableModel
           resource ||= profile.send(:"build_#{association_name}", attributes)
           profile.send(:"#{association_name}=", resource)
           profile.save(options)
+          after_sign_up_actions!(resource)
         end
         resource
       else
@@ -53,7 +54,7 @@ module OauthableModel
             end
             resource
           else
-            create email: auth.info.email,
+            resource = create email: auth.info.email,
                    password: Devise.friendly_token[0, 20],
                    full_name: auth.info.name,
                    picture: auth.info.image,
@@ -67,7 +68,14 @@ module OauthableModel
           resource.save(validate: false)
           resource
         end
+        after_sign_up_actions!(resource)
+        resource
       end
+    end
+
+    def after_sign_up_actions!(resource)
+      UserMailer.confirmation_email(resource).deliver_later
+      CreateDemoDataWorker.perform_async(resource.class, resource.id)
     end
   end
 end
