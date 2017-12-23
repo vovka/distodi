@@ -29,7 +29,7 @@
                          options_from_collection_for_select(@service_kinds, "id", "title"),
                          autofocus: true,
                          :"ng-change" => "changedServiceKind({ withText: #{@service_kinds.select { |k| k.with_text }.map(&:id)} })",
-                         :"ng-model" => "serviceKind" %>
+                         :"ng-model" => "serviceKind",  prompt: t(".select_service") %>
           <%= text_field "text", "service_kind_coment", placeholder: t(".service_kind_comment"), :"ng-show" => "showServiceKindText" %>
         </div>
         <% if user_signed_in? %>
@@ -83,9 +83,9 @@
             <%= t(".service_photo") %>
           </p>
           <div class="image-upload-box">
-            <div ng-hide="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')">
+            <div ng-hide="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')" class="input_field">
               <%= image_tag(nil, "ng-src" => "{{imagePreview[0] || controller.images[0]}}") %>
-              <%= link_to "&nbsp;&nbsp;x".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
+              <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
             </div>
             <div class="photo_input" ng-show="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')">
               <%= f.file_field :picture, :"data-file" => "true", :"data-index" => 0 %>
@@ -93,9 +93,9 @@
             </div>
           </div>
           <div class="image-upload-box">
-            <div ng-hide="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')">
+            <div ng-hide="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')" class="input_field">
               <%= image_tag(nil, "ng-src" => "{{imagePreview[1] || controller.images[1]}}") %>
-              <%= link_to "&nbsp;&nbsp;x".html_safe, "", :"ng-click" => "deleteImage($event, 1)" %>
+              <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 1)" %>
             </div>
             <div class="photo_input" ng-show="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')">
               <%= f.file_field :picture2, :"data-file" => "true", :"data-index" => 1 %>

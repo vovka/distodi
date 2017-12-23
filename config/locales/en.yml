@@ -116,7 +116,7 @@ en:
       other_photo: Other photos (min 800x600 pixels each)
       title_placeholder: "Your name of the item"
       comments: Comments (2000 symbols max)
-      comments_placeholder: "Please add here any additional information or description of your time"
+      comments_placeholder: "Please, add here any additional information or description of your item"
     transfer_form:
       user_identifier_to_transfer_item: "User email to transfer the item."
       confirm_transfer: "Are you sure you want to transfer the item to another user?"
@@ -234,6 +234,7 @@ en:
       new_service: "New service log entry"
       for_your: "For your:"
     form:
+      select_service: Please, select service kind
       service_kind: "Service kind"
       service_company: "Select company name or service by yourself"
       new_company: "New service company name"
