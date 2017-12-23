@@ -12,7 +12,7 @@ module IdCodeable
                         .constantize.new(self)
   end
 
-  delegate :can_generate_id_code?, :can_generate_item_id_code?,
+  delegate :can_generate_id_code?, :check_user_attributes,
            :model_id_code, :country_id_code,
            :user_id_code, :category_id_code, :date_id_code,
            :serial_number_id_code,
@@ -39,6 +39,11 @@ class BaseIdCodeDecorator
   end
 
   def can_generate_id_code?
+    check_user_attributes
+    record.errors.add(:category, I18n.t(".errors.messages.category_must_be_present")) if record.category.blank?
+  end
+
+  def check_user_attributes
     if record.user.blank?
       record.errors.add(:user, I18n.t(".errors.messages.user_must_be_present"))
     else
@@ -48,7 +53,6 @@ class BaseIdCodeDecorator
         record.errors.add(:user, I18n.t(".errors.messages.country_must_be_real")) if country_object.blank?
       end
     end
-    record.errors.add(:category, I18n.t(".errors.messages.category_must_be_present")) if record.category.blank?
   end
 
   def serial_number_id_code
@@ -79,7 +83,7 @@ end
 #####
 
 class ItemIdCodeDecorator < BaseIdCodeDecorator
-  def can_generate_id_code?
+  def check_user_attributes
     super
     can_generate_item_id_code?
   end

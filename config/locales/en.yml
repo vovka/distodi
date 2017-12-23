@@ -554,7 +554,7 @@ en:
   errors:
     messages:
       user_must_be_present: "User must be present."
-      country_must_be_present: "Please, set your country at profile edit page."
+      country_must_be_present: "Please, set your country at <a href=\"/profile\" target=\"_blank\">profile edit page</a>."
       country_must_be_real: "Please, set a real country at profile edit page."
       category_must_be_present: "Please, select a category."
       first_name_must_be_present: "should have first name set. Please, set you first name at profile edit page."
