@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :notifications
 
   validates :first_name, presence: true
-  validates :phone, presence: true, length: { in: 6..20 }, allow_blank: true
+  validates :phone, presence: true, length: { in: 8..15 }, allow_blank: true, numericality: { only_integer: true }
   validates :postal_code, zipcode: { country_code_attribute: :country_short }, allow_blank: true
 
   mount_uploader :picture, PictureUploader

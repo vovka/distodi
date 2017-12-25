@@ -89,11 +89,12 @@
           <%= f.text_field :address, placeholder: t(".address_placeholder"), :"ng-model" => "formattedAddress"  %>
         </div>
 
-        <div class="half_form_field margin first">
+        <div class="half_form_field margin first phone">
           <p class="field_name">
             <%= f.label :phone %>
           </p>
           <%= f.text_field :phone, placeholder: t(".phone_placeholder")  %>
+          <span class="phone_format_plus">+</span>
         </div>
 
         <p class="field_name">

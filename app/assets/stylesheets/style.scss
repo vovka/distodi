@@ -3386,6 +3386,15 @@ width: 205px;
 .service_create_main_form{
   width: 100%;
   text-align: center;
+  .field_with_errors{
+    text-align: left;
+    font-family: 'MuseoSansCyrl_1';
+    font-size: 13px;
+    letter-spacing: 0;
+    line-height: 13px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
 }
 .left_form_service_create.margin{
   margin-top: -20px;
@@ -3514,7 +3523,7 @@ input:-webkit-autofill{
 }
 
 .left_form_service_create .form_service_create .half_form_field input{
-  width: 283px;
+  width: 268px;
   display: block;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
@@ -3830,10 +3839,41 @@ input:-webkit-autofill{
 .left_form_service_create .form_service_create .half_form_field.half.first input{
   width: 268px;
 }
-.left_form_service_create .form_service_create .half_form_field.first input{
-  width: 268px;
+.left_form_service_create .form_service_create .half_form_field.first.phone input{
+  width: 253px;;
   margin-bottom: 0;
+  padding-left: 30px;
+  &[value=""] + span{
+    display: none;
+  }
+  &[value=""]{
+    padding-left: 15px;
+    width: 268px;
+  }
+  &:focus + span{
+    display: inline-block;
+  }
+  &:focus{
+    padding-left: 30px;
+    width: 253px;
+  }
+  & + span{
+    float: left;
+    display: inline-block;
+    position: relative;
+    margin-top: -33px;
+    margin-left: 18px;
+  }
+}.half_form_field.first.phone{
+  .field_with_errors + span{
+    float: left;
+    display: inline-block;
+    position: relative;
+    margin-top: -43px;
+    margin-left: 18px;
+  }
 }
+
 .left_form_service_create .form_service_create .half_form_field.half input{
   width: 285px;
 }
@@ -3992,7 +4032,7 @@ input:-webkit-autofill{
 .destroy_user + .edit_user.ng-valid{
   margin-top: -118px;
 }
-.destroy_user + .edit_company.ng-pristine.ng-valid{
+.destroy_user + .edit_company.ng-valid{
   margin-top: -118px;
 }
 .notification_confirmation.approver{
