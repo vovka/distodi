@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   def update
     authorize @user
     if @user.update(user_params)
+      bypass_sign_in @user
       redirect_to @user, notice: t(".notice")
     else
       render :edit
@@ -55,6 +56,8 @@ class UsersController < ApplicationController
     country = ISO3166::Country.find_country_by_name(params[:user][:country]) ||
               ISO3166::Country.new(params[:user][:country])
     params[:user][:country] = country.name if country.present?
-    params.require(:user).permit(:first_name, :last_name, :phone, :country, :city, :address, :postal_code, :notice, :picture)
+    params.require(:user).permit(:first_name, :last_name, :phone, :country,
+      :city, :address, :postal_code, :notice, :picture, :password,
+      :password_confirmation)
   end
 end
