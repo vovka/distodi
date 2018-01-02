@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Report <%= @item.title %></title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  </head>
+  <body>
+    <style type="text/css">
+      .report_item_photo{
+        border-bottom: 1px solid green;
+      }
+      .report_item_photo p{
+        margin-top: -12px;
+      }
+      .report_item_photo img{
+        border-radius: 4px;
+        float: right;
+        margin-left: 10px;
+      }
+      .report_header{
+        text-align: left;
+        border-bottom: 1px solid green;
+        margin-bottom: 30px;
+      }
+      .report_header h1{
+        display: inline-block;
+        color: green;
+        font-size: 33px;
+        margin-left: 5px;
+      }
+      .report_header h2{
+        display: inline-block;
+        float: right;
+        margin-top: 30px;
+      }
+      .list_items{
+        width: 100%;
+        text-align: left;
+        margin-top: 15px;
+        border-bottom: 1px solid green;
+        padding-bottom: 20px;
+      }
+      .list_items th{
+        border-bottom: 1px solid green;
+        background: #e6e6e6;
+      }
+      .list_items td{
+        border-bottom: 1px solid rgba(211, 211, 211, 0.3);
+        padding: 3px 0;
+      }
+      .item_options{
+        margin-right: 10px;
+      }
+      .report_content table{
+        margin-bottom: 50px;
+      }
+      .total_cost{
+        border-bottom: 1px solid green;
+      }
+    </style>
+    <div class='container'>
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

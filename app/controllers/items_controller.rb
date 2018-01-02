@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   layout 'item', except: [:show_for_company]
 
   before_action :set_item, only: [:show, :edit, :update, :destroy, :transfer,
-                                  :receive]
+                                  :receive, :show_pdf]
   before_action :authenticate_user!, except: :show_for_company
   before_action :authenticate_user_or_company!, only: :show_for_company
 
@@ -117,6 +117,17 @@ class ItemsController < ApplicationController
     authorize @item
     @item.update user: current_user, transferring_to: nil
     redirect_to action: :index
+  end
+
+  def show_pdf
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Your_filename",
+        template: "items/show_pdf.html.erb",
+        layout: 'pdf.html'
+      end
+    end
   end
 
   private

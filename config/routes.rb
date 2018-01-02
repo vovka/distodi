@@ -68,6 +68,7 @@ Rails.application.routes.draw do
     member do
       post :transfer
       post :receive
+      get :show_pdf
     end
   end
 
