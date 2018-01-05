@@ -331,6 +331,7 @@ GEM
       ast (~> 2.2)
     path_expander (1.0.1)
     pg (0.18.4)
+    phonelib (0.6.18)
     polyamorous (1.3.1)
       activerecord (>= 3.0)
     powerpack (0.1.1)
@@ -592,6 +593,7 @@ DEPENDENCIES
   omniauth-linkedin
   omniauth-twitter
   pg (~> 0.18.4)
+  phonelib
   pronto!
   pronto-flay
   pronto-rails_best_practices

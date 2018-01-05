@@ -57,6 +57,7 @@ gem 'geocoder'
 gem 'validates_zipcode'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'phonelib'
 
 group :development, :test do
   gem 'byebug'
