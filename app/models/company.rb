@@ -15,7 +15,7 @@ class Company < ActiveRecord::Base
   has_many :service_kinds
 
   validates_presence_of :first_name
-  validates :phone, presence: true, length: { in: 8..15 }, allow_blank: true, numericality: { only_integer: true }
+  validates :phone, phone: true, allow_blank: true
   validates :postal_code, presence: true, length: { is: 5 }, allow_blank: true
   validates :website, format: {with: self::URL_REGEXP}, allow_blank: true
 

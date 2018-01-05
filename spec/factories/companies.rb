@@ -10,7 +10,7 @@ FactoryGirl.define do
     country { Faker::Address.country }
     city { Faker::Address.city }
     address { Faker::Address.street_address }
-    phone { Faker::PhoneNumber.subscriber_number(10) }
+    phone { "+380501234567" }
     postal_code { Faker::Number.number(5) }
   end
 end

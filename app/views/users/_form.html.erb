@@ -41,7 +41,7 @@
           <p class="field_name">
             <%= f.label :email %>
           </p>
-          <%= f.email_field :email, readonly: true  %>
+          <%= f.email_field :email  %>
         </div>
 
         <div class="half_form_field half first">
@@ -94,7 +94,6 @@
             <%= f.label :phone %>
           </p>
           <%= f.text_field :phone, placeholder: t(".phone_placeholder")  %>
-          <span class="phone_format_plus">+</span>
         </div>
 
         <p class="field_name">
