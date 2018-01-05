@@ -1,11 +1,9 @@
 class ActionView::TestCase::TestController
-  def default_url_options(options={})
+  def default_url_options
     super.merge({ :locale => I18n.default_locale })
   end
-end
 
-class ActionDispatch::Routing::RouteSet
-  def default_url_options(options={})
-    { :locale => I18n.default_locale }
+  def url_options
+    default_url_options
   end
 end

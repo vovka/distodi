@@ -1,6 +1,20 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get '/', to: redirect("/#{I18n.default_locale}")
+
+  %w(facebook twitter google linkedin).each do |provider|
+    devise_scope :user do
+      get "/users/auth/:provider" => "omniauth_callbacks#passthru", defaults: { provider: provider, resource: "users" }, as: :"user_#{provider}_omniauth_authorize"
+      get "/auth/#{provider}/callback" => "omniauth_callbacks#default_callback", defaults: { provider: provider }
+    end
+
+    devise_scope :company do
+      get "/companies/auth/:provider", to: "omniauth_callbacks#passthru", defaults: { provider: provider, resource: "companies" }, as: :"company_#{provider}_omniauth_authorize"
+      get "/auth/#{provider}/callback" => "omniauth_callbacks#default_callback", defaults: { provider: provider }
+    end
+  end
+
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
     authenticate :admin_user do
       mount Sidekiq::Web => '/sidekiq'
@@ -18,18 +32,6 @@ Rails.application.routes.draw do
       sessions: "users/sessions",
       passwords: "users/passwords",
     }
-
-    %w(facebook twitter google linkedin).each do |provider|
-      devise_scope :user do
-        get "/users/auth/:provider" => "omniauth_callbacks#passthru", defaults: { provider: provider, resource: "users" }, as: :"user_#{provider}_omniauth_authorize"
-        get "/auth/#{provider}/callback" => "omniauth_callbacks#default_callback", defaults: { provider: provider }
-      end
-
-      devise_scope :company do
-        get "/companies/auth/:provider", to: "omniauth_callbacks#passthru", defaults: { provider: provider, resource: "companies" }, as: :"company_#{provider}_omniauth_authorize"
-        get "/auth/#{provider}/callback" => "omniauth_callbacks#default_callback", defaults: { provider: provider }
-      end
-    end
 
     devise_scope :user do
       get "/users/passwords/reset_success" => "users/passwords#reset_success"
@@ -106,7 +108,6 @@ Rails.application.routes.draw do
   end
 
   get '*path', to: redirect("/#{I18n.default_locale}/%{path}"), constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }
-  get '', to: redirect("/#{I18n.default_locale}")
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
