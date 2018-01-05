@@ -13,6 +13,10 @@
           <span> <%= characteristic.value %></span>
         <% end %>
       </div>
+      <div class="reports_buttons">
+        <%= link_to image_tag('pdf-icon.png'), show_pdf_item_path(@item, format: :pdf) %>
+        <%= link_to image_tag('csv-icon.png'), services_path(format: :csv) %>
+      </div>
     <% else %>
       <div class="item_info">
         <span><%= t(".all_services") %></span>
@@ -23,10 +27,6 @@
         <%= @services.count %> <span><%= t(".services") %></span>
       </div>
     <% end %>
-    <div class="reports_buttons">
-      <%= link_to image_tag('pdf-icon.png'), "javascript:void(0)", onclick: "print()" %>
-      <%= link_to image_tag('csv-icon.png'), services_path(format: :csv) %>
-    </div>
     <%= link_to new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" do %>
       <div class="add_service">
         <%= t(".add_new_service") %>

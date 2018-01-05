@@ -55,6 +55,8 @@ gem 'acts_as_list'
 gem 'activeadmin_reorderable'
 gem 'geocoder'
 gem 'validates_zipcode'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'byebug'
