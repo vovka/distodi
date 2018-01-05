@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   devise_group :user_or_company, contains: [:company, :user]
 
   before_filter :set_notifications
+  before_filter :set_locale
   before_action :set_lead
 
   def set_lead
@@ -24,6 +25,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     user_signed_in? ? dashboard_path : current_company
   end
+
 
   private
 
@@ -50,5 +52,14 @@ class ApplicationController < ActionController::Base
 
     def set_notifications
       @notifications = Notification.user(current_user_or_company).active.all
+    end
+
+    def set_locale
+      I18n.locale = params[:locale] || I18n.default_locale
+      Rails.application.routes.default_url_options[:locale] = I18n.locale
+    end
+
+    def default_url_options
+      { locale: I18n.locale }
     end
 end

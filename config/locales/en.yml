@@ -417,6 +417,7 @@ en:
       items: "items"
       services: "services"
       help: "Help"
+      language: Language
     new:
       updates: "UPDATES"
       questions: "QUESTIONS AND ANSVERS"
@@ -606,3 +607,7 @@ en:
       send_us: "Send us your e-mail address to get an early access"
       send_email: "Send us your e-mail address to get an early access"
 
+cz:
+  items:
+    empty_items:
+      add_first_item: "+ přidejte první položku"

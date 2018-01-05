@@ -2294,6 +2294,7 @@ option {
 .all_items_first p {
   font-size: 26px;
   line-height: 75.5px;
+  text-transform: uppercase;
 }
 
 .all_items_first {
@@ -2746,12 +2747,49 @@ width: 205px;
 }
 .more_menu_popup .work_panel{
   margin-top: 10px;
+  .language_list{
+    position: absolute;
+    margin-left: -110px;
+    margin-top: -41px;
+    background: white;
+    border: 2px solid #e9e9e9;
+    border-radius: 4px;
+    padding: 5px 0 5px 20px;
+    opacity: 0;
+    -webkit-transition: all 2000ms cubic-bezier(0.000, 0, 0.000, 1); /* older webkit */
+    -webkit-transition: all 2000ms cubic-bezier(0.000, -0.030, 0.000, 1.500); 
+       -moz-transition: all 2000ms cubic-bezier(0.000, -0.030, 0.000, 1.500); 
+         -o-transition: all 2000ms cubic-bezier(0.000, -0.030, 0.000, 1.500); 
+            transition: all 2000ms cubic-bezier(0.000, -0.030, 0.000, 1.500); /* custom */
+
+    -webkit-transition-timing-function: cubic-bezier(0.000, 0, 0.000, 1); /* older webkit */
+    -webkit-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.500); 
+       -moz-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.500); 
+         -o-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.500); 
+            transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.500); /* custom */
+    &:hover{
+      opacity: 1;
+    }
+    a{
+      width: 100%;
+    }
+    p{
+      width: 100%;
+      margin-right: -20px;
+      padding-left: 20px;
+    }
+  }
+  .language_controller{
+    &:before{
+      content:"< ";
+    }
+  }
 }
 
 .more_menu_popup .work_panel p:hover{
   background-color: #f2f2f2;
 }
-.more_menu_popup .work_panel  a{
+.more_menu_popup .work_panel a{
   padding-left: 20px;
   width: calc(100% + 20px);
   font-size: 13px;
@@ -2760,6 +2798,31 @@ width: 205px;
   position: relative;
   left: -20px;
   display: block;
+}
+.more_menu_popup .work_panel p{
+  padding-left: 10px;
+  width: calc(100% + 30px);
+  font-size: 13px;
+  color: #222222;
+  line-height: 36px;
+  position: relative;
+  left: -20px;
+  display: block;
+  cursor: pointer;
+  &:hover + .language_list{
+    opacity: 1;
+    -webkit-transition: all 300ms cubic-bezier(0.000, 0, 0.000, 1.000); /* older webkit */
+-webkit-transition: all 300ms cubic-bezier(0.000, -0.030, 0.000, 1.000); 
+   -moz-transition: all 300ms cubic-bezier(0.000, -0.030, 0.000, 1.000); 
+     -o-transition: all 300ms cubic-bezier(0.000, -0.030, 0.000, 1.000); 
+        transition: all 300ms cubic-bezier(0.000, -0.030, 0.000, 1.000); /* custom */
+
+-webkit-transition-timing-function: cubic-bezier(0.000, 0, 0.000, 1.000); /* older webkit */
+-webkit-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.000); 
+   -moz-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.000); 
+     -o-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.000); 
+        transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.000); /* custom */
+  }
 }
 .more_menu_popup .work_panel a:hover{
   background-color: #f2f2f2;
@@ -3902,7 +3965,7 @@ input:-webkit-autofill{
 .destroy_user{
   text-align: left;
   position: relative;
-  top: 1046px;
+  top: 1066px;
 }
 .destroy_user h1{
   font-family: 'MuseoSansCyrl_2';

@@ -36,8 +36,13 @@
             <div class="line"></div>
             <div class="work_panel">
               <%= link_to t(".show_my_profile"), user_path(current_user) %>
-              <%= link_to t(".my_items"), items_path(current_user)%>
+              <%= link_to t(".my_items"), items_path %>
               <%= link_to t(".help"), static_pages_about_path%>
+              <p class="language_controller"><%= t(".language") %></p>
+              <div class="language_list">
+                <p><%= link_to_unless_current "English", locale: "en" %></p>
+                <p><%= link_to_unless_current "Czech", locale: "cz" %></p>
+              </div>
               <%= logout_link %>
             </div>
           </div>
@@ -61,8 +66,13 @@
           <div class="line"></div>
           <div class="work_panel">
             <%= link_to t(".show_my_profile"), user_path(current_user) %>
-            <%= link_to t(".my_items"), items_path(current_user)%>
-            <%= link_to t(".help"), static_pages_about_path%>
+            <%= link_to t(".my_items"), items_path %>
+            <%= link_to t(".help"), static_pages_about_path %>
+            <p class="language_controller"><%= t(".language") %></p>
+            <div class="language_list">
+              <p><%= link_to_unless_current "English", locale: "en" %></p>
+              <p><%= link_to_unless_current "Czech", locale: "cz" %></p>
+            </div>
             <%= logout_link %>
           </div>
         </div>
@@ -82,8 +92,13 @@
             <div class="line"></div>
             <div class="work_panel">
               <%= link_to t(".show_my_profile"), company_path(current_company) %>
-              <%= link_to t(".my_items"), items_path(current_company)%>
-              <%= link_to t(".help"), static_pages_about_path%>
+              <%= link_to t(".my_items"), items_path(current_company) %>
+              <%= link_to t(".help"), static_pages_about_path %>
+              <p class="language_controller" ><%= t(".language") %></p>
+              <div class="language_list">
+                <p><%= link_to_unless_current "English", locale: "en" %></p>
+                <p><%= link_to_unless_current "Czech", locale: "cz" %></p>
+              </div>
               <%= logout_link %>
 
             </div>
@@ -109,6 +124,11 @@
             <%= link_to t(".show_my_profile"), company_path(current_company) %>
             <%= link_to t(".edit_button"), edit_company_path(current_company)%>
             <%= link_to t(".help"), static_pages_about_path%>
+            <p class="language_controller"><%= t(".language") %></p>
+             <div class="language_list">
+              <p><%= link_to_unless_current "English", locale: "en" %></p>
+              <p><%= link_to_unless_current "Czech", locale: "cz" %></p>
+            </div>
             <%= logout_link %>
           </div>
         </div>

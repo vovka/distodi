@@ -1,22 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  authenticate :admin_user do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :companies, controllers: {
-    registrations: "companies/registrations",
-    sessions: "companies/sessions",
-    passwords: "companies/passwords",
-  }
-  devise_for :users, controllers: {
-    registrations: "users/registrations",
-    sessions: "users/sessions",
-    passwords: "users/passwords",
-  }
+  get '/', to: redirect("/#{I18n.default_locale}")
 
   %w(facebook twitter google linkedin).each do |provider|
     devise_scope :user do
@@ -30,78 +15,99 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_scope :user do
-    get "/users/passwords/reset_success" => "users/passwords#reset_success"
-    get "/users/passwords/new_pass_success" => "users/passwords#new_pass_success"
-    get "/users/registrations/success" => "users/registrations#success"
-  end
-
-  devise_scope :company do
-    get "/companies/passwords/reset_success" => "companies/passwords#reset_success"
-    get "/companies/passwords/new_pass_success" => "companies/passwords#new_pass_success"
-    get "/companies/registrations/success" => "companies/registrations#success"
-  end
-
-  resources :leads, only: %i( new create )
-  resources :attribute_kinds
-  resources :service_kinds
-
-  resources :users do
-    member do
-      get :services
-      get :companies
+  scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
+    authenticate :admin_user do
+      mount Sidekiq::Web => '/sidekiq'
     end
-  end
+    ActiveAdmin.routes(self)
 
-  resources :companies do
-    member do
-      get :items
-      get :services
-      get :activate
+    devise_for :admin_users, ActiveAdmin::Devise.config
+    devise_for :companies, controllers: {
+      registrations: "companies/registrations",
+      sessions: "companies/sessions",
+      passwords: "companies/passwords",
+    }
+    devise_for :users, controllers: {
+      registrations: "users/registrations",
+      sessions: "users/sessions",
+      passwords: "users/passwords",
+    }
+
+    devise_scope :user do
+      get "/users/passwords/reset_success" => "users/passwords#reset_success"
+      get "/users/passwords/new_pass_success" => "users/passwords#new_pass_success"
+      get "/users/registrations/success" => "users/registrations#success"
     end
-  end
 
-  resources :items do
-    collection do
-      get :get_attributes
+    devise_scope :company do
+      get "/companies/passwords/reset_success" => "companies/passwords#reset_success"
+      get "/companies/passwords/new_pass_success" => "companies/passwords#new_pass_success"
+      get "/companies/registrations/success" => "companies/registrations#success"
     end
-    member do
-      post :transfer
-      post :receive
-      get :show_pdf
+
+    resources :leads, only: %i( new create )
+    resources :attribute_kinds
+    resources :service_kinds
+
+    resources :users do
+      member do
+        get :services
+        get :companies
+      end
     end
-  end
 
-  resources :services do
-    member do
-      patch :approve
-      patch :decline
+    resources :companies do
+      member do
+        get :items
+        get :services
+        get :activate
+      end
     end
+
+    resources :items do
+      collection do
+        get :get_attributes
+      end
+      member do
+        post :transfer
+        post :receive
+        get :show_pdf
+      end
+    end
+
+    resources :services do
+      member do
+        patch :approve
+        patch :decline
+      end
+    end
+
+    resources :checkouts, only: %i( show new create )
+
+    get           "/dashboard" => "items#dashboard",          as: :dashboard
+    get           "/dashboard" => "items#dashboard",          as: :home
+    get         "/item/:token" => "items#show_for_company",   as: :show_for_company
+    get "/item/service/:token" => "services#company_service", as: :company_service
+    get             "/profile" => "users#profile"
+    get           "/addresses" => "addresses#search"
+    get               "/about" => "static_pages#about",       as: :static_pages_about
+    get            "/security" => "static_pages#security",    as: :static_pages_security
+    get         "/tutorialcar" => "static_pages#tutorialcar", as: :static_pages_tutorialcar
+    get             "/careers" => "static_pages#careers",     as: :static_pages_careers
+    get                "/lead" => "static_pages#lead",        as: :static_pages_lead
+    get               "/terms" => "static_pages#terms",       as: :static_pages_terms
+
+    post '/notifications/:id/read' => "notifications#read", constraints: ->(request) { request.xhr? }
+
+    authenticated :user do
+      root 'items#dashboard', as: :authenticated_root
+    end
+    # Temporary changed root route
+    # root "static_pages#home"
+    root "leads#new"
   end
 
-  resources :checkouts, only: %i( show new create )
-
-  get           "/dashboard" => "items#dashboard",          as: :dashboard
-  get           "/dashboard" => "items#dashboard",          as: :home
-  get         "/item/:token" => "items#show_for_company",   as: :show_for_company
-  get "/item/service/:token" => "services#company_service", as: :company_service
-  get             "/profile" => "users#profile"
-  get           "/addresses" => "addresses#search"
-  get               "/about" => "static_pages#about",       as: :static_pages_about
-  get            "/security" => "static_pages#security",    as: :static_pages_security
-  get         "/tutorialcar" => "static_pages#tutorialcar", as: :static_pages_tutorialcar
-  get             "/careers" => "static_pages#careers",     as: :static_pages_careers
-  get                "/lead" => "static_pages#lead",        as: :static_pages_lead
-  get               "/terms" => "static_pages#terms",       as: :static_pages_terms
-
-  post '/notifications/:id/read' => "notifications#read", constraints: ->(request) { request.xhr? }
-
-  authenticated :user do
-    root 'items#dashboard', as: :authenticated_root
-  end
-  # Temporary changed root route
-  # root "static_pages#home"
-  root "leads#new"
+  get '*path', to: redirect("/#{I18n.default_locale}/%{path}"), constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
