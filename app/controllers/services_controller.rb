@@ -62,16 +62,20 @@ class ServicesController < ApplicationController
     action_kinds = params[:action_kind]
 
     result = nil
-    @service.transaction do
-      @service.action_kinds = ActionKind.where(id: action_kinds)
-      result = if @service.save
-        service_kind_id = service_kinds
-        service_kind = ServiceKind.find(service_kind_id)
-        service_field = service_kind.service_fields.build(
-          service: @service,
-          text: service_fields ? service_fields[service_kind_id] : ''
-        )
-        service_field.save
+    if service_kinds.blank?
+      @service.errors.add :service_kinds, :blank
+    else
+      @service.transaction do
+        @service.action_kinds = ActionKind.where(id: action_kinds)
+        result = if @service.save
+          service_kind_id = service_kinds
+          service_kind = ServiceKind.where(id: service_kind_id).first
+          service_field = service_kind.service_fields.build(
+            service: @service,
+            text: service_fields ? service_fields[service_kind_id] : ''
+          )
+          service_field.save
+        end
       end
     end
 

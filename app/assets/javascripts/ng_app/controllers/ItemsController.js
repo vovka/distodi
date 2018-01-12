@@ -34,14 +34,14 @@ ItemsController.prototype.clickedView = function(i) {
   }
 };
 
-ItemsController.prototype.clickedDelete = function(i) {
+ItemsController.prototype.clickedDelete = function(locale) {
   if (this.serviceActions.delete) {
     var selectedIndexes = this.checkboxes.selectedIndexes(),
         ids = this._getIdsByIndexes(selectedIndexes);
     if (confirm("Do you really want to delete the services?")) {
       var promises = [];
       for (var i in ids)
-        promises.push( this.$http.delete("/services/" + ids[i]) );
+        promises.push( this.$http.delete("/" + locale + "/services/" + ids[i]) );
       this.$q.all(promises).then(function(response) { document.location.reload() });
     }
   }
