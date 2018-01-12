@@ -28,6 +28,14 @@ class User < ActiveRecord::Base
   def country_short
     country_object.try :alpha2
   end
+
+  def create_notification(event_name, *args)
+    notification = notifications.build
+    message = notification.build_message(event_name, *args)
+    notification.message = message
+    notification.save
+    notification
+  end
 end
 
 # == Schema Information

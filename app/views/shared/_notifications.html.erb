@@ -1,4 +1,7 @@
-<div ng-init="notifyController.unreadNotificationsCount = <%= @notifications.count %>;" ng-controller="NotificationsController as notifyController" class="notify-panel">
+<div class="notify-panel"
+     ng-init="notifyController.unreadNotificationsCount = <%= @notifications.count %>;"
+     ng-controller="NotificationsController as notifyController"
+     >
   <a href="#" ng-click="notifyController.showNotificationsWindow()" class="notify-link">
     <div class="notify-count <%= @notifications.count == 0 ? 'notify-count_hidden' : '' %>">{{notifyController.unreadNotificationsCount}}</div>
   </a>
@@ -14,7 +17,10 @@
         <div class="line"></div>
       </div>
       <h3 class="header-title"> <%= t(".header_title") %> </h3>
-      <p><span class="unread"><%= t(".unread") %></span><%= link_to t(".mark_as_read"), static_pages_about_path %></p>
+      <p>
+        <span class="unread"><%= t(".unread") %></span>
+        <%= link_to t(".mark_as_read"), "#" %>
+      </p>
     </div>
       <ul class="notifications-list">
          <% if @notifications.count == 0 %>
@@ -23,8 +29,9 @@
            <% @notifications.each do |notification| %>
               <li class="list-item">
                 <div class="status_notification"></div>
-                <a href="#" ng-click='notifyController.getNotifications(<%= notification.id %>, $event)'>
-                  <%= notification.message %></a>
+                <a href="#" ng-click='notifyController.getNotifications(<%= notification.id %>, "<%= I18n.locale %>", $event)'>
+                  <%= notification.message %>
+                </a>
               </li>
            <% end %>
          <% end %>
