@@ -2,12 +2,15 @@ var AccountEditController = function($scope, $timeout, $http, $q) {
   this.$http = $http
   this.$q = $q;
   var controller = this;
+  $scope.imagePreview = [];
+  $scope.newPhotoAttached = [];
 
   this.setProfile = function (data) {
     $scope.country = data.country_short;
     $scope.city = data.city;
     $scope.formattedAddress = data.address;
     $scope.postalCode = data.postal_code;
+    $scope.images = [data.picture_url];
   };
 
   $scope.changedPostalCode = function() {

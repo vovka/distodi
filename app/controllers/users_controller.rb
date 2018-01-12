@@ -57,7 +57,8 @@ class UsersController < ApplicationController
               ISO3166::Country.new(params[:user][:country])
     params[:user][:country] = country.name if country.present?
     columns = [:first_name, :last_name, :phone, :country, :city, :address,
-      :postal_code, :notice, :picture, :email, :password, :password_confirmation]
+      :postal_code, :notice, :picture, :email]
+    columns << [:password, :password_confirmation] if params[:user][:password].present?
     params.require(:user).permit(columns)
   end
 end
