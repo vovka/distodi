@@ -3,6 +3,17 @@ class Notification < ActiveRecord::Base
 
   scope :user, ->(user) { where user: user }
   scope :active, -> { where read: false }
+
+  def build_message(event_name, *args)
+    case event_name
+    when :service_approved
+      I18n.t("activerecord.models.notification.build_message.#{event_name}", name: args[0].company.try(:name))
+    when :service_rejected
+      I18n.t("activerecord.models.notification.build_message.#{event_name}", name: args[0].company.try(:name))
+    when :remind_about_service
+      I18n.t("activerecord.models.notification.build_message.#{event_name}", service: args[0].item.try(:title))
+    end
+  end
 end
 
 # == Schema Information

@@ -2,13 +2,13 @@ var NotificationsController = function($scope, $http) {
   this.$http = $http;
 };
 
-NotificationsController.prototype.getNotifications = function(id, $event) {
+NotificationsController.prototype.getNotifications = function(id, locale, $event) {
   var self = this;
   var notifyCounter = document.querySelector('.notify-count');
 
   this.$http({
       method: 'POST',
-      url: '/notifications/' + id + '/read'
+      url: "/" + locale + '/notifications/' + id + '/read'
   }).then(function successCallback(response) {
       $event.target.parentNode.classList.add('read-notification');
       if (self.unreadNotificationsCount > 0) {

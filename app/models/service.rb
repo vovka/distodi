@@ -63,10 +63,12 @@ class Service < ActiveRecord::Base
 
   def approve!(_ = nil)
     update status: STATUS_APPROVED, approver: approver
+    user.create_notification(:service_approved, self)
   end
 
   def decline!(reason)
     update status: STATUS_DECLINED, reason: reason
+    user.create_notification(:service_rejected, self)
   end
 
   def declined?

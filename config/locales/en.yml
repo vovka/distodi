@@ -389,7 +389,7 @@ en:
       show: SHOW
     notifications:
       header_title: "Notifications"
-      no_notifications: "Notifications list empty"
+      no_notifications: "Notifications list is empty"
       unread: "Unread"
       mark_as_read: "Mark all as read"
     registration_form:
@@ -578,6 +578,11 @@ en:
           created_at: "Created at"
           action_kinds: "Actions"
           service_kinds: "Service kinds"
+      notification:
+        build_message:
+          service_approved: "%{name} approved your service"
+          service_rejected: "%{name} rejected your service"
+          remind_about_service: "Actions are required regarding your service: %{service}"
     errors:
       models:
         lead:

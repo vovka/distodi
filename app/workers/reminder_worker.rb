@@ -5,6 +5,7 @@ class ReminderWorker
     service = Service.where(id: service_id).first
     if service.present?
       ReminderMailer.remind_about_service(service).deliver_later
+      service.user.create_notification(:remind_about_service, service)
     end
   end
 end
