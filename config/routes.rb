@@ -107,7 +107,11 @@ Rails.application.routes.draw do
     root "leads#new"
   end
 
-  get '*path', to: redirect("/#{I18n.default_locale}/%{path}"), constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }
+  get '*path',
+    constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" },
+    to: redirect do |params, request|
+      "/#{I18n.default_locale}/#{params[:path]}?#{request.params.to_query}"
+    end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
