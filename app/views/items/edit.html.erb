@@ -31,7 +31,7 @@
     </a>
     <a href="" class="delete"
        ng-class="controller.serviceActions.delete ? '' : 'disabled'"
-       ng-click="controller.clickedDelete()">
+       ng-click="controller.clickedDelete('<%= I18n.locale %>')">
       <%= t(".del") %>
     </a>
   </div>
