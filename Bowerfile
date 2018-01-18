@@ -5,3 +5,4 @@
 asset 'angular-tour'
 asset 'angular-cookie'
 asset 'angular-chosen-localytics'
+asset 'angular-inview'
