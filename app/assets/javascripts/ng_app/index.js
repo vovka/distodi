@@ -9,8 +9,7 @@
 //= require_tree ./controllers
 //= require_tree ./directives
 
-angular.module("DistodiApp", ['angular-tour', 'ipCookie', "localytics.directives"])
-angular.module("DistodiApp", ['angular-tour', 'ipCookie', 'angular-inview'])
+angular.module("DistodiApp", ['angular-tour', 'ipCookie', "localytics.directives", 'angular-inview'])
 
 .config(["$httpProvider", Config])
 
