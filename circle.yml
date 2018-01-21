@@ -9,8 +9,8 @@ test:
     - if [ $CIRCLE_BRANCH != 'master' ]; then bundle exec pronto run -f bitbucket_pr -c origin/master; fi
     - bundle exec rake
 
-# deployment:
-#   production:
-#     branch: master
-#     commands:
-#       - bundle exec cap production deploy
+deployment:
+  production:
+    branch: master
+    commands:
+      - bundle exec cap production deploy

@@ -61,21 +61,25 @@
 #   }
 # Define roles, user and IP address of deployment server
 # role :name, %{[user]@[IP adde.]}
-role :app, %w{deploy@81.91.92.51}
-role :web, %w{deploy@81.91.92.51}
-role :db,  %w{deploy@81.91.92.51}
+
+role :app, %w{root@94.130.175.253}
+role :web, %w{root@94.130.175.253}
+role :db,  %w{root@94.130.175.253}
 
 # Define server(s)
-server '81.91.92.51', user: 'deploy', roles: %w{web}
+server '94.130.175.253', user: 'root', roles: %w{web}
+
+set :branch, "master"
+set :deploy_to, "/var/www/distodi"
+set :rvm_ruby_version, "2.3.4"
 
 # SSH Options
 # See the example commented out section in the file
 # for more options.
 set :ssh_options, {
     forward_agent: false,
-    auth_methods: %w(password publickey),
-    password: 'ShecaSlid5',
-    user: 'deploy',
+    auth_methods: %w(publickey),
+    user: 'root',
 }
 
 namespace :deploy do
