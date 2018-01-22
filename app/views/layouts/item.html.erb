@@ -92,7 +92,7 @@
             <div class="line"></div>
             <div class="work_panel">
               <%= link_to t(".show_my_profile"), company_path(current_company) %>
-              <%= link_to t(".my_items"), items_path(current_company) %>
+              <%= link_to t(".my_items"), items_path(current_company, locale: I18n.locale) %>
               <%= link_to t(".help"), static_pages_about_path %>
               <p class="language_controller" ><%= t(".language") %></p>
               <div class="language_list">
