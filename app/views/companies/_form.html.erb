@@ -1,4 +1,10 @@
-<div class="service_create_main_form">
+<div  class="service_create_main_form"
+      ng-controller="AccountEditController as accountEditController"
+      ng-click="clickedBlank()"
+      ng-init='accountEditController.setProfile(
+         <%= @company.to_json(methods: %i( picture_url )).html_safe %>
+       )'>
+
   <div class="left_form_service_create margin">
     <div class="form_service_create">
       <div class="destroy_user company">
@@ -34,7 +40,8 @@
           <%= f.hidden_field :picture_cache %>
           <%= f.file_field :picture,
                          class: 'inputfile',
-                         "data-file" => "true" %>
+                         :"data-file" => "true",
+                         :"data-index" => 0 %>
         </div>
         <div class="price">
           <p class="field_name">
@@ -174,11 +181,11 @@
       <p class="field_name">
         <%= t(".picture") %>
       </p>
-       <div class="image {{ newPhoto ? '' : 'without_photo_input' }}">
+       <div class="image {{ newPhotoAttached[0] ? '' : 'without_photo_input' }}">
         <div class="blank_image">+</div>
-        <%= image_tag(@company.picture_url,
+        <%= image_tag(nil,
                       class: "current_photo",
-                      "ng-src" => "{{imagePreview}}") %>
+                      :"ng-src" => "{{imagePreview[0] || images[0]}}") %>
       </div>
     <% end %>
     <div class="service_form_info">
