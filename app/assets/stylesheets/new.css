@@ -3,6 +3,7 @@
  *= require owl.carousel
  *= require angular-tour/dist/angular-tour
  *= require fonts
+ *= require chosen
  *= require style
  *= require media
  */

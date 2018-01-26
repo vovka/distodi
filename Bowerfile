@@ -4,3 +4,4 @@
 # asset 'bootstrap'
 asset 'angular-tour'
 asset 'angular-cookie'
+asset 'angular-chosen-localytics'
