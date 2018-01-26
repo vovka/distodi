@@ -1879,7 +1879,38 @@ footer hr {
   margin-bottom: 10px;
 }
 
-.form .categories select {
+.chosen-single {
+  display: inline !important;
+  padding: 0 !important;
+}
+
+.chosen-container-single {
+  width: calc(96% - 30px) !important;
+
+  .chosen-single {
+    border: none !important;
+
+    input[type="text"] {
+      border: none !important;
+    }
+
+    span {
+      text-overflow: unset;
+      overflow: unset;
+      border: none;
+      color: inherit;
+      padding-top: 15px;
+    }
+
+    div {
+      display: none;
+    }
+  }
+}
+
+.form .categories select,
+.chosen-container,
+{
   width: 96.5%;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
@@ -2757,15 +2788,15 @@ width: 205px;
     padding: 5px 0 5px 20px;
     opacity: 0;
     -webkit-transition: all 2000ms cubic-bezier(0.000, 0, 0.000, 1); /* older webkit */
-    -webkit-transition: all 2000ms cubic-bezier(0.000, -0.030, 0.000, 1.500); 
-       -moz-transition: all 2000ms cubic-bezier(0.000, -0.030, 0.000, 1.500); 
-         -o-transition: all 2000ms cubic-bezier(0.000, -0.030, 0.000, 1.500); 
+    -webkit-transition: all 2000ms cubic-bezier(0.000, -0.030, 0.000, 1.500);
+       -moz-transition: all 2000ms cubic-bezier(0.000, -0.030, 0.000, 1.500);
+         -o-transition: all 2000ms cubic-bezier(0.000, -0.030, 0.000, 1.500);
             transition: all 2000ms cubic-bezier(0.000, -0.030, 0.000, 1.500); /* custom */
 
     -webkit-transition-timing-function: cubic-bezier(0.000, 0, 0.000, 1); /* older webkit */
-    -webkit-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.500); 
-       -moz-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.500); 
-         -o-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.500); 
+    -webkit-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.500);
+       -moz-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.500);
+         -o-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.500);
             transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.500); /* custom */
     &:hover{
       opacity: 1;
@@ -2812,15 +2843,15 @@ width: 205px;
   &:hover + .language_list{
     opacity: 1;
     -webkit-transition: all 300ms cubic-bezier(0.000, 0, 0.000, 1.000); /* older webkit */
--webkit-transition: all 300ms cubic-bezier(0.000, -0.030, 0.000, 1.000); 
-   -moz-transition: all 300ms cubic-bezier(0.000, -0.030, 0.000, 1.000); 
-     -o-transition: all 300ms cubic-bezier(0.000, -0.030, 0.000, 1.000); 
+-webkit-transition: all 300ms cubic-bezier(0.000, -0.030, 0.000, 1.000);
+   -moz-transition: all 300ms cubic-bezier(0.000, -0.030, 0.000, 1.000);
+     -o-transition: all 300ms cubic-bezier(0.000, -0.030, 0.000, 1.000);
         transition: all 300ms cubic-bezier(0.000, -0.030, 0.000, 1.000); /* custom */
 
 -webkit-transition-timing-function: cubic-bezier(0.000, 0, 0.000, 1.000); /* older webkit */
--webkit-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.000); 
-   -moz-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.000); 
-     -o-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.000); 
+-webkit-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.000);
+   -moz-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.000);
+     -o-transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.000);
         transition-timing-function: cubic-bezier(0.000, -0.030, 0.000, 1.000); /* custom */
   }
 }

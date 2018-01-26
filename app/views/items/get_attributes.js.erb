@@ -1,3 +1,4 @@
 $('.custom_attributes').empty().append($('\
 <%= j render partial: @item.selected_category.attribute_kinds.order(:position).decorate(context: { item: @item }) %>\
 '));
+$("select[chosen]").chosen();

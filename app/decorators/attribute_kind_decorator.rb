@@ -70,7 +70,8 @@ class AttributeKindDecorator < Draper::Decorator
           id: "characteristic#{id}",
           value: characteristic.try(:value),
           class: "brand_options",
-          disabled: characteristic.try(:value).present?
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
         }
       ]
     elsif model?
@@ -80,7 +81,8 @@ class AttributeKindDecorator < Draper::Decorator
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value),
-          disabled: characteristic.try(:value).present?
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
         }
       ]
     elsif year?
@@ -91,7 +93,8 @@ class AttributeKindDecorator < Draper::Decorator
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence || default_year,
-          disabled: characteristic.try(:value).present?
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
         }
       ]
     elsif weight?
@@ -100,7 +103,9 @@ class AttributeKindDecorator < Draper::Decorator
         { selected: characteristic.try(:value).presence },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
-          value: characteristic.try(:value).presence }
+          value: characteristic.try(:value).presence,
+          chosen: ""
+        }
       ]
     elsif engine_displacement?
       [
@@ -108,7 +113,9 @@ class AttributeKindDecorator < Draper::Decorator
         { selected: characteristic.try(:value).presence },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
-          value: characteristic.try(:value).presence }
+          value: characteristic.try(:value).presence,
+          chosen: ""
+        }
       ]
     elsif wheel_diameter?
       [
@@ -116,7 +123,9 @@ class AttributeKindDecorator < Draper::Decorator
         { selected: characteristic.try(:value).presence },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
-          value: characteristic.try(:value).presence }
+          value: characteristic.try(:value).presence,
+          chosen: ""
+        }
       ]
     elsif number_of_gears?
       [
@@ -124,14 +133,18 @@ class AttributeKindDecorator < Draper::Decorator
         { selected: characteristic.try(:value).presence },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
-          value: characteristic.try(:value).presence }
+          value: characteristic.try(:value).presence,
+          chosen: ""
+        }
       ]
     elsif country_of_using? || country_of_manufacture?
       [
         { selected: characteristic.try(:value).presence },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
-          value: characteristic.try(:value).presence }
+          value: characteristic.try(:value).presence,
+          chosen: ""
+        }
       ]
     elsif fuel_type? || type_of_engine? || transmission? || gender? || car_subcategory? ||
           type_of_body? || type_of_complete_set? || bicycle_subcategory? ||
@@ -141,7 +154,9 @@ class AttributeKindDecorator < Draper::Decorator
         { selected: characteristic.try(:value).presence },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
-          value: characteristic.try(:value).presence }
+          value: characteristic.try(:value).presence,
+          chosen: ""
+        }
       ]
     else
       [
