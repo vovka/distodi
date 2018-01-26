@@ -4,6 +4,6 @@
     "angular-tour": "latest",
     "angular-cookie": "latest",
     "angular-chosen-localytics": "latest",
-    "angular-inview": "latest"
+    "angular-in-viewport": "latest"
   }
 }

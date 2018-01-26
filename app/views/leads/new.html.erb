@@ -1,18 +1,27 @@
 <div class="main_page_background"></div>
-<div class="lead_background">
-  <div class="main_content first">
+<div class="lead_background" viewport="window">
+  <div class="main_content first" viewport-enter="contentBlockClass = ''" viewport-leave="contentBlockClass = 'active'">
     <div class="logo_lead">
-      <%= image_tag "logo_mobile.png" %><span>Distodi</span><p>α</p>
+      <%= image_tag "logo_mobile.png" %><span>Distodi</span>
+        <p>α</p>
     </div>
     <div class="menu_list">
       <ul>
-          <li><%= link_to t(".about"), static_pages_about_path %></li>
-          <li><%= link_to t(".security"), static_pages_security_path %></li>
-          <li><%= link_to t(".terms"), static_pages_terms_path %></li>
-          <li><%= link_to t(".careers"), static_pages_careers_path %></li>
-        </ul>
+        <li>
+          <%= link_to t(".about"), static_pages_about_path %>
+        </li>
+        <li>
+          <%= link_to t(".security"), static_pages_security_path %>
+        </li>
+        <li>
+          <%= link_to t(".terms"), static_pages_terms_path %>
+        </li>
+        <li>
+          <%= link_to t(".careers"), static_pages_careers_path %>
+        </li>
+      </ul>
     </div>
-    <div class="form_lead">
+    <div class="form_lead" viewport-enter="earlyAccessPanelClass = ''" viewport-leave="earlyAccessPanelClass = 'slideout'">
       <h1>Distodi.</h1>
       <h1><%= t(".service_book") %></h1>
     </div>
@@ -20,56 +29,60 @@
       <div class="line"></div>
       <div class="line"></div>
     </div>
-    <div class="form_lead right">
+    <div class="form_lead right" ng-class="earlyAccessPanelClass">
       <div class="form">
         <h2><%= t(".get_access") %></h2>
-        <p><%= t(".send_us") %></p>
+        <p>
+          <%= t(".send_us") %>
+        </p>
         <%= render 'form' %>
       </div>
     </div>
   </div>
-  <div class="content_block">
-    <p class="title"><%= t(".collect_all") %></p>
+  <div class="content_block" ng-class="contentBlockClass">
+    <p class="title">
+      <%= t(".collect_all") %>
+    </p>
     <div class="items">
       <div class="item">
         <span><%= t(".car") %></span>
         <%= image_tag "Shape1x.png" %>
-        <%= image_tag "car_item_main_page.png" %>
+          <%= image_tag "car_item_main_page.png" %>
       </div>
       <div class="item">
         <span><%= t(".moto") %></span>
         <%= image_tag "Shape1x.png" %>
-        <%= image_tag "moto_item_main_page.png" %>
+          <%= image_tag "moto_item_main_page.png" %>
       </div>
       <div class="item">
         <span><%= t(".tractor") %></span>
         <%= image_tag "Shape1x.png" %>
-        <%= image_tag "tractor_item_main_page.png" %>
+          <%= image_tag "tractor_item_main_page.png" %>
       </div>
       <div class="item">
         <span><%= t(".home") %></span>
         <%= image_tag "Shape1x.png" %>
-        <%= image_tag "home_item_main_page.png" %>
+          <%= image_tag "home_item_main_page.png" %>
       </div>
       <div class="item">
         <span><%= t(".bike") %></span>
         <%= image_tag "Shape1x.png" %>
-        <%= image_tag "bike_item_main_page.png" %>
+          <%= image_tag "bike_item_main_page.png" %>
       </div>
       <div class="item">
         <span><%= t(".boat") %></span>
         <%= image_tag "Shape1x.png" %>
-        <%= image_tag "boat_item_main_page.png" %>
+          <%= image_tag "boat_item_main_page.png" %>
       </div>
       <div class="item">
         <span><%= t(".plane") %></span>
         <%= image_tag "Shape1x.png" %>
-        <%= image_tag "plane_item_main_page.png" %>
+          <%= image_tag "plane_item_main_page.png" %>
       </div>
       <div class="item">
         <span><%= t(".heli") %></span>
         <%= image_tag "Shape1x.png" %>
-        <%= image_tag "heli_item_main_page.png" %>
+          <%= image_tag "heli_item_main_page.png" %>
       </div>
     </div>
     <div class="items_mobile">
@@ -86,109 +99,170 @@
     <div class="second_box"></div>
     <div class="last_box">
       <%= image_tag "logo_menu.png" %>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="items_icons">
-        <div class="item_icon first">
-          <%= image_tag "car_icon.png" %>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="items_icons">
+          <div class="item_icon first">
+            <%= image_tag "car_icon.png" %>
+          </div>
+          <div class="item_icon">
+            <%= image_tag "moto_icon.png" %>
+          </div>
+          <div class="item_icon tractor">
+            <%= image_tag "tractor_icon.png" %>
+          </div>
+          <div class="item_icon home">
+            <%= image_tag "home_icon.png" %>
+          </div>
+          <div class="item_icon">
+            <%= image_tag "bike_icon.png" %>
+          </div>
+          <div class="item_icon boat">
+            <%= image_tag "boat_icon.png" %>
+          </div>
+          <div class="item_icon plane">
+            <%= image_tag "plane_icon.png" %>
+          </div>
+          <div class="item_icon">
+            <%= image_tag "heli_icon.png" %>
+          </div>
         </div>
-        <div class="item_icon">
-          <%= image_tag "moto_icon.png" %>
-        </div>
-        <div class="item_icon tractor">
-          <%= image_tag "tractor_icon.png" %>
-        </div>
-        <div class="item_icon home">
-          <%= image_tag "home_icon.png" %>
-        </div>
-        <div class="item_icon">
-          <%= image_tag "bike_icon.png" %>
-        </div>
-        <div class="item_icon boat">
-          <%= image_tag "boat_icon.png" %>
-        </div>
-        <div class="item_icon plane">
-          <%= image_tag "plane_icon.png" %>
-        </div>
-        <div class="item_icon">
-          <%= image_tag "heli_icon.png" %>
-        </div>
-      </div>
     </div>
     <div class="preview_content">
       <span><%= t(".skoda") %></span>
-      <p><strong>1-50</strong> <%= t(".services") %> <strong>154</strong></p>
+      <p><strong>1-50</strong>
+        <%= t(".services") %> <strong>154</strong></p>
       <div class="button_icon"></div>
       <div class="icon_service"></div>
       <div class="icon_service second"></div>
       <div class="icon_service three"></div>
       <div class="icon_service four"></div>
       <div class="function_circle">+</div>
-      <div class="function_circle"><%= image_tag "pen_main_icon.png" %></div>
-      <div class="function_circle"><%= image_tag "send_main_icon.png" %></div>
+      <div class="function_circle">
+        <%= image_tag "pen_main_icon.png" %>
+      </div>
+      <div class="function_circle">
+        <%= image_tag "send_main_icon.png" %>
+      </div>
       <h1><%= t(".create_manage") %></h1>
       <div class="info">
-        <p><%= t(".distodi_brings") %></p>
+        <p>
+          <%= t(".distodi_brings") %>
+        </p>
       </div>
       <table class="service_example">
         <tr>
-          <td><div class="box"></div></td>
-          <td><%= t(".emission_control") %></td>
-          <td><%= image_tag "control-action.png" %>Control</td>
-          <td><%= image_tag "status-pending.png" %></td>
-          <td><%= t(".skoda") %></td>
+          <td>
+            <div class="box"></div>
+          </td>
+          <td>
+            <%= t(".emission_control") %>
+          </td>
+          <td>
+            <%= image_tag "control-action.png" %>Control</td>
+          <td>
+            <%= image_tag "status-pending.png" %>
+          </td>
+          <td>
+            <%= t(".skoda") %>
+          </td>
           <td>CO599-0002-250417-WWMT</td>
           <td>10 Mar 2017</td>
           <td>EUR 100.00</td>
         </tr>
         <tr>
-          <td><div class="box"></div></td>
-          <td><%= t(".air") %></td>
-          <td><%= image_tag "control-action.png" %>Control</td>
-          <td><%= image_tag "status-approved.png" %></td>
-          <td><%= t(".skoda") %></td>
+          <td>
+            <div class="box"></div>
+          </td>
+          <td>
+            <%= t(".air") %>
+          </td>
+          <td>
+            <%= image_tag "control-action.png" %>Control</td>
+          <td>
+            <%= image_tag "status-approved.png" %>
+          </td>
+          <td>
+            <%= t(".skoda") %>
+          </td>
           <td>CO599-0002-250417-WWMR</td>
           <td>17 Apr 2017</td>
           <td>EUR 100.00</td>
         </tr>
         <tr>
-          <td><%= image_tag "service_active.png" %></td>
-          <td><%= t(".emission_control") %></td>
-          <td><%= image_tag "control-action.png" %>Control</td>
-          <td><%= image_tag "status-approved.png" %></td>
-          <td><%= t(".skoda") %></td>
+          <td>
+            <%= image_tag "service_active.png" %>
+          </td>
+          <td>
+            <%= t(".emission_control") %>
+          </td>
+          <td>
+            <%= image_tag "control-action.png" %>Control</td>
+          <td>
+            <%= image_tag "status-approved.png" %>
+          </td>
+          <td>
+            <%= t(".skoda") %>
+          </td>
           <td>CO599-0002-250417-WWMZ</td>
           <td>13 Aug 2017</td>
           <td>EUR 300.00</td>
         </tr>
         <tr>
-          <td><div class="box"></div></td>
-          <td><%= t(".brakes") %></td>
-          <td><%= image_tag "tuning-action.png" %>Tuning</td>
-          <td><%= image_tag "status-declined.png" %></td>
-          <td><%= t(".skoda") %></td>
+          <td>
+            <div class="box"></div>
+          </td>
+          <td>
+            <%= t(".brakes") %>
+          </td>
+          <td>
+            <%= image_tag "tuning-action.png" %>Tuning</td>
+          <td>
+            <%= image_tag "status-declined.png" %>
+          </td>
+          <td>
+            <%= t(".skoda") %>
+          </td>
           <td>CO599-0002-250417-WWMX</td>
           <td>22 Sep 2017</td>
           <td>EUR 250.00</td>
         </tr>
         <tr>
-          <td><div class="box"></div></td>
-          <td><%= t(".emission_control") %></td>
-          <td><%= image_tag "tuning-action.png" %>Tuning</td>
-          <td><%= image_tag "status-approved.png" %></td>
-          <td><%= t(".skoda") %></td>
+          <td>
+            <div class="box"></div>
+          </td>
+          <td>
+            <%= t(".emission_control") %>
+          </td>
+          <td>
+            <%= image_tag "tuning-action.png" %>Tuning</td>
+          <td>
+            <%= image_tag "status-approved.png" %>
+          </td>
+          <td>
+            <%= t(".skoda") %>
+          </td>
           <td>CO599-0002-250417-WWMW</td>
           <td>03 Oct 2017</td>
           <td>EUR 180.00</td>
         </tr>
         <tr>
-          <td><div class="box"></div></td>
-          <td><%= t(".tires") %></td>
-          <td><%= image_tag "control-action.png" %>Control</td>
-          <td><%= image_tag "status-pending.png" %></td>
-          <td><%= t(".skoda") %></td>
+          <td>
+            <div class="box"></div>
+          </td>
+          <td>
+            <%= t(".tires") %>
+          </td>
+          <td>
+            <%= image_tag "control-action.png" %>Control</td>
+          <td>
+            <%= image_tag "status-pending.png" %>
+          </td>
+          <td>
+            <%= t(".skoda") %>
+          </td>
           <td>CO599-0002-250417-WWMM</td>
           <td>23 Dec 2017</td>
           <td>EUR 267.00</td>
@@ -199,10 +273,10 @@
           <div class="box"></div>
           <span><%= t(".emission_control") %></span>
           <%= image_tag "control-action.png" %>
-          <%= image_tag "status-approved.png" %>
-          <span><%= t(".my_way") %></span>
-          <span>17 Apr 2017</span>
-          <span>EUR 224.00</span>
+            <%= image_tag "status-approved.png" %>
+              <span><%= t(".my_way") %></span>
+              <span>17 Apr 2017</span>
+              <span>EUR 224.00</span>
         </div>
       </div>
     </div>
@@ -212,84 +286,108 @@
         <div class="circle">
           <%= image_tag "clock.png" %>
         </div>
-        <p><%= t(".fast") %></p>
+        <p>
+          <%= t(".fast") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
       <div class="feature">
         <div class="circle">
           <%= image_tag "keys.png" %>
         </div>
-        <p><%= t(".b2b") %></p>
+        <p>
+          <%= t(".b2b") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
       <div class="feature">
         <div class="circle">
           <%= image_tag "packet.png" %>
         </div>
-        <p><%= t(".confirmation") %></p>
+        <p>
+          <%= t(".confirmation") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
       <div class="feature">
         <div class="circle">
           <%= image_tag "magic.png" %>
         </div>
-        <p><%= t(".universality") %></p>
+        <p>
+          <%= t(".universality") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
       <div class="feature">
         <div class="circle">
           <%= image_tag "android.png" %>
         </div>
-        <p><%= t(".iot") %></p>
+        <p>
+          <%= t(".iot") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
       <div class="feature">
         <div class="circle">
           <%= image_tag "ring_green.png" %>
         </div>
-        <p><%= t(".alerts") %></p>
+        <p>
+          <%= t(".alerts") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
       <div class="feature">
         <div class="circle">
           <%= image_tag "social.png" %>
         </div>
-        <p><%= t(".social") %></p>
+        <p>
+          <%= t(".social") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
       <div class="feature">
         <div class="circle">
           <%= image_tag "calendar.png" %>
         </div>
-        <p><%= t(".google") %></p>
+        <p>
+          <%= t(".google") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
       <div class="feature">
         <div class="circle">
           <%= image_tag "pdf.png" %>
         </div>
-        <p><%= t(".pdf") %></p>
+        <p>
+          <%= t(".pdf") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
       <div class="feature">
         <div class="circle">
           <%= image_tag "validation.png" %>
         </div>
-        <p><%= t(".data") %></p>
+        <p>
+          <%= t(".data") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
       <div class="feature">
         <div class="circle">
           <%= image_tag "crm.png" %>
         </div>
-        <p><%= t(".crm") %></p>
+        <p>
+          <%= t(".crm") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
       <div class="feature">
         <div class="circle">
           <%= image_tag "transfer_icon.png" %>
         </div>
-        <p><%= t(".transfer") %></p>
+        <p>
+          <%= t(".transfer") %>
+        </p>
         <span><%= t(".brings") %></span>
       </div>
     </div>
@@ -302,21 +400,27 @@
               <div class="circle">
                 <%= image_tag "clock.png" %>
               </div>
-              <p><%= t(".fast") %></p>
+              <p>
+                <%= t(".fast") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
             <div class="feature">
               <div class="circle">
                 <%= image_tag "keys.png" %>
               </div>
-              <p><%= t(".b2b") %></p>
+              <p>
+                <%= t(".b2b") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
             <div class="feature">
               <div class="circle">
                 <%= image_tag "packet.png" %>
               </div>
-              <p><%= t(".confirmation") %></p>
+              <p>
+                <%= t(".confirmation") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
           </div>
@@ -325,21 +429,27 @@
               <div class="circle">
                 <%= image_tag "magic.png" %>
               </div>
-              <p><%= t(".universality") %></p>
+              <p>
+                <%= t(".universality") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
             <div class="feature">
               <div class="circle">
                 <%= image_tag "android.png" %>
               </div>
-              <p><%= t(".iot") %></p>
+              <p>
+                <%= t(".iot") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
             <div class="feature">
               <div class="circle">
                 <%= image_tag "ring_green.png" %>
               </div>
-              <p><%= t(".alerts") %></p>
+              <p>
+                <%= t(".alerts") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
           </div>
@@ -348,21 +458,27 @@
               <div class="circle">
                 <%= image_tag "social.png" %>
               </div>
-              <p><%= t(".social") %></p>
+              <p>
+                <%= t(".social") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
             <div class="feature">
               <div class="circle">
                 <%= image_tag "calendar.png" %>
               </div>
-              <p><%= t(".google") %></p>
+              <p>
+                <%= t(".google") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
             <div class="feature">
               <div class="circle">
                 <%= image_tag "pdf.png" %>
               </div>
-              <p><%= t(".pdf") %></p>
+              <p>
+                <%= t(".pdf") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
           </div>
@@ -371,21 +487,27 @@
               <div class="circle">
                 <%= image_tag "validation.png" %>
               </div>
-              <p><%= t(".data") %></p>
+              <p>
+                <%= t(".data") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
             <div class="feature">
               <div class="circle">
                 <%= image_tag "crm.png" %>
               </div>
-              <p><%= t(".crm") %></p>
+              <p>
+                <%= t(".crm") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
             <div class="feature">
               <div class="circle">
                 <%= image_tag "transfer_icon.png" %>
               </div>
-              <p><%= t(".transfer") %></p>
+              <p>
+                <%= t(".transfer") %>
+              </p>
               <span><%= t(".brings") %></span>
             </div>
           </div>
@@ -404,7 +526,9 @@
     </div>
     <div class="early_access">
       <h2><%= t(".get_access") %></h2>
-      <p><%= t(".send_us_second") %></p>
+      <p>
+        <%= t(".send_us_second") %>
+      </p>
       <%= render 'form' %>
     </div>
     <div class="footer">
@@ -414,15 +538,33 @@
       <div class="footer_links">
         <ul>
           <li>Distodi</li>
-          <li><%= t(".features") %></li>
-          <li><%= t(".updates") %></li>
-          <li><%= t(".careers") %></li>
-          <li><%= t(".about") %></li>
-          <li><%= t(".help") %></li>
-          <li><%= t(".FAQ") %></li>
-          <li><%= t(".privacy") %></li>
-          <li><%= t(".press") %></li>
-          <li><%= t(".contact_us") %></li>
+          <li>
+            <%= t(".features") %>
+          </li>
+          <li>
+            <%= t(".updates") %>
+          </li>
+          <li>
+            <%= t(".careers") %>
+          </li>
+          <li>
+            <%= t(".about") %>
+          </li>
+          <li>
+            <%= t(".help") %>
+          </li>
+          <li>
+            <%= t(".FAQ") %>
+          </li>
+          <li>
+            <%= t(".privacy") %>
+          </li>
+          <li>
+            <%= t(".press") %>
+          </li>
+          <li>
+            <%= t(".contact_us") %>
+          </li>
           <li>Facebook</li>
           <li>Twitter</li>
           <li>Linkedin</li>
