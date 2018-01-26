@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.3.4"
 
 # Svg helper
 gem 'inline_svg'
