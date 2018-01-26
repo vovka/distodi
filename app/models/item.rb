@@ -25,6 +25,16 @@ class Item < ActiveRecord::Base
 
   after_create :ensure_token
 
+  def self.to_csv(item)
+    data = item.characteristics.includes(:attribute_kind).map do |c|
+      [c.attribute_kind.title, c.value]
+    end
+    data << [""]
+
+    CSV.generate { |csv| data.each { |line| csv << line } } +
+    Service.to_csv(item.services)
+  end
+
   private
 
   def generate_token

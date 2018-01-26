@@ -15,7 +15,7 @@
       </div>
       <div class="reports_buttons">
         <%= link_to image_tag('pdf-icon.png'), show_pdf_item_path(@item, format: :pdf) %>
-        <%= link_to image_tag('csv-icon.png'), services_path(format: :csv) %>
+        <%= link_to image_tag('csv-icon.png'), item_path(@item, format: :csv) %>
       </div>
     <% else %>
       <div class="item_info">

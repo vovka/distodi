@@ -1,7 +1,7 @@
 class ServiceCSVDecorator < SimpleDelegator
   include ActionView::Helpers::NumberHelper
 
-  COLS_TO_EXPORT = [:id_code, :approver_id, :created_at, :updated_at, :item_id,
+  COLS_TO_EXPORT = [:id_code, :attribute_kinds, :approver_id, :created_at, :updated_at, :item_id,
                     :next_control, :price, :company_id, :status, :reason]
   NONE = ""
 
@@ -17,6 +17,10 @@ class ServiceCSVDecorator < SimpleDelegator
 
   def approver_id
     approver.try(:name) || NONE
+  end
+
+  def attribute_kinds
+    item.try(:transmission) || NONE
   end
 
   def created_at

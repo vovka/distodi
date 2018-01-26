@@ -13,7 +13,10 @@ class ItemsController < ApplicationController
   def show
     @items = Item.unscoped.where(user: current_user)
     @services = @item.services.includes(:service_fields, :action_kinds).decorate
-    render "dashboard"
+    respond_to do |format|
+      format.html { render "dashboard" }
+      format.csv { send_data Item.to_csv(@item) }
+    end
   end
 
   def new
