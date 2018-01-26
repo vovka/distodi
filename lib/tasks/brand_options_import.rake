@@ -1,7 +1,7 @@
 namespace :brands_and_models do
   desc "Import brands and models"
   task import: :environment do
-    ["Car", "Bike", "Tractor", "Yacht"].each do |category|
+    ["Car", "Bicycle", "Tractor", "Yacht"].each do |category|
       from_json_file(Rails.root.join("entities"), category)
     end
   end

@@ -309,7 +309,7 @@
       "model_options_attributes": [ {"name": "Other"} ]
     }
   ],
-  "Bike": [
+  "Bicycle": [
     {
       "name": "Argon 18",
       "model_options_attributes": [ {"name": "Gallium Pro Disc"}, {"name": "Gallium Pro"}, {"name": "Gallium"}, {"name": "Krypton"}, {"name": "Radon"}, {"name": "E-119 Tri+"}, {"name": "E-119 Tri"}, {"name": "E-118 Next"}, {"name": "E-117 Tri"}, {"name": "E-80"}, {"name": "Electron"}, {"name": "Electron C"}, {"name": "Xenon"}, {"name": "Other"} ]
