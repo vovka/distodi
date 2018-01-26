@@ -1,9 +1,9 @@
-ActiveAdmin.register Category do
-  menu priority: 2
+ActiveAdmin.register ServiceKind do
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-  permit_params :name, service_kind_ids: []
+permit_params :title, :with_text
 #
 # or
 #
@@ -13,12 +13,11 @@ ActiveAdmin.register Category do
 #   permitted
 # end
 
-  form title: "Action Kinds" do |f|
-    f.semantic_errors # shows errors on :base
-    f.inputs          # builds an input field for every attribute
+  form do |f|
     f.inputs do
-      f.input :service_kinds
+      f.input :title
+      f.input :with_text
     end
-    f.actions         # adds the 'Submit' and 'Cancel' buttons
+    f.actions
   end
 end
