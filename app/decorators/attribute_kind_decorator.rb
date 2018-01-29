@@ -36,7 +36,24 @@ class AttributeKindDecorator < Draper::Decorator
                                                   "Freeride"],
     AttributeKindPolicy::FRAME_MATERIAL => ["Steel", "Hi Tensile", "Cromomolibden",
                                             "Aluminium", "Magnesium", "Carbon",
-                                            "Titanium"]
+                                            "Titanium"],
+    AttributeKindPolicy::TRACTOR_SUBCATEGORY => ["Utility tractors", "Row crop tractor", "Orchard type",
+                                            "Industrial tractor", "Garden tractor", "Rotary tillers",
+                                            "Implement carrier", "Earth moving tractors"],
+    AttributeKindPolicy::FRONT_END_LOADER => ["Grain bucket", "Screening bucket", "Snow bucket",
+                                            "4 in 1 bucket", "2 in 1 bucket", "Grass fork",
+                                            "Wood fork", "Soft clamp", "Pallet fork", "Fork", "Snow blower",
+                                            "Sweeper", "Snow blade", "V snow blade"],
+    AttributeKindPolicy::TEMPERATURE_CONTROL => ["Yes", "No"],
+    AttributeKindPolicy::YACHT_SUBCATEGORY => ["Powerboat & Motorboat", "Cuddy",
+                                                "Cruiser", "Jet Boat",
+                                                "Pontoon & Deck Boat", "Runabout",
+                                                "Ski & Wakeboarding Boat", "Other Powerboat",
+                                                "Sailboat"],
+    AttributeKindPolicy::MATERIAL => ["Steel", "Wood", "Aluminium",
+                                      "Woodcore epoxy", "Concrete",
+                                      "Composite", "Epoxy composite", "Grp - sandwich",
+                                      "Hypalon neoprene", "Pvc", "Other"]
   }.freeze
 
   # Define presentation-specific methods here. Helpers are accessed through
@@ -52,7 +69,8 @@ class AttributeKindDecorator < Draper::Decorator
     if brand? || model? || year? || fuel_type? || type_of_engine? || weight? ||
         transmission? || gender? || wheel_diameter? || car_subcategory? || type_of_body? ||
         type_of_complete_set? || engine_displacement? || number_of_gears? ||
-        bicycle_subcategory? || frame_material?
+        bicycle_subcategory? || frame_material? || tractor_subcategory? || front_end_loader? ||
+        temperature_control? || yacht_subcategory? || material?
       :select
     elsif country_of_using? || country_of_manufacture?
       :country_select
@@ -148,7 +166,8 @@ class AttributeKindDecorator < Draper::Decorator
       ]
     elsif fuel_type? || type_of_engine? || transmission? || gender? || car_subcategory? ||
           type_of_body? || type_of_complete_set? || bicycle_subcategory? ||
-          frame_material?
+          frame_material? || tractor_subcategory? || front_end_loader? || temperature_control? ||
+          yacht_subcategory? || material?
       [
         values,
         { selected: characteristic.try(:value).presence },
