@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :edit, :update, :destroy, :transfer,
                                   :receive, :show_pdf]
-  before_action :authenticate_user!, except: :show_for_company
-  before_action :authenticate_user_or_company!, only: :show_for_company
+  before_action :authenticate_user!, except: [:show_for_company, :dashboard_company]
+  before_action :authenticate_user_or_company!, only: [:show_for_company, :dashboard_company]
 
   def index
     @items = Item.unscoped.where(user: current_user)
@@ -85,6 +85,12 @@ class ItemsController < ApplicationController
 
   def dashboard
     @items = Item.unscoped.where(user: current_user)
+    @services = Service.unscoped.includes(:item, :company, :approver, :action_kinds, :service_fields => :service_kind).where(item: @items).decorate
+    render "empty_items_services" if @items.blank?
+  end
+
+  def dashboard_company
+    @items = current_company.services.map(&:item).uniq
     @services = Service.unscoped.includes(:item, :company, :approver, :action_kinds, :service_fields => :service_kind).where(item: @items).decorate
     render "empty_items_services" if @items.blank?
   end

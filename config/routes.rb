@@ -102,6 +102,10 @@ Rails.application.routes.draw do
     authenticated :user do
       root 'items#dashboard', as: :authenticated_root
     end
+
+    authenticated :company do
+      root 'items#dashboard_company', as: :authenticated_root_company
+    end
     # Temporary changed root route
     # root "static_pages#home"
     root "leads#new"

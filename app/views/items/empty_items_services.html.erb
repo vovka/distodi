@@ -1,11 +1,22 @@
   <%= render "empty_items" %>
-  <div class="first_content">
-    <div class="circle">
-      <%= link_to new_item_path do %>
-        <p class="plus">+</p>
-      <% end %>
+  <% if current_user %>
+    <div class="first_content">
+      <div class="circle">
+        <%= link_to new_item_path do %>
+          <p class="plus">+</p>
+        <% end %>
+      </div>
+      <p><%= t(".hey") %><%= current_user.first_name %>,</p>
+      <%= link_to t(".add"), new_item_path %>
+      <p><%= t(".track") %></p>
     </div>
-    <p><%= t(".hey") %><%= current_user.first_name %>,</p>
-    <%= link_to t(".add"), new_item_path %>
-    <p><%= t(".track") %></p>
-  </div>
+  <% elsif current_company %>
+    <div class="first_content">
+      <div class="circle">
+        <p class="plus">+</p>
+      </div>
+      <p><%= t(".hey") %><%= current_company.first_name %>,</p>
+      <p><%= t(".add_comapny") %></p>
+      <p><%= t(".track") %></p>
+    </div>
+  <% end %>

@@ -78,6 +78,7 @@ en:
     empty_items_services:
       hey: "Hey, "
       add: "Add your first item"
+      add_comapny: "Please, ask your clients to assign your first service"
       track: "to track all it’s Service log entries"
     new:
       new_item: "New item"
