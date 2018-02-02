@@ -3,6 +3,7 @@
   "dependencies": {
     "angular-tour": "latest",
     "angular-cookie": "latest",
-    "angular-chosen-localytics": "latest"
+    "angular-chosen-localytics": "latest",
+    "angular-in-viewport": "latest"
   }
 }

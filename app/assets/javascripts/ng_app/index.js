@@ -4,15 +4,16 @@
 //= require angular-cookie
 //= require chosen
 //= require angular-chosen-localytics/dist/angular-chosen
+//= require angular-in-viewport
 //= require ./config
 //= require_tree ./controllers
 //= require_tree ./directives
 
-angular.module("DistodiApp", ['angular-tour', 'ipCookie', "localytics.directives"])
+angular.module("DistodiApp", ["angular-tour", "ipCookie", "localytics.directives", "in-viewport"])
 
 .config(["$httpProvider", Config])
 
-.controller("ItemsController", ["$scope", "$http", "$q", 'ipCookie', ItemsController])
+.controller("ItemsController", ["$scope", "$http", "$q", "ipCookie", ItemsController])
 .controller("SignInController", ["$scope", SignInController])
 .controller("NotificationsController", ["$scope", "$http", NotificationsController])
 .controller("NewItemController", ["$scope", NewItemController])
@@ -20,4 +21,4 @@ angular.module("DistodiApp", ['angular-tour', 'ipCookie', "localytics.directives
 .controller("TopPanelController", ["$scope", TopPanelController])
 .controller("NewServiceController", ["$scope", NewServiceController])
 
-.directive('file', FileDirective);
+.directive("file", FileDirective);

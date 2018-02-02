@@ -3,13 +3,9 @@ $(document).ready(function() {
     $('.menu ul').slideToggle();
   });
   $("#owl-example").owlCarousel({
-    items: 1.63,
-    itemsDesktop: [1199,1.63],
-    navigationText: false,
-    autoPlay: true,
-    itemsDesktopSmall: [900, 1.7],
-    itemsTablet: [600, 1.2], //2 items between 600 and 0;
-    itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+    autoPlay: false,
+    itemsDesktopSmall: [900, 1],
+    itemsTablet: [600, 1], //2 items between 600 and 0;
   });
   $("#owl-example_mobile_items").owlCarousel({
     navigationText: false,
