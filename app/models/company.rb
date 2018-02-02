@@ -42,6 +42,9 @@ class Company < ActiveRecord::Base
   def map_address
     [city, address].compact.join(", ")
   end
+
+  def self.after_sign_up_actions!(_)
+  end
 end
 
 # == Schema Information

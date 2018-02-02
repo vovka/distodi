@@ -17,24 +17,25 @@
                   <% end %>
                 </div>
               <% end %>
-
-              <div class="transfer_panel">
-                <% if current_user.transferring_items.any? %>
-                  <% current_user.transferring_items.each do |item| %>
-                    <%= image_tag(item.picture_url, alt: item.title) %>
-                    <div class="red_col">
-                      <div class="view">
-                        <%= t ".transferred_items" %>
+              <% if current_user %>
+                <div class="transfer_panel">
+                  <% if current_user.transferring_items.any? %>
+                    <% current_user.transferring_items.each do |item| %>
+                      <%= image_tag(item.picture_url, alt: item.title) %>
+                      <div class="red_col">
+                        <div class="view">
+                          <%= t ".transferred_items" %>
+                        </div>
+                        <div class="receive">
+                          <strong><%= item.title %></strong>
+                          <p><%= link_to t(".receive_item"), receive_item_path(item), method: "POST" %></p>
+                        </div>
                       </div>
-                      <div class="receive">
-                        <strong><%= item.title %></strong>
-                        <p><%= link_to t(".receive_item"), receive_item_path(item), method: "POST" %></p>
-                      </div>
-                    </div>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
-
+                </div>
+              <% else %>
+              <% end %>
               <div class="items">
                 <%= link_to new_item_path do %>
                   <div class="all_items">
