@@ -83,7 +83,7 @@ Rails.application.configure do
     :remove_multi_spaces => true,
     :remove_comments => true,
     :remove_intertag_spaces => false,
-    :remove_quotes => true,
+    :remove_quotes => false,
     :compress_css => false,
     :compress_javascript => false,
     :simple_doctype => false,
