@@ -17,6 +17,11 @@ class AttributeKindPolicy
   NUMBER_OF_GEARS = "Number of gears".freeze
   BICYCLE_SUBCATEGORY = "Bicycle subcategory".freeze
   FRAME_MATERIAL = "Frame material".freeze
+  TRACTOR_SUBCATEGORY = "Tractor subcategory".freeze
+  FRONT_END_LOADER = "Front End Loader".freeze
+  TEMPERATURE_CONTROL= "Temperature control".freeze
+  YACHT_SUBCATEGORY = "Yacht subcategory".freeze
+  MATERIAL = "Material".freeze
 
   def initialize(attribute_kind)
     @attribute_kind = attribute_kind
@@ -92,5 +97,25 @@ class AttributeKindPolicy
 
   def frame_material?
     @attribute_kind.title == FRAME_MATERIAL
+  end
+
+  def tractor_subcategory?
+    @attribute_kind.title == TRACTOR_SUBCATEGORY
+  end
+
+  def front_end_loader?
+    @attribute_kind.title == FRONT_END_LOADER
+  end
+
+  def temperature_control?
+    @attribute_kind.title == TEMPERATURE_CONTROL
+  end
+
+  def yacht_subcategory?
+    @attribute_kind.title == YACHT_SUBCATEGORY
+  end
+
+  def material?
+    @attribute_kind.title == MATERIAL
   end
 end
