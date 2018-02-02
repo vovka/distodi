@@ -105,6 +105,8 @@ en:
       cost: "Service total cost"
       already_transferred: "This item has already been transferred."
       item_services: "Item services"
+      created_at: "created:"
+      services: "services"
     form:
       cover_photo: "Cover photo (min 800x600 pixels)"
       add_photo: "+ ADD COVER PHOTO"

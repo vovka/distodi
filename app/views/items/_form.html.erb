@@ -47,7 +47,7 @@
 
     <div class="field">
       <p><%= t(".cover_photo") %></p>
-      <div class="image {{ newPhotoAttached[0] ? '' : 'without_photo_input' }}">
+      <div class="image {{ newPhotoAttached[0] ? 'with_photo' : 'without_photo_input' }} main">
         <%= image_tag(nil,
                       alt: @item.title,
                       class: "current_photo",
@@ -69,7 +69,7 @@
                           alt: @item.title,
                           class: "current_photo",
                           :"ng-src" => "{{imagePreview[#{i}] || newItemController.images[#{i}]}}") %>
-            <label for="upload">+</label>
+            <%= inline_svg "plus.svg" %>
             <%= f.file_field :"picture#{i + 1}",
                              :"data-file" => "true",
                              :"data-index" => i %>

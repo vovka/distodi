@@ -1119,7 +1119,7 @@
     margin-top: -165px;
   }
   .destroy_user{
-    top: 1340px;
+    top: 1370px;
   }
   .destroy_user.company {
     top: 1500px;
@@ -1494,6 +1494,14 @@
   footer{
     display: inline-block;
   }
+  .item_info{
+    .date{
+      display: none;
+    }
+    .services{
+      display: none;
+    }
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}
@@ -1582,6 +1590,4 @@
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {}
 /* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
-  .field img {}
-}
+@media only screen and (min-width : 1200px) {}
