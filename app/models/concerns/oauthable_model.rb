@@ -38,8 +38,7 @@ module OauthableModel
             options.merge! validate: false
           end
           resource ||= profile.send(:"build_#{association_name}", attributes)
-          profile.send(:"#{association_name}=", resource)
-          profile.save(options)
+          profile.send(:"#{association_name}").save(options)
           after_sign_up_actions!(resource)
         end
         resource
