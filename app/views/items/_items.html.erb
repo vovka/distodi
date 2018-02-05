@@ -2,13 +2,15 @@
           <div class="large-12 columns">
             <div id="owl-example_mobile_items" class="owl-carousel"
                  ng-show="controller.showDetails === undefined">
-              <div class="items">
-                <%= link_to root_path, class: (@item.blank? ? "active" : "") do %>
-                <div class="all_items">
-                  <span><%= t(".all") %></span>
+              <% if @items.count != 1 %>
+                <div class="items">
+                  <%= link_to root_path, class: (@item.blank? ? "active" : "") do %>
+                  <div class="all_items">
+                    <span><%= t(".all") %></span>
+                  </div>
+                  <% end %>
                 </div>
-                <% end %>
-              </div>
+              <% end %>
 
               <% @items.each do |item| %>
                 <div class="items">
