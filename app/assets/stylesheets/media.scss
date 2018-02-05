@@ -1500,6 +1500,19 @@
     }
     .services{
       display: none;
+      .field {
+        .additional_photo{
+          width: calc(50% - 20px);
+          height: 100px;
+          .image{
+            height: 100%;
+            max-height: 150px;
+            label{
+              line-height: 100px;
+            }
+          }
+        }
+      }
     }
   }
 }
