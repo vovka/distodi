@@ -3979,7 +3979,6 @@ input:-webkit-autofill{
 }
 .form-actions.user{
   text-align: left;
-  position: absolute;
 }
 .left_form_service_create .form_service_create .half_form_field.half{
   display: inline-block;
@@ -4330,10 +4329,11 @@ input:-webkit-autofill{
   border-radius:4px;
   width: 100%;
   height:51px;
-  font-family: 'MuseoSansCyrl_1';
+  font-family: 'MuseoSansCyrl_2';
   font-size:16px;
   color:#ffffff;
   margin-top: 10px;
+  font-size: 14px;
 }
 .lead_background .form_lead p.second_line{
   margin-top: 10px;
