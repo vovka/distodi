@@ -33,13 +33,6 @@
             </ul>
           </div>
         <% end %>
-        <div class="photo_field">
-          <%= f.hidden_field :picture_cache %>
-          <%= f.file_field :picture,
-                         class: 'inputfile',
-                         :"data-file" => "true",
-                         :"data-index" => 0 %>
-        </div>
         <div class="price">
           <p class="field_name">
             <%= f.label :email %>
@@ -92,7 +85,7 @@
           <%= f.text_field :address, placeholder: t(".address_placeholder"), :"ng-model" => "formattedAddress"  %>
         </div>
 
-        <div class="half_form_field margin first phone">
+        <div class="half_form_field margin first">
           <p class="field_name">
             <%= f.label :phone %>
           </p>
@@ -155,8 +148,12 @@
       <p class="field_name">
         <%= t(".picture") %>
       </p>
-      <div class="image {{ newPhotoAttached[0] ? '' : 'without_photo_input' }}">
+      <div class="image {{ newPhotoAttached[0] ? 'with_photo' : 'without_photo_input' }}">
         <div class="blank_image">+</div>
+        <%= f.file_field :picture,
+                         class: 'inputfile',
+                         :"data-file" => "true",
+                         :"data-index" => 0 %>
         <%= image_tag(nil,
                       class: "current_photo",
                       :"ng-src" => "{{imagePreview[0] || images[0]}}") %>

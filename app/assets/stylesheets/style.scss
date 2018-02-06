@@ -1245,17 +1245,27 @@ footer hr {
   margin-right: 15px;
 }
 
-.item_info {
+.item_info.edit{
   font-family: 'MuseoSansCyrl_2';
   font-size: 16px;
   color: #1f1f1f;
   text-align: left;
-  float: left;
+  width: calc(100% - 46px);
+  max-width: 1180px;
+  display: inline-block;
+  margin-left: 0;
+}
+.item_info{
+  font-family: 'MuseoSansCyrl_2';
+  font-size: 16px;
+  color: #1f1f1f;
+  text-align: left;
+  margin-left: 22px;
 }
 
 .item_info span {
   float: left;
-  margin: 30px 5px 29px 25px;
+  margin: 30px 5px 29px 0px;
 }
 
 .item_info ul {
@@ -1385,7 +1395,7 @@ footer hr {
       color: #8f8f8f;
       font-weight: 100;
       padding: 20px;
-
+      padding-bottom: 10px;
       &:last-child {
         text-align: right;
       }
@@ -1720,9 +1730,8 @@ footer hr {
 }
 
 .grey {
-  width: 300px;
   color: #8f8f8f;
-  margin: 30px 5px 0 10px;
+  margin: 32px 10px 0 10px;
   float: left;
 }
 
@@ -1831,7 +1840,6 @@ footer hr {
 .form {
   text-align: left;
   margin-left: 22px;
-  margin-top: 79px;
 }
 
 .form .field_title {
@@ -1943,8 +1951,35 @@ option {
   color: black;
 }
 
-.item_info span {
-  display: none;
+.item_info{
+  span {
+    display: none;
+  }
+  .date{
+    display: inline-block;
+    margin-top: 31px;
+    font-family: 'MuseoSansCyrl_2';
+    font-size: 14px;
+    margin-left: 3px;
+    p{
+      display: inline-block;
+      font-family: 'MuseoSansCyrl_1';
+      font-size: 14px;
+    }
+  }
+  .services{
+    display: inline-block;
+    margin-top: 31px;
+    font-family: 'MuseoSansCyrl_1';
+    font-size: 14px;
+    color: #149b4c;
+    margin-left: 10px;
+  }
+  p{
+    display: inline-block;
+    font-family: 'MuseoSansCyrl_2';
+    font-size: 14px;
+  }
 }
 
 .custom_attributes {
@@ -1997,6 +2032,10 @@ option {
   float: right;
   margin-top: -80px;
   position: relative;
+  .image{
+    height: 300px;
+    overflow: hidden;
+  }
 }
 
 .field img {
@@ -2387,15 +2426,18 @@ width: 205px;
 
 .first_service {
   text-align: left;
-  margin-left: 29px;
+  margin: 0 auto;
   padding: 15px;
   border: 1px solid rgba(211,211,211,0.50);
-  width: calc(100% - 85px);
+  width: calc(100% - 76px);
 }
 
 .first_service p {
   color: #8f8f8f;
   line-height: 22px;
+}
+.list_items .select{
+  width: 0;
 }
 
 .login-button {
@@ -2436,12 +2478,14 @@ width: 205px;
   }
 }
 .field {
-  .image, .without_photo_input {
+  .image{
     border: 1px solid #d3d3d3;
     border-radius: 4px;
     width: 95%;
     text-align: center;
-
+    &.with_photo{
+      border: 1px solid white;
+    }
     img {
       border: none;
 
@@ -2522,18 +2566,26 @@ width: 205px;
   text-align: center;
   float: left;
   margin: 10px 7.5px;
-  height: 344px;
+  height: 254px;
 }
 
-.page_items .item img {
-  width: 250px;
-  height: 175px;
-  border-radius: 4px;
-  border: 1.5px solid rgba( 0, 0, 0, 0.0);
-  margin-bottom: 10px;
+.page_items .item{
+  .photo_item_index{
+    width: 250px;
+    height: 160px;
+    overflow: hidden;
+    margin: 0 auto 10px;
+    border-radius: 4px;
+    border: 1.5px solid rgba( 0, 0, 0, 0.0);
+    img {
+    width: 100%;
+    border-radius: 4px;
+    vertical-align: middle;
+    }
+  }
 }
 
-.page_items .item img:hover {
+.page_items .item .photo_item_index:hover {
   border: 1.5px solid #149b4c;
 }
 
@@ -2548,6 +2600,9 @@ width: 205px;
   width: 247px;
   height: 174px;
   margin: 1px;
+  &:hover{
+    border: 1px solid #149b4c;
+  }
 }
 
 .page_items .item .add_new_item p {
@@ -3237,7 +3292,7 @@ width: 205px;
   padding: 14.5px 20px 15px;
 }
 .list_items thead th:first-child{
-  padding: 18.5px 20px 15px;
+  padding: 18.5px 20px 10px;
 }
 
 .button_box .show_pass{
@@ -3759,6 +3814,7 @@ input:-webkit-autofill{
   display: inline-block;
   margin-right: 15px;
   cursor: pointer;
+  border-radius: 10px;
 }
 .left_form_service_create .form_service_create .service_photos .photo_input:hover{
   border: 1px solid #149b4c;
@@ -3770,13 +3826,12 @@ input:-webkit-autofill{
   fill: #149b4c;
   position: relative;
   top: -77px;
-  left: 55px
+  left: 55px;
+  z-index: -1;
 }
 .service_photos img{
-  height: 133px;
+  height: 132px;
   border-radius: 4px;
-  margin-right: 15px;
-  border: 1px solid #d3d3d3;
 }
 .left_form_service_create .form_service_create .service_photos .photo_input input{
   height: 132px;
@@ -3890,6 +3945,9 @@ input:-webkit-autofill{
   box-shadow: 0px;
   border: 0;
   z-index: 300;
+  font-family: 'MuseoSansCyrl_2';
+  font-size:14px;
+  color:#ffffff;
 }
 .form-actions{
   margin-bottom: 20px;
@@ -4027,6 +4085,7 @@ input:-webkit-autofill{
   line-height: 14px;
   padding-right: 0;
   top: -1px;
+  padding-left: 0;
 }
 .notification_confirmation{
   text-align: left;
@@ -4088,9 +4147,9 @@ input:-webkit-autofill{
 }
 .blank_image{
   width: 298px;
-  height: 150px;
+  height: 200px;
   border: 1px solid #d3d3d3;
-  line-height: 150px;
+  line-height: 200px;
   color:#149b4c;
   font-size: 30px;
   text-align: center;
@@ -4475,6 +4534,10 @@ input:-webkit-autofill{
       max-height: 75px;
       height: 75px;
       width: 100%;
+      svg{
+        fill: #149b4c;
+        margin-top: 25px;
+      }
       &:hover{
         border: 1px solid #149b4c;
       }
@@ -4511,7 +4574,7 @@ input:-webkit-autofill{
         top: auto;
         right: auto;
         margin-top: -100px;
-        margin-left: calc(10% - 22px);
+        margin-left: calc(10% - 34px);
         display: none;
         &:hover{
           display: inline-block;
@@ -4625,12 +4688,17 @@ input:-webkit-autofill{
 
 .image-upload-box {
   display: inline-block;
-  min-height: 160px;
+  max-height: 134px;
+  max-width: 134px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border-radius: 8px;
   .input_field{
     text-align: right;
   }
   &:last-child{
     float:left;
+    margin-right: 15px;
   }
   a {
     width: 20px;
@@ -4639,7 +4707,7 @@ input:-webkit-autofill{
     position: absolute;
     background-position: 0px 0px;
     margin-top: -130px;
-    margin-left: -40px;
+    margin-left: -26px;
     display: none;
 
     &:hover {
@@ -4648,9 +4716,6 @@ input:-webkit-autofill{
   }
   img:hover + a{
     display: inline-block;
-  }
-  img:hover{
-    border: 1px solid #149b4c;
   }
 }
 .report_item_photo img{
@@ -5370,4 +5435,43 @@ input:-webkit-autofill{
 }
 .form-inputs label{
   display: none;
+}
+.right_form_service_create{
+  .image{
+    width: 300px;
+    height: 203px;
+    overflow: hidden;
+    border-radius: 4px;
+    &:hover .blank_image{
+      border: 1px solid #149b4c;
+    }
+    img {
+      border: none;
+      &:not([src]), &[src=" "] {
+        display: none;
+      }
+    }
+    img:hover ~ a{
+      display: inline-block;
+    }
+    img:not([src]){
+      &~input{
+        display: inline-block;
+      }
+    }
+    img[src=" "]{
+      &~input{
+        display: inline-block;
+      }
+    }
+    input {
+      cursor: pointer;
+      position: absolute;
+      border: 1px solid red;
+      opacity: 0;
+      width: 300px;
+      height: 200px;
+      display: inline-block;
+    }
+  }
 }

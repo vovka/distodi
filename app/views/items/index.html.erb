@@ -2,24 +2,13 @@
   <p><%= t('.my_items') %></p>
   <% @items.each.with_index do |item, i| %>
     <div class="item">
-      <%= link_to item do %>
-        <%= image_tag(item.picture_url, alt: item.title) %>
+      <%= link_to  edit_item_path(item) do %>
+        <div class="photo_item_index">
+          <%= image_tag(item.picture_url, alt: item.title) %>
+        </div>
       <% end %>
       <p><%= item.title %></p>
       <p><%= item.id_code %></p>
-      <div class="item_list_panel">
-        <%= link_to edit_item_path(item) do %>
-          <%= image_tag "eye.png" %>
-          <span><%= t('.view_edit') %></span>
-        <% end %>
-        <div class="transfer_button" ng-click="controller.clickedToggleTransfer(<%= i %>)">
-          <%= image_tag "send.png" %>
-          <%= t('.send_item') %>
-        </div>
-        <div class="transfer_form_list" ng-class="controller.showTransfer[<%= i %>] ? 'active' : '' ">
-        <%= render "transfer_form", item: item %>
-        </div>
-      </div>
     </div>
   <% end %>
   <div class="item">

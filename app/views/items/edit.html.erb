@@ -1,142 +1,14 @@
-<div class="item_info">
+<div class="item_info edit">
   <span>Item details - <%= @item.title %>, </span>
     <% @item.characteristics.each do |characteristic| %>
       <span> <%= characteristic.value %></span>
     <% end %>
     <p class="grey"> <%= @item.id_code %></p>
+    <div class="date"><p><%= t(".created_at") %></p> <%= @item.created_at.strftime("%d.%m.%Y") %></div>
+    <div class="services"><p><%= @item.services.count %></p> <%= t(".services") %></div>
 </div>
 
 <%= render 'form' %>
-
-<div ng-controller="ItemsController as controller"
-     ng-init='controller.checkboxes.length = <%= @item.services.size %>;
-              controller.permissions = <%= @services.map { |s| s.permissions(current_user) }.to_json.html_safe %>;
-              controller.ids = <%= @item.services.map(&:id) %>;
-              '>
-  <% if @item.services.present? %>
-    <div class="service_count edit">
-      <span><%= t(".item_services") %></span> <%= @item.services.count %>
-    </div>
-  <% end %>
-  <%= link_to new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" do %>
-    <div class="add_service">
-      <%= t(".add_new_service") %>
-    </div>
-  <% end if @item.present? %>
-  <div class="service_panel" ng-show="controller.serviceActions.show">
-    <a href="" class="view"
-       ng-class="controller.serviceActions.view ? '' : 'disabled'"
-       ng-click="controller.clickedView()">
-      <%= t(".view") %>
-    </a>
-    <a href="" class="delete"
-       ng-class="controller.serviceActions.delete ? '' : 'disabled'"
-       ng-click="controller.clickedDelete('<%= I18n.locale %>')">
-      <%= t(".del") %>
-    </a>
-  </div>
-  <table class="list_items">
-    <thead>
-      <th>
-        <div class="select">
-          <label>
-            <input type="checkbox" ng-change="controller.clickedAllCheckbox()"
-                                   ng-model="controller.checkboxes.all" />
-            <i ng-class="!controller.checkboxes.areAllChecked() && controller.checkboxes.isAnyChecked() ? 'partial' : ''">
-              <%= image_tag "select.png" %>
-            </i>
-          </label>
-        </div>
-      </th>
-      <th><%= t(".service") %></th>
-      <th><%= t(".type") %></th>
-      <th><%= t(".status") %></th>
-      <th><%= t(".item") %></th>
-      <th><%= t(".id") %></th>
-      <th><%= t(".date") %></th>
-      <th><%= t(".cost") %></th>
-      <th></th>
-    </thead>
-    <tbody>
-      <% @item.services.each.with_index do |service, i| %>
-      <tr ng-class="[
-                      (controller.showDetails === <%= i %> ? 'viewing' : ''),
-                      (controller.checkboxes[<%= i %>] ? 'selected' : '')
-                    ].join(' ')">
-        <td>
-          <div class="select">
-            <label>
-              <input type="checkbox" ng-model="controller.checkboxes[<%= i %>]"
-                                     ng-change="controller.changedCheckbox(<%= i %>)" />
-              <i>
-                <%= image_tag "select.png" %>
-              </i>
-            </label>
-          </div>
-        </td>
-        <td>
-          <% service.service_fields.each do |service_field| %>
-            <%= service_field.service_kind.title %>
-            <%= service_field.text %>
-          <% end %>
-        </td>
-        <td>
-          <% service.action_kinds.decorate.each do |action_kind| %>
-            <div class="icon_service <%= action_kind.icon_class %>">
-              <%= "#{action_kind.title}" %>
-            </div>
-          <% end %>
-        </td>
-        <td>
-          <div class="<%= service.status %>">&nbsp;</div>
-        </td>
-        <td><%= service.item.try :title %></td>
-        <td><%= service.id_code %></td>
-        <td><%= service.created_at.strftime("%d %b %Y")%></td>
-        <td>
-          <%= number_to_currency(service.price , unit: "EUR ") %>
-        </td>
-        <td class="actions">
-          <%= link_to "&nbsp;".html_safe, "", "ng-click" => "controller.clickedView(#{i})" %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <div class="list_items_mobile">
-    <% @item.services.each_with_index do |service, i| %>
-    <div class="service_mobile">
-      <div class="select">
-        <label>
-          <input type="checkbox" ng-model="controller.checkboxes[<%= i %>]"
-                                 ng-change="controller.changedCheckbox(<%= i %>)" />
-          <i>
-            <%= image_tag "select.png" %>
-          </i>
-        </label>
-      </div>
-      <p class="type"><% service.service_fields.each do |service_field| %>
-        <%= service_field.service_kind.title %>
-        <%= service_field.text %>
-        <% end %>
-      </p>
-      <% service.action_kinds.decorate.each do |action_kind| %>
-            <div class="icon_service <%= action_kind.icon_class %>">
-              <%= "#{action_kind.title}" %>
-            </div>
-      <% end %>
-      <p><%= service.item.try :title %></p>
-      <p><span><%= service.created_at.strftime("%d %b %Y")%></span>
-      <span> <%= number_to_currency(service.price , unit: "EUR ") %></span></p>
-    </div>
-    <% end %>
-  </div>
-  <% if @item.present? && @item.services.blank? %>
-    <div class="first_service">
-      <p><%= t(".service_log") %> <%= link_to t(".add_first_service"),new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" %> <%= t(".fill_book") %></p>
-    </div>
-  <% end %>
-</div>
 
 <div class="function">
   <div class="transfer">

@@ -35,14 +35,6 @@
             </ul>
           </div>
         <% end %>
-
-        <div class="photo_field">
-          <%= f.hidden_field :picture_cache %>
-          <%= f.file_field :picture,
-                         class: 'inputfile',
-                         :"data-file" => "true",
-                         :"data-index" => 0 %>
-        </div>
         <div class="price">
           <p class="field_name">
             <%= t(".email_company") %>
@@ -183,6 +175,10 @@
       </p>
        <div class="image {{ newPhotoAttached[0] ? '' : 'without_photo_input' }}">
         <div class="blank_image">+</div>
+        <%= f.file_field :picture,
+                         class: 'inputfile',
+                         :"data-file" => "true",
+                         :"data-index" => 0 %>
         <%= image_tag(nil,
                       class: "current_photo",
                       :"ng-src" => "{{imagePreview[0] || images[0]}}") %>
