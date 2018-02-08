@@ -2044,6 +2044,7 @@ option {
   width: 100%;
   z-index: 200;
   margin-bottom: -3px;
+  opacity: 0;
 }
 .field p {
   font-family: 'MuseoSansCyrl_1';
@@ -2478,17 +2479,19 @@ width: 205px;
   }
 }
 .field {
+  .additional_photo{
+    .image{
+      img{
+        opacity: 1;
+      }
+    }
+  }
   .image{
     border: 1px solid #d3d3d3;
     border-radius: 4px;
     width: 95%;
     text-align: center;
-    &.with_photo{
-      border: 1px solid white;
-    }
     img {
-      border: none;
-
       &:not([src]), &[src=" "] {
         display: none;
       }
@@ -2527,7 +2530,7 @@ width: 205px;
       right: 19px;
       width: calc(100% - 20px);
       height: 42%;
-      display: none;
+      /*display: none;*/
     }
 
     label {
@@ -3685,6 +3688,9 @@ input:-webkit-autofill{
   font-family: 'MuseoSansCyrl_1';
   outline: none;
 }
+.left_form_service_create .form_service_create .half_form_field .service_kind_coment{
+  width: 283px;
+}
 .left_form_service_create .form_service_create .company_select select{
   width: 300px;
   display: block;
@@ -3809,15 +3815,11 @@ input:-webkit-autofill{
 .left_form_service_create .form_service_create .service_photos .photo_input{
   width: 132px;
   height: 132px;
-  border: 1px solid #d3d3d3;
   border-radius: 4px;
   display: inline-block;
   margin-right: 15px;
   cursor: pointer;
   border-radius: 10px;
-}
-.left_form_service_create .form_service_create .service_photos .photo_input:hover{
-  border: 1px solid #149b4c;
 }
 .left_form_service_create .form_service_create .service_photos .photo_input label{
   display: none;
@@ -4146,9 +4148,8 @@ input:-webkit-autofill{
 }
 .blank_image{
   width: 298px;
-  height: 200px;
-  border: 1px solid #d3d3d3;
-  line-height: 200px;
+  height: 250px;
+  line-height: 250px;
   color:#149b4c;
   font-size: 30px;
   text-align: center;
@@ -4688,11 +4689,15 @@ input:-webkit-autofill{
 
 .image-upload-box {
   display: inline-block;
-  max-height: 134px;
-  max-width: 134px;
+  height: 134px;
+  width: 134px;
   overflow: hidden;
   margin-bottom: 20px;
-  border-radius: 8px;
+  border-radius: 4px;
+  border: 1px solid #d3d3d3;
+  &:hover{
+    border: 1px solid #149b4c;
+  }
   .input_field{
     text-align: right;
   }
@@ -4713,6 +4718,11 @@ input:-webkit-autofill{
     &:hover {
       display: inline-block;
     }
+  }
+  img{
+    opacity: 0;
+    width: 134px;
+    height: 134px;
   }
   img:hover + a{
     display: inline-block;
@@ -5439,10 +5449,11 @@ input:-webkit-autofill{
 .right_form_service_create{
   .image{
     width: 300px;
-    height: 203px;
+    height: 253px;
     overflow: hidden;
     border-radius: 4px;
-    &:hover .blank_image{
+    border: 1px solid #d3d3d3;
+    &:hover{
       border: 1px solid #149b4c;
     }
     img {
@@ -5470,7 +5481,7 @@ input:-webkit-autofill{
       border: 1px solid red;
       opacity: 0;
       width: 300px;
-      height: 200px;
+      height: 250px;
       display: inline-block;
     }
   }
