@@ -3869,7 +3869,7 @@ input:-webkit-autofill{
   text-align: left;
 }
 .item_info_service {
-  font-family: 'MuseoSansCyrl_1';
+  font-family: 'MuseoSansCyrl_2';
   font-size:13px;
   color:#1f1f1f;
   letter-spacing:0;
@@ -3877,25 +3877,17 @@ input:-webkit-autofill{
   text-align:left;
 }
 .item_info_service span{
-  font-family: 'MuseoSansCyrl_2';
-}
-.item_info_service span:nth-child(1){
+  font-family: 'MuseoSansCyrl_1';
   display: none;
 }
-.item_info_service span:nth-child(5){
-  display: none;
+.item_info_service span:nth-child(2){
+  display: inline-block;
 }
-.item_info_service span:nth-child(6){
-  display: none;
+.item_info_service span:nth-child(3){
+  display: inline-block;
 }
-.item_info_service span:nth-child(7){
-  display: none;
-}
-.item_info_service span:nth-child(8){
-  display: none;
-}
-.item_info_service span:nth-child(9){
-  display: none;
+.item_info_service span:nth-child(4){
+  display: inline-block;
 }
 .right_form_service_create img{
   width: 100%;
