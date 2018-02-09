@@ -1845,12 +1845,16 @@ footer hr {
 .form .field_title {
   width: calc(33.5% + -14px);
   float: left;
-  margin-bottom: 6px;
+  font-size: 14px;
+  color: #8f8f8f;
+  label{
+    font-size: 14px;
+  }
 }
 
 .form .field_title p {
   font-family: 'MuseoSansCyrl_1';
-  font-size: 16px;
+  font-size: 14px;
   color: #8f8f8f;
   letter-spacing: 0;
   line-height: 17px;
@@ -1866,26 +1870,39 @@ footer hr {
   width: 92%;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
-  font-size: 16px;
-  height: 49px;
+  font-size: 15px;
+  height: 48px;
   padding-left: 15px;
   float: left;
   font-family: 'MuseoSansCyrl_1';
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #8f8f8f;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: #8f8f8f;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: #8f8f8f;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: #8f8f8f;
+  }
 }
 
 .form .categories {
   text-align: left;
-  width: calc(32% + 4px);
+  width: calc(33% - 4px);
   float: left;
-  height: 84px;
+  height: 74px;
 }
 
 .form .categories p {
   font-family: 'MuseoSansCyrl_1';
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 0;
   line-height: 17px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  color:#8f8f8f;
 }
 
 .chosen-single {
@@ -1923,7 +1940,7 @@ footer hr {
   width: 96.5%;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 15px;
   height: 52px;
   padding-left: 15px;
   padding-right: 15px;
@@ -1991,16 +2008,17 @@ option {
 
 .custom_attributes label {
   font-family: 'MuseoSansCyrl_1';
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 0;
   line-height: 17px;
+  color:#8f8f8f;
 }
 
 .custom_attributes input {
   width: calc(96% - 15px);
   border: 1px solid #d3d3d3;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 15px;
   height: 47px;
   padding-left: 15px;
   margin-bottom: 17px;
@@ -2023,8 +2041,10 @@ option {
 }
 
 .attribute {
-  width: 49.5%;
+  width: 50%;
   display: inline-block;
+  float: left;
+  height: 94px;
 }
 
 .field {
@@ -2047,11 +2067,11 @@ option {
 }
 .field p {
   font-family: 'MuseoSansCyrl_1';
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 0;
   line-height: 17px;
-  margin-top: -6px;
-  margin-bottom: 9px;
+  margin-bottom: 10px;
+  color:#8f8f8f;
 }
 
 .field input {
@@ -2077,7 +2097,6 @@ option {
 .actions_but input {
   background: #149b4c;
   border-radius: 4px;
-  width: 170px;
   height: 42px;
   border: 0 solid white;
   font-family: 'MuseoSansCyrl_2';
@@ -2088,6 +2107,8 @@ option {
   text-align: center;
   display: inline-block;
   cursor: pointer;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .actions_but a {
@@ -4494,9 +4515,21 @@ input:-webkit-autofill{
   border-radius:4px;
   min-width: calc(93% - 10px);
   max-width: calc(93% - 10px);
-  min-height: 318px;
+  min-height: 306px;
   padding: 10px;
   outline: none;
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color:#8f8f8f;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: #8f8f8f;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: #8f8f8f;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: #8f8f8f;
+  }
 }
 .field textarea:focus{
   border-color: #149b4c;

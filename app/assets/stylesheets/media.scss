@@ -703,15 +703,24 @@
   }
 
   .field {
-    width: 100%;
+    width: calc(100% - 24px);
+    float: left;
   }
 
   .attribute {
     width: 100%;
+    input{
+      width: calc(100% - 19px);
+    }
+    select{
+      width: 100%;
+    }
   }
-
+  .chosen-container-single {
+    width: calc(100% - 33px) !important;
+  }
   .custom_attributes {
-    width: 93%;
+    width: calc(100% - 20px);
   }
 
   .field img {
@@ -719,28 +728,33 @@
   }
 
   .form .field_title {
-    width: 93%;
+    width: calc(100% - 19px);
     margin-top: 15px;
+    input{
+      width: calc(100% - 19px);
+    }
   }
 
   .form .categories {
-    width: 93%;
+    width: calc(100% - 20px);
     margin-top: 15px;
     z-index: 300;
+    select{
+      width: 100%;
+    }
   }
 
   .actions_but {
     width: 100%;
   }
-
   .actions_but input {
-    width: 91%;
+    width: calc(100% - 19px);
   }
 
   .actions_but .back {
     margin-top: 15px;
     margin-left: 0;
-    width: 91%;
+    width: calc(100% - 19px);
   }
 
   .field {
@@ -843,7 +857,7 @@
   }
 
   .field .without_photo_input {
-    width: 90%;
+    width: 100%;
   }
 
   .page_items .item {
@@ -906,8 +920,8 @@
     margin-bottom: 5px;
   }
   .item_info{
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
     width: calc(100% - 50px);
     margin-top: 25px;
     margin-bottom: 5px;
@@ -1500,31 +1514,35 @@
     }
     .services{
       display: none;
-      .field {
-        .additional_photo{
-          width: calc(50% - 20px);
-          height: 100px;
-          .image{
-            height: 100%;
-            max-height: 150px;
-            label{
-              line-height: 100px;
-            }
-          }
+    }
+  }
+  .field {
+    .additional_photo{
+      width: calc(50% - 7px);
+      height: 100px;
+      .image{
+        height: 100%;
+        max-height: 150px;
+        label{
+          line-height: 100px;
+        }
+        svg{
+          margin-top: 37px;
         }
       }
     }
+    textarea{
+      min-width: calc(100% - 19px);
+      max-width: calc(100% - 19px);
+    }
+  }
+  .field .additional_photo:nth-child(5){
+    margin-right: 0;
   }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}
 /* Small Devices, Tablets */
-@media only screen and (max-width : 640px) {
-  .form .categories {
-    width: 94%;
-    margin-top: 15px;
-  }
-}
 @media only screen and (max-width : 545px) {
   .page_items .item {
     width: 94%;
@@ -1551,11 +1569,6 @@
     margin-left: 0;
   }
 
-  .form .categories {
-    width: 95%;
-    margin-top: 15px;
-  }
-
   .first_service {
     width: calc(100% - 32px);
     margin: 0;
@@ -1575,22 +1588,12 @@
     width: 255px;
     margin-left: -38%;
   }
-
-  .form .categories {
-    width: 96%;
-    margin-top: 15px;
-  }
 }
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 320px) {
   .slider .owl-item .items img {
     width: 230px;
     margin-left: -45%;
-  }
-
-  .form .categories {
-    width: 97%;
-    margin-top: 15px;
   }
 }
 /*==========  Mobile First Method  ==========*/
