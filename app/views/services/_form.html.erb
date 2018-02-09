@@ -30,7 +30,7 @@
                          autofocus: true,
                          :"ng-change" => "changedServiceKind({ withText: #{@service_kinds.select { |k| k.with_text }.map(&:id)} })",
                          :"ng-model" => "serviceKind",  prompt: t(".select_service") %>
-          <%= text_field "text", "service_kind_coment", placeholder: t(".service_kind_comment"), :"ng-show" => "showServiceKindText" %>
+          <%= text_field "text", "service_kind_coment", placeholder: t(".service_kind_comment"), :"ng-show" => "showServiceKindText", class: "service_kind_coment"%>
         </div>
         <% if user_signed_in? %>
           <p class="field_name">
@@ -82,8 +82,8 @@
           <p class="field_name">
             <%= t(".service_photo") %>
           </p>
-          <div class="image-upload-box">
-            <div ng-hide="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')" class="input_field">
+          <div class="image-upload-box" style="background: url({{imagePreview[0] || newItemController.images[0]}}) no-repeat center center; background-size: cover;">
+            <div ng-hide="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')" class="input_field" >
               <%= image_tag(nil, "ng-src" => "{{imagePreview[0] || controller.images[0]}}") %>
               <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
             </div>
@@ -92,7 +92,7 @@
               <%= inline_svg "plus.svg" %>
             </div>
           </div>
-          <div class="image-upload-box">
+          <div class="image-upload-box" style="background: url({{imagePreview[1] || controller.images[1]}}) no-repeat center center; background-size: cover;">
             <div ng-hide="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')" class="input_field">
               <%= image_tag(nil, "ng-src" => "{{imagePreview[1] || controller.images[1]}}") %>
               <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 1)" %>

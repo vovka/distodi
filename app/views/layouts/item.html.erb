@@ -17,8 +17,12 @@
         </div>
       <% end %>
       <div class="item_logo">
-        <% if current_user.items.count == 1 %>
-          <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), current_user.items.first %>
+        <% if user_signed_in? %>
+          <% if current_user.items.count == 1 %>
+            <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), current_user.items.first %>
+          <% else %>
+            <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), root_path %>
+          <% end %>
         <% else %>
           <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), root_path %>
         <% end %>
@@ -58,8 +62,12 @@
           <div class="btn_line"></div>
         </div>
         <div class="menu_mobile">
-          <% if current_user.items.count == 1 %>
-            <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), current_user.items.first %>
+          <% if user_signed_in? %>
+            <% if current_user.items.count == 1 %>
+              <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), current_user.items.first %>
+            <% else %>
+              <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), root_path %>
+            <% end %>
           <% else %>
             <%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), root_path %>
           <% end %>
