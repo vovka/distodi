@@ -42,4 +42,6 @@ end
 #  id_code       :string
 #  demo          :boolean
 #  picture2      :string
+#  picture3      :string
+#  picture4      :string
 #

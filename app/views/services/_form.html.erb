@@ -4,6 +4,8 @@
           [
             @service.picture.additional_photo.url,
             @service.picture2.additional_photo.url,
+            @service.picture3.additional_photo.url,
+            @service.picture4.additional_photo.url,
           ].compact.to_s.html_safe
         %>;
       '
@@ -99,6 +101,26 @@
             </div>
             <div class="photo_input" ng-show="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')">
               <%= f.file_field :picture2, :"data-file" => "true", :"data-index" => 1 %>
+              <%= inline_svg "plus.svg" %>
+            </div>
+          </div>
+          <div class="image-upload-box">
+            <div ng-hide="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')" class="input_field">
+              <%= image_tag(nil, "ng-src" => "{{imagePreview[2] || controller.images[2]}}") %>
+              <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 2)" %>
+            </div>
+            <div class="photo_input" ng-show="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')">
+              <%= f.file_field :picture3, :"data-file" => "true", :"data-index" => 2 %>
+              <%= inline_svg "plus.svg" %>
+            </div>
+          </div>
+          <div class="image-upload-box">
+            <div ng-hide="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')" class="input_field">
+              <%= image_tag(nil, "ng-src" => "{{imagePreview[3] || controller.images[3]}}") %>
+              <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 3)" %>
+            </div>
+            <div class="photo_input" ng-show="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')">
+              <%= f.file_field :picture4, :"data-file" => "true", :"data-index" => 3 %>
               <%= inline_svg "plus.svg" %>
             </div>
           </div>

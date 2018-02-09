@@ -17,6 +17,8 @@ class Service < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
   mount_uploader :picture2, PictureUploader
+  mount_uploader :picture3, PictureUploader
+  mount_uploader :picture4, PictureUploader
 
   has_many :service_fields, dependent: :destroy
   has_many :service_kinds, through: :service_fields
@@ -145,4 +147,6 @@ end
 #  id_code       :string
 #  demo          :boolean
 #  picture2      :string
+#  picture3      :string
+#  picture4      :string
 #
