@@ -62,9 +62,8 @@
         <th><%= t(".type") %></th>
         <th><%= t(".status") %></th>
         <th><%= t(".item") %></th>
-        <th><%= t(".id") %></th>
-        <th><%= t(".date") %></th>
-        <th><%= t(".cost") %></th>
+        <th class="date"><%= t(".date") %></th>
+        <th class="cost"><%= t(".cost") %></th>
         <th></th>
       </thead>
       <tbody>
@@ -101,9 +100,8 @@
             <div class="<%= service.status %>">&nbsp;</div>
           </td>
           <td><%= service.item.try :title %></td>
-          <td><%= service.id_code %></td>
-          <td><%= service.created_at.strftime("%d %b %Y")%></td>
-          <td>
+          <td class="date"><%= service.created_at.strftime("%d %b %Y")%></td>
+          <td class="cost">
             <%= number_to_currency(service.price , unit: "EUR ") %>
           </td>
           <td class="actions">

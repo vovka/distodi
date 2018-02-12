@@ -1398,7 +1398,15 @@ footer hr {
       padding-bottom: 10px;
       &:last-child {
         text-align: right;
+        padding: 20px 14px;
       }
+    }
+    .cost{
+      width: 120px;
+    }
+    .date{
+      width: 87px;
+      padding: 20px 0;
     }
   }
 
@@ -1406,6 +1414,13 @@ footer hr {
     tr {
       border: 1px solid rgba(211,211,211,0.50);
       cursor: pointer;
+      .cost{
+        width: 120px;
+      }
+      .date{
+        width: 87px;
+        padding: 20px 0;
+      }
       td {
         .approved {
           background: asset-url("status-approved") no-repeat 0 0;
@@ -1423,7 +1438,6 @@ footer hr {
             margin-left: 20px;
           }
         }
-
         .pending {
           background: asset-url("status-pending") no-repeat 0 0;
           width: 20px;
@@ -1482,6 +1496,7 @@ footer hr {
 
         &.actions {
           width: 20px;
+          height: 46px;
         }
 
         &:nth-child(2) {
@@ -1526,8 +1541,8 @@ footer hr {
       }
 
       &:last-child {
-        padding: 0 20px;
-        margin: 0 0 -14px;
+        padding: 0;
+        margin: 0 0 -17px;
       }
     }
   }
@@ -2236,9 +2251,9 @@ option {
 
 .actions a {
   color: #8f8f8f;
-  line-height: 42px;
-  padding: 11px 26px;
-  line-height: 9px;
+  line-height: 46px;
+  padding: 15px 9px;
+  margin-top: 14px;
 }
 
 .new_item.ng-pristine.ng-valid {
@@ -2503,7 +2518,7 @@ width: 205px;
   .additional_photo{
     .image{
       img{
-        opacity: 1;
+        opacity: 0;
       }
     }
   }
@@ -4483,7 +4498,7 @@ input:-webkit-autofill{
 .field .additional_photo{
   background:#ffffff;
   border-radius:4px;
-  width: calc(24% - 14px);
+  width: calc(22% - 5px);
   height:75px;
   color:#149b4c;
   text-align: center;

@@ -822,9 +822,9 @@
     padding-left: 36px;
   }
   .add_service {
-    width: calc(91% - 25px);
+    width: calc(100% - 40px);
     margin: 0;
-    margin-left: 25px;
+    margin-left: 20px;
     float: left;
   }
 
@@ -891,9 +891,9 @@
     padding-right: 0;
   }
   .service_panel {
-    width: calc(91% - 25px);
+    width: calc(100% - 40px);
     margin: 0;
-    margin-left: 25px;
+    margin-left: 20px;
     float: left;
     text-align: center;
   }
@@ -920,10 +920,9 @@
     margin-bottom: 5px;
   }
   .item_info{
-    padding-left: 20px;
-    padding-right: 20px;
-    width: calc(100% - 50px);
-    margin-top: 25px;
+    padding: 0;
+    width: calc(100% - 40px);
+    margin-top: 20px;
     margin-bottom: 5px;
   }
   .service_count{
