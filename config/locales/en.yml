@@ -118,7 +118,7 @@ en:
       prohibited: "prohibited this item from being saved:"
       other_photo: Other photos (min 800x600 pixels each)
       title_placeholder: "Your name of the item"
-      comments: Comments
+      comments: Comments (2000 symbols max)
       comments_placeholder: "Please, add here any additional information or description of your item"
     transfer_form:
       user_identifier_to_transfer_item: "User email to transfer the item."
@@ -244,7 +244,7 @@ en:
       send_log: "Send this service log entry to the Service company for approval"
       amount: "- only amount number"
       service_photo: "Service photos (optional, min 800x600 pixels)"
-      comment: "Comments (optional)"
+      comment: "Comments (optional, 2000 symbols max)"
       remind_me: "(Optional) Remind me to update this service in"
       custom_date: "Custom date"
       discard: "Discard"
