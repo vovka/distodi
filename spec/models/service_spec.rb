@@ -179,4 +179,5 @@ end
 #  picture2      :string
 #  picture3      :string
 #  picture4      :string
+#  comment       :string(2000)
 #

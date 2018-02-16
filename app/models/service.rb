@@ -44,6 +44,7 @@ class Service < ActiveRecord::Base
   validates :reason, presence: true,
                      length: { maximum: 1023 },
                      if: -> { status == STATUS_DECLINED }
+  validates :comment, length: { maximum: 2000 }
 
   before_create do |service|
     service.status = STATUS_APPROVED if service.self_approvable?
@@ -149,4 +150,5 @@ end
 #  picture2      :string
 #  picture3      :string
 #  picture4      :string
+#  comment       :string(2000)
 #

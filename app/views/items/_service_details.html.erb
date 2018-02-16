@@ -18,6 +18,7 @@
   <li>approver: <%= service.approver.try(:name) %></li>
   <li>reason: <%= service.reason %></li>
   <li>id_code: <%= service.id_code %></li>
+  <li>comment: <%= service.comment %></li>
   <% if service.map_address.present? %>
     <li>
       <iframe
