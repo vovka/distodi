@@ -64,7 +64,7 @@
 
       <%- (1..4).each do |i| -%>
         <div class="additional_photo">
-          <div class="image">
+          <div class="image" style="background: url({{imagePreview[<%= i %>] || newItemController.images[<%= i %>]}}) no-repeat center center; background-size: cover;">
             <%= image_tag(nil,
                           alt: @item.title,
                           class: "current_photo",

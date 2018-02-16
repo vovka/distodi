@@ -104,7 +104,7 @@
               <%= inline_svg "plus.svg" %>
             </div>
           </div>
-          <div class="image-upload-box">
+          <div class="image-upload-box" style="background: url({{imagePreview[2] || controller.images[2]}}) no-repeat center center; background-size: cover;">
             <div ng-hide="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')" class="input_field">
               <%= image_tag(nil, "ng-src" => "{{imagePreview[2] || controller.images[2]}}") %>
               <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 2)" %>
@@ -114,7 +114,7 @@
               <%= inline_svg "plus.svg" %>
             </div>
           </div>
-          <div class="image-upload-box">
+          <div class="image-upload-box" style="background: url({{imagePreview[3] || controller.images[3]}}) no-repeat center center; background-size: cover;">
             <div ng-hide="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')" class="input_field">
               <%= image_tag(nil, "ng-src" => "{{imagePreview[3] || controller.images[3]}}") %>
               <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 3)" %>
