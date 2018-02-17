@@ -19,7 +19,7 @@ class Company < ActiveRecord::Base
   validates :postal_code, presence: true, length: { is: 5 }, allow_blank: true
   validates :website, format: {with: self::URL_REGEXP}, allow_blank: true
 
-  mount_uploader :picture, PictureUploader
+  mount_uploader :picture, AccountUploader
 
   default_scope { where demo: false }
   scope :demo, -> { unscoped.where demo: true }

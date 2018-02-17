@@ -135,12 +135,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    carrierwave (0.11.2)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
+    carrierwave (1.2.2)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-      mimemagic (>= 0.3.0)
     choice (0.2.0)
     chronic (0.10.2)
     cloudinary (1.2.2)
@@ -167,6 +165,8 @@ GEM
       countries (~> 2.0)
       sort_alphabetical (~> 1.0)
     daemons (1.2.4)
+    data_migrate (3.4.0)
+      rails (>= 4.0)
     debug_inspector (0.0.2)
     devise (4.3.0)
       bcrypt (~> 3.0)
@@ -281,10 +281,9 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mimemagic (0.3.2)
     mini_magick (4.7.0)
     mini_portile2 (2.1.0)
-    minitest (5.10.2)
+    minitest (5.11.3)
     money (6.9.0)
       i18n (>= 0.6.4, < 0.9)
     multi_json (1.12.1)
@@ -512,7 +511,7 @@ GEM
     tilt (2.0.5)
     turbolinks (2.5.3)
       coffee-rails
-    tzinfo (1.2.3)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
@@ -565,12 +564,13 @@ DEPENDENCIES
   capistrano-sidekiq
   capistrano3-unicorn
   capybara
-  carrierwave (~> 0.11.2)
+  carrierwave
   cloudinary
   coffee-rails (~> 4.1.0)
   colorize (~> 0.8.1)
   countries
   country_select
+  data_migrate
   devise (~> 4.2)
   devise_invitable (~> 1.7.0)
   draper

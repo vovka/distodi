@@ -4,7 +4,7 @@
     <div class="item">
       <%= link_to  edit_item_path(item) do %>
         <div class="photo_item_index">
-          <%= image_tag(item.picture_url, alt: item.title) %>
+          <%= image_tag(item.picture.list.url, alt: item.title) %>
         </div>
       <% end %>
       <p><%= item.title %></p>

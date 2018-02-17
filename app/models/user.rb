@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   validates :phone, phone: true, allow_blank: true
   validates :postal_code, zipcode: { country_code_attribute: :country_short }, allow_blank: true
 
-  mount_uploader :picture, PictureUploader
+  mount_uploader :picture, AccountUploader
 
   def country_object
     ISO3166::Country.find_country_by_name country

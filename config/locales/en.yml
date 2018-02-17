@@ -37,7 +37,7 @@ en:
       services: "services"
       my_account: "My account"
     form:
-      picture: "Profile picture"
+      picture: "Profile picture (%{formats} only)"
       confirm: "Save"
       discard: "Discard"
       delete_link: "Delete account"
@@ -108,7 +108,7 @@ en:
       created_at: "created:"
       services: "services"
     form:
-      cover_photo: "Cover photo (min 800x600 pixels)"
+      cover_photo: "Cover photo (min 800x600 pixels; %{formats} only)"
       add_photo: "+ ADD COVER PHOTO"
       discard: "Discard changes"
       save: "Save Item Information"
@@ -261,6 +261,7 @@ en:
       comments: "Put your comments here"
       myself: "I did by myself"
       other: "Other company"
+      available_formats: "(only %{formats})"
   shared:
     registration_layout:
       distodi: Distodi
