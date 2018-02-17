@@ -1,5 +1,6 @@
 var NotificationsController = function($scope, $http) {
   this.$http = $http;
+  this.$scope = $scope;
 };
 
 NotificationsController.prototype.getNotifications = function(id, locale, $event) {
@@ -20,11 +21,14 @@ NotificationsController.prototype.getNotifications = function(id, locale, $event
   });
 }
 
-NotificationsController.prototype.showNotificationsWindow = function() {
-  this.showNotificationWindow = !this.showNotificationWindow;
+NotificationsController.prototype.showNotificationsWindow = function(e) {
+  if (this.$scope.$root.activePopup === "notifications") {
+    this.$scope.$root.activePopup = null;
+  } else {
+    this.$scope.$root.activePopup = "notifications";
+  }
   var ringButton = document.querySelector('.notify-link');
   var notifyWindow = document.querySelector('.alarm-notifications');
   ringButton.getBoundingClientRect();
+  e.stopPropagation();
 };
-
-ItemsController.prototype.showNotificationWindow = false;

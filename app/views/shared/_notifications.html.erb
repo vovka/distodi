@@ -2,17 +2,17 @@
      ng-init="notifyController.unreadNotificationsCount = <%= @notifications.count %>;"
      ng-controller="NotificationsController as notifyController"
      >
-  <a href="#" ng-click="notifyController.showNotificationsWindow()" class="notify-link">
+  <a href="#" ng-click="notifyController.showNotificationsWindow($event)" class="notify-link">
     <div class="notify-count <%= @notifications.count == 0 ? 'notify-count_hidden' : '' %>">{{notifyController.unreadNotificationsCount}}</div>
   </a>
   <%#
     <!-- TODO: убрать img тэг, картинку навесить стилями на a -->
     <!-- <a href="#"><%= image_tag "search.png" %-></a> -->
   %>
-  <div class="alarm-notifications popup-animation mobile" ng-class="notifyController.showNotificationWindow ? 'active' : ''">
+  <div class="alarm-notifications popup-animation mobile" ng-class="$root.activePopup === 'notifications' ? 'active' : ''">
     <div class="notifications-header">
       <div class="mobile_logo"><%= link_to image_tag('logo_menu.png', alt: 'distodi.logo'), root_path %></div>
-      <div class="exit_mobile" ng-click="notifyController.showNotificationsWindow()">
+      <div class="exit_mobile" ng-click="notifyController.showNotificationsWindow($event)">
         <div class="line"></div>
         <div class="line"></div>
       </div>
