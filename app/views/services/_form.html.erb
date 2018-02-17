@@ -160,6 +160,7 @@
     </div>
   </div>
   <div class="right_form_service_create">
+    <p class="field_name"><%= t(".available_formats", formats: picture_formats) %></p>
     <%= image_tag(@item.picture_url, alt: @item.title) %>
     <div class="service_form_info">
       <p>

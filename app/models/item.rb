@@ -13,11 +13,11 @@ class Item < ActiveRecord::Base
 
   include IdCodeable
 
-  mount_uploader :picture, PictureUploader
-  mount_uploader :picture2, PictureUploader
-  mount_uploader :picture3, PictureUploader
-  mount_uploader :picture4, PictureUploader
-  mount_uploader :picture5, PictureUploader
+  mount_uploader :picture, ItemUploader
+  mount_uploader :picture2, ItemUploader
+  mount_uploader :picture3, ItemUploader
+  mount_uploader :picture4, ItemUploader
+  mount_uploader :picture5, ItemUploader
 
   default_scope { where demo: false }
   scope :demo, -> { unscoped.where demo: true }

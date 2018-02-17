@@ -17,7 +17,7 @@ module ApplicationHelper
 
   def picture_show(user)
     if user.picture_url
-      image_tag(user.picture_url, alt: user.email, class: 'image_user')
+      image_tag(user.picture.icon.url, alt: user.email, class: 'image_user')
     else
       image_tag('empty_image.png', alt: 'No image', width: 450, class: 'image_user')
     end
@@ -33,5 +33,9 @@ module ApplicationHelper
 
   def translate_email(key)
     ERB.new(t(key)).result(binding).html_safe
+  end
+
+  def picture_formats
+    PictureUploader::EXTENSION_WHITELIST.join(", ")
   end
 end

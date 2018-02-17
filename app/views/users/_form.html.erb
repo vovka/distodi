@@ -146,7 +146,7 @@
 
     <div class="right_form_service_create">
       <p class="field_name">
-        <%= t(".picture") %>
+        <%= t(".picture", formats: picture_formats) %>
       </p>
       <div class="image {{ newPhotoAttached[0] ? 'with_photo' : 'without_photo_input' }}" style="background: url({{imagePreview[0] || images[0]}}) no-repeat center center; background-size: cover;">
         <div class="blank_image">+</div>
