@@ -16,4 +16,8 @@ var NewItemController = function ($scope) {
     this.newPhotoAttached[i] = false;
     $event.currentTarget.previousElementSibling.value = null
   };
+
+  $(window).on("beforeunload", function (e) {
+    return true;
+  });
 };

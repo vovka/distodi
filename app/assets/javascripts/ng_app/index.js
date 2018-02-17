@@ -19,4 +19,6 @@ angular.module("DistodiApp", ["ipCookie", "localytics.directives", "in-viewport"
 .controller("TopPanelController", ["$scope", TopPanelController])
 .controller("NewServiceController", ["$scope", NewServiceController])
 
-.directive("file", FileDirective);
+.directive("file", FileDirective)
+
+;
