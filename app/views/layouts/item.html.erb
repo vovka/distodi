@@ -10,7 +10,7 @@
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body ng-app="DistodiApp" ng-strict-di>
-    <div class="item_header" ng-controller="TopPanelController as controller">
+    <div class="item_header" ng-controller="TopPanelController as controller" ng-click="controller.clickedBlank()">
       <% %i( notice error ).each do |msg| %>
         <div class="<%= msg %>">
           <%= flash[msg] %>
@@ -29,10 +29,10 @@
       </div>
       <% if user_signed_in? %>
         <div class="right_panel list">
-          <div class="more_menu" ng-click="controller.clickedToggleMoremenu()" ng-class="controller.showMoremenu ? 'active' : '' ">
+          <div class="more_menu" ng-click="controller.clickedToggleMoremenu($event)" ng-class="$root.activePopup === 'settings' ? 'active' : '' ">
             <%= picture_show(current_user) %>
           </div>
-          <div class="more_menu_popup popup-animation" ng-class="controller.showMoremenu ? 'active' : '' ">
+          <div class="more_menu_popup popup-animation" ng-class="$root.activePopup === 'settings' ? 'active' : '' ">
             <span>
               <%= my_panel %>
             </span>
@@ -94,10 +94,10 @@
         </div>
       <% else company_signed_in? %>
         <div class="right_panel list">
-          <div class="more_menu" ng-click="controller.clickedToggleMoremenu()" ng-class="controller.showMoremenu ? 'active' : '' ">
+          <div class="more_menu" ng-click="controller.clickedToggleMoremenu($event)" ng-class="$root.activePopup === 'settings' ? 'active' : '' ">
             <%= picture_show(current_company) %>
           </div>
-          <div class="more_menu_popup popup-animation" ng-class="controller.showMoremenu ? 'active' : '' ">
+          <div class="more_menu_popup popup-animation" ng-class="$root.activePopup === 'settings' ? 'active' : '' ">
             <span>
               <%= my_panel %>
             </span>

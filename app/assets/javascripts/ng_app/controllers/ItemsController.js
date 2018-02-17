@@ -51,10 +51,6 @@ ItemsController.prototype.clickedToggleTransfer = function(index) {
   this.showTransfer[index] = !this.showTransfer[index];
 };
 
-// ItemsController.prototype.clickedToggleMoremenu = function() {
-//   this.showMoremenu = !this.showMoremenu;
-// };
-
 ItemsController.prototype._getIdsByIndexes = function(indexes) {
   var result = [];
   for (var i in indexes)
@@ -100,9 +96,6 @@ ItemsController.prototype.checkboxes.isAnyChecked = function() {
       if (i === this.length - 1)
         return false;
 };
-// ItemsController.prototype.checkboxes.isNoneChecked = function() {
-//   return !this.isAnyChecked();
-// };
 ItemsController.prototype.checkboxes.changed = function(i) {
   this.all = this.isAnyChecked();
 };
@@ -119,5 +112,4 @@ ItemsController.prototype.checkboxes.selectedIndexes = function() {
 };
 ItemsController.prototype.serviceActions = { show: false };
 ItemsController.prototype.showTransfer = [];
-// ItemsController.prototype.showMoremenu = false;
 ItemsController.prototype.saveSubmitDisabled = true;
