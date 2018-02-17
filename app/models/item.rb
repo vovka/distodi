@@ -69,6 +69,7 @@ end
 #  picture4           :string
 #  picture5           :string
 #  comment            :string(2000)
+#  user_type          :string
 #
 # Indexes
 #
