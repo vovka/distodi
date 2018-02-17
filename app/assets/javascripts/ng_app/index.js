@@ -1,6 +1,4 @@
 //= require angular
-//= require angular-tour
-//= require angular-tour/dist/angular-tour-tpls.min
 //= require angular-cookie
 //= require chosen
 //= require angular-chosen-localytics/dist/angular-chosen
@@ -9,7 +7,7 @@
 //= require_tree ./controllers
 //= require_tree ./directives
 
-angular.module("DistodiApp", ["angular-tour", "ipCookie", "localytics.directives", "in-viewport"])
+angular.module("DistodiApp", ["ipCookie", "localytics.directives", "in-viewport"])
 
 .config(["$httpProvider", Config])
 
