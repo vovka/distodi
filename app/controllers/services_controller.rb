@@ -29,7 +29,7 @@ class ServicesController < ApplicationController
     end
     authorize @service
     @service_kinds = @item.category.service_kinds
-    @action_kinds = @item.category.action_kinds
+    @action_kinds = @item.category.action_kinds.order(:position)
   end
 
   # POST /services

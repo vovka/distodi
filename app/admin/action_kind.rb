@@ -1,4 +1,6 @@
 ActiveAdmin.register ActionKind do
+  config.sort_order = 'position_asc'
+  reorderable
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -7,11 +9,12 @@ ActiveAdmin.register ActionKind do
   # or
   #
   # permit_params do
+  #   permitted = [:permitted, :actions]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
 
-  index do
+  index as: :reorderable_table do
     selectable_column
     id_column
     resource_class.content_columns.each { |col| column col.name.to_sym }
@@ -33,7 +36,7 @@ ActiveAdmin.register ActionKind do
 
   form title: "Action Kinds" do |f|
     f.semantic_errors # shows errors on :base
-    f.inputs          # builds an input field for every attribute
+    f.inputs          # builds an input field for every action
     f.inputs do
       f.input :categories
     end

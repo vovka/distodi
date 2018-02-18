@@ -1,4 +1,6 @@
 class ActionKind < ActiveRecord::Base
+  acts_as_list
+
   has_many :service_action_kinds
   has_many :services, through: :service_action_kinds
   has_and_belongs_to_many :categories
@@ -13,4 +15,5 @@ end
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  abbreviation :string
+#  position     :integer
 #
