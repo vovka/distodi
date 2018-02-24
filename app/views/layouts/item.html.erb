@@ -11,10 +11,12 @@
   </head>
   <body ng-app="DistodiApp" ng-strict-di>
     <div class="item_header" ng-controller="TopPanelController as controller" ng-click="controller.clickedBlank()">
-      <% %i( notice error ).each do |msg| %>
-        <div class="<%= msg %>">
-          <%= flash[msg] %>
-        </div>
+      <% %i( notice error ).map { |key| [key, flash[key]] }.each do |msg, notice| %>
+        <% if notice.present? %>
+          <div class="<%= msg %>">
+            <span><%= notice %></span>
+          </div>
+        <% end %>
       <% end %>
       <div class="item_logo">
         <% if user_signed_in? %>

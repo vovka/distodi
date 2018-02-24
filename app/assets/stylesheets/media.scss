@@ -1,9 +1,6 @@
 /*==========  Desktop First Method  ==========*/
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1610px) {
-  .all_items_first {
-    width: 273px;
-  }
   .red_col {
     width: 135px;
     height: 101.25px;
@@ -11,11 +8,6 @@
 
   .transfer_panel .receive p {
     margin-top: 33%;
-  }
-
-  .all_items_first span {
-    line-height: 101.25px;
-    font-size: 14px;
   }
 }
 @media only screen and (max-width : 1580px) {
@@ -148,17 +140,9 @@
   }
 }
 @media only screen and (max-width : 1450px) {
-  .all_items_first {
-    width: 250.5px;
-  }
   .red_col {
     width: 121.5px;
     height: 91.125px;
-  }
-
-  .all_items_first span {
-    line-height: 91.125px;
-    font-size: 16px;
   }
 }
 @media only screen and (max-width : 1360px) {
@@ -176,19 +160,10 @@
   }
 }
 @media only screen and (max-width : 1300px) {
-  .all_items_first {
-    width: 200px;
-  }
   .red_col {
     width: 100px;
     height: 75px;
   }
-
-  .all_items_first span {
-    line-height: 75px;
-    font-size: 16px;
-  }
-
   .function .transfer img {
     right: 35%;
   }
@@ -508,7 +483,7 @@
   }
 
   .item_logo img {
-    padding-top: 8px;
+    padding-top: 10px;
   }
 
   .item_info {
@@ -530,7 +505,6 @@
   .slider_mobile_items {
     display: inline;
   }
-
   .slider_mobile_items .owl-item .items img {
     margin-left: 0;
   }
@@ -826,6 +800,14 @@
     margin: 0;
     margin-left: 20px;
     float: left;
+    margin-top: 15px;
+  }
+  .notice{
+    margin-top: 0;
+    bottom: 50px;
+  }
+  .field .image{
+    width: 100%;
   }
 
   .function .delete .delete_but {
@@ -926,7 +908,7 @@
     margin-bottom: 5px;
   }
   .service_count{
-    margin: 10px 0 15px 25px;
+    margin: 10px 0 0px 25px;
     width: calc(100% - 25px);
   }
   .mobile_notifications_button{
@@ -1515,6 +1497,9 @@
       display: none;
     }
   }
+  .first_service{
+    display: none;
+  }
   .field {
     .additional_photo{
       width: calc(50% - 7px);
@@ -1537,6 +1522,48 @@
   }
   .field .additional_photo:nth-child(5){
     margin-right: 0;
+  }
+  .first_service_mobile{
+    display: block;
+  }
+  .service_maket_mobile{
+    display: block;
+  }
+  .notice{
+    padding: 15px 20px;
+    background: #fff4e0;
+    border: 1px solid #ffb730;
+    box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.4);
+    width: calc(100% - 80px);
+    margin-left: 18px;
+    height: auto;
+    position: fixed;
+    bottom: 26px;
+    span{
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      line-height: 21px;
+    }
+  }
+  .error{
+    padding: 15px 20px;
+    background:#fce8e7;
+    border:1px solid #e82110;
+    box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.4);
+    width: calc(100% - 80px);
+    margin-left: 18px;
+    height: auto;
+    position: fixed;
+    bottom: 26px;
+    span{
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      line-height: 21px;
+    }
   }
 }
 /* Small Devices, Tablets */
