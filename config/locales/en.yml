@@ -147,8 +147,9 @@ en:
       date: "Service date"
       cost: "Service total cost"
       service_log: "Yor Service log entries list is empty."
-      add_first_srvice: "Add first Service"
-      fill_book: "to fill in your Service book"
+      add_first_service: "+ Add first Service to fill in your Service book"
+      add_first_item: "Add the first item to fill in your Service book"
+      add_your_first_item: "+ Add your first item"
       pdf: "Save reports as pdf"
       services: services
       tour:

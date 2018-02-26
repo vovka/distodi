@@ -86,7 +86,6 @@ class ItemsController < ApplicationController
   def dashboard
     @items = Item.unscoped.where(user: current_user)
     @services = Service.unscoped.includes(:item, :company, :approver, :action_kinds, :service_fields => :service_kind).where(item: @items).decorate
-    render "empty_items_services" if @items.blank?
   end
 
   def dashboard_company
