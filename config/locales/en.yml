@@ -64,6 +64,7 @@ en:
       notice_placeholder: "Put your comments here"
       password_placeholder: "Your password"
       confirmation_placeholder: "Password confirmation (min 8 characters)"
+      errors_user: You have incorrect user data, please correct your data.
   items:
     create:
       notice: "Item was successfully created."
@@ -120,6 +121,7 @@ en:
       title_placeholder: "Your name of the item"
       comments: Comments (2000 symbols max)
       comments_placeholder: "Please, add here any additional information or description of your item"
+      errors_item: You have incorrect data, please correct your data.
     transfer_form:
       user_identifier_to_transfer_item: "User email to transfer the item."
       confirm_transfer: "Are you sure you want to transfer the item to another user?"
@@ -263,6 +265,32 @@ en:
       myself: "I did by myself"
       other: "Other company"
       available_formats: "(only %{formats})"
+      files: Attach other files (optional, PDF, TXT, etc.)
+      choose_file: Choose file
+      choose_date: Choose date
+      service_date: Service date
+      add_more: + Add one more service log
+      optional:  (optional, if you want to add 2 or more Service logs for your item simultaneously)
+    show:
+      made: Service made
+      added: Service added
+      name: Service company name
+      addresse: Address
+      mail: Email
+      phone: Phone
+      myself: Service was made by myself
+      reminders: Service update reminder
+      photo: Service photos
+      files: Attached files
+      comments: Comments
+      save_pdf: Save PDF
+      delete: Delete Service log
+      for_yours: "For your: "
+      reason: Rejection reason
+      confirm: Approve Service log
+      reject: Reject
+      save_pdf_mobile: PDF
+      delete_mobile: Delete
   shared:
     registration_layout:
       distodi: Distodi

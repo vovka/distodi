@@ -838,8 +838,11 @@
     position: relative;
   }
 
-  .field .without_photo_input {
+  .field .image.without_photo_input {
     width: 100%;
+    a{
+      display: none;
+    }
   }
 
   .page_items .item {
@@ -1014,6 +1017,9 @@
   .service_create_identity{
     text-align: left;
     width: calc(100% - 50px);
+    &.edit{
+      display: none;
+    }
   }
   .left_form_service_create{
     width: calc(100% - 50px);
@@ -1024,6 +1030,7 @@
   }
   .left_form_service_create .form_service_create .half_form_field #service_kind{
     width: 100%;
+    margin-bottom: 34px;
   }
   .left_form_service_create .form_service_create .half_form_field input{
     width: calc(100% - 17px);
@@ -1046,7 +1053,11 @@
     width: 100%;
   }
   .reminders .input.optional.service_reminder_custom input{
-    width: calc(100% - 17px);
+    width: calc(100% - 157px);
+  }
+  .left_form_service_create .reminders .date_icon{
+    float: right;
+    margin-right: 4px;
   }
   .form-actions input{
     display: block;
@@ -1114,7 +1125,7 @@
     margin-top: -165px;
   }
   .destroy_user{
-    top: 1370px;
+    top: 1331px;
   }
   .destroy_user.company {
     top: 1500px;
@@ -1565,6 +1576,287 @@
       line-height: 21px;
     }
   }
+  .error_explanation{
+    padding: 15px 20px;
+    background:#fce8e7;
+    border:1px solid #e82110;
+    box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.4);
+    width: calc(100% - 80px);
+    margin-left: 18px;
+    height: auto;
+    position: fixed;
+    bottom: 26px;
+    top: auto;
+    left: 0;
+    p{
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      line-height: 21px;
+    }
+    ul{
+      height: 23px;
+      li{
+        background: none;
+        border: none;
+        box-shadow: none;
+        display: inline;
+        border-radius: 4px;
+        min-width: 300px;
+        padding: 20px 0px;
+        line-height: 27px;
+      }
+    }
+  }
+  .error_explanation.service{
+      width: 100%;
+      height: 0px;
+      background: none;
+      border: none;
+      box-shadow: none;
+      ul{
+        padding: 15px 20px;
+        background:#fce8e7;
+        border:1px solid #e82110;
+        position: fixed;
+        width: calc(100% - 72px);
+        left: 0;
+        margin-left: 15px;
+        margin-top: -40px;
+        border-radius: 4px;
+        height: 24px;
+      }
+    }
+  .field .image.with_photo{
+    a{
+      display: inline-block;
+      right: 4%;
+      margin-top: 16px;
+    }
+    input{
+      display: none;
+    }
+  }
+  .field{
+    .additional_photo{
+      .image{
+        a{
+          display: inline-block;
+          margin-top: -127px;
+          margin-left: 9%;
+        }
+      }
+    }
+    .image{
+      input{
+        height: 30%;
+      }
+    }
+  }
+  .field .additional_photo .image img:not([src]) ~ a{
+    display: none;
+  }
+  .field .additional_photo .image img[src=" "] ~ a{
+    display: none;
+  }
+  .left_form_service_create .form_service_create .half_form_field.first_name{
+    margin-bottom: -14px;
+  }
+  .left_form_service_create .form_service_create .half_form_field{
+    margin-bottom: -14px;
+  }
+  .service_view{
+    &.edit{
+      margin-top: 0;
+    }
+    .left_part{
+      width: calc(100% - 40px);
+      padding: 0 20px;
+      .service_kind{
+        .mobile_item_photo{
+          width: 100%;
+          margin-top: 25px;
+          img{
+            width: 100%;
+            border-radius: 4px;
+            margin-top: 25px;
+          }
+          display: inline-block;
+          span{
+            float: left;
+            font-size: 13px;
+          }
+          p{
+            display: none;
+            line-height: 13px;
+            margin: 0 3px;
+            font-size: 13px;
+            &:nth-child(1){
+              display: inline;
+              margin-left: 5px;
+            }
+            &:nth-child(2){
+              display: inline;
+            }
+            &:nth-child(3){
+              display: inline;
+            }
+            &:nth-child(4){
+              display: inline;
+            }
+          }
+          .price{
+            width: calc(100% - 40px);
+            background:#f8f8f8;
+            border-radius:4px;
+            padding: 17px 20px;
+            margin-top: 25px;
+          }
+        }
+      }
+      .photo{
+        img{
+          width: calc(50% - 7px);
+          margin-right: 3px;
+        }
+      }
+      .files{
+        .file{
+          width: calc(100% - 30px);
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+      }
+      .button{
+        display: none;
+      }
+      .mobile_buttons{
+        display: inline-block;
+        .button{
+          border-radius: 4px;
+          background:#f3f3f3;
+          padding: 15px 20px;
+          display: inline-block;
+          float: left;
+          margin-bottom: 130px;
+          margin-right: 20px;
+          img{
+            width: 16px;
+            float: left;
+          }
+          span{
+            font-family:MuseoSansCyrl_2;
+            font-size:14px;
+            color:#149b4c;
+            letter-spacing:0;
+            text-align:left;
+            margin-left: 10px;
+            line-height: 23px;
+            &.red{
+              color: red;
+            }
+          }
+        }
+      }
+    }
+    .right_part{
+      display: none;
+    }
+    &.edit{
+      .left_part{
+        width: 100%;
+        padding: 0;
+      }
+    }
+  }
+  .confirm_panel{
+    position: relative;
+    margin-top: -100px;
+    .center_block{
+      .button{
+        margin-left: 20px;
+        width: calc(100% - 80px);
+        margin-bottom: 15px;
+        &.reject{
+          width: calc(100% - 80px);
+        }
+      }
+    }
+  }
+  .popup{
+    .window{
+      width: 280px;
+      left: calc(50% + 180px);
+      .content{
+        .button{
+          padding: 10px 20px;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+  .service_photos{
+    .image-upload-box{
+      margin: 0 0 20px 0;
+      width: calc(50% - 8px);
+      &:nth-child(3){
+        margin-left: 7px;
+      }
+      &:nth-child(4){
+        margin-left: 10px;
+      }
+      a{
+        display: inline-block;
+        margin-top: 5px;
+      }
+    }
+  }
+  .left_form_service_create .form_service_create .service_photos .photo_input{
+    width: 100%;
+    input{
+      width: 100%;
+    }
+  }
+  .left_form_service_create .form_service_create .service_photos .photo_input svg{
+    left: calc(50% - 10px);
+  }
+  .left_form_service_create{
+    .form_service_create{
+      .files{
+        .field_files{
+          width: 100%;
+          input{
+          width: 80%;
+          }
+        }
+      }
+    }
+  }
+  .left_form_service_create .form_service_create .half_form_field .added_date input{
+    margin-left: 0;
+    width: calc(100% - 157px);
+  }
+  .left_form_service_create{
+    .added_date{
+      width: 100%;
+      margin-bottom: 34px;
+      margin-top: 10px;
+      .field_name{
+        margin-left: 0;
+      }
+      .date_icon{
+        float: right;
+        margin-right: 4px;
+      }
+    }
+  }
+  .block_multi_srvice{
+    height: 100px;
+  }
+  .add_multi_service{
+    margin-top: -80px;
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}
@@ -1599,13 +1891,15 @@
     width: calc(100% - 32px);
     margin: 0;
   }
-  .left_form_service_create .form_service_create .service_photos .photo_input{
-    width: 100px;
-    height: 100px;
-  }
-  .left_form_service_create .form_service_create .service_photos .photo_input svg{
-    top: -95px;
-    left: 40px;
+}
+
+@media only screen and (max-width : 356px) {
+  .service_photos{
+    .image-upload-box{
+      a{
+        margin-top: -130px;
+      }
+    }
   }
 }
 
