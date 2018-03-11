@@ -35,12 +35,8 @@
     <div class="service_panel" ng-show="controller.serviceActions.show">
       <a href="" class="view"
          ng-class="controller.serviceActions.view ? '' : 'disabled'"
-         ng-click="controller.clickedView()">
+         ng-click="controller.clickedView('<%= I18n.locale %>')">
         <%= t(".view") %>
-      </a>
-      <a href="" class="edit"
-         ng-class="controller.serviceActions.view ? '' : 'disabled'">
-        <%= t(".edit") %>
       </a>
       <a href="" class="delete"
          ng-class="controller.serviceActions.delete ? '' : 'disabled'"

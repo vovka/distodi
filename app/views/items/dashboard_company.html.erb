@@ -1,9 +1,7 @@
 <div ng-controller="ItemsController as controller"
      ng-init='controller.checkboxes.length = <%= @services.size %>;
-              controller.permissions = <%= @services.map { |s| s.permissions(current_company) }.to_json.html_safe %>;
               controller.ids = <%= @services.map(&:id) %>;
               '>
-  <%= render @items.present? ? "items" : "empty_items" %>
 
   <div>
     <% if @services.present? %>
@@ -44,56 +42,84 @@
         </th>
         <th><%= t(".service") %></th>
         <th><%= t(".type") %></th>
-        <th><%= t(".status") %></th>
+        <th class="status"><%= t(".status") %></th>
         <th><%= t(".item") %></th>
-        <th><%= t(".id") %></th>
-        <th><%= t(".date") %></th>
-        <th><%= t(".cost") %></th>
+        <th class="date"><%= t(".date") %></th>
+        <th class="cost"><%= t(".cost") %></th>
         <th></th>
       </thead>
       <tbody>
         <% @services.each.with_index do |service, i| %>
-        <tr ng-class="[
-                        (controller.showDetails === <%= i %> ? 'viewing' : ''),
-                        (controller.checkboxes[<%= i %>] ? 'selected' : '')
-                      ].join(' ')">
-          <td>
-            <div class="select">
-              <label>
-                <input type="checkbox" ng-model="controller.checkboxes[<%= i %>]"
-                                       ng-change="controller.changedCheckbox(<%= i %>)" />
-                <i>
-                  <%= image_tag "select.png" %>
-                </i>
-              </label>
-            </div>
-          </td>
-          <td>
-            <% service.service_fields.each do |service_field| %>
-              <%= service_field.service_kind.title %>
-              <%= service_field.text %>
-            <% end %>
-          </td>
-          <td>
-            <% service.action_kinds.decorate.each do |action_kind| %>
-              <div class="icon_service <%= action_kind.icon_class %>">
-                <%= "#{action_kind.title}" %>
+          <tr ng-class="[
+                          (controller.showDetails === <%= i %> ? 'viewing' : ''),
+                          (controller.checkboxes[<%= i %>] ? 'selected' : '')
+                        ].join(' ')">
+            <td>
+              <div class="select">
+                <label>
+                  <input type="checkbox" ng-model="controller.checkboxes[<%= i %>]"
+                                         ng-change="controller.changedCheckbox(<%= i %>)" />
+                  <i>
+                    <%= image_tag "select.png" %>
+                  </i>
+                </label>
               </div>
-            <% end %>
-          </td>
-          <td>
-            <div class="<%= service.status %>">&nbsp;</div>
-          </td>
-          <td><%= service.item.try :title %></td>
-          <td><%= service.id_code %></td>
-          <td><%= service.created_at.strftime("%d %b %Y")%></td>
-          <td>
-            <%= number_to_currency(service.price , unit: "EUR ") %>
-          </td>
-          <td class="actions">
-            <%= link_to "&nbsp;".html_safe, "", "ng-click" => "controller.clickedView(#{i})" %>
-          </td>
-        </tr>
+            </td>
+            <td>
+              <% service.service_fields.each do |service_field| %>
+                <%= service_field.service_kind.title %>
+                <%= service_field.text %>
+              <% end %>
+            </td>
+            <td>
+              <% service.action_kinds.decorate.each do |action_kind| %>
+                <div class="icon_service <%= action_kind.icon_class %>">
+                  <%= "#{action_kind.title}" %>
+                </div>
+              <% end %>
+            </td>
+            <td>
+              <div class="<%= service.status %>">&nbsp;</div>
+            </td>
+            <td>
+              <% service.item.characteristics.each do |characteristic| %>
+                <span> <%= characteristic.value %></span>
+              <% end %>
+            </td>
+            <td class="date"><%= service.created_at.strftime("%d %b %Y") %></td>
+            <td class="cost">
+              <%= number_to_currency(service.price , unit: "EUR ") %>
+            </td>
+            <td class="actions">
+              <%= link_to "&nbsp;".html_safe, service_path(service) %>
+            </td>
+          </tr>
+        <% end %>
+        <% if @services.blank? %>
+          <% 10.times do %>
+            <tr>
+              <td>
+                <div class="square"></div>
+              </td>
+              <td>
+                <div class="line"></div>
+              </td>
+              <td>
+                <div class="line"></div>
+              </td>
+              <td></td>
+              <td>
+                <div class="line"></div>
+              </td>
+              <td>
+                <div class="line"></div>
+              </td>
+              <td>
+                <div class="line"></div>
+              </td>
+              <td></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
@@ -134,81 +160,62 @@
           <% else %>
             <%= t(".add_first_service") %>
           <% end %>
-          <%= t(".fill_book") %>
         </p>
       </div>
     <% end %>
+    <% if @items.blank? && @services.blank? %>
+      <div class="first_service">
+        <p>
+          <%= t(".service_log") %>
+          <%= link_to t(".add_first_item"),new_item_path, "ng-show" => "!controller.serviceActions.show" %>
+        </p>
+      </div>
+    <% end %>
+    <% if @items.present? && @services.blank? %>
+      <div class="first_service_mobile">
+        <p><%= t(".service_log") %></p>
+        <%= link_to t(".add_first_service"),new_service_path(item_id: @item) %>
+      </div>
+      <div class="service_maket_mobile">
+        <div class="square"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="service_maket_mobile">
+        <div class="square"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="service_maket_mobile">
+        <div class="square"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    <% elsif @item.blank? %>
+      <div class="first_service_mobile">
+        <p><%= t(".service_log") %></p>
+        <%= link_to t(".add_first_item"), new_item_path %>
+      </div>
+      <div class="service_maket_mobile">
+        <div class="square"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="service_maket_mobile">
+        <div class="square"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="service_maket_mobile">
+        <div class="square"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    <% end %>
   </div>
-
-  <!-- Angular-tour -->
-  <tour step="currentStep" post-step="postStepCallback()">
-    <virtual-step
-      tourtip="<%= t(".tour.welcome") %>"
-      tourtip-next-label="<%= t(".tour.control.next") %>"
-      tourtip-placement="bottom"
-      tourtip-container-element="body"
-      use-source-scope="false"
-      tourtip-element=".item_logo img">
-    </virtual-step>
-    <%- if controller.action_name == "show" -%>
-      <virtual-step
-        tourtip="<%= t(".tour.start_here") %>"
-        tourtip-next-label="<%= t(".tour.control.next") %>"
-        tourtip-placement="bottom"
-        tourtip-container-element="body"
-        use-source-scope="false"
-        tourtip-element=".add_service">
-      </virtual-step>
-    <%- end -%>
-    <virtual-step
-      tourtip="<%= t(".tour.add_item") %>"
-      tourtip-next-label="<%= t(".tour.control.next") %>"
-      tourtip-placement="bottom"
-      tourtip-container-element="body"
-      use-source-scope="false"
-      tourtip-element=".owl-item:last-child">
-    </virtual-step>
-    <virtual-step
-      tourtip="<%= t(".tour.find_item") %>"
-      tourtip-next-label="<%= t(".tour.control.next") %>"
-      tourtip-placement="bottom"
-      tourtip-container-element="body"
-      use-source-scope="false"
-      tourtip-element=".all_items">
-    </virtual-step>
-    <%- if @items.present? && @services.blank? -%>
-      <virtual-step
-        tourtip="<%= t(".tour.services") %>"
-        tourtip-next-label="<%= t(".tour.control.next") %>"
-        tourtip-placement="bottom"
-        tourtip-container-element="body"
-        use-source-scope="false"
-        tourtip-element=".first_service">
-      </virtual-step>
-    <%- end -%>
-    <virtual-step
-      tourtip="<%= t(".tour.unique_id") %>"
-      tourtip-next-label="<%= t(".tour.control.next") %>"
-      tourtip-placement="top"
-      tourtip-container-element="body"
-      use-source-scope="false"
-      tourtip-element=".list_items th:nth-child(6)">
-    </virtual-step>
-    <virtual-step
-      tourtip="<%= t(".tour.money_total") %>"
-      tourtip-next-label="<%= t(".tour.control.next") %>"
-      tourtip-placement="top"
-      tourtip-container-element="body"
-      use-source-scope="false"
-      tourtip-element=".list_items th:nth-child(8)">
-    </virtual-step>
-    <virtual-step
-      tourtip="<%= t(".tour.reporting_save") %>"
-      tourtip-next-label="<%= t(".tour.control.close") %>"
-      tourtip-placement="top"
-      tourtip-container-element="body"
-      use-source-scope="false"
-      tourtip-element=".xls_button a">
-    </virtual-step>
-  </tour>
-</div>

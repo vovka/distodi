@@ -14,7 +14,11 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def edit?
-    author? && (self_approved? || record.requires_action?)
+    author? && record.requires_action?
+  end
+
+  def show?
+    author? || record.approver?(user)
   end
 
   def update?
@@ -22,11 +26,15 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def destroy?
-    edit?
+    author? && (!record.approved? || self_approved?)
   end
 
   def approve?
     record.approver?(user) && record.requires_action?
+  end
+
+  def approver?
+    record.approver?(user) && record.status == "pending"
   end
 
   alias_method :decline?, :approve?

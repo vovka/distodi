@@ -1696,7 +1696,7 @@ footer hr {
 
     &.view {
       background: asset-url("eye") no-repeat 0 center;
-      background-size: 33%;
+      background-size: 24px;
       padding-left: 32px;
 
       &.disabled {
@@ -1705,7 +1705,7 @@ footer hr {
 
       &:hover {
         background: asset-url("eye-hovered") no-repeat 0 center;
-        background-size: 33%;
+        background-size: 24px;
       }
     }
 
@@ -1724,14 +1724,21 @@ footer hr {
       }
     }
     &.edit{
-      background: asset-url("crm.png") no-repeat 0 1px;
       background-size: 30%;
-      padding-left: 25px;
+      padding-left: 0px;
+      svg{
+        width: 19px;
+        margin-bottom: -7px;
+        margin-right: 4px;
+        fill: #149b4c;
+      }
       &.disabled {
         color: #149b4c;
       }
       &:hover {
-        background: asset-url("delete-hovered") no-repeat 0 1px;
+        svg{
+          fill: #00bb4d;
+        }
         background-size: 30%;
       }
     }
@@ -2603,6 +2610,11 @@ option {
       color: #149b4c;
       letter-spacing: 0;
       line-height: 300px;
+      svg{
+        fill: #149b4c;
+        margin-bottom: -7px;
+        margin-right: 9px;
+      }
     }
   }
   .without_photo_input {
@@ -2647,53 +2659,115 @@ option {
 }
 
 .page_items .item {
-  width: 260px;
+  width: 202px;
   text-align: center;
   float: left;
-  margin: 10px 7.5px;
+  margin: 10px 10px;
   height: 254px;
+  margin-right: 40px;
 }
 
 .page_items .item{
+  span{
+    display: none;
+  }
   .photo_item_index{
-    width: 250px;
-    height: 167px;
-    margin: 0 auto 10px;
-    border-radius: 4px;
-    border: 1.5px solid rgba( 0, 0, 0, 0.0);
-    img {
     width: 100%;
-    border-radius: 4px;
-    vertical-align: middle;
+    height: 150px;
+    margin: 0 auto 10px;
+    border-radius: 7px;
+    border: 5px solid rgba( 0, 0, 0, 0.0);
+    span{
+      display: none;
+    }
+  }
+  &.test{
+    .photo_item_index{
+      span{
+        display: inline-block;
+        background:#ffb730;
+        border-radius:4px;
+        padding: 3px 5px;
+        float: right;
+        color: black;
+        font-family:MuseoSansCyrl_2;
+        font-size:10px;
+        color:#000000;
+        letter-spacing:0;
+        line-height:10px;
+        text-align:center;
+        margin-top: 5px;
+        margin-right: 0;
+      }
+    }
+    span{
+      display: inline-block;
+      background:#ffb730;
+      border-radius:4px;
+      padding: 3px 5px;
+      color: black;
+      font-family:MuseoSansCyrl_2;
+      font-size:10px;
+      color:#000000;
+      letter-spacing:0;
+      line-height:10px;
+      text-align:center;
+      margin-top: 5px;
+      float: left;
+      margin-top: 12px;
+      margin-right: 5px;
     }
   }
 }
 
 .page_items .item .photo_item_index:hover {
-  border: 1.5px solid #149b4c;
+  border: 5px solid #149b4c;
 }
 
 .page_items .item p {
-  font-size: 17px;
-  margin: 8px 0 0 8px;
+  margin: 8px 0 0 0px;
+  font-size:13px;
+  color:#1f1f1f;
+  letter-spacing:0;
+  line-height:24px;
+  text-align:left;
+  display: none;
+  float: left;
+  margin-right: 5px;
+  &:nth-child(1){
+    display: inline-block;
+  }
+  &:nth-child(2){
+    display: inline-block;
+  }
+  &:nth-child(3){
+    display: inline-block;
+  }
+  &:nth-child(4){
+    display: inline-block;
+  }
+  &:nth-child(5){
+    display: inline-block;
+  }
 }
 
 .page_items .item .add_new_item {
-  border-radius: 4px;
-  border: 1px solid #d3d3d3;
-  width: 247px;
-  height: 174px;
-  margin: 1px;
+  background:#f3f3f3;
+  border-radius:4px;
+  width:200px;
+  height:144px;
+  margin-top: 3px;
+  border: 5px solid rgba( 0, 0, 0, 0.0);;
   &:hover{
-    border: 1px solid #149b4c;
+    border: 5px solid #149b4c;
   }
 }
 
 .page_items .item .add_new_item p {
   color: #149b4c;
-  margin-top: 82px;
+  margin-top: 61px;
   font-size: 14px;
-  margin-left: 64px;
+  margin-left: 42px;
 }
 
 .item .item_list_panel {
@@ -3723,7 +3797,10 @@ option {
 }
 .left_form_service_create .form_service_create .half_form_field{
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
+  &.service_form{
+    margin-bottom: 80px;
+  }
 }
 .left_form_service_create .form_service_create .half_form_field.margin.first{
   margin-bottom: 20px;
@@ -3736,6 +3813,12 @@ option {
   text-align:left;
   margin-bottom: 10px;
   color:#8f8f8f;
+  &.edit_date{
+    margin-left: 320px;
+  }
+  &.company_field_edit{
+    margin-top: 80px;
+  }
 }
 .service_create_main_form label{
   font-family: 'MuseoSansCyrl_1';
@@ -3844,6 +3927,20 @@ input:-webkit-autofill{
 }
 .company_select{
   margin-bottom: 20px;
+  &.company_field_edit{
+    float: left;
+    border: 1px solid #f3f3f3;
+    border-radius: 4px;
+    padding: 18px 15px;
+    font-size: 14px;
+    color: #1f1f1f;
+    letter-spacing: 0;
+    line-height: 14px;
+    text-align: left;
+    max-width: 270px;
+    min-width: 270px;
+    margin-right: 50% ;
+  }
 }
 .left_form_service_create .form_service_create .textarea textarea{
   width: 595px;
@@ -3932,13 +4029,13 @@ input:-webkit-autofill{
   width: 615px;
   height: 1px;
   display: block;
-  background:#d3d3d3;
+  background: #f3f3f3;
   margin-top: 30px;
   margin-bottom: 30px;
 
 }
 .left_form_service_create .form_service_create .service_photos{
-  margin-bottom: -26px;
+  margin-bottom: -3px;
 }
 .left_form_service_create .form_service_create .service_photos .photo_input{
   width: 132px;
@@ -3958,6 +4055,9 @@ input:-webkit-autofill{
   top: -77px;
   left: 55px;
   z-index: -1;
+}
+.left_form_service_create .form_service_create .service_photos.edit .photo_input svg{
+  left: 0;
 }
 .service_photos img{
   height: 132px;
@@ -4034,6 +4134,7 @@ input:-webkit-autofill{
 .reminders span{
   display: inline-block;
   height: 50px;
+  margin-top: 16px;
 }
 .reminders .input.optional.service_reminder_custom label{
   display: none;
@@ -4076,6 +4177,9 @@ input:-webkit-autofill{
 .form-actions{
   margin-bottom: 20px;
   text-align: left;
+  &.lead{
+    text-align: center;
+  }
 }
 .form-actions a{
   font-family: 'MuseoSansCyrl_2';
@@ -4293,6 +4397,15 @@ input:-webkit-autofill{
 }
 .destroy_user + .edit_user.ng-valid{
   margin-top: -118px;
+  ol{
+    text-align: left;
+    li{
+      float: left;
+      width: 500px;
+      margin-left: 15px;
+      margin-bottom: 10px;
+    }
+  }
 }
 .destroy_user + .edit_company.ng-valid{
   margin-top: -118px;
@@ -5221,6 +5334,9 @@ input:-webkit-autofill{
         margin-top: 150px;
         tr{
           height: 50px;
+          img{
+            width: 20px;
+          }
           td{
             vertical-align: middle;
             font-size:13px;
@@ -5426,7 +5542,7 @@ input:-webkit-autofill{
     }
   }
   .info_block{
-    height: 1040px;
+    height: 900px;
     text-align: center;
     .type_of_users{
       width: 400px;
@@ -5495,6 +5611,7 @@ input:-webkit-autofill{
     height: 290px;
     padding: 40px;
     margin: 0 auto;
+    background: #222222;
     .logo_footer{
       img{
         width: 50px;
@@ -5772,7 +5889,7 @@ input:-webkit-autofill{
   text-align: left;
   margin: 30px auto 0;
   &.edit{
-    padding-bottom: 100px;
+    padding-bottom: 70px;
     margin-top: -50px;
   }
   p{
@@ -5926,6 +6043,7 @@ input:-webkit-autofill{
       float: left;
       margin: 30px 0 0;
       padding: 20px;
+      margin-bottom: 20px;
       p{
         display: block;
         float: none;
@@ -5955,7 +6073,7 @@ input:-webkit-autofill{
         width: 50%;
         color:#1f1f1f;
         letter-spacing:0;
-        line-height:14px;
+        line-height:20px;
         text-align:left;
         float: left;
         font-size:14px;
@@ -6080,7 +6198,7 @@ input:-webkit-autofill{
   .right_part{
     display: inline-block;
     width: 33%;
-    padding-top: 5px;
+    padding-top: 7px;
     span{
       font-family:MuseoSansCyrl_1;
       font-size:13px;
@@ -6282,6 +6400,15 @@ input:-webkit-autofill{
             text-transform: capitalize;
           }
         }
+        input{
+          background: #fce8e7;
+          color: red;
+          text-transform: capitalize;
+          float: right;
+          padding: 14px 24px;
+          border: none;
+          border-radius: 4px;
+        }
       }
     }
   }
@@ -6326,6 +6453,16 @@ input:-webkit-autofill{
             float: left;
             margin-left: 20px;
           }
+        }
+      }
+    }
+    ol{
+      li{
+        margin-left: 15px;
+        margin-bottom: 10px;
+        float: left;
+        &.block{
+          width: 80%;
         }
       }
     }
@@ -6414,4 +6551,48 @@ input:-webkit-autofill{
 }
 .block_multi_srvice{
   height: 70px;
+}
+.item_owner{
+  margin-top: 16px;
+}
+.service_kind_edit_field{
+  border: 1px solid #f3f3f3;
+  border-radius: 4px;
+  padding: 18px 15px;
+  font-size: 14px;
+  color: #1f1f1f;
+  letter-spacing: 0;
+  line-height: 14px;
+  text-align: left;
+  max-width: 270px;
+  min-width: 270px;
+  margin-top: 58px;
+}
+
+.service_date_edit_field{
+  border: 1px solid #f3f3f3;
+  border-radius: 4px;
+  padding: 18px 15px;
+  font-size: 14px;
+  color: #1f1f1f;
+  letter-spacing: 0;
+  line-height: 14px;
+  text-align: left;
+  max-width: 270px;
+  min-width: 270px;
+  margin-left: 320px;
+  margin-bottom: 24px;
+  margin-top: -52px;
+}
+.service_kind_title_edit_field{
+  width: 300px;
+  display: inline-block;
+  &.date{
+    margin-left: 330px;
+    margin-top: -99px;
+    float: left;
+  }
+}
+.form_service_create{
+  text-align: left;
 }

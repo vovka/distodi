@@ -14,7 +14,7 @@ class Company < ActiveRecord::Base
                                as: :approver
   has_many :service_kinds
 
-  validates_presence_of :first_name
+  validates_presence_of :name
   validates :phone, phone: true, allow_blank: true
   validates :postal_code, presence: true, length: { is: 5 }, allow_blank: true
   validates :website, format: {with: self::URL_REGEXP}, allow_blank: true

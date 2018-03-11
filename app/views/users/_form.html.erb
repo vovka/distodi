@@ -27,64 +27,66 @@
             <p><%= t(".errors_user") %></p>
           </div>
         <% end %>
-        <div class="price">
-          <p class="field_name">
-            <%= f.label :email %>
-          </p>
-          <%= f.email_field :email,  :disabled => true  %>
-        </div>
+        <ol>
+          <div class="price">
+            <span class="field_name">
+              <li><%= f.label :email %></li>
+            </span>
+            <%= f.email_field :email,  :disabled => true  %>
+          </div>
 
-        <div class="half_form_field half first first_name">
-          <span class="field_name">
-            <%= f.label :first_name %>
-          </span>
-          <%= f.text_field :first_name, autofocus: true, placeholder: t(".name_placeholder")  %>
-        </div>
+          <div class="half_form_field half first first_name">
+            <span class="field_name">
+              <li><%= f.label :first_name %></li>
+            </span>
+            <%= f.text_field :first_name, autofocus: true, placeholder: t(".name_placeholder")  %>
+          </div>
 
-        <div class="half_form_field half">
-          <p class="field_name">
-            <%= f.label :last_name %>
-          </p>
-          <%= f.text_field :last_name, placeholder: t(".last_name_placeholder")  %>
-        </div>
+          <div class="half_form_field half">
+            <span class="field_name">
+              <li><%= f.label :last_name %></li>
+            </span>
+            <%= f.text_field :last_name, placeholder: t(".last_name_placeholder")  %>
+          </div>
 
-        <div class="half_form_field first">
-          <p class="field_name">
-            <%= f.label :postal_code %>
-          </p>
-          <%= f.text_field :postal_code, placeholder: t(".postal_placeholder"), :"ng-model" => "postalCode", :"ng-change" => "changedPostalCode()" %>
-          <ul class="hint-list" ng-show="addresses.length > 0">
-            <li ng-click="addressSelected()" ng-repeat="address in addresses">{{address.formatted_address}}</li>
-          </ul>
-        </div>
+          <div class="half_form_field first">
+            <span class="field_name">
+              <li><%= f.label :postal_code %></li>
+            </span>
+            <%= f.text_field :postal_code, placeholder: t(".postal_placeholder"), :"ng-model" => "postalCode", :"ng-change" => "changedPostalCode()" %>
+            <ul class="hint-list" ng-show="addresses.length > 0">
+              <li ng-click="addressSelected()" ng-repeat="address in addresses">{{address.formatted_address}}</li>
+            </ul>
+          </div>
 
-        <div class="half_form_field half first">
-          <p class="field_name">
-            <%= f.label :country %>
-          </p>
-          <%= f.country_select :country, {prompt: t(".select_country")}, :"ng-model" => "country", :"ng-value" => "{{country}}" %>
-        </div>
+          <div class="half_form_field half first">
+            <span class="field_name">
+              <li><%= f.label :country %></li>
+            </span>
+            <%= f.country_select :country, {prompt: t(".select_country")}, :"ng-model" => "country", :"ng-value" => "{{country}}" %>
+          </div>
 
-        <div class="half_form_field half city">
-          <p class="field_name">
-            <%= f.label :city %>
-          </p>
-          <%= f.text_field :city, placeholder: t(".city_placeholder"), :"ng-value" => "city" %>
-        </div>
+          <div class="half_form_field half city">
+            <span class="field_name">
+              <li><%= f.label :city %></li>
+            </span>
+            <%= f.text_field :city, placeholder: t(".city_placeholder"), :"ng-value" => "city" %>
+          </div>
 
-        <div class="price">
-          <p class="field_name">
-            <%= f.label :address %>
-          </p>
-          <%= f.text_field :address, placeholder: t(".address_placeholder"), :"ng-model" => "formattedAddress"  %>
-        </div>
+          <div class="price">
+            <span class="field_name">
+              <li><%= f.label :address %></li>
+            </span>
+            <%= f.text_field :address, placeholder: t(".address_placeholder"), :"ng-model" => "formattedAddress"  %>
+          </div>
 
-        <div class="half_form_field margin first">
-          <p class="field_name">
-            <%= f.label :phone %>
-          </p>
-          <%= f.text_field :phone, placeholder: t(".phone_placeholder")  %>
-        </div>
+          <div class="half_form_field margin first">
+            <span class="field_name">
+              <li><%= f.label :phone %></li>
+            </span>
+            <%= f.text_field :phone, placeholder: t(".phone_placeholder")  %>
+          </div>
+        </ol>
 
         <p class="field_name">
           <%= f.label 'Additional field' %>

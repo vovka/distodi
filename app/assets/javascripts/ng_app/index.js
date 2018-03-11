@@ -11,7 +11,7 @@ angular.module("DistodiApp", ["ipCookie", "localytics.directives", "in-viewport"
 
 .config(["$httpProvider", Config])
 
-.controller("ItemsController", ["$scope", "$http", "$q", "ipCookie", ItemsController])
+.controller("ItemsController", ["$scope", "$http", "$q", "ipCookie", "$window", ItemsController])
 .controller("SignInController", ["$scope", SignInController])
 .controller("NotificationsController", ["$scope", "$http", NotificationsController])
 .controller("NewItemController", ["$scope", NewItemController])

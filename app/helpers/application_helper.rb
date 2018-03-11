@@ -11,7 +11,7 @@ module ApplicationHelper
     if user_signed_in?
       link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user)
     elsif company_signed_in?
-      link_to current_company.first_name, company_path(current_company)
+      link_to current_company.name, company_path(current_company)
     end
   end
 

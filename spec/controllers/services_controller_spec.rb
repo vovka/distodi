@@ -497,7 +497,7 @@ RSpec.describe ServicesController, type: :controller do
         end.to raise_error(ActionController::RoutingError)
       end
 
-      specify "can edit own if it was self approved" do
+      specify "can not edit own if it was self approved" do
         user = create :user
         service = create :service, approver: nil,
                                    status: Service::STATUS_PENDING
@@ -506,9 +506,9 @@ RSpec.describe ServicesController, type: :controller do
         sign_in user
         service.approve!
 
-        patch :update, id: service.to_param, service: valid_params
-
-        expect(response).to redirect_to(service.item)
+        expect do
+          patch :update, id: service.to_param, service: valid_params
+        end.to raise_error(ActionController::RoutingError)
       end
 
       specify "can not edit own if it was self declined" do
@@ -581,7 +581,7 @@ RSpec.describe ServicesController, type: :controller do
         end.to raise_error(ActionController::RoutingError)
       end
 
-      specify "can not delete own service after it is declined" do
+      specify "can delete own service after it is declined" do
         user = create :user
         company = create :company
         service = create :service, approver: company,
@@ -593,7 +593,7 @@ RSpec.describe ServicesController, type: :controller do
 
         expect do
           delete :destroy, id: service.to_param
-        end.to raise_error(ActionController::RoutingError)
+        end.to change { Service.count }.by(-1)
       end
 
       specify "can delete own if it was self approved" do
@@ -610,7 +610,7 @@ RSpec.describe ServicesController, type: :controller do
         expect(response).to redirect_to(service.item)
       end
 
-      specify "can not delete own if it was self declined" do
+      specify "can delete own if it was self declined" do
         user = create :user
         service = create :service, approver: nil,
                                    status: Service::STATUS_PENDING
@@ -621,7 +621,7 @@ RSpec.describe ServicesController, type: :controller do
 
         expect do
           delete :destroy, id: service.to_param
-        end.to raise_error(ActionController::RoutingError)
+        end.to change { Service.count }.by(-1)
       end
     end
 
