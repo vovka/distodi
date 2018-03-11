@@ -1,0 +1,210 @@
+<div class="service_view">
+  <div class="left_part">
+    <div class="service_kind">
+      <%= link_to image_tag("back_link.png"), dashboard_path %>
+      <p>
+        <% @service.service_fields.each do |service_field| %>
+          <%= service_field.service_kind.title %>
+          <%= service_field.text %>
+        <% end %>
+      </p>
+      <div class="action_kind">
+        <% @service.action_kinds.decorate.each do |action_kind| %>
+          <div class="icon_service <%= action_kind.icon_class %>">
+            <%= "#{action_kind.title}" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="icon_status <%= @service.status %>"></div>
+      <div class="code">
+        <%= @service.id_code %>
+      </div>
+      <div class="mobile_item_photo">
+        <span><%= t(".for_yours") %></span>
+        <% @service.item.characteristics.each do |characteristic| %>
+          <p> <%= characteristic.value %></p>
+        <% end %>
+        <div class="item_photo">
+          <%= image_tag(@item.picture_url, alt: @item.title) %>
+        </div>
+        <div class="price">
+          <% if @service.comment.present? %>
+            <%= @service.price %> EURO
+          <% else %>
+            0.00 EURO
+          <% end %>
+        </div>
+      </div>
+      <% if @service.reason.present? %>
+        <div class="rejection_reason">
+          <p><%= t(".reason") %></p>
+          <span><%= @service.reason %></span>
+        </div>
+      <% else %>
+        <div class="line"></div>
+      <% end %>
+    </div>
+    <div class="date">
+      <div class="made_date">
+        <p><%= t(".made") %></p>
+        <%= @service.created_at.strftime("%d/%m/%Y") %>
+      </div>
+      <p><%= t(".added") %></p>
+      <%= @service.created_at.strftime("%d/%m/%Y") %>
+    </div>
+    <div class="line"></div>
+    <% if @service.company_id.present? %>
+      <div class="company_info">
+        <div class="block">
+          <p><%= t(".name") %></p>
+          <%= @service.company.name %>
+        </div>
+        <div class="block">
+          <p><%= t(".addresse") %></p>
+          <%= @service.map_address %>
+        </div>
+        <div class="block">
+          <p><%= t(".mail") %></p>
+          <%= mail_to @service.company.email %>
+        </div>
+        <div class="block">
+          <p><%= t(".phone") %></p>
+          <%= @service.company.phone %>
+        </div>
+      </div>
+    <% else %>
+      <p class="myself"><%= t(".myself") %></p>
+    <% end %>
+    <div class="line"></div>
+    <div class="reminders">
+      <p><%= t(".reminders") %></p>
+      <span>WEEKLY</span>
+      <span>MONTHLY</span>
+      <span>YEARLY</span>
+      <span>10/02/2019</span>
+      <span>10/02/2020</span>
+    </div>
+    <% if @service.picture.blank? && @service.picture2.blank? && @service.picture3.blank? && @service.picture4.blank? %>
+    <% else %>
+      <div class="line"></div>
+      <div class="photo">
+        <p><%= t(".photo") %></p>
+        <% if @service.picture.present? %>
+          <%= image_tag @service.picture.mini.url %>
+        <% end %>
+        <% if @service.picture2.present? %>
+          <%= image_tag @service.picture2.mini.url %>
+        <% end %>
+        <% if @service.picture3.present? %>
+          <%= image_tag @service.picture3.mini.url %>
+        <% end %>
+        <% if @service.picture4.present? %>
+          <%= image_tag @service.picture4.mini.url %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="files">
+      <p><%= t(".files") %></p>
+      <div class="file">
+        file_example.pdf
+      </div>
+      <div class="file">
+        spice.xls
+      </div>
+    </div>
+    <% if @service.comment.present? %>
+      <div class="comments">
+        <p><%= t(".comments") %></p>
+        <span><%= @service.comment %></span>
+      </div>
+    <% end %>
+    <div class="line"></div>
+    <%= link_to "javascript:void(0)", onclick: "print()" do %>
+      <div class="button">
+        <%= image_tag "pdf-icon.png" %>
+        <span><%= t(".save_pdf") %></span>
+      </div>
+    <% end %>
+    <%= link_to @service, method: :delete do %>
+      <div class="button">
+        <%= image_tag "delete_red.png" %>
+        <span class="red"><%= t(".delete") %></span>
+      </div>
+    <% end %>
+    <div class="mobile_buttons">
+      <%= link_to "javascript:void(0)", onclick: "print()" do %>
+        <div class="button">
+          <%= image_tag "pdf-icon.png" %>
+          <span><%= t(".save_pdf_mobile") %></span>
+        </div>
+      <% end %>
+      <%= link_to @service, method: :delete do %>
+        <div class="button">
+          <%= image_tag "delete_red.png" %>
+          <span class="red"><%= t(".delete") %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="right_part">
+    <span><%= t(".for_yours") %></span>
+    <% @service.item.characteristics.each do |characteristic| %>
+      <p> <%= characteristic.value %></p>
+    <% end %>
+    <div class="item_photo">
+      <%= image_tag(@item.picture_url, alt: @item.title) %>
+    </div>
+    <div class="price">
+      <% if @service.comment.present? %>
+        <%= @service.price %> EURO
+      <% else %>
+        0.00 EURO
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- popups -->
+<div class="confirm_panel activ">
+  <div class="center_block">
+    <div class="button">
+      <%= t(".confirm") %>
+    </div>
+    <div class="button reject">
+      <%= t(".reject") %>
+    </div>
+  </div>
+</div>
+
+<div class="popup activ">
+  <div class="popup_background">
+  </div>
+  <div class="window">
+    <div class="title">
+      Title
+      <%= image_tag "cross.png" %>
+    </div>
+    <div class="content">
+      <p>spice eto norm?</p>
+      <div class="button cancel">cancel</div>
+      <div class="button">delete</div>
+    </div>
+  </div>
+</div>
+
+<div class="popup reject_srvice activ">
+  <div class="popup_background">
+  </div>
+  <div class="window">
+    <div class="title">
+      Reject srvice
+      <%= image_tag "cross.png" %>
+    </div>
+    <div class="content">
+      <p>spice eto norm?</p>
+      <textarea name="spice"></textarea>
+      <div class="button cancel">cancel</div>
+      <div class="button">reject service</div>
+    </div>
+  </div>
+</div>

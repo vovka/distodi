@@ -38,6 +38,10 @@
          ng-click="controller.clickedView()">
         <%= t(".view") %>
       </a>
+      <a href="" class="edit"
+         ng-class="controller.serviceActions.view ? '' : 'disabled'">
+        <%= t(".edit") %>
+      </a>
       <a href="" class="delete"
          ng-class="controller.serviceActions.delete ? '' : 'disabled'"
          ng-click="controller.clickedDelete('<%= I18n.locale %>')">
@@ -109,7 +113,7 @@
               <%= number_to_currency(service.price , unit: "EUR ") %>
             </td>
             <td class="actions">
-              <%= link_to "&nbsp;".html_safe, "", "ng-click" => "controller.clickedView(#{i})" %>
+              <%= link_to "&nbsp;".html_safe, service_path(service) %>
             </td>
           </tr>
         <% end %>

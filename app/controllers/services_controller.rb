@@ -107,6 +107,15 @@ class ServicesController < ApplicationController
     authorize @service
     @service_kinds = @service.item.category.service_kinds
     @action_kinds = @service.item.category.action_kinds
+    @item = @service.item
+  end
+
+  def show
+    @service = Service.find(params[:id]).decorate
+    authorize @service
+    @service_kinds = @service.item.category.service_kinds
+    @action_kinds = @service.item.category.action_kinds
+    @item = @service.item
   end
 
   # PATCH/PUT /services/1

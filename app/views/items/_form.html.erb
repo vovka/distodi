@@ -14,13 +14,12 @@
      >
   <%= form_for(@item) do |f| %>
     <% if @item.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@item.errors.count, t(".error")) %> <%= t(".prohibited") %> </h2>
-          <ul>
-            <% @item.errors.full_messages.each do |message| %>
-              <li><%= message.html_safe %></li>
-            <% end %>
-          </ul>
+        <div class="error_explanation">
+          <% @item.errors.full_messages.each do |message| %>
+            <div class="item_errors">
+              <p><%= message.html_safe %></p>
+            </div>
+          <% end %>
         </div>
     <% end %>
 
