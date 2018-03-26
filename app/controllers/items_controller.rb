@@ -90,7 +90,7 @@ class ItemsController < ApplicationController
 
   def dashboard_company
     @items = current_company.services.map(&:item).uniq
-    @services = Service.unscoped.includes(:item, :company, :approver, :action_kinds, :service_fields => :service_kind).where(item: @items).decorate
+    @services = current_company.services
     render "empty_items_services" if @items.blank?
   end
 

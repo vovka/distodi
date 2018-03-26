@@ -110,7 +110,7 @@ en:
       services: "services"
     form:
       cover_photo: "Cover photo (min 800x600 pixels; %{formats} only)"
-      add_photo: "+ ADD COVER PHOTO"
+      add_photo: "ADD COVER PHOTO"
       discard: "Discard changes"
       save: "Save Item Information"
       select: "Please select a category"
@@ -139,7 +139,7 @@ en:
       pdf_link: "Save report as PDF"
       all_services: "All services"
       add_new_service: "+ ADD NEW SERVICE"
-      view: "View"
+      view: "View/Edit"
       del: "Delete"
       service: "Service"
       type: "Service type"
@@ -171,6 +171,7 @@ en:
       view_edit: "View, Edit"
       send_item: "Send item"
       add_new_item: "+ ADD NEW ITEM"
+      test: TEST
     destroy:
       password_invalid: "Sorry, your password does not match"
       success: "You have successfully destroyed the item"
@@ -187,6 +188,7 @@ en:
       confirm_delete: "Do you want delete your company profile?"
       edit_link: "Update company"
     form:
+      errors_company: You have incorrect user data, please correct your data.
       title: "What is adding the New service log entry for your item?"
       text: "It means that you have a possibility to write down all details of
             your service control (like breaks check, oil level check, etc.),
@@ -243,6 +245,7 @@ en:
       select_service: Please, select service kind
       service_kind: "Service kind"
       service_company: "Select company name or service by yourself"
+      company_email: Your Service company email address
       new_company: "New service company name"
       send_log: "Send this service log entry to the Service company for approval"
       amount: "- only amount number"
@@ -257,12 +260,12 @@ en:
             change of the spare parts (like steering wheel change, breaks change,
             etc.) or tuning (adding a spoiler, ultra-new lights, sound system, etc.)."
       service_kind_comment: "Service kind comments"
-      select_company: "Performer/Company"
+      select_company: "I did service by myself"
       new_company_name: "New company name"
       new_company_email: "New company email"
       price: "For example, 120.00"
       comments: "Put your comments here"
-      myself: "I did by myself"
+      myself: I did service by myself"
       other: "Other company"
       available_formats: "(only %{formats})"
       files: Attach other files (optional, PDF, TXT, etc.)
@@ -270,6 +273,41 @@ en:
       choose_date: Choose date
       service_date: Service date
       add_more: + Add one more service log
+      myself: I did service by myself
+      optional:  (optional, if you want to add 2 or more Service logs for your item simultaneously)
+    form_edit:
+      select_service: Please, select service kind
+      service_kind: "Service kind"
+      service_company: "Select company name or service by yourself"
+      company_email: Your Service company email address
+      new_company: "New service company name"
+      send_log: "Send this service log entry to the Service company for approval"
+      amount: "- only amount number"
+      service_photo: "Service photos (optional, min 800x600 pixels)"
+      comment: "Comments (optional, 2000 symbols max)"
+      remind_me: "(Optional) Remind me to update this service in"
+      custom_date: "Custom date"
+      discard: "Discard"
+      title: "What is adding the New service log entry for your item?"
+      text: "It means that you have a possibility to write down all details of
+            your service control (like breaks check, oil level check, etc.),
+            change of the spare parts (like steering wheel change, breaks change,
+            etc.) or tuning (adding a spoiler, ultra-new lights, sound system, etc.)."
+      service_kind_comment: "Service kind comments"
+      select_company: "I did service by myself"
+      new_company_name: "New company name"
+      new_company_email: "New company email"
+      price: "For example, 120.00"
+      comments: "Put your comments here"
+      myself: I did service by myself"
+      other: "Other company"
+      available_formats: "(only %{formats})"
+      files: Attach other files (optional, PDF, TXT, etc.)
+      choose_file: Choose file
+      choose_date: Choose date
+      service_date: Service date
+      add_more: + Add one more service log
+      myself: I did service by myself
       optional:  (optional, if you want to add 2 or more Service logs for your item simultaneously)
     show:
       made: Service made
@@ -291,6 +329,13 @@ en:
       reject: Reject
       save_pdf_mobile: PDF
       delete_mobile: Delete
+      item_owner: "Item owner:"
+      reject: Reject service
+      sure: Are you sure?
+      cancel: Cancel
+      reason: Reasone
+    decline:
+      success: You’ve declined service
   shared:
     registration_layout:
       distodi: Distodi
@@ -427,6 +472,8 @@ en:
       mark_as_read: "Mark all as read"
     registration_form:
       name:
+        employer:
+          company: First name of employer
         user: "Your Full Name (as in passport)"
         company: "Company Name (official)"
       email: "E-mail Address"

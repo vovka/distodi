@@ -1,11 +1,21 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <div class="name">
-    <%= f.text_field :first_name, autofocus: true, placeholder: t(".name.#{resource_name}") %>
-    <%= inline_svg "user_ico.svg" %>
-  </div>
-  <div class="errors_reg name">
-    <%= resource.errors.full_messages_for(:first_name).join(',') %>
-  </div>
+  <% if resource_name == :user %>
+    <div class="name">
+      <%= f.text_field :first_name, autofocus: true, placeholder: t(".name.#{resource_name}") %>
+      <%= inline_svg "user_ico.svg" %>
+    </div>
+    <div class="errors_reg name">
+      <%= resource.errors.full_messages_for(:first_name).join(',') %>
+    </div>
+  <% elsif resource_name == :company %>
+    <div class="name">
+      <%= f.text_field :name, autofocus: true, placeholder: t(".name.#{resource_name}") %>
+      <%= inline_svg "user_ico.svg" %>
+    </div>
+    <div class="errors_reg name">
+      <%= resource.errors.full_messages_for(:name).join(',') %>
+    </div>
+  <% end %>
   <div class="mail">
     <%= f.email_field :email, placeholder: t(".email") %>
     <%= inline_svg "mail_ico.svg" %>
@@ -27,4 +37,5 @@
   <div class="signup_but">
     <%= f.submit t(".create.#{resource_name}") %>
   </div>
+
 <% end %>

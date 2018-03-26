@@ -1,10 +1,12 @@
-<div class="service_create_identity edit">
-  <p class="item_info_service">
+<div ng-controller="NewServiceController as controller">
+  <div class="service_create_identity edit">
+    <p class="item_info_service">
       For your: <span><%= @service.item.title %>, </span>
-          <% @service.item.characteristics.each do |characteristic| %>
-            <span> <%= characteristic.value %></span>
-          <% end %>
-   </p>
-</div>
+      <% @service.item.characteristics.each do |characteristic| %>
+      <span> <%= characteristic.value %></span>
+      <% end %>
+    </p>
+  </div>
 
-<%= render 'form' %>
+  <%= render 'form_edit' %>
+</div>

@@ -23,7 +23,11 @@ class ServiceDecorator < Draper::Decorator
   end
 
   def companies_options
-    [myself_option] + Company.all + [other_company_option]
+    Company.all + [other_company_option]
+  end
+
+  def companies_options_edit
+    [myself_option] + Company.all
   end
 
   def myself_option

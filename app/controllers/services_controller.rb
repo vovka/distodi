@@ -6,9 +6,9 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :set_item, only: [:new]
   before_action :authenticate_user!, except: [:company_service, :create,
-                                              :approve, :decline]
+                                              :approve, :decline, :show]
   before_action :authenticate_user_or_company!,
-                only: [:create, :approve, :decline]
+                only: [:create, :approve, :decline, :show]
 
   before_action :convert_reminder_values, only: :create
 
@@ -112,15 +112,21 @@ class ServicesController < ApplicationController
 
   def show
     @service = Service.find(params[:id]).decorate
-    authorize @service
-    @service_kinds = @service.item.category.service_kinds
-    @action_kinds = @service.item.category.action_kinds
-    @item = @service.item
+    @service_policy = ServicePolicy.new(current_user || current_company, @service)
+    if @service_policy.edit?
+      redirect_to edit_service_path(@service)
+    else
+      authorize @service
+      @service_kinds = @service.item.category.service_kinds
+      @action_kinds = @service.item.category.action_kinds
+      @item = @service.item
+    end
   end
 
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
+    @item = @service.item
     authorize @service
     respond_to do |format|
       if @service.update(service_params)

@@ -28,7 +28,7 @@
           <%= image_tag(@item.picture_url, alt: @item.title) %>
         </div>
         <div class="price">
-          <% if @service.comment.present? %>
+          <% if @service.price.present? %>
             <%= @service.price %> EURO
           <% else %>
             0.00 EURO
@@ -49,8 +49,8 @@
         <p><%= t(".made") %></p>
         <%= @service.created_at.strftime("%d/%m/%Y") %>
       </div>
-      <p><%= t(".added") %></p>
-      <%= @service.created_at.strftime("%d/%m/%Y") %>
+      <!-- <p><%= t(".added") %></p>
+      <%= @service.created_at.strftime("%d/%m/%Y") %> -->
     </div>
     <div class="line"></div>
     <% if @service.company_id.present? %>
@@ -103,7 +103,7 @@
         <% end %>
       </div>
     <% end %>
-    <div class="files">
+<!--     <div class="files">
       <p><%= t(".files") %></p>
       <div class="file">
         file_example.pdf
@@ -111,7 +111,7 @@
       <div class="file">
         spice.xls
       </div>
-    </div>
+    </div> -->
     <% if @service.comment.present? %>
       <div class="comments">
         <p><%= t(".comments") %></p>
@@ -125,11 +125,13 @@
         <span><%= t(".save_pdf") %></span>
       </div>
     <% end %>
-    <%= link_to @service, method: :delete do %>
-      <div class="button">
-        <%= image_tag "delete_red.png" %>
-        <span class="red"><%= t(".delete") %></span>
-      </div>
+    <% if @service_policy.destroy? %>
+      <%= link_to @service, method: :delete do %>
+        <div class="button">
+          <%= image_tag "delete_red.png" %>
+          <span class="red"><%= t(".delete") %></span>
+        </div>
+      <% end %>
     <% end %>
     <div class="mobile_buttons">
       <%= link_to "javascript:void(0)", onclick: "print()" do %>
@@ -138,11 +140,13 @@
           <span><%= t(".save_pdf_mobile") %></span>
         </div>
       <% end %>
-      <%= link_to @service, method: :delete do %>
-        <div class="button">
-          <%= image_tag "delete_red.png" %>
-          <span class="red"><%= t(".delete") %></span>
-        </div>
+      <% if @service_policy.destroy? %>
+        <%= link_to @service, method: :delete do %>
+          <div class="button">
+            <%= image_tag "delete_red.png" %>
+            <span class="red"><%= t(".delete_mobile") %></span>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -151,11 +155,16 @@
     <% @service.item.characteristics.each do |characteristic| %>
       <p> <%= characteristic.value %></p>
     <% end %>
+    <div class="item_owner">
+      <span><%= t(".item_owner") %></span>
+      <p> <%= @service.user.first_name %></p>
+      <p> <%= @service.user.last_name %></p>
+    </div>
     <div class="item_photo">
       <%= image_tag(@item.picture_url, alt: @item.title) %>
     </div>
     <div class="price">
-      <% if @service.comment.present? %>
+      <% if @service.price.present? %>
         <%= @service.price %> EURO
       <% else %>
         0.00 EURO
@@ -165,16 +174,20 @@
 </div>
 
 <!-- popups -->
-<div class="confirm_panel activ">
-  <div class="center_block">
-    <div class="button">
-      <%= t(".confirm") %>
-    </div>
-    <div class="button reject">
-      <%= t(".reject") %>
+<% if @service_policy.approver? %>
+  <div class="confirm_panel active">
+    <div class="center_block">
+      <%= link_to approve_service_path(@service), method: :patch do %>
+        <div class="button">
+          <%= t(".confirm") %>
+        </div>
+      <% end %>
+      <div class="button reject">
+        <%= t(".reject") %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 
 <div class="popup activ">
   <div class="popup_background">
@@ -197,14 +210,18 @@
   </div>
   <div class="window">
     <div class="title">
-      Reject srvice
+      <%= t(".reject") %>
       <%= image_tag "cross.png" %>
     </div>
     <div class="content">
-      <p>spice eto norm?</p>
-      <textarea name="spice"></textarea>
-      <div class="button cancel">cancel</div>
-      <div class="button">reject service</div>
+      <p><%= t(".sure") %></p>
+      <%= simple_form_for(@service, url: decline_service_path(@service), method: :patch) do |f| %>
+        <%= f.text_area :reason, placeholder: t(".reason") %>
+        <div class="button cancel"><%= t(".cancel") %></div>
+        <%= f.submit "Decline" do %>
+          <div class="button"><%= t(".reject") %>?</div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

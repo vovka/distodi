@@ -1,11 +1,6 @@
 /*==========  Desktop First Method  ==========*/
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1610px) {
-  .red_col {
-    width: 135px;
-    height: 101.25px;
-  }
-
   .transfer_panel .receive p {
     margin-top: 33%;
   }
@@ -140,10 +135,7 @@
   }
 }
 @media only screen and (max-width : 1450px) {
-  .red_col {
-    width: 121.5px;
-    height: 91.125px;
-  }
+
 }
 @media only screen and (max-width : 1360px) {
   .bacground_green .content .text{
@@ -160,10 +152,6 @@
   }
 }
 @media only screen and (max-width : 1300px) {
-  .red_col {
-    width: 100px;
-    height: 75px;
-  }
   .function .transfer img {
     right: 35%;
   }
@@ -844,12 +832,6 @@
       display: none;
     }
   }
-
-  .page_items .item {
-    width: 47%;
-    text-align: center;
-  }
-
   .item .item_list_panel {
     width: 250px;
     margin: 10px auto;
@@ -863,9 +845,6 @@
     margin: 1px auto;
   }
 
-  .page_items .item .add_new_item p {
-    margin-left: 0;
-  }
   .tabs{
     height: 57px;
   }
@@ -1011,8 +990,11 @@
     width: 85%;
   }
   .service_create_identity h1{
-    display: block;
+    display: inline-block;
     margin-bottom: 20px;
+  }
+  .left_form_service_create .form_service_create ol li{
+    float: left;
   }
   .service_create_identity{
     text-align: left;
@@ -1030,7 +1012,7 @@
   }
   .left_form_service_create .form_service_create .half_form_field #service_kind{
     width: 100%;
-    margin-bottom: 34px;
+    margin-bottom: 23px;
   }
   .left_form_service_create .form_service_create .half_form_field input{
     width: calc(100% - 17px);
@@ -1857,14 +1839,30 @@
   .add_multi_service{
     margin-top: -80px;
   }
+  .lead_background .form_lead.right.slideout{
+    right: -0%;
+  }
+  .lead_background .footer{
+    background: none; 
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}
 /* Small Devices, Tablets */
 @media only screen and (max-width : 545px) {
   .page_items .item {
-    width: 94%;
+    width: calc(100% - 43px);
     text-align: center;
+    height: 200px;
+  }
+  .page_items .item .add_new_item{
+    width: calc(100% - 4px);
+    text-align: center;
+    p{
+      margin-left: 0;
+      width: 100%;
+      text-align: center;
+    }
   }
   .tabs a{
     padding: 20px 27%;

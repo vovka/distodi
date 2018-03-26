@@ -1,6 +1,7 @@
-var ItemsController = function($scope, $http, $q, ipCookie) {
+var ItemsController = function($scope, $http, $q, ipCookie, $window) {
   this.$http = $http;
   this.$q = $q;
+  this.$window = $window;
 
   $scope.currentStep = ipCookie('DistodiApp') || 0;
   $scope.postStepCallback = function() {
@@ -22,15 +23,11 @@ ItemsController.prototype.changedCheckbox = function(i) {
   this.showDetails = undefined;
 };
 
-ItemsController.prototype.clickedView = function(i) {
-  if (undefined !== i || this.serviceActions.view) {
-    if (i === undefined)
-      i = this.checkboxes.selectedIndexes()[0];
-    if (this.showDetails === undefined || this.showDetails !== i)
-      this.showDetails = i;
-    else
-      if (this.showDetails === i)
-        this.showDetails = undefined;
+ItemsController.prototype.clickedView = function(locale) {
+  if (this.serviceActions.view) {
+    var selectedIndexes = this.checkboxes.selectedIndexes(),
+        id = this._getIdsByIndexes(selectedIndexes)[0];
+    this.$window.location.href = "/" + locale + "/services/" + id;
   }
 };
 

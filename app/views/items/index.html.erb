@@ -3,12 +3,15 @@
   <% @items.each.with_index do |item, i| %>
     <div class="item">
       <%= link_to  edit_item_path(item) do %>
-        <div class="photo_item_index">
-          <%= image_tag(item.picture.list.url, alt: item.title) %>
+        <div class="photo_item_index" style="background: url(<%= item.picture.list.url %>) no-repeat center center; background-size: cover;">
+          <span><%= t('.test') %></span>
         </div>
       <% end %>
+      <span><%= t('.test') %></span>
       <p><%= item.title %></p>
-      <p><%= item.id_code %></p>
+      <% item.characteristics.each do |characteristic| %>
+        <p> <%= characteristic.value %></p>
+      <% end %>
     </div>
   <% end %>
   <div class="item">

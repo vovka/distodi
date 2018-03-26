@@ -19,75 +19,78 @@
         <%= f.hidden_field :item_id %>
         <%= hidden_field_tag :token, params[:token] %>
         <ol>
-          <strong>
-            <% @action_kinds.each do |action_kind| %>
-              <%= radio_button_tag("action_kind", action_kind.id) %>
-              <%= label_tag "action_kind_#{action_kind.id}", action_kind.title %>
-            <% end %>
-          </strong>
-          <div class="half_form_field service_form">
+
+            <div class="service_view edit">
+              <div class="left_part">
+                <div class="service_kind">
+                  <%= link_to image_tag("back_link.png"), dashboard_path %>
+                  <p>
+                    <% @service.service_fields.each do |service_field| %>
+                      <%= service_field.service_kind.title %>
+                      <%= service_field.text %>
+                    <% end %>
+                  </p>
+                  <div class="action_kind">
+                    <% @service.action_kinds.decorate.each do |action_kind| %>
+                      <div class="icon_service <%= action_kind.icon_class %>">
+                        <%= "#{action_kind.title}" %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="icon_status <%= @service.status %>"></div>
+                  <div class="code">
+                    <%= @service.id_code %>
+                  </div>
+                  <div class="mobile_item_photo">
+                    <span><%= t(".for_yours") %></span>
+                    <% @service.item.characteristics.each do |characteristic| %>
+                      <p> <%= characteristic.value %></p>
+                    <% end %>
+                    <div class="item_photo">
+                      <%= image_tag(@item.picture_url, alt: @item.title) %>
+                    </div>
+                    <div class="price">
+                      <% if @service.price.present? %>
+                        <%= @service.price %> EURO
+                      <% else %>
+                        0.00 EURO
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="line"></div>
             <span class="field_name">
               <li class="block"><%= t(".service_kind") %></li>
             </span>
-            <%= select_tag "service_kind",
-                             options_from_collection_for_select(@service_kinds, "id", "title"),
-                             autofocus: true,
-                             :"ng-change" => "changedServiceKind({ withText: #{@service_kinds.select { |k| k.with_text }.map(&:id)} })",
-                             :"ng-model" => "serviceKind",  prompt: t(".select_service") %>
-            <%= text_field "text", "service_kind_coment", placeholder: t(".service_kind_comment"), :"ng-show" => "showServiceKindText", class: "service_kind_coment"%>
-              <!-- <div class="added_date">
-                <p class="field_name">
-                  2. <%= t(".service_date") %>
-                </p>
-                <input type="date">
-                <div class="date_icon">
-                  <%= image_tag "calendar-icon.png" %>
-                  <%= t(".choose_date") %>
-                </div>
-              </div> -->
-          </div>
+            <div class="service_kind_edit_field">
+              <% @service.service_fields.each do |service_field| %>
+                <%= service_field.service_kind.title %>
+                <%= service_field.text %>
+              <% end %>
+            </div>
+            <div class="service_kind_title_edit_field date">
+              <span class="field_name edit_date">
+                <li><%= t(".service_date") %></li>
+              </span>
+            </div>
+            <div class="service_date_edit_field date">
+              <%= @service.created_at.strftime("%d/%m/%Y") %>
+            </div>
           <% if user_signed_in? %>
             <span class="field_name company_field_edit">
               <li class="block"><%= t(".service_company") %></li>
             </span>
-            <div class="company_select">
-              <%= f.collection_select :company_id,
-                @service.companies_options,
-                :id, :name,
-                {
-                  prompt: t(".select_company")
-                },
-                {
-                  :"ng-change" => "changedCompany({ myself: '#{@service.myself_option.id}', other: '#{@service.other_company_option.id}' })",
-                  :"ng-model" => "company"
-                } %>
-            </div>
-            <div ng-show="showInviteCompany">
-              <p class="field_name">
-                <%= t(".new_company") %>
-              </p>
-              <div class="textarea">
-                <%= text_area "text", "company_name", placeholder: t(".new_company_name") %>
+            
+              <div class="company_select company_field_edit">
+                <% if @service.company_id.present? %>
+                  <%= @service.company.name %>
+                <% else %>
+                  <%= t(".myself") %>
+                <% end %>
               </div>
-              <div class="select">
-                <label>
-                  <input type="checkbox"/>
-                  <i>
-                    <%= image_tag "select.png" %>
-                  </i>
-                  <span>
-                    <%= t(".send_log") %>
-                  </span>
-                  <div class="company_email">
-                    <p class="field_name">
-                      <%= t(".company_email") %>
-                    </p>
-                    <%= text_field_tag :new_company, "new_company", value: "", placeholder: t(".new_company_email") %>
-                    <div class="line"></div>
-                  </div>
-                </label>
-              </div>
-            </div>
+
           <% end %>
           <div class="price">
             <span class="field_name">
@@ -182,13 +185,6 @@
           <div class="textarea margin">
             <%= f.text_area :comment, placeholder: t(".comments") %>
           </div>
-          <% if action_name == "new" %>
-            <div class="block_multi_srvice"></div>
-            <div class="add_multi_service">
-              <a href=""><%= t(".add_more") %></a>
-              <span><%= t(".optional") %></span>
-            </div>
-          <% end %>
           <div class="form-actions">
             <%= f.button :submit  %>
             <%= link_to t(".discard"), dashboard_path %>

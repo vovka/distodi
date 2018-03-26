@@ -51,7 +51,7 @@
                       alt: @item.title,
                       class: "current_photo",
                       "ng-src" => "{{imagePreview[0] || newItemController.images[0]}}") %>
-        <label for="upload" ng-show="!newPhotoAttached[0]"><%= t(".add_photo") %></label>
+        <label for="upload" ng-show="!newPhotoAttached[0]"><%= inline_svg "plus.svg" %><%= t(".add_photo") %></label>
         <%= f.file_field :picture,
                          class: 'inputfile',
                          :"data-file" => "true",
