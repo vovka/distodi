@@ -182,7 +182,7 @@
           <%= t(".confirm") %>
         </div>
       <% end %>
-      <div class="button reject">
+      <div class="button reject" onclick="reject_popup()">
         <%= t(".reject") %>
       </div>
     </div>
@@ -205,19 +205,21 @@
   </div>
 </div>
 
-<div class="popup reject_srvice activ">
-  <div class="popup_background">
+<div class="popup reject_srvice" id="reject_popup" style="display: none;" >
+  <div class="popup_background" onclick="reject_popup()">
   </div>
   <div class="window">
     <div class="title">
       <%= t(".reject") %>
-      <%= image_tag "cross.png" %>
+      <div class="exit_reject" onclick="reject_popup()">
+        <%= image_tag "cross.png" %>
+      </div>
     </div>
     <div class="content">
       <p><%= t(".sure") %></p>
       <%= simple_form_for(@service, url: decline_service_path(@service), method: :patch) do |f| %>
         <%= f.text_area :reason, placeholder: t(".reason") %>
-        <div class="button cancel"><%= t(".cancel") %></div>
+        <div class="button cancel" onclick="reject_popup()"><%= t(".cancel") %></div>
         <%= f.submit "Decline" do %>
           <div class="button"><%= t(".reject") %>?</div>
         <% end %>

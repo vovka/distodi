@@ -6174,6 +6174,7 @@ input:-webkit-autofill{
       float: left;
       margin-bottom: 130px;
       margin-right: 20px;
+      cursor: pointer;
       img{
         width: 16px;
         float: left;
@@ -6274,11 +6275,13 @@ input:-webkit-autofill{
       line-height:14px;
       text-align:center;
       margin-right: 20px;
+      cursor: pointer;
       &.reject{
         width: 170px;
         background:#ffffff;
         font-family:MuseoSansCyrl_1;
         color:#8f8f8f;
+        cursor: pointer;
       }
     }
   }
@@ -6356,6 +6359,7 @@ input:-webkit-autofill{
         line-height:14px;
         text-align:left;
         text-transform: uppercase;
+        cursor: pointer;
         &.cancel{
           color:#8f8f8f;
           font-family:MuseoSansCyrl_1;
@@ -6394,6 +6398,7 @@ input:-webkit-autofill{
           background:#fce8e7;
           color: red;
           text-transform: capitalize;
+          cursor: pointer;
           &.cancel{
             background:#f2f2f2;
             color:#8f8f8f;
@@ -6595,4 +6600,8 @@ input:-webkit-autofill{
 }
 .form_service_create{
   text-align: left;
+}
+.exit_reject{
+  display: inline;
+  cursor: pointer;
 }

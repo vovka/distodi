@@ -1845,6 +1845,9 @@
   .lead_background .footer{
     background: none; 
   }
+  .popup.reject_srvice .window .content input{
+    padding: 9px 24px;
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}
