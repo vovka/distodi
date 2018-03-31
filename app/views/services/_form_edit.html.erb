@@ -82,7 +82,7 @@
             <span class="field_name company_field_edit">
               <li class="block"><%= t(".service_company") %></li>
             </span>
-            
+
               <div class="company_select company_field_edit">
                 <% if @service.company_id.present? %>
                   <%= @service.company.name %>
@@ -126,7 +126,7 @@
             <span class="field_name">
               <li class="block"><%= t(".service_photo") %></li>
             </span>
-            <div class="image-upload-box" style="background: url({{imagePreview[0] || newItemController.images[0]}}) no-repeat center center; background-size: cover;">
+            <div class="image-upload-box" style="background: url({{imagePreview[0] || controller.images[0]}}) no-repeat center center; background-size: cover;">
               <div ng-hide="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')" class="input_field" >
                 <%= image_tag(nil, "ng-src" => "{{imagePreview[0] || controller.images[0]}}") %>
                 <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
