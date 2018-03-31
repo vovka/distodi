@@ -22,3 +22,11 @@ $(document).ready(function() {
     $('.menu_mobile').toggleClass('active');
   });
 });
+function reject_popup() {
+  var x = document.getElementById("reject_popup");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
