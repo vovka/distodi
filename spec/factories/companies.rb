@@ -7,7 +7,13 @@ FactoryGirl.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     website { Faker::Internet.domain_name }
-    country { Faker::Address.country }
+    country do
+      std_country = nil
+      until std_country.present?
+        std_country = ISO3166::Country.find_country_by_name Faker::Address.country
+      end
+      std_country
+    end
     city { Faker::Address.city }
     address { Faker::Address.street_address }
     phone { "+380501234567" }

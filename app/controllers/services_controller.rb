@@ -5,16 +5,12 @@ class ServicesController < ApplicationController
 
   before_action :set_service, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :set_item, only: [:new]
-  before_action :authenticate_user!, except: [:company_service, :create,
-                                              :approve, :decline, :show]
-  before_action :authenticate_user_or_company!,
-                only: [:create, :approve, :decline, :show]
-
+  before_action :authenticate_user_or_company!
   before_action :convert_reminder_values, only: :create
 
   # GET /services/new
   def index
-    @services = current_user.services.includes(:service_fields, :action_kinds)
+    @services = current_user_or_company.services.includes(:service_fields, :action_kinds)
     respond_to do |format|
       format.html
       format.csv { send_data Service.to_csv(@services) }
@@ -36,13 +32,13 @@ class ServicesController < ApplicationController
   # POST /services.json
   # TODO: Refactor
   def create
-    item = if user_signed_in?
-             current_user.items.unscope(where: :demo).find_by_id(params[:service][:item_id])
+    item = if user_signed_in? || company_signed_in?
+             current_user_or_company.items.unscope(where: :demo).find_by_id(params[:service][:item_id])
            elsif params[:token].present?
              Item.find_by_token(params[:token])
            end
     raise ItemNotSpecifiedException if item.blank?
-    approver = if user_signed_in?
+    approver = if user_signed_in? || company_signed_in?
                  if params[:new_company].present?
                    if email_present?(params[:new_company])
                      find_company_by_email(params[:new_company])
@@ -84,7 +80,7 @@ class ServicesController < ApplicationController
         UserMailer.add_service_email_to_company(@service.company).deliver_later
       end
 
-      if user_signed_in?
+      if user_signed_in? || company_signed_in?
         redirect_to item_path(item),
                     notice: 'Service was successfully created.'
       elsif company_signed_in?
@@ -154,8 +150,8 @@ class ServicesController < ApplicationController
   end
 
   def company_service
-    item = Item.find_by(token: params[:token])
-    @service = Service.new(item: item)
+    @item = Item.find_by(token: params[:token])
+    @service = Service.new(item: @item)
     @service_kinds = item.category.service_kinds
     @action_kinds = item.category.action_kinds
   end
@@ -200,7 +196,7 @@ class ServicesController < ApplicationController
               .merge(company_id: current_company.id)
               .permit(default_params + [:company_id,
                       :reminder_custom, reminders_predefined: []])
-      elsif user_signed_in?
+      elsif user_signed_in? || company_signed_in?
         params.require(:service)
               .permit(default_params + [:company_id,
                       :reminder_custom, reminders_predefined: []])

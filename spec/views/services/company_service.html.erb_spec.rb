@@ -17,7 +17,7 @@ RSpec.describe "services/company_service", type: :view do
   end
 
   context "unauthenticated user" do
-    specify "does not see companies select box" do
+    xspecify "does not see companies select box" do
       render
 
       expect(rendered).to_not have_tag("select[name='service[company_id]']")
@@ -25,12 +25,12 @@ RSpec.describe "services/company_service", type: :view do
   end
 
   context "logged in company" do
-    specify "does not see companies select box" do
+    specify "does see companies select box" do
       sign_in create(:company)
 
       render
 
-      expect(rendered).to_not have_tag("select[name='service[company_id]']")
+      expect(rendered).to have_tag("select[name='service[company_id]']")
     end
   end
 end

@@ -50,7 +50,9 @@ class BaseIdCodeDecorator
       if record.user.country.blank?
         record.errors.add(:user, I18n.t(".errors.messages.country_must_be_present"))
       else
-        record.errors.add(:user, I18n.t(".errors.messages.country_must_be_real")) if country_object.blank?
+        if country_object.blank?
+          record.errors.add(:user, I18n.t(".errors.messages.country_must_be_real"))
+        end
       end
     end
   end
@@ -89,9 +91,10 @@ class ItemIdCodeDecorator < BaseIdCodeDecorator
   end
 
   def can_generate_item_id_code?
-    if record.user.present?
-      record.errors.add(:user, I18n.t(".errors.messages.first_name_must_be_present")) if record.user.first_name.blank?
-      record.errors.add(:user, I18n.t(".errors.messages.last_name_must_be_present")) if record.user.last_name.blank?
+    author = record.user.try(:decorate)
+    if author.present?
+      record.errors.add(:user, I18n.t(".errors.messages.first_name_must_be_present")) if author.first_name.blank?
+      record.errors.add(:user, I18n.t(".errors.messages.last_name_must_be_present")) if author.last_name.blank?
     end
   end
 

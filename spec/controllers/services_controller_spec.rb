@@ -24,7 +24,7 @@ RSpec.describe ServicesController, type: :controller do
 
         get :new, item_id: item.to_param
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to redirect_to(new_company_session_path)
       end
     end
 
@@ -52,14 +52,14 @@ RSpec.describe ServicesController, type: :controller do
     end
 
     context "company" do
-      specify "can not see the page" do
-        item = create :item
+      specify "can see the page" do
         company = create :company
+        item = create :item, user: company
         sign_in company
 
         get :new, item_id: item.to_param
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_success
       end
     end
   end
@@ -68,21 +68,23 @@ RSpec.describe ServicesController, type: :controller do
     specify "unauthenticated user can not approve a service" do
       user = create :user
       company = create :company
-      service = create :service, approver: user, company: company
+      item = create :item
+      service = create :service, approver: user, company: company, item: item
 
       expect do
-        patch :approve, id: service.to_param
+        patch :approve, id: service.to_param, item_id: item.to_param
       end.to_not change { service.reload.status }
     end
 
     specify "user can approve service assigned to him" do
       user = create :user
       company = create :company
-      service = create :service, approver: user, company: company
+      item = create :item
+      service = create :service, approver: user, company: company, item: item
       sign_in user
 
       expect do
-        patch :approve, id: service.to_param
+        patch :approve, id: service.to_param, item_id: item.to_param
       end.to change { service.reload.status }.from(Service::STATUS_PENDING)
                                              .to(Service::STATUS_APPROVED)
     end
@@ -91,11 +93,12 @@ RSpec.describe ServicesController, type: :controller do
       user = create :user
       other_user = create :user
       company = create :company
-      service = create :service, approver: other_user, company: company
+      item = create :item
+      service = create :service, approver: other_user, company: company, item: item
       sign_in user
 
       expect do
-        patch :approve, id: service.to_param
+        patch :approve, id: service.to_param, item_id: item.to_param
       end.to_not change { service.reload.status }
     end
 
@@ -109,7 +112,7 @@ RSpec.describe ServicesController, type: :controller do
       sign_in company
 
       expect do
-        patch :approve, id: service.to_param
+        patch :approve, id: service.to_param, item_id: user.items.first.to_param
       end.to change { service.reload.status }.from(Service::STATUS_PENDING)
                                              .to(Service::STATUS_APPROVED)
     end
@@ -126,7 +129,7 @@ RSpec.describe ServicesController, type: :controller do
       sign_in company
 
       expect do
-        patch :approve, id: service.to_param
+        patch :approve, id: service.to_param, item_id: user.items.first.to_param
       end.to_not change { service.reload.status }
     end
   end
@@ -208,31 +211,32 @@ RSpec.describe ServicesController, type: :controller do
         item = create :item
         expect do
           post :create, valid_params.merge(service: attributes_for(:service),
-                                           token: item.token)
+                                           token: item.token,
+                                           item_id: item.to_param)
         end.to_not change { Service.count }
       end
     end
 
     context "logged in company" do
       specify "can create service (from the permalink page)" do
-        item = create :item
         company = create :company
+        item = company.items.create! attributes_for(:item)
         sign_in company
 
         expect do
-          post :create, valid_params.merge(service: attributes_for(:service),
+          post :create, valid_params.merge(service: attributes_for(:service).merge(item_id: item.to_param),
                                            token: item.token)
         end.to change { Service.count }.by(1)
       end
 
       specify "can not set any company" do
-        item = create :item
         company = create :company
+        item = company.items.create! attributes_for(:item)
         other_company = create :company
         sign_in company
 
         post :create, valid_params.merge(
-          service: attributes_for(:service).merge(company_id: other_company.id),
+          service: attributes_for(:service).merge(company_id: other_company.id, item_id: item.to_param),
           token: item.token
         )
 
@@ -240,22 +244,22 @@ RSpec.describe ServicesController, type: :controller do
       end
 
       specify "by default sets self as a company" do
-        item = create :item
         company = create :company
+        item = company.items.create! attributes_for(:item)
         sign_in company
 
-        post :create, valid_params.merge(service: attributes_for(:service),
+        post :create, valid_params.merge(service: attributes_for(:service).merge(item_id: item.to_param),
                                          token: item.token)
 
         expect(Service.last.company).to eq(company)
       end
 
       specify "sets item by default using token value" do
-        item = create :item
         company = create :company
+        item = company.items.create! attributes_for(:item)
         sign_in company
 
-        post :create, valid_params.merge(service: attributes_for(:service),
+        post :create, valid_params.merge(service: attributes_for(:service).merge(item_id: item.to_param),
                                          token: item.token)
 
         expect(Service.last.item).to eq(item)
@@ -264,14 +268,15 @@ RSpec.describe ServicesController, type: :controller do
 
     context "logged in user" do
       specify "can set any company" do
-        company = create :company
         user = create :user
+        item = user.items.create!(attributes_for(:item))
+        company = create :company
         sign_in user
 
         post :create, valid_params.merge({
           service: attributes_for(:service).merge({
             company_id: company.id,
-            item_id: create(:item, user: user)
+            item_id: item.to_param
           })
         })
 
@@ -286,7 +291,8 @@ RSpec.describe ServicesController, type: :controller do
         post :create, valid_params.merge({
           service: attributes_for(:service).merge({
             item_id: item.id
-          })
+          }),
+          item_id: item.to_param
         })
 
         expect(Service.last.item).to eq(item)
@@ -303,7 +309,8 @@ RSpec.describe ServicesController, type: :controller do
             new_company: email,
             service: attributes_for(:service).merge(
               item_id: item.id
-            )
+            ),
+            item_id: item.to_param
           )
         end.to change { Company.count }.by(1)
       end
@@ -320,7 +327,8 @@ RSpec.describe ServicesController, type: :controller do
             new_company: email,
             service: attributes_for(:service).merge(
               item_id: item.id
-            )
+            ),
+            item_id: item.to_param
           )
         end.to_not change { Company.count }
       end
@@ -334,7 +342,8 @@ RSpec.describe ServicesController, type: :controller do
           post :create, valid_params.merge({
             service: attributes_for(:service).merge({
               item_id: item.to_param
-            })
+            }),
+            item_id: item.to_param
           })
         end.to raise_error(ItemNotSpecifiedException)
       end
@@ -346,9 +355,9 @@ RSpec.describe ServicesController, type: :controller do
       specify "can not access the page" do
         service = create :service
 
-        get :edit, id: service.to_param
+        get :edit, id: service.to_param, item_id: service.item.to_param
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_redirect
       end
     end
 
@@ -362,7 +371,7 @@ RSpec.describe ServicesController, type: :controller do
         create :item, user: user, category: category, services: [service]
         sign_in user
 
-        get :edit, id: service.to_param
+        get :edit, id: service.to_param, item_id: service.item.to_param
 
         expect(response).to be_success
       end
@@ -378,7 +387,7 @@ RSpec.describe ServicesController, type: :controller do
         service.approve!
 
         expect do
-          get :edit, id: service.to_param
+          get :edit, id: service.to_param, item_id: service.item.to_param
         end.to raise_error(ActionController::RoutingError)
       end
 
@@ -393,7 +402,7 @@ RSpec.describe ServicesController, type: :controller do
         service.decline!("any reason")
 
         expect do
-          get :edit, id: service.to_param
+          get :edit, id: service.to_param, item_id: service.item.to_param
         end.to raise_error(ActionController::RoutingError)
       end
 
@@ -407,7 +416,7 @@ RSpec.describe ServicesController, type: :controller do
         sign_in user
         service.approve!
 
-        get :edit, id: service.to_param
+        get :edit, id: service.to_param, item_id: service.item.to_param
 
         expect(response).to be_success
       end
@@ -422,7 +431,7 @@ RSpec.describe ServicesController, type: :controller do
         service.decline!("any reason")
 
         expect do
-          get :edit, id: service.to_param
+          get :edit, id: service.to_param, item_id: service.item.to_param
         end.to raise_error(ActionController::RoutingError)
       end
     end
@@ -434,9 +443,9 @@ RSpec.describe ServicesController, type: :controller do
                                    status: Service::STATUS_PENDING
         sign_in company
 
-        get :edit, id: service.to_param
-
-        expect(response).to redirect_to(new_user_session_path)
+        expect do
+          get :edit, id: service.to_param, item_id: service.item.to_param
+        end.to raise_error(ActionController::RoutingError)
       end
     end
   end
@@ -448,7 +457,7 @@ RSpec.describe ServicesController, type: :controller do
 
         patch :update, id: service.to_param, service: valid_params
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to redirect_to(new_company_session_path)
       end
     end
 
@@ -533,9 +542,9 @@ RSpec.describe ServicesController, type: :controller do
                                    status: Service::STATUS_PENDING
         sign_in company
 
-        patch :update, id: service.to_param, service: valid_params
-
-        expect(response).to redirect_to(new_user_session_path)
+        expect do
+          patch :update, id: service.to_param, service: valid_params
+        end.to raise_error(ActionController::RoutingError)
       end
     end
   end
@@ -543,11 +552,12 @@ RSpec.describe ServicesController, type: :controller do
   describe "DELETE #destroy" do
     context "unauthenticated" do
       specify "can not delete an item" do
-        service = create :service
+        item = create :item
+        service = create :service, item: item
 
-        delete :destroy, id: service.to_param
+        delete :destroy, id: service.to_param, item_id: item.to_param
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_redirect
       end
     end
 
@@ -555,13 +565,15 @@ RSpec.describe ServicesController, type: :controller do
       specify "can delete own service until it is confirmed" do
         user = create :user
         company = create :company
+        item = create :item
         service = create :service, approver: company,
-                                   status: Service::STATUS_PENDING
+                                   status: Service::STATUS_PENDING,
+                                   item: item
         category = create :category, :with_service_kinds, :with_action_kinds
         create :item, user: user, category: category, services: [service]
         sign_in user
 
-        delete :destroy, id: service.to_param
+        delete :destroy, id: service.to_param, item_id: item.to_param
 
         expect(response).to redirect_to(service.item)
       end
@@ -569,23 +581,27 @@ RSpec.describe ServicesController, type: :controller do
       specify "can not delete own service after it is approved" do
         user = create :user
         company = create :company
+        item = create :item
         service = create :service, approver: company,
-                                   status: Service::STATUS_PENDING
+                                   status: Service::STATUS_PENDING,
+                                   item: item
         category = create :category, :with_service_kinds, :with_action_kinds
         create :item, user: user, category: category, services: [service]
         sign_in user
         service.approve!
 
         expect do
-          delete :destroy, id: service.to_param
+          delete :destroy, id: service.to_param, item_id: item.to_param
         end.to raise_error(ActionController::RoutingError)
       end
 
       specify "can delete own service after it is declined" do
         user = create :user
         company = create :company
+        item = create :item
         service = create :service, approver: company,
-                                   status: Service::STATUS_PENDING
+                                   status: Service::STATUS_PENDING,
+                                   item: item
         category = create :category, :with_service_kinds, :with_action_kinds
         create :item, user: user, category: category, services: [service]
         sign_in user
@@ -598,22 +614,26 @@ RSpec.describe ServicesController, type: :controller do
 
       specify "can delete own if it was self approved" do
         user = create :user
+        item = create :item
         service = create :service, approver: nil,
-                                   status: Service::STATUS_PENDING
+                                   status: Service::STATUS_PENDING,
+                                   item: item
         category = create :category, :with_service_kinds, :with_action_kinds
         create :item, user: user, category: category, services: [service]
         sign_in user
         service.approve!
 
-        delete :destroy, id: service.to_param
+        delete :destroy, id: service.to_param, item_id: item.to_param
 
         expect(response).to redirect_to(service.item)
       end
 
       specify "can delete own if it was self declined" do
         user = create :user
+        item = create :item
         service = create :service, approver: nil,
-                                   status: Service::STATUS_PENDING
+                                   status: Service::STATUS_PENDING,
+                                   item: item
         category = create :category, :with_service_kinds, :with_action_kinds
         create :item, user: user, category: category, services: [service]
         sign_in user
@@ -626,15 +646,17 @@ RSpec.describe ServicesController, type: :controller do
     end
 
     context "company" do
-      specify "can not delete an item" do
+      specify "can not delete other's item" do
         company = create :company
+        item = create :item
         service = create :service, approver: company,
-                                   status: Service::STATUS_PENDING
+                                   status: Service::STATUS_PENDING,
+                                   item: item
         sign_in company
 
-        delete :destroy, id: service.to_param
-
-        expect(response).to redirect_to(new_user_session_path)
+        expect do
+          delete :destroy, id: service.to_param, item_id: item.to_param
+        end.to raise_error(ActionController::RoutingError)
       end
     end
   end

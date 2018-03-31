@@ -3,15 +3,14 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :edit, :update, :destroy, :transfer,
                                   :receive, :show_pdf]
-  before_action :authenticate_user!, except: [:show_for_company, :dashboard_company]
-  before_action :authenticate_user_or_company!, only: [:show_for_company, :dashboard_company]
+  before_action :authenticate_user_or_company!
 
   def index
-    @items = Item.unscoped.where(user: current_user)
+    @items = Item.unscoped.where(user: current_user_or_company)
   end
 
   def show
-    @items = Item.unscoped.where(user: current_user)
+    @items = Item.unscoped.where(user: current_user_or_company)
     @services = @item.services.includes(:service_fields, :action_kinds).decorate
     respond_to do |format|
       format.html { render "dashboard" }
@@ -20,16 +19,16 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = current_user.items.build
+    @item = current_user_or_company.items.build
     @item.check_user_attributes
     @items = [@item]
     @attributes = AttributeKind.all
   end
 
   def create
-    @items = current_user.items
+    @items = current_user_or_company.items
     @item = Item.new(item_params)
-    @item.user = current_user
+    @item.user = current_user_or_company
 
     @item.characteristics = characteristics_params.map do |key, value|
       attribute_kind = @item.category.attribute_kinds.find(key)
@@ -46,7 +45,7 @@ class ItemsController < ApplicationController
   def edit
     @items = [@item]
     authorize @item
-    @services = current_user.services.includes(:service_fields, :action_kinds).decorate
+    @services = current_user_or_company.services.includes(:service_fields, :action_kinds).decorate
   end
 
   def update
@@ -75,7 +74,7 @@ class ItemsController < ApplicationController
 
   def destroy
     authorize @item
-    if current_user.valid_password?(params[:item][:password])
+    if current_user_or_company.valid_password?(params[:item][:password])
       @item.destroy
       redirect_to dashboard_path, notice: t(".success")
     else
@@ -84,13 +83,13 @@ class ItemsController < ApplicationController
   end
 
   def dashboard
-    @items = Item.unscoped.where(user: current_user)
+    @items = Item.unscoped.where(user: current_user_or_company)
     @services = Service.unscoped.includes(:item, :company, :approver, :action_kinds, :service_fields => :service_kind).where(item: @items).decorate
   end
 
   def dashboard_company
-    @items = current_company.services.map(&:item).uniq
-    @services = current_company.services
+    @services = current_company.assigned_services.includes(:item)
+    @items = @services.map(&:item).uniq
     render "empty_items_services" if @items.blank?
   end
 
@@ -103,7 +102,7 @@ class ItemsController < ApplicationController
     @item = if params[:item_id].present?
       Item.unscoped.where(id: params[:item_id]).first.tap { |item| authorize item }
     else
-      current_user.items.build
+      current_user_or_company.items.build
     end
     @item = @item.decorate context: { category_id: params[:category_id],
                                       brand_option_id: params[:brand_option_id] }
@@ -113,7 +112,7 @@ class ItemsController < ApplicationController
     authorize @item
     validator = ItemTransferValidator.new(params)
     if validator.valid?
-      TransferService.new(@item, params[:user_identifier], current_user).perform
+      TransferService.new(@item, params[:user_identifier], current_user_or_company).perform
       flash[:notice] = t(".success")
     else
       flash[:error] = validator.errors.join(". ")
@@ -123,7 +122,7 @@ class ItemsController < ApplicationController
 
   def receive
     authorize @item
-    @item.update user: current_user, transferring_to: nil
+    @item.update user: current_user_or_company, transferring_to: nil
     redirect_to action: :index
   end
 

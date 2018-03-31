@@ -8,7 +8,7 @@
         <span> <%= characteristic.value %></span>
       <% end %>
   </div>
-  <%= link_to new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" do %>
+  <%= link_to new_item_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" do %>
     <div class="add_service">
       + ADD NEW SERVICE
     </div>
