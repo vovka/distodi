@@ -9,7 +9,7 @@
         <%= @services.count %> <span><%= t(".services") %></span>
       </div>
     <% end %>
-    <%= link_to new_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" do %>
+    <%= link_to items_new_service_path(@item), "ng-show" => "!controller.serviceActions.show" do %>
       <div class="add_service">
         <%= t(".add_new_service") %>
       </div>
@@ -25,7 +25,7 @@
          ng-click="controller.clickedDelete('<%= I18n.locale %>')">
         <%= t(".del") %>
       </a>
-      <!-- <a href="#"><%= image_tag "send.png" %> Send</a> -->
+      <%# <a href="#"><%= image_tag "send.png" %-> Send</a> %>
     </div>
     <table class="list_items">
       <thead>

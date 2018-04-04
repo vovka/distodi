@@ -52,6 +52,10 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def profile
+    redirect_to edit_company_path(current_company)
+  end
+
   private
 
   def set_company
@@ -59,6 +63,9 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
+    country = ISO3166::Country.find_country_by_name(params[:company][:country]) ||
+              ISO3166::Country.new(params[:company][:country])
+    params[:company][:country] = country.name if country.present?
     params.require(:company).permit(:name, :phone, :country, :city, :address, :website, :postal_code, :picture, :email, :notice)
   end
 end

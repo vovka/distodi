@@ -15,7 +15,7 @@ describe ItemsController do
       specify "can not access the page" do
         get :index
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_redirect
       end
     end
 
@@ -60,7 +60,7 @@ describe ItemsController do
 
         get :index
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_success
       end
     end
   end
@@ -120,7 +120,7 @@ describe ItemsController do
       specify "can not access the page" do
         get :new
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_redirect
       end
     end
 
@@ -136,13 +136,13 @@ describe ItemsController do
     end
 
     context "company" do
-      specify "" do
+      it "is allowed" do
         company = create :company
         sign_in company
 
         get :new
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_success
       end
     end
   end
@@ -152,7 +152,7 @@ describe ItemsController do
       specify "can not access the page" do
         post :create, item: valid_attributes(create(:category))
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_redirect
       end
 
       specify "can not create an item" do
@@ -174,23 +174,23 @@ describe ItemsController do
     end
 
     context "company" do
-      specify "can not access the page" do
+      specify "can access the page" do
         company = create :company
         sign_in company
+        item_attributes = valid_attributes(create(:category))
 
-        item = valid_attributes(create(:category))
-        post :create, item: item
+        post :create, item: item_attributes
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_redirect
       end
 
-      specify "can not create an item" do
+      specify "can create an item" do
         company = create :company
         sign_in company
 
         expect do
           post :create, item: valid_attributes(create(:category))
-        end.to_not change { Item.count }
+        end.to change { Item.count }.by(1)
       end
     end
   end
@@ -202,7 +202,7 @@ describe ItemsController do
 
         get :edit, id: item.to_param
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_redirect
       end
     end
 
@@ -234,9 +234,9 @@ describe ItemsController do
         item = create :item
         sign_in company
 
-        get :edit, id: item.to_param
-
-        expect(response).to redirect_to(new_user_session_path)
+        expect do
+          get :edit, id: item.to_param
+        end.to raise_error(ActionController::RoutingError)
       end
     end
   end
@@ -248,7 +248,7 @@ describe ItemsController do
 
         patch :update, id: item.to_param, item: valid_attributes
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_redirect
       end
     end
 
@@ -275,14 +275,14 @@ describe ItemsController do
     end
 
     context "company" do
-      specify "can not access the page" do
+      specify "can not access other's item" do
         company = create :company
         item = create :item
         sign_in company
 
-        patch :update, id: item.to_param, item: valid_attributes
-
-        expect(response).to redirect_to(new_user_session_path)
+        expect do
+          patch :update, id: item.to_param, item: valid_attributes
+        end.to raise_error(ActionController::RoutingError)
       end
     end
   end
@@ -294,7 +294,7 @@ describe ItemsController do
 
         delete :destroy, id: item.to_param
 
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to be_redirect
       end
     end
 
@@ -336,9 +336,9 @@ describe ItemsController do
         item = create :item
         sign_in company
 
-        delete :destroy, id: item.to_param, item: { password: "11111111" }
-
-        expect(response).to redirect_to(new_user_session_path)
+        expect do
+          delete :destroy, id: item.to_param, item: { password: "11111111" }
+        end.to raise_error(ActionController::RoutingError)
       end
     end
   end

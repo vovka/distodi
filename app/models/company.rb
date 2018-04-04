@@ -8,7 +8,8 @@ class Company < ActiveRecord::Base
   URL_REGEXP = /\A(https?:\/\/)?(www\.)?[-a-zA-Z0-9._]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.,~#?!&\/=]*)\z/
 
   has_many :services
-  has_many :items, through: :services
+  # has_many :items, through: :services
+  has_many :items, as: :user
   has_many :assigned_services, foreign_key: :approver_id,
                                class_name: "Service",
                                as: :approver
@@ -23,9 +24,14 @@ class Company < ActiveRecord::Base
 
   default_scope { where demo: false }
   scope :demo, -> { unscoped.where demo: true }
-  scope :user_companies, lambda { |user_id|
-    joins(services: { item: :user }).where(users: { id: user_id })
+  scope :user_companies, lambda { |user|
+    # joins(services: { item: :user }).where(users: { id: user_id })
+    joins(:items).where(items: {user_id: user.id, user_type: user.class.name })
   }
+
+  def country_object
+    ISO3166::Country.find_country_by_name country
+  end
 
   def accept_invitation!
     if invited_to_sign_up?

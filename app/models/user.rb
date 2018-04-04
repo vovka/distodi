@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   include OauthableModel
 
-  has_many :items
+  has_many :items, as: :user
   has_many :transferring_items, class_name: "Item",
                                 foreign_key: :transferring_to_id
   has_many :services, through: :items

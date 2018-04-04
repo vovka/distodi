@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   has_many :attribute_kinds, through: :characteristics
   has_many :services
   belongs_to :category
-  belongs_to :user
+  belongs_to :user, polymorphic: true
   belongs_to :transferring_to, class_name: "User",
                                foreign_key: :transferring_to_id
 

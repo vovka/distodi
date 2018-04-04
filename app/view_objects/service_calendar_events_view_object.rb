@@ -34,7 +34,7 @@ class ServiceCalendarEventsViewObject
       e.summary     = summary
       # e.description = "Have a long lunch meeting and decide nothing..."
       e.ip_class    = "PRIVATE"
-      e.organizer   = Icalendar::Values::CalAddress.new("http://distodi.com")
+      e.organizer   = Icalendar::Values::CalAddress.new("https://distodi.com")
     end
     # ical.publish
     ical

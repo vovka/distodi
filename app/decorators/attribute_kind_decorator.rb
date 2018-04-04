@@ -81,9 +81,10 @@ class AttributeKindDecorator < Draper::Decorator
 
   def input_arguments
     if brand?
+      # context[:item].selected_category.brand_options.map { |brand| [brand.name, brand.name] },
       [
-        context[:item].selected_category.brand_options.map { |brand| [brand.name, brand.name] },
-        { selected: context[:item].selected_brand.try(:name) },
+        ActionController::Base.helpers.options_for_select(context[:item].selected_category.brand_options.map { |brand| [brand.name, brand.name] }, selected: context[:item].selected_brand.try(:name) || "BMW"),
+        { selected: context[:item].selected_brand.try(:name) || "BMW" },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value),

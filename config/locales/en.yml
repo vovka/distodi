@@ -79,7 +79,7 @@ en:
     empty_items_services:
       hey: "Hey, "
       add: "Add your first item"
-      add_comapny: "Please, ask your clients to assign your first service"
+      add_company: "Please, ask your clients to assign your first service"
       track: "to track all it’s Service log entries"
     new:
       new_item: "New item"
@@ -154,7 +154,7 @@ en:
       add_your_first_item: "+ Add your first item"
       pdf: "Save reports as pdf"
       services: services
-      tour:
+      tour: &tour
         welcome: "Welcome to Distodi! We created simple user tour for you :-)"
         start_here: "Start! Add new service here"
         add_item: "Add here your item (your property information)"
@@ -166,6 +166,9 @@ en:
         control:
           next: "Next"
           close: "Close"
+    dashboard_company:
+      tour:
+        <<: *tour
     index:
       my_items: "My Items"
       view_edit: "View, Edit"
@@ -492,6 +495,8 @@ en:
       receive_item: "Receive"
       show_list: "Show list of items"
       show_my_profile: "My account"
+      services_assigned_to_me: "Services to confirm"
+      my_services: "My services"
       my_items: "My Items"
       log_out: "Log out"
       items: "items"

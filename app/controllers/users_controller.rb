@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def companies
-    @all_companies = Company.user_companies(@user.id).distinct
+    @all_companies = Company.user_companies(@user).distinct
   end
 
   def update

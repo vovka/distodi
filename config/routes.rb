@@ -1,7 +1,7 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
-  get '/', to: redirect("/#{I18n.default_locale}")
+  get "/", to: redirect("/#{I18n.default_locale}")
 
   %w(facebook twitter google linkedin).each do |provider|
     devise_scope :user do
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
     authenticate :admin_user do
-      mount Sidekiq::Web => '/sidekiq'
+      mount Sidekiq::Web => "/sidekiq"
     end
     ActiveAdmin.routes(self)
 
@@ -73,8 +73,15 @@ Rails.application.routes.draw do
         post :receive
         get :show_pdf
       end
+      resources :services do
+        member do
+          patch :approve
+          patch :decline
+        end
+      end
     end
 
+    # TODO: remove this routes, must use that one services rousource inside the items
     resources :services do
       member do
         patch :approve
@@ -88,7 +95,6 @@ Rails.application.routes.draw do
     get           "/dashboard" => "items#dashboard",          as: :home
     get         "/item/:token" => "items#show_for_company",   as: :show_for_company
     get "/item/service/:token" => "services#company_service", as: :company_service
-    get             "/profile" => "users#profile"
     get           "/addresses" => "addresses#search"
     get               "/about" => "static_pages#about",       as: :static_pages_about
     get            "/security" => "static_pages#security",    as: :static_pages_security
@@ -97,21 +103,23 @@ Rails.application.routes.draw do
     get                "/lead" => "static_pages#lead",        as: :static_pages_lead
     get               "/terms" => "static_pages#terms",       as: :static_pages_terms
 
-    post '/notifications/:id/read' => "notifications#read", constraints: ->(request) { request.xhr? }
+    post "/notifications/:id/read" => "notifications#read", constraints: ->(request) { request.xhr? }
 
     authenticated :user do
-      root 'items#dashboard', as: :authenticated_root
+      root "items#dashboard", as: :authenticated_root
+      get "/profile" => "users#profile"
     end
 
     authenticated :company do
-      root 'items#dashboard_company', as: :authenticated_root_company
+      root "items#dashboard_company", as: :authenticated_root_company
+      get "/profile" => "companies#profile"
     end
     # Temporary changed root route
     # root "static_pages#home"
     root "leads#new"
   end
 
-  get '*path',
+  get "*path",
     constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" },
     to: redirect do |params, request|
       "/#{I18n.default_locale}/#{params[:path]}?#{request.params.to_query}"
