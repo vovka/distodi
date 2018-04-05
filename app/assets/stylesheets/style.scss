@@ -1283,11 +1283,6 @@ footer hr {
   margin-left: 0;
 }
 
-.item_info span:nth-child(4) {
-  display: inline-block;
-  margin-left: 0;
-}
-
 .select {
   input {
     display: none;
@@ -3461,9 +3456,6 @@ option {
   &:nth-child(2){
     display: inline;
   }
-  &:nth-child(3){
-    display: inline;
-  }
 }
 
 .button_box .show_pass{
@@ -4093,9 +4085,6 @@ input:-webkit-autofill{
 .item_info_service span:nth-child(3){
   display: inline-block;
 }
-.item_info_service span:nth-child(4){
-  display: inline-block;
-}
 .right_form_service_create img{
   width: 100%;
   border-radius: 4px;
@@ -4459,7 +4448,6 @@ input:-webkit-autofill{
   width: 31%;
   padding: 0;
   background: white;
-  z-index: -1;
   top: 0;
   height: calc(100% + 77px);
   -webkit-transition: all 500ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
@@ -5011,8 +4999,9 @@ input:-webkit-autofill{
     margin: 0 auto;
     height: 98%;
     .menu_list{
-      float: right;
-      margin-left: 100px;
+      position: absolute;
+      right: 20px;
+      z-index: 1;
       ul{
         text-decoration: none;
         display: inline;
@@ -5051,6 +5040,7 @@ input:-webkit-autofill{
     }
   }
   .content_block{
+    position: absolute;
     h3{
       display: none;
     }
