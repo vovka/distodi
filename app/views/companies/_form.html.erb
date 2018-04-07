@@ -75,7 +75,7 @@
           <p class="field_name">
             <%= f.label :postal_code %>
           </p>
-          <%= f.text_field :postal_code, placeholder: t(".postal_example"), :"ng-model" => "postalCode", :"ng-change" => "changedPostalCode()" %>
+          <%= f.text_field :postal_code, placeholder: t(".postal_example"), :"ng-model" => "postalCode", :"ng-change" => "changedPostalCode(\"#{I18n.locale}\")" %>
           <ul class="hint-list" ng-show="addresses.length > 0">
             <li ng-click="addressSelected()" ng-repeat="address in addresses">{{address.formatted_address}}</li>
           </ul>

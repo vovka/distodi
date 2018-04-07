@@ -122,7 +122,7 @@ Rails.application.routes.draw do
   get "*path",
     constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" },
     to: redirect do |params, request|
-      "/#{I18n.default_locale}/#{params[:path]}?#{request.params.to_query}"
+      "#{request.protocol}#{request.host_with_port}/#{I18n.default_locale}/#{params[:path]}?#{request.params.to_query}"
     end
 
   # The priority is based upon order of creation: first created -> highest priority.

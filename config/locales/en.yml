@@ -336,7 +336,7 @@ en:
       reject: Reject service
       sure: Are you sure?
       cancel: Cancel
-      reason: Reasone
+      reason: Reason
     decline:
       success: You’ve declined service
   shared:
