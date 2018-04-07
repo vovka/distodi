@@ -33,6 +33,10 @@
       </div>
     <% end if @item.present? %>
     <div class="service_panel" ng-show="controller.serviceActions.show">
+      <% if @item.present? %>
+        <%= link_to image_tag('pdf-icon.png'), show_pdf_item_path(@item, format: :pdf) %>
+        <%= link_to image_tag('csv-icon.png'), item_path(@item, format: :csv) %>
+      <% end %>
       <a href="" class="view"
          ng-class="controller.serviceActions.view ? '' : 'disabled'"
          ng-click="controller.clickedView('<%= I18n.locale %>')">
