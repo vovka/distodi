@@ -179,11 +179,13 @@
               </div>
             </div>
           </div> -->
-          <span class="field_name">
-            <li><%= t(".comment") %></li>
-          </span>
-          <div class="textarea margin">
-            <%= f.text_area :comment, placeholder: t(".comments") %>
+          <div class="price">
+            <span class="field_name">
+              <li><%= t(".comment") %></li>
+            </span>
+            <div class="textarea margin">
+              <%= f.text_area :comment, placeholder: t(".comments") %>
+            </div>
           </div>
           <div class="form-actions">
             <%= f.button :submit  %>

@@ -3822,7 +3822,7 @@ option {
 }
 .service_create_main_form label{
   font-family: 'MuseoSansCyrl_1';
-  font-size:13px;
+  font-size:15x;
   letter-spacing:0;
   line-height:13px;
   text-align:left;
@@ -4008,6 +4008,9 @@ input:-webkit-autofill{
 .left_form_service_create .form_service_create .price{
   margin-top: 20px;
 }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .left_form_service_create .form_service_create .price li { float: left; }
+}
 .left_form_service_create .form_service_create .price input{
   width: 597px;
   display: block;
@@ -4145,7 +4148,7 @@ input:-webkit-autofill{
   border: 1px solid #d3d3d3;
   border-radius: 4px;
   font-size: 14px;
-  padding-top: 13px;
+  padding-top: 15px;
   padding-bottom: 14px;
   padding-left: 15px;
   background-color: #fff;
@@ -4400,7 +4403,6 @@ input:-webkit-autofill{
   ol{
     text-align: left;
     li{
-      float: left;
       width: 500px;
       margin-left: 15px;
       margin-bottom: 10px;
@@ -4967,7 +4969,7 @@ input:-webkit-autofill{
     background: no-repeat image-url("delete_cross") 20px/20px;
     position: absolute;
     background-position: 0px 0px;
-    margin-top: -130px;
+    margin-top: 5px;
     margin-left: -26px;
     display: none;
 
@@ -4979,6 +4981,8 @@ input:-webkit-autofill{
     opacity: 0;
     width: 134px;
     height: 134px;
+    position: absolute;
+    margin-left: -135px;
   }
   img:hover + a{
     display: inline-block;
@@ -6465,7 +6469,6 @@ input:-webkit-autofill{
       li{
         margin-left: 15px;
         margin-bottom: 10px;
-        float: left;
         &.block{
           width: 80%;
         }
@@ -6571,7 +6574,6 @@ input:-webkit-autofill{
   text-align: left;
   max-width: 270px;
   min-width: 270px;
-  margin-top: 58px;
 }
 
 .service_date_edit_field{
@@ -6594,7 +6596,7 @@ input:-webkit-autofill{
   display: inline-block;
   &.date{
     margin-left: 330px;
-    margin-top: -99px;
+    margin-top: -94px;
     float: left;
   }
 }
