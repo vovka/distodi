@@ -134,12 +134,12 @@
       <% end %>
     <% end %>
     <div class="mobile_buttons">
-      <%= link_to "javascript:void(0)", onclick: "print()" do %>
+      <a href="#" onclick="window.open('Service_report.pdf', '_blank', 'fullscreen=yes'); return false;">
         <div class="button">
           <%= image_tag "pdf-icon.png" %>
           <span><%= t(".save_pdf_mobile") %></span>
         </div>
-      <% end %>
+      </a>
       <% if @service_policy.destroy? %>
         <%= link_to @service, method: :delete do %>
           <div class="button">

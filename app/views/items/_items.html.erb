@@ -45,8 +45,5 @@
                 <% end %>
               </div>
             </div>
-            <% (@services || @item.services).each.with_index do |service, i| %>
-              <%= render "service_details", service: service, i: i %>
-            <% end %>
           </div>
         </div>
