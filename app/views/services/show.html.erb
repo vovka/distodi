@@ -57,7 +57,7 @@
       <div class="company_info">
         <div class="block">
           <p><%= t(".name") %></p>
-          <%= @service.company.name %>
+          <%= @service.approver.name %>
         </div>
         <div class="block">
           <p><%= t(".addresse") %></p>
@@ -65,11 +65,11 @@
         </div>
         <div class="block">
           <p><%= t(".mail") %></p>
-          <%= mail_to @service.company.email %>
+          <%= mail_to @service.approver.email %>
         </div>
         <div class="block">
           <p><%= t(".phone") %></p>
-          <%= @service.company.phone %>
+          <%= @service.approver.phone %>
         </div>
       </div>
     <% else %>
