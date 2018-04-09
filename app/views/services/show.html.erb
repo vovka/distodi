@@ -152,6 +152,7 @@
   </div>
   <div class="right_part">
     <span><%= t(".for_yours") %></span>
+    <p><%= @service.item.title %></p>
     <% @service.item.characteristics.each do |characteristic| %>
       <p> <%= characteristic.value %></p>
     <% end %>
