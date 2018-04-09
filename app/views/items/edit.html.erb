@@ -28,7 +28,7 @@
   <div class="delete">
     <span><%= t(".pass") %></span>
     <%= form_for @item, method: :delete do |f| %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, autocomplete: :off %>
       <div class="delete_but">
         <!-- <%= image_tag "delete_red.png" %> -->
         <%= f.submit t(".delete_link"), data: { confirm: t(".confirm_delete") } %>
