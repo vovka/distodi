@@ -70,29 +70,43 @@
               </div>
             </td>
             <td>
-              <% service.service_fields.each do |service_field| %>
-                <%= service_field.service_kind.title %>
-                <%= service_field.text %>
+              <%= link_to service_path(service) do %>
+                <% service.service_fields.each do |service_field| %>
+                  <%= service_field.service_kind.title %>
+                  <%= service_field.text %>
+                <% end %>
               <% end %>
             </td>
             <td>
-              <% service.action_kinds.decorate.each do |action_kind| %>
-                <div class="icon_service <%= action_kind.icon_class %>">
-                  <%= "#{action_kind.title}" %>
-                </div>
+              <%= link_to service_path(service) do %>
+                <% service.action_kinds.decorate.each do |action_kind| %>
+                  <div class="icon_service <%= action_kind.icon_class %>">
+                    <%= "#{action_kind.title}" %>
+                  </div>
+                <% end %>
               <% end %>
             </td>
             <td>
-              <div class="<%= service.status %>">&nbsp;</div>
-            </td>
-            <td>
-              <% service.item.characteristics.each do |characteristic| %>
-                <span> <%= characteristic.value %></span>
+              <%= link_to service_path(service) do %>
+                <div class="<%= service.status %>">&nbsp;</div>
               <% end %>
             </td>
-            <td class="date"><%= service.created_at.strftime("%d %b %Y") %></td>
+            <td>
+              <%= link_to service_path(service) do %>
+                <span><%= service.item.title %></span>
+                <% service.item.characteristics.each do |characteristic| %>
+                  <span> <%= characteristic.value %></span>
+                <% end %>
+              <% end %>
+            </td>
+            <td class="date">
+              <%= link_to service_path(service) do %>
+                <%= service.created_at.strftime("%d %b %Y")%></td>
+              <% end %>
             <td class="cost">
-              <%= number_to_currency(service.price , unit: "EUR ") %>
+              <%= link_to service_path(service) do %>
+                <%= number_to_currency(service.price , unit: "EUR ") %>
+              <% end %>
             </td>
             <td class="actions">
               <%= link_to "&nbsp;".html_safe, service_path(service) %>

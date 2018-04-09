@@ -1407,6 +1407,9 @@ footer hr {
     tr {
       border: 1px solid rgba(211,211,211,0.50);
       cursor: pointer;
+      a{
+        color: black;
+      }
       .cost{
         width: 120px;
       }
@@ -1500,7 +1503,9 @@ footer hr {
 
         &:nth-child(2) {
           &:hover {
-            color: #00bb4d;
+            a{
+              color: #00bb4d;
+            }
           }
         }
       }
@@ -1536,7 +1541,7 @@ footer hr {
       max-width: 600px;
       &:nth-child(3),
       &:nth-child(6) {
-        color: #8f8f8f;
+        a{color: #8f8f8f;}
       }
 
       &:last-child {
@@ -3452,8 +3457,12 @@ option {
   display: none;
   &:nth-child(1){
     display: inline;
+    text-transform: capitalize;
   }
   &:nth-child(2){
+    display: inline;
+  }
+  &:nth-child(3){
     display: inline;
   }
 }
@@ -4081,6 +4090,10 @@ input:-webkit-autofill{
 .item_info_service span{
   font-family: 'MuseoSansCyrl_1';
   display: none;
+}
+.item_info_service span:nth-child(1){
+  display: inline-block;
+  text-transform: capitalize;
 }
 .item_info_service span:nth-child(2){
   display: inline-block;
@@ -6216,6 +6229,7 @@ input:-webkit-autofill{
       }
       &:nth-child(2){
         display: inline;
+        text-transform: capitalize;
       }
       &:nth-child(3){
         display: inline;
