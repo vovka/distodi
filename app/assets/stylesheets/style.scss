@@ -4001,7 +4001,7 @@ input:-webkit-autofill{
   margin-top: 20px;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-  .left_form_service_create .form_service_create .price li { float: left; }
+  .destroy_user + .edit_user.ng-valid ol li { float: left; }
 }
 .left_form_service_create .form_service_create .price input{
   width: 597px;
@@ -6218,6 +6218,9 @@ input:-webkit-autofill{
         display: inline;
       }
       &:nth-child(3){
+        display: inline;
+      }
+      &:nth-child(4){
         display: inline;
       }
     }
