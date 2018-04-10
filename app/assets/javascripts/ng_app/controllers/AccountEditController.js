@@ -13,13 +13,13 @@ var AccountEditController = function($scope, $timeout, $http, $q) {
     $scope.images = [data.picture_url];
   };
 
-  $scope.changedPostalCode = function() {
+  $scope.changedPostalCode = function(locale) {
     if (this.addressesHintsPromise) {
       $timeout.cancel(this.addressesHintsPromise)
     }
     var self = this;
     this.addressesHintsPromise = $timeout(function() {
-      controller.initAddressesHint(self);
+      controller.initAddressesHint(self, locale);
     }, 1000);
   };
 
@@ -32,9 +32,9 @@ var AccountEditController = function($scope, $timeout, $http, $q) {
   };
 };
 
-AccountEditController.prototype.initAddressesHint = function($scope) {
+AccountEditController.prototype.initAddressesHint = function($scope, locale) {
   if ($scope.postalCode !== "") {
-    this.$http.get("/addresses?q=" + $scope.postalCode).then(
+    this.$http.get("/" + locale + "/addresses?q=" + $scope.postalCode).then(
       function success(response) { $scope.addresses = response.data.map(function(i) { return i.data }); },
       function failure() {}
     );
