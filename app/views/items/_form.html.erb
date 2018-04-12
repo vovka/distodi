@@ -31,7 +31,7 @@
                               {},
                               { class: "category_select",
                                 "ng-model" => "_category",
-                                "ng-change" => "controller.categorySelectChanged()",
+                                "ng-change" => "newItemController.categorySelectChanged()",
                                 disabled: controller.action_name.in?(%w( edit update ))
                               } %>
     </div>
@@ -82,7 +82,7 @@
     </div>
 
     <div class="actions_but">
-      <%= f.submit t(".save") %>
+      <%= f.submit t(".save"), :"ng-click" => "saveClicked()" %>
       <div class="back">
       <%= link_to t(".discard"), dashboard_path %>
       </div>
@@ -90,7 +90,7 @@
   <% end %>
 </div>
 
-<script>
+<script type="text/javascript">
   $(function () {
     $("form.edit_item, form.new_item").on("change", "#item_category_id, select.brand_options", function(){
       if ($('#item_category_id option:selected').val()) {
@@ -106,10 +106,12 @@
         });
       }
     });
-    var $categorySelect = $("#item_category_id");
-    if ($('#item_category_id option:selected').val() === "")
+    var $categorySelect = $("#item_category_id"),
+        selectedCategoryValue = $('#item_category_id option:selected').val(),
+        UNDEFINED_VALUE = "? undefined:undefined ?";
+    if (selectedCategoryValue === "" || selectedCategoryValue === UNDEFINED_VALUE) {
       $categorySelect.val(<%= @item.category_id %>);
+    }
     $categorySelect.trigger("change");
   });
-  $("#item_category_id").change();
 </script>

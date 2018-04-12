@@ -17,7 +17,20 @@ var NewItemController = function ($scope) {
     $event.currentTarget.previousElementSibling.value = null
   };
 
+  $scope.saveClicked = function () {
+    controller.saved = true;
+  };
+
   $(window).on("beforeunload", function (e) {
-    return true;
+    if (!controller.saved) {
+      return true;
+    }
   });
 };
+
+NewItemController.prototype.categorySelectChanged = function () {
+  this.saveSubmitDisabled = false;
+};
+
+NewItemController.prototype.saveSubmitDisabled = true;
+NewItemController.prototype.saved = false;

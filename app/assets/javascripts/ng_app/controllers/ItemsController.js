@@ -71,10 +71,6 @@ ItemsController.prototype._doHavePermissions = function(indexes, permission) {
   return true;
 };
 
-ItemsController.prototype.categorySelectChanged = function () {
-  this.saveSubmitDisabled = false;
-};
-
 ItemsController.prototype.checkboxes = [];
 ItemsController.prototype.checkboxes.all = false;
 ItemsController.prototype.checkboxes.areAllChecked = function() {
@@ -109,4 +105,3 @@ ItemsController.prototype.checkboxes.selectedIndexes = function() {
 };
 ItemsController.prototype.serviceActions = { show: false };
 ItemsController.prototype.showTransfer = [];
-ItemsController.prototype.saveSubmitDisabled = true;
