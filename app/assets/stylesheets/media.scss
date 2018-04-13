@@ -993,8 +993,10 @@
     display: inline-block;
     margin-bottom: 20px;
   }
-  .left_form_service_create .form_service_create ol li{
-    float: left;
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    .left_form_service_create .form_service_create ol li{
+      float: left;
+    }
   }
   .service_create_identity{
     text-align: left;
@@ -1008,7 +1010,7 @@
     margin-bottom: 70px;
   }
   .left_form_service_create .form_service_create strong label{
-    width: 33.1%;
+    width: 32.9%;
   }
   .left_form_service_create .form_service_create .half_form_field #service_kind{
     width: 100%;
@@ -1859,6 +1861,9 @@
         }
       }
     }
+  }
+  .service_view .left_part .company_info .block{
+    height: 112px;
   }
 }
 /* Small Devices, Tablets */

@@ -248,7 +248,7 @@ en:
       select_service: Please, select service kind
       service_kind: "Service kind"
       service_company: "Select company name or service by yourself"
-      company_email: Your Service company email address
+      company_email: Your new service company email address
       new_company: "New service company name"
       send_log: "Send this service log entry to the Service company for approval"
       amount: "- only amount number"
@@ -269,7 +269,7 @@ en:
       price: "For example, 120.00"
       comments: "Put your comments here"
       myself: I did service by myself"
-      other: "Other company"
+      other: "New company"
       available_formats: "(only %{formats})"
       files: Attach other files (optional, PDF, TXT, etc.)
       choose_file: Choose file
@@ -282,7 +282,7 @@ en:
       select_service: Please, select service kind
       service_kind: "Service kind"
       service_company: "Select company name or service by yourself"
-      company_email: Your Service company email address
+      company_email: Your new service company email address
       new_company: "New service company name"
       send_log: "Send this service log entry to the Service company for approval"
       amount: "- only amount number"
@@ -303,7 +303,7 @@ en:
       price: "For example, 120.00"
       comments: "Put your comments here"
       myself: I did service by myself"
-      other: "Other company"
+      other: "New company"
       available_formats: "(only %{formats})"
       files: Attach other files (optional, PDF, TXT, etc.)
       choose_file: Choose file
