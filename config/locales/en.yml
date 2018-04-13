@@ -312,6 +312,7 @@ en:
       add_more: + Add one more service log
       myself: I did service by myself
       optional:  (optional, if you want to add 2 or more Service logs for your item simultaneously)
+      company_has_no_name: Company has not name.
     show:
       made: Service made
       added: Service added
@@ -516,6 +517,17 @@ en:
       telephobe_number: 8 (800) 400-40-40
       security: "Security Guarantee"
       careers: "Careers Page"
+    application:
+      distodi: Distodi
+      close: exit
+      welcome: Welcome to Distodi!
+      invitation: You accepted the invitation, please set your password
+      name: Full Company Name (official)
+      pass: Please, set your password
+      pass_confirmation: Password confirmation
+      show: SHOW
+      submit: Accept invitation
+      agreementt: "By creating an account, you agree to our <a href=\"/terms\">Terms.</a>"
   static_pages:
     home:
       distodi_welcome: "Distodi. Your personal confidence"
