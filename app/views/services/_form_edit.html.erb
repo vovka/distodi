@@ -85,7 +85,11 @@
 
               <div class="company_select company_field_edit">
                 <% if @service.company_id.present? %>
-                  <%= @service.company.name %>
+                  <% if @service.approver.name.nil? %>
+                    <%= t(".company_has_no_name") %>
+                  <% else %>
+                    <%= @service.approver.name %>
+                  <% end %>
                 <% else %>
                   <%= t(".myself") %>
                 <% end %>

@@ -297,14 +297,14 @@ footer hr {
 .right_image {
   width: 50%;
   display: inline-block;
-  background-repeat: no-repeat;
+  height: 100%;
+  background: no-repeat image-url("sign_in_img") center center;
+  background-size: cover;
+  &.invite{
+    background: no-repeat image-url("master") center center;
+    background-size: cover;
+  }
 }
-
-.right_image img {
-  width: 100%;
-  margin-bottom: -4px;
-}
-
 .logo_green {
   margin: 30px 0 0 80px;
 }
@@ -429,6 +429,45 @@ footer hr {
   background-size: 18px;
   background-position: 10px 15px;
   background: linear-gradient(left, green 0, green 75%, transparent 75%);
+}
+.user_form.invite{
+  h2{
+    display: none;
+  }
+  label{
+    display: none;
+  }
+  input {
+    border-radius: 4px;
+    height: 48.5px;
+    border: 1px solid #d3d3d3;
+    line-height: 20px;
+    margin-top: -8.5px;
+    padding-left: 17px;
+    width: 390px;
+    font-family: 'MuseoSansCyrl_1';
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: 10px 15px;
+    background: linear-gradient(left, green 0, green 75%, transparent 75%);
+    margin-bottom: 30px;
+  }
+  form{
+    p:last-child{
+      input{
+        font-family: 'MuseoSansCyrl_1';
+        font-size: 16px;
+        color: #ffffff;
+        background: #149b4c;
+        border: 0 solid #fff;
+        margin-bottom: -5px;
+        cursor: pointer;
+        width: 410px;
+        margin-top: 8px;
+        margin-bottom: 70px;
+      }
+    }
+  }
 }
 
 .ico {
@@ -691,13 +730,6 @@ footer hr {
   width: 50%;
   float: left;
 }
-
-.right_image {
-  width: 50%;
-  display: inline-block;
-  background-repeat: no-repeat;
-}
-
 .right_image img {
   width: 100%;
   margin-bottom: -4px;
@@ -3117,6 +3149,7 @@ option {
 }
 .sign_in_content{
   z-index: 300;
+  height: 100%;
 }
 .sent_image{
   background:#e5f8ed;
@@ -3932,11 +3965,11 @@ input:-webkit-autofill{
     float: left;
     border: 1px solid #f3f3f3;
     border-radius: 4px;
-    padding: 18px 15px;
+    padding: 16px 15px;
     font-size: 14px;
     color: #1f1f1f;
     letter-spacing: 0;
-    line-height: 14px;
+    line-height: 18px;
     text-align: left;
     max-width: 270px;
     min-width: 270px;
