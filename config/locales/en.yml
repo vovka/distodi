@@ -312,7 +312,7 @@ en:
       add_more: + Add one more service log
       myself: I did service by myself
       optional:  (optional, if you want to add 2 or more Service logs for your item simultaneously)
-      company_has_no_name: Company has not name.
+      company_has_no_name: Company has no name.
     show:
       made: Service made
       added: Service added
