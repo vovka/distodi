@@ -72,7 +72,7 @@ class AttributeKindDecorator < Draper::Decorator
         bicycle_subcategory? || frame_material? || tractor_subcategory? || front_end_loader? ||
         temperature_control? || yacht_subcategory? || material?
       :select
-    elsif country_of_using? || country_of_manufacture?
+    elsif country? || country_of_using? || country_of_manufacture?
       :country_select
     else
       :text_field
@@ -105,13 +105,13 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif year?
-      default_year = "2000"
+      default_value = "2000"
       [
         1900..Time.current.to_date.year,
-        { selected: characteristic.try(:value).presence || default_year },
+        { selected: characteristic.try(:value).presence || default_value },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
-          value: characteristic.try(:value).presence || default_year,
+          value: characteristic.try(:value).presence || default_value,
           disabled: characteristic.try(:value).present?,
           chosen: ""
         }
@@ -123,6 +123,7 @@ class AttributeKindDecorator < Draper::Decorator
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
           chosen: ""
         }
       ]
@@ -133,6 +134,7 @@ class AttributeKindDecorator < Draper::Decorator
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
           chosen: ""
         }
       ]
@@ -143,6 +145,7 @@ class AttributeKindDecorator < Draper::Decorator
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
           chosen: ""
         }
       ]
@@ -153,15 +156,17 @@ class AttributeKindDecorator < Draper::Decorator
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
           chosen: ""
         }
       ]
-    elsif country_of_using? || country_of_manufacture?
+    elsif country? || country_of_using? || country_of_manufacture?
       [
         { selected: characteristic.try(:value).presence },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
           chosen: ""
         }
       ]
@@ -175,6 +180,7 @@ class AttributeKindDecorator < Draper::Decorator
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
           chosen: ""
         }
       ]
