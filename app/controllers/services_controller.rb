@@ -25,7 +25,6 @@ class ServicesController < ApplicationController
     end
     authorize @service
     @service_kinds = @item.category.service_kinds
-    @action_kinds = @item.category.action_kinds.order(:position)
   end
 
   # POST /services
@@ -166,17 +165,16 @@ class ServicesController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
+    def set_item
+      @item = Item.unscoped.where(id: params[:item_id]).first
+    end
+
     def set_service
-      @service = Service.find(params[:id]).decorate
+      @service = Service.where(id: params[:id]).decorate.first
     end
 
     def email_present?(email)
-      Company.where(email: email).first.present?
-    end
-
-    def set_item
-      @item = Item.unscoped.find(params[:item_id])
+      find_company_by_email(email).present?
     end
 
     def find_company_by_email(email)

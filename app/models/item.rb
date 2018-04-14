@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
   has_many :characteristics
   has_many :attribute_kinds, through: :characteristics
+  has_many :action_kinds, through: :category
   has_many :services
   belongs_to :category
   belongs_to :user, polymorphic: true

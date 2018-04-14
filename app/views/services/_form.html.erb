@@ -20,8 +20,8 @@
         <%= hidden_field_tag :token, params[:token] %>
         <ol>
           <strong>
-            <% @action_kinds.each do |action_kind| %>
-              <%= radio_button_tag("action_kind", action_kind.id) %>
+            <% @service.available_action_kinds.each do |action_kind| %>
+              <%= radio_button_tag("action_kind", action_kind.id, @service.checked_action?(action_kind)) %>
               <%= label_tag "action_kind_#{action_kind.id}", action_kind.title %>
             <% end %>
           </strong>

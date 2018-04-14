@@ -1,4 +1,6 @@
 class ServiceDecorator < Draper::Decorator
+  DEFAULT_CHECKED_ACTION_TITLE = "Control".freeze
+
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through
@@ -36,5 +38,16 @@ class ServiceDecorator < Draper::Decorator
 
   def other_company_option
     Struct.new(:id, :name).new(-2, I18n.t("services.form.other"))
+  end
+
+  def checked_action?(action_kind)
+    action_kind == default_checked_action_kind
+  end
+
+  private
+
+  def default_checked_action_kind
+    default_action = available_action_kinds.find { |action_kind| action_kind.title == DEFAULT_CHECKED_ACTION_TITLE }
+    default_action.presence || item.category.action_kinds.first
   end
 end

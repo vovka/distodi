@@ -23,6 +23,7 @@ class Service < ActiveRecord::Base
   has_many :service_fields, dependent: :destroy
   has_many :service_kinds, through: :service_fields
   has_many :service_action_kinds, dependent: :destroy
+  has_many :available_action_kinds, through: :item, source: :action_kinds
   has_many :action_kinds, through: :service_action_kinds
   belongs_to :item, -> { unscope(where: :demo) }
   belongs_to :company
