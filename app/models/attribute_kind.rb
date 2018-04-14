@@ -3,7 +3,7 @@ class AttributeKind < ActiveRecord::Base
 
   delegate :brand?, :model?, :year?, :fuel_type?,
            :type_of_engine?, :weight?, :transmission?, :gender?,
-           :wheel_diameter?, :country_of_using?, :country_of_manufacture?,
+           :wheel_diameter?, :country?, :country_of_using?, :country_of_manufacture?,
            :car_subcategory?, :type_of_body?, :type_of_complete_set?, :engine_displacement?,
            :number_of_gears?, :bicycle_subcategory?, :frame_material?, :tractor_subcategory?,
            :front_end_loader?, :temperature_control?, :yacht_subcategory?, :material?,

@@ -3,6 +3,7 @@ class AttributeKindPolicy
   MODEL = "Model".freeze
   YEAR = "Year".freeze
   COUNTRY_OF_USING = "Country of using".freeze
+  COUNTRY = "Country".freeze
   COUNTRY_OF_MANUFACTURE = "Country of manufacture".freeze
   FUEL_TYPE = "Fuel type".freeze
   TYPE_OF_ENGINE = "Type of engine".freeze
@@ -37,6 +38,10 @@ class AttributeKindPolicy
 
   def year?
     @attribute_kind.title == YEAR
+  end
+
+  def country?
+    @attribute_kind.title == COUNTRY
   end
 
   def country_of_using?
