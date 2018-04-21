@@ -1,38 +1,66 @@
 source 'https://rubygems.org'
 ruby "2.3.4"
 
-# Svg helper
+group :production do
+  gem 'htmlcompressor'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'rspec-html-matchers'
+  gem 'simplecov', :require => false
+end
+
+group :development do
+  gem 'web-console', '~> 2.0'
+  gem 'meta_request'
+  gem 'spring'
+  gem 'rails-erd'
+  gem 'annotate'
+  gem 'mailcatcher'
+  gem 'xray-rails'
+end
+
+group :development, :test do
+  gem 'byebug'
+  gem 'colorize', '~> 0.8.1'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'pronto', git: 'https://github.com/vovka/pronto.git', branch: 'master'
+  gem 'pronto-rubocop', require: false
+  gem 'pronto-flay', require: false
+  gem 'pronto-rails_best_practices', require: false
+  gem 'pronto-rails_schema', require: false
+  # gem 'pronto-scss', require: false
+  gem 'bullet'
+  gem 'active_record_query_trace'
+  gem 'capistrano', '~> 3.6'
+  # gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-figaro-yml'
+  gem 'capistrano-sidekiq'
+end
+
 gem 'inline_svg'
-# Omniauth
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 gem 'omniauth-twitter'
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 gem 'unicorn'
-# Use posgresql as the database for Active Record
 gem 'pg', '~> 0.18.4'
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
-# Flexible authentication solution for Rails with Warden
 gem 'devise',           '~> 4.2'
 gem 'devise_invitable', '~> 1.7.0'
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'font-awesome-rails'
 gem 'carrierwave'
@@ -60,47 +88,4 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'phonelib'
 gem 'data_migrate'
-
-group :development, :test do
-  gem 'byebug'
-  gem 'colorize', '~> 0.8.1'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'pronto', git: 'https://github.com/vovka/pronto.git', branch: 'master'
-  gem 'pronto-rubocop', require: false
-  gem 'pronto-flay', require: false
-  gem 'pronto-rails_best_practices', require: false
-  gem 'pronto-rails_schema', require: false
-  # gem 'pronto-scss', require: false
-  gem 'bullet'
-  gem 'active_record_query_trace'
-  gem 'capistrano', '~> 3.6'
-  # gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-rvm'
-  gem 'capistrano-rails', '~> 1.2'
-  gem 'capistrano3-unicorn'
-  gem 'capistrano-figaro-yml'
-  gem 'capistrano-sidekiq'
-end
-
-group :test do
-  gem 'capybara'
-  gem 'rspec-html-matchers'
-  gem 'simplecov', :require => false
-end
-
-group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-  gem 'meta_request'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'rails-erd'
-  gem 'annotate'
-  gem 'mailcatcher'
-  gem 'xray-rails'
-end
-
-group :production do
-  gem 'htmlcompressor'
-end
+gem 'backup'
