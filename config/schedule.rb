@@ -18,6 +18,10 @@
 # end
 
 every 1.day, at: '3:00 am' do
+  command "bundle exec backup perform -t distodi -c config/backup/config.rb"
+end
+
+every 1.day, at: '3:15 am' do
   emails = %w( scherbina.v@gmail.com irinakrejcarova@gmail.com anna.sobol.92@gmail.com )
   rake "db:dump db:dump:send EMAILS=\"#{emails.join(", ")}\""
 end
