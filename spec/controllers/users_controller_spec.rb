@@ -89,7 +89,7 @@ describe UsersController do
 
       patch :update, { id: user.to_param, user: valid_attributes }
 
-      expect(response).to redirect_to(user)
+      expect(response).to redirect_to(root_path)
     end
 
     it "defines an instance variable" do

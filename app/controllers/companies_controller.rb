@@ -35,7 +35,7 @@ class CompaniesController < ApplicationController
   def update
     authorize @company
     if @company.update(company_params)
-      redirect_to @company, notice: t(".notice")
+      redirect_to root_path, notice: t(".notice")
     else
       render :edit
     end
