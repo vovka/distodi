@@ -127,7 +127,8 @@
                 <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
               </div>
               <div class="photo_input" ng-show="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')">
-                <%= f.file_field :picture, :"data-file" => "true", :"data-index" => 0 %>
+                <%= f.file_field :picture, :"data-file" => "true", :"data-index" => 0,
+                :"accept" => "image/jpg, image/jpeg, image/png" %>
                 <%= inline_svg "plus.svg" %>
               </div>
             </div>
@@ -137,7 +138,8 @@
                 <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 1)" %>
               </div>
               <div class="photo_input" ng-show="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')">
-                <%= f.file_field :picture2, :"data-file" => "true", :"data-index" => 1 %>
+                <%= f.file_field :picture2, :"data-file" => "true", :"data-index" => 1,
+                :"accept" => "image/jpg, image/jpeg, image/png" %>
                 <%= inline_svg "plus.svg" %>
               </div>
             </div>
@@ -147,7 +149,8 @@
                 <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 2)" %>
               </div>
               <div class="photo_input" ng-show="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')">
-                <%= f.file_field :picture3, :"data-file" => "true", :"data-index" => 2 %>
+                <%= f.file_field :picture3, :"data-file" => "true", :"data-index" => 2,
+                :"accept" => "image/jpg, image/jpeg, image/png" %>
                 <%= inline_svg "plus.svg" %>
               </div>
             </div>
@@ -157,7 +160,8 @@
                 <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 3)" %>
               </div>
               <div class="photo_input" ng-show="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')">
-                <%= f.file_field :picture4, :"data-file" => "true", :"data-index" => 3 %>
+                <%= f.file_field :picture4, :"data-file" => "true", :"data-index" => 3,
+                :"accept" => "image/jpg, image/jpeg, image/png" %>
                 <%= inline_svg "plus.svg" %>
               </div>
             </div>

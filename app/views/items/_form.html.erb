@@ -55,7 +55,8 @@
         <%= f.file_field :picture,
                          class: 'inputfile',
                          :"data-file" => "true",
-                         :"data-index" => 0 %>
+                         :"data-index" => 0,
+                         :"accept" => "image/jpg, image/jpeg, image/png" %>
         <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
       </div>
 
@@ -71,7 +72,8 @@
             <%= inline_svg "plus.svg" %>
             <%= f.file_field :"picture#{i + 1}",
                              :"data-file" => "true",
-                             :"data-index" => i %>
+                             :"data-index" => i,
+                             :"accept" => "image/jpg, image/jpeg, image/png" %>
             <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, #{i})" %>
           </div>
         </div>

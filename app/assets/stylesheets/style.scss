@@ -3750,6 +3750,13 @@ option {
     text-align: left;
     margin-bottom: 10px;
   }
+  .image.user{
+    .field_with_errors{
+      width: calc(100% - 1px);
+      height: calc(100% - 1px);
+      border: 1px solid red;
+    }
+  }
 }
 .left_form_service_create.margin{
   margin-top: -20px;
@@ -5750,7 +5757,6 @@ input:-webkit-autofill{
   .image{
     width: 300px;
     height: 253px;
-    overflow: hidden;
     border-radius: 4px;
     border: 1px solid #d3d3d3;
     &:hover{
