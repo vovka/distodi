@@ -14,9 +14,16 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+
+  def create
+    ActiveRecord::Base.transaction do
+      super
+      if resource.valid?
+        UserMailer.confirmation_email(resource).deliver_later
+        CreateDemoDataWorker.perform_async(resource.class, resource.id)
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
