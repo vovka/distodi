@@ -281,6 +281,9 @@
   .sent_image{
     margin-top: 30px;
   }
+  .destroy_user + .edit_user.ng-valid ol li{
+    width: 80%;
+  }
   .actions_but a{
     padding: 11px calc(43% - 39px)
   }
