@@ -57,26 +57,13 @@
                 prompt: t(".select_company")
               },
               {
-                :"ng-change" => "changedCompany({ myself: '#{@service.myself_option.id}', other: '#{@service.other_company_option.id}' })",
+                :"ng-change" => "changedCompany({ other: '#{@service.other_company_option.id}' })",
                 :"ng-model" => "company"
               } %>
           </div>
           <div ng-show="showInviteCompany">
-            <p class="field_name">
-              <%= t(".new_company") %>
-            </p>
-            <div class="textarea">
-              <%= text_area "text", "company_name", placeholder: t(".new_company_name") %>
-            </div>
             <div class="select">
               <label>
-                <input type="checkbox"/>
-                <i>
-                  <%= image_tag "select.png" %>
-                </i>
-                <span>
-                  <%= t(".send_log") %>
-                </span>
                 <div class="company_email">
                   <p class="field_name">
                     <%= t(".company_email") %>

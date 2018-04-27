@@ -1711,7 +1711,7 @@ footer hr {
 }
 
 .service_panel {
-  background: #edf9f1;
+  background:#f3f3f3;
   border-radius: 4px;
   padding-left: 18px;
   height: 42px;
@@ -1730,6 +1730,20 @@ footer hr {
       background: asset-url("eye") no-repeat 0 center;
       background-size: 24px;
       padding-left: 32px;
+      &:hover::after {
+        content: "View or edit your current service";
+        position: absolute;
+        z-index: 600;
+        background: rgba(255, 255, 255 ,0.8); /* Полупрозрачный цвет фона */
+        font-family: 'MuseoSansCyrl_1';
+        font-size: 14px;
+        padding: 0px 15px; /* Поля */
+        border: 1px solid #149b4c;
+        border-radius: 4px;
+        margin-left: -260px;
+        color: black;
+        margin-top: 45px;
+      }
 
       &.disabled {
         color: #149b4c;
@@ -3965,11 +3979,11 @@ input:-webkit-autofill{
     float: left;
     border: 1px solid #f3f3f3;
     border-radius: 4px;
-    padding: 16px 15px;
+    padding: 18px 15px;
     font-size: 14px;
     color: #1f1f1f;
     letter-spacing: 0;
-    line-height: 18px;
+    line-height: 14px;
     text-align: left;
     max-width: 270px;
     min-width: 270px;
@@ -4011,7 +4025,6 @@ input:-webkit-autofill{
   display: block;
 }
 .left_form_service_create .form_service_create .select .company_email{
-  display: none;
   margin-top: 20px;
 }
 .left_form_service_create .form_service_create .select .company_email input{
@@ -4044,6 +4057,9 @@ input:-webkit-autofill{
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   .destroy_user + .edit_user.ng-valid ol li { float: left; }
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .left_form_service_create .form_service_create ol li.price { float: left; }
 }
 .left_form_service_create .form_service_create .price input{
   width: 597px;
@@ -6109,15 +6125,16 @@ input:-webkit-autofill{
       width: 100%;
       margin-top: -30px;
       .block{
-        float: left;
-        width: 50%;
+        width: calc(50% - 25px);
         color:#1f1f1f;
         letter-spacing:0;
         line-height:20px;
         text-align:left;
         float: left;
         font-size:14px;
-        margin-top: 30px; 
+        margin-top: 30px;
+        height: 74px;
+        padding-right: 25px; 
         a{
           margin: 0;
         }

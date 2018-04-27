@@ -25,7 +25,7 @@ class ServiceDecorator < Draper::Decorator
   end
 
   def companies_options
-    Company.all + [other_company_option]
+    Company.joins(:assigned_services => :item).where(items: { user: user }).where.not(name: [nil, ""]).uniq + [other_company_option]
   end
 
   def companies_options_edit
