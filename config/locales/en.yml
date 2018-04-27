@@ -488,8 +488,23 @@ en:
       show: SHOW
   checkouts:
     new:
-      support_with_paypal: "Support us with <a href=\"https://www.paypal.me/Krejcarova\" target=\"new\">PayPal.me https://www.paypal.me/Krejcarova</a>, or with online checkout below"
-
+      support_with_paypal: "Support us with , or with online checkout below"
+      donation_text: "<p>Distodi is helping to proof value of your property and increase cost of it as well as establishing reliability between seller and buyer in nearly every country around the world.</p>
+                      <p>Our universal service book is a central place and one entry point for all your types of property and for all kind of services. We help people to establish trust and do support they need to have confiding reputation.</p>
+                      <p>By donating money to Distodi you are supporting the team of developers who would like to make Distodi available for your Country.</p>
+                      <p>Please find below donations information <a href=\"https://www.paypal.me/Krejcarova\" target=\"new\">PayPal</a></p>
+                      <p>You can donate any amount, we appreciate all.</p>
+                      <span>Rou money we will be investing in the following arias:</span>
+                      <span>Technical enchantment of new Distodi modules</span>
+                      <span>Research and implementation new items (properties for service)</span>
+                      <span>Developing small countries and language localization</span>
+                      <span>Design enchantment</span>
+                      <span>Mobile phone application and localization</span>
+                      <p>We don’t know your feelings; however we are creating for you the tool for trustful and honest relationships.</p>"
+      your_value: Your value
+      iryna: <p>Kind regards,</p>
+            <p>Iryna Krejcarova</p>
+            <p>(Distodi architect)</p>
   layouts:
     item:
       transferred_items: "New"
@@ -504,6 +519,7 @@ en:
       services: "services"
       help: "Help"
       language: Language
+      donation: Donation
     new:
       updates: "UPDATES"
       questions: "QUESTIONS AND ANSVERS"

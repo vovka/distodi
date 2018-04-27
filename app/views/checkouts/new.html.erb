@@ -1,5 +1,12 @@
-<%= t(".support_with_paypal").html_safe %>
+<div class="donation_content">
+  <%= t(".donation_text").html_safe %>
+  <div class="donation_photo">
+    <div class="description">
+      <%= t(".iryna").html_safe %>
+    </div>
+    <%= image_tag "Iryna_Distodi_Donate_page.jpg" %>
+  </div>
+  <%= render 'form' %>
+</div>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', checkouts_path %>
