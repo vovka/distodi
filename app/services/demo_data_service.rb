@@ -1,5 +1,5 @@
 class DemoDataService
-  SERVICES_AMOUNT_RANGE = 1..1
+  SERVICES_AMOUNT_RANGE = 10..10
   DEFAULT_COUNTRY = "Ukraine"
   DEFAULT_LAST_NAME = "-"
   DEMO_TITLE_PLACEHOLDER = "[DEMO] "
@@ -14,9 +14,11 @@ class DemoDataService
   def perform
     with_user_default_fields do
       Category.all.each do |category|
-        item = Item.demo.create item_attributes_for(category).merge(category: category, user: user)
+        item = user.items.new item_attributes_for(category)
+        item.save(validate: false)
         services_amount.times do
-          item.services.create service_attributes_for(category)
+          service = item.services.new service_attributes_for(category)
+          service.save(validate: false)
         end
       end
     end
@@ -44,6 +46,8 @@ class DemoDataService
   def item_attributes_for(category)
     category_name = category.name.underscore
     {
+      demo: true,
+      category: category,
       title: DEMO_TITLE_PLACEHOLDER + item_title_for(category_name),
       picture: picture_for(category_name)
     }
@@ -73,7 +77,11 @@ class DemoDataService
   end
 
   def picture_for(category_name)
-    File.open(Rails.root.join("app/assets/images/demo_#{category_name}.jpg"))
+    File.open(picture_path(category_name))
+  end
+
+  def picture_path(category_name)
+    Rails.root.join("app/assets/images/demo_#{category_name}.jpg")
   end
 
   def service_next_control_for

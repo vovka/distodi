@@ -19,8 +19,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
     ActiveRecord::Base.transaction do
       super
       if resource.valid?
-        UserMailer.confirmation_email(resource).deliver_later
-        CreateDemoDataWorker.perform_async(resource.class, resource.id)
+        resource.after_sign_up_actions!
       end
     end
   end

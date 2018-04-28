@@ -34,13 +34,15 @@ class Service < ActiveRecord::Base
 
   include IdCodeable
 
-  default_scope { where demo: false }
-  scope :demo, -> { unscoped.where demo: true }
+  scope :without_demo, -> { where demo: false }
+  scope :with_demo, -> { unscope(where: :demo) }
   scope :pending, -> { where(status: STATUS_PENDING) }
   scope :approved, -> { where(status: STATUS_APPROVED) }
   scope :declined, -> { where(status: STATUS_DECLINED) }
   scope :user_services, ->(user_id) { joins(item: :user).where("users.id = ?", user_id) }
   scope :unconfirmed, -> { where("company_id IS NOT NULL AND confirmed IS NULL") }
+
+  default_scope { without_demo }
 
   validates :reason, presence: true,
                      length: { maximum: 1023 },
@@ -104,7 +106,9 @@ class Service < ActiveRecord::Base
   end
 
   def send_calendar_events
-    SendServiceCalendarEventsWorker.perform_async(id)
+    unless item.demo?
+      SendServiceCalendarEventsWorker.perform_async(id)
+    end
   end
 
   private

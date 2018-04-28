@@ -25,6 +25,13 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe ".from_omniauth" do
+    it "when no profile and no user"
+    it "when no profile and user exists"
+    it "when profile exists and no user"
+    it "when both profile and user exist"
+  end
 end
 
 # == Schema Information

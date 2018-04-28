@@ -20,9 +20,11 @@ class Item < ActiveRecord::Base
   mount_uploader :picture4, ItemUploader
   mount_uploader :picture5, ItemUploader
 
-  default_scope { where demo: false }
-  scope :demo, -> { unscoped.where demo: true }
+  scope :without_demo, -> { where demo: false }
+  scope :with_demo, -> { unscope(where: :demo) }
   scope :unconfirmed_services, -> { joins(:services).where("services.company_id IS NOT NULL AND services.confirmed IS NULL") }
+
+  default_scope { without_demo }
 
   after_create :ensure_token
 
