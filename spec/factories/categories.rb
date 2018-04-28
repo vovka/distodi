@@ -1,5 +1,7 @@
 FactoryGirl.define do
   factory :category do
+    name { Faker::Lorem.word }
+
     trait :with_service_kinds do
       after :create do |category|
         category.service_kinds = create_list :service_kind, 3

@@ -7,13 +7,13 @@ class Company < ActiveRecord::Base
 
   URL_REGEXP = /\A(https?:\/\/)?(www\.)?[-a-zA-Z0-9._]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.,~#?!&\/=]*)\z/
 
-  has_many :services
-  # has_many :items, through: :services
   has_many :items, as: :user
+  has_many :services, through: :items
   has_many :assigned_services, foreign_key: :approver_id,
                                class_name: "Service",
                                as: :approver
   has_many :service_kinds
+  has_one :profile, dependent: :nullify
 
   validates_presence_of :name
   validates :phone, phone: true, allow_blank: true
@@ -47,9 +47,6 @@ class Company < ActiveRecord::Base
 
   def map_address
     [city, address].compact.join(", ")
-  end
-
-  def self.after_sign_up_actions!(_)
   end
 end
 

@@ -16,6 +16,11 @@ module OauthableModel
     self.last_name = name.last
   end
 
+  def after_sign_up_actions!
+    UserMailer.confirmation_email(self).deliver_later
+    CreateDemoDataWorker.perform_async(self.class, id)
+  end
+
   class_methods do
     def from_omniauth(auth)
       uid_column = :"#{auth.provider.underscore}_uid"
@@ -34,12 +39,11 @@ module OauthableModel
             if resource.nil?
               attributes.merge! email: auth.info.email
             end
-          else
-            options.merge! validate: false
           end
+          options.merge! validate: false
           resource ||= profile.send(:"build_#{association_name}", attributes)
           profile.send(:"#{association_name}").save(options)
-          after_sign_up_actions!(resource)
+          resource.after_sign_up_actions!
         end
         resource
       else
@@ -53,11 +57,13 @@ module OauthableModel
             end
             resource
           else
-            resource = create email: auth.info.email,
+            resource = new email: auth.info.email,
                    password: Devise.friendly_token[0, 20],
                    full_name: auth.info.name,
                    picture: auth.info.image,
                    profile_attributes: { uid_column => auth.uid }
+            resource.save(validate: false)
+            resource
           end
         else
           resource = new password: Devise.friendly_token[0, 20],
@@ -67,14 +73,9 @@ module OauthableModel
           resource.save(validate: false)
           resource
         end
-        after_sign_up_actions!(resource)
+        resource.after_sign_up_actions!
         resource
       end
-    end
-
-    def after_sign_up_actions!(resource)
-      UserMailer.confirmation_email(resource).deliver_later
-      CreateDemoDataWorker.perform_async(resource.class, resource.id)
     end
   end
 end

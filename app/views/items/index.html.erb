@@ -2,7 +2,7 @@
   <p><%= t('.my_items') %></p>
   <% @items.each.with_index do |item, i| %>
     <div class="item">
-      <%= link_to  edit_item_path(item) do %>
+      <%= link_to edit_item_path(item) do %>
         <div class="photo_item_index" style="background: url(<%= item.picture.list.url %>) no-repeat center center; background-size: cover;">
           <span><%= t('.test') %></span>
         </div>

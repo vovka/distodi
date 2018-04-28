@@ -14,9 +14,15 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+
+  def create
+    ActiveRecord::Base.transaction do
+      super
+      if resource.valid?
+        resource.after_sign_up_actions!
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
