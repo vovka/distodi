@@ -1,4 +1,5 @@
 class CheckoutsController < InheritedResources::Base
+  layout 'item'
   before_action :authenticate_user_or_company!
   before_action :set_amount, only: :create
 

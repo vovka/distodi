@@ -5,7 +5,7 @@
       <p class="plus">+</p>
     <% end %>
   </div>
-  <p><%= t(".hey") %><%= current_user_or_company.first_name %>,</p>
+  <p><%= t(".hey") %><%= current_user_or_company.first_name %></p>
   <%= link_to t(".add#{"_company" if company_signed_in?}"), new_item_path %>
   <p><%= t(".track") %></p>
 </div>

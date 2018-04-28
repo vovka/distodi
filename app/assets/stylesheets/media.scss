@@ -1868,6 +1868,36 @@
   .service_view .left_part .company_info .block{
     height: 112px;
   }
+  .donation_content{
+    margin-left: 25px;
+    width: calc(100% - 50px);
+    .form-inputs{
+      width: 100%;
+      padding: 0;
+      input{
+        width: calc(100% - 16px);
+      }
+      select{
+        width: calc(100% - 0px);
+      }
+    }
+    .values{
+      margin-top: 0;
+      input.string.optional{
+        width: calc(100% - 17px);
+      }
+    }
+    .form-action{
+      input{
+        width: 100%;
+      }
+      a{
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}
