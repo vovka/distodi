@@ -18,7 +18,7 @@
 # end
 
 every 1.day, at: '3:00 am' do
-  command "bundle exec backup perform -t distodi -c config/backup/config.rb"
+  script "backup"
 end
 
 every 1.day, at: '3:15 am' do

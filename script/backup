@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bundle exec backup perform -t distodi -c config/backup/config.rb
