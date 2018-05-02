@@ -130,9 +130,11 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Your_filename",
+        render pdf: "Distodi_report",
+        header: { html: { template: "items/pdf_header.html.erb" } },
         template: "items/show_pdf.html.erb",
-        layout: 'pdf.html'
+        layout: 'pdf.html',
+        footer: { html: { template: "items/pdf_footer.html.erb" } }
       end
     end
   end
