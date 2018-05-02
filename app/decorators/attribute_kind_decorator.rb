@@ -2,18 +2,18 @@ class AttributeKindDecorator < Draper::Decorator
   delegate_all
 
   VALUES = {
-    AttributeKindPolicy::FUEL_TYPE => ["Petrol", "Diesel", "Biodiesel",
+    AttributeKindPolicy::FUEL_TYPE => ["Please, select fuel type", "Petrol", "Diesel", "Biodiesel",
                                         "Propane", "Metan", "Electricity",
                                         "Solid fuels"],
-    AttributeKindPolicy::TYPE_OF_ENGINE => ["Gasoline", "Diesel", "Biodiesel",
+    AttributeKindPolicy::TYPE_OF_ENGINE => ["Please, select type of engine", "Gasoline", "Diesel", "Biodiesel",
                                     "Electric", "Hybrid", "Steam"],
-    AttributeKindPolicy::TRANSMISSION => ["Manual", "Automatic",
+    AttributeKindPolicy::TRANSMISSION => ["Please, select transmission", "Manual", "Automatic",
                                           "Robotic", "Variator"],
-    AttributeKindPolicy::GENDER => ["Male", "Female", "Male - Female"],
-    AttributeKindPolicy::CAR_SUBCATEGORY => ["Passenger car", "Truck", "SUV",
+    AttributeKindPolicy::GENDER => ["Please, select gender", "Male", "Female", "Male - Female"],
+    AttributeKindPolicy::CAR_SUBCATEGORY => ["Please, select car subcategory", "Passenger car", "Truck", "SUV",
                                           "Campervan", "Mini truck", "Van",
                                           "Minivan"],
-    AttributeKindPolicy::TYPE_OF_BODY => ["Microcar", "Subcompact car",
+    AttributeKindPolicy::TYPE_OF_BODY => ["Please, select type of body", "Microcar", "Subcompact car",
                                           "Compact car", "Midi-size car",
                                           "Full-size car", "Entry-level luxury car",
                                            "Midi-size luxury car",
@@ -25,32 +25,32 @@ class AttributeKindDecorator < Draper::Decorator
                                            "SUV-Mid size", "SUV-Full size",
                                            "Pickup truck-mini", "Pickup truck-mid size",
                                            "Pickup truck-full size"],
-    AttributeKindPolicy::TYPE_OF_COMPLETE_SET => ["Basic", "Standart", "Classic",
+    AttributeKindPolicy::TYPE_OF_COMPLETE_SET => ["Select type of complete set", "Basic", "Standart", "Classic",
                                                   "Maximum", "Luxury"],
-    AttributeKindPolicy::BICYCLE_SUBCATEGORY => ["Electric bicycle", "Cross country", "Downhill",
+    AttributeKindPolicy::BICYCLE_SUBCATEGORY => ["Please, select bicycle subcategory", "Electric bicycle", "Cross country", "Downhill",
                                                  "Road racing", "Triathlon",
                                                   "Track", "Cruiser", "Touring",
                                                   "Cyclocross", "Dutch", "Fatbike",
                                                   "BMX", "Trial", "Folding",
                                                   "Enduro", "Dirt jump",
                                                   "Freeride"],
-    AttributeKindPolicy::FRAME_MATERIAL => ["Steel", "Hi Tensile", "Cromomolibden",
+    AttributeKindPolicy::FRAME_MATERIAL => ["Please, select frame material", "Steel", "Hi Tensile", "Cromomolibden",
                                             "Aluminium", "Magnesium", "Carbon",
                                             "Titanium"],
-    AttributeKindPolicy::TRACTOR_SUBCATEGORY => ["Utility tractors", "Row crop tractor", "Orchard type",
+    AttributeKindPolicy::TRACTOR_SUBCATEGORY => ["Please, select tractor subcategory", "Utility tractors", "Row crop tractor", "Orchard type",
                                             "Industrial tractor", "Garden tractor", "Rotary tillers",
                                             "Implement carrier", "Earth moving tractors"],
-    AttributeKindPolicy::FRONT_END_LOADER => ["Grain bucket", "Screening bucket", "Snow bucket",
+    AttributeKindPolicy::FRONT_END_LOADER => ["Please, select front end loader", "Grain bucket", "Screening bucket", "Snow bucket",
                                             "4 in 1 bucket", "2 in 1 bucket", "Grass fork",
                                             "Wood fork", "Soft clamp", "Pallet fork", "Fork", "Snow blower",
                                             "Sweeper", "Snow blade", "V snow blade"],
-    AttributeKindPolicy::TEMPERATURE_CONTROL => ["Yes", "No"],
-    AttributeKindPolicy::YACHT_SUBCATEGORY => ["Powerboat & Motorboat", "Cuddy",
+    AttributeKindPolicy::TEMPERATURE_CONTROL => ["Please, select temperature control", "Yes", "No"],
+    AttributeKindPolicy::YACHT_SUBCATEGORY => ["Please, select yacht subcategory", "Powerboat & Motorboat", "Cuddy",
                                                 "Cruiser", "Jet Boat",
                                                 "Pontoon & Deck Boat", "Runabout",
                                                 "Ski & Wakeboarding Boat", "Other Powerboat",
                                                 "Sailboat"],
-    AttributeKindPolicy::MATERIAL => ["Steel", "Wood", "Aluminium",
+    AttributeKindPolicy::MATERIAL => ["Please, select material", "Steel", "Wood", "Aluminium",
                                       "Woodcore epoxy", "Concrete",
                                       "Composite", "Epoxy composite", "Grp - sandwich",
                                       "Hypalon neoprene", "Pvc", "Other"]
@@ -83,7 +83,7 @@ class AttributeKindDecorator < Draper::Decorator
     if brand?
       # context[:item].selected_category.brand_options.map { |brand| [brand.name, brand.name] },
       [
-        ActionController::Base.helpers.options_for_select(context[:item].selected_category.brand_options.map { |brand| [brand.name, brand.name] }, selected: context[:item].selected_brand.try(:name) || "BMW"),
+        ActionController::Base.helpers.options_for_select(["Please, select brand"] + context[:item].selected_category.brand_options.map { |brand| [brand.name, brand.name] }, selected: context[:item].selected_brand.try(:name) || 'Please, select brand', disabled: 'Please, select brand'),
         { selected: context[:item].selected_brand.try(:name) || "BMW" },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
@@ -95,8 +95,8 @@ class AttributeKindDecorator < Draper::Decorator
       ]
     elsif model?
       [
-        context[:item].selected_brand.model_options.map { |model| [model.name, model.name] },
-        { selected: characteristic.try(:value) },
+        ["Please, select model"] + context[:item].selected_brand.model_options.map { |model| [model.name, model.name] },
+        { selected: 'Please, select model', disabled: 'Please, select model' },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value),
@@ -118,8 +118,8 @@ class AttributeKindDecorator < Draper::Decorator
       ]
     elsif weight?
       [
-        (2..50).step(0.5).map { |i| "#{i} kg" },
-        { selected: characteristic.try(:value).presence },
+        ["Please, select weight"] + (2..50).step(0.5).map { |i| "#{i} kg" },
+        { selected: 'Please, select weight', disabled: 'Please, select weight' },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -129,8 +129,8 @@ class AttributeKindDecorator < Draper::Decorator
       ]
     elsif engine_displacement?
       [
-        (0.5..20).step(0.5).map { |i| "#{i} L" },
-        { selected: characteristic.try(:value).presence },
+        ["Please, select engine displacement"] + (0.5..20).step(0.5).map { |i| "#{i} L" },
+        { selected: 'Please, select engine displacement', disabled: 'Please, select engine displacement' },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -140,8 +140,8 @@ class AttributeKindDecorator < Draper::Decorator
       ]
     elsif wheel_diameter?
       [
-        (8..30).map { |i| "#{i} inch" },
-        { selected: characteristic.try(:value).presence },
+        ["Please, select wheel diameter"] + (8..30).map { |i| "#{i} inch" },
+        { selected: 'Please, select wheel diameter', disabled: 'Please, select wheel diameter' },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -151,8 +151,8 @@ class AttributeKindDecorator < Draper::Decorator
       ]
     elsif number_of_gears?
       [
-        (1..40).map { |i| "#{i}" },
-        { selected: characteristic.try(:value).presence },
+        ["Please, select number of gears"] + (1..40).map { |i| "#{i}" },
+        { selected: 'Please, select number of gears', disabled: 'Please, select number of gears' },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -170,13 +170,153 @@ class AttributeKindDecorator < Draper::Decorator
           chosen: ""
         }
       ]
-    elsif fuel_type? || type_of_engine? || transmission? || gender? || car_subcategory? ||
-          type_of_body? || type_of_complete_set? || bicycle_subcategory? ||
-          frame_material? || tractor_subcategory? || front_end_loader? || temperature_control? ||
-          yacht_subcategory? || material?
+    elsif fuel_type?
       [
         values,
-        { selected: characteristic.try(:value).presence },
+        { selected: 'Please, select fuel type', disabled: 'Please, select fuel type' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif type_of_engine?
+      [
+        values,
+        { selected: 'Please, select type of engine', disabled: 'Please, select type of engine' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif transmission?
+      [
+        values,
+        { selected: 'Please, select transmission', disabled: 'Please, select transmission' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif gender?
+      [
+        values,
+        { selected: 'Please, select gender', disabled: 'Please, select gender' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif car_subcategory?
+      [
+        values,
+        { selected: 'Please, select car subcategory', disabled: 'Please, select car subcategory' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif type_of_body?
+      [
+        values,
+        { selected: 'Please, select type of body', disabled: 'Please, select type of body' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif type_of_complete_set?
+      [
+        values,
+        { selected: 'Select type of complete set', disabled: 'Select type of complete set' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif bicycle_subcategory?
+      [
+        values,
+        { selected: 'Please, select bicycle subcategory', disabled: 'Please, select bicycle subcategory' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif frame_material?
+      [
+        values,
+        { selected: 'Please, select frame material', disabled: 'Please, select frame material' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif tractor_subcategory?
+      [
+        values,
+        { selected: 'Please, select tractor subcategory', disabled: 'Please, select tractor subcategory' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+      elsif front_end_loader?
+      [
+        values,
+        { selected: 'Please, select front end loader', disabled: 'Please, select front end loader' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif temperature_control?
+      [
+        values,
+        { selected: 'Please, select temperature control', disabled: 'Please, select temperature control' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif yacht_subcategory?
+      [
+        values,
+        { selected: 'Please, select yacht subcategory', disabled: 'Please, select yacht subcategory' },
+        { name: "item[characteristics[#{id}]]",
+          id: "characteristic#{id}",
+          value: characteristic.try(:value).presence,
+          disabled: characteristic.try(:value).present?,
+          chosen: ""
+        }
+      ]
+    elsif material?
+      [
+        values,
+        { selected: 'Please, select material', disabled: 'Please, select material' },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -188,6 +328,7 @@ class AttributeKindDecorator < Draper::Decorator
       [
         { id: "characteristic#{id}",
           value: characteristic.try(:value),
+          placeholder: placeholder,
           disabled: characteristic.try(:value).present?
         }
       ]
@@ -195,6 +336,49 @@ class AttributeKindDecorator < Draper::Decorator
   end
 
   private
+
+  def placeholder
+    {
+      'Brand' => 'Please, enter brand',
+      'Model' => 'Please, enter model',
+      'Year' => 'Please, enter year',
+      'Car subcategory' => 'Please, enter car subcategory',
+      'Bicycle subcategory' => 'Please, enter bicycle subcategory',
+      'Yacht subcategory' => 'Please, enter yacht subcategory',
+      'Color' => 'Please, enter color',
+      'Type of body' => 'Please, enter type of body',
+      'Country of using' => 'Please, enter country of using',
+      'Country of manufacture' => 'Please, enter country of manufacture',
+      'Frame size' => 'Please, enter frame size',
+      'Wheel diameter' => 'Please, enter wheel diameter',
+      'Type of engine' => 'Please, enter type of engine',
+      'Fuel type' => 'Please, enter fuel type',
+      'Transmission' => 'Please, enter transmission',
+      'Miliage' => 'Please, enter miliage',
+      'Gender' => 'Please, enter gender',
+      'Frame material' => 'Please, enter frame material',
+      'Weight' => 'Please, enter Weight',
+      'Number of gears' => 'Please, enter number of gears',
+      'Suspension' => 'Please, enter suspension',
+      'Type of complete set' => 'Please, enter type of complete set',
+      'Engine displacement' => 'Please, enter engine displacement',
+      'Tractor subcategory' => 'Please, enter tractor subcategory',
+      'Front End Loader' => 'Please, enter front End Loader',
+      'Electronic / navigation system' => 'Please, enter system',
+      'Rated Engine power hp' => 'Please, enter rated Engine power',
+      'Hydraulic system' => 'Please, enter hydraulic system',
+      'Temperature control' => 'Please, enter temperature control',
+      'Length / Width / Draught' => 'Please, enter values',
+      'Material' => 'Please, enter material',
+      'Displacement' => 'Please, enter displacement',
+      'Number of cabins' => 'Please, enter Number of cabins',
+      'Primary Fuel Type' => 'Please, enter primary Fuel Type',
+      'Number of decks' => 'Please, enter number of decks',
+      'Fresh water supply' => 'Please, enter Fresh water supply',
+      'Other options' => 'Please, enter other options',
+      'Safety features' => 'Please, enter safety features'
+    }.fetch(attribute_kind.title)
+  end
 
   def characteristic
     @characteristic ||= context[:item].characteristics.find { |c| c.attribute_kind == object }

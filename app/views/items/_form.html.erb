@@ -1,4 +1,4 @@
-<div  class="form"
+<div class="form"
       ng-controller="NewItemController as newItemController"
       ng-init='
         newItemController.images = <%=
@@ -78,7 +78,6 @@
           </div>
         </div>
       <%- end -%>
-
       <p class="additional_photo_text"><%= t(".comments") %></p>
       <%= f.text_area :comment, placeholder: t(".comments_placeholder") %>
     </div>
