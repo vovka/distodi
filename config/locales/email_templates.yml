@@ -35,47 +35,63 @@ en:
 
     add_service_email_to_company:
       add_service_company: |
-        <h1>The service was added!</h1>
+        <h1>Service successfully  added!</h1>
         <p>Hello,</p>
           
-        <p>One of the User selected you for his service.</p>
-        <p>Please log in your personal account in distodi.com and confirm that you have agreed the Service with 48 hours.</p>
-         
-        <p>Just begin!</p>
-        <p> distodi Customer Service Team</p>
+        <p>To approve that you have done this service, please log in your personal account at <a href="https://distodi.comt">Distodi</a> and confirm that you have agreed the service with 48 hours.</p>
+        <p>Distodi is one entry point  service book for all types of property. With the help of Distodi you have access to the data of all services, regardless of which brand their car, bicycle or a yacht. Data on all property owned by a person or he takes care of, is in one place.</p>
+
+        <h2>WHY TRACK YOUR SERVICE ACTIVITY AND WHY IT IS BENEFICIAL?</h2>
+        <p>· Distodi is a service book for your car, bicycle, electronic devices or even your house. Just for everything you take care of and would like to keep value.</p>
+        <p>· Distodi establishing trust between customers and service companies, and as the result between future buyers and sellers</p>
+        <p>· Clear prove of the services that were done</p>
+        <p>· Track your service activity</p>
+        <p>· Access to your service book from everywhere</p>
+        <p>· Adding additional value</p>
+        <p>· Download, print, or send history of service</p>
+
+        <p>Kind regards,</p>
+        <p>Luc Octobre from Distodi team</p>
 
     confirmation_email:
       confirmation: |
         <h1>Confirmation Your distodi.com account!</h1>
-        <p>Hello,</p>
+        <p>Hello, <%= @user.first_name %></p>
            
-        <p>Congratulations you start to use distodi.com a service for everything! Now you will be able to keep value of what you have! </p>  
-                  
+        <p>Congratulations you start to use <a href="https://distodi.comt">Distodi</a>  service book  for everything! Start to use Distodi today and keep value of your property!</p>  
+        <p>You next steps:</p>
+        <p>· log in into your account at distodi.com by using your email and password that you have created</p>
+        <p>· add information about your property</p>
+        <p>· add services that were done for your properties (items)</p>
+        <p>· in the case if some company done service for any of your item please ask this company to confirm service that was done</p>
+        <p>· download reports</p>
+        <p>· keep value of your properties!</p>
+        <p>Track all services for all your - cars, bicycles, tractors, yachts etc., Distodi is single platform for any brands. Not having a full-service history can wipe almost a quarter off the value of a used car, bicycle, computer, house or any other your property. For the honest owner, will be very easy to add value by legitimately tracking down a service history.</p>
+
         <p>Your user name is: <%= @user.first_name %></p>
         <p>Distodi establishing trust between customers and service companies, and as the result between future buyers and sellers</p>
         <p> ✔ Clear prove of the services that were done </p>
-        <p>  ✔ Track your service activity </p>
-        <p>  ✔ Access to your service book from everywhere </p>
-        <p>  ✔ Adding additional value </p>
-        <p>  ✔ Download, print, or send history of service </p>
+        <p> ✔ Track your service activity </p>
+        <p> ✔ Access to your service book from everywhere </p>
+        <p> ✔ Adding additional value </p>
+        <p> ✔ Download, print, or send history of service </p>
          
         <p>You can keep history of the service, print, safe or send service history.</p>
-        <p>Feel free to contact us if you have any questions.</p>
-         
-        <p>Just begin!</p>
-        <p>  distodi Customer Service Team</p>
+        <p>Kind regards,</p>
+           
+        <p>Luc Octobre from Distodi team</p>
 
     invite_company:
       invite: |
         <h1>Please use distodi.com</h1>
-        <p>Hello,</p>
+        <p>Hello <%= @company.email %></p>
            
-        <p>You have invite from user distodi.com.</p>
+        <p>One od Distodi user has invited you to join Distodi at <a href="https://distodi.comt">Distodi</a>  you can accept it through the link below.</p>
         <p>Please go to the link and finish registration!</p>
         <p><%= edit_company_registration_path(@company) %></p>
            
-        <p>Your email is: <%= @company.email %></p>
-           
+        <p>If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.</p>
+        <p>Track all services for all your - cars, bicycles, tractors, yachts etc., Distodi is single platform for any brands. Not having a full-service history can wipe almost a quarter off the value of a used car, bicycle, computer, house or any other your property. For the honest owner, will be very easy to add value by legitimately tracking down a service history.</p>
         <p>Distodi establishing trust between customers and service companies, and as the result between future buyers and sellers</p>
         <p> ✔ Clear prove of the services that were done </p>
         <p>  ✔ Track your service activity </p>
@@ -84,10 +100,9 @@ en:
         <p>  ✔ Download, print, or send history of service </p>
            
         <p>You can keep history of the service, print, safe or send service history.</p>
-        <p>Feel free to contact us if you have any questions.</p>
+        <p>Kind regards,</p>
            
-        <p>Just begin!</p>
-        <p>distodi Customer Service Team</p>
+        <p>Luc Octobre from Distodi team</p>
 
     reminder_service_email:
       reminder: |
@@ -115,10 +130,26 @@ en:
         <h1>The item was transfered to you</h1></p>
         <p>Hello <%= @receiver.full_name %>,</p>
            
-        <p>User <%= @sender.full_name %> has transferred you an item. Please check it at <%= user_url(@receiver, locale: I18n.locale) %>.</p>
+        <p>If you and the buyer agree to the sale you can „transfer item“
+         under byer account as item now belongs to new owner. All previous
+         services will be transferred to new owner. You have received this
+          email because you need to “accept” or “reject” item that was transferred.
+           In order to do it please go to your Distodi account.</p>
            
-        <p>Just begin!</p>
-        <p>  distodi Customer Service Team</p>
+        <p>· Buyer received money and all legal papers associated with item</p>
+        <p>· All information about item prices and services are correct</p>
+        <p>· You have confirmed “received item” to right person.</p>
+        <p>Distodi establishing trust between customers and service companies, and as the result between future buyers and sellers</p>
+        <p>✔ Clear prove of the services that were done</p>
+        <p>✔ Track your service activity</p>
+        <p>✔ Access to your service book from everywhere</p>
+        <p>✔ Adding additional value</p>
+        <p>✔ Download, print, or send history of service</p>
+        <p>You can keep history of the service, print, safe or send service history!</p>
+        <p>Kind regards,</p>
+        <p>Luc Octobre from Distodi team</p>
+        <p>Distodi Team</p>
+        <p>Please visit your  information pages <a href="https://distodi.com/en/about">About</a></p>
 
   company_mailer:
     reminder_service_email:
