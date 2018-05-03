@@ -94,9 +94,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif model?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select model', disabled: 'Please, select model'}
+      end
       [
         ["Please, select model"] + context[:item].selected_brand.model_options.map { |model| [model.name, model.name] },
-        { selected: 'Please, select model', disabled: 'Please, select model' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value),
@@ -117,9 +122,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif weight?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select weight', disabled: 'Please, select weight'}
+      end
       [
         ["Please, select weight"] + (2..50).step(0.5).map { |i| "#{i} kg" },
-        { selected: 'Please, select weight', disabled: 'Please, select weight' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -128,9 +138,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif engine_displacement?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select engine displacement', disabled: 'Please, select engine displacement'}
+      end
       [
         ["Please, select engine displacement"] + (0.5..20).step(0.5).map { |i| "#{i} L" },
-        { selected: 'Please, select engine displacement', disabled: 'Please, select engine displacement' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -139,9 +154,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif wheel_diameter?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select wheel diameter', disabled: 'Please, select wheel diameter'}
+      end
       [
         ["Please, select wheel diameter"] + (8..30).map { |i| "#{i} inch" },
-        { selected: 'Please, select wheel diameter', disabled: 'Please, select wheel diameter' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -150,9 +170,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif number_of_gears?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select number of gears', disabled: 'Please, select number of gears'}
+      end
       [
         ["Please, select number of gears"] + (1..40).map { |i| "#{i}" },
-        { selected: 'Please, select number of gears', disabled: 'Please, select number of gears' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -171,9 +196,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif fuel_type?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select fuel type', disabled: 'Please, select fuel type'}
+      end
       [
         values,
-        { selected: 'Please, select fuel type', disabled: 'Please, select fuel type' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -182,9 +212,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif type_of_engine?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select type of engine', disabled: 'Please, select type of engine'}
+      end
       [
         values,
-        { selected: 'Please, select type of engine', disabled: 'Please, select type of engine' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -193,9 +228,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif transmission?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select transmission', disabled: 'Please, select transmission'}
+      end
       [
         values,
-        { selected: 'Please, select transmission', disabled: 'Please, select transmission' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -204,9 +244,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif gender?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select gender', disabled: 'Please, select gender'}
+      end
       [
         values,
-        { selected: 'Please, select gender', disabled: 'Please, select gender' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -215,9 +260,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif car_subcategory?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select car subcategory', disabled: 'Please, select car subcategory'}
+      end
       [
         values,
-        { selected: 'Please, select car subcategory', disabled: 'Please, select car subcategory' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -226,9 +276,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif type_of_body?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select type of body', disabled: 'Please, select type of body'}
+      end
       [
         values,
-        { selected: 'Please, select type of body', disabled: 'Please, select type of body' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -237,9 +292,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif type_of_complete_set?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Select type of complete set', disabled: 'Select type of complete set'}
+      end
       [
         values,
-        { selected: 'Select type of complete set', disabled: 'Select type of complete set' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -248,9 +308,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif bicycle_subcategory?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select bicycle subcategory', disabled: 'Please, select bicycle subcategory'}
+      end
       [
         values,
-        { selected: 'Please, select bicycle subcategory', disabled: 'Please, select bicycle subcategory' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -259,9 +324,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif frame_material?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select frame material', disabled: 'Please, select frame material'}
+      end
       [
         values,
-        { selected: 'Please, select frame material', disabled: 'Please, select frame material' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -270,9 +340,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif tractor_subcategory?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select tractor subcategory', disabled: 'Please, select tractor subcategory'}
+      end
       [
         values,
-        { selected: 'Please, select tractor subcategory', disabled: 'Please, select tractor subcategory' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -280,10 +355,15 @@ class AttributeKindDecorator < Draper::Decorator
           chosen: ""
         }
       ]
-      elsif front_end_loader?
+    elsif front_end_loader?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select front end loader', disabled: 'Please, select front end loader'}
+      end
       [
         values,
-        { selected: 'Please, select front end loader', disabled: 'Please, select front end loader' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -292,9 +372,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif temperature_control?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select temperature control', disabled: 'Please, select temperature control'}
+      end
       [
         values,
-        { selected: 'Please, select temperature control', disabled: 'Please, select temperature control' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -303,9 +388,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif yacht_subcategory?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select yacht subcategory', disabled: 'Please, select yacht subcategory'}
+      end
       [
         values,
-        { selected: 'Please, select yacht subcategory', disabled: 'Please, select yacht subcategory' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
@@ -314,9 +404,14 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif material?
+      options = if characteristic.try(:value).present?
+        {selected: characteristic.try(:value).presence}
+      else
+        {selected: 'Please, select material', disabled: 'Please, select material'}
+      end
       [
         values,
-        { selected: 'Please, select material', disabled: 'Please, select material' },
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
