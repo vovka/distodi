@@ -50,6 +50,7 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+    @user = @user.present? ? @user.decorate : @user
   end
 
   def user_params

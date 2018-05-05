@@ -9,4 +9,8 @@ class UserDecorator < Draper::Decorator
   #       object.created_at.strftime("%a %m/%d/%y")
   #     end
   #   end
+
+  def profile_picture_url
+    picture.at_profile_page.url
+  end
 end

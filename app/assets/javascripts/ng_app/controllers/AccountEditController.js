@@ -10,7 +10,7 @@ var AccountEditController = function($scope, $timeout, $http, $q) {
     $scope.city = data.city;
     $scope.formattedAddress = data.address;
     $scope.postalCode = data.postal_code;
-    $scope.images = [data.picture_url];
+    $scope.images = [data.profile_picture_url];
   };
 
   $scope.changedPostalCode = function(locale) {

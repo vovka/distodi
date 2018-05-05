@@ -189,7 +189,7 @@
     </div>
   </div>
   <div class="right_form_service_create">
-    <%= image_tag(@service.item.picture_url, alt: @service.item.title) %>
+    <%= image_tag(@service.item.picture.at_service_page.url, alt: @service.item.title) %>
     <div class="service_form_info">
       <p>
         <%= t(".title") %>

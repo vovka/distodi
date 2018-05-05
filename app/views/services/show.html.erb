@@ -25,7 +25,7 @@
           <p> <%= characteristic.value %></p>
         <% end %>
         <div class="item_photo">
-          <%= image_tag(@item.picture_url, alt: @item.title) %>
+          <%= image_tag(@item.picture.at_service_page.url, alt: @item.title) %>
         </div>
         <div class="price">
           <% if @service.price.present? %>
@@ -49,8 +49,6 @@
         <p><%= t(".made") %></p>
         <%= @service.created_at.strftime("%d/%m/%Y") %>
       </div>
-      <!-- <p><%= t(".added") %></p>
-      <%= @service.created_at.strftime("%d/%m/%Y") %> -->
     </div>
     <div class="line"></div>
     <% if @service.company_id.present? %>
@@ -162,7 +160,7 @@
       <p> <%= @service.user.last_name %></p>
     </div>
     <div class="item_photo">
-      <%= image_tag(@item.picture_url, alt: @item.title) %>
+      <%= image_tag(@item.picture.at_service_page.url, alt: @item.title) %>
     </div>
     <div class="price">
       <% if @service.price.present? %>

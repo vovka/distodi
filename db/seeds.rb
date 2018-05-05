@@ -113,7 +113,7 @@ Company.first_or_create!(
   password: "11111111",
   password_confirmation: "11111111",
   name: DemoDataService::DEMO_TITLE_PLACEHOLDER + Faker::Company.name,
-  phone: Faker::PhoneNumber.phone_number,
+  # phone: Faker::PhoneNumber.phone_number,
   country: Faker::Address.country,
   city: Faker::Address.city,
   address: Faker::Address.street_address,
