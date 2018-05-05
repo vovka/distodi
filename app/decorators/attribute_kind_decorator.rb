@@ -472,7 +472,7 @@ class AttributeKindDecorator < Draper::Decorator
       'Fresh water supply' => 'Please, enter Fresh water supply',
       'Other options' => 'Please, enter other options',
       'Safety features' => 'Please, enter safety features'
-    }.fetch(attribute_kind.title)
+    }.fetch(attribute_kind.title, "Please, enter value")
   end
 
   def characteristic
