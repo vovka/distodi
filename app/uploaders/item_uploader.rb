@@ -23,4 +23,8 @@ class ItemUploader < PictureUploader
   version :list do
     process resize_to_fill: [250, 166]
   end
+
+  version :at_service_page do
+    process resize_to_fill: [312, 210]
+  end
 end

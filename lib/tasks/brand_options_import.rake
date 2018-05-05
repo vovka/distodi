@@ -7,7 +7,7 @@ namespace :brands_and_models do
   end
 
   def from_json_file(file_name, category_name)
-    category = Category.find_by(name: category_name)
+    category = Category.find_or_create_by(name: category_name)
     entities = JSON.parse(IO.read("#{file_name}.json"))
     entities[category_name].each do |entity|
       log "Importing #{entity}..."

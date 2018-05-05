@@ -94,14 +94,20 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif model?
-      options = if characteristic.try(:value).present?
+      config_options = if characteristic.try(:value).present?
         {selected: characteristic.try(:value).presence}
       else
         {selected: 'Please, select model', disabled: 'Please, select model'}
       end
+      options_for_select = if context[:item].selected_brand.present?
+        ["Please, select model"] + context[:item].selected_brand.model_options.map { |model| [model.name, model.name] }
+      else
+        config_options = {selected: I18n.t("attribute_kinds.new.select_brand_first"), disabled: I18n.t("attribute_kinds.new.select_brand_first")}
+        [I18n.t("attribute_kinds.new.select_brand_first"), I18n.t("attribute_kinds.new.select_brand_first")]
+      end
       [
-        ["Please, select model"] + context[:item].selected_brand.model_options.map { |model| [model.name, model.name] },
-        options,
+        options_for_select,
+        config_options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value),

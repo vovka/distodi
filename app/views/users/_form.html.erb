@@ -2,7 +2,7 @@
       ng-controller="AccountEditController as accountEditController"
       ng-click="clickedBlank()"
       ng-init='accountEditController.setProfile(
-         <%= @user.to_json(only: %i( country_short city address postal_code ), methods: %i( country_short picture_url )).html_safe %>
+         <%= @user.to_json(only: %i( country_short city address postal_code ), methods: %i( country_short profile_picture_url )).html_safe %>
        )'>
   <div class="left_form_service_create margin">
     <div class="form_service_create">
