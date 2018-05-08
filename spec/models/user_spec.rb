@@ -27,10 +27,20 @@ RSpec.describe User, type: :model do
   end
 
   describe ".from_omniauth" do
-    it "when no profile and no user"
-    it "when no profile and user exists"
-    it "when profile exists and no user"
-    it "when both profile and user exist"
+    it "binds user to profile" do
+      auth = Faker::Omniauth.facebook
+      auth[:info] = OpenStruct.new auth[:info]
+      auth = OpenStruct.new auth
+      profile = create :profile, facebook_uid: auth[:uid]
+      user = create :user, email: auth[:info][:email]
+
+      expect(User.from_omniauth(auth)).to eq(user)
+    end
+
+    specify "when no profile and no user"
+    specify "when no profile and user exists"
+    specify "when profile exists and no user"
+    specify "when both profile and user exist"
   end
 end
 
