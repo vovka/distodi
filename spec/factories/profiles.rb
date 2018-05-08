@@ -1,10 +1,6 @@
 FactoryGirl.define do
   factory :profile do
     user nil
-    facebook "MyString"
-    google_oauth2 "MyString"
-    twitter "MyString"
-    linkedin "MyString"
   end
 end
 
