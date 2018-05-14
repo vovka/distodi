@@ -38,6 +38,10 @@ class Item < ActiveRecord::Base
     Service.to_csv(item.services)
   end
 
+  def characteristics_ordered
+    characteristics.joins(:attribute_kind).order("attribute_kinds.position")
+  end
+
   private
 
   def generate_token

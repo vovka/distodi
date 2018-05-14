@@ -9,7 +9,7 @@
       <% end %>
       <span><%= t('.test') %></span>
       <p><%= item.title %></p>
-      <% item.characteristics.each do |characteristic| %>
+      <% item.characteristics_ordered.each do |characteristic| %>
         <p> <%= characteristic.value %></p>
       <% end %>
     </div>

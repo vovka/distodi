@@ -94,7 +94,7 @@
             <td>
               <%= link_to service_path(service) do %>
                 <span><%= service.item.title %></span>
-                <% service.item.characteristics.each do |characteristic| %>
+                 <% service.item.characteristics_ordered.each do |characteristic| %>
                   <span> <%= characteristic.value %></span>
                 <% end %>
               <% end %>

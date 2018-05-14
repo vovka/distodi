@@ -43,7 +43,7 @@
                   </div>
                   <div class="mobile_item_photo">
                     <span><%= t(".for_yours") %></span>
-                    <% @service.item.characteristics.each do |characteristic| %>
+                    <% @service.item.characteristics_ordered.each do |characteristic| %>
                       <p> <%= characteristic.value %></p>
                     <% end %>
                     <div class="item_photo">

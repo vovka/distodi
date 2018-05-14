@@ -5,7 +5,7 @@
   <div class="item_info">
     <span><%= @item.title %>,
     </span>
-    <% @item.characteristics.each do |characteristic| %>
+     <% @item.characteristics_ordered.each do |characteristic| %>
       <span>
         <%= characteristic.value %></span>
     <% end %>
