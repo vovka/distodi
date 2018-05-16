@@ -546,11 +546,69 @@ en:
       agreementt: "By creating an account, you agree to our <a href=\"/terms\">Terms.</a>"
   static_pages:
     home:
-      distodi_welcome: "Distodi. Your personal confidence"
-      create_service_book: "Create your Service Book and sleep peacefully"
-      select_vehicle: "Select your vehicle"
-      create_free: "Create Free Service Book"
-      more: "More about Distodi"
+      client: client
+      company: company
+      email: "E-mail Address"
+      pass: "Password"
+      forgot: "Forgot password?"
+      sign_in: "Sign in"
+      show: SHOW
+      create: "Need the Distodi account?&nbsp;<a href=\"/%{namespace}/sign_up\">Create free account.</a>"
+      get_access: "Get early access"
+      service_book: "Service book for everything."
+      send_us: "Send us your e-mail address to get an early access"
+      send_email: "Send us your e-mail address to get an early access"
+      about: About
+      security: Security
+      terms: Terms
+      careers: Careers
+      collect_all: "Collect all your property service books in one place"
+      car: Cars and trucks
+      moto: Motorcycles
+      tractor: Tractors
+      home: Smart homes
+      bike: Bicycles
+      boat: Yachts and boats
+      plane: Planes
+      heli: Other property
+      fast: Fast start
+      brings: Distodi brings your items together, in one central place. They’re easy to find.
+      b2b: B2B data
+      confirmation: Services confirmation
+      universality: Universality
+      iot: IoT integration
+      alerts: Alerts and notifications
+      social: Social login
+      google: Google calendar integration
+      pdf: PDF reports
+      data: Data validation
+      crm: Mini CRM system
+      transfer: Property transfer
+      companies: for Service companies
+      items_together: Distodi brings your items together, in one central place. They’re easy to find and safely synced across all your devices—so you can access them anytime, anywhere.
+      users: for Personal use
+      send_us_second: Send us your e-mail address to get an early access to your universal Service book
+      etc: etc.
+      skoda: 2017 Škoda Superb
+      services: services of
+      create_manage: Create and manage your service logs entries
+      distodi_brings: Distodi brings your items together, in one central place. They’re easy to find and safely synced across all your devices—so you can access them anytime, anywhere. No more wasting the day tracking down work.
+      emission_control: Emission Control Maintenance
+      my_way: 2005 My Way, Westport 112
+      key_features: Key features
+      tires: Tires Maintenance
+      brakes: Brakes Maintenance
+      air: Air filter
+      features: Features
+      updates: Updates
+      careers: Careers
+      about: About
+      help: Help
+      faq: FAQ
+      privacy: Privacy
+      press: Press
+      contact_us: Contact us
+      all_rights: All Rights Reserved
     about:
       text: |
           <h1>About Distodi</h1>

@@ -292,6 +292,9 @@ footer hr {
 .left_form {
   width: 50%;
   float: left;
+  &.home{
+    width: 100%;
+  }
 }
 
 .right_image {
@@ -367,6 +370,12 @@ footer hr {
   line-height: 51px;
   margin-bottom: 20px;
   cursor: pointer;
+  &.home{
+    width: calc(50% - 2px);
+    a{
+      padding: 18px 44px;
+    }
+  }
 }
 
 .tab a {
@@ -870,6 +879,12 @@ footer hr {
   cursor: pointer;
   width: 410px;
 }
+.signup_but.home{
+  width: 100%;
+  input{
+    width: 100%;
+  }
+}
 
 .signup_info {
   font-family: 'MuseoSansCyrl_1';
@@ -889,6 +904,9 @@ footer hr {
   width: 420px;
   margin: -10px auto 30px;
   display: inline-block;
+  &.home{
+    width: 100%;
+  }
 }
 
 .signup_info_right a {
@@ -3521,14 +3539,18 @@ option {
   width: 50px;
   float: right;
 }
+.button_box.home {
+  width: 100%;
+  .show_pass{
+    margin-right: 25px;
+  }
+}
 .button_box{
   width: 404px;
   margin: 0 auto;
   position: relative;
   bottom: 31px;
 }
-
-
 .left_form .signup_form .user_form .name input{
   padding-left: 47px;
   width: 373px;
@@ -3554,6 +3576,13 @@ option {
   outline: none;
   background-color: transparent;
   -webkit-autofill{background:red !important}
+}
+.left_form .signup_form .user_form .mail.home input{
+  width: calc(100% - 49px);
+}
+
+.left_form .signup_form .user_form .password.home input{
+  width: calc(100% - 117px);
 }
 .left_form .signup_form .user_form .mail input:focus{
   border-color: #149b4c;
@@ -3581,13 +3610,19 @@ option {
 .left_form .signup_form .user_form .password input:-webkit-autofill{
   -webkit-box-shadow: inset 0 0 0 50px #f2fff8 !important;
 }
-
+.user_form .password.home svg{
+  margin-top: -39px;
+}
 
 .user_form svg{
   width: 20px;
   position: absolute;
   margin-left: -409px;
   margin-top: 10px;
+}
+.user_form .home svg{
+  margin-left: 16px;
+  margin-top: -34px;
 }
 .left_form .signup_form .user_form input:focus  + svg .cls-1{
   fill: #149b4c;
@@ -4512,7 +4547,7 @@ input:-webkit-autofill{
 .lead_background .form_lead.right{
   float: right;
   height: 100%;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   width: 31%;
@@ -4531,6 +4566,7 @@ input:-webkit-autofill{
         transition-timing-function: cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */
   &.slideout{
     right: -31%;
+    position: fixed;
   }
   .form{
     width: calc(100% - 80px);
@@ -6784,5 +6820,16 @@ input:-webkit-autofill{
       width: 90px;
       border-radius: 5px;
     }
+  }
+}
+.form.home.second{
+  width: 100%;
+  background: white;
+  position: relative;
+  height: 600px;
+  margin: 0;
+  .sign_in_content{
+    width: 440px;
+    margin-left: calc(50% - 220px);
   }
 }

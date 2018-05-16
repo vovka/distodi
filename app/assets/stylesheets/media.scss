@@ -602,11 +602,20 @@
     height: 100%;
     width: 100%;
   }
-
   .tabs .tab {
     width: 49.4%;
   }
-
+  .tabs .home {
+    width: calc(50% - 13px);
+    margin-left: 11px;
+  }
+  .left_form .signup_form .user_form .password.home input {
+    width: calc(100% - 49px);
+    margin-left: 7px;
+  }
+  .tab.home a {
+    padding: 18px 24px;
+  }
   .name {
     width: 80%;
     margin: 0 auto 20px;
@@ -1289,7 +1298,7 @@
           }
         }
       }
-      margin-top: -473px;
+      margin-top: -323px;
       p.title{
         font-size:18px;
         color:#222222;
@@ -1848,7 +1857,7 @@
     right: -0%;
   }
   .lead_background .footer{
-    background: none; 
+   
   }
   .popup.reject_srvice .window .content input{
     padding: 9px 24px;
@@ -1897,6 +1906,24 @@
         margin-top: 10px;
       }
     }
+  }
+  .lead_background .form_lead.right.slideout{
+    position: relative;
+  }
+  .lead_background .form_lead.right .form.home{
+    width: 100%;
+    margin-left: 0;
+    height: 500px;
+    .tabs{
+      margin-top: 20px;
+    }
+  }
+  .signup_but.home{
+    width: 75%;
+    padding-left: 9px;
+  }
+  .form.home.second{
+    display: none;
   }
 }
 /* Small Devices, Tablets */

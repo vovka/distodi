@@ -102,6 +102,7 @@ Rails.application.routes.draw do
     get             "/careers" => "static_pages#careers",     as: :static_pages_careers
     get                "/lead" => "static_pages#lead",        as: :static_pages_lead
     get               "/terms" => "static_pages#terms",       as: :static_pages_terms
+    get                 "/new" => "static_pages#home",        as: :static_pages_home
 
     post "/notifications/:id/read" => "notifications#read", constraints: ->(request) { request.xhr? }
 
@@ -115,8 +116,11 @@ Rails.application.routes.draw do
       get "/profile" => "companies#profile"
     end
     # Temporary changed root route
-    # root "static_pages#home"
-    root "leads#new"
+    if ENV["HOME_PAGE_TRIGGER"].present?
+      root "static_pages#home"
+    else
+      root "leads#new"
+    end
   end
 
   get "*path",
