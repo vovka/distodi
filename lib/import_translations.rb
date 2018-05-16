@@ -18,9 +18,11 @@ class ImportTranslations
       translation_lists.each do |translations|
         translations.each do |attributes|
           begin
-            Rails.logger.info model.create!(attributes)
+            Rails.logger.info model.find_or_create_by!(attributes)
           rescue => ex
-            debugger
+            Rails.logger.info "Failed to migrate translation for #{attributes[:locale]}.#{attributes[:key]} due to:"
+            Rails.logger.info ex.message
+            Rails.logger.info ex.backtrace
           end
         end
       end
