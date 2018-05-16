@@ -9,7 +9,7 @@
     <% if @item.present? %>
       <div class="item_info">
         <span><%= @item.title %>, </span>
-        <% @item.characteristics.each do |characteristic| %>
+         <% @item.characteristics_ordered.each do |characteristic| %>
           <span> <%= characteristic.value %></span>
         <% end %>
       </div>
@@ -112,7 +112,7 @@
             <td>
               <%= link_to edit_item_path(service.item) do %>
                 <span><%= service.item.title %></span>
-                <% service.item.characteristics.each do |characteristic| %>
+                <% service.item.characteristics_ordered.each do |characteristic| %>
                   <span> <%= characteristic.value %></span>
                 <% end %>
               <% end %>

@@ -3,7 +3,7 @@
     <%= link_to image_tag("back_link.png"), dashboard_path %><h1><%= t(".new_service") %></h1>
     <p class="item_info_service">
         <%= t(".for_your") %> <span><%= @item.title %>, </span>
-        <% @item.characteristics.each do |characteristic| %>
+         <% @item.characteristics_ordered.each do |characteristic| %>
           <span> <%= characteristic.value %></span>
         <% end %>
      </p>
