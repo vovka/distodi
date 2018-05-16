@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
     end
 
     def set_notifications
-      @notifications = Notification.user(current_user_or_company).active.all
+      @notifications = ::Notification.user(current_user_or_company).active.all # ActiveAdmin requires to specify full ::namespace for the class
     end
 
     def set_locale
