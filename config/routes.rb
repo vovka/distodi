@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     authenticate :admin_user do
       mount Sidekiq::Web => "/sidekiq"
     end
-    ActiveAdmin.routes(self)
+    ActiveAdmin.routes(self) rescue nil # when setting up the app routes are loaded before DB schema and ActiveAdmin can't establish connection
 
     devise_for :admin_users, ActiveAdmin::Devise.config
     devise_for :companies, controllers: {

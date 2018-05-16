@@ -65,6 +65,7 @@ en:
       password_placeholder: "Your password"
       confirmation_placeholder: "Password confirmation (min 8 characters)"
       errors_user: You have incorrect user data, please correct your data.
+
   items:
     create:
       notice: "Item was successfully created."
@@ -180,6 +181,7 @@ en:
       success: "You have successfully destroyed the item"
     transfer:
       success: "Item was successfully transferred."
+
   companies:
     destroy:
       password_invalid: "Sorry, but your password is invalid"
@@ -222,6 +224,7 @@ en:
       approver: "My company is a services provider"
       your_office: "Your office / department details"
       set_office: "Please set your office/department information"
+
   services:
     list:
       confirm_delete: "Do you really want to delete this service?"
@@ -340,6 +343,7 @@ en:
       reason: Reason
     decline:
       success: You’ve declined service
+
   shared:
     registration_layout:
       distodi: Distodi
@@ -486,6 +490,7 @@ en:
         user: "Create Free Service Book"
         company: "Create Free Corporate Account"
       show: SHOW
+
   checkouts:
     new:
       support_with_paypal: "Support us with , or with online checkout below"
@@ -505,6 +510,7 @@ en:
       iryna: <p>Kind regards,</p>
             <p>Iryna Krejcarova</p>
             <p>(Distodi architect)</p>
+
   layouts:
     item:
       transferred_items: "New"
@@ -544,6 +550,7 @@ en:
       show: SHOW
       submit: Accept invitation
       agreementt: "By creating an account, you agree to our <a href=\"/terms\">Terms.</a>"
+
   static_pages:
     home:
       distodi_welcome: "Distodi. Your personal confidence"
@@ -647,6 +654,7 @@ en:
         <h1>Contact Us</h1>
         <h2>MAROPEN open doors s.r.o.</h2>
         <h2>Prague, Czech Republic</h2>
+
   user_mailer:
     transfer_notification_email:
       item_was_transferred_to_you:
@@ -710,6 +718,7 @@ en:
   validators:
     transfer_validator:
       user_identifier_is_not_email: "Please, enter valid email to transfer item."
+
   leads:
     success:
       congrats: "Congrats!"
@@ -775,6 +784,10 @@ en:
       press: Press
       contact_us: Contact us
       all_rights: All Rights Reserved
+
+  attribute_kinds:
+    new:
+      select_brand_first: "Please, select brand first"
 
 cz:
   items:

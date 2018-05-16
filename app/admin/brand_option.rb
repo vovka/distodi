@@ -1,8 +1,8 @@
-ActiveAdmin.register Item do
+ActiveAdmin.register BrandOption do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :category, :user, :transferring_to, :title, :picture, :token, :id_code
+  permit_params :category_id, :name
   #
   # or
   #
