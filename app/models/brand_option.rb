@@ -1,10 +1,11 @@
 class BrandOption < ActiveRecord::Base
   has_many :model_options
-  belongs_to :category, dependent: :destroy
+  belongs_to :category
 
   accepts_nested_attributes_for :model_options
 
-  validates_uniqueness_of :name, scope: :category_id
+  validates :name, uniqueness: { scope: :category_id }
+  validates :category_id, presence: true
 end
 
 # == Schema Information

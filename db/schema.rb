@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217185507) do
+ActiveRecord::Schema.define(version: 20180508140310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,12 @@ ActiveRecord::Schema.define(version: 20180217185507) do
   add_index "companies", ["invited_by_id"], name: "index_companies_on_invited_by_id", using: :btree
   add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true, using: :btree
 
+  create_table "data_migrations", id: false, force: :cascade do |t|
+    t.string "version", null: false
+  end
+
+  add_index "data_migrations", ["version"], name: "unique_data_migrations", unique: true, using: :btree
+
   create_table "items", force: :cascade do |t|
     t.string   "title"
     t.integer  "category_id"
@@ -258,6 +264,16 @@ ActiveRecord::Schema.define(version: 20180217185507) do
     t.string   "picture3"
     t.string   "picture4"
     t.string   "comment",       limit: 2000
+  end
+
+  create_table "translations", force: :cascade do |t|
+    t.string   "locale"
+    t.string   "key"
+    t.text     "value"
+    t.text     "interpolations"
+    t.boolean  "is_proc",        default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "users", force: :cascade do |t|
