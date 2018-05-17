@@ -19,6 +19,9 @@
         <li>
           <%= link_to t(".careers"), static_pages_careers_path %>
         </li>
+        <li>
+          <%= link_to t(".donation"), new_checkout_path %>
+        </li>
       </ul>
     </div>
     <div class="form_lead" viewport-enter="earlyAccessPanelClass = ''" viewport-leave="earlyAccessPanelClass = 'slideout'">
@@ -659,7 +662,38 @@
           <li>Linkedin</li>
           <li>AngelList</li>
         </ul>
-        <span>© 2017, Distodi. <%= t(".all_rights") %></span>
+        <span><%= t(".year") %>, Distodi. <%= t(".all_rights") %></span>
+      </div>
+    </div>
+    <div class="footer mobile">
+        <ul>
+          <li><%= link_to t(".about"), static_pages_about_path %></li>
+          <li>•</li>
+          <li><%= link_to t(".security"), static_pages_security_path %></li>
+          <li>•</li>
+          <li><%= link_to t(".terms"), static_pages_terms_path %></li>
+          <li>•</li>
+          <li><%= link_to t(".careers"), static_pages_careers_path %></li>
+        </ul>
+        <div class="contacts">
+          <%= t(".year") %>, <%= link_to 'Distodi', root_path %>
+        </div>
+        <div class="contacts">
+          <%= t(".telephobe_number") %>
+        </div>
+        <div class="contacts">
+          <%= mail_to 'support@distodi.com'%>
+        </div>
+        <div class="contacts">
+          <%= link_to(t(".terms"), '#', class: 'footer__nav-link footer__nav-link_hidden') %>
+        </div>
+        <div class="contacts_mobile"><%= t(".year") %>, <%= link_to 'Distodi', root_path %></div>
+        <div class="telephone_mobile"><a href="tel:<%= t(".telephobe_number") %>"><%= t(".telephobe_number") %></a></div>
+        <!-- <hr> --><div class="social_net">
+        <%= image_tag "insta.png" %>
+        <%= image_tag "you.png" %>
+        <%= image_tag "twit.png" %>
+        <%= image_tag "facebook.png" %>
       </div>
     </div>
   </div>

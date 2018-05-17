@@ -3506,6 +3506,7 @@ option {
 }
 .list_items tbody tr{
   border-collapse: separate;
+  text-transform: capitalize;
 }
 .list_items tbody tr td .icon_service{
   display: inline;
@@ -3938,6 +3939,7 @@ option {
   -moz-appearance:    none;
   appearance:         none;
   float: left;
+  text-transform: capitalize;
 }
 
 .left_form_service_create .form_service_create .half_form_field input:focus{
@@ -5123,7 +5125,7 @@ input:-webkit-autofill{
             letter-spacing:0;
             line-height:16px;
             text-align:right;
-            margin-left: 30px;
+            margin-left: 20px;
           }
         }
       }
@@ -5164,7 +5166,7 @@ input:-webkit-autofill{
       }
     }
     background: white;
-    height: calc(400% + 60px);
+    height: calc(380% + 60px);
     .title{
       font-family: 'MuseoSansCyrl_2';
       font-size:26px;
@@ -5587,6 +5589,7 @@ input:-webkit-autofill{
       display: inline-block;
       text-align: left;
       margin: 0 50px 76px;
+      height: 160px;
       .circle{
         background:#dcf0e4;
         width:60px;
@@ -5636,11 +5639,12 @@ input:-webkit-autofill{
         text-align:left;
         width: 250px;
         margin-top: 10px;
+        float: left;
       }
     }
   }
   .info_block{
-    height: 900px;
+    height: 320px;
     text-align: center;
     .type_of_users{
       width: 400px;
@@ -6002,6 +6006,7 @@ input:-webkit-autofill{
   .left_part{
     width: 66%;
     .service_kind{
+      text-transform: capitalize;
       img{
         margin-bottom: -2px;
       }
@@ -6659,6 +6664,7 @@ input:-webkit-autofill{
   margin-top: 16px;
 }
 .service_kind_edit_field{
+  text-transform: capitalize;
   border: 1px solid #f3f3f3;
   border-radius: 4px;
   padding: 18px 15px;
@@ -6832,4 +6838,21 @@ input:-webkit-autofill{
     width: 440px;
     margin-left: calc(50% - 220px);
   }
+}
+.donation_background{
+  background-color: white;
+  margin-top: -50px;
+  padding-top: 50px;
+}
+.donation_content span{
+  display: none;
+}
+.footer.mobile{
+  display: none;
+}
+abbr[title]{
+  display: none;
+}
+.form-inputs label:after{
+  content: "";
 }

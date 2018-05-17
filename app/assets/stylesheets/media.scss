@@ -1259,6 +1259,7 @@
               margin-bottom: 30px;
               text-align: left;
               padding: 0 25px;
+              width: calc(100% - 50px);
               .circle{
                 display: inline-block;
                 float:left;
@@ -1268,7 +1269,7 @@
                 margin-top: 0;
                 text-align: center;
                 margin-left: 0;
-                margin-bottom: 40px;
+                margin-bottom: 90px;
                 img{
                   width: 22px;
                   margin-top: 12px;
@@ -1857,7 +1858,8 @@
     right: -0%;
   }
   .lead_background .footer{
-   
+   height: 29px;
+
   }
   .popup.reject_srvice .window .content input{
     padding: 9px 24px;
@@ -1924,6 +1926,20 @@
   }
   .form.home.second{
     display: none;
+  }
+  .donation_background{
+    margin-top: 50px;
+  }
+  .footer.mobile{
+    display: inline-block;
+    padding-top: 0;
+    height: 240px;
+    .social_net{
+      img{
+        width: 18px;
+        margin: 0 18px;
+      }
+    }
   }
 }
 /* Small Devices, Tablets */
