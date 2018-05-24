@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508140310) do
+ActiveRecord::Schema.define(version: 20180524183435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,14 +120,14 @@ ActiveRecord::Schema.define(version: 20180508140310) do
     t.string   "city"
     t.string   "address"
     t.string   "postal_code"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.string   "email",                  default: "",   null: false
-    t.string   "encrypted_password",     default: "",   null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,    null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(version: 20180508140310) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
     t.boolean  "demo"
+    t.boolean  "verified",               default: false
   end
 
   add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree

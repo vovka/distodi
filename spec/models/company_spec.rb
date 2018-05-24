@@ -78,6 +78,7 @@ end
 #  invited_by_type        :string
 #  invitations_count      :integer          default("0")
 #  demo                   :boolean
+#  verified               :boolean          default("false")
 #
 # Indexes
 #

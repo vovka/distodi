@@ -167,7 +167,7 @@
       <p class="field_name">
         <%= t(".picture", formats: picture_formats) %>
       </p>
-       <div class="image user {{ newPhotoAttached[0] ? 'with_photo' : 'without_photo_input' }}" style="background: url({{imagePreview[0] || images[0]}}) no-repeat center center; background-size: cover;">
+      <div class="image user {{ newPhotoAttached[0] ? 'with_photo' : 'without_photo_input' }}" style="background: url({{imagePreview[0] || images[0]}}) no-repeat center center; background-size: cover;">
         <div class="blank_image">+</div>
         <%= f.file_field :picture,
                          class: 'inputfile',
@@ -177,18 +177,14 @@
       </div>
     <% end %>
     <div class="service_form_info">
-      <p>
-        <%= t(".title") %>
-      </p>
-      <span>
-        <%= t(".text") %>
-      </span>
-      <p>
-        <%= t(".title") %>
-      </p>
-      <span>
-        <%= t(".text") %>
-      </span>
+      <% if !current_company.verified %>
+        <p class="red">
+          <%= t(".unapproved_company_title") %>
+        </p>
+        <span class="red">
+          <%= t(".unapproved_company_text").html_safe %>
+        </span>
+      <% end %>
       <p>
         <%= t(".title") %>
       </p>

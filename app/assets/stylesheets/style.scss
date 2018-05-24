@@ -23,7 +23,6 @@ a {
 .main_page {
   background: #222222;
 }
-
 .header.main_page {
   background: #149b4c;
 }
@@ -1484,6 +1483,7 @@ footer hr {
             border: 1px solid #149b4c;
             border-radius: 4px;
             margin-left: 20px;
+            text-transform: none;
           }
         }
         .pending {
@@ -1502,6 +1502,7 @@ footer hr {
             border: 1px solid #149b4c;
             border-radius: 4px;
             margin-left: 20px;
+            text-transform: none;
           }
         }
 
@@ -1520,6 +1521,27 @@ footer hr {
             padding: 10px 15px; /* Поля */
             border: 1px solid #149b4c;
             border-radius: 4px;
+            margin-left: 20px;
+            text-transform: none;
+          }
+        }
+
+        .preapproved {
+          background: asset-url("status-preapproved") no-repeat 0 0;
+          width: 20px;
+          background-size: 19px;
+          height: 20px;
+          &:hover::after {
+            content: "Company that confirm service is not approved";
+            position: absolute;
+            z-index: 600;
+            background: rgba(255, 255, 255 ,0.8); /* Полупрозрачный цвет фона */
+            font-family: 'MuseoSansCyrl_1';
+            font-size: 14px;
+            padding: 10px 15px; /* Поля */
+            border: 1px solid #149b4c;
+            border-radius: 4px;
+            text-transform: none;
             margin-left: 20px;
           }
         }
@@ -1599,6 +1621,67 @@ footer hr {
         margin: 0 0 -17px;
       }
     }
+  }
+}
+.company_verification{
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin-bottom: -3px;
+  margin-left: 2px;
+  &.true{
+    &.menu{
+      display: none;
+    }
+    background: image-url("company_true.png") 14px/14px;
+    &:hover::after {
+      content: "Company is verified by Distodi team";
+      position: absolute;
+      z-index: 600;
+      background: rgba(255, 255, 255 ,0.8); /* Полупрозрачный цвет фона */
+      font-family: 'MuseoSansCyrl_1';
+      font-size: 14px;
+      padding: 15px 15px; /* Поля */
+      border: 1px solid #149b4c;
+      border-radius: 4px;
+      margin-left: -260px;
+      color: black;
+      margin-top: 16px;
+      text-transform: none;
+      text-align: left;
+    }
+  }
+  &.false{
+    background: image-url("company_false.png") 14px/14px;
+    &:hover::after {
+      content: "Sorry, company is not verified, every company needs to do verification in Distodi account by providing documents.";
+      position: absolute;
+      z-index: 600;
+      background: rgba(255, 255, 255 ,0.8); /* Полупрозрачный цвет фона */
+      font-family: 'MuseoSansCyrl_1';
+      font-size: 14px;
+      padding: 15px 15px; /* Поля */
+      border: 1px solid red;
+      border-radius: 4px;
+      margin-left: -260px;
+      color: black;
+      margin-top: 16px;
+      text-transform: none;
+      text-align: left;
+    }
+  }
+  &.layout{
+    position: absolute;
+    right: 18px;
+    z-index: 5;
+    margin-top: -4px;
+  }
+  &.menu{
+    margin: 0;
+    margin-left: 4px;
+  }
+  &.form{
+    margin-bottom: -2px;
   }
 }
 
@@ -4204,6 +4287,14 @@ input:-webkit-autofill{
   padding: 30px;
   text-align: left;
   padding-top: 10px;
+  .red{
+    color: red;
+    p{
+      color: red;
+      margin: 5px 0;
+      font-family: 'MuseoSansCyrl_1';
+    }
+  }
 }
 .service_form_info p{
   font-family: 'MuseoSansCyrl_2';
@@ -6085,6 +6176,11 @@ input:-webkit-autofill{
             background-size: 20px;
             background-position: 0px 0px;
         }
+        &.preapproved {
+            background: asset-url("status-preapproved") no-repeat 0 0;
+            background-size: 20px;
+            background-position: 0px 0px;
+        }
       }
       .code{
         font-family: 'MuseoSansCyrl_1';
@@ -6180,7 +6276,7 @@ input:-webkit-autofill{
         font-size:14px;
         margin-top: 30px;
         height: 74px;
-        padding-right: 25px; 
+        padding-right: 25px;
         a{
           margin: 0;
         }

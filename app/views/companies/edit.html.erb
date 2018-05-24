@@ -1,5 +1,5 @@
 <div class="service_create_identity">
-  <h1><%= t(".my_account") %></h1>
+  <h1><%= t(".my_account") %></h1><div class="company_verification <%= current_company.verified %> form"></div>
   <span class="green">
     <%= current_company.items.count %>&nbsp;<%= t(".items") %>
   </span>

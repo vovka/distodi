@@ -7,6 +7,7 @@ FactoryGirl.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     website { Faker::Internet.domain_name }
+    verified { true }
     country do
       std_country = nil
       until std_country.present?
@@ -59,6 +60,7 @@ end
 #  invited_by_type        :string
 #  invitations_count      :integer          default("0")
 #  demo                   :boolean
+#  verified               :boolean          default("false")
 #
 # Indexes
 #

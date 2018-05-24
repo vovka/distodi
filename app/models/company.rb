@@ -20,6 +20,8 @@ class Company < ActiveRecord::Base
   validates :postal_code, presence: true, length: { is: 5 }, allow_blank: true
   validates :website, format: {with: self::URL_REGEXP}, allow_blank: true
 
+  after_update :verification
+
   mount_uploader :picture, AccountUploader
 
   default_scope { where demo: false }
@@ -28,6 +30,23 @@ class Company < ActiveRecord::Base
     # joins(services: { item: :user }).where(users: { id: user_id })
     joins(:items).where(items: {user_id: user.id, user_type: user.class.name })
   }
+
+  def after_sign_up_actions!
+    super
+    CompanyMailer.confirmation_email(self).deliver_later
+  end
+
+  def verification
+    if changes["verified"] == [false, true]
+      UpdateServiceStatusWorker.perform_async(id)
+    end
+  end
+
+  def update_status
+    assigned_services.where(status: "preapproved").each do |assigned_service|
+      assigned_service.approve!
+    end
+  end
 
   def country_object
     ISO3166::Country.find_country_by_name country
@@ -88,6 +107,7 @@ end
 #  invited_by_type        :string
 #  invitations_count      :integer          default("0")
 #  demo                   :boolean
+#  verified               :boolean          default("false")
 #
 # Indexes
 #

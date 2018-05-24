@@ -32,7 +32,8 @@ ActiveAdmin.register Company do
       :notice,
       :first_name,
       :last_name,
-      :picture
+      :picture,
+      :verified
     ]
   end
 
