@@ -12,6 +12,8 @@ class Item < ActiveRecord::Base
   validates :picture, presence: true
   validates :comment, length: { maximum: 2000 }
 
+  accepts_nested_attributes_for :characteristics
+
   include IdCodeable
 
   mount_uploader :picture, ItemUploader

@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :action_kind do
+    title { Faker::Lorem.word }
   end
 end
 

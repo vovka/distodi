@@ -1,4 +1,13 @@
 class Service < ActiveRecord::Base
+  has_many :service_fields, dependent: :destroy
+  has_many :service_kinds, through: :service_fields
+  has_many :service_action_kinds, dependent: :destroy
+  has_many :available_action_kinds, through: :item, source: :action_kinds
+  has_many :action_kinds, through: :service_action_kinds
+  belongs_to :item, -> { unscope(where: :demo) }
+  belongs_to :company
+  belongs_to :approver, -> { unscope(where: :demo) }, polymorphic: true
+
   STATUSES = [
     STATUS_PENDING = "pending".freeze,
     STATUS_APPROVED = "approved".freeze,
@@ -20,15 +29,6 @@ class Service < ActiveRecord::Base
   mount_uploader :picture3, ItemUploader
   mount_uploader :picture4, ItemUploader
 
-  has_many :service_fields, dependent: :destroy
-  has_many :service_kinds, through: :service_fields
-  has_many :service_action_kinds, dependent: :destroy
-  has_many :available_action_kinds, through: :item, source: :action_kinds
-  has_many :action_kinds, through: :service_action_kinds
-  belongs_to :item, -> { unscope(where: :demo) }
-  belongs_to :company
-  belongs_to :approver, polymorphic: true
-
   delegate :map_address, to: :company, allow_nil: true
   delegate :category, :user, to: :item, allow_nil: true
 
@@ -41,8 +41,6 @@ class Service < ActiveRecord::Base
   scope :declined, -> { where(status: STATUS_DECLINED) }
   scope :user_services, ->(user_id) { joins(item: :user).where("users.id = ?", user_id) }
   scope :unconfirmed, -> { where("company_id IS NOT NULL AND confirmed IS NULL") }
-
-  default_scope { without_demo }
 
   validates :reason, presence: true,
                      length: { maximum: 1023 },
@@ -83,6 +81,10 @@ class Service < ActiveRecord::Base
 
   def approved?
     STATUS_APPROVED == status
+  end
+
+  def pending?
+    STATUS_PENDING == status
   end
 
   def approver?(user)

@@ -1,5 +1,9 @@
 ActiveAdmin.register Company do
-
+  controller do
+    def scoped_collection
+      Company.unscoped
+    end
+  end
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

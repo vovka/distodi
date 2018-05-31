@@ -106,7 +106,7 @@ class ServicesController < ApplicationController
   end
 
   def show
-    @service = Service.find(params[:id]).decorate
+    @service = Service.where(id: params[:id]).decorate.first
     @service_policy = ServicePolicy.new(current_user || current_company, @service)
     if @service_policy.edit?
       redirect_to edit_service_path(@service)

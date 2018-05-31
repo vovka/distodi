@@ -12,16 +12,22 @@ class DemoDataService
   end
 
   def perform
+    item = nil
+    services = []
     with_user_default_fields do
       Category.all.each do |category|
         item = user.items.new item_attributes_for(category)
         item.save(validate: false)
+        @service_counter = 0
         services_amount.times do
           service = item.services.new service_attributes_for(category)
           service.save(validate: false)
+          services << service
+          @service_counter += 1
         end
       end
     end
+    [item, services]
   end
 
   private
@@ -44,36 +50,54 @@ class DemoDataService
   end
 
   def item_attributes_for(category)
-    category_name = category.name.underscore
+    category_name = category.name.parameterize("_")
+
+    attribute_kinds = category.attribute_kinds
+    values = attribute_kinds.map do |ak|
+      demo_value_for(:item, category_name, ak.title.parameterize("_"))
+    end
+    characteristics_attributes = attribute_kinds.map.with_index do |ak, i|
+      { attribute_kind: ak, value: values[i] } if values[i].present?
+    end.compact
+
     {
       demo: true,
       category: category,
-      title: DEMO_TITLE_PLACEHOLDER + item_title_for(category_name),
-      picture: picture_for(category_name)
+      title: demo_value_for(:item, category_name, :title),
+      picture: picture_for(category_name),
+      comment: demo_value_for(:item, category_name, :comment),
+      characteristics_attributes: characteristics_attributes
     }
   end
 
+  def demo_value_for(*args)
+    key = "service_objects.demo_data_service.#{args.join(".")}"
+    ary = I18n.t(key, default: "")
+    if ary.respond_to? :sample
+      ary.sample
+    else
+      ary.presence
+    end
+  end
+
   def service_attributes_for(category)
-    category_name = category.name.underscore
-    {
-      next_control: service_next_control_for,
-      picture: picture_for(category_name),
-      price: service_price_for,
-      company: service_company_for,
-      status: service_status_for,
-      approver: service_approver_for,
-      reason: service_reason_for,
-      service_kinds: [category.service_kinds.sample],
-      action_kinds: [category.action_kinds.sample]
-    }
+    category_name = category.name.parameterize("_")
+    result = {}
+    result[:demo] = true
+    result[:next_control] = service_next_control_for
+    result[:picture] = picture_for(category_name)
+    result[:price] = service_price_for
+    result[:status] = service_status_for(category.action_kinds.count)
+    result[:action_kinds] = [next_action_kind(category)]
+    result[:company] = service_company_for(category_name)
+    result[:approver] = service_approver_for
+    result[:reason] = service_reason_for(category_name)
+    result[:service_kinds] = [category.service_kinds.sample]
+    result
   end
 
   def services_amount
     SERVICES_AMOUNT_RANGE.to_a.sample
-  end
-
-  def item_title_for(category_name)
-    "My #{category_name.humanize}"
   end
 
   def picture_for(category_name)
@@ -92,19 +116,43 @@ class DemoDataService
     Faker::Commerce.price
   end
 
-  def service_company_for
-    @service_company = Company.demo.offset(Kernel.rand(Company.demo.count)).first
+  def service_company_for(category_name)
+    current_action_kind = next_action_kind(nil, false)
+    company_names = demo_value_for(
+      :service,
+      category_name,
+      current_action_kind.title.parameterize("_"),
+      :company_name
+    )
+    @service_company = Company.demo
+                              .where(name: company_names)
+                              .order("RANDOM()")
+                              .first
   end
 
-  def service_status_for
-    @service_status = Service::STATUSES.sample
+  def service_status_for(tick_at = 1)
+    @service_status = next_status if ((@service_counter - 1) % tick_at).zero?
+    @service_status
+  end
+
+  def next_status
+    @statuses ||= Service::STATUSES.dup.rotate(-1)
+    @statuses.rotate!.first
+  end
+
+  def next_action_kind(category, perform = true)
+    (@action_kinds ||= category.action_kinds.dup.rotate(-1))
+    @action_kinds.rotate! if perform
+    @action_kinds.first
   end
 
   def service_approver_for
-    @service_company if @service_status != Service::STATUS_PENDING
+    @service_company
   end
 
-  def service_reason_for
-    Faker::Lorem.sentence if @service_status != Service::STATUS_PENDING
+  def service_reason_for(category_name)
+    if @service_status == Service::STATUS_DECLINED
+      demo_value_for(:service, category_name, :decline_reason)
+    end
   end
 end
