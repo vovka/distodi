@@ -847,6 +847,108 @@ en:
     new:
       select_brand_first: "Please, select brand first"
 
+  service_objects:
+    demo_data_service:
+      item:
+        car:
+          title:
+            - "Demo car"
+          comment:
+            - "Better still, the light controls and excellent visibility make it perfect for crowded city streets and you also benefit from precise, well weighted steering, strong grip and great body control. The cabin is well insulated from road and wind noise, while the ride only gets more supple the faster you go, and the car is far more capable than you’d think out of town. "
+          brand:
+            - "Skoda"
+        bike:
+          title:
+            - "Demo bike"
+          comment:
+            - ""
+          brand:
+            - ""
+        bicycle:
+          title:
+            - "Demo bicycle"
+          comment:
+            - "The head tube angle offered by the Fox 34 Float 29 e-bike Factory Series Kashima fork and the rigidity of the forward triangle bring peerless efficiency and stability even on rough terrain. The Overvolt AMi Shimano never rears up and remains composed on sections with serious positive gradients, thanks to its excellent traction. Integrating the Snake Power battery behind a cover helps to retain the rigidity of the Supreme 5 aluminium frame, ensuring a compact design for the lower tube. "
+          brand:
+            - "LaPierre"
+        yacht:
+          title:
+            - "Demo yacht"
+          comment:
+            - "All the control lines are led aft for the helmsmen to handle without even moving forward, leaving a clear and uncluttered companion way, ensuring easy handling for shorthanded sailing. The cockpit has enormous space for entertaining and relaxing with its dual table system, option of convertible sun bed, and ample storage. The deck is clear and easy to move around, continuing the commitment to a safe and easy to handle cruising yacht. "
+          brand:
+            - "Elan Marine"
+        tractor:
+          title:
+            - "Demo tractor"
+          comment:
+            - "Fully powershifted HEXASHIFT transmission with HEXACTIV powershift unit, cruise control and SMART STOP. Continuously variable CMATIC transmission in all models with CEBIS or CIS+ Half frame concept, designed for extreme loads and great flexibility. Three equipment options available: CEBIS, CIS+ or CIS. PROACTIV front axle suspension with CLAAS suspension kinematics. CSM headland management. "
+          brand:
+            - "Claas"
+      service:
+        common: &service_common
+          decline_reason: &decline_reason
+            - "The price that was added to the service our Company XYZ  does not match the real price  that the User paid after service. We kindly ask you to check all information that provided below and submit ones again. "
+            - "We have not done this service yet, we are still working on it. Please can you send request of approval  confirmation after we finish in 2 weeks. Thanks, Luc Octobre Company XYZ. "
+            - "Spare parts are not match the real price the that the User paid after service. Our Company XYZ provided another prices for spare parts. Please can correct and send request of approval confirmation with correct prices and we will be happy to approve that. Thanks, Luc Octobre Company XYZ. "
+            - "Providing services without the proper authorization. Please can you do proper authorization and send request of approval one again. We kindly ask you to check all information that provided below. "
+            - "You address and personal information in your provide do not match the information you provided personally during the service. Please kindly correct and send request of approval confirmation ones again. We kindly ask you to check all information that provided below. Thanks, Luc Octobre Company XYZ. "
+        car:
+          # control:
+          #   company_name:
+          #     - ""
+          tuning:
+            company_name:
+              - "Look Forward Company LTD"
+          change:
+            company_name:
+              - "Look Forward Company LTD"
+          <<: *service_common
+        bike:
+          # control:
+          #   company_name:
+          #     - ""
+          tuning:
+            company_name:
+              - ""
+          change:
+            company_name:
+              - ""
+          <<: *service_common
+        bicycle:
+          # control:
+          #   company_name:
+          #     - ""
+          tuning:
+            company_name:
+              - "Reims Company LTD"
+          change:
+            company_name:
+              - "Reims Company LTD"
+          <<: *service_common
+        yacht:
+          # control:
+          #   company_name:
+          #     - ""
+          tuning:
+            company_name:
+              - "IRENE PEACE Company LTD"
+          change:
+            company_name:
+              - "IRENE PEACE Company LTD"
+          <<: *service_common
+        tractor:
+          # control:
+          #   company_name:
+          #     - ""
+          tuning:
+            company_name:
+              - "Izmail Company LTD"
+          change:
+            company_name:
+              - "Izmail Company LTD"
+          <<: *service_common
+
 cz:
   items:
     empty_items:

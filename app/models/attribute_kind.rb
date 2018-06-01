@@ -13,6 +13,8 @@ class AttributeKind < ActiveRecord::Base
   has_many :characteristics
   has_many :items, through: :characteristics
 
+  scope :brand, ->{ where(title: AttributeKindPolicy::BRAND) }
+
   private
 
   def policy

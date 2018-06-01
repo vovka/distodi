@@ -4,9 +4,7 @@ Translation = I18n::Backend::ActiveRecord::Translation
 
 cache_helper = Class.new do
   include I18n::Backend::Cache
-
-  # Just make the method public
-  def cache_key(*args); super end
+  public :cache_key
 end.new
 
 Translation.class_eval do

@@ -6,9 +6,12 @@ group :production do
 end
 
 group :test do
-  gem 'capybara'
+  # gem 'capybara'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'rspec-html-matchers'
   gem 'simplecov', :require => false
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -24,8 +27,6 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'colorize', '~> 0.8.1'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
   gem 'pronto', git: 'https://github.com/vovka/pronto.git', branch: 'master'
   gem 'pronto-rubocop', require: false
   gem 'pronto-flay', require: false

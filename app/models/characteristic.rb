@@ -1,6 +1,11 @@
 class Characteristic < ActiveRecord::Base
   belongs_to :item
   belongs_to :attribute_kind
+
+  scope :brand, ->{
+    joins(:attribute_kind)
+      .where(attribute_kinds: { title: AttributeKindPolicy::BRAND })
+  }
 end
 
 # == Schema Information
