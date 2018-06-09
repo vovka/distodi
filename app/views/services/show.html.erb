@@ -56,6 +56,7 @@
         <div class="block">
           <p><%= t(".name") %></p>
           <%= @service.approver.name %>
+          <div class="company_verification <%= @service.approver.verified %>"></div>
         </div>
         <div class="block">
           <p><%= t(".addresse") %></p>

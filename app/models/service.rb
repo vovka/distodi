@@ -11,7 +11,8 @@ class Service < ActiveRecord::Base
   STATUSES = [
     STATUS_PENDING = "pending".freeze,
     STATUS_APPROVED = "approved".freeze,
-    STATUS_DECLINED = "declined".freeze
+    STATUS_DECLINED = "declined".freeze,
+    STATUS_PREAPPROVED = "preapproved".freeze
   ].freeze
   PREDEFINED_REMINDERS = {
     week: -> { 1.week },
@@ -39,6 +40,7 @@ class Service < ActiveRecord::Base
   scope :pending, -> { where(status: STATUS_PENDING) }
   scope :approved, -> { where(status: STATUS_APPROVED) }
   scope :declined, -> { where(status: STATUS_DECLINED) }
+  scope :preapproved, -> { where(status: STATUS_PREAPPROVED) }
   scope :user_services, ->(user_id) { joins(item: :user).where("users.id = ?", user_id) }
   scope :unconfirmed, -> { where("company_id IS NOT NULL AND confirmed IS NULL") }
 
@@ -66,7 +68,11 @@ class Service < ActiveRecord::Base
   end
 
   def approve!(_ = nil)
-    update status: STATUS_APPROVED, approver: approver
+    if approver.respond_to?(:verified) && !approver.verified
+      update status: STATUS_PREAPPROVED, approver: approver
+    else
+      update status: STATUS_APPROVED, approver: approver
+    end
     user.create_notification(:service_approved, self)
   end
 
@@ -85,6 +91,10 @@ class Service < ActiveRecord::Base
 
   def pending?
     STATUS_PENDING == status
+  end
+
+  def preapproved?
+    STATUS_PREAPPROVED == status
   end
 
   def approver?(user)

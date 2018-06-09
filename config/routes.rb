@@ -103,6 +103,7 @@ Rails.application.routes.draw do
     get                "/lead" => "static_pages#lead",        as: :static_pages_lead
     get               "/terms" => "static_pages#terms",       as: :static_pages_terms
     get                 "/new" => "static_pages#home",        as: :static_pages_home
+    get            "/donation" => "checkouts#new",            as: :donation
 
     post "/notifications/:id/read" => "notifications#read", constraints: ->(request) { request.xhr? }
 

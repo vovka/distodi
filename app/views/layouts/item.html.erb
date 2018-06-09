@@ -54,7 +54,7 @@
                 <p><%= link_to_unless_current "English", locale: "en" %></p>
                 <p><%= link_to_unless_current "Czech", locale: "cz" %></p>
               </div>
-              <%= link_to t(".donation"), new_checkout_path %>
+              <%= link_to t(".donation"), donation_path %>
               <%= logout_link %>
             </div>
           </div>
@@ -98,12 +98,13 @@
         </div>
       <% else company_signed_in? %>
         <div class="right_panel list">
+          <div class="company_verification <%= current_company.verified %> layout"></div>
           <div class="more_menu" ng-click="controller.clickedToggleMoremenu($event)" ng-class="$root.activePopup === 'settings' ? 'active' : '' ">
             <%= picture_show(current_company) %>
           </div>
           <div class="more_menu_popup popup-animation" ng-class="$root.activePopup === 'settings' ? 'active' : '' ">
             <span>
-              <%= my_panel %>
+              <%= my_panel %> <div class="company_verification <%= current_company.verified %> menu"></div>
             </span>
             <div class="user_information">
               <p><%= current_company.email %></p>
@@ -121,6 +122,7 @@
                 <p><%= link_to_unless_current "English", locale: "en" %></p>
                 <p><%= link_to_unless_current "Czech", locale: "cz" %></p>
               </div>
+              <%= link_to t(".donation"), donation_path %>
               <%= logout_link %>
 
             </div>

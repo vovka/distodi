@@ -17,9 +17,23 @@ RSpec.describe Companies::RegistrationsController, type: :controller do
     end
 
     before { @request.env["devise.mapping"] = Devise.mappings[:company] }
+    before { ActionMailer::Base.deliveries = [] }
 
     it "sends email" do
-      expect { post :create, valid_attributes }.to change { ActionMailer::Base.deliveries.size }.by(1)
+      expect { post :create, valid_attributes }.to change { ActionMailer::Base.deliveries.size }.by(2)
+    end
+
+    it "sends email to the company" do
+      post :create, valid_attributes
+      msg = ActionMailer::Base.deliveries.first
+
+      expect([
+        msg.to,
+        msg.subject
+      ]).to eq([
+        [valid_attributes[:company][:email]],
+        "Confirmation Email"
+      ])
     end
 
     it "sends email to the company" do
@@ -31,7 +45,7 @@ RSpec.describe Companies::RegistrationsController, type: :controller do
         msg.subject
       ]).to eq([
         [valid_attributes[:company][:email]],
-        "Confirmation Email"
+        I18n.t('rspec.subject.confirmation_company')
       ])
     end
 

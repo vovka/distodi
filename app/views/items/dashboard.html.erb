@@ -66,6 +66,7 @@
         <th><%= t(".type") %></th>
         <th class="status"><%= t(".status") %></th>
         <th><%= t(".item") %></th>
+        <th><%= t(".company") %></th>
         <th class="date"><%= t(".date") %></th>
         <th class="cost"><%= t(".cost") %></th>
         <th></th>
@@ -115,6 +116,12 @@
                 <% service.item.characteristics_ordered.each do |characteristic| %>
                   <span> <%= characteristic.value %></span>
                 <% end %>
+              <% end %>
+            </td>
+            <td class="company">
+              <% if service.approver.present? %>
+                <%= service.approver.name %>
+                <div class="company_verification <%= service.approver.verified %>"></div>
               <% end %>
             </td>
             <td class="date">

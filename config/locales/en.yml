@@ -721,6 +721,31 @@ en:
       service_reminder:
         subject: "Service reminder"
 
+  company_mailer:
+    confirmation_email:
+      confirmation: |
+        "<h2>Dear Company,</h2>
+        <p>Following up your company changes and live website, we would like to
+        move things forward with getting your account set up and integrated as
+        soon as possible.</p>
+        <p>We would like to ask that you please provide us with the following:</p>
+        <p>1) Certificate of incorporation</p>
+        <p>2) Official company web-site pr/end email</p>
+        <p>3) Proof of physical company address (utility bill for water/gas/Internet
+        etc that is NO older than 3 months)</p>
+
+        <p>4) Passport copies of all UBO(s) + Shareholders + local representative
+        of the company address as well as each person&#39;s proof of address</p>
+
+        <p>5) Bank account letter or statement (with company’s details, IBAN and
+        SWIFT codes)</p>
+        <p>Kind regards,</p>
+        <p>MAROPEN open doors s.r.o.</p>
+        <p>Email: support@distodi.com</p>
+        <p>IČ/ID 04631510</p>
+        <p>Prague, Czech Republic</p>"
+      company_confirmation:
+        subject: "Company confirmation"
   mailers:
     reminder:
       remind_about_service:
@@ -948,6 +973,9 @@ en:
             company_name:
               - "Izmail Company LTD"
           <<: *service_common
+  rspec:
+    subject:
+      confirmation_company: "Company confirmation"
 
 cz:
   items:
