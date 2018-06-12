@@ -55,20 +55,20 @@
       <div class="company_info">
         <div class="block">
           <p><%= t(".name") %></p>
-          <%= @service.approver.name %>
-          <div class="company_verification <%= @service.approver.verified %>"></div>
+          <%= @service.approver_name %>
+          <div class="company_verification <%= @service.approver.try(:verified) %>"></div>
         </div>
         <div class="block">
           <p><%= t(".addresse") %></p>
-          <%= @service.approver.map_address %>
+          <%= @service.approver_address %>
         </div>
         <div class="block">
           <p><%= t(".mail") %></p>
-          <%= mail_to @service.approver.email %>
+          <%= @service.approver_mail %>
         </div>
         <div class="block">
           <p><%= t(".phone") %></p>
-          <%= @service.approver.phone %>
+          <%= @service.approver_phone %>
         </div>
       </div>
     <% else %>
@@ -157,8 +157,7 @@
     <% end %>
     <div class="item_owner">
       <span><%= t(".item_owner") %></span>
-      <p> <%= @service.user.first_name %></p>
-      <p> <%= @service.user.last_name %></p>
+      <p> <%= @service.owner %></p>
     </div>
     <div class="item_photo">
       <%= image_tag(@item.picture.at_service_page.url, alt: @item.title) %>

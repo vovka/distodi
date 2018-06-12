@@ -341,6 +341,7 @@ en:
       sure: Are you sure?
       cancel: Cancel
       reason: Reason
+      company_deleted: Company was deleted
     decline:
       success: You’ve declined service
 
@@ -950,6 +951,10 @@ en:
             company_name:
               - "Izmail Company LTD"
           <<: *service_common
+  company:
+    deleted: Company was deleted
+  user:
+    deleted: User was deleted
 
 cz:
   items:
