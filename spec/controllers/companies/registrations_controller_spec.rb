@@ -45,7 +45,7 @@ RSpec.describe Companies::RegistrationsController, type: :controller do
         msg.subject
       ]).to eq([
         [valid_attributes[:company][:email]],
-        I18n.t('rspec.subject.confirmation_company')
+        I18n.t('company_mailer.confirmation_email.company_confirmation.subject')
       ])
     end
 

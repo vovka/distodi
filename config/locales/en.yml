@@ -973,9 +973,6 @@ en:
             company_name:
               - "Izmail Company LTD"
           <<: *service_common
-  rspec:
-    subject:
-      confirmation_company: "Company confirmation"
 
 cz:
   items:
