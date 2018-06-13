@@ -745,7 +745,7 @@ en:
         <p>IČ/ID 04631510</p>
         <p>Prague, Czech Republic</p>"
       company_confirmation:
-        subject: Company confirmation
+        subject: "Company confirmation"
   mailers:
     reminder:
       remind_about_service:
@@ -973,6 +973,9 @@ en:
             company_name:
               - "Izmail Company LTD"
           <<: *service_common
+  rspec:
+    subject:
+      confirmation_company: "Company confirmation"
 
 cz:
   items:
