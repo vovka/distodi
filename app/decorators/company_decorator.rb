@@ -17,4 +17,8 @@ class CompanyDecorator < Draper::Decorator
   def first_name
     name
   end
+
+  def profile_picture_url
+    picture.at_profile_page.url
+  end
 end

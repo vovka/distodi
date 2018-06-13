@@ -60,6 +60,7 @@ class CompaniesController < ApplicationController
 
   def set_company
     @company = Company.find(params[:id])
+    @company = @company.present? ? @company.decorate : @company
   end
 
   def company_params
