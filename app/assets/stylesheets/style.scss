@@ -3641,9 +3641,16 @@ option {
   width: 373px;
   outline: none;
   margin-top: 7px;
+  font-size: 14px;
   margin-bottom: 9px;
   background-color: transparent;
   -webkit-autofill{background:red !important}
+}
+.left_form .signup_form .user_form .name.home input{
+  width: calc(100% - 49px);
+  &+svg{
+    margin-top: -45px;
+  }
 }
 .left_form .signup_form .user_form .name input:focus{
   border-color: #149b4c;
@@ -3660,6 +3667,7 @@ option {
   width: 373px;
   outline: none;
   background-color: transparent;
+  font-size: 14px;
   -webkit-autofill{background:red !important}
 }
 .left_form .signup_form .user_form .mail.home input{
@@ -3685,6 +3693,7 @@ option {
   width: 304px;
   outline: none;
   background-color: transparent;
+  font-size: 14px;
   -webkit-autofill{background:red !important}
 }
 .left_form .signup_form .user_form .password input:focus{
