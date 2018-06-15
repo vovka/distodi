@@ -634,33 +634,23 @@
         <ul>
           <li>Distodi</li>
           <li>
-            <%= t(".features") %>
+            <%= link_to t(".features"), static_pages_about_path %>
           </li>
           <li>
-            <%= t(".updates") %>
+            <%= link_to t(".careers"), static_pages_careers_path %>
           </li>
           <li>
-            <%= t(".careers") %>
+            <%= link_to t(".about"), static_pages_about_path %>
           </li>
           <li>
-            <%= t(".about") %>
+            <%= link_to t(".privacy"), static_pages_security_path %>
           </li>
           <li>
-            <%= t(".help") %>
+            <%= link_to t(".donation"), donation_path %>
           </li>
-          <li>
-            <%= t(".privacy") %>
-          </li>
-          <li>
-            <%= t(".press") %>
-          </li>
-          <li>
-            <%= t(".contact_us") %>
-          </li>
-          <li>Facebook</li>
-          <li>Twitter</li>
-          <li>Linkedin</li>
-          <li>AngelList</li>
+          <li><%= link_to "Facebook", "https://www.facebook.com/distodi/" %></li>
+          <li><%= link_to "Twitter", "https://twitter.com/distodipass" %></li>
+          <li><%= link_to "Instagram", "https://www.instagram.com/distodi_official/" %></li>
         </ul>
         <span><%= t(".year") %>, Distodi. <%= t(".all_rights") %></span>
       </div>
