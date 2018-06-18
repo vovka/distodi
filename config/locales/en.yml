@@ -553,6 +553,8 @@ en:
 
   static_pages:
     home:
+      year: 2018
+      donation: Donation
       client: client
       company: company
       email: "E-mail Address"
