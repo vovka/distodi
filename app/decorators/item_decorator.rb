@@ -19,7 +19,7 @@ class ItemDecorator < Draper::Decorator
       elsif brand_characteristic.present?
         brand_options.where(name: brand_characteristic.value).first
       else
-        brand_options.first
+        Struct.new(:name, :model_options).new("Please, select brand", [])
       end
     end
   end

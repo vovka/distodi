@@ -83,7 +83,7 @@ class AttributeKindDecorator < Draper::Decorator
     if brand?
       # context[:item].selected_category.brand_options.map { |brand| [brand.name, brand.name] },
       [
-        ActionController::Base.helpers.options_for_select(["Please, select brand"] + context[:item].selected_category.brand_options.map { |brand| [brand.name, brand.name] }, selected: context[:item].selected_brand.try(:name) || 'Please, select brand', disabled: 'Please, select brand'),
+        ActionController::Base.helpers.options_for_select(["Please, select brand"] + context[:item].selected_category.brand_options.map { |brand| [brand.name, brand.name] }, selected: context[:item].selected_brand.try(:name), disabled: 'Please, select brand'),
         { selected: context[:item].selected_brand.try(:name) || "BMW" },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
@@ -116,22 +116,26 @@ class AttributeKindDecorator < Draper::Decorator
         }
       ]
     elsif year?
-      default_value = "2000"
+      options = if characteristic.try(:value).present?
+        { selected: characteristic.try(:value).presence }
+      else
+        { selected: 'Please, select year', disabled: 'Please, select year' }
+      end
       [
-        1900..Time.current.to_date.year,
-        { selected: characteristic.try(:value).presence || default_value },
+        ["Please, select year"] + (1900..Time.current.to_date.year).to_a,
+        options,
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
-          value: characteristic.try(:value).presence || default_value,
+          value: characteristic.try(:value).presence,
           disabled: characteristic.try(:value).present?,
           chosen: ""
         }
       ]
     elsif weight?
       options = if characteristic.try(:value).present?
-        {selected: characteristic.try(:value).presence}
+        { selected: characteristic.try(:value).presence }
       else
-        {selected: 'Please, select weight', disabled: 'Please, select weight'}
+        { selected: 'Please, select weight', disabled: 'Please, select weight' }
       end
       [
         ["Please, select weight"] + (2..50).step(0.5).map { |i| "#{i} kg" },
@@ -193,7 +197,7 @@ class AttributeKindDecorator < Draper::Decorator
       ]
     elsif country? || country_of_using? || country_of_manufacture?
       [
-        { selected: characteristic.try(:value).presence },
+        { selected: characteristic.try(:value).presence, include_blank: 'Select a country' },
         { name: "item[characteristics[#{id}]]",
           id: "characteristic#{id}",
           value: characteristic.try(:value).presence,
