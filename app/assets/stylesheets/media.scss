@@ -1921,8 +1921,9 @@
     }
   }
   .signup_but.home{
-    width: 75%;
+    width: calc(79% - 22px);
     padding-left: 9px;
+    margin-top: 19px;
   }
   .form.home.second{
     display: none;
