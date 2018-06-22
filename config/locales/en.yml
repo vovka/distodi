@@ -346,8 +346,6 @@ en:
 
   shared:
     registration_layout:
-      client: PERSONAL
-      company: CORPORATE
       distodi: Distodi
       close: Go to homepage
       sessions:
@@ -559,17 +557,12 @@ en:
       donation: Donation
       client: client
       company: company
-      user: Create Free Service Book
-      name:
-        user: Your Full Name (as in passport)
-      client: PERSONAL
-      company: CORPORATE
       email: "E-mail Address"
       pass: "Password"
       forgot: "Forgot password?"
       sign_in: "Sign in"
       show: SHOW
-      create: "Already have an account?&nbsp;<a href=\"https://distodi.com/en/users/sign_in\">Sign in.</a>"
+      create: "Need the Distodi account?&nbsp;<a href=\"https://distodi.com/en/users/sign_up\">Create free account.</a>"
       get_access: "Get early access"
       service_book: "Service book for everything."
       send_us: "Send us your e-mail address to get an early access"
