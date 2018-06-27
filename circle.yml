@@ -4,6 +4,7 @@ dependencies:
 
 test:
   pre:
+    - npm i -g bower
     - bundle exec rake bower:install
   override:
     - if [ $CIRCLE_BRANCH != 'master' ]; then bundle exec pronto run -f bitbucket_pr -c origin/master; fi
