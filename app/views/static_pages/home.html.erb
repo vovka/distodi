@@ -632,15 +632,14 @@
       </div>
       <div class="footer_links">
         <ul>
-          <li>Distodi</li>
           <li>
             <%= link_to t(".features"), static_pages_about_path %>
           </li>
           <li>
-            <%= link_to t(".careers"), static_pages_careers_path %>
+            <%= link_to t(".about"), static_pages_about_path %>
           </li>
           <li>
-            <%= link_to t(".about"), static_pages_about_path %>
+            <%= link_to t(".careers"), static_pages_careers_path %>
           </li>
           <li>
             <%= link_to t(".privacy"), static_pages_security_path %>
@@ -648,11 +647,13 @@
           <li>
             <%= link_to t(".donation"), donation_path %>
           </li>
-          <li><%= link_to "Facebook", "https://www.facebook.com/distodi/" %></li>
-          <li><%= link_to "Twitter", "https://twitter.com/distodipass" %></li>
-          <li><%= link_to "Instagram", "https://www.instagram.com/distodi_official/" %></li>
+          <li><%= link_to t(".facebook"), t(".facebook_link") %></li>
+          <li><%= link_to t(".twitter"), t(".twitter_link") %></li>
+          <li><%= link_to t(".instagram"), t(".instagram_link") %></li>
+          <li><%= link_to t(".linkedin"), t(".linkedin_link") %></li>
         </ul>
         <span><%= t(".year") %>, Distodi. <%= t(".all_rights") %></span>
+        <span><%= t(".adress") %></span>
       </div>
     </div>
     <div class="footer mobile">
@@ -680,10 +681,9 @@
         <div class="contacts_mobile"><%= t(".year") %>, <%= link_to 'Distodi', root_path %></div>
         <div class="telephone_mobile"><a href="tel:<%= t(".telephobe_number") %>"><%= t(".telephobe_number") %></a></div>
         <!-- <hr> --><div class="social_net">
-        <%= image_tag "insta.png" %>
-        <%= image_tag "you.png" %>
-        <%= image_tag "twit.png" %>
-        <%= image_tag "facebook.png" %>
+        <%= link_to image_tag('insta.png', alt: 'instagram'), t(".instagram_link") %>
+        <%= link_to image_tag('twit.png', alt: 'twitter'), t(".twitter_link") %>
+        <%= link_to image_tag('facebook.png', alt: 'facebook'), t(".facebook_link") %>
       </div>
     </div>
   </div>

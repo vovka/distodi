@@ -554,6 +554,15 @@ en:
 
   static_pages:
     home:
+      twitter: Twitter
+      facebook: Facebook
+      linkedin: LinkedIn
+      instagram: Instagram
+      twitter_link: "https://twitter.com/distodi"
+      facebook_link: "https://www.facebook.com/distodi/"
+      linkedin_link: "https://www.linkedin.com/company/distodi/"
+      instagram_link: "https://www.instagram.com/distodi_official/"
+      adress: MAROPEN open doors s.r.o., IČ/ID 04631510, Prague, Czech Republic. support@distodi.com.
       year: 2018
       donation: Donation
       client: client
