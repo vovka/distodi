@@ -44,6 +44,46 @@ class ServiceDecorator < Draper::Decorator
     action_kind == default_checked_action_kind
   end
 
+  def approver_name
+    if service.approver.present?
+      service.approver.name
+    else
+      I18n.t("company.deleted")
+    end
+  end
+
+  def approver_address
+    if service.approver.present?
+      service.approver.map_address
+    else
+      I18n.t("company.deleted")
+    end
+  end
+
+  def approver_mail
+    if service.approver.present?
+      service.approver.email
+    else
+      I18n.t("company.deleted")
+    end
+  end
+
+  def approver_phone
+    if service.approver.present?
+      service.approver.phone
+    else
+      I18n.t("company.deleted")
+    end
+  end
+
+  def owner
+    if service.user.present?
+      service.user.full_name
+    else
+      I18n.t("user.deleted")
+    end
+  end
+
   private
 
   def default_checked_action_kind
