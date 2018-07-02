@@ -1118,8 +1118,8 @@ footer hr {
   margin: 0 auto;
   cursor: pointer;
   font-family: 'MuseoSansCyrl_1';
-  margin-top: 190px;
-  width: 80%;
+  margin-top: 140px;
+  width: calc(100% - 50px);
 }
 
 .menu_mobile .telephone_contact {
@@ -1135,7 +1135,7 @@ footer hr {
   cursor: pointer;
   font-family: 'MuseoSansCyrl_1';
   margin-top: 20px;
-  width: 80%;
+  width: calc(100% - 50px);
   border: 1px solid #737373;
 }
 
@@ -1913,6 +1913,7 @@ footer hr {
 
 .menu_mobile a {
   color: black;
+  text-transform: uppercase;
 }
 
 .grey {
