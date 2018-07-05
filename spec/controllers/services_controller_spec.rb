@@ -298,6 +298,57 @@ RSpec.describe ServicesController, type: :controller do
         expect(Service.last.item).to eq(item)
       end
 
+      specify "does not create a service when approver email is invalid" do
+        user = create :user
+        item = user.items.create!(attributes_for(:item))
+        email = 'email invalid'
+        sign_in user
+
+        expect do
+          post :create, valid_params.merge(
+            new_company: email,
+            service: attributes_for(:service).merge(
+              item_id: item.id
+            ),
+            item_id: item.to_param
+          )
+        end.to_not change { Service.count }
+      end
+
+      specify "does not create a company when approver email is invalid" do
+        user = create :user
+        item = user.items.create!(attributes_for(:item))
+        email = 'email invalid'
+        sign_in user
+
+        expect do
+          post :create, valid_params.merge(
+            new_company: email,
+            service: attributes_for(:service).merge(
+              item_id: item.id
+            ),
+            item_id: item.to_param
+          )
+        end.to_not change { Company.count }
+      end
+
+      specify "sets flash errors when approver email is invalid" do
+        user = create :user
+        item = user.items.create!(attributes_for(:item))
+        email = 'email invalid'
+        sign_in user
+
+        post :create, valid_params.merge(
+          new_company: email,
+          service: attributes_for(:service).merge(
+            item_id: item.id
+          ),
+          item_id: item.to_param
+        )
+        
+        expect(flash[:error]).to include I18n.t('services.create.invalid_email')
+      end
+
       specify "invite company" do
         user = create :user
         item = user.items.create!(attributes_for(:item))

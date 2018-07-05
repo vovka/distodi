@@ -237,6 +237,7 @@ en:
       unauthorized_success_notice: "You've successfully created a service."
       notice: "Sorry, failed to create a service."
       error: "Sorry, failed to create a service."
+      invalid_email: "Sorry, email of new company is not valid. "
     approve:
       success: "You have successfully approved service."
       fail: "Sorry, failed to approve service."
