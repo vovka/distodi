@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "distodi.maropen@gmail.com"
+  default from: "support@distodi.com"
   layout 'mailer'
 end
