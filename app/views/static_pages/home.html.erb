@@ -62,9 +62,6 @@
                         <div class="password home">
                           <input autocomplete="off" placeholder="<%= t(".pass") %>" type="{{type}}" name="<%= "user" %>[password]" id="<%= "user" %>_password">
                           <%= inline_svg "pass_ico.svg" %>
-                          <div class="button_box home">
-                            <div class="show_pass" ng-mousedown="controller.showPassword()" ng-mouseup="controller.hidePassword()" ><%= t(".show") %></div>
-                          </div>
                         </div>
                         <div class="signup_info_right home">
                           <%= link_to t(".forgot"), new_password_path("user") %>

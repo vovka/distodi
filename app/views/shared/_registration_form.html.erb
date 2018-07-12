@@ -26,10 +26,6 @@
   <div class="password">
     <input autocomplete="off" placeholder="<%= t(".pass") %>" type="{{type}}" name="<%= resource_name %>[password]" id="<%= resource_name %>_password">
     <%= inline_svg "pass_ico.svg" %>
-    <div class="button_box">
-      <div class="show_pass" ng-mousedown="controller.showPassword()" ng-mouseup="controller.hidePassword()" ><%= t(".show") %>
-      </div>
-    </div>
   </div>
   <div class="errors_reg pass">
     <%= resource.errors.full_messages_for(:password).join(',') %>
