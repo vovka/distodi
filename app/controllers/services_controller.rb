@@ -60,16 +60,18 @@ class ServicesController < ApplicationController
     if service_kinds.blank?
       @service.errors.add :service_kinds, :blank
     else
-      @service.transaction do
-        @service.action_kinds = ActionKind.where(id: action_kinds)
-        result = if @service.save
-          service_kind_id = service_kinds
-          service_kind = ServiceKind.where(id: service_kind_id).first
-          service_field = service_kind.service_fields.build(
-            service: @service,
-            text: service_fields ? service_fields[service_kind_id] : ''
-          )
-          service_field.save
+      if approver.nil? || approver.valid?
+        @service.transaction do
+          @service.action_kinds = ActionKind.where(id: action_kinds)
+          result = if @service.save
+            service_kind_id = service_kinds
+            service_kind = ServiceKind.where(id: service_kind_id).first
+            service_field = service_kind.service_fields.build(
+              service: @service,
+              text: service_fields ? service_fields[service_kind_id] : ''
+            )
+            service_field.save
+          end
         end
       end
     end
@@ -90,7 +92,10 @@ class ServicesController < ApplicationController
         redirect_back :root
       end
     else
-      flash[:error] = t(".error")
+      if approver.present? && !approver.valid?
+        flash[:error] = t(".invalid_email")
+      end
+      flash[:error] += t(".error")
       new
       render :new
     end
