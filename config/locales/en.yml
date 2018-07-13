@@ -142,7 +142,7 @@ en:
       add_new_service: "+ ADD NEW SERVICE"
       view: "View/Edit"
       del: "Delete"
-      service: "Service"
+      service: "Service kind"
       type: "Service type"
       status: "Status"
       item: "Item"
