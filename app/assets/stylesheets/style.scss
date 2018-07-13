@@ -2186,7 +2186,7 @@ option {
 }
 
 .custom_attributes {
-  padding-top: 15px;
+  padding-top: 20px;
   float: left;
   width: 65%;
   text-align: left;
@@ -2230,7 +2230,8 @@ option {
   width: 50%;
   display: inline-block;
   float: left;
-  height: 94px;
+  height: 80px;
+  padding-bottom: 20px;
 }
 
 .field {
@@ -3236,7 +3237,7 @@ option {
   z-index: 600;
 }
 .form .field_title input{
-  margin-top: 11px;
+  margin-top: 10px;
 }
 .field_title label{
   display: inline-block;
@@ -6032,6 +6033,7 @@ input:-webkit-autofill{
 }
 .chosen-container .chosen-results li.highlighted {
   background-color: #149b4c;
+  background-image: linear-gradient(#149b4c 20%, #0d6732 90%);
 }
 .error_explanation{
   width: 100%;
