@@ -685,3 +685,11 @@
     </div>
   </div>
 </div>
+
+<!-- popups -->
+<input type="checkbox" id="cookies_close">
+<div class="cookies_panel">
+  <h2><%= t(".warning") %></h2>
+  <%= t(".cookies_text").html_safe %>
+  <label for="cookies_close" class="cookies_button"><p><%= t(".agree") %></p></label>
+</div>
