@@ -633,7 +633,7 @@ en:
       warning: Warning!
       cookies_text: <p>By using Distodi you agree that we safe your user experience information and analysis it in Google Analytics in order to evaluate your performance and make our services better.  Cookies help us remember you and show you more things we think you’ll like and well as setup right language for you. Have a browse to see what we use them for and how you can change your settings to suit you.</p>
                     <p>All personal data is processed and stored securely, for no longer than is necessary in light of the reason(s) for which it was first collected, see section titled How long we keep your information. We will comply with our obligations and safeguard your rights under the Data Protection Act 1998 and the GDPR at all times.</p>
-      agree: I agree
+      agree: Agree
     about:
       text: |
           <h1>About Distodi</h1>
