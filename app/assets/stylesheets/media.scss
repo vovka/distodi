@@ -1950,6 +1950,14 @@
     margin: 0 auto;
     height: auto;
   }
+  .cookies_panel{
+    right: 8px;
+    width: calc(100% - 60px);
+    bottom: 7px;
+    p{
+      font-size: 11.7px;
+    }
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}
