@@ -17,9 +17,12 @@
       </div>
       <div class="logo_mobile">
         <%= link_to root_path do %>
-          <%= image_tag "logo_mobile.png" %>
+          <%= image_tag "logo_menu.png" %>
           <span>Distodi</span>
         <% end %>
+      </div>
+      <div class="sign_in_button">
+        <%= link_to(t(".sign_in"), new_user_session_path) %>
       </div>
       <div class="menu">
         <ul>
@@ -36,19 +39,32 @@
       </div>
       <div class="menu_mobile">
         <%= image_tag "logo_menu.png" %>
-        <ul>
-          <li><%= link_to(t(".sign_in"), new_user_session_path) %></li>
-          <li><%= link_to t(".about"), static_pages_about_path %></li>
-          <li><%= link_to t(".security"), static_pages_security_path %></li>
-          <li><%= link_to t(".terms"), static_pages_terms_path %></li>
-          <li><%= link_to t(".careers"), static_pages_careers_path %></li>
-          <li><%= link_to t(".donation"), donation_path %></li>
-        </ul>
-        <div class="button">
-          <%= t(".create_free") %>
+        <div class="content pages">
+          <ul>
+            <li><%= link_to t(".features"), static_pages_about_path %></li>
+            <li><%= link_to t(".about"), static_pages_about_path %></li>
+            <li><%= link_to t(".security"), static_pages_security_path %></li>
+            <li><%= link_to t(".terms"), static_pages_terms_path %></li>
+            <li><%= link_to t(".careers"), static_pages_careers_path %></li>
+            <li><%= link_to t(".donation"), donation_path %></li>
+            <li><%= link_to t(".privacy"), static_pages_security_path %></li>
+          </ul>
         </div>
-        <div class="telephone_contact">
-          <%= t(".support_email") %>
+        <div class="content">
+          <ul>
+            <li><%= link_to(t(".sign_in"), new_user_session_path) %></li>
+            <li><%= link_to(t(".sign_up"), new_user_registration_path) %></li>
+          </ul>
+        </div>
+        <div class="content last">
+          <ul>
+            <li><label for="language_panel"><%= t(".language") %></label></li>
+            <input type="checkbox" id="language_panel">
+            <div class="language_list">
+              <li><%= link_to_unless_current t(".english"), locale: "en" %></li>
+              <li><%= link_to_unless_current t(".czech"), locale: "cz" %></li>
+            </div>
+          </ul>
         </div>
       </div>
     </div>

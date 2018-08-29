@@ -537,11 +537,23 @@ en:
       about: "About Distodi"
       careers: "Careers"
       contacts: "Contacts"
-      terms: "Privacy and Terms"
+      terms: "Terms"
       telephobe_number: 8 (800) 400-40-40
-      security: "Security Guarantee"
+      security: "Security"
       careers: "Careers Page"
       donation: Donation
+      sign_in: Sign in
+      features: Features
+      updates: Updates
+      careers: Careers
+      about: About
+      help: Help
+      faq: FAQ
+      sign_up: Sign up
+      language: Language
+      privacy: Privacy
+      press: Press
+      contact_us: Contact us
     application:
       distodi: Distodi
       close: exit
@@ -571,15 +583,42 @@ en:
       company: company
       email: "E-mail Address"
       pass: "Password"
-      forgot: "Forgot password?"
+      forgot: "Forgot your password?"
       sign_in: "Sign in"
       show: SHOW
-      create: "Need the Distodi account?&nbsp;<a href=\"https://distodi.com/en/users/sign_up\">Create free account.</a>"
+      sign_up: "Sign up"
+      create: "or <a href=\"https://distodi.com/en/users/sign_up\">create an account</a>"
       get_access: "Get early access"
+      english: English
+      czech: Czech
+      sign_up_free: Sign up for free
+      company_description: |
+                              <p>B2B Option (“business to business”)</p>
+                              <span>A company owning a wide range of properties received service from another company (one of the dealers, any service company  or specialist independent garage).</span>
+                              <p>B2С Option (“business to client”)</p>
+                              <span>Users received service for their property from a company dealer or specialist independent garage</span>
+      personal_description: |
+                              <p>Y2Y Option (“you to your”)</p>
+                              <span>Users are “enthusiast reliable owners” and service their property daily by themselves, real proof of bills and photos of service has to be included.</span>
+                              <p>B2Y Option (“business to you”)</p>
+                              <span>Users received service for their property from a company dealer or specialist independent garage</span>
+      sign_in_google: Sign in with Google
+      power_up: Power up your service books with Distodi!
       service_book: "Service book for everything."
+      kwik: Research by Kwik-Fit
+      personal: PERSONAL
+      remember_me: Remember me
+      Sign_in_Google: Sign in with Google
+      corporate: CORPORATE
+      emba: EBMA, the European Bicycle Manufacturers Association
+      car_history: “Having an incomplete service history typically reduces a car’s value by 19%”
+      bike_information: "“Western Europe has about 200 million bicycles. People use bicycles for going to work, recreation, sports. Bicycles are used up to 20-50 % of people to travel around city”."
+      best_way: Distodi is a best way to collect and manage all your service books and service certificates
       send_us: "Send us your e-mail address to get an early access"
       send_email: "Send us your e-mail address to get an early access"
       about: About
+      sign_in: Sign in
+      faq: FAQ
       security: Security
       terms: Terms
       careers: Careers

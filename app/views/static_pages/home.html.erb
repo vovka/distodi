@@ -3,30 +3,24 @@
   <div class="main_content first" viewport-enter="contentBlockClass = ''" viewport-leave="contentBlockClass = 'active'">
     <div class="logo_lead">
       <%= image_tag "logo_mobile.png" %><span>Distodi</span>
-        <p>α</p>
     </div>
     <div class="menu_list">
       <ul>
         <li>
-          <%= link_to t(".about"), static_pages_about_path %>
+          <%= link_to t(".sign_up"), new_user_registration_path %>
         </li>
         <li>
-          <%= link_to t(".security"), static_pages_security_path %>
-        </li>
-        <li>
-          <%= link_to t(".terms"), static_pages_terms_path %>
-        </li>
-        <li>
-          <%= link_to t(".careers"), static_pages_careers_path %>
-        </li>
-        <li>
-          <%= link_to t(".donation"), donation_path %>
+          <%= link_to t(".faq"), static_pages_about_path %>
         </li>
       </ul>
     </div>
     <div class="form_lead" viewport-enter="earlyAccessPanelClass = ''" viewport-leave="earlyAccessPanelClass = 'slideout'">
       <h1>Distodi.</h1>
       <h1><%= t(".service_book") %></h1>
+      <h2><%= t(".best_way") %></h2>
+      <div class="sign_up_mobile_button">
+        <%= link_to t(".sign_up_free"), new_user_registration_path %>
+      </div>
     </div>
     <div class="down_icon">
       <div class="line"></div>
@@ -34,52 +28,83 @@
     </div>
     <div class="form_lead right" ng-class="earlyAccessPanelClass">
       <div class="form home">
-        <h2><%= t(".get_access") %></h2>
         <p>
           <%= t(".send_us") %>
         </p>
         <div class="sign_in_content">
           <div class="left_form home">
+            <p class="sign_title"><%= t(".sign_in") %></p>
+            <span class="sign_text"><%= t(".create").html_safe %></span>
             <div class="signup_form">
-              <div class="wrapper">
-                <div class="tabs">
-                  <div class="tab home user active">
-                    <%= link_to(t(".client")) %>
-                  </div>
-                  <div class="tab home">
-                    <%= link_to(t(".company"), send(:"new_company_session_path")) %>
-                  </div>
-                </div>
+              <div class="wrapper homepage">
+                <input type="radio" name="forms" id="form_user" checked>
+                <label for="form_user"><%= t(".personal") %></label>
+                <input type="radio" name="forms" id="form_company">
+                <label for="form_company"><%= t(".corporate") %></label>
                 <div class="tabs_content">
                   <div class="tab_item">
                     <div class="user_form">
-                      <%= form_for(:user, as: "user", url: session_path("user")) do |f| %>
+                      <%= form_for(:user, as: "user", url: new_user_session_path) do |f| %>
                         <p class="alert"><%= alert %></p>
                         <div class="mail home">
                           <%= f.email_field :email, autofocus: true, placeholder: t(".email") %>
-                          <%= inline_svg "mail_ico.svg" %>
                         </div>
                         <div class="password home">
-                          <input autocomplete="off" placeholder="<%= t(".pass") %>" type="{{type}}" name="<%= "user" %>[password]" id="<%= "user" %>_password">
-                          <%= inline_svg "pass_ico.svg" %>
+                          <input autocomplete="off" placeholder="<%= t(".pass") %>" type="{{type}}" name="user[password]" id="user_password">
                         </div>
-                        <div class="signup_info_right home">
-                          <%= link_to t(".forgot"), new_password_path("user") %>
+                        <div class="select remember_me">
+                          <label>
+                            <input type="checkbox" />
+                            <i>
+                              <%= image_tag "select.png" %>
+                            </i>
+                          </label>
                         </div>
+                        <span><%= t(".remember_me") %></span>
                         <div class="signup_but home">
                           <%= f.submit t(".sign_in") %>
-                          <%= link_to "&nbsp;".html_safe, send(:"#{"user"}_google_omniauth_authorize_path"), class: "login-button google" %>
-                          <%= link_to "&nbsp;".html_safe, send(:"#{"user"}_facebook_omniauth_authorize_path"), class: "login-button facebook" %>
-                          <%= link_to "&nbsp;".html_safe, send(:"#{"user"}_twitter_omniauth_authorize_path"), class: "login-button twitter" %>
-                          <%= link_to "&nbsp;".html_safe, send(:"#{"user"}_linkedin_omniauth_authorize_path"), class: "login-button linkedin" %>
+                          <div class="google_sign_in">
+                            <%= link_to t(".Sign_in_Google"), user_google_omniauth_authorize_path, class: "login-button google" %>
+                            <%= image_tag "google_favicon.png" %>
+                          </div>
                         </div>
                       <% end %>
+                      <div class="signup_info_right home">
+                        <%= link_to t(".forgot"), new_password_path("user") %>
+                      </div>
+                    </div>
+                    <div class="user_form corporate">
+                      <%= form_for(:company, as: "company", url: new_company_session_path) do |f| %>
+                        <p class="alert"><%= alert %></p>
+                        <div class="mail home">
+                          <%= f.email_field :email, autofocus: true, placeholder: t(".email") %>
+                        </div>
+                        <div class="password home">
+                          <input autocomplete="off" placeholder="<%= t(".pass") %>" type="{{type}}" name="company[password]" id="company_password">
+                        </div>
+                        <div class="select remember_me">
+                          <label>
+                            <input type="checkbox" />
+                            <i>
+                              <%= image_tag "select.png" %>
+                            </i>
+                          </label>
+                        </div>
+                        <span><%= t(".remember_me") %></span>
+                        <div class="signup_but home">
+                          <%= f.submit t(".sign_in") %>
+                          <div class="google_sign_in">
+                            <%= link_to t(".Sign_in_Google"), company_google_omniauth_authorize_path, class: "login-button google" %>
+                            <%= image_tag "google_favicon.png" %>
+                          </div>
+                        </div>
+                      <% end %>
+                      <div class="signup_info_right home">
+                        <%= link_to t(".forgot"), new_password_path("company") %>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="signup_info">
-                <%= (t(".create") % {namespace: controller.class.name.split("::").first.downcase}).html_safe %>
               </div>
             </div>
           </div>
@@ -328,6 +353,53 @@
         </div>
       </div>
     </div>
+    <div class="info_block home">
+      <div class="content">
+        <div class="block">
+          <%= image_tag "icon_bike_green.png" %>
+          <div class="info_text">
+            <p><%= t(".bike_information") %></p>
+            <span><%= t(".emba") %></span>
+          </div>
+        </div>
+        <div class="photo">
+          <%= image_tag "many_bikes.jpg" %>
+        </div>
+        <div class="car_block">
+          <%= image_tag "toyota.jpeg" %>
+          <div class="info_cars">
+            <div class="text">
+              <p><%= t(".car_history") %></p>
+              <span><%= t(".kwik") %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui_examples">
+        <input type="radio" name="user_type" id="personal" checked>
+        <label for="personal"><%= t(".personal") %></label>
+        <input type="radio" name="user_type" id="corporate">
+        <label for="corporate"><%= t(".corporate") %></label>
+          <div>
+          <div class="window">
+            <div class="content">
+              <%= image_tag "user_ui.png" %>
+              <div class="text">
+                <%= t(".personal_description").html_safe %>
+                <%= image_tag "user_ui_mobile.png", class: "mobile_ui" %>
+              </div>
+            </div>
+            <div class="content corporate">
+              <%= image_tag "company_ui.png" %>
+              <div class="text">
+                <%= t(".company_description").html_safe %>
+                <%= image_tag "company_ui_mobile.png", class: "mobile_ui" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="key_features">
       <h2><%= t(".key_features") %></h2>
       <div class="feature">
@@ -337,7 +409,7 @@
         <p>
           <%= t(".fast") %>
         </p>
-        <span><%= t(".brings_fast") %></span>
+        <p><%= t(".brings_fast") %></p>
       </div>
       <div class="feature">
         <div class="circle">
@@ -562,62 +634,57 @@
         </div>
       </div>
     </div>
-    <div class="info_block">
-      <div class="type_of_users">
-        <h2><%= t(".companies") %></h2>
-        <span><%= t(".items_together") %></span>
-      </div>
-      <div class="type_of_users">
-        <h2><%= t(".users") %></h2>
-        <span><%= t(".items_together_users") %></span>
-      </div>
-    </div>
-    <div class="form home second">
-      <div class="sign_in_content">
-        <div class="left_form home">
-          <div class="signup_form">
-            <div class="wrapper">
-              <div class="tabs">
-                <div class="tab home user active">
-                  <%= link_to(t(".client")) %>
-                </div>
-                <div class="tab home">
-                  <%= link_to(t(".company"), send(:"new_company_session_path")) %>
-                </div>
+    <div class="sign_up_panel">
+      <div class="content">
+        <div class="left_part">
+          <p>
+            <%= t(".power_up") %>
+          </p>
+          <input type="text" name="" placeholder="Enter your E-mail">
+          <%= link_to new_user_registration_path do %>
+            <div class="registration_link">
+              <%= t(".sign_up_free") %>
+            </div>
+          <% end %>
+          <div class="item panel">
+            <%= image_tag "car_item_main_page.png" %>
+          </div>
+          <div class="circle_yellow">
+          </div>
+          <div class="circle_white">
+          </div>
+          <div class="circle_yellow_2">
+          </div>
+          <%= image_tag "white_star.png", class: "white_star" %>
+          <div class="item panel bike">
+            <%= image_tag "bike_item_main_page.png" %>
+          </div>
+          <%= image_tag "white_star_fill.png", class: "white_star_fill" %>
+        </div>
+        <div class="right_part">
+          <div class="circle_yellow">
+          </div>
+          <%= image_tag "yellow_star.png", class: "yellow_star" %>
+          <div class="circle_white">
+          </div>
+
+          <div class="ui_example">
+            <%= image_tag "logo_menu.png", class: "logo" %>
+            <div>
+              <div class="item_icon">
+                <%= image_tag "moto_icon.png" %>
               </div>
-              <div class="tabs_content">
-                <div class="tab_item">
-                  <div class="user_form">
-                    <%= form_for(:user, as: "user", url: session_path("user")) do |f| %>
-                      <p class="alert"><%= alert %></p>
-                      <div class="mail home">
-                        <%= f.email_field :email, autofocus: true, placeholder: t(".email") %>
-                        <%= inline_svg "mail_ico.svg" %>
-                      </div>
-                      <div class="password home">
-                        <input autocomplete="off" placeholder="<%= t(".pass") %>" type="{{type}}" name="<%= "user" %>[password]" id="<%= "user" %>_password">
-                        <%= inline_svg "pass_ico.svg" %>
-                        <div class="button_box home">
-                          <div class="show_pass" ng-mousedown="controller.showPassword()" ng-mouseup="controller.hidePassword()" ><%= t(".show") %></div>
-                        </div>
-                      </div>
-                      <div class="signup_info_right home">
-                        <%= link_to t(".forgot"), new_password_path("user") %>
-                      </div>
-                      <div class="signup_but home">
-                        <%= f.submit t(".sign_in") %>
-                        <%= link_to "&nbsp;".html_safe, send(:"#{"user"}_google_omniauth_authorize_path"), class: "login-button google" %>
-                        <%= link_to "&nbsp;".html_safe, send(:"#{"user"}_facebook_omniauth_authorize_path"), class: "login-button facebook" %>
-                        <%= link_to "&nbsp;".html_safe, send(:"#{"user"}_twitter_omniauth_authorize_path"), class: "login-button twitter" %>
-                        <%= link_to "&nbsp;".html_safe, send(:"#{"user"}_linkedin_omniauth_authorize_path"), class: "login-button linkedin" %>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
+              <div class="item_icon">
+                <%= image_tag "tractor_icon.png" %>
+              </div>
+              <div class="item_icon">
+                <%= image_tag "home_icon.png" %>
+              </div>
+              <div class="item_icon">
+                <%= image_tag "bike_icon.png" %>
               </div>
             </div>
-            <div class="signup_info">
-              <%= (t(".create") % {namespace: controller.class.name.split("::").first.downcase}).html_safe %>
+            <div class="body">
             </div>
           </div>
         </div>
