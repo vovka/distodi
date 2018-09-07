@@ -190,6 +190,51 @@
   .bacground_green .content .text{
     width: 40%;
   }
+  .lead_background{
+    .info_block.home{
+      .content{
+        .block{
+          width: 90%;
+          display: inline-block;
+          margin: 0 auto;
+          float: none;
+          height: auto;
+          .info_text{
+            p{  font-size: 18px;
+              line-height:28px;
+              margin-bottom: 10px;
+              text-align: center;
+            }
+            span{
+              font-size: 16px;
+              text-align: center; 
+            }
+          }
+        }
+        .photo{
+          display: none;
+        }
+      }
+      .car_block{
+        width: 90%;
+        display: inline-block;
+        img{
+          height: 196px;
+          width: auto;
+        }
+        .info_cars{
+          height:  196px;
+          width: auto;
+          .text{
+            p{
+              font-size: 18px;
+              line-height: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 @media only screen and (max-width : 1024px) {
   .second_text{
@@ -245,6 +290,12 @@
         margin-left: 69px;
       }
     }
+  }
+  .wrapper.homepage input#form_user + label{
+    font-size: 13px;
+  }
+  .wrapper.homepage input#form_company + label{
+    font-size: 13px;
   }
 }
 
@@ -337,6 +388,7 @@
       line-height:20px;
       margin-left: 15px;
       margin-top: 2px;
+      display: none;
     }
   }
   .logo {
@@ -1203,6 +1255,8 @@
     z-index: 900;
     width: 100%;
     top: 0;
+    background: white;
+    text-align: right;
   }
   .lead_background{
     .main_content{
@@ -1210,6 +1264,7 @@
       padding: 0;
       padding-top: 80px;
       background: #149b4c;
+      height: 667px;
       .menu_list{
         display: none;
       }
@@ -1219,9 +1274,10 @@
     }
     .form_lead{
       background: #149b4c;
-      margin-top: 26px;
+      margin-top: 42px;
       height: auto;
       h1{
+        line-height:40px;
         font-size:30px;
         color:#ffffff;
         letter-spacing:0;
@@ -1249,6 +1305,7 @@
         font-family: 'MuseoSansCyrl_2';
         border-top: 1px solid rgba(211, 211, 211, 0.5);
         padding: 30px 0;
+        margin-top: -2px;
       }
       .slider_mobile{
         display: block;
@@ -1270,7 +1327,7 @@
                 margin-top: 0;
                 text-align: center;
                 margin-left: 0;
-                margin-bottom: 90px;
+                margin-bottom: 127px;
                 img{
                   width: 22px;
                   margin-top: 12px;
@@ -1308,7 +1365,8 @@
         line-height:28px;
         text-align:center;
         width: 80%;
-        margin: 50px auto;
+        margin: 30px auto;
+        padding-top: 0;
       }
       .items{
         display: none;
@@ -1917,6 +1975,7 @@
     width: 100%;
     margin-left: 0;
     height: 500px;
+    display: none;
     .tabs{
       margin-top: 20px;
     }
@@ -1957,6 +2016,206 @@
     p{
       font-size: 11.7px;
     }
+  }
+  .sign_up_panel{
+    padding: 30px 20px;
+    width: calc(100% - 40px);
+    overflow: hidden;
+    .content {
+
+      .right_part{
+        display: none;
+      }
+      .left_part{
+        width: 100%;
+        text-align: center;
+        margin-top: 210px;
+
+        p{
+          width: 80%;
+          font-size:18px;
+          margin: 0 auto;
+          line-height:28px;
+          text-align: center;
+        }
+        input{
+          margin-top: 30px;
+          width: calc(100% - 18px);
+          max-width: 800px;
+        }
+        .registration_link{
+          width: 100%;
+          max-width: 800px;
+        }
+        .item.panel{
+          top: -190px;
+          left: calc(20% - 109px);
+          width: calc(10% + 150px);
+          max-width: 300Px;
+          z-index: 10;
+          &.bike{
+            right: calc(20% - 109px);
+            top: -200px;
+            left: auto;
+            z-index: 1;
+          }
+        }
+        .circle_yellow{
+          top: 11%;
+          right: auto;
+          left: -24px;
+        }
+        .circle_yellow_2{
+          right: -9px;
+        }
+        .white_star_fill{
+          display: none;
+        }
+        .circle_white{
+          left: 0;
+          right: auto;
+        }
+        .white_star{
+          right: -26px;
+        }
+      }
+    }
+  }
+  .lead_background{
+    .info_block.home{
+      margin-top: 0;
+      padding-top: 30px;
+      .ui_examples{
+        margin-top: 60px;
+        div{
+          text-align: left;
+        }
+        input + label{
+          width: calc(50% - 20px);
+          font-size: 14px;
+        }
+        .window{
+          margin-top: 50px;
+          width: 100%;
+          .content{
+            margin: 0;
+            width: calc(100% - 40px);
+            &.corporate{
+              margin: 0;
+              width: calc(100% - 40px);
+              padding: 0 20px;
+              padding-bottom: 60px;
+            }
+            .mobile_ui{
+              width: 92%;
+              margin: 0 auto;
+              max-width: 325px;
+              display: block;
+              float: none;
+            }
+            img{
+              display: none;
+            }
+            .text{
+              width: 100%;
+              padding: 0;
+              p{
+                font-size: 16px;
+              }
+              span{
+                font-size: 14px;
+                margin-bottom: 30px;
+              }
+            }
+          }
+        }
+      }
+      .content{
+        min-width: 250px;
+        width: calc(100% - 40px);
+        padding: 0 20px;
+        .block{
+          float: none;
+          width: 100%;
+          text-align: center;
+          height: auto;
+          padding-top: 30px;
+          img{
+            display: block;
+            margin: 0 auto;
+            float: none;
+          }
+          .info_text{
+            width: calc(100% - 40px);
+            margin: 0 10px;
+            margin: 30px 0 38px;
+            p{
+              font-size: 18px;
+              line-height:28px;
+              margin-bottom: 10px;
+              text-align: center;
+            }
+            span{
+              width: 100%;
+              font-size: 16px;
+              text-align: center; 
+              display: inline-block;            
+            }
+          }
+        }
+        .photo{
+              display: none;
+            }
+        .car_block{
+          width: 100%;
+          min-width: 250px;
+          margin: 50px 0 0;
+          img{
+            width: 100%;
+            height: auto;
+            border-radius: 10px  10px 0 0;
+          }
+          .info_cars{
+            border-radius: 0 0 10px 10px;
+            width: 100%;
+            height: auto;
+            padding: 30px 0;
+            .text{
+              width: calc(100% - 40px);
+              padding: 0 20px;
+              text-align: center;
+              p{
+                font-size: 18px;
+                line-height:28px;
+                margin-bottom: 10px;
+                text-align: center;
+              }
+              span{
+                font-size: 16px;
+                text-align: center; 
+              }
+            }
+             
+          }
+        }
+      }
+        
+    }
+  }
+  .sign_in_content{
+    display: none;
+    .left_form.home{
+      display: none;
+    }
+  }
+  .lead_background .form_lead h2{
+    width: 100%;
+    line-height:24px;
+    font-size:16px;
+    margin-bottom: 20px;
+  }
+  .sign_up_mobile_button{
+    display: flex;
   }
 }
 /* Small Devices, Tablets */
