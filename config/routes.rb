@@ -122,6 +122,8 @@ Rails.application.routes.draw do
     else
       root "leads#new"
     end
+
+    resources :blockchain_infos, path: "blockchain", param: "hash"
   end
 
   get "*path",

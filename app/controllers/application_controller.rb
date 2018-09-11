@@ -6,6 +6,7 @@ end
 
 class ApplicationController < ActionController::Base
   include Pundit
+  include Blockchainable
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 

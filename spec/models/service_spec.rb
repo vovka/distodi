@@ -130,6 +130,64 @@ RSpec.describe Service, type: :model do
     end
   end
 
+  describe "#to_blockchain_hash" do
+    it "creates beautiful structure" do
+      company = create :company, verified: true
+      user = create :user
+      another_user = create :user
+      category = create :category
+      item = create :item, user: user, category: category, transferring_to: another_user
+      action_kind = create :action_kind
+      service_kind = create :service_kind
+      service_field = create :service_field, service_kind: service_kind, text: "some text"
+      service = create :service, item: item, action_kinds: [action_kind], service_fields: [service_field], approver: company,
+        created_at: DateTime.strptime("1234 5 6 7:8:9", "%Y %m %d %H:%M:%S").in_time_zone,
+        updated_at: DateTime.strptime("1234 5 6 7:8:9", "%Y %m %d %H:%M:%S").in_time_zone,
+        next_control: DateTime.strptime("1234 5 6 7:8:9", "%Y %m %d %H:%M:%S").in_time_zone.to_date,
+        price: 123.45,
+        status: Service::STATUS_APPROVED,
+        reason: "some reason",
+        id_code: "123QWE",
+        comment: "some comment"
+
+      expect(service.to_blockchain_hash).to eq({
+        id: service.id,
+        created_at: DateTime.strptime("1234 5 6 7:8:9", "%Y %m %d %H:%M:%S").in_time_zone,
+        updated_at: DateTime.strptime("1234 5 6 7:8:9", "%Y %m %d %H:%M:%S").in_time_zone,
+        next_control: DateTime.strptime("1234 5 6 7:8:9", "%Y %m %d %H:%M:%S").in_time_zone.to_date,
+        price: 123.45,
+        status: Service::STATUS_APPROVED,
+        reason: "some reason",
+        id_code: "123QWE",
+        comment: "some comment",
+        approver_type: "Company",
+        approver: {
+          id: company.id,
+          verified: true
+        },
+        item: {
+          id: item.id,
+          user_id: user.id,
+          user_type: "User",
+          transferring_to_id: another_user.id,
+          category:  {
+            id: category.id,
+          }
+        },
+        action_kind: {
+          id: action_kind.id
+        },
+        service_field: {
+          id: service_field.id,
+          text: "some text",
+          service_kind: {
+            id: service_kind.id
+          }
+        }
+      })
+    end
+  end
+
   describe ".to_csv" do
     before do
       @previous_locale = I18n.locale

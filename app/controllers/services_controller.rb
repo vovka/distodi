@@ -31,6 +31,7 @@ class ServicesController < ApplicationController
   # POST /services.json
   # TODO: Refactor
   def create
+    # Preparing data
     item = if user_signed_in? || company_signed_in?
              current_user_or_company.items.unscope(where: :demo).find_by_id(params[:service][:item_id])
            elsif params[:token].present?
@@ -51,51 +52,29 @@ class ServicesController < ApplicationController
                  item.user
                end
 
-    @service = item.services.build(service_params.merge(approver: approver)).decorate
-    service_kinds = params[:service_kind]
-    service_fields = params[:service_fields]
-    action_kinds = params[:action_kind]
-
-    result = nil
-    if service_kinds.blank?
-      @service.errors.add :service_kinds, :blank
-    else
-      if approver.nil? || approver.valid?
-        @service.transaction do
-          @service.action_kinds = ActionKind.where(id: action_kinds)
-          result = if @service.save
-            service_kind_id = service_kinds
-            service_kind = ServiceKind.where(id: service_kind_id).first
-            service_field = service_kind.service_fields.build(
-              service: @service,
-              text: service_fields ? service_fields[service_kind_id] : ''
-            )
-            service_field.save
-          end
-        end
-      end
+    # Performing action
+    create = CreateServiceService.new(item, approver, params, service_params)
+    create.perform
+    @service = create.service
+    if create.success?
+      blockchain_transaction!
     end
 
-    if result.present?
-      if @service.company.present?
-        UserMailer.add_service_email_to_company(@service.company).deliver_later
-      end
-
+    # Rendering
+    if create.success?
       if user_signed_in? || company_signed_in?
-        redirect_to item_path(item),
-                    notice: 'Service was successfully created.'
-      elsif company_signed_in?
-        redirect_to item_path(item),
-                    notice: 'Service was successfully created.'
+        redirect_to item_path(item), notice: t(".success")
       else
         flash[:notice] = t(".unauthorized_success_notice")
         redirect_back :root
       end
     else
-      if approver.present? && !approver.valid?
+      if approver.present? && !approver.persisted?
         flash[:error] = t(".invalid_email")
+        flash[:error] += t(".error")
+      else
+        flash[:error] = t(".error")
       end
-      flash[:error] += t(".error")
       new
       render :new
     end
@@ -211,11 +190,12 @@ class ServicesController < ApplicationController
     def approval(action)
       throw NoMethodError unless %i(approve decline).include?(action)
       throw NotAuthenticatedError if current_user_or_company.blank?
-      service = current_user_or_company.assigned_services
-                                       .where(id: params[:id])
-                                       .first
+      @service = current_user_or_company.assigned_services
+                                        .where(id: params[:id])
+                                        .first
       reason = params.fetch(:service, {}).fetch(:reason, "")
-      if service.try(:"#{action}!", reason)
+      if @service.try(:"#{action}!", reason)
+        blockchain_transaction!
         flash[:notice] = t(".success")
       else
         flash[:error] = t(".fail")

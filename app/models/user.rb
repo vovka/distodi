@@ -36,6 +36,12 @@ class User < ActiveRecord::Base
     notification.save
     notification
   end
+
+  def to_blockchain_hash
+    {
+      id: id
+    }
+  end
 end
 
 # == Schema Information

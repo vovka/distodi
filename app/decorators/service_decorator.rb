@@ -1,7 +1,9 @@
 class ServiceDecorator < Draper::Decorator
   DEFAULT_CHECKED_ACTION_TITLE = "Control".freeze
+  SHORT_BLOCKCHAIN_HASH_SYMBOLS = 0..5.freeze
 
   delegate_all
+  delegate :blockchain_hash, to: :blockchain_transaction_datum, allow_nil: true
 
   # Define presentation-specific methods here. Helpers are accessed through
   # `helpers` (aka `h`). You can override attributes, for example:
@@ -82,6 +84,10 @@ class ServiceDecorator < Draper::Decorator
     else
       I18n.t("user.deleted")
     end
+  end
+
+  def short_blockchain_hash
+    blockchain_hash.try(:[], SHORT_BLOCKCHAIN_HASH_SYMBOLS)
   end
 
   private

@@ -1,6 +1,16 @@
 class ServiceField < ActiveRecord::Base
   belongs_to :service
   belongs_to :service_kind
+
+  def to_blockchain_hash
+    {
+      id: id,
+      text: text,
+      service_kind: {
+        id: service_kind.id,
+      }
+    }
+  end
 end
 
 # == Schema Information
