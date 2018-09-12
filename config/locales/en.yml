@@ -167,6 +167,9 @@ en:
         control:
           next: "Next"
           close: "Close"
+      blockchain: "Blockchain"
+      company: "Company"
+      not_in_blockchain: "Not in blockchain"
     dashboard_company:
       tour:
         <<: *tour
