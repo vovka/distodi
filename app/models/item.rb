@@ -44,6 +44,18 @@ class Item < ActiveRecord::Base
     characteristics.joins(:attribute_kind).order("attribute_kinds.position")
   end
 
+  def to_blockchain_hash
+    {
+      id: id,
+      user_id: user_id,
+      user_type: user_type,
+      transferring_to_id: transferring_to_id,
+      category:   {
+        id: category.id,
+      }
+    }
+  end
+
   private
 
   def generate_token

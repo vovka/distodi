@@ -234,6 +234,7 @@ en:
         approved: "Approved"
         declined: "Declined"
     create:
+      success: "Service was successfully created."
       unauthorized_success_notice: "You've successfully created a service."
       notice: "Sorry, failed to create a service."
       error: "Sorry, failed to create a service."

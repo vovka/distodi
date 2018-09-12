@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180524183435) do
+ActiveRecord::Schema.define(version: 20180831145056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,21 @@ ActiveRecord::Schema.define(version: 20180524183435) do
     t.integer "attribute_kind_id"
     t.integer "category_id"
   end
+
+  create_table "blockchain_transaction_data", force: :cascade do |t|
+    t.string   "action"
+    t.string   "blockchain_hash"
+    t.integer  "from_id"
+    t.string   "from_type"
+    t.integer  "item_id"
+    t.integer  "service_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "blockchain_transaction_data", ["from_type", "from_id"], name: "index_blockchain_transaction_data_on_from_type_and_from_id", using: :btree
+  add_index "blockchain_transaction_data", ["item_id"], name: "index_blockchain_transaction_data_on_item_id", using: :btree
+  add_index "blockchain_transaction_data", ["service_id"], name: "index_blockchain_transaction_data_on_service_id", using: :btree
 
   create_table "brand_options", force: :cascade do |t|
     t.string   "name"
@@ -303,6 +318,8 @@ ActiveRecord::Schema.define(version: 20180524183435) do
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "blockchain_transaction_data", "items"
+  add_foreign_key "blockchain_transaction_data", "services"
   add_foreign_key "categories_service_kinds", "categories"
   add_foreign_key "categories_service_kinds", "service_kinds"
   add_foreign_key "profiles", "companies"

@@ -67,6 +67,13 @@ class Company < ActiveRecord::Base
   def map_address
     [city, address].compact.join(", ")
   end
+
+  def to_blockchain_hash
+    {
+      id: id,
+      verified: verified?
+    }
+  end
 end
 
 # == Schema Information

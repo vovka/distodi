@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
     end if characteristics_params.any?
 
     if @item.save
+      blockchain_transaction!
       redirect_to @item, notice: t(".notice")
     else
       render :new

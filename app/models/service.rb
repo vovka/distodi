@@ -7,6 +7,7 @@ class Service < ActiveRecord::Base
   belongs_to :item, -> { unscope(where: :demo) }
   belongs_to :company
   belongs_to :approver, -> { unscope(where: :demo) }, polymorphic: true
+  has_one :blockchain_transaction_datum, inverse_of: :service
 
   STATUSES = [
     STATUS_PENDING = "pending".freeze,
@@ -121,6 +122,27 @@ class Service < ActiveRecord::Base
     unless item.demo?
       SendServiceCalendarEventsWorker.perform_async(id)
     end
+  end
+
+  def to_blockchain_hash
+    r = {
+      id: id,
+      created_at: created_at,
+      updated_at: updated_at,
+      next_control: next_control,
+      price: price,
+      # currency: currency,
+      status: status,
+      reason: reason,
+      id_code: id_code,
+      comment: comment,
+      approver_type: approver_type
+    }
+    r[:approver] = approver.to_blockchain_hash if approver.present?
+    r[:item] = item.to_blockchain_hash if item.present?
+    r[:action_kind] = action_kinds.first.to_blockchain_hash if action_kinds.any?
+    r[:service_field] = service_fields.first.to_blockchain_hash if service_fields.any?
+    r
   end
 
   private

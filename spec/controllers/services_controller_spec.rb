@@ -82,6 +82,7 @@ RSpec.describe ServicesController, type: :controller do
       item = create :item
       service = create :service, approver: user, company: company, item: item
       sign_in user
+      stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
       expect do
         patch :approve, id: service.to_param, item_id: item.to_param
@@ -110,6 +111,7 @@ RSpec.describe ServicesController, type: :controller do
                       attributes_for(:service).merge(approver: company)
                     )
       sign_in company
+      stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
       expect do
         patch :approve, id: service.to_param, item_id: user.items.first.to_param
@@ -222,6 +224,7 @@ RSpec.describe ServicesController, type: :controller do
         company = create :company
         item = company.items.create! attributes_for(:item)
         sign_in company
+        stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
         expect do
           post :create, valid_params.merge(service: attributes_for(:service).merge(item_id: item.to_param),
@@ -234,6 +237,7 @@ RSpec.describe ServicesController, type: :controller do
         item = company.items.create! attributes_for(:item)
         other_company = create :company
         sign_in company
+        stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
         post :create, valid_params.merge(
           service: attributes_for(:service).merge(company_id: other_company.id, item_id: item.to_param),
@@ -247,6 +251,7 @@ RSpec.describe ServicesController, type: :controller do
         company = create :company
         item = company.items.create! attributes_for(:item)
         sign_in company
+        stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
         post :create, valid_params.merge(service: attributes_for(:service).merge(item_id: item.to_param),
                                          token: item.token)
@@ -258,6 +263,7 @@ RSpec.describe ServicesController, type: :controller do
         company = create :company
         item = company.items.create! attributes_for(:item)
         sign_in company
+        stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
         post :create, valid_params.merge(service: attributes_for(:service).merge(item_id: item.to_param),
                                          token: item.token)
@@ -272,6 +278,7 @@ RSpec.describe ServicesController, type: :controller do
         item = user.items.create!(attributes_for(:item))
         company = create :company
         sign_in user
+        stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
         post :create, valid_params.merge({
           service: attributes_for(:service).merge({
@@ -337,6 +344,7 @@ RSpec.describe ServicesController, type: :controller do
         item = user.items.create!(attributes_for(:item))
         email = 'email invalid'
         sign_in user
+        stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
         post :create, valid_params.merge(
           new_company: email,
@@ -345,7 +353,7 @@ RSpec.describe ServicesController, type: :controller do
           ),
           item_id: item.to_param
         )
-        
+
         expect(flash[:error]).to include I18n.t('services.create.invalid_email')
       end
 
@@ -354,6 +362,7 @@ RSpec.describe ServicesController, type: :controller do
         item = user.items.create!(attributes_for(:item))
         email = 'johndoe@example.com'
         sign_in user
+        stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
         expect do
           post :create, valid_params.merge(
@@ -366,12 +375,13 @@ RSpec.describe ServicesController, type: :controller do
         end.to change { Company.count }.by(1)
       end
 
-      specify "dont invite company ready registered" do
+      it "dosn't invite already registered company" do
         user = create :user
         email = 'johndoe@example.com'
         create :company, email: email
         item = user.items.create!(attributes_for(:item))
         sign_in user
+        stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
         expect do
           post :create, valid_params.merge(

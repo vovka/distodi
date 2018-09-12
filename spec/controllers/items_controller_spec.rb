@@ -166,6 +166,7 @@ describe ItemsController do
       specify "can access the page" do
         user = create :user
         sign_in user
+        stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
         post :create, item: valid_attributes(create(:category))
 
@@ -178,6 +179,7 @@ describe ItemsController do
         company = create :company
         sign_in company
         item_attributes = valid_attributes(create(:category))
+        stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
         post :create, item: item_attributes
 
@@ -187,6 +189,7 @@ describe ItemsController do
       specify "can create an item" do
         company = create :company
         sign_in company
+        stub_request(:post, "http://localhost:9292/transactions").to_return(body: {blockchain_hash: "some hash"}.to_json)
 
         expect do
           post :create, item: valid_attributes(create(:category))
