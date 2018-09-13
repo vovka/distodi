@@ -56,9 +56,6 @@ class ServicesController < ApplicationController
     create = CreateServiceService.new(item, approver, params, service_params)
     create.perform
     @service = create.service
-    if create.success?
-      blockchain_transaction!
-    end
 
     # Rendering
     if create.success?

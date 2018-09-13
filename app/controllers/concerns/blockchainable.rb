@@ -23,18 +23,6 @@ module Blockchainable
       item = service.item
 
       case action_name
-      when "create"
-
-        if service.self_approvable?
-        else
-          {
-            from: current_user_or_company,
-            action: :create_service,
-            item: item,
-            service: service
-          }
-        end
-
       when "approve"
         {
           from: current_user_or_company,

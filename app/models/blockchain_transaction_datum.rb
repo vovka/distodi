@@ -11,7 +11,7 @@ class BlockchainTransactionDatum < ActiveRecord::Base
     }
   end
 
-  def persisted
+  def in_blockchain?
     blockchain_hash.present?
   end
 end
