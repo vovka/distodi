@@ -1,3 +1,9 @@
-<div class="text-left">
-  <pre><%= @blockchain_info %></pre>
+<div class="blockchain_sertificate">
+  <%= image_tag "distodi_sertificate.jpg" %>
+  <p class="hash"><%= @blockchain_info["transaction"]["hash"] %></p>
+  <p class="date"><%= @blockchain_info["transaction"]["timestamp"] %></p>
+  <input type="button" value="<%=t(".print_sertificate") %>" onClick="window.print()">
+</div>
+<div class="mobile_hash">
+  <%=t(".desktop_original") %>
 </div>
