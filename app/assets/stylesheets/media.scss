@@ -318,6 +318,9 @@
   .blank_image{
     display: none;
   }
+  .mobile_hash{
+    display: inline-block;
+  }
 }
 
 @media only screen and (max-width : 917px) {
@@ -326,6 +329,9 @@
   }
   .function .transfer input{
     margin-top: 24px;
+  }
+  .blockchain_sertificate{
+    display: none;
   }
 }
 

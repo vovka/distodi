@@ -1013,6 +1013,10 @@ en:
     deleted: Company was deleted
   user:
     deleted: User was deleted
+  blockchain_infos:
+    show:
+      print_sertificate: Print sertificate
+      desktop_original: Sorry, but you can see blockchain sertificate only at desktop.
 
 cz:
   items:

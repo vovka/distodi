@@ -111,14 +111,13 @@
                 <div class="<%= service.status %>">&nbsp;</div>
               <% end %>
             </td>
-            <td><%= if service.blockchain_transaction_datum.present? && service.blockchain_transaction_datum.in_blockchain?
+            <td class="blockchain_link">
+              <%= if service.blockchain_transaction_datum.present? && service.blockchain_transaction_datum.in_blockchain?
                 link_to(
                   service.short_blockchain_hash,
-                  blockchain_info_path(service.blockchain_transaction_datum.blockchain_hash),
-                  title: service.blockchain_hash)
-              else
-                t(".not_in_blockchain")
-              end %></td>
+                  blockchain_info_path(service.blockchain_transaction_datum.blockchain_hash))
+              end %>
+            </td>
             <td>
               <%= link_to edit_item_path(service.item) do %>
                 <span><%= service.item.title %></span>

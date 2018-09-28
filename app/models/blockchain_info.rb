@@ -1,4 +1,6 @@
 class BlockchainInfo
+  delegate :[], to: :"@block"
+
   def initialize(hash)
     @hash = hash
   end
