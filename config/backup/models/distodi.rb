@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-APP_ENV = ENV["APP_ENV"] || "development"
+APP_ENV = ENV["APP_ENV"] || ENV["RAILS_ENV"] || "development"
 
 require "figaro"
 path_to_app_file = File.expand_path("../config/application.yml", __FILE__)
@@ -47,7 +47,7 @@ Backup::Model.new(:distodi, 'Backup distodi DB and files') do
   archive :"distodi.com" do |archive|
     # Run the `tar` command using `sudo`
     # archive.use_sudo
-    archive.add "public/uploads/"
+    # archive.add "public/uploads/"
   end
 
   database PostgreSQL do |db|
