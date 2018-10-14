@@ -98,7 +98,7 @@ Rails.application.routes.draw do
     get           "/addresses" => "addresses#search"
     get               "/about" => "static_pages#about",       as: :static_pages_about
     get            "/security" => "static_pages#security",    as: :static_pages_security
-    get         "/tutorialcar" => "static_pages#tutorialcar", as: :static_pages_tutorialcar
+    get         "/for_investors" => "static_pages#for_investors", as: :static_pages_for_investors
     get             "/careers" => "static_pages#careers",     as: :static_pages_careers
     get                "/lead" => "static_pages#lead",        as: :static_pages_lead
     get               "/terms" => "static_pages#terms",       as: :static_pages_terms

@@ -2223,6 +2223,44 @@
   .sign_up_mobile_button{
     display: flex;
   }
+  .sign_in_button{
+    display: inline-block;
+  }
+  .background_green_static_pages{
+    .application{
+      display: none;
+    }
+    .content{
+      padding-left: 25px;
+      .block{
+        width: calc(100% - 100px);
+        margin-top: 50px;
+      }
+      .part{
+        width: calc(100% - 40px);
+      }
+      .team{
+        .member{
+          width: 100%;
+          text-align: center;
+          .photo{
+            width: calc(100% - 20px);
+            text-align: center;
+            img{
+              width: 70%;
+            }
+          }
+          .info{
+            width: calc(100% - 20px);
+            margin-top: 15px;
+            h4{
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}
