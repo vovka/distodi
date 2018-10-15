@@ -533,6 +533,7 @@ en:
       language: Language
       donation: Donation
     new:
+      for_investors: For investors
       updates: "UPDATES"
       questions: "QUESTIONS AND ANSVERS"
       lang: "ENGLISH"
@@ -589,6 +590,7 @@ en:
       pass: "Password"
       forgot: "Forgot your password?"
       sign_in: "Sign in"
+      for_investors: For investors
       show: SHOW
       sign_up: "Sign up"
       create: "or <a href=\"https://distodi.com/en/users/sign_up\">create an account</a>"
@@ -773,6 +775,111 @@ en:
         <h1>Contact Us</h1>
         <h2>MAROPEN open doors s.r.o.</h2>
         <h2>Prague, Czech Republic</h2>
+    for_investors:
+      application: "Application of Distodi:"
+      Cars: "Cars = cars, new and
+              used cars, hybrids,
+              electric cars, cue cars,
+              cars with tuning, racing
+              cars"
+      Trucks: Trucks. New and used
+      Campers: Campers (caravans)
+      Tractors: Tractors
+      Mowers: Lawn Mowers
+      Bicycles: Bicycles
+      Motorcycles: Motorcycles
+      Houses: Houses, Offices and Apartments
+      Aircrafts: Aircrafts, Airplanes and Hang Gliders
+      Drones: Drones
+      Golf: Golf and other sports equipment
+      Yachts: Yachts and boats
+      Paintings: Paintings and furniture (art objects)
+      solutions: Solutions and Factors of Investment Attractiveness
+      distodi_explication: |
+                          <p><strong>Distodi</strong> – universal and the only online service book for all types of property rights and for all countries.</p>
+                          <p><strong>Distodi</strong> is a start-up of MAROPEN open doors company, founded in 2015 in the Czech Republic and since the creation of a specializing in the
+                          creation of IT projects, Internet marketing and reputation management projects in Western and Eastern Europe, as well as in Central Asia.</p>
+                          <p><strong>MAROPEN open doors</strong> has a single owner. Based on the uniqueness and great potential of the Distodi project it was decided to consider
+                          attracting Investors in order to accelerate the development of the project.</p>
+      overview: |
+                  <h3>Overview of the business and work of the Distodi</h3>
+                  <p><strong>The global nature</strong> of the Distodi project lies in the focus on all countries, taking into account the
+                  specifics and trends in the transition of the online storage of all information and data.</p>
+                  <p><strong>One uniform platform for all services.</strong> The team has developed a unique platform with a universal
+                  adaptive design for all types of property of the person (or company) that he owns. Team MAROPEN
+                  open doors in its work is based on research of the use of services and mobile platforms + own more
+                  than 10 years professional experience.</p>
+                  <p><strong>Confirmed reputation.</strong> In Distodi, each service must be confirmed by someone (company or person) and
+                  the confirmation can not be deleted once recorded. Thus, the reliability and truthfulness of the stored
+                  data is ensured</p>
+      New_technologies: |
+                  <h3>New technologies and integration</h3>
+                  <p><strong> Blockchain and data stability.</strong> The system is based on Blockchain technology for joint database
+                    management, where the once-recorded record remains in the system forever.</p>
+                  <p><strong>Internet of Things.</strong> Distodi project adapts and easily integrates with IoT devices, which in the future
+                  will help automate the history of services and automatic information analysis.ngs, IoT.</p>
+      team: Distodi team
+      Owner: Product Owner
+      Designer: Product Designer
+      Developer: Senior Developer
+      Junior: Junior developer, higher education, special IT courses
+      Owner_info: |
+              <strong>Experience:</strong> PR and Reputation management since 2004, SaaS selling
+              strategies, IT solutions for B2B and Academic markets, International markets,
+              researcher of anthropology in HR. Countries of experience: USA, Central and
+              East Europe, great experience in Central Asia & Caucasus countries and
+              closing National Sales Deal with the Ministry of Educations in Central Asia. As
+              RSM in EBSCO from 2012 (top 200 private companies in USA) – reached FY17
+              300% sales club, FY16 300% sales club FY16 200% sales club. In charge of
+              generating new sales for SaaS and databases for existing customers'
+              renewals (98% of client retention rate), academic, corporate and medical
+              market. From 2016 product owner of toptema.cz (won EU donation support)
+              and sortamo.eu (HR license for Czech Republic and EU)
+      Designer_info: |
+              <strong>Experience:</strong> Product designer with 7+ years experience in UI/UX design for
+              mobile apps, IoT and web apps (fintech, gambling, healthcare, e-commerce,
+              social networks, education and promotional products; European, American
+              and Asian markets).
+              Projects: Petcube, Just Eat, Kantar Retail, Palmers Austria
+              AIESEC member, 5 years of work with NGO and student organizations.
+              Volunteer at GDG Kyiv.
+      Developer_info: |
+              <strong>Experience:</strong> Developer since 2007, Ruby, Rails. Javascript: VanillaJS, Angular,
+              React, Backbone. TDD with RSpec, Minitest, Jasmine. SQL & RDBs. MySQL,
+              PostgreSQL. Deployment: Amazon with Rubber, Heroku with Git. CI: Travis,
+              Codeship, Semaphore. Configuration and maintenance.
+              Active work in the student organization at the University Coupa. Previously
+              worked as a web developer for such projects as:
+              https://en.wikipedia.org/wiki/Coupa
+              BMC RPM https://en.wikipedia.org/wiki/BMC_Software
+              LTLPrints http://ltlprints.com/
+              Jobexler (project successfully finalized)
+              Portico (project successfully finalized)
+      Junior_info: |
+              <strong>Experience:</strong> HTML, CSS, OpenCart, WordPress, Ruby on Rails, Java
+              Script, MySQL, Graphic Design (Adobe Photoshop)
+      Analysis: Analysis of the competitive environment
+      analysis_content: |
+              <li>Survey of the competitive environment</li>
+              <li>Service for all - cars, bicycles, tractors, yachts</li>
+              <li>Single service / platform for any brands</li>
+              <li>One flexible UX / UI design for all brands, items, services</li>
+              <li>Fast start</li>
+              <li>Blockchain technology, the inability to make changes</li>
+              <li>Formation of seller-buyer confidence when selling and buying</li>
+              <li>Displaying Validated Data</li>
+              <li>Print, load, send parameters</li>
+              <li>Rating of service companies</li>
+              <li>Secure confirmation from the service company</li>
+              <li>Accounting services made by the user independently</li>
+              <li>Integration with Google tools</li>
+              <li>Mini CRM system (for medium, small and large companies)</li>
+              <li>Integration with the Internet of Things (IOT) market</li>
+              <li>The ability to analyse service trends in the form of large data analysis</li>
+              <li>Generation of document-evidence when making a transaction</li>
+              <li>Confirmation from the service company and the service</li>
+              <li>Transfer of property not only physically, but also online (transfer)</li>
+              <li>Analytics and forecast of workload capacity</li>
 
   user_mailer:
     transfer_notification_email:

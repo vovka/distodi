@@ -4986,6 +4986,140 @@ input:-webkit-autofill{
       }
     }
   }
+  .application{
+    background: #f1f2f5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 250px;
+    img{
+      width: 50px;
+      
+      margin-top: 20px;
+      
+    }
+    p{
+      margin-top: 30px;
+      margin-bottom: 20px;
+      font-family: 'MuseoSansCyrl_2';
+      font-size: 16px;
+    }
+    ul{
+      list-style: none;
+      li{
+        margin-bottom: 25px;
+        p{
+          font-size: 16px;
+          font-family: 'MuseoSansCyrl_2';
+          margin-left: 33px;
+        }
+        img{
+          width: 20px;
+          margin: 0px;
+
+          float: left;
+        }
+      }
+    }
+
+  }
+  .content{
+    text-align: left;
+    padding-left: 350px;
+    font-size: 25px;
+    .block{
+      background: #f1f2f5;
+      width: calc(100% - 110px);
+      padding: 30px;
+      padding-bottom: 1px;
+      border-radius: 20px;
+      margin-top: 20px;
+      p{
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+  .part{
+    display: inline-block;
+    width: 45%;
+    margin-top: 44px;
+    float: left;
+    padding-right: 25px;
+    margin-bottom: 20px;
+    h3{
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    p{
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+  }
+  .team{
+    clear: left;
+    h2{
+      margin-bottom: 25px;
+    }
+    div{
+      float: left;
+    }
+    .member{
+      width: 50%;
+      float: left;
+      margin-bottom: 35px;
+      .photo{
+        width: 33%;
+        display: inline-block;
+        float: left;
+        margin-right: 15px; 
+        img{
+          width: 100%;
+        }
+      }
+      .info{
+        width: 60%;
+        display: inline-block;
+        text-align: left;
+        color: black;
+        line-height: 20px;
+        min-height: 300px;
+        h4{
+          font-size: 20px;
+          margin-bottom: -12px;
+        }
+        .position{
+          font-size: 18px;
+          color: #b0b0b0;
+          line-height: 11px;
+        }
+        .info_position{
+          font-size: 13px;
+          font-family: 'MuseoSansCyrl_1';
+          margin-top: 23px;
+        }
+      }
+    }
+
+  }
+  .analysis_block{
+    float: left;
+    padding-right: 20px;
+    .analysis{
+      margin-top: 15px;
+      font-size: 18px;
+      margin-left: 15px;
+      line-height: 29px;
+      li{
+        border-bottom: 1px solid #f1f2f5;
+      }
+    }
+  }
+  
 }
 
 .photo_delete{
@@ -7591,7 +7725,7 @@ abbr[title]{
   }
 }
 .sign_in_button{
-  display: inline-block;
+  display: none;
   margin-top: 30px;
   margin-right: 13px;
   a{
