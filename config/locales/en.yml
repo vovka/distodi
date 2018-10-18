@@ -858,28 +858,6 @@ en:
       Junior_info: |
               <strong>Experience:</strong> HTML, CSS, OpenCart, WordPress, Ruby on Rails, Java
               Script, MySQL, Graphic Design (Adobe Photoshop)
-      Analysis: Analysis of the competitive environment
-      analysis_content: |
-              <li>Survey of the competitive environment</li>
-              <li>Service for all - cars, bicycles, tractors, yachts</li>
-              <li>Single service / platform for any brands</li>
-              <li>One flexible UX / UI design for all brands, items, services</li>
-              <li>Fast start</li>
-              <li>Blockchain technology, the inability to make changes</li>
-              <li>Formation of seller-buyer confidence when selling and buying</li>
-              <li>Displaying Validated Data</li>
-              <li>Print, load, send parameters</li>
-              <li>Rating of service companies</li>
-              <li>Secure confirmation from the service company</li>
-              <li>Accounting services made by the user independently</li>
-              <li>Integration with Google tools</li>
-              <li>Mini CRM system (for medium, small and large companies)</li>
-              <li>Integration with the Internet of Things (IOT) market</li>
-              <li>The ability to analyse service trends in the form of large data analysis</li>
-              <li>Generation of document-evidence when making a transaction</li>
-              <li>Confirmation from the service company and the service</li>
-              <li>Transfer of property not only physically, but also online (transfer)</li>
-              <li>Analytics and forecast of workload capacity</li>
 
   user_mailer:
     transfer_notification_email:
