@@ -125,7 +125,8 @@
               <%= if service.blockchain_transaction_datum.present? && service.blockchain_transaction_datum.in_blockchain?
                 link_to(
                   service.short_blockchain_hash,
-                  blockchain_info_path(service.blockchain_transaction_datum.blockchain_hash))
+                  blockchain_info_path(service.blockchain_transaction_datum.blockchain_hash)
+                )
               end %>
             </td>
             <td>

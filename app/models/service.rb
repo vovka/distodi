@@ -11,6 +11,14 @@ class Service < ActiveRecord::Base
 
   accepts_nested_attributes_for :service_fields
 
+  def blockchain_transaction_datum
+    if demo?
+      BlockchainTransactionDatum.new(blockchain_hash: BlockchainInfo::DEMO_SERVICE_HASH)
+    else
+      super
+    end
+  end
+
   STATUSES = [
     STATUS_PENDING = "pending".freeze,
     STATUS_APPROVED = "approved".freeze,
