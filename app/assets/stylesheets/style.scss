@@ -4025,7 +4025,7 @@ option {
   background: black;
 }
 .left_form_service_create .form_service_create strong label{
-  width: 204px;
+  width: 154px;
   display: inline-block;
   text-align: center;
   padding: 18px 0;
@@ -4056,6 +4056,10 @@ option {
 .left_form_service_create .form_service_create strong label:nth-child(6){
   margin-left: -5px;
   border-left: 0;
+}
+.left_form_service_create .form_service_create strong label:last-child{
+  margin-left: -5px;
+  border-left: 0;
   border-radius: 0 4px 4px 0;
 }
 .left_form_service_create .form_service_create strong label:hover{
@@ -4066,7 +4070,19 @@ option {
   margin-bottom: 0px;
   &.service_form{
     margin-bottom: 80px;
+    &.consumption{
+           position: absolute;
+    top: -20px;
+    right: 0;
+    }
   }
+}
+.road_description{
+  position: relative;
+
+}
+.left_form_service_create .form_service_create .road_description .half_form_field.service_form{
+  margin-bottom: 0;
 }
 .left_form_service_create .form_service_create .half_form_field.margin.first{
   margin-bottom: 20px;
@@ -4187,6 +4203,10 @@ input:-webkit-autofill{
   -moz-appearance:    none;
   appearance:         none;
 }
+.left_form_service_create .form_service_create .road .company_select select{
+  width: 100%;
+}
+
 .left_form_service_create .form_service_create .company_select select:focus{
   border-color: #149b4c;
   box-shadow: 0 0 4px 0 #149b4c;
@@ -4273,6 +4293,9 @@ input:-webkit-autofill{
 }
 .left_form_service_create .form_service_create .price{
   margin-top: 20px;
+  &.road{
+    margin-bottom: 20px;
+  }
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   .destroy_user + .edit_user.ng-valid ol li { float: left; }
@@ -4281,7 +4304,7 @@ input:-webkit-autofill{
   .left_form_service_create .form_service_create ol li.price { float: left; }
 }
 .left_form_service_create .form_service_create .price input{
-  width: 597px;
+  width: 97%;
   display: block;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
@@ -6932,6 +6955,10 @@ input:-webkit-autofill{
       letter-spacing:0;
       text-align: center;
       line-height: 42px;
+      &.road{
+        position: absolute;
+        margin-top: -32px;
+      }
       img{
         width: 18px;
         float: left;

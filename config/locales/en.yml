@@ -255,29 +255,43 @@ en:
     form:
       select_service: Please, select service kind
       service_kind: "Service kind"
+      road_map: "Raod map"
+      Distance: "Distance"
+      road_approver: "Name of your manager approval"
+      Distance_example: "For example, 120km"
       service_company: "Select company name or service by yourself"
       company_email: Your new service company email address
       new_company: "New service company name"
       send_log: "Send this service log entry to the Service company for approval"
       amount: "- only amount number"
-      service_photo: "Service photos (optional, min 800x600 pixels)"
+      service_photo: "Documents (Invoices, POFs. Agreements, goods pictires  etc. )"
       comment: "Comments (optional, 2000 symbols max)"
       remind_me: "(Optional) Remind me to update this service in"
       custom_date: "Custom date"
+      date_ride: Date of ride
+      fuel_consumption: Fuel consumption
+      fuel_example: "For example, 12L"
       discard: "Discard"
       title: "What is adding the New service log entry for your item?"
       text: "It means that you have a possibility to write down all details of
             your service control (like breaks check, oil level check, etc.),
             change of the spare parts (like steering wheel change, breaks change,
-            etc.) or tuning (adding a spoiler, ultra-new lights, sound system, etc.)."
+            etc.) or tuning (adding a spoiler, ultra-new lights, sound system, etc.).
+            
+            5) Cusotmer name is the name of the Company or parson who made order. 6) You manager approval: after manager approval all records stored in Blockchain forever with no change possible."
       service_kind_comment: "Service kind comments"
       select_company: "I did service by myself"
+      customer_example: "Name of customer"
+      manager_approver: "You manager approval"
       new_company_name: "New company name"
       new_company_email: "New company email"
       price: "For example, 120.00"
       comments: "Put your comments here"
       myself: I did service by myself"
       other: "New company"
+      reason: Reason of ride
+      reason_example: Your reason
+      customer: Customer name
       available_formats: "(only %{formats})"
       files: Attach other files (optional, PDF, TXT, etc.)
       choose_file: Choose file
@@ -292,9 +306,10 @@ en:
       service_company: "Select company name or service by yourself"
       company_email: Your new service company email address
       new_company: "New service company name"
+      road_approver: "Name of your manager approval"
       send_log: "Send this service log entry to the Service company for approval"
       amount: "- only amount number"
-      service_photo: "Service photos (optional, min 800x600 pixels)"
+      service_photo: "Documents (Invoices, POFs. Agreements, goods pictires  etc. )"
       comment: "Comments (optional, 2000 symbols max)"
       remind_me: "(Optional) Remind me to update this service in"
       custom_date: "Custom date"

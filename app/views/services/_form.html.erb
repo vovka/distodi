@@ -25,161 +25,329 @@
               <%= label_tag "action_kind_#{action_kind.id}", action_kind.title %>
             <% end %>
           </strong>
-          <div class="half_form_field service_form">
-            <span class="field_name">
-              <li class="block"><%= t(".service_kind") %></li>
+
+          <div class="service">
+            <div class="half_form_field service_form">
+              <span class="field_name">
+                <li class="block"><%= t(".service_kind") %></li>
+              </span>
+              <%= select_tag "service_kind",
+                               options_from_collection_for_select(@service_kinds, "id", "title"),
+                               autofocus: true,
+                               :"ng-change" => "changedServiceKind({ withText: #{@service_kinds.select { |k| k.with_text }.map(&:id)} })",
+                               :"ng-model" => "serviceKind",  prompt: t(".select_service") %>
+              <%= text_field "text", "service_kind_coment", placeholder: t(".service_kind_comment"), :"ng-show" => "showServiceKindText", class: "service_kind_coment"%>
+              <%# <div class="added_date">
+                <p class="field_name">
+                  2. <%= t(".service_date") %->
+                </p>
+                <input type="date">
+                <div class="date_icon">
+                  <%= image_tag "calendar-icon.png" %->
+                  <%= t(".choose_date") %->
+                </div>
+              </div> %>
+            </div>
+            <span class="field_name company_field_edit">
+              <li class="block"><%= t(".service_company") %></li>
             </span>
-            <%= select_tag "service_kind",
-                             options_from_collection_for_select(@service_kinds, "id", "title"),
-                             autofocus: true,
-                             :"ng-change" => "changedServiceKind({ withText: #{@service_kinds.select { |k| k.with_text }.map(&:id)} })",
-                             :"ng-model" => "serviceKind",  prompt: t(".select_service") %>
-            <%= text_field "text", "service_kind_coment", placeholder: t(".service_kind_comment"), :"ng-show" => "showServiceKindText", class: "service_kind_coment"%>
-            <%# <div class="added_date">
+            <div class="company_select">
+              <%= f.collection_select :company_id,
+                @service.companies_options,
+                :id, :name,
+                {
+                  prompt: t(".select_company")
+                },
+                {
+                  :"ng-change" => "changedCompany({ other: '#{@service.other_company_option.id}' })",
+                  :"ng-model" => "company"
+                } %>
+            </div>
+            <div ng-show="showInviteCompany">
+              <div class="select">
+                <label>
+                  <div class="company_email">
+                    <p class="field_name">
+                      <%= t(".company_email") %>
+                    </p>
+                    <%= text_field_tag :new_company, "new_company", value: "", placeholder: t(".new_company_email") %>
+                    <div class="line"></div>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="price">
+              <span class="field_name">
+                <li><%= t(".amount") %></li>
+              </span>
+              <%= f.text_field :price, placeholder: t(".price") %>
+            </div>
+            <div class="line"></div>
+            <span class="field_name">
+              <li class="block"><%= f.label :reminder, t(".remind_me")  %></li>
+            </span>
+            <div class="reminders">
+              <%= f.collection_check_boxes :reminders_predefined, @service.predefined_reminders, :first, :last do |b| %>
+                <div class="select reminder">
+                  <%= b.check_box  %>
+                  <i>
+                    <%= image_tag "select.png" %>
+                  </i>
+                  <%= b.label  %>
+                </div>
+              <% end %>
               <p class="field_name">
-                2. <%= t(".service_date") %->
+                <%= t(".custom_date") %>
+                <%= f.input :reminder_custom, as: :string,  input_html: { type: "date", min: Date.current } %>
               </p>
-              <input type="date">
               <div class="date_icon">
-                <%= image_tag "calendar-icon.png" %->
-                <%= t(".choose_date") %->
+                <%= image_tag "calendar-icon.png" %>
+                <%= t(".choose_date") %>
+              </div>
+            </div>
+            <div class="line"></div>
+            <div class="service_photos">
+              <span class="field_name">
+                <li class="block"><%= t(".service_photo") %></li>
+              </span>
+              <div class="image-upload-box" style="background: url({{imagePreview[0] || controller.images[0]}}) no-repeat center center; background-size: cover;">
+                <div ng-hide="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')" class="input_field" >
+                  <%= image_tag(nil, "ng-src" => "{{imagePreview[0] || controller.images[0]}}") %>
+                  <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
+                </div>
+                <div class="photo_input" ng-show="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')">
+                  <%= f.file_field :picture, :"data-file" => "true", :"data-index" => 0,
+                  :"accept" => "image/jpg, image/jpeg, image/png" %>
+                  <%= inline_svg "plus.svg" %>
+                </div>
+              </div>
+              <div class="image-upload-box" style="background: url({{imagePreview[1] || controller.images[1]}}) no-repeat center center; background-size: cover;">
+                <div ng-hide="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')" class="input_field">
+                  <%= image_tag(nil, "ng-src" => "{{imagePreview[1] || controller.images[1]}}") %>
+                  <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 1)" %>
+                </div>
+                <div class="photo_input" ng-show="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')">
+                  <%= f.file_field :picture2, :"data-file" => "true", :"data-index" => 1,
+                  :"accept" => "image/jpg, image/jpeg, image/png" %>
+                  <%= inline_svg "plus.svg" %>
+                </div>
+              </div>
+              <div class="image-upload-box" style="background: url({{imagePreview[2] || controller.images[2]}}) no-repeat center center; background-size: cover;">
+                <div ng-hide="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')" class="input_field">
+                  <%= image_tag(nil, "ng-src" => "{{imagePreview[2] || controller.images[2]}}") %>
+                  <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 2)" %>
+                </div>
+                <div class="photo_input" ng-show="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')">
+                  <%= f.file_field :picture3, :"data-file" => "true", :"data-index" => 2,
+                  :"accept" => "image/jpg, image/jpeg, image/png" %>
+                  <%= inline_svg "plus.svg" %>
+                </div>
+              </div>
+              <div class="image-upload-box" style="background: url({{imagePreview[3] || controller.images[3]}}) no-repeat center center; background-size: cover;">
+                <div ng-hide="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')" class="input_field">
+                  <%= image_tag(nil, "ng-src" => "{{imagePreview[3] || controller.images[3]}}") %>
+                  <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 3)" %>
+                </div>
+                <div class="photo_input" ng-show="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')">
+                  <%= f.file_field :picture4, :"data-file" => "true", :"data-index" => 3,
+                  :"accept" => "image/jpg, image/jpeg, image/png" %>
+                  <%= inline_svg "plus.svg" %>
+                </div>
+              </div>
+            </div>
+            <%# <div class="files">
+              <p class="field_name">
+                7. <%= t(".files") %->
+              </p>
+              <div class="field_files">
+                <input type="file" name="file">
+                <div class="icon">
+                  <%= image_tag "file-icon.png" %->
+                  <%= t(".choose_file") %->
+                </div>
               </div>
             </div> %>
-          </div>
-          <span class="field_name company_field_edit">
-            <li class="block"><%= t(".service_company") %></li>
-          </span>
-          <div class="company_select">
-            <%= f.collection_select :company_id,
-              @service.companies_options,
-              :id, :name,
-              {
-                prompt: t(".select_company")
-              },
-              {
-                :"ng-change" => "changedCompany({ other: '#{@service.other_company_option.id}' })",
-                :"ng-model" => "company"
-              } %>
-          </div>
-          <div ng-show="showInviteCompany">
-            <div class="select">
-              <label>
-                <div class="company_email">
-                  <p class="field_name">
-                    <%= t(".company_email") %>
-                  </p>
-                  <%= text_field_tag :new_company, "new_company", value: "", placeholder: t(".new_company_email") %>
-                  <div class="line"></div>
-                </div>
-              </label>
+            <div class="price">
+              <span class="field_name">
+                <li><%= t(".comment") %></li>
+              </span>
+              <div class="textarea margin">
+                <%= f.text_area :comment, placeholder: t(".comments") %>
+              </div>
             </div>
-          </div>
-          <div class="price">
-            <span class="field_name">
-              <li><%= t(".amount") %></li>
-            </span>
-            <%= f.text_field :price, placeholder: t(".price") %>
-          </div>
-          <div class="line"></div>
-          <span class="field_name">
-            <li class="block"><%= f.label :reminder, t(".remind_me")  %></li>
-          </span>
-          <div class="reminders">
-            <%= f.collection_check_boxes :reminders_predefined, @service.predefined_reminders, :first, :last do |b| %>
-              <div class="select reminder">
-                <%= b.check_box  %>
-                <i>
-                  <%= image_tag "select.png" %>
-                </i>
-                <%= b.label  %>
+            <%# if action_name == "new" %->
+              <div class="block_multi_srvice"></div>
+              <div class="add_multi_service">
+                <a href=""><%= t(".add_more") %-></a>
+                <span><%= t(".optional") %-></span>
               </div>
             <% end %>
-            <p class="field_name">
-              <%= t(".custom_date") %>
-              <%= f.input :reminder_custom, as: :string,  input_html: { type: "date", min: Date.current } %>
-            </p>
-            <div class="date_icon">
-              <%= image_tag "calendar-icon.png" %>
-              <%= t(".choose_date") %>
-            </div>
+            
           </div>
-          <div class="line"></div>
-          <div class="service_photos">
+          
+
+
+          <div class="road" style="display: none;">
             <span class="field_name">
-              <li class="block"><%= t(".service_photo") %></li>
+              <li class="block"><%= t(".road_map") %></li>
             </span>
-            <div class="image-upload-box" style="background: url({{imagePreview[0] || controller.images[0]}}) no-repeat center center; background-size: cover;">
-              <div ng-hide="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')" class="input_field" >
-                <%= image_tag(nil, "ng-src" => "{{imagePreview[0] || controller.images[0]}}") %>
-                <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1282.173876647387!2d36.33039668959893!3d50.0048368973372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x412709facee79e6f%3A0x89d0f3dec07e8dcd!2z0JzQtdCx0LXQu9GM!5e0!3m2!1sru!2sua!4v1542315926712" width="99.3%" height="350" frameborder="0" style="border: 1px solid #d3d3d3 ; border-radius: 5px;" allowfullscreen></iframe>
+            <div class="road_description">
+              <div class="half_form_field service_form">
+                <span class="field_name">
+                  <li><%= t(".Distance") %></li>
+                </span>
+                <%= f.text_field :price, placeholder: t(".Distance_example") %>
+
               </div>
-              <div class="photo_input" ng-show="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')">
-                <%= f.file_field :picture, :"data-file" => "true", :"data-index" => 0,
-                :"accept" => "image/jpg, image/jpeg, image/png" %>
-                <%= inline_svg "plus.svg" %>
-              </div>
-            </div>
-            <div class="image-upload-box" style="background: url({{imagePreview[1] || controller.images[1]}}) no-repeat center center; background-size: cover;">
-              <div ng-hide="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')" class="input_field">
-                <%= image_tag(nil, "ng-src" => "{{imagePreview[1] || controller.images[1]}}") %>
-                <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 1)" %>
-              </div>
-              <div class="photo_input" ng-show="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')">
-                <%= f.file_field :picture2, :"data-file" => "true", :"data-index" => 1,
-                :"accept" => "image/jpg, image/jpeg, image/png" %>
-                <%= inline_svg "plus.svg" %>
+              <div class="half_form_field service_form consumption">
+                <span class="field_name">
+                  <li><%= t(".fuel_consumption") %></li>
+                </span>
+                <%= f.text_field :price, placeholder: t(".fuel_example") %>
+
               </div>
             </div>
-            <div class="image-upload-box" style="background: url({{imagePreview[2] || controller.images[2]}}) no-repeat center center; background-size: cover;">
-              <div ng-hide="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')" class="input_field">
-                <%= image_tag(nil, "ng-src" => "{{imagePreview[2] || controller.images[2]}}") %>
-                <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 2)" %>
-              </div>
-              <div class="photo_input" ng-show="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')">
-                <%= f.file_field :picture3, :"data-file" => "true", :"data-index" => 2,
-                :"accept" => "image/jpg, image/jpeg, image/png" %>
-                <%= inline_svg "plus.svg" %>
+
+            <div class="price road">
+              <span class="field_name">
+                <li><%= t(".customer") %></li>
+              </span>
+              <%= f.text_field :price, placeholder: t(".customer_example") %>
+            </div>
+            
+            <span class="field_name company_field_edit">
+              <li class="block"><%= t(".road_approver") %></li>
+            </span>
+            <div class="company_select">
+              <%= f.collection_select :company_id,
+                @service.companies_options,
+                :id, :name,
+                {
+                  prompt: t(".manager_approver")
+                },
+                {
+                  :"ng-change" => "changedCompany({ other: '#{@service.other_company_option.id}' })",
+                  :"ng-model" => "company"
+                } %>
+            </div>
+            <div ng-show="showInviteCompany">
+              <div class="select">
+                <label>
+                  <div class="company_email">
+                    <p class="field_name">
+                      <%= t(".company_email") %>
+                    </p>
+                    <%= text_field_tag :new_company, "new_company", value: "", placeholder: t(".new_company_email") %>
+                    <div class="line"></div>
+                  </div>
+                </label>
               </div>
             </div>
-            <div class="image-upload-box" style="background: url({{imagePreview[3] || controller.images[3]}}) no-repeat center center; background-size: cover;">
-              <div ng-hide="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')" class="input_field">
-                <%= image_tag(nil, "ng-src" => "{{imagePreview[3] || controller.images[3]}}") %>
-                <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 3)" %>
-              </div>
-              <div class="photo_input" ng-show="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')">
-                <%= f.file_field :picture4, :"data-file" => "true", :"data-index" => 3,
-                :"accept" => "image/jpg, image/jpeg, image/png" %>
-                <%= inline_svg "plus.svg" %>
-              </div>
-            </div>
-          </div>
-          <%# <div class="files">
-            <p class="field_name">
-              7. <%= t(".files") %->
-            </p>
-            <div class="field_files">
-              <input type="file" name="file">
-              <div class="icon">
-                <%= image_tag "file-icon.png" %->
-                <%= t(".choose_file") %->
-              </div>
-            </div>
-          </div> %>
-          <div class="price">
             <span class="field_name">
-              <li><%= t(".comment") %></li>
+              <li class="block"><%= f.label :reminder, t(".reason")  %></li>
             </span>
-            <div class="textarea margin">
-              <%= f.text_area :comment, placeholder: t(".comments") %>
+            <div class="reminders">
+              <%= f.collection_check_boxes :reminders_predefined, @service.predefined_reminders, :first, :last do |b| %>
+                <div class="select reminder">
+                  <%= b.check_box  %>
+                  <i>
+                    <%= image_tag "select.png" %>
+                  </i>
+                  <%= b.label  %>
+                </div>
+              <% end %>
+              
+              <span class="field_name">
+                <li><%= t(".date_ride") %></li>
+                <%= f.input :reminder_custom, as: :string,  input_html: { type: "date", min: Date.current } %>
+              </span>
+           
+              <div class="date_icon road">
+                <%= image_tag "calendar-icon.png" %>
+                <%= t(".choose_date") %>
+              </div>
             </div>
+
+            <div class="line"></div>
+            <div class="service_photos">
+              <span class="field_name">
+                <li class="block"><%= t(".service_photo") %></li>
+              </span>
+              <div class="image-upload-box" style="background: url({{imagePreview[0] || controller.images[0]}}) no-repeat center center; background-size: cover;">
+                <div ng-hide="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')" class="input_field" >
+                  <%= image_tag(nil, "ng-src" => "{{imagePreview[0] || controller.images[0]}}") %>
+                  <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
+                </div>
+                <div class="photo_input" ng-show="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')">
+                  <%= f.file_field :picture, :"data-file" => "true", :"data-index" => 0,
+                  :"accept" => "image/jpg, image/jpeg, image/png" %>
+                  <%= inline_svg "plus.svg" %>
+                </div>
+              </div>
+              <div class="image-upload-box" style="background: url({{imagePreview[1] || controller.images[1]}}) no-repeat center center; background-size: cover;">
+                <div ng-hide="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')" class="input_field">
+                  <%= image_tag(nil, "ng-src" => "{{imagePreview[1] || controller.images[1]}}") %>
+                  <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 1)" %>
+                </div>
+                <div class="photo_input" ng-show="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')">
+                  <%= f.file_field :picture2, :"data-file" => "true", :"data-index" => 1,
+                  :"accept" => "image/jpg, image/jpeg, image/png" %>
+                  <%= inline_svg "plus.svg" %>
+                </div>
+              </div>
+              <div class="image-upload-box" style="background: url({{imagePreview[2] || controller.images[2]}}) no-repeat center center; background-size: cover;">
+                <div ng-hide="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')" class="input_field">
+                  <%= image_tag(nil, "ng-src" => "{{imagePreview[2] || controller.images[2]}}") %>
+                  <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 2)" %>
+                </div>
+                <div class="photo_input" ng-show="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')">
+                  <%= f.file_field :picture3, :"data-file" => "true", :"data-index" => 2,
+                  :"accept" => "image/jpg, image/jpeg, image/png" %>
+                  <%= inline_svg "plus.svg" %>
+                </div>
+              </div>
+              <div class="image-upload-box" style="background: url({{imagePreview[3] || controller.images[3]}}) no-repeat center center; background-size: cover;">
+                <div ng-hide="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')" class="input_field">
+                  <%= image_tag(nil, "ng-src" => "{{imagePreview[3] || controller.images[3]}}") %>
+                  <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 3)" %>
+                </div>
+                <div class="photo_input" ng-show="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')">
+                  <%= f.file_field :picture4, :"data-file" => "true", :"data-index" => 3,
+                  :"accept" => "image/jpg, image/jpeg, image/png" %>
+                  <%= inline_svg "plus.svg" %>
+                </div>
+              </div>
+            </div>
+            <%# <div class="files">
+              <p class="field_name">
+                7. <%= t(".files") %->
+              </p>
+              <div class="field_files">
+                <input type="file" name="file">
+                <div class="icon">
+                  <%= image_tag "file-icon.png" %->
+                  <%= t(".choose_file") %->
+                </div>
+              </div>
+            </div> %>
+            <div class="price">
+              <span class="field_name">
+                <li><%= t(".comment") %></li>
+              </span>
+              <div class="textarea margin">
+                <%= f.text_area :comment, placeholder: t(".comments") %>
+              </div>
+            </div>
+            <%# if action_name == "new" %->
+              <div class="block_multi_srvice"></div>
+              <div class="add_multi_service">
+                <a href=""><%= t(".add_more") %-></a>
+                <span><%= t(".optional") %-></span>
+              </div>
+            <% end %>
+              
           </div>
-          <%# if action_name == "new" %->
-            <div class="block_multi_srvice"></div>
-            <div class="add_multi_service">
-              <a href=""><%= t(".add_more") %-></a>
-              <span><%= t(".optional") %-></span>
-            </div>
-          <% end %>
           <div class="form-actions">
             <%= f.button :submit  %>
             <%= link_to t(".discard"), dashboard_path %>
