@@ -15,24 +15,31 @@ class CreateServiceService
     service_fields = params[:service_fields]
     action_kinds = params[:action_kind]
 
-    if service_kinds.blank?
-      @service.errors.add :service_kinds, :blank
-    else
-      if approver.nil? || approver.persisted?
-        @service.transaction do
-          @service.action_kinds = ActionKind.where(id: action_kinds)
-          @success = if @service.save
-            service_kind_id = service_kinds
-            service_kind = ServiceKind.where(id: service_kind_id).first
-            service_field = service_kind.service_fields.build(
-              service: @service,
-              text: service_fields ? service_fields[service_kind_id] : ''
-            )
-            service_field.save
+    # if action_kinds == "4" #road
+    # else
+      if action_kinds != "4" && service_kinds.blank?
+        @service.errors.add :service_kinds, :blank
+      else
+        if approver.nil? || approver.persisted?
+          @service.transaction do
+            @service.action_kinds = ActionKind.where(id: action_kinds)
+            @success = if @service.save
+              if action_kinds != "4"
+                service_kind_id = service_kinds
+                service_kind = ServiceKind.where(id: service_kind_id).first
+                service_field = service_kind.service_fields.build(
+                  service: @service,
+                  text: service_fields ? service_fields[service_kind_id] : ''
+                )
+                service_field.save
+              else
+                true
+              end
+            end
           end
         end
       end
-    end
+    # end
 
     if success?
       @service.reload # to fetch new created service_field

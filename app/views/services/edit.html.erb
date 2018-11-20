@@ -8,5 +8,5 @@
     </p>
   </div>
 
-  <%= render 'form_edit' %>
+  <%= render @service.action_kinds.map(&:title) == ["Road"] ? "road_form_edit" : 'form_edit' %>
 </div>

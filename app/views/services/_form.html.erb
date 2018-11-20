@@ -21,12 +21,18 @@
         <ol>
           <strong>
             <% @service.available_action_kinds.each do |action_kind| %>
-              <%= radio_button_tag("action_kind", action_kind.id, @service.checked_action?(action_kind)) %>
+              <%= radio_button_tag(
+                "action_kind",
+                action_kind.id,
+                @service.checked_action?(action_kind),
+                :"ng-change" => "changedActionKind(#{action_kind.id})",
+                :"ng-model" => "actionKind"
+              ) %>
               <%= label_tag "action_kind_#{action_kind.id}", action_kind.title %>
             <% end %>
           </strong>
 
-          <div class="service">
+          <div class="service" ng-show="!showRoad">
             <div class="half_form_field service_form">
               <span class="field_name">
                 <li class="block"><%= t(".service_kind") %></li>
@@ -182,12 +188,12 @@
                 <span><%= t(".optional") %-></span>
               </div>
             <% end %>
-            
+
           </div>
-          
 
 
-          <div class="road" style="display: none;">
+
+          <div class="road" ng-show="showRoad">
             <span class="field_name">
               <li class="block"><%= t(".road_map") %></li>
             </span>
@@ -197,14 +203,14 @@
                 <span class="field_name">
                   <li><%= t(".Distance") %></li>
                 </span>
-                <%= f.text_field :price, placeholder: t(".Distance_example") %>
+                <%= f.text_field :distance, placeholder: t(".Distance_example") %>
 
               </div>
               <div class="half_form_field service_form consumption">
                 <span class="field_name">
                   <li><%= t(".fuel_consumption") %></li>
                 </span>
-                <%= f.text_field :price, placeholder: t(".fuel_example") %>
+                <%= f.text_field :fuel, placeholder: t(".fuel_example") %>
 
               </div>
             </div>
@@ -213,9 +219,9 @@
               <span class="field_name">
                 <li><%= t(".customer") %></li>
               </span>
-              <%= f.text_field :price, placeholder: t(".customer_example") %>
+              <%= f.text_field :customer, placeholder: t(".customer_example") %>
             </div>
-            
+
             <span class="field_name company_field_edit">
               <li class="block"><%= t(".road_approver") %></li>
             </span>
@@ -257,12 +263,12 @@
                   <%= b.label  %>
                 </div>
               <% end %>
-              
+
               <span class="field_name">
                 <li><%= t(".date_ride") %></li>
                 <%= f.input :reminder_custom, as: :string,  input_html: { type: "date", min: Date.current } %>
               </span>
-           
+
               <div class="date_icon road">
                 <%= image_tag "calendar-icon.png" %>
                 <%= t(".choose_date") %>
@@ -346,7 +352,7 @@
                 <span><%= t(".optional") %-></span>
               </div>
             <% end %>
-              
+
           </div>
           <div class="form-actions">
             <%= f.button :submit  %>

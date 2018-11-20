@@ -37,4 +37,9 @@ var NewServiceController = function ($scope) {
       this.showServiceKindText = false;
     }
   };
+
+  $scope.changedActionKind = function (id) {
+    console.log(id);
+    this.showRoad = (id == 4);
+  };
 };

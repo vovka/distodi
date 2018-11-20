@@ -238,4 +238,7 @@ end
 #  picture3      :string
 #  picture4      :string
 #  comment       :string(2000)
+#  distance      :float
+#  fuel          :float
+#  customer      :string
 #
