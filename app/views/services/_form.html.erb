@@ -11,7 +11,7 @@
       '
 >
   <div class="left_form_service_create">
-    <div class="form_service_create">
+    <div class="form_service_create" ng-show="!showRoad">
       <%= simple_form_for(@service) do |f| %>
         <div class="error_explanation service">
           <%= render "shared/form_errors", object: @service -%>
@@ -32,7 +32,7 @@
             <% end %>
           </strong>
 
-          <div class="service" ng-show="!showRoad">
+          <div class="service">
             <div class="half_form_field service_form">
               <span class="field_name">
                 <li class="block"><%= t(".service_kind") %></li>
@@ -191,9 +191,38 @@
 
           </div>
 
+          <div class="form-actions">
+            <%= f.button :submit  %>
+            <%= link_to t(".discard"), dashboard_path %>
+          </div>
+        </ol>
+      <% end %>
+    </div>
 
 
-          <div class="road" ng-show="showRoad">
+
+    <div class="form_service_create" ng-show="showRoad">
+      <%= simple_form_for(@service) do |f| %>
+        <div class="error_explanation service">
+          <%= render "shared/form_errors", object: @service -%>
+        </div>
+        <%= f.hidden_field :item_id %>
+        <%= hidden_field_tag :token, params[:token] %>
+        <ol>
+          <strong>
+            <% @service.available_action_kinds.each do |action_kind| %>
+              <%= radio_button_tag(
+                "action_kind",
+                action_kind.id,
+                @service.checked_action?(action_kind),
+                :"ng-change" => "changedActionKind(#{action_kind.id})",
+                :"ng-model" => "actionKind"
+              ) %>
+              <%= label_tag "action_kind_#{action_kind.id}", action_kind.title %>
+            <% end %>
+          </strong>
+
+          <div class="road">
             <span class="field_name">
               <li class="block"><%= t(".road_map") %></li>
             </span>
@@ -354,6 +383,7 @@
             <% end %>
 
           </div>
+
           <div class="form-actions">
             <%= f.button :submit  %>
             <%= link_to t(".discard"), dashboard_path %>

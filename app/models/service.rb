@@ -9,6 +9,8 @@ class Service < ActiveRecord::Base
   belongs_to :approver, -> { unscope(where: :demo) }, polymorphic: true
   has_one :blockchain_transaction_datum, inverse_of: :service
 
+  accepts_nested_attributes_for :service_fields
+
   STATUSES = [
     STATUS_PENDING = "pending".freeze,
     STATUS_APPROVED = "approved".freeze,
@@ -49,6 +51,12 @@ class Service < ActiveRecord::Base
                      length: { maximum: 1023 },
                      if: -> { status == STATUS_DECLINED }
   validates :comment, length: { maximum: 2000 }
+  validates :service_kinds, presence: true, unless: :road?
+  validate do |service|
+    service.errors.add(:approver, :blank) if service.approver.present? && !service.approver.persisted?
+  end
+
+  before_validation { |service| service.service_fields = [] if service.road? }
 
   before_create do |service|
     service.status = STATUS_APPROVED if service.self_approvable?
@@ -143,6 +151,11 @@ class Service < ActiveRecord::Base
     r[:action_kind] = action_kinds.first.to_blockchain_hash if action_kinds.any?
     r[:service_field] = service_fields.first.to_blockchain_hash if service_fields.any?
     r
+  end
+
+  def road?
+    debugger
+    action_kinds.any? && action_kinds.first.road?
   end
 
   private

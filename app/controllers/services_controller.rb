@@ -53,12 +53,11 @@ class ServicesController < ApplicationController
                end
 
     # Performing action
-    create = CreateServiceService.new(item, approver, params, service_params)
-    create.perform
-    @service = create.service
+    create = CreateServiceService.new(item, approver, params, service_params.to_h)
+    @service = create.perform.decorate
 
     # Rendering
-    if create.success?
+    if @service.persisted?
       if user_signed_in? || company_signed_in?
         redirect_to item_path(item), notice: t(".success")
       else
