@@ -6389,7 +6389,11 @@ input:-webkit-autofill{
     float: left;
   }
   .left_part{
-    width: 66%;
+    width: 63%;
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    
     .service_kind{
       text-transform: capitalize;
       img{
