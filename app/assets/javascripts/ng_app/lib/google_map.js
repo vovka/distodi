@@ -46,6 +46,12 @@ var GoogleMap = function () {
       var directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
       directionsDisplay.setMap(this.map);
       directionsDisplay.setDirections(args);
+
+      if (args.routes[0]) {
+        var infowindow = new google.maps.InfoWindow();
+        infowindow.setContent(args.routes[0].legs[0].distance.text + ", " + args.routes[0].legs[0].duration.text);
+        infowindow.open(this.map, this.markers[1]);
+      }
     }
   }, {
     key: "placeMarker",
@@ -113,6 +119,12 @@ var GoogleMap = function () {
 //     var directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
 //     directionsDisplay.setMap(this.map);
 //     directionsDisplay.setDirections(args);
+//
+//     if (args.routes[0]) {
+//       var infowindow = new google.maps.InfoWindow();
+//       infowindow.setContent(`${args.routes[0].legs[0].distance.text}, ${args.routes[0].legs[0].duration.text}`);
+//       infowindow.open(this.map, this.markers[1]);
+//     }
 //   }
 //
 //   placeMarker(position) {
