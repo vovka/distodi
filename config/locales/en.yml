@@ -229,6 +229,15 @@ en:
       set_office: "Please set your office/department information"
 
   services:
+    road_show:
+      myself: Road withot manage approve
+      remind_me: Road reason
+      custom_date: Road date
+      choose_date: Choose date
+    road_form_edit:
+      remind_me: Road reason
+      custom_date: Road date
+      choose_date: Choose date
     list:
       confirm_delete: "Do you really want to delete this service?"
       self_approver: "Self"

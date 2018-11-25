@@ -95,6 +95,7 @@ class ServicesController < ApplicationController
       @service_kinds = @service.item.category.service_kinds
       @action_kinds = @service.item.category.action_kinds
       @item = @service.item
+      render @service.road? ? "road_show" : "show"
     end
   end
 

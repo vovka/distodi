@@ -62,25 +62,22 @@
             </div>
             <div class="line"></div>
             <span class="field_name">
-              <li class="block"><%= t(".service_kind") %></li>
+              <li class="block"><%= t(".distance") %></li>
             </span>
             <div class="service_kind_edit_field">
-              <% @service.service_fields.each do |service_field| %>
-                <%= service_field.service_kind.title %>
-                <%= service_field.text %>
-              <% end %>
+              <%= @service.distance %>
             </div>
             <div class="service_kind_title_edit_field date">
               <span class="field_name edit_date">
-                <li><%= t(".service_date") %></li>
+                <li><%= t(".fuel_consumption") %></li>
               </span>
             </div>
             <div class="service_date_edit_field date">
-              <%= @service.created_at.strftime("%d/%m/%Y") %>
+              <%= @service.fuel %>
             </div>
           <% if user_signed_in? %>
             <span class="field_name company_field_edit">
-              <li class="block"><%= t(".service_company") %></li>
+              <li class="block"><%= t(".road_approver") %></li>
             </span>
 
               <div class="company_select company_field_edit">
@@ -96,12 +93,7 @@
               </div>
 
           <% end %>
-          <div class="price">
-            <span class="field_name">
-              <li class="price"><%= f.label 'Price' %> <%= t(".amount") %></li>
-            </span>
-            <%= f.text_field :price, placeholder: t(".price") %>
-          </div>
+      
           <div class="line"></div>
           <span class="field_name">
             <li class="block"><%= f.label :reminder, t(".remind_me")  %></li>
