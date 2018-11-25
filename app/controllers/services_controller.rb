@@ -168,7 +168,7 @@ class ServicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white
     # list through.
     def service_params
-      default_params = [:control_date, :picture, :picture2, :picture3, :picture4, :price, :comment, :distance, :fuel, :customer]
+      default_params = [:control_date, :picture, :picture2, :picture3, :picture4, :price, :comment, :distance, :fuel, :customer, :start_lat, :start_lng, :end_lat, :end_lng]
       if company_signed_in?
         params.require(:service)
               .merge(company_id: current_company.id)

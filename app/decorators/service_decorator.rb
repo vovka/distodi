@@ -43,7 +43,7 @@ class ServiceDecorator < Draper::Decorator
   end
 
   def checked_action?(action_kind)
-    action_kind == default_checked_action_kind
+    (action_kinds.any? && action_kinds.first == action_kind) || (action_kind == default_checked_action_kind)
   end
 
   def approver_name

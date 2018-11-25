@@ -3433,9 +3433,9 @@ option {
   border-color: transparent transparent transparent rgba(78, 68, 68, 0.9) !important;
 }
 
-.ng-binding { //??? it breaks angular elements
-  color: #fff !important;
-}
+// .ng-binding { //??? it breaks angular elements
+//   color: #fff !important;
+// }
 
 .tour-tip:hover {
   box-shadow: 0 0 5px #b2a6a6 !important;
@@ -4203,8 +4203,23 @@ input:-webkit-autofill{
   -moz-appearance:    none;
   appearance:         none;
 }
-.left_form_service_create .form_service_create .road .company_select select{
-  width: 100%;
+
+.left_form_service_create {
+  .form_service_create {
+    .road {
+      .company_select {
+        select {
+          width: 100%;
+        }
+      }
+    }
+
+    .map {
+      display: block;
+      width: 99.3%;
+      height: 350px;
+    }
+  }
 }
 
 .left_form_service_create .form_service_create .company_select select:focus{
@@ -5024,9 +5039,9 @@ input:-webkit-autofill{
     max-width: 250px;
     img{
       width: 50px;
-      
+
       margin-top: 20px;
-      
+
     }
     p{
       margin-top: 30px;
@@ -5102,7 +5117,7 @@ input:-webkit-autofill{
         width: 33%;
         display: inline-block;
         float: left;
-        margin-right: 15px; 
+        margin-right: 15px;
         img{
           width: 100%;
         }
@@ -5145,7 +5160,7 @@ input:-webkit-autofill{
       }
     }
   }
-  
+
 }
 
 .photo_delete{
@@ -7917,7 +7932,7 @@ abbr[title]{
     font-family: 'MuseoSansCyrl_2';
     font-size: 14px;
     float: left;
-    margin-top: 350px; 
+    margin-top: 350px;
   }
 }
 .mobile_hash{

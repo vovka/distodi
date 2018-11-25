@@ -40,6 +40,26 @@ var NewServiceController = function ($scope) {
 
   $scope.changedActionKind = function (id) {
     console.log(id);
-    this.showRoad = (id == 4);
+    if (this.showRoad = (id == 4)) {
+      this.renderMap.bind(this)();
+    }
+  };
+
+  $scope.renderMap = function () {
+    var map = new GoogleMap({ elementId: "map", onCoordinatesChanged: function (whichMarker, coordinates) {
+      switch (whichMarker) {
+        case (1):
+          $scope.startLat = coordinates.lat();
+          $scope.startLng = coordinates.lng();
+          break;
+        default:
+          $scope.endLat = coordinates.lat();
+          $scope.endLng = coordinates.lng();
+          break;
+      }
+      $scope.$apply();
+    }});
+    map.init();
+    console.log(this);
   };
 };

@@ -154,7 +154,6 @@ class Service < ActiveRecord::Base
   end
 
   def road?
-    debugger
     action_kinds.any? && action_kinds.first.road?
   end
 
@@ -206,4 +205,8 @@ end
 #  distance      :float
 #  fuel          :float
 #  customer      :string
+#  start_lat     :float
+#  start_lng     :float
+#  end_lat       :float
+#  end_lng       :float
 #

@@ -6,6 +6,7 @@
 //= require ./config
 //= require_tree ./controllers
 //= require_tree ./directives
+//= require_tree ./lib
 
 angular.module("DistodiApp", ["ipCookie", "localytics.directives", "in-viewport"])
 
