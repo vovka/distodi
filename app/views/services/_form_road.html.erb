@@ -23,7 +23,6 @@
         <span class="field_name">
           <li class="block"><%= t(".road_map") %></li>
         </span>
-        <%# <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1282.173876647387!2d36.33039668959893!3d50.0048368973372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x412709facee79e6f%3A0x89d0f3dec07e8dcd!2z0JzQtdCx0LXQu9GM!5e0!3m2!1sru!2sua!4v1542315926712" width="99.3%" height="350" frameborder="0" style="border: 1px solid #d3d3d3 ; border-radius: 5px;" allowfullscreen></iframe> --> %>
         <div id="map" class="map"></div>
         <input type="hidden" name="service[start_lat]" ng-value="startLat" />
         <input type="hidden" name="service[start_lng]" ng-value="startLng" />
@@ -83,10 +82,10 @@
           </div>
         </div>
         <span class="field_name">
-          <li class="block"><%= f.label :reminder, t(".reason")  %></li>
+          <li class="block"><%= f.label :road_reasons, t(".reason")  %></li>
         </span>
         <div class="reminders">
-          <%= f.collection_check_boxes :reminders_predefined, service.predefined_reminders, :first, :last do |b| %>
+          <%= f.collection_check_boxes :road_reasons, service.predefined_road_reasons, :first, :last do |b| %>
             <div class="select reminder">
               <%= b.check_box  %>
               <i>
@@ -98,9 +97,10 @@
 
           <span class="field_name">
             <li><%= t(".date_ride") %></li>
-            <%= f.input :reminder_custom, as: :string,  input_html: { type: "date", min: Date.current } %>
+            <%= f.input :performed_at, as: :string,  input_html: { type: "date" } %>
           </span>
 
+          <%# WTF is this below? It must be implemented with CSS within input above! %>
           <div class="date_icon road">
             <%= image_tag "calendar-icon.png" %>
             <%= t(".choose_date") %>

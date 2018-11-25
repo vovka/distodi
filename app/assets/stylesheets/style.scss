@@ -4222,6 +4222,14 @@ input:-webkit-autofill{
   }
 }
 
+.left_part {
+  .map {
+    display: block;
+    width: 99.3%;
+    height: 350px;
+  }
+}
+
 .left_form_service_create .form_service_create .company_select select:focus{
   border-color: #149b4c;
   box-shadow: 0 0 4px 0 #149b4c;
@@ -4455,29 +4463,37 @@ input:-webkit-autofill{
   height: 50px;
   margin-top: 16px;
 }
-.reminders .input.optional.service_reminder_custom label{
-  display: none;
-}
-.reminders .input.optional.service_reminder_custom input{
-  width: 144px;
-  display: block;
-  border: 1px solid #d3d3d3;
-  border-radius: 4px;
-  font-size: 14px;
-  padding-top: 15px;
-  padding-bottom: 14px;
-  padding-left: 15px;
-  background-color: #fff;
-  font-family: 'MuseoSansCyrl_1';
-  outline: none;
-  padding-right: 140px;
+
+.reminders {
+  .input.optional.service_reminder_custom,
+  .input.optional.service_performed_at {
+    label{
+      display: none;
+    }
+
+    input{
+      width: 144px;
+      display: block;
+      border: 1px solid #d3d3d3;
+      border-radius: 4px;
+      font-size: 14px;
+      padding-top: 15px;
+      padding-bottom: 14px;
+      padding-left: 15px;
+      background-color: #fff;
+      font-family: 'MuseoSansCyrl_1';
+      outline: none;
+      padding-right: 140px;
+
+      &:focus{
+        border-color: #149b4c;
+        box-shadow: 0 0 4px 0 #149b4c;
+        outline: none;
+      }
+    }
+  }
 }
 
-.reminders .input.optional.service_reminder_custom input:focus{
-  border-color: #149b4c;
-  box-shadow: 0 0 4px 0 #149b4c;
-  outline: none;
-}
 .form-actions input{
   background:#149b4c;
   border-radius:4px;

@@ -1,4 +1,13 @@
-<div class="service_view">
+<div  class="service_view"
+      ng-controller="NewServiceController as controller"
+      ng-init='
+        controller.enableMap();
+        startLat = <%= @service.start_lat %>;
+        startLng = <%= @service.start_lng %>;
+        endLat = <%= @service.end_lat %>;
+        endLng = <%= @service.end_lng %>;
+      '
+>
   <div class="left_part">
     <div class="service_kind">
       <%= link_to image_tag("back_link.png"), dashboard_path %>
@@ -44,6 +53,13 @@
         <div class="line"></div>
       <% end %>
     </div>
+
+    <div id="map" class="map"></div>
+    <input type="hidden" name="service[start_lat]" ng-value="startLat" />
+    <input type="hidden" name="service[start_lng]" ng-value="startLng" />
+    <input type="hidden" name="service[end_lat]" ng-value="endLat" />
+    <input type="hidden" name="service[end_lng]" ng-value="endLng" />
+
     <div class="date">
       <div class="made_date">
         <p><%= t(".made") %></p>
@@ -86,7 +102,7 @@
     <% else %>
 
     <% end %>
-    
+
     <% if @service.company_id.present? %>
       <div class="company_info">
         <div class="block">
@@ -112,12 +128,10 @@
     <% end %>
     <div class="line"></div>
     <div class="reminders">
-      <p><%= t(".reminders") %></p>
-      <span>WEEKLY</span>
-      <span>MONTHLY</span>
-      <span>YEARLY</span>
-      <span>10/02/2019</span>
-      <span>10/02/2020</span>
+      <p><%= t(".road_reasons") %></p>
+      <% @service.road_reason_strings.each do |reason| %>
+        <span><%= t("activerecord.models.service.attributes.predefined_road_reasons.#{reason}") %></span>
+      <% end %>
     </div>
     <% if @service.picture.blank? && @service.picture2.blank? && @service.picture3.blank? && @service.picture4.blank? %>
     <% else %>
@@ -255,3 +269,5 @@
     </div>
   </div>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap" async defer></script>

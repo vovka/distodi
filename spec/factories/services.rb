@@ -52,4 +52,6 @@ end
 #  start_lng     :float
 #  end_lat       :float
 #  end_lng       :float
+#  road_reasons  :integer          default("{}"), is an Array
+#  performed_at  :date
 #

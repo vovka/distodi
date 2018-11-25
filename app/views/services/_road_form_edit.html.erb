@@ -8,6 +8,11 @@
             @service.picture4.additional_photo.url,
           ].compact.to_s.html_safe
         %>;
+        controller.enableMap();
+        startLat = <%= @service.start_lat %>;
+        startLng = <%= @service.start_lng %>;
+        endLat = <%= @service.end_lat %>;
+        endLng = <%= @service.end_lng %>;
       '
 >
   <div class="left_form_service_create">
@@ -61,6 +66,13 @@
               </div>
             </div>
             <div class="line"></div>
+
+            <div id="map" class="map"></div>
+            <input type="hidden" name="service[start_lat]" ng-value="startLat" />
+            <input type="hidden" name="service[start_lng]" ng-value="startLng" />
+            <input type="hidden" name="service[end_lat]" ng-value="endLat" />
+            <input type="hidden" name="service[end_lng]" ng-value="endLng" />
+
             <span class="field_name">
               <li class="block"><%= t(".distance") %></li>
             </span>
@@ -93,13 +105,13 @@
               </div>
 
           <% end %>
-      
+
           <div class="line"></div>
           <span class="field_name">
             <li class="block"><%= f.label :reminder, t(".remind_me")  %></li>
           </span>
           <div class="reminders">
-            <%= f.collection_check_boxes :reminders_predefined, @service.predefined_reminders, :first, :last do |b| %>
+            <%= f.collection_check_boxes :road_reasons, @service.predefined_road_reasons, :first, :last do |b| %>
               <div class="select reminder">
                 <%= b.check_box  %>
                 <i>
@@ -110,7 +122,7 @@
             <% end %>
             <p class="field_name">
               <%= t(".custom_date") %>
-              <%= f.input :reminder_custom, as: :string,  input_html: { type: "date", min: Date.current } %>
+              <%= f.input :performed_at, as: :string,  input_html: { type: "date" } %>
             </p>
             <div class="date_icon">
               <%= image_tag "calendar-icon.png" %>
@@ -207,3 +219,5 @@
     </div>
   </div>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap" async defer></script>

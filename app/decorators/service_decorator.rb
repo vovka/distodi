@@ -26,6 +26,12 @@ class ServiceDecorator < Draper::Decorator
     end
   end
 
+  def predefined_road_reasons
+    object.class::PREDEFINED_ROAD_REASONS.keys.map.with_index do |name, i|
+      [i, I18n.t("activerecord.models.service.attributes.predefined_road_reasons.#{name}")]
+    end
+  end
+
   def companies_options
     Company.joins(:assigned_services => :item).where(items: { user: user }).where.not(name: [nil, ""]).uniq + [other_company_option]
   end
@@ -88,6 +94,10 @@ class ServiceDecorator < Draper::Decorator
 
   def short_blockchain_hash
     blockchain_hash.try(:[], SHORT_BLOCKCHAIN_HASH_SYMBOLS)
+  end
+
+  def road_reason_strings
+    road_reasons.compact.map { |i| object.class::PREDEFINED_ROAD_REASONS.to_a[i][0] }
   end
 
   private

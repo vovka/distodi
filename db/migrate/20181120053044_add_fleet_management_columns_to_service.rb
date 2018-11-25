@@ -8,6 +8,8 @@ class AddFleetManagementColumnsToService < ActiveRecord::Migration
       t.float :start_lng
       t.float :end_lat
       t.float :end_lng
+      t.integer :road_reasons, array: true, default: []
+      t.date :performed_at
     end
   end
 end

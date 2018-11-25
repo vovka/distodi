@@ -26,12 +26,7 @@ var GoogleMap = function () {
         zoom: this.initialZoom
       });
       this.map.addListener('click', function (e) {
-        if (_this.markersLimit-- > 0) {
-          _this.placeMarker(e.latLng);
-        }
-        if (_this.markersLimit < 1) {
-          _this.requestDirections();
-        }
+        _this.placeMarker(e.latLng);
       });
     }
   }, {
@@ -48,7 +43,7 @@ var GoogleMap = function () {
   }, {
     key: "drawDirections",
     value: function drawDirections(args) {
-      var directionsDisplay = new google.maps.DirectionsRenderer();
+      var directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
       directionsDisplay.setMap(this.map);
       directionsDisplay.setDirections(args);
     }
@@ -57,27 +52,32 @@ var GoogleMap = function () {
     value: function placeMarker(position) {
       var _this2 = this;
 
-      console.log({ lat: position.lat(), lng: position.lng() });
-      var marker = new google.maps.Marker({ position: position, map: this.map, draggable: true });
-      this.map.panTo(position);
-      var index = this.markers.push(marker);
+      // console.log({ lat: position.lat(), lng: position.lng() })
+      if (this.markersLimit-- > 0) {
+        var marker = new google.maps.Marker({ position: position, map: this.map, draggable: true });
+        this.map.panTo(position);
+        var index = this.markers.push(marker);
 
-      this.onCoordinatesChanged(index, position);
+        this.onCoordinatesChanged(index, position);
+        marker.addListener("dragend", function (e) {
+          console.log({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+          _this2.onCoordinatesChanged(index, e.latLng);
+          if (_this2.markersLimit < 1) {
+            _this2.requestDirections();
+          }
+        });
+      }
+
       if (this.markersLimit < 1) {
         this.requestDirections();
       }
-      marker.addListener("dragend", function (e) {
-        console.log({ lat: e.latLng.lat(), lng: e.latLng.lng() });
-        _this2.onCoordinatesChanged(index, e.latLng);
-        if (_this2.markersLimit < 1) {
-          _this2.requestDirections();
-        }
-      });
     }
   }]);
 
   return GoogleMap;
 }();
+
+
 
 // class GoogleMap {
 //   constructor(options) {
@@ -95,12 +95,7 @@ var GoogleMap = function () {
 //       zoom: this.initialZoom
 //     });
 //     this.map.addListener('click', e => {
-//       if (this.markersLimit-- > 0) {
 //         this.placeMarker(e.latLng);
-//       }
-//       if (this.markersLimit < 1) {
-//         this.requestDirections();
-//       }
 //     });
 //   }
 //
@@ -115,27 +110,30 @@ var GoogleMap = function () {
 //   }
 //
 //   drawDirections(args) {
-//     var directionsDisplay = new google.maps.DirectionsRenderer;
+//     var directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
 //     directionsDisplay.setMap(this.map);
 //     directionsDisplay.setDirections(args);
 //   }
 //
 //   placeMarker(position) {
-//     console.log({ lat: position.lat(), lng: position.lng() })
-//     let marker = new google.maps.Marker({ position: position, map: this.map, draggable: true });
-//     this.map.panTo(position);
-//     let index = this.markers.push(marker);
+//     // console.log({ lat: position.lat(), lng: position.lng() })
+//     if (this.markersLimit-- > 0) {
+//       let marker = new google.maps.Marker({ position: position, map: this.map, draggable: true });
+//       this.map.panTo(position);
+//       let index = this.markers.push(marker);
 //
-//     this.onCoordinatesChanged(index, position);
+//       this.onCoordinatesChanged(index, position);
+//       marker.addListener("dragend", e => {
+//         console.log({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+//         this.onCoordinatesChanged(index, e.latLng);
+//         if (this.markersLimit < 1) {
+//           this.requestDirections();
+//         }
+//       });
+//     }
+//
 //     if (this.markersLimit < 1) {
 //       this.requestDirections();
 //     }
-//     marker.addListener("dragend", e => {
-//       console.log({ lat: e.latLng.lat(), lng: e.latLng.lng() });
-//       this.onCoordinatesChanged(index, e.latLng);
-//       if (this.markersLimit < 1) {
-//         this.requestDirections();
-//       }
-//     });
 //   }
 // }

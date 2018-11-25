@@ -1,5 +1,6 @@
 var NewServiceController = function ($scope) {
   var controller = this;
+  this.$scope = $scope;
 
   $scope.imagePreview = [];
   $scope.newPhotoAttached = [];
@@ -41,7 +42,13 @@ var NewServiceController = function ($scope) {
   $scope.changedActionKind = function (id) {
     console.log(id);
     if (this.showRoad = (id == 4)) {
-      this.renderMap.bind(this)();
+      var map = this.renderMap.bind(this)();
+      if (this.startLat && this.startLng && this.endLat && this.endLng) {
+        // map.placeMarker({ lat: ()=>this.startLat, lng: ()=>this.startLng });
+        // map.placeMarker({ lat: ()=>this.endLat, lng: ()=>this.endLng });
+        map.placeMarker({ lat: this.startLat, lng: this.startLng });
+        map.placeMarker({ lat: this.endLat, lng: this.endLng });
+      }
     }
   };
 
@@ -49,17 +56,29 @@ var NewServiceController = function ($scope) {
     var map = new GoogleMap({ elementId: "map", onCoordinatesChanged: function (whichMarker, coordinates) {
       switch (whichMarker) {
         case (1):
-          $scope.startLat = coordinates.lat();
-          $scope.startLng = coordinates.lng();
+          $scope.startLat = coordinates.lat;
+          $scope.startLng = coordinates.lng;
           break;
         default:
-          $scope.endLat = coordinates.lat();
-          $scope.endLng = coordinates.lng();
+          $scope.endLat = coordinates.lat;
+          $scope.endLng = coordinates.lng;
           break;
       }
       $scope.$apply();
     }});
     map.init();
     console.log(this);
+    return map;
   };
+};
+
+
+
+NewServiceController.prototype.enableMap = function () {
+  window.setTimeout(
+    (function() {
+      this.$scope.changedActionKind(4);
+    }).bind(this),
+    2000
+  );
 };

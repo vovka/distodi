@@ -287,6 +287,8 @@ ActiveRecord::Schema.define(version: 20181120053044) do
     t.float    "start_lng"
     t.float    "end_lat"
     t.float    "end_lng"
+    t.integer  "road_reasons",               default: [],                     array: true
+    t.date     "performed_at"
   end
 
   create_table "translations", force: :cascade do |t|

@@ -174,11 +174,11 @@ class ServicesController < ApplicationController
         params.require(:service)
               .merge(company_id: current_company.id)
               .permit(default_params + [:company_id,
-                      :reminder_custom, reminders_predefined: []])
+                      :performed_at, :reminder_custom, road_reasons: [], reminders_predefined: []])
       elsif user_signed_in? || company_signed_in?
         params.require(:service)
               .permit(default_params + [:company_id,
-                      :reminder_custom, reminders_predefined: []])
+                      :performed_at, :reminder_custom, road_reasons: [], reminders_predefined: []])
       else
         params.require(:service).permit(default_params)
       end

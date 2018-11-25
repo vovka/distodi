@@ -25,6 +25,14 @@ class Service < ActiveRecord::Base
     year: -> { 1.year },
     years_2: -> { 2.years }
   }.freeze
+  PREDEFINED_ROAD_REASONS = {
+    take: "Take goods",
+    pick_up: "Pick up the goods",
+    passengers: "Passenger transportation",
+    home: "Way to home (to the office or home)",
+    transit: "Transit (work reason) ",
+    service: "Service (repair)"
+  }.freeze
 
   attr_accessor :reminders_predefined, :reminder_custom
 
@@ -209,4 +217,6 @@ end
 #  start_lng     :float
 #  end_lat       :float
 #  end_lng       :float
+#  road_reasons  :integer          default("{}"), is an Array
+#  performed_at  :date
 #

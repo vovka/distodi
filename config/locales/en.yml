@@ -229,15 +229,6 @@ en:
       set_office: "Please set your office/department information"
 
   services:
-    road_show:
-      myself: Road withot manage approve
-      remind_me: Road reason
-      custom_date: Road date
-      choose_date: Choose date
-    road_form_edit:
-      remind_me: Road reason
-      custom_date: Road date
-      choose_date: Choose date
     list:
       confirm_delete: "Do you really want to delete this service?"
       self_approver: "Self"
@@ -313,7 +304,7 @@ en:
       <<: *service_form
     form_road:
       <<: *service_form
-    form_edit:
+    form_edit: &form_edit
       select_service: Please, select service kind
       service_kind: "Service kind"
       service_company: "Select company name or service by yourself"
@@ -349,7 +340,12 @@ en:
       myself: I did service by myself
       optional:  (optional, if you want to add 2 or more Service logs for your item simultaneously)
       company_has_no_name: Company has no name.
-    show:
+    road_form_edit:
+      <<: *form_edit
+      remind_me: Road reason
+      custom_date: Road date
+      choose_date: Choose date
+    show: &show
       made: Service made
       added: Service added
       name: Service company name
@@ -375,6 +371,12 @@ en:
       cancel: Cancel
       reason: Reason
       company_deleted: Company was deleted
+    road_show:
+      <<: *show
+      myself: Road withot manage approve
+      remind_me: Road reason
+      custom_date: Road date
+      choose_date: Choose date
     decline:
       success: You’ve declined service
 
@@ -928,6 +930,13 @@ en:
             months_6: "half a year"
             year: "a year"
             years_2: "two years"
+          predefined_road_reasons:
+            take: "Take goods"
+            pick_up: "Pick up the goods"
+            passengers: "Passenger transportation"
+            home: "Way to home (to the office or home)"
+            transit: "Transit (work reason) "
+            service: "Service (repair)"
           created_at: "Created at"
           action_kinds: "Actions"
           service_kinds: "Service kinds"
