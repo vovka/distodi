@@ -4,14 +4,34 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :transfer,
                                   :receive, :show_pdf]
   before_action :authenticate_user_or_company!
+  before_action :set_order, only: %i( show dashboard )
 
   def index
     @items = Item.unscoped.where(user: current_user_or_company)
   end
 
+  def dashboard
+    @items = Item.unscoped.where(user: current_user_or_company)
+    @services = Service.unscoped
+      .includes(:item, :company, :approver, :action_kinds, :service_fields => :service_kind)
+      .where(item: @items)
+      .joins("LEFT JOIN service_fields ON services.id = service_fields.service_id")
+      .joins("LEFT JOIN service_kinds ON service_fields.service_kind_id = service_kinds.id")
+      .joins("LEFT JOIN service_action_kinds ON services.id = service_action_kinds.service_id")
+      .joins("LEFT JOIN action_kinds ON service_action_kinds.action_kind_id = action_kinds.id")
+      .order(dashboard_order_params)
+      .decorate
+  end
+
   def show
     @items = Item.unscoped.where(user: current_user_or_company)
-    @services = @item.services.includes(:service_fields, :action_kinds).decorate
+    @services = @item.services.includes(:service_fields, :action_kinds)
+      .joins("LEFT JOIN service_fields ON services.id = service_fields.service_id")
+      .joins("LEFT JOIN service_kinds ON service_fields.service_kind_id = service_kinds.id")
+      .joins("LEFT JOIN service_action_kinds ON services.id = service_action_kinds.service_id")
+      .joins("LEFT JOIN action_kinds ON service_action_kinds.action_kind_id = action_kinds.id")
+      .order(dashboard_order_params)
+      .decorate
     respond_to do |format|
       format.html { render "dashboard" }
       format.csv { send_data Item.to_csv(@item) }
@@ -81,11 +101,6 @@ class ItemsController < ApplicationController
     else
       redirect_to :back, notice: t(".password_invalid")
     end
-  end
-
-  def dashboard
-    @items = Item.unscoped.where(user: current_user_or_company)
-    @services = Service.unscoped.includes(:item, :company, :approver, :action_kinds, :service_fields => :service_kind).where(item: @items).decorate
   end
 
   def dashboard_company
@@ -168,5 +183,41 @@ class ItemsController < ApplicationController
       []
     end
     params.require(:item).require(:characteristics).permit(attribute_kind_ids)
+  end
+
+  def set_order
+    @order = Struct.new(:service_kind, :service_kind?, :service_type, :service_type?)
+
+    service_kind_directions = Struct.new(:direction, :opposite_direction).new(
+      *(order_params.column != "service_kind" || order_params.direction == "desc" ? ["desc", "asc"] : ["asc", "desc"])
+    )
+    service_type_directions = Struct.new(:direction, :opposite_direction).new(
+      *(order_params.column != "service_type" || order_params.direction == "desc" ? ["desc", "asc"] : ["asc", "desc"])
+    )
+
+    @order = case order_params.column
+    when "service_kind"
+      @order.new(service_kind_directions, true, service_type_directions, false)
+    when "service_type"
+      @order.new(service_kind_directions, false, service_type_directions, true)
+    else
+      @order.new(service_kind_directions, false, service_type_directions, false)
+    end
+  end
+
+  def dashboard_order_params
+    case order_params.column
+    when "service_kind"
+      "service_kinds.title #{order_params.direction}"
+    when "service_type"
+      "action_kinds.title #{order_params.direction}"
+    else
+      "service_kinds.title ASC"
+    end
+  end
+
+  def order_params
+    sort_attributes = (params[:order] || "").split(" ").presence || ["service_kind", "asc"]
+    Struct.new(:column, :direction).new(*sort_attributes)
   end
 end

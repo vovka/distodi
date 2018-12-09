@@ -62,8 +62,18 @@
             </label>
           </div>
         </th>
-        <th><%= t(".service") %></th>
-        <th><%= t(".type") %></th>
+        <th>
+          <%= link_to t(".service"), "?order=service_kind+#{@order.service_kind.opposite_direction}",
+            type: "button",
+            name: "button",
+            class: "sort-by#{ @order.service_kind? ? " active-sort-#{@order.service_kind.direction}" : "" }" %>
+        </th>
+        <th>
+          <%= link_to t(".type"), "?order=service_type+#{@order.service_type.opposite_direction}",
+          type: "button",
+          name: "button",
+          class: "sort-by#{ @order.service_type? ? " active-sort-#{@order.service_type.direction}" : "" }" %>
+        </th>
         <th class="status"><%= t(".status") %></th>
         <th><%= t(".blockchain") %></th>
         <th><%= t(".item") %></th>
