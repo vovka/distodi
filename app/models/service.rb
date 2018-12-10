@@ -59,7 +59,9 @@ class Service < ActiveRecord::Base
                      length: { maximum: 1023 },
                      if: -> { status == STATUS_DECLINED }
   validates :comment, length: { maximum: 2000 }
-  validates :service_kinds, presence: true, unless: :road?
+  # WARNING: validation below was disabled due to errors with nested attributes.
+  # TODO: Need to fix the issue and bring back validation
+  # validates :service_kinds, presence: true, unless: :road?
   validate do |service|
     service.errors.add(:approver, :blank) if service.approver.present? && !service.approver.persisted?
   end
@@ -162,7 +164,7 @@ class Service < ActiveRecord::Base
   end
 
   def road?
-    action_kinds.any? && action_kinds.first.road?
+    action_kinds.any?(&:road?)
   end
 
   private

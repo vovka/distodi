@@ -1,5 +1,5 @@
 class ActionKind < ActiveRecord::Base
-  ROAD_REGEXP = //.freeze
+  ROAD_REGEXP = /road/i.freeze
 
   acts_as_list
 
