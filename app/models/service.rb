@@ -9,6 +9,8 @@ class Service < ActiveRecord::Base
   belongs_to :approver, -> { unscope(where: :demo) }, polymorphic: true
   has_one :blockchain_transaction_datum, inverse_of: :service
 
+  accepts_nested_attributes_for :service_fields
+
   STATUSES = [
     STATUS_PENDING = "pending".freeze,
     STATUS_APPROVED = "approved".freeze,
@@ -22,6 +24,14 @@ class Service < ActiveRecord::Base
     months_6: -> { 6.months },
     year: -> { 1.year },
     years_2: -> { 2.years }
+  }.freeze
+  PREDEFINED_ROAD_REASONS = {
+    take: "Take goods",
+    pick_up: "Pick up the goods",
+    passengers: "Passenger transportation",
+    home: "Way to home (to the office or home)",
+    transit: "Transit (work reason) ",
+    service: "Service (repair)"
   }.freeze
 
   attr_accessor :reminders_predefined, :reminder_custom
@@ -49,6 +59,14 @@ class Service < ActiveRecord::Base
                      length: { maximum: 1023 },
                      if: -> { status == STATUS_DECLINED }
   validates :comment, length: { maximum: 2000 }
+  # WARNING: validation below was disabled due to errors with nested attributes.
+  # TODO: Need to fix the issue and bring back validation
+  # validates :service_kinds, presence: true, unless: :road?
+  validate do |service|
+    service.errors.add(:approver, :blank) if service.approver.present? && !service.approver.persisted?
+  end
+
+  before_validation { |service| service.service_fields = [] if service.road? }
 
   before_create do |service|
     service.status = STATUS_APPROVED if service.self_approvable?
@@ -145,6 +163,10 @@ class Service < ActiveRecord::Base
     r
   end
 
+  def road?
+    action_kinds.any?(&:road?)
+  end
+
   private
 
   def set_reminders
@@ -190,4 +212,13 @@ end
 #  picture3      :string
 #  picture4      :string
 #  comment       :string(2000)
+#  distance      :float
+#  fuel          :float
+#  customer      :string
+#  start_lat     :float
+#  start_lng     :float
+#  end_lat       :float
+#  end_lng       :float
+#  road_reasons  :integer          default("{}"), is an Array
+#  performed_at  :date
 #

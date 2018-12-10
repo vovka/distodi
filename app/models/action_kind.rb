@@ -1,4 +1,6 @@
 class ActionKind < ActiveRecord::Base
+  ROAD_REGEXP = /road/i.freeze
+
   acts_as_list
 
   default_scope { order(:position) }
@@ -11,6 +13,10 @@ class ActionKind < ActiveRecord::Base
     {
       id: id
     }
+  end
+
+  def road?
+    (title =~ ROAD_REGEXP).present?
   end
 end
 

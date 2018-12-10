@@ -1,0 +1,273 @@
+<div  class="service_view"
+      ng-controller="NewServiceController as controller"
+      ng-init='
+        controller.enableMap();
+        startLat = <%= @service.start_lat %>;
+        startLng = <%= @service.start_lng %>;
+        endLat = <%= @service.end_lat %>;
+        endLng = <%= @service.end_lng %>;
+      '
+>
+  <div class="left_part">
+    <div class="service_kind">
+      <%= link_to image_tag("back_link.png"), dashboard_path %>
+      <p>
+        <% @service.service_fields.each do |service_field| %>
+          <%= service_field.service_kind.title %>
+          <%= service_field.text %>
+        <% end %>
+      </p>
+      <div class="action_kind">
+        <% @service.action_kinds.decorate.each do |action_kind| %>
+          <div class="icon_service <%= action_kind.icon_class %>">
+            <%= "#{action_kind.title}" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="icon_status <%= @service.status %>"></div>
+      <div class="code">
+        <%= @service.id_code %>
+      </div>
+      <div class="mobile_item_photo">
+        <span><%= t(".for_yours") %></span>
+        <% @service.item.characteristics_ordered.each do |characteristic| %>
+          <p> <%= characteristic.value %></p>
+        <% end %>
+        <div class="item_photo">
+          <%= image_tag(@item.picture.at_service_page.url, alt: @item.title) %>
+        </div>
+        <div class="price">
+          <% if @service.distance.present? %>
+            <%= @service.distance %>
+          <% else %>
+            None
+          <% end %>
+        </div>
+      </div>
+      <% if @service.reason.present? %>
+        <div class="rejection_reason">
+          <p><%= t(".reason") %></p>
+          <span><%= @service.reason %></span>
+        </div>
+      <% else %>
+        <div class="line"></div>
+      <% end %>
+    </div>
+
+    <div id="map" class="map"></div>
+    <input type="hidden" name="service[start_lat]" ng-value="startLat" />
+    <input type="hidden" name="service[start_lng]" ng-value="startLng" />
+    <input type="hidden" name="service[end_lat]" ng-value="endLat" />
+    <input type="hidden" name="service[end_lng]" ng-value="endLng" />
+
+    <div class="date">
+      <div class="made_date">
+        <p><%= t(".made") %></p>
+        <%= @service.created_at.strftime("%d/%m/%Y") %>
+      </div>
+    </div>
+
+    <div class="line"></div>
+    <% if @service.distance.present? %>
+      <div class="date">
+        <div class="made_date">
+          <p><%= t(".distance") %></p>
+          <%= @service.distance %>
+        </div>
+      </div>
+      <div class="line"></div>
+    <% else %>
+    <% end %>
+
+    <% if @service.fuel.present? %>
+      <div class="date">
+        <div class="made_date">
+          <p><%= t(".fuel") %></p>
+          <%= @service.fuel %>
+        </div>
+      </div>
+      <div class="line"></div>
+    <% else %>
+
+    <% end %>
+
+    <% if @service.customer.present? %>
+      <div class="date">
+        <div class="made_date">
+          <p><%= t(".customer") %></p>
+          <%= @service.customer %>
+        </div>
+      </div>
+      <div class="line"></div>
+    <% else %>
+
+    <% end %>
+
+    <% if @service.company_id.present? %>
+      <div class="company_info">
+        <div class="block">
+          <p><%= t(".name") %></p>
+          <%= @service.approver_name %>
+          <div class="company_verification <%= @service.approver.try(:verified) %>"></div>
+        </div>
+        <div class="block">
+          <p><%= t(".addresse") %></p>
+          <%= @service.approver_address %>
+        </div>
+        <div class="block">
+          <p><%= t(".mail") %></p>
+          <%= @service.approver_mail %>
+        </div>
+        <div class="block">
+          <p><%= t(".phone") %></p>
+          <%= @service.approver_phone %>
+        </div>
+      </div>
+    <% else %>
+      <p class="myself"><%= t(".myself") %></p>
+    <% end %>
+    <div class="line"></div>
+    <div class="reminders">
+      <p><%= t(".road_reasons") %></p>
+      <% @service.road_reason_strings.each do |reason| %>
+        <span><%= t("activerecord.models.service.attributes.predefined_road_reasons.#{reason}") %></span>
+      <% end %>
+    </div>
+    <% if @service.picture.blank? && @service.picture2.blank? && @service.picture3.blank? && @service.picture4.blank? %>
+    <% else %>
+      <div class="line"></div>
+      <div class="photo">
+        <p><%= t(".photo") %></p>
+        <% if @service.picture.present? %>
+          <%= image_tag @service.picture.mini.url %>
+        <% end %>
+        <% if @service.picture2.present? %>
+          <%= image_tag @service.picture2.mini.url %>
+        <% end %>
+        <% if @service.picture3.present? %>
+          <%= image_tag @service.picture3.mini.url %>
+        <% end %>
+        <% if @service.picture4.present? %>
+          <%= image_tag @service.picture4.mini.url %>
+        <% end %>
+      </div>
+    <% end %>
+<!--     <div class="files">
+      <p><%= t(".files") %></p>
+      <div class="file">
+        file_example.pdf
+      </div>
+      <div class="file">
+        spice.xls
+      </div>
+    </div> -->
+    <% if @service.comment.present? %>
+      <div class="comments">
+        <p><%= t(".comments") %></p>
+        <span><%= @service.comment %></span>
+      </div>
+    <% end %>
+    <div class="line"></div>
+    <%= link_to "javascript:void(0)", onclick: "print()" do %>
+      <div class="button">
+        <%= image_tag "pdf-icon.png" %>
+        <span><%= t(".save_pdf") %></span>
+      </div>
+    <% end %>
+    <% if @service_policy.destroy? %>
+      <%= link_to @service, method: :delete do %>
+        <div class="button">
+          <%= image_tag "delete_red.png" %>
+          <span class="red"><%= t(".delete") %></span>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="mobile_buttons">
+      <a href="#" onclick="window.open('Service_report.pdf', '_blank', 'fullscreen=yes'); return false;">
+        <div class="button">
+          <%= image_tag "pdf-icon.png" %>
+          <span><%= t(".save_pdf_mobile") %></span>
+        </div>
+      </a>
+      <% if @service_policy.destroy? %>
+        <%= link_to @service, method: :delete do %>
+          <div class="button">
+            <%= image_tag "delete_red.png" %>
+            <span class="red"><%= t(".delete_mobile") %></span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="right_part">
+    <span><%= t(".for_yours") %></span>
+    <p><%= @service.item.title %></p>
+    <% @service.item.characteristics_ordered.each do |characteristic| %>
+      <p> <%= characteristic.value %></p>
+    <% end %>
+    <div class="item_owner">
+      <span><%= t(".item_owner") %></span>
+      <p> <%= @service.owner %></p>
+    </div>
+    <div class="item_photo">
+      <%= image_tag(@item.picture.at_service_page.url, alt: @item.title) %>
+    </div>
+  </div>
+</div>
+
+<!-- popups -->
+<% if @service_policy.approver? %>
+  <div class="confirm_panel active">
+    <div class="center_block">
+      <%= link_to approve_service_path(@service), method: :patch do %>
+        <div class="button">
+          <%= t(".confirm") %>
+        </div>
+      <% end %>
+      <div class="button reject" onclick="reject_popup()">
+        <%= t(".reject") %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="popup activ">
+  <div class="popup_background">
+  </div>
+  <div class="window">
+    <div class="title">
+      Title
+      <%= image_tag "cross.png" %>
+    </div>
+    <div class="content">
+      <p>spice eto norm?</p>
+      <div class="button cancel">cancel</div>
+      <div class="button">delete</div>
+    </div>
+  </div>
+</div>
+
+<div class="popup reject_srvice" id="reject_popup" style="display: none;" >
+  <div class="popup_background" onclick="reject_popup()">
+  </div>
+  <div class="window">
+    <div class="title">
+      <%= t(".reject") %>
+      <div class="exit_reject" onclick="reject_popup()">
+        <%= image_tag "cross.png" %>
+      </div>
+    </div>
+    <div class="content">
+      <p><%= t(".sure") %></p>
+      <%= simple_form_for(@service, url: decline_service_path(@service), method: :patch) do |f| %>
+        <%= f.text_area :reason, placeholder: t(".reason") %>
+        <div class="button cancel" onclick="reject_popup()"><%= t(".cancel") %></div>
+        <%= f.submit "Decline" do %>
+          <div class="button"><%= t(".reject") %>?</div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap" async defer></script>

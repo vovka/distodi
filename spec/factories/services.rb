@@ -45,4 +45,13 @@ end
 #  picture3      :string
 #  picture4      :string
 #  comment       :string(2000)
+#  distance      :float
+#  fuel          :float
+#  customer      :string
+#  start_lat     :float
+#  start_lng     :float
+#  end_lat       :float
+#  end_lng       :float
+#  road_reasons  :integer          default("{}"), is an Array
+#  performed_at  :date
 #

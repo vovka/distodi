@@ -252,32 +252,46 @@ en:
     new:
       new_service: "New service log entry"
       for_your: "For your:"
-    form:
+    form: &service_form
       select_service: Please, select service kind
       service_kind: "Service kind"
+      road_map: "Road map"
+      Distance: "Distance"
+      road_approver: "Name of your manager approval"
+      Distance_example: "For example, 120km"
       service_company: "Select company name or service by yourself"
       company_email: Your new service company email address
       new_company: "New service company name"
       send_log: "Send this service log entry to the Service company for approval"
       amount: "- only amount number"
-      service_photo: "Service photos (optional, min 800x600 pixels)"
+      service_photo: "Documents (Invoices, POFs. Agreements, goods pictires  etc. )"
       comment: "Comments (optional, 2000 symbols max)"
       remind_me: "(Optional) Remind me to update this service in"
       custom_date: "Custom date"
+      date_ride: Date of ride
+      fuel_consumption: Fuel consumption
+      fuel_example: "For example, 12L"
       discard: "Discard"
       title: "What is adding the New service log entry for your item?"
       text: "It means that you have a possibility to write down all details of
             your service control (like breaks check, oil level check, etc.),
             change of the spare parts (like steering wheel change, breaks change,
-            etc.) or tuning (adding a spoiler, ultra-new lights, sound system, etc.)."
+            etc.) or tuning (adding a spoiler, ultra-new lights, sound system, etc.).
+
+            5) Cusotmer name is the name of the Company or parson who made order. 6) You manager approval: after manager approval all records stored in Blockchain forever with no change possible."
       service_kind_comment: "Service kind comments"
       select_company: "I did service by myself"
+      customer_example: "Name of customer"
+      manager_approver: "You manager approval"
       new_company_name: "New company name"
       new_company_email: "New company email"
       price: "For example, 120.00"
       comments: "Put your comments here"
       myself: I did service by myself"
       other: "New company"
+      reason: Reason of ride
+      reason_example: Your reason
+      customer: Customer name
       available_formats: "(only %{formats})"
       files: Attach other files (optional, PDF, TXT, etc.)
       choose_file: Choose file
@@ -286,15 +300,20 @@ en:
       add_more: + Add one more service log
       myself: I did service by myself
       optional:  (optional, if you want to add 2 or more Service logs for your item simultaneously)
-    form_edit:
+    form_regular:
+      <<: *service_form
+    form_road:
+      <<: *service_form
+    form_edit: &form_edit
       select_service: Please, select service kind
       service_kind: "Service kind"
       service_company: "Select company name or service by yourself"
       company_email: Your new service company email address
       new_company: "New service company name"
+      road_approver: "Name of your manager approval"
       send_log: "Send this service log entry to the Service company for approval"
       amount: "- only amount number"
-      service_photo: "Service photos (optional, min 800x600 pixels)"
+      service_photo: "Documents (Invoices, POFs. Agreements, goods pictires  etc. )"
       comment: "Comments (optional, 2000 symbols max)"
       remind_me: "(Optional) Remind me to update this service in"
       custom_date: "Custom date"
@@ -321,7 +340,12 @@ en:
       myself: I did service by myself
       optional:  (optional, if you want to add 2 or more Service logs for your item simultaneously)
       company_has_no_name: Company has no name.
-    show:
+    road_form_edit:
+      <<: *form_edit
+      remind_me: Road reason
+      custom_date: Road date
+      choose_date: Choose date
+    show: &show
       made: Service made
       added: Service added
       name: Service company name
@@ -347,6 +371,12 @@ en:
       cancel: Cancel
       reason: Reason
       company_deleted: Company was deleted
+    road_show:
+      <<: *show
+      myself: Road withot manage approve
+      remind_me: Road reason
+      custom_date: Road date
+      choose_date: Choose date
     decline:
       success: You’ve declined service
 
@@ -900,6 +930,13 @@ en:
             months_6: "half a year"
             year: "a year"
             years_2: "two years"
+          predefined_road_reasons:
+            take: "Take goods"
+            pick_up: "Pick up the goods"
+            passengers: "Passenger transportation"
+            home: "Way to home (to the office or home)"
+            transit: "Transit (work reason) "
+            service: "Service (repair)"
           created_at: "Created at"
           action_kinds: "Actions"
           service_kinds: "Service kinds"

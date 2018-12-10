@@ -53,12 +53,11 @@ class ServicesController < ApplicationController
                end
 
     # Performing action
-    create = CreateServiceService.new(item, approver, params, service_params)
-    create.perform
-    @service = create.service
+    create = CreateServiceService.new(item, approver, params, service_params.to_h)
+    @service = create.perform.decorate
 
     # Rendering
-    if create.success?
+    if @service.persisted?
       if user_signed_in? || company_signed_in?
         redirect_to item_path(item), notice: t(".success")
       else
@@ -96,6 +95,7 @@ class ServicesController < ApplicationController
       @service_kinds = @service.item.category.service_kinds
       @action_kinds = @service.item.category.action_kinds
       @item = @service.item
+      render @service.road? ? "road_show" : "show"
     end
   end
 
@@ -169,16 +169,16 @@ class ServicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white
     # list through.
     def service_params
-      default_params = [:control_date, :picture, :picture2, :picture3, :picture4, :price, :comment]
+      default_params = [:control_date, :picture, :picture2, :picture3, :picture4, :price, :comment, :distance, :fuel, :customer, :start_lat, :start_lng, :end_lat, :end_lng]
       if company_signed_in?
         params.require(:service)
               .merge(company_id: current_company.id)
               .permit(default_params + [:company_id,
-                      :reminder_custom, reminders_predefined: []])
+                      :performed_at, :reminder_custom, road_reasons: [], reminders_predefined: []])
       elsif user_signed_in? || company_signed_in?
         params.require(:service)
               .permit(default_params + [:company_id,
-                      :reminder_custom, reminders_predefined: []])
+                      :performed_at, :reminder_custom, road_reasons: [], reminders_predefined: []])
       else
         params.require(:service).permit(default_params)
       end

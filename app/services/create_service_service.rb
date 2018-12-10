@@ -10,41 +10,24 @@ class CreateServiceService
   end
 
   def perform
-    @service = item.services.build(service_params.merge(approver: approver, company: approver)).decorate
-    service_kinds = params[:service_kind]
-    service_fields = params[:service_fields]
-    action_kinds = params[:action_kind]
+    new_service_attributes = service_params.merge(
+      approver: approver,
+      company: approver,
+      action_kind_ids: [params[:action_kind]],
+      service_fields_attributes: [{
+        service_kind_id: params[:service_kind],
+        text: params[:service_fields] ? params[:service_fields][params[:service_kind]] : ''
+      }]
+    )
+    @service = item.services.create(new_service_attributes)
 
-    if service_kinds.blank?
-      @service.errors.add :service_kinds, :blank
-    else
-      if approver.nil? || approver.persisted?
-        @service.transaction do
-          @service.action_kinds = ActionKind.where(id: action_kinds)
-          @success = if @service.save
-            service_kind_id = service_kinds
-            service_kind = ServiceKind.where(id: service_kind_id).first
-            service_field = service_kind.service_fields.build(
-              service: @service,
-              text: service_fields ? service_fields[service_kind_id] : ''
-            )
-            service_field.save
-          end
-        end
-      end
-    end
-
-    if success?
+    if @service.persisted?
       @service.reload # to fetch new created service_field
       if @service.company.present?
         UserMailer.add_service_email_to_company(@service.company).deliver_later
       end
     end
 
-    [@service, success?]
-  end
-
-  def success?
-    @success == true
+    @service
   end
 end

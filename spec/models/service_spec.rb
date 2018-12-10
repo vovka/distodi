@@ -140,7 +140,11 @@ RSpec.describe Service, type: :model do
       action_kind = create :action_kind
       service_kind = create :service_kind
       service_field = create :service_field, service_kind: service_kind, text: "some text"
-      service = create :service, item: item, action_kinds: [action_kind], service_fields: [service_field], approver: company,
+      service = create :service,
+        item: item,
+        action_kinds: [action_kind],
+        service_fields: [service_field],
+        approver: company,
         created_at: DateTime.strptime("1234 5 6 7:8:9", "%Y %m %d %H:%M:%S").in_time_zone,
         updated_at: DateTime.strptime("1234 5 6 7:8:9", "%Y %m %d %H:%M:%S").in_time_zone,
         next_control: DateTime.strptime("1234 5 6 7:8:9", "%Y %m %d %H:%M:%S").in_time_zone.to_date,
@@ -238,4 +242,13 @@ end
 #  picture3      :string
 #  picture4      :string
 #  comment       :string(2000)
+#  distance      :float
+#  fuel          :float
+#  customer      :string
+#  start_lat     :float
+#  start_lng     :float
+#  end_lat       :float
+#  end_lng       :float
+#  road_reasons  :integer          default("{}"), is an Array
+#  performed_at  :date
 #

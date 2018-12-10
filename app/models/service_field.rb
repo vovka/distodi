@@ -1,6 +1,6 @@
 class ServiceField < ActiveRecord::Base
   belongs_to :service
-  belongs_to :service_kind
+  belongs_to :service_kind, required: true
 
   def to_blockchain_hash
     {

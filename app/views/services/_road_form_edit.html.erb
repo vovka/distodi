@@ -1,0 +1,223 @@
+<div  class="service_create_main_form"
+      ng-init='
+        controller.images = <%=
+          [
+            @service.picture.additional_photo.url,
+            @service.picture2.additional_photo.url,
+            @service.picture3.additional_photo.url,
+            @service.picture4.additional_photo.url,
+          ].compact.to_s.html_safe
+        %>;
+        controller.enableMap();
+        startLat = <%= @service.start_lat %>;
+        startLng = <%= @service.start_lng %>;
+        endLat = <%= @service.end_lat %>;
+        endLng = <%= @service.end_lng %>;
+      '
+>
+  <div class="left_form_service_create">
+    <div class="form_service_create">
+      <%= simple_form_for(@service) do |f| %>
+        <div class="error_explanation service">
+          <%= render "shared/form_errors", object: @service -%>
+        </div>
+        <%= f.hidden_field :item_id %>
+        <%= hidden_field_tag :token, params[:token] %>
+        <ol>
+
+            <div class="service_view edit">
+              <div class="left_part">
+                <div class="service_kind">
+                  <%= link_to image_tag("back_link.png"), dashboard_path %>
+                  <p>
+                    <% @service.service_fields.each do |service_field| %>
+                      <%= service_field.service_kind.title %>
+                      <%= service_field.text %>
+                    <% end %>
+                  </p>
+                  <div class="action_kind">
+                    <% @service.action_kinds.decorate.each do |action_kind| %>
+                      <div class="icon_service <%= action_kind.icon_class %>">
+                        <%= "#{action_kind.title}" %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="icon_status <%= @service.status %>"></div>
+                  <div class="code">
+                    <%= @service.id_code %>
+                  </div>
+                  <div class="mobile_item_photo">
+                    <span><%= t(".for_yours") %></span>
+                    <% @service.item.characteristics_ordered.each do |characteristic| %>
+                      <p> <%= characteristic.value %></p>
+                    <% end %>
+                    <div class="item_photo">
+                      <%= image_tag(@item.picture_url, alt: @item.title) %>
+                    </div>
+                    <div class="price">
+                      <% if @service.price.present? %>
+                        <%= @service.price %> EURO
+                      <% else %>
+                        0.00 EURO
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="line"></div>
+
+            <div id="map" class="map"></div>
+            <input type="hidden" name="service[start_lat]" ng-value="startLat" />
+            <input type="hidden" name="service[start_lng]" ng-value="startLng" />
+            <input type="hidden" name="service[end_lat]" ng-value="endLat" />
+            <input type="hidden" name="service[end_lng]" ng-value="endLng" />
+
+            <span class="field_name">
+              <li class="block"><%= t(".distance") %></li>
+            </span>
+            <div class="service_kind_edit_field">
+              <%= @service.distance %>
+            </div>
+            <div class="service_kind_title_edit_field date">
+              <span class="field_name edit_date">
+                <li><%= t(".fuel_consumption") %></li>
+              </span>
+            </div>
+            <div class="service_date_edit_field date">
+              <%= @service.fuel %>
+            </div>
+          <% if user_signed_in? %>
+            <span class="field_name company_field_edit">
+              <li class="block"><%= t(".road_approver") %></li>
+            </span>
+
+              <div class="company_select company_field_edit">
+                <% if @service.company_id.present? %>
+                  <% if @service.approver.name.nil? %>
+                    <%= t(".company_has_no_name") %>
+                  <% else %>
+                    <%= @service.approver.name %>
+                  <% end %>
+                <% else %>
+                  <%= t(".myself") %>
+                <% end %>
+              </div>
+
+          <% end %>
+
+          <div class="line"></div>
+          <span class="field_name">
+            <li class="block"><%= f.label :reminder, t(".remind_me")  %></li>
+          </span>
+          <div class="reminders">
+            <%= f.collection_check_boxes :road_reasons, @service.predefined_road_reasons, :first, :last do |b| %>
+              <div class="select reminder">
+                <%= b.check_box  %>
+                <i>
+                  <%= image_tag "select.png" %>
+                </i>
+                  <%= b.label  %>
+              </div>
+            <% end %>
+            <p class="field_name">
+              <%= t(".custom_date") %>
+              <%= f.input :performed_at, as: :string,  input_html: { type: "date" } %>
+            </p>
+            <div class="date_icon">
+              <%= image_tag "calendar-icon.png" %>
+              <%= t(".choose_date") %>
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="service_photos">
+            <span class="field_name">
+              <li class="block"><%= t(".service_photo") %></li>
+            </span>
+            <div class="image-upload-box" style="background: url({{imagePreview[0] || controller.images[0]}}) no-repeat center center; background-size: cover;">
+              <div ng-hide="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')" class="input_field" >
+                <%= image_tag(nil, "ng-src" => "{{imagePreview[0] || controller.images[0]}}") %>
+                <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 0)" %>
+              </div>
+              <div class="photo_input" ng-show="(imagePreview[0] === undefined || imagePreview[0] === ' ') && (controller.images[0] === undefined || controller.images[0] === ' ')">
+                <%= f.file_field :picture, :"data-file" => "true", :"data-index" => 0,
+                :"accept" => "image/jpg, image/jpeg, image/png" %>
+                <%= inline_svg "plus.svg" %>
+              </div>
+            </div>
+            <div class="image-upload-box" style="background: url({{imagePreview[1] || controller.images[1]}}) no-repeat center center; background-size: cover;">
+              <div ng-hide="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')" class="input_field">
+                <%= image_tag(nil, "ng-src" => "{{imagePreview[1] || controller.images[1]}}") %>
+                <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 1)" %>
+              </div>
+              <div class="photo_input" ng-show="(imagePreview[1] === undefined || imagePreview[1] === ' ') && (controller.images[1] === undefined || controller.images[1] === ' ')">
+                <%= f.file_field :picture2, :"data-file" => "true", :"data-index" => 1,
+                :"accept" => "image/jpg, image/jpeg, image/png" %>
+                <%= inline_svg "plus.svg" %>
+              </div>
+            </div>
+            <div class="image-upload-box" style="background: url({{imagePreview[2] || controller.images[2]}}) no-repeat center center; background-size: cover;">
+              <div ng-hide="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')" class="input_field">
+                <%= image_tag(nil, "ng-src" => "{{imagePreview[2] || controller.images[2]}}") %>
+                <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 2)" %>
+              </div>
+              <div class="photo_input" ng-show="(imagePreview[2] === undefined || imagePreview[2] === ' ') && (controller.images[2] === undefined || controller.images[2] === ' ')">
+                <%= f.file_field :picture3, :"data-file" => "true", :"data-index" => 2,
+                :"accept" => "image/jpg, image/jpeg, image/png" %>
+                <%= inline_svg "plus.svg" %>
+              </div>
+            </div>
+            <div class="image-upload-box" style="background: url({{imagePreview[3] || controller.images[3]}}) no-repeat center center; background-size: cover;">
+              <div ng-hide="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')" class="input_field">
+                <%= image_tag(nil, "ng-src" => "{{imagePreview[3] || controller.images[3]}}") %>
+                <%= link_to "&nbsp;".html_safe, "", :"ng-click" => "deleteImage($event, 3)" %>
+              </div>
+              <div class="photo_input" ng-show="(imagePreview[3] === undefined || imagePreview[3] === ' ') && (controller.images[3] === undefined || controller.images[3] === ' ')">
+                <%= f.file_field :picture4, :"data-file" => "true", :"data-index" => 3,
+                :"accept" => "image/jpg, image/jpeg, image/png" %>
+                <%= inline_svg "plus.svg" %>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="files">
+            <p class="field_name">
+              7. <%= t(".files") %>
+            </p>
+            <div class="field_files">
+              <input type="file" name="file">
+              <div class="icon">
+                <%= image_tag "file-icon.png" %>
+                <%= t(".choose_file") %>
+              </div>
+            </div>
+          </div> -->
+          <div class="price">
+            <span class="field_name">
+              <li><%= t(".comment") %></li>
+            </span>
+            <div class="textarea margin">
+              <%= f.text_area :comment, placeholder: t(".comments") %>
+            </div>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit  %>
+            <%= link_to t(".discard"), dashboard_path %>
+          </div>
+                <% end %>
+              </div>
+        </ol>
+  </div>
+  <div class="right_form_service_create">
+    <%= image_tag(@service.item.picture_url, alt: @service.item.title) %>
+    <div class="service_form_info">
+      <p>
+        <%= t(".title") %>
+      </p>
+      <span>
+        <%= t(".text") %>
+      </span>
+    </div>
+  </div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap" async defer></script>
