@@ -41,7 +41,7 @@ var NewServiceController = function ($scope) {
 
   $scope.changedActionKind = function (id) {
     console.log(id);
-    if (this.showRoad = (id == 4)) {
+    if (this.showRoad = (id == this.roadActionKindId)) {
       var map = this.renderMap.bind(this)();
       if (this.startLat && this.startLng && this.endLat && this.endLng) {
         // map.placeMarker({ lat: ()=>this.startLat, lng: ()=>this.startLng });
@@ -77,7 +77,7 @@ var NewServiceController = function ($scope) {
 NewServiceController.prototype.enableMap = function () {
   window.setTimeout(
     (function() {
-      this.$scope.changedActionKind(4);
+      this.$scope.changedActionKind(this.$scope.roadActionKindId);
     }).bind(this),
     2000
   );

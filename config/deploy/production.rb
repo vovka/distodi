@@ -62,14 +62,14 @@
 # Define roles, user and IP address of deployment server
 # role :name, %{[user]@[IP adde.]}
 
-role :app, %w{root@159.69.22.160}
-role :web, %w{root@159.69.22.160}
-role :db,  %w{root@159.69.22.160}
+role :app, %w{root@94.130.175.253}
+role :web, %w{root@94.130.175.253}
+role :db,  %w{root@94.130.175.253}
 
 # Define server(s)
-server '159.69.22.160', user: 'root', roles: %w{web}
+server '94.130.175.253', user: 'root', roles: %w{web}
 
-set :branch, "feature/add_designe_to_roads"
+set :branch, "master"
 set :deploy_to, "/var/www/distodi"
 set :rvm_ruby_version, "2.3.4"
 

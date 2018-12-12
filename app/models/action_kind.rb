@@ -4,6 +4,7 @@ class ActionKind < ActiveRecord::Base
   acts_as_list
 
   default_scope { order(:position) }
+  scope :road, -> { where("title ~~* ?", "%road%") }
 
   has_many :service_action_kinds
   has_many :services, through: :service_action_kinds
