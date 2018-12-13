@@ -8,6 +8,12 @@
             @service.picture4.additional_photo.url,
           ].compact.to_s.html_safe
         %>;
+        controller.enableMap();
+        startLat = <%= @service.start_lat || "undefined" %>;
+        startLng = <%= @service.start_lng || "undefined" %>;
+        endLat = <%= @service.end_lat || "undefined" %>;
+        endLng = <%= @service.end_lng || "undefined" %>;
+        roadActionKindId = <%= ActionKind.road.first.try(:id) || "undefined" %>;
       '
 >
   <div class="left_form_service_create">

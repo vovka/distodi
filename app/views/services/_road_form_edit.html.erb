@@ -13,6 +13,7 @@
         startLng = <%= @service.start_lng %>;
         endLat = <%= @service.end_lat %>;
         endLng = <%= @service.end_lng %>;
+        roadActionKindId = <%= ActionKind.road.first.try(:id) || "undefined" %>;
       '
 >
   <div class="left_form_service_create">
