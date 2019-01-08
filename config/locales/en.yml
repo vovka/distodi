@@ -563,6 +563,18 @@ en:
       language: Language
       donation: Donation
     new:
+      twitter: Twitter
+      facebook: Facebook
+      linkedin: LinkedIn
+      instagram: Instagram
+      youtube: Youtube
+      youtube_link: "https://www.youtube.com/channel/UCkWVZsamXorIp1SglVqLqaA"
+      twitter_link: "https://twitter.com/distodi"
+      facebook_link: "https://www.facebook.com/distodi/"
+      linkedin_link: "https://www.linkedin.com/company/distodi/"
+      instagram_link: "https://www.instagram.com/distodi_official/"
+      adress: MAROPEN open doors s.r.o., IČ/ID 04631510, Prague, Czech Republic. support@distodi.com.
+      year: 2018
       for_investors: For investors
       updates: "UPDATES"
       questions: "QUESTIONS AND ANSVERS"
@@ -607,6 +619,8 @@ en:
       facebook: Facebook
       linkedin: LinkedIn
       instagram: Instagram
+      youtube: Youtube
+      youtube_link: "https://www.youtube.com/channel/UCkWVZsamXorIp1SglVqLqaA"
       twitter_link: "https://twitter.com/distodi"
       facebook_link: "https://www.facebook.com/distodi/"
       linkedin_link: "https://www.linkedin.com/company/distodi/"

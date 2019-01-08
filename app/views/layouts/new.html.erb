@@ -98,10 +98,10 @@
         </div>
         <div class="telephone_mobile"><a href="tel:<%= t(".telephobe_number") %>"><%= t(".telephobe_number") %></a></div>
         <!-- <hr> --><div class="social_net">
-        <%= image_tag "insta.png" %>
-        <%= image_tag "you.png" %>
-        <%= image_tag "twit.png" %>
-        <%= image_tag "facebook.png" %>
+        <%= link_to image_tag('insta.png', alt: 'instagram'), t(".instagram_link") %>
+        <%= link_to image_tag('you.png', alt: 'youtube'), t(".youtube_link") %>
+        <%= link_to image_tag('twit.png', alt: 'twitter'), t(".twitter_link") %>
+        <%= link_to image_tag('facebook.png', alt: 'facebook'), t(".facebook_link") %>
       </div>
     </div>
   </footer>
