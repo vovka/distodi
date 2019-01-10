@@ -277,7 +277,7 @@ footer img {
   width: 20px;
   margin: 20px 0 15px 25px;
 }
-footer img:nth-child(2){
+footer a:nth-child(2) img{
   width: 25px;
 }
 footer hr {
@@ -285,6 +285,9 @@ footer hr {
   width: 150%;
   margin-left: -40px;
   color: #737373;
+}
+.footer.mobile .social_net a:last-child img{
+  width: 25px;
 }
 
 .sign_in_content {
