@@ -1512,6 +1512,7 @@ footer hr {
           text-align: inherit;
           background-color: inherit;
           padding: 0;
+          padding-left: 15px;
 
           &:before, &:after {
             border: 4px solid transparent;
@@ -1522,6 +1523,7 @@ footer hr {
             top: 50%;
             position: absolute;
             width: 0;
+            left: 0;
           }
 
           &:before {
@@ -1651,27 +1653,37 @@ footer hr {
             margin-left: 20px;
           }
         }
+        .icon_service {
+          background: asset-url("road_icon") no-repeat 0 0;
+          background-size: 5px;
+          background-position-y: 2px;
+          background-size: 17px;
+        }
 
         .control-action {
           background: asset-url("control-action") no-repeat 0 0;
           margin: 3px 8px 0 0;
-          background-position: 0 2px
+          background-position: 0 2px;
+          background-position-y: 1px;
+          background-size: 15px;
         }
 
         .change-action {
           background: asset-url("change-action") no-repeat 0 0;
           margin: 3px 8px 0 0;
+          background-position-y: 1px;
+          background-size: 15px;
         }
 
         .tuning-action {
           background: asset-url("tuning-action") no-repeat 0 0;
           margin: 3px 8px 0 0;
-          background-position: 0 2px
+          background-position: 0 2px;
+          background-size: 15px;
         }
 
         .icon_service {
           padding-left: 20px;
-          background-size: 13px;
         }
 
         &.actions {
@@ -4658,7 +4670,7 @@ input:-webkit-autofill{
 .destroy_user{
   text-align: left;
   position: relative;
-  top: 1066px;
+  top: 956px;
 }
 .destroy_user h1{
   font-family: 'MuseoSansCyrl_2';
@@ -6674,7 +6686,7 @@ input:-webkit-autofill{
         margin-bottom: 20px;
       }
       img{
-        width: calc(25% - 26px);
+        width: calc(100% - 9px);
         margin-right: 20px;
         border-radius: 4px;
         border: 1px solid #d3d3d3;

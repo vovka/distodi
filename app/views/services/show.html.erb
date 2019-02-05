@@ -89,16 +89,24 @@
       <div class="photo">
         <p><%= t(".photo") %></p>
         <% if @service.picture.present? %>
-          <%= image_tag @service.picture.mini.url %>
+          <%= link_to @service.picture.url do %>
+            <%= image_tag @service.picture.mini.url %>
+          <% end %>
         <% end %>
         <% if @service.picture2.present? %>
-          <%= image_tag @service.picture2.mini.url %>
+          <%= link_to @service.picture2.url do %>
+            <%= image_tag @service.picture2.mini.url %>
+          <% end %>
         <% end %>
         <% if @service.picture3.present? %>
-          <%= image_tag @service.picture3.mini.url %>
+          <%= link_to @service.picture3.url do %>
+            <%= image_tag @service.picture3.mini.url %>
+          <% end %>
         <% end %>
         <% if @service.picture4.present? %>
-          <%= image_tag @service.picture4.mini.url %>
+          <%= link_to @service.picture4.url do %>
+            <%= image_tag @service.picture4.mini.url %>
+          <% end %>
         <% end %>
       </div>
     <% end %>
