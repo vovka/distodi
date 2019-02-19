@@ -6,10 +6,11 @@ class User < ActiveRecord::Base
 
   include OauthableModel
 
-  has_many :items, as: :user
+  has_many :items, as: :user, dependent: :destroy
   has_many :transferring_items, class_name: "Item",
                                 foreign_key: :transferring_to_id
   has_many :services, through: :items
+  has_many :blockchain_transaction_data, through: :services
   has_many :assigned_services, foreign_key: :approver_id,
                                class_name: "Service",
                                as: :approver

@@ -2,11 +2,12 @@ class Item < ActiveRecord::Base
   has_many :characteristics
   has_many :attribute_kinds, through: :characteristics
   has_many :action_kinds, through: :category
-  has_many :services
+  has_many :services, dependent: :destroy
   belongs_to :category
   belongs_to :user, polymorphic: true
   belongs_to :transferring_to, class_name: "User",
                                foreign_key: :transferring_to_id
+  has_one :blockchain_transaction_datum, inverse_of: :service, dependent: :destroy
 
   validates :title, uniqueness: { scope: [:user_id] }, presence: true
   validates :picture, presence: true
