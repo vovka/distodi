@@ -7,7 +7,7 @@ class Service < ActiveRecord::Base
   belongs_to :item, -> { unscope(where: :demo) }
   belongs_to :company
   belongs_to :approver, -> { unscope(where: :demo) }, polymorphic: true
-  has_one :blockchain_transaction_datum, inverse_of: :service
+  has_one :blockchain_transaction_datum, inverse_of: :service, dependent: :destroy
 
   accepts_nested_attributes_for :service_fields
 

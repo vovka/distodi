@@ -3,7 +3,7 @@ ActiveAdmin.register User do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :email, :password, :password_confirmation
+  permit_params User.attribute_names
 #
 # or
 #
@@ -13,5 +13,12 @@ permit_params :email, :password, :password_confirmation
 #   permitted
 # end
 
-
+  controller do
+    def destroy
+      resource.services.unscope(where: :demo).each { |s| s.blockchain_transaction_datum.try(:destroy) }
+      resource.items.unscope(where: :demo).each { |s| s.blockchain_transaction_datum.try(:destroy) }
+      resource.profile.destroy
+      super
+    end
+  end
 end
