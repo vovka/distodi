@@ -124,9 +124,18 @@ ActiveRecord::Schema.define(version: 20190219225756) do
   create_table "charts", force: :cascade do |t|
     t.string   "name"
     t.integer  "chart_type"
-    t.boolean  "active",     default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "active",          default: false
+    t.string   "label_attribute"
+    t.string   "format",          default: [],                 array: true
+    t.string   "data_attribute"
+    t.string   "select"
+    t.string   "joins"
+    t.string   "group"
+    t.string   "order"
+    t.boolean  "single_serial",   default: false
+    t.integer  "position"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "checkouts", force: :cascade do |t|

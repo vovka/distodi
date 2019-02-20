@@ -6,8 +6,10 @@ class Chart < ActiveRecord::Base
 
   scope :active, -> { where(active: true) }
 
+  acts_as_list
+
   def self.build_collection_for_item(item, from_date:, to_date:)
-    active.map do |chart|
+    active.order(position: :asc).map do |chart|
       chart.item = item
       chart.from_date = from_date
       chart.to_date = to_date
@@ -26,7 +28,13 @@ class Chart < ActiveRecord::Base
   private
 
   def strategy
-    @_strategy_memo ||= "Chart::#{ng_model.camelize}".constantize.new(self)
+    @_strategy_memo ||= begin
+      begin
+        "Chart::#{ng_model.camelize}".constantize
+      rescue NameError, LoadError
+        Chart::Base
+      end.new(self)
+    end
   end
 end
 
@@ -34,10 +42,18 @@ end
 #
 # Table name: charts
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  chart_type :integer
-#  active     :boolean          default("false")
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  name            :string
+#  chart_type      :integer
+#  active          :boolean          default("false")
+#  label_attribute :string
+#  format          :string           default("{}"), is an Array
+#  data_attribute  :string
+#  select          :string
+#  joins           :string
+#  group           :string
+#  order           :string
+#  single_serial   :boolean          default("false")
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #

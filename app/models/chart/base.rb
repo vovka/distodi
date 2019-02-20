@@ -8,18 +8,53 @@ class Chart < ActiveRecord::Base
     end
 
     def labels
-      %w(January February March April May June July)
+      if chart.label_attribute.present?
+        result = aggregated_services.map { |s| s.send(chart.label_attribute) }
+        if chart.format.present?
+          result = result.map { |s| s.send(*chart.format) }
+        end
+        result
+      end
     end
 
     def series
-      ['Series A', 'Series B']
+      chart.name
     end
 
     def data
-      [
-        [65, 59, 80, 81, 56, 55, 40],
-        [28, 48, 40, 19, 86, 27, 90]
-      ]
+      if chart.data_attribute.present?
+        result = aggregated_services.map(&chart.data_attribute.to_sym)
+        if chart.single_serial?
+          result = [result]
+        end
+        result
+      end
+    end
+
+    private
+
+    def aggregated_services
+      Rails.logger.info chart.name
+      @_aggregated_services_memo ||= begin
+        result = chart
+          .item.services
+          .where(performed_at: chart.from_date..chart.to_date)
+
+        if chart.select.present?
+          result = result.select(chart.select)
+        end
+        if chart.joins.present?
+          result = result.joins(chart.joins.to_sym)
+        end
+        if chart.group.present?
+          result = result.group(chart.group)
+        end
+        if chart.order.present?
+          result = result.order(chart.order)
+        end
+
+        result.to_a
+      end
     end
   end
 end
