@@ -1,0 +1,23 @@
+<div
+  ng-controller="KeyPerformanceIndicatorsController as keyPerformanceIndicatorsController"
+  ng-init="
+    keyPerformanceIndicatorsController.init({
+      locale: '<%= I18n.locale %>',
+      itemId: <%= @item.to_param %>,
+      fromDate: '<%= 1.year.ago.strftime("%F") %>',
+      toDate: '<%= Time.current.strftime("%F") %>'
+    })
+  "
+>
+  <input type="date" id="from" name="from_date" ng-model="fromDate" ng-change="onDateChange()" />
+  <input type="date" id="to" name="to_date" ng-model="toDate" ng-change="onDateChange()" />
+  <% @charts.each do |chart| %>
+    <h3><%= chart.name %></h3>
+    <canvas
+      class="<%= chart.css_class_name %> chart-<%= chart.chart_type %>"
+      chart-data="<%= chart.ng_model %>.data"
+      chart-labels="<%= chart.ng_model %>.labels"
+      chart-series="<%= chart.ng_model %>.series"
+      chart-click="onClick"></canvas>
+  <% end %>
+</div>

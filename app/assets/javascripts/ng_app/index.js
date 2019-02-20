@@ -3,12 +3,14 @@
 //= require chosen
 //= require angular-chosen-localytics/dist/angular-chosen
 //= require angular-in-viewport
+//= require chart.js/dist/Chart
+//= require angular-chart.js/angular-chart
 //= require ./config
 //= require_tree ./controllers
 //= require_tree ./directives
 //= require_tree ./lib
 
-angular.module("DistodiApp", ["ipCookie", "localytics.directives", "in-viewport"])
+angular.module("DistodiApp", ["ipCookie", "localytics.directives", "in-viewport", "chart.js"])
 
 .config(["$httpProvider", Config])
 
@@ -19,6 +21,7 @@ angular.module("DistodiApp", ["ipCookie", "localytics.directives", "in-viewport"
 .controller("AccountEditController", ["$scope", "$timeout", "$http", "$q", AccountEditController])
 .controller("TopPanelController", ["$scope", TopPanelController])
 .controller("NewServiceController", ["$scope", NewServiceController])
+.controller("KeyPerformanceIndicatorsController", ["$scope", "$http", KeyPerformanceIndicatorsController])
 
 .directive("file", FileDirective)
 
