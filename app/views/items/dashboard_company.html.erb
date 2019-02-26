@@ -47,6 +47,7 @@
         <th><%= t(".service") %></th>
         <th><%= t(".type") %></th>
         <th class="status"><%= t(".status") %></th>
+        <th><%= t(".blockchain") %></th>
         <th><%= t(".item") %></th>
         <th class="date"><%= t(".date") %></th>
         <th class="cost"><%= t(".cost") %></th>
@@ -90,6 +91,11 @@
               <%= link_to service_path(service) do %>
                 <div class="<%= service.status %>">&nbsp;</div>
               <% end %>
+            </td>
+            <td class="blockchain_link">
+              <%= if service.blockchain_transaction_datum.present? && service.blockchain_transaction_datum.in_blockchain?
+                link_to service_path(service)
+              end %>
             </td>
             <td>
               <%= link_to service_path(service) do %>
