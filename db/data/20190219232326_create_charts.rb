@@ -8,7 +8,7 @@ class CreateCharts < ActiveRecord::Migration
         label_attribute: "month",
         format: ["strftime", "%Y %m"],
         data_attribute: "total",
-        select: "date_trunc('month', performed_at) as month, sum(price) as total",
+        select: "date_trunc('month', created_at) as month, sum(price) as total",
         group: "month",
         order: "month",
         single_serial: true,

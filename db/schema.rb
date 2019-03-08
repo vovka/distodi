@@ -197,8 +197,8 @@ ActiveRecord::Schema.define(version: 20190219225756) do
   create_table "items", force: :cascade do |t|
     t.string   "title"
     t.integer  "category_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.integer  "user_id"
     t.string   "picture"
     t.string   "token"
@@ -211,9 +211,13 @@ ActiveRecord::Schema.define(version: 20190219225756) do
     t.string   "picture5"
     t.string   "comment",            limit: 2000
     t.string   "user_type"
+    t.boolean  "archivation",                     default: false
+    t.boolean  "archived",                        default: false
+    t.datetime "deleted_at"
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+  add_index "items", ["deleted_at"], name: "index_items_on_deleted_at", using: :btree
 
   create_table "leads", force: :cascade do |t|
     t.string   "email"

@@ -13,6 +13,17 @@
 angular.module("DistodiApp", ["ipCookie", "localytics.directives", "in-viewport", "chart.js"])
 
 .config(["$httpProvider", Config])
+.config(['ChartJsProvider', function (ChartJsProvider) {
+// Configure all charts
+ChartJsProvider.setOptions({
+  chartColors: ['#ffb93b', '#149b4c'],
+responsive: false
+});
+// Configure all line charts
+ChartJsProvider.setOptions('line', {
+showLines: false
+});
+}])
 
 .controller("ItemsController", ["$scope", "$http", "$q", "ipCookie", "$window", ItemsController])
 .controller("SignInController", ["$scope", SignInController])
