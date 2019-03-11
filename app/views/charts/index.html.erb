@@ -9,15 +9,49 @@
     })
   "
 >
-  <input type="date" id="from" name="from_date" ng-model="fromDate" ng-change="onDateChange()" />
-  <input type="date" id="to" name="to_date" ng-model="toDate" ng-change="onDateChange()" />
+
+<div class="left_form_service_create kpi">
+  <h3><%= t(".choose_time") %></h3>
+  <div class="reminders kpi">
+    <p class="field_name">
+      <input type="date" id="from" name="from_date" ng-model="fromDate"ng-change="onDateChange()" />
+    </p>
+    <div class="date_icon">
+      <%= image_tag "calendar-icon.png" %>
+      <%= t(".choose_date") %>
+    </div>
+  </div>
+  <div class="reminders kpi">
+    <p class="field_name">
+      <input type="date" id="to" name="to_date" ng-model="toDate" ng-change=onDateChange()" />
+    </p>
+    <div class="date_icon">
+      <%= image_tag "calendar-icon.png" %>
+      <%= t(".choose_date") %>
+    </div>
+  </div>
   <% @charts.each do |chart| %>
-    <h3><%= chart.name %></h3>
-    <canvas
-      class="<%= chart.css_class_name %> chart-<%= chart.chart_type %>"
-      chart-data="<%= chart.ng_model %>.data"
-      chart-labels="<%= chart.ng_model %>.labels"
-      chart-series="<%= chart.ng_model %>.series"
-      chart-click="onClick"></canvas>
+    <div class="chart_element">
+      <h3><%= chart.name %></h3>
+      <canvas
+        class="<%= chart.css_class_name %> chart-<%= chart.chart_type %>"
+        chart-data="<%= chart.ng_model %>.data"
+        chart-labels="<%= chart.ng_model %>.labels"
+        chart-series="<%= chart.ng_model %>.series"
+        chart-click="onClick"></canvas>
+    </div>
   <% end %>
+  </div>
+  <div class="right_form_service_create kpi">
+    <%= image_tag(@item.picture.at_service_page.url, alt: @item.title) %>
+    <div class="service_form_info">
+      <p>
+        <%= t(".title") %>
+      </p>
+      <span>
+        <%= t(".text") %>
+      </span>
+    </div>
+  </div>
+  
 </div>

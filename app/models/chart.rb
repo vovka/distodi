@@ -54,6 +54,7 @@ end
 #  group           :string
 #  order           :string
 #  single_serial   :boolean          default("false")
+#  position        :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

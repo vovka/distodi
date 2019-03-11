@@ -2255,6 +2255,31 @@
       }
     }
   }
+  #from{
+    width: calc(100% - 150px);
+
+  }
+  #to{
+    width: calc(100% - 150px);
+  }
+
+  .reminders.kpi .field_name{
+    width: 100%;
+  }
+  .reminders.kpi{
+    width: 100%;
+    .date_icon{
+      right: 19px;
+    }
+  }
+  .left_form_service_create.kpi{
+    .chart_element{
+      width: 100%;
+      canvas{
+        width: 100%;
+      }
+    }
+  }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 640px) {}

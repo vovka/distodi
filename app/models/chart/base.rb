@@ -38,7 +38,7 @@ class Chart < ActiveRecord::Base
       @_aggregated_services_memo ||= begin
         result = chart
           .item.services
-          .where(performed_at: chart.from_date..chart.to_date)
+          .where(created_at: chart.from_date..chart.to_date)
 
         if chart.select.present?
           result = result.select(chart.select)

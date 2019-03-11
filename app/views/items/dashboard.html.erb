@@ -27,7 +27,7 @@
         <%= @services.count %> <span><%= t(".services") %></span>
       </div>
       <% if @item.present? %>
-        <div class="">
+        <div class="kpi_icon">
           <%= link_to t(".kpi"), item_key_performance_indicators_path(@item) %>
         </div>
       <% end %>

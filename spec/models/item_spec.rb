@@ -156,8 +156,12 @@ end
 #  picture5           :string
 #  comment            :string(2000)
 #  user_type          :string
+#  archivation        :boolean          default("false")
+#  archived           :boolean          default("false")
+#  deleted_at         :datetime
 #
 # Indexes
 #
 #  index_items_on_category_id  (category_id)
+#  index_items_on_deleted_at   (deleted_at)
 #
