@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181120053044) do
+ActiveRecord::Schema.define(version: 20190219225756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,23 @@ ActiveRecord::Schema.define(version: 20181120053044) do
     t.datetime "updated_at",        null: false
   end
 
+  create_table "charts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "chart_type"
+    t.boolean  "active",          default: false
+    t.string   "label_attribute"
+    t.string   "format",          default: [],                 array: true
+    t.string   "data_attribute"
+    t.string   "select"
+    t.string   "joins"
+    t.string   "group"
+    t.string   "order"
+    t.boolean  "single_serial",   default: false
+    t.integer  "position"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
   create_table "checkouts", force: :cascade do |t|
     t.integer  "charge_amount"
     t.integer  "user_id"
@@ -180,8 +197,8 @@ ActiveRecord::Schema.define(version: 20181120053044) do
   create_table "items", force: :cascade do |t|
     t.string   "title"
     t.integer  "category_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.integer  "user_id"
     t.string   "picture"
     t.string   "token"
@@ -194,9 +211,13 @@ ActiveRecord::Schema.define(version: 20181120053044) do
     t.string   "picture5"
     t.string   "comment",            limit: 2000
     t.string   "user_type"
+    t.boolean  "archivation",                     default: false
+    t.boolean  "archived",                        default: false
+    t.datetime "deleted_at"
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+  add_index "items", ["deleted_at"], name: "index_items_on_deleted_at", using: :btree
 
   create_table "leads", force: :cascade do |t|
     t.string   "email"

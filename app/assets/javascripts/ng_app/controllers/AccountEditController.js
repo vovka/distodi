@@ -1,5 +1,5 @@
 var AccountEditController = function($scope, $timeout, $http, $q) {
-  this.$http = $http
+  this.$http = $http;
   this.$q = $q;
   var controller = this;
   $scope.imagePreview = [];

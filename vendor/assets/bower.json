@@ -4,6 +4,8 @@
     "angular-tour": "latest",
     "angular-cookie": "latest",
     "angular-chosen-localytics": "latest",
-    "angular-in-viewport": "latest"
+    "angular-in-viewport": "latest",
+    "chart.js": "latest",
+    "angular-chart.js": "latest"
   }
 }

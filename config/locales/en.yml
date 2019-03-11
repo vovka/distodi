@@ -65,6 +65,12 @@ en:
       password_placeholder: "Your password"
       confirmation_placeholder: "Password confirmation (min 8 characters)"
       errors_user: You have incorrect user data, please correct your data.
+  charts:
+    index:
+      title: KPI for your item
+      text: With KPI diagrams you can analyse your service statiscs. KPIs evaluate the success of an organization or of a particular activity (such as projects, programs, products and other initiatives) in which it engages.
+      choose_date: Choose date
+      choose_time: Choose time period
 
   items:
     create:

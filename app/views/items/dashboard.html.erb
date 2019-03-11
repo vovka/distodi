@@ -22,10 +22,15 @@
         <span><%= t(".all_services") %></span>
       </div>
     <% end %>
-    <% if @services.present? %>
+    <% if @services.any? %>
       <div class="service_count">
         <%= @services.count %> <span><%= t(".services") %></span>
       </div>
+      <% if @item.present? %>
+        <div class="kpi_icon">
+          <%= link_to t(".kpi"), item_key_performance_indicators_path(@item) %>
+        </div>
+      <% end %>
     <% end %>
     <%= link_to new_item_service_path(item_id: @item), "ng-show" => "!controller.serviceActions.show" do %>
       <div class="add_service">

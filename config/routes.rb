@@ -79,6 +79,7 @@ Rails.application.routes.draw do
           patch :decline
         end
       end
+      resources :charts, as: :key_performance_indicators, only: %i(index)
     end
 
     # TODO: remove this routes, must use that one services rousource inside the items
