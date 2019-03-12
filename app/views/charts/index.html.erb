@@ -14,7 +14,7 @@
   <h3><%= t(".choose_time") %></h3>
   <div class="reminders kpi">
     <p class="field_name">
-      <input type="date" id="from" name="from_date" ng-model="fromDate"ng-change="onDateChange()" />
+      <input type="date" id="from" name="from_date" ng-model="fromDate" ng-change="onDateChange()" />
     </p>
     <div class="date_icon">
       <%= image_tag "calendar-icon.png" %>
@@ -23,7 +23,7 @@
   </div>
   <div class="reminders kpi">
     <p class="field_name">
-      <input type="date" id="to" name="to_date" ng-model="toDate" ng-change=onDateChange()" />
+      <input type="date" id="to" name="to_date" ng-model="toDate" ng-change="onDateChange()" />
     </p>
     <div class="date_icon">
       <%= image_tag "calendar-icon.png" %>
@@ -53,5 +53,5 @@
       </span>
     </div>
   </div>
-  
+
 </div>

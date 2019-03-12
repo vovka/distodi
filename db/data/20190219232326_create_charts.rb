@@ -1,4 +1,4 @@
-class CreateCharts < ActiveRecord::Migration
+class CreateChartsData < ActiveRecord::Migration
   def up
     [
       {
