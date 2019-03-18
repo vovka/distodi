@@ -1171,16 +1171,17 @@
     margin-left: 0;
   }
   .select.reminder{
-  width: 120px;
+    width: 120px;
+    float: left;
   }
   .form-actions.user a{
-  margin-left: 0px;
+    margin-left: 0px;
   }
   .destroy_user + .edit_user.ng-pristine.ng-valid{
     margin-top: -165px;
   }
   .destroy_user{
-    top: 1331px;
+    top: 1221px;
   }
   .destroy_user.company {
     top: 1500px;
@@ -2269,7 +2270,7 @@
   .reminders.kpi{
     width: 100%;
     .date_icon{
-      right: 19px;
+      display: none;
     }
   }
   .left_form_service_create.kpi{
@@ -2279,6 +2280,16 @@
         width: 100%;
       }
     }
+  }
+  .left_form_service_create .form_service_create .half_form_field.service_form.consumption{
+    position: relative;
+    margin-top: 40px;
+  }
+  .left_form_service_create .form_service_create .price.road{
+    margin-top: 0;
+  }
+  .left_form_service_create .reminders .date_icon.road{
+    display: none;
   }
 }
 /* Small Devices, Tablets */
